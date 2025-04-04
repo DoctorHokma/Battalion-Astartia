@@ -37,7 +37,6 @@ NivelElectiv=0;
 MemoryX=1;
 MemoryY=1;
 
-
 Language=ENG;
 LevelMap=Palawan;
 LevelRoster=PalawanRoster;
@@ -45,7 +44,6 @@ Panel=0;
 Difficulty=2;
 Playlists=[];
 InterlogueBST=[[],[],[],[],[],[],[],[],[],[],[]];
-
 
 Campaigns=[
 	[	[{Map:Presus,Roster:PresusRoster,Constants:PresusConstants,Finished:true,Localization:PresusLocalization},{Map:RockyMountainsCentra,Roster:RockyMountainsCentraRoster,Constants:RockyMountainsCentraConstants,Finished:true},{Map:Moh,Roster:MohRoster,ControlMap:MohControl,Constants:MohConstants,Finished:true},{Map:Patna,Roster:PatnaRoster,ControlMap:PatnaControl,Constants:PatnaConstants,Finished:true,Funds:[0,500,500]},{Map:Kaula,Roster:KaulaRoster,ControlMap:KaulaControl,Constants:KaulaConstants,Finished:true}],
@@ -107,57 +105,102 @@ TNOFactions=[
 	{name:"Sablin", faction:"SocIntern", color:"Orange", ChromaCode:""},
 	{name:"Russian Republic of Magadan", faction:"Matkovtsy", color:"Grey", ChromaCode:""},
 	{name:"Divine Mandate of Siberia", faction:"DEUS VULT!", color:"White", ChromaCode:""},
-	{name:"Kazembek's Secret Lair in Yurlinsky", faction:"HARDCORE", color:"Dark Blue", ChromaCode:""}];
+	{name:"Kazembek's Secret Lair in Yurlinsky", faction:"HARDCORE", color:"Dark Blue", ChromaCode:""}
+];
 
-	//Fuck Dragnea
 MemeFactions=[];
 
 window.addEventListener("mousedown", () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
 
-window.addEventListener('keydown',(event) => {
-	if(event.key=="f" && FieldMode!="MapEditor"){ToggleBattleflags()};
+const initEvents = function(context) {
+	const { client } = context;
+	const { router } = client;
+
+	router.load(context, INPUT_DEFAULT);
+
+	//if(event.key=="f" && FieldMode!="MapEditor") ToggleBattleflags();
 	//if(event.key=="g" && FieldMode!="MapEditor"){ToggleMoraleBadges()};
 	//if(event.key=="h" && FieldMode!="MapEditor"){ToggleHealthBars()};
-	if(event.key=="|"){DisplayRegions()};
-	if(event.key=="="){document.getElementById("TileContainer").style.scale="10%";document.getElementById("TileContainer").style.overflow="visible";document.getElementById("TileContainer").style.top="-250px";document.getElementById("TileContainer").style.left="-700px";document.getElementById("TileContainer").style.zIndex="10"};
+
 	//if(event.key=="l"){alert(LastMove.X+" "+LastMove.Y)};
 	//if(event.key=="c"){alert('Press F to see which tiles need to be captured, which enemies assassinated and so on and so forth. Press F again to cancel');
 	//alert('You can also press tab to see the region map mode, but that does not do much at the moment; it will glitch the entire level. Except Samara, it works for that map ')};
-	if(event.key=="Shift" && FieldMode=="MapEditor"){TrackFillSwitch=true};
 
-	/*
-	if(event.key=="ArrowUp" || event.key=="w" || event.key=="W"){if(FieldMode=="MapEditor"){RollMapEditor(1)}else{RollMap(1);if(FlagsToggled){ToggleBattleflags();ToggleBattleflags()};if(BadgesToggled){ToggleMoraleBadges();ToggleMoraleBadges()};if(BarsToggled){ToggleHealthBars();ToggleHealthBars()};if(RegionsToggled){DisplayRegions();DisplayRegions()}}};
-	if(event.key=="ArrowRight" || event.key=="d" || event.key=="D"){if(FieldMode=="MapEditor"){RollMapEditor(2)}else{RollMap(2);if(FlagsToggled){ToggleBattleflags();ToggleBattleflags()};if(BadgesToggled){ToggleMoraleBadges();ToggleMoraleBadges()};if(BarsToggled){ToggleHealthBars();ToggleHealthBars()};if(RegionsToggled){DisplayRegions();DisplayRegions()}}};
-	if(event.key=="ArrowDown" || event.key=="s" || event.key=="S"){if(FieldMode=="MapEditor"){RollMapEditor(3)}else{RollMap(3);if(FlagsToggled){ToggleBattleflags();ToggleBattleflags()};if(BadgesToggled){ToggleMoraleBadges();ToggleMoraleBadges()};if(BarsToggled){ToggleHealthBars();ToggleHealthBars()};if(RegionsToggled){DisplayRegions();DisplayRegions()}}};
-	if(event.key=="ArrowLeft" || event.key=="a" || event.key=="A"){if(FieldMode=="MapEditor"){RollMapEditor(4)}else{RollMap(4);if(FlagsToggled){ToggleBattleflags();ToggleBattleflags()};if(BadgesToggled){ToggleMoraleBadges();ToggleMoraleBadges()};if(BarsToggled){ToggleHealthBars();ToggleHealthBars()};if(RegionsToggled){DisplayRegions();DisplayRegions()}}};
-	*/
+	//if(event.key=="ArrowUp" || event.key=="w" || event.key=="W"){if(FieldMode=="MapEditor"){RollMapEditor(1)}else{RollMap(1);if(FlagsToggled){ToggleBattleflags();ToggleBattleflags()};if(BadgesToggled){ToggleMoraleBadges();ToggleMoraleBadges()};if(BarsToggled){ToggleHealthBars();ToggleHealthBars()};if(RegionsToggled){DisplayRegions();DisplayRegions()}}};
+	//if(event.key=="ArrowRight" || event.key=="d" || event.key=="D"){if(FieldMode=="MapEditor"){RollMapEditor(2)}else{RollMap(2);if(FlagsToggled){ToggleBattleflags();ToggleBattleflags()};if(BadgesToggled){ToggleMoraleBadges();ToggleMoraleBadges()};if(BarsToggled){ToggleHealthBars();ToggleHealthBars()};if(RegionsToggled){DisplayRegions();DisplayRegions()}}};
+	//if(event.key=="ArrowDown" || event.key=="s" || event.key=="S"){if(FieldMode=="MapEditor"){RollMapEditor(3)}else{RollMap(3);if(FlagsToggled){ToggleBattleflags();ToggleBattleflags()};if(BadgesToggled){ToggleMoraleBadges();ToggleMoraleBadges()};if(BarsToggled){ToggleHealthBars();ToggleHealthBars()};if(RegionsToggled){DisplayRegions();DisplayRegions()}}};
+	//if(event.key=="ArrowLeft" || event.key=="a" || event.key=="A"){if(FieldMode=="MapEditor"){RollMapEditor(4)}else{RollMap(4);if(FlagsToggled){ToggleBattleflags();ToggleBattleflags()};if(BadgesToggled){ToggleMoraleBadges();ToggleMoraleBadges()};if(BarsToggled){ToggleHealthBars();ToggleHealthBars()};if(RegionsToggled){DisplayRegions();DisplayRegions()}}};
 
-	let keyArray=[false,false,false,false];
-	/*
-	//This code block is considered obsolete, replaced by a code block that is equally useless
-	if(event.key=="ArrowUp" || event.key=="w" || event.key=="W"){document.getElementById('RegionMap').scrollBy(0,-280);document.getElementById('regionMap').scrollBy(0,-280);if(FieldMode=="MapEditor"){RollMapEditor(1)}else{document.getElementById('TopScrollBar').click()}};
-	if(event.key=="ArrowRight" || event.key=="d" || event.key=="D"){document.getElementById('RegionMap').scrollBy(280,0);document.getElementById('regionMap').scrollBy(280,0);if(FieldMode=="MapEditor"){RollMapEditor(2)}else{document.getElementById('RightScrollBar').click()}};
-	if(event.key=="ArrowDown" || event.key=="s" || event.key=="S"){document.getElementById('RegionMap').scrollBy(0,280);document.getElementById('regionMap').scrollBy(0,280);if(FieldMode=="MapEditor"){RollMapEditor(3)}else{document.getElementById('BottomScrollBar').click()}};
-	if(event.key=="ArrowLeft" || event.key=="a" || event.key=="A"){document.getElementById('RegionMap').scrollBy(-280,0);document.getElementById('regionMap').scrollBy(-280,0);if(FieldMode=="MapEditor"){RollMapEditor(4)}else{document.getElementById('LeftScrollBar').click()}};*/
-
-
-	if(event.key=="ArrowUp" || event.key=="w" || event.key=="W"){keyArray[0]=true};
-	if(event.key=="ArrowRight" || event.key=="d" || event.key=="D"){keyArray[1]=true};
-	if(event.key=="ArrowDown" || event.key=="s" || event.key=="S"){keyArray[2]=true};
-	if(event.key=="ArrowLeft" || event.key=="a" || event.key=="A"){keyArray[3]=true};
-	//console.log(keyArray);
-	//if(keyArray[1]&&keyArray[2]){document.getElementById('RegionMap').scrollBy(280,280);document.getElementById('regionMap').scrollBy(280,280);if(FieldMode=="MapEditor"){RollMapEditor(2)}else{document.getElementById('RightScrollBar').click();document.getElementById('BottomScrollBar').click()}};
-	if(keyArray[0]){document.getElementById('RegionMap').scrollBy(0,-280);document.getElementById('regionMap').scrollBy(0,-280);if(FieldMode=="MapEditor"){RollMapEditor(1)}else{document.getElementById('TopScrollBar').click()}};
-	if(keyArray[1]){document.getElementById('RegionMap').scrollBy(280,0);document.getElementById('regionMap').scrollBy(280,0);if(FieldMode=="MapEditor"){RollMapEditor(2)}else{document.getElementById('RightScrollBar').click()}};
-	if(keyArray[2]){document.getElementById('RegionMap').scrollBy(0,280);document.getElementById('regionMap').scrollBy(0,280);if(FieldMode=="MapEditor"){RollMapEditor(3)}else{document.getElementById('BottomScrollBar').click()}};
-	if(keyArray[3]){document.getElementById('RegionMap').scrollBy(-280,0);document.getElementById('regionMap').scrollBy(-280,0);if(FieldMode=="MapEditor"){RollMapEditor(4)}else{document.getElementById('LeftScrollBar').click()}};
-
-	});
-window.addEventListener('keyup',(event) => {
-
-	if(event.key=="Shift" && FieldMode=="MapEditor"){TrackFillSwitch=false};
+	router.on("TOGGLE_BATTLE_FLAGS", () => {
+		if(FieldMode != "MapEditor") {
+			ToggleBattleflags();
+		}
 	});
 
+	router.on("DISPLAY_REGIONS", () => {
+		DisplayRegions();
+	});
+
+	router.on("SHRINK_TILE_CONTAINER", () => {
+		document.getElementById("TileContainer").style.scale="10%";
+		document.getElementById("TileContainer").style.overflow="visible";
+		document.getElementById("TileContainer").style.top="-250px";
+		document.getElementById("TileContainer").style.left="-700px";
+		document.getElementById("TileContainer").style.zIndex="10";
+	});
+
+	router.on("TOGGLE_TRACK_FILL_SWITCH", () => {
+		if(FieldMode == "MapEditor") {
+			TrackFillSwitch = !TrackFillSwitch;
+		}
+	});
+
+	router.on("MAP_UP", () => {
+		document.getElementById('RegionMap').scrollBy(0,-280);
+		document.getElementById('regionMap').scrollBy(0,-280);
+		
+		if(FieldMode=="MapEditor") {
+			RollMapEditor(1);
+		} else {
+			document.getElementById('TopScrollBar').click();
+		}
+	});
+
+	router.on("MAP_LEFT", () => {
+		document.getElementById('RegionMap').scrollBy(-280,0);
+		document.getElementById('regionMap').scrollBy(-280,0);
+		
+		if(FieldMode=="MapEditor") {
+			RollMapEditor(4);
+		} else {
+			document.getElementById('LeftScrollBar').click();
+		}
+	});
+
+	router.on("MAP_DOWN", () => {
+		document.getElementById('RegionMap').scrollBy(0,280);
+		document.getElementById('regionMap').scrollBy(0,280);
+		
+		if(FieldMode=="MapEditor") {
+			RollMapEditor(3);
+		} else {
+			document.getElementById('BottomScrollBar').click();
+		}
+	});
+
+	router.on("MAP_RIGHT", () => {
+		document.getElementById('RegionMap').scrollBy(280,0);
+		document.getElementById('regionMap').scrollBy(280,0);
+		
+		if(FieldMode=="MapEditor") {
+			RollMapEditor(2);
+		} else {
+			document.getElementById('RightScrollBar').click();
+		}
+	});
+}
+
+initEvents(battalion);
 
 //Useful note:
 //Z-Index 0 is for divs with no specific priority

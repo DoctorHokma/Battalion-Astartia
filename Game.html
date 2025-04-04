@@ -1081,11 +1081,11 @@
 	<img style="position: absolute; top: 0px; left: 147px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG'" onclick="document.getElementById('MapMold').style.visibility='hidden'" />
 	<p style="position: absolute; top:105px; left:112px">↔</p>
 	<p style="position: absolute; top:123px; left:116px">↕</p>
-	<input type="text" id="widthinput" name="testinput" value="10" style="position:absolute; top:119px; left:133px">
-	<input type="text" id="heigthinput" name="testinput" value="10" style="position:absolute; top:140px; left:133px">
+	<input type="text" id="widthinput" name="testinput" value="100" style="position:absolute; top:119px; left:133px">
+	<input type="text" id="heigthinput" name="testinput" value="100" style="position:absolute; top:140px; left:133px">
 	<button id="GenerateEditorMap" onClick="FieldMode='MapEditor'; for(let i=1;i<=10;i++){for(let j=1;j<=10;j++){
 			key=document.getElementById('Slot '+i+' X '+j)??0;if(key!=0){key.remove()};
-		}}; castMapMaker(); if(MusicChoice){MainTheme.pause()}" style="position:absolute; top:161px; left:145px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto">Generate Blank Map</button>
+		}}; castMapMaker();" style="position:absolute; top:161px; left:145px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto">Generate Blank Map</button>
 	</div>
 <div id="Options" style="position:relative; visibility:hidden; left:448px;top:140px;z-index:7">
 	<img style="position:absolute" src="Assets/Miscellaneous/OptionsPanel.PNG"/>
@@ -1752,25 +1752,39 @@
 <button id='Secret Settings Button' onClick="" style='visibility: hidden ;position:absolute; top:55px; left:830px; height:70px; width:70px'>Special Commands</button>
 
 <script src="helper.js"></script>
+
+<script src="events/listener.js"></script>
+<script src="events/eventEmitter.js"></script>
+
+<script src="client/input.js"></script>
+<script src="client/mouseButton.js"></script>
+<script src="client/cursor.js"></script>
+<script src="client/keyboard.js"></script>
+<script src="client/inputRouter.js"></script>
+<script src="client/client.js"></script>
+
 <script src="sound/sound.js"></script>
 <script src="sound/soundElement.js"></script>
 <script src="sound/soundPlayer.js"></script>
+
 <script src="music/music.js"></script>
 <script src="music/musicTrack.js"></script>
 <script src="music/musicPlayer.js"></script>
+
 <script src="battalion.js"></script>
+
 <script src="Extensions/Translations.js"></script>
 <script src="Extensions/ROM.js"></script>
 <script src="Extensions/ESP.js"></script>
 <script src="Extensions/POR.js"></script>
 <script src="Extensions/TUR.js"></script>
-
 <script src="Extensions/Characters.js"></script>
 <script src="Extensions/Codex.js"></script>
 <script src="Extensions/Intraevents.js"></script>
 <script src="Extensions/Maps.js"></script>
 <script src="Extensions/GenericData.js"></script>
 <script src="Extensions/SpecialLevels.js"></script>
+
 <script src="main.js"></script>
 </body>
 </html>
