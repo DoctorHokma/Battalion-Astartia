@@ -5,7 +5,7 @@
 <link rel="icon" href="Icon.ico">
 </head>
 
-<body id="BODY" style="overflow:hidden; scale:80%; position:absolute; left:0px; cursor: url('Assets/Miscellaneous/DarkCursor.png') 0 0, auto" oncontextmenu="return false" onload="if(document.getElementById('Disclaimer').style.visibility=='visible'){Disclaimer= new Audio('Assets/SFX/Disclaimer.wav'); Disclaimer.play()}">
+<body id="BODY" style="overflow:hidden; scale:80%; position:absolute; left:0px; cursor: url('Assets/Miscellaneous/DarkCursor.png') 0 0, auto" oncontextmenu="return false">
 
 
 
@@ -1750,6 +1750,15 @@
 <button id='FocalTest' onClick="EditorMap[1][1]=6;FocalEditorRefresh(2,2)" style='visibility: hidden ;position:absolute; top:160px; left:100px; height:70px; width:70px'>Focal Test</button>
 <button id='ScrollbarTest' onClick="alert(document.getElementById('LorePanel').scrollTop);document.getElementById('LorePanel').scrollTop=0" style='visibility: hidden ;position:absolute; top:160px; left:1100px; height:70px; width:70px'>Scroll Offset</button>
 <button id='Secret Settings Button' onClick="" style='visibility: hidden ;position:absolute; top:55px; left:830px; height:70px; width:70px'>Special Commands</button>
+
+<script src="helper.js"></script>
+<script src="sound/sound.js"></script>
+<script src="sound/soundElement.js"></script>
+<script src="sound/soundPlayer.js"></script>
+<script src="music/music.js"></script>
+<script src="music/musicTrack.js"></script>
+<script src="music/musicPlayer.js"></script>
+<script src="battalion.js"></script>
 <script src="Extensions/Translations.js"></script>
 <script src="Extensions/ROM.js"></script>
 <script src="Extensions/ESP.js"></script>

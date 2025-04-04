@@ -85,7 +85,7 @@ CampaignUnits=[
 	{name: "White Paladin", shortname:"Paladin", MLPR:true, HP: 140, Armor:"Medium", Attack:50, Weapon:"Medium",Speed:2, Movement:"Foot", MinRange:1, MaxRange:1, Cost:700, TechLevel:6, Power:110, Role:"", tag1: "Conqueror", tag2: "Indomitable", tag3: "Heroic", tag4: "", FactionSpecificity:1},
 
 	{name: "Cavalry", shortname:"Cavalry", MLPR:true, HP:80, Armor: "Light", Attack: 20, Weapon: "Light", Speed:5, Movement: "Foot", MinRange:1, MaxRange:1, Cost:200, TechLevel:1, Power:20, Role:"", tag1:"Conqueror", tag2:"", tag3:"", tag4:"",StaticOffsetX:[0,9,-3,9,-3],StaticOffsetY:[0,1,5,1,5],MovementOffsetX:[0,14,0,14,0],MovementOffsetY:[0,0,8,0,8],AttackOffsetX:[0,10,0,10,0],AttackOffsetY:[0,0,5,0,5]},
-	{name: "Motorized Infantry", shortname: "Motorinf", MLPR:true, HP:80, Armor: "Light", Attack: 25, Weapon: "Medium", Speed:6, Movement: "Wheeled", MinRange:1, MaxRange:1, Cost:200, TechLevel:2, Power:30, Role:"", tag1:"Conqueror", tag2:"", tag3:"", tag4:"",AttackOffsetX:[0,0,0,0,-14]},
+	{name: "Motorized Infantry", shortname: "MotorInf", MLPR:true, HP:80, Armor: "Light", Attack: 25, Weapon: "Medium", Speed:6, Movement: "Wheeled", MinRange:1, MaxRange:1, Cost:200, TechLevel:2, Power:30, Role:"", tag1:"Conqueror", tag2:"", tag3:"", tag4:"",AttackOffsetX:[0,0,0,0,-14]},
 	{name: "Supply Truck", shortname:"Supply", MLPR:true, HP:30, Armor:"Light", Attack:20, Weapon:"None", Speed:6, Movement:"Wheeled", MinRange:1, MaxRange:3, Cost:400, TechLevel:2, Power:10, Role:"", tag1:"Supply Distribution", tag2:"", tag3:"", tag4:""},
 	{name: "Flak Tank", shortname: "Flak", MLPR:true, HP:60, Armor: "Medium", Attack: 20, Weapon: "Light", Speed:5, Movement: "Tracked", MinRange:1, MaxRange:3, Cost:485, TechLevel:3, Power:25, Role:"", tag1:"Skysweeper", tag2:"Anti-Air", tag3:"", tag4:"",AttackOffsetX:[0,0,-10,-21,-40],AttackOffsetY:[0,-33,-44,-21,-44]},
 	{name: "Crab Tank Battalion", shortname: "Crab", MLPR:true, HP:90, Armor: "Medium", Attack: 30, Weapon: "Light", Speed:6, Movement: "Amphibious", MinRange:1, MaxRange:1, Cost:325, TechLevel:3, Power:35, Role:"" ,tag1:"Crab", tag2:"", tag3:"", tag4:"", FactionSpecificity:4, AttackOffsetX:[0,-16,-15,-15,-15], AttackOffsetY:[0,-19,-13,-17,-13]},
@@ -180,49 +180,6 @@ CampaignFactions=[
 	{name:"Rayon Unichtozheniya Skalistykhgor"},
 	{name:"Pulanskiy Morskoy Consortium"}
 	];
-MusicBank=[
-	//0-3: Generic
-	{Name:"Generic Battle BGM",List:["Generic1.MP3","Generic2.MP3","Generic3.MP3","Generic4.MP3","Generic5.MP3","Generic6.MP3","Generic7.MP3","Generic8.MP3","Generic9.MP3","Generic10.MP3"]},
-	{Name:"Epic Battle BGM",List:["Epic1.MP3","Epic2.MP3","Epic3.MP3","Epic4.MP3","Epic5.MP3","Epic6.MP3","Epic7.MP3","Epic8.MP3","Epic9.MP3","Epic10.MP3","Epic11.MP3","Epic12.MP3","Epic13.MP3","Epic14.MP3","Epic15.MP3"]},
-	{Name:"Generic Naval BGM",List:["Naval1.MP3","Naval2.MP3","Naval3.MP3","Naval4.MP3","Naval5.MP3","Naval6.MP3","Naval7.MP3","Naval8.MP3","Naval9.MP3"]},
-	{Name:"Epic Naval BGM",List:["NavalEpic1.MP3","NavalEpic2.MP3","NavalEpic3.MP3","NavalEpic4.MP3","NavalEpic5.MP3","NavalEpic6.MP3","NavalEpic7.MP3"]},
-	//4-11: Somertin
-	{Name:"Lamentoso of Desperate Struggle",List:["Lamentoso1.MP3","Lamentoso2.MP3","Lamentoso3.MP3","Lamentoso4.MP3","Lamentoso5.MP3","Lamentoso6.MP3","Lamentoso7.MP3","Lamentoso8.MP3","Lamentoso9.MP3","Lamentoso10.MP3","Lamentoso11.MP3","Lamentoso12.MP3","Lamentoso13.MP3","Lamentoso14.MP3",]},
-	{Name:"Sweeping Wave of Steel and Cordite, Fortissimo!",List:["Fortissimo1.MP3","Fortissimo2.MP3","Fortissimo3.MP3","Fortissimo4.MP3","Fortissimo5.MP3","Fortissimo6.MP3","Fortissimo7.MP3","Fortissimo8.MP3","Fortissimo9.MP3","Fortissimo10.MP3","Fortissimo11.MP3",]},
-	{Name:"Crusade Against Degenerates",List:["Crusade1.MP3","Crusade2.MP3","Crusade3.MP3","Crusade4.MP3","Crusade5.MP3","Crusade6.MP3","Crusade7.MP3","Crusade8.MP3","Crusade9.MP3","Crusade10.MP3",]},
-	{Name:"",List:[]},
-	{Name:"",List:[]},
-	{Name:"",List:[]},
-	{Name:"",List:[]},
-	{Name:"",List:[]},
-	//12-17: Kargia
-	{Name:"Panzer Brr!!!",List:["PanzerBrr1.MP3","PanzerBrr2.MP3","PanzerBrr3.MP3","PanzerBrr4.MP3","PanzerBrr5.MP3","PanzerBrr6.MP3","PanzerBrr7.MP3","PanzerBrr8.MP3","PanzerBrr9.MP3","PanzerBrr10.MP3",]},
-	{Name:"UNSTOPPABLE PANZER BRR!!!",List:["PANZERBRR!!!1.MP3","PANZERBRR!!!2.MP3","PANZERBRR!!!3.MP3","PANZERBRR!!!4.MP3","PANZERBRR!!!5.MP3"]},
-	{Name:"The New Order",List:[]},
-	{Name:"",List:[]},
-	{Name:"",List:[]},
-	{Name:"",List:[]},
-	//18-22: Transkal
-	{Name:"The Taiga Aslumber",List:["Taiga1.MP3","Taiga2.MP3","Taiga3.MP3","Taiga4.MP3","Taiga5.MP3","Taiga6.MP3","Taiga7.MP3","Taiga8.MP3","Taiga9.MP3","Taiga10.MP3",]},
-	{Name:"Chilly Land Warriors",List:["Chill1.MP3","Chill2.MP3","Chill3.MP3","Chill4.MP3","Chill5.MP3","Chill6.MP3","Chill7.MP3","Chill8.MP3","Chill9.MP3","Chill10.MP3","Chill11.MP3","Chill12.MP3","Chill13.MP3"]},
-	{Name:"Transkalite Blizzard",List:["Blizzard1.MP3","Blizzard2.MP3","Blizzard3.MP3","Blizzard4.MP3","Blizzard5.MP3"]},
-	{Name:"",List:[]},
-	{Name:"",List:[]},
-	//23-28: Polasie
-	{Name:"The glorious battle for freedom and liberation!",List:["Freedom1.MP3","Freedom2.MP3","Freedom3.MP3","Freedom4.MP3","Freedom5.MP3","Freedom6.MP3","Freedom7.MP3","Freedom8.MP3","Freedom9.MP3","Freedom10.MP3",]},
-	{Name:"Wistful memory of simpler times",List:["Wistful1.MP3","Wistful2.MP3","Wistful3.MP3","Wistful4.MP3","Wistful5.MP3","Wistful6.MP3","Wistful7.MP3","Wistful8.MP3","Wistful9.MP3","Wistful10.MP3","Wistful11.MP3","Wistful12.MP3","Wistful13.MP3","Wistful14.MP3","Wistful15.MP3","Wistful16.MP3","Wistful17.MP3",]},
-	{Name:"Terminus Point",List:["Terminus1.MP3","Terminus2.MP3","Terminus3.MP3","Terminus4.MP3","Terminus5.MP3",]},
-	{Name:"Last twitches of a decayed society",List:["Decay1.MP3","Decay2.MP3","Decay3.MP3","Decay4.MP3","Decay5.MP3","Decay6.MP3","Decay7.MP3","Decay8.MP3","Decay9.MP3","Decay10.MP3","Decay11.MP3","Decay12.MP3",]},
-	{Name:"",List:[]},
-	{Name:"",List:[]},
-	//29-33: Elam
-	{Name:"Kawaii nasheed desu",List:["Nasheed1.MP3","Nasheed2.MP3","Nasheed3.MP3","Nasheed4.MP3","Nasheed5.MP3","Nasheed6.MP3","Nasheed7.MP3","Nasheed8.MP3","Nasheed9.MP3","Nasheed10.MP3",]},
-	{Name:"Rotting and eroded",List:["Tafsak1.MP3","Tafsak2.MP3","Tafsak3.MP3","Tafsak4.MP3","Tafsak5.MP3","Tafsak6.MP3","Tafsak7.MP3","Tafsak8.MP3","Tafsak9.MP3","Tafsak10.MP3","Tafsak11.MP3","Tafsak12.MP3","Tafsak13.MP3","Tafsak14.MP3","Tafsak15.MP3","Tafsak16.MP3",]},
-	{Name:"Great battle for Ishlam",List:["Malhamat1.MP3","Malhamat2.MP3","Malhamat3.MP3","Malhamat4.MP3","Malhamat5.MP3","Malhamat6.MP3"]},
-	{Name:"Jihad for Ishlam",List:["Jihad1.MP3","Jihad2.MP3","Jihad3.MP3","Jihad4.MP3","Jihad5.MP3","Jihad6.MP3","Jihad7.MP3","Jihad8.MP3","Jihad9.MP3","Jihad10.MP3","Jihad11.MP3"]},
-	{Name:"AL MALHAMA AL KUBRA",List:["AlMalhamaAlKubra1.MP3","AlMalhamaAlKubra2.MP3","AlMalhamaAlKubra3.MP3","AlMalhamaAlKubra4.MP3","AlMalhamaAlKubra5.MP3"]}
-
-	];
 ConquestRegions=[
 	{name:"null", X:0, Y:0, DeJureOwner:0, DeFactoOwner:0, Population:0, Infrastructure:0, Economy:[], FortificationLevel:0, TechLevel:0, AgriculturalProduce:0, CivilianGoods:0, Hydrocarbons:0, Steel:0, Bauxite:0, RareMetals:0, FissileMaterials:0, Armies:[],
 		Terrain:{Plains:0, Tundra:0, Desert:0, Arctic:0, Hellhole:0, Forests:0, Taiga:0, Hills:0, Mountains:0, Supermountains:0, Urban:0, River:0, RiverAxis:"H", Swamp:0, Sea:0, ArcticWater:0, Islets:0}},
@@ -232,7 +189,6 @@ ConquestRegions=[
 	{name:"null", X:0, Y:0, DeJureOwner:0, DeFactoOwner:0, Population:0, Infrastructure:0, Economy:[], FortificationLevel:0, TechLevel:0, AgriculturalProduce:0, CivilianGoods:0, Hydrocarbons:0, Steel:0, Bauxite:0, RareMetals:0, FissileMaterials:0, Armies:[]},
 	{name:"null", X:0, Y:0, DeJureOwner:0, DeFactoOwner:0, Population:0, Infrastructure:0, Economy:[], FortificationLevel:0, TechLevel:0, AgriculturalProduce:0, CivilianGoods:0, Hydrocarbons:0, Steel:0, Bauxite:0, RareMetals:0, FissileMaterials:0, Armies:[]},
 	];
-
 IntraeventLedger=[
 	//Event Zero, or shall we say the template event
 	{Name:"null",Class:"Static", TurnTreshold:3, AlterCredits:0, FactionTarget:1,Intralogue:0, SummonUnits:[], TerrainImpact:[],Inspire:null,Strike:[],Display:null,Purge:0,ChangeTune:null},
@@ -415,16 +371,7 @@ IntraeventLedger=[
 	{},{},{},{},{},{},{}
 
 
-	]
-
-
-
-
-
-
-
-
-	
+	];
 CommanderTraitDatabase=[
 	[{DoctrineName:"", OffensiveImpact:0, DefensiveImpact:0, LogisticalImpact:0, CommandImpact:0},{}],
 	[{SpecialisationName:0, AdministrationImpact:0}],
@@ -433,19 +380,11 @@ CommanderTraitDatabase=[
 	[{DefensiveTrait:"Imbecile",DefensiveImpact:-5},{DefensiveTrait:"Cowardly",DefensiveImpact:-3},{DefensiveTrait:"Dull-witted",DefensiveImpact:-2},{DefensiveTrait:"Forgetful",DefensiveImpact:-1},{DefensiveTrait:"Average",DefensiveImpact:0},{DefensiveTrait:"Cautious",DefensiveImpact:1},{DefensiveTrait:"Sharp-witted",DefensiveImpact:2},{DefensiveTrait:"Eidetic",DefensiveImpact:3},{DefensiveTrait:"Defensive Genius",DefensiveImpact:5}],
 	[{LogisticalTrait:"Stupid",LogisticalImpact:-5},{LogisticalTrait:"Wasteful",LogisticalImpact:-3},{LogisticalTrait:"Insecure",LogisticalImpact:-2},{LogisticalTrait:"Indifferent",LogisticalImpact:-1},{LogisticalTrait:"Measured",LogisticalImpact:0},{LogisticalTrait:"Frugal",LogisticalImpact:1},{LogisticalTrait:"Thrifty",LogisticalImpact:2},{LogisticalTrait:"Rigourous",LogisticalImpact:3},{LogisticalTrait:"Logistical Genius",LogisticalImpact:5}],
 	[{CommandTrait:"Retarded",CommandImpact:-10},{CommandTrait:"Chaotic",CommandImpact:-7},{CommandTrait:"Abrasive",CommandImpact:-5},{CommandTrait:"Introverted",CommandImpact:-3},{CommandTrait:"Ambiverted",CommandImpact:0},{CommandTrait:"Extroverted",CommandImpact:3},{CommandTrait:"Charismatic",CommandImpact:5},{CommandTrait:"Organized",CommandImpact:7},{CommandTrait:"Command Genius",CommandImpact:10}]
-
-
-	];
+];
 ArmyNamesNoon={
-
-
-
-	};
-
+};
 ArmyNamesMidnight={
-
-
-	};
+};
 
 
 
@@ -483,7 +422,7 @@ CampaignUnitsOldOrder=[
 	{name: "null", HP:0, Armor: "Medium", Attack: 0, Weapon: "Medium", Speed:0, Movement: "Foot", MinRange:1, MaxRange:1, Cost:0 ,tag1:"", tag2:"", tag3:"", tag4:"",StaticOffsetX:[0,0,0,0,0],StaticOffsetY:[0,0,0,0,0],MovementBoxX:0,MovementBoxY:0,MovementOffsetX:[0,0,0,0,0],MovementOffsetY:[0,0,0,0,0],AttackOffsetX:[0,0,0,0,0],AttackOffsetY:[0,0,0,0,0],IdleOffsetX:[0,0,0,0,0],IdleOffsetY:[0,0,0,0,0]},
 	{name: "Light Infantry", HP:50, shortname: "LightInf", Armor: "Light", Attack: 20, Weapon: "Light", Speed:4, Movement: "Foot", MinRange:1, MaxRange:1, Cost:50, tag1:"Conqueror", tag2:"Streamlined", tag3:"", tag4:""},
 	{name: "Infantry", HP:70, shortname: "Infantry", Armor: "Light", Attack: 25, Weapon: "Light", Speed:3, Movement: "Foot", MinRange:1, MaxRange:1, Cost:100, tag1:"Conqueror", tag2:"", tag3:"", tag4:"" ,AttackOffsetX:[0,0,9,0,-9]},
-	{name: "Motorized Infantry", shortname: "Motorinf", HP:70, Armor: "Light", Attack: 25, Weapon: "Medium", Speed:6, Movement: "Wheeled", MinRange:1, MaxRange:1, Cost:200, tag1:"Conqueror", tag2:"", tag3:"", tag4:""},
+	{name: "Motorized Infantry", shortname: "MotorInf", HP:70, Armor: "Light", Attack: 25, Weapon: "Medium", Speed:6, Movement: "Wheeled", MinRange:1, MaxRange:1, Cost:200, tag1:"Conqueror", tag2:"", tag3:"", tag4:""},
 	{name: "White Guards", shortname: "Guards", HP:105, Armor: "Light", Attack: 35, Weapon: "Medium", Speed:3, Movement: "Foot", MinRange:1, MaxRange:1, Cost:250, tag1:"Conqueror", tag2:"Heroic", tag3:"", tag4:"", AttackOffsetX:[0,0,8,0,-8]},
 	{name: "Spec-Ops", shortname: "SpecOps", HP:50, Armor: "Light", Attack: 20, Weapon: "Heavy", Speed:4, Movement: "Foot", MinRange:1, MaxRange:1, Cost:250, tag1:"Conqueror", tag2:"Anti-Structure", tag3:"Stealth", tag4:"",AttackOffsetX:[0,0,13,0,-13]},
 	{name: "Transkalite Snipers", shortname: "Snipers", HP:70, Armor: "Light", Attack: 30, Weapon: "Light", Speed:4, Movement: "Foot", MinRange:1, MaxRange:1, Cost:250, tag1:"Conqueror", tag2:"Commando", tag3:"", tag4:"",AttackOffsetX:[0,-2,8,-2,-12]},
@@ -540,7 +479,7 @@ MemeUnits=[
 	{name: "White Paladin", shortname:"Paladin", MLPR:true, HP: 140, Armor:"Medium", Attack:50, Weapon:"Medium",Speed:2, Movement:"Foot", MinRange:1, MaxRange:1, Cost:700, TechLevel:6, Power:110, Role:"", tag1: "Conqueror", tag2: "Indomitable", tag3: "Heroic", tag4: "", FactionSpecificity:1},
 
 	{name: "Cavalry", shortname:"Cavalry", MLPR:true, HP:80, Armor: "Light", Attack: 20, Weapon: "Light", Speed:5, Movement: "Foot", MinRange:1, MaxRange:1, Cost:200, TechLevel:1, Power:20, Role:"", tag1:"Conqueror", tag2:"", tag3:"", tag4:"",StaticOffsetX:[0,9,-3,9,-3],StaticOffsetY:[0,1,5,1,5],MovementOffsetX:[0,14,0,14,0],MovementOffsetY:[0,0,8,0,8],AttackOffsetX:[0,10,0,10,0],AttackOffsetY:[0,0,5,0,5]},
-	{name: "Motorized Infantry", shortname: "Motorinf", MLPR:true, HP:80, Armor: "Light", Attack: 25, Weapon: "Medium", Speed:6, Movement: "Wheeled", MinRange:1, MaxRange:1, Cost:200, TechLevel:2, Power:30, Role:"", tag1:"Conqueror", tag2:"", tag3:"", tag4:"",AttackOffsetX:[0,0,0,0,-14]},
+	{name: "Motorized Infantry", shortname: "MotorInf", MLPR:true, HP:80, Armor: "Light", Attack: 25, Weapon: "Medium", Speed:6, Movement: "Wheeled", MinRange:1, MaxRange:1, Cost:200, TechLevel:2, Power:30, Role:"", tag1:"Conqueror", tag2:"", tag3:"", tag4:"",AttackOffsetX:[0,0,0,0,-14]},
 	{name: "Supply Truck", shortname:"Supply", MLPR:true, HP:30, Armor:"Light", Attack:20, Weapon:"None", Speed:6, Movement:"Wheeled", MinRange:1, MaxRange:3, Cost:400, TechLevel:2, Power:10, Role:"", tag1:"Supply Distribution", tag2:"", tag3:"", tag4:""},
 	{name: "Flak Tank", shortname: "Flak", MLPR:true, HP:60, Armor: "Medium", Attack: 20, Weapon: "Light", Speed:5, Movement: "Tracked", MinRange:1, MaxRange:3, Cost:485, TechLevel:3, Power:25, Role:"", tag1:"Skysweeper", tag2:"Anti-Air", tag3:"", tag4:"",AttackOffsetX:[0,0,-10,-21,-40],AttackOffsetY:[0,-33,-44,-21,-44]},
 	{name: "Crab Tank Battalion", shortname: "Crab", MLPR:true, HP:90, Armor: "Medium", Attack: 30, Weapon: "Light", Speed:6, Movement: "Amphibious", MinRange:1, MaxRange:1, Cost:325, TechLevel:3, Power:35, Role:"" ,tag1:"Crab", tag2:"", tag3:"", tag4:"", FactionSpecificity:4, AttackOffsetX:[0,-16,-15,-15,-15], AttackOffsetY:[0,-19,-13,-17,-13]},

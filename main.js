@@ -1,4 +1,5 @@
-MainTheme=null;
+const OPENING_TRACK = "RiversOfSteel";
+const battalion = new Battalion();
 
 ResolutionXFactor=1;
 ResolutionYFactor=1;
@@ -88,104 +89,7 @@ Campaigns=[
 	[	[{Finished:false},{Finished:false},{Finished:false},{Finished:false},{Finished:false}],
 		[{Finished:false},{Finished:false},{Finished:false},{Finished:false},{Finished:false}]],
 	[[{Finished:false},{Finished:false},{Finished:false},{Finished:false},{Finished:false}]],
-	];
-//obsolete registries, will mess up game
-Terrain=[
-	{name: "", passThrough: true, flyThrough: true, sailThrough: false, src:"", traverseFactor:1, protectionFactor:1}, 
-
-	//1-5
-
-	{name: "Plains", WalkThrough: 1, DriveThrough: 1.2, RollThrough: 1.2, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:1, protectionFactor:1,Urbanistics:0,tag1:"Uneven",tag2:"",tag3:"",tag4:""},
-	{name: "Forest", WalkThrough: 1.5, DriveThrough: 2, RollThrough: 2, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:2, protectionFactor:0.8,Urbanistics:0,tag1:"Rugged",tag2:"Concealment",tag3:"",tag4:""},
-	{name: "Hills", WalkThrough: 1.5, DriveThrough: 1.5, RollThrough: 1.5, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:1.5, protectionFactor:0.8,Urbanistics:0,tag1:"Rugged",tag2:"Concealment",tag3:"Vantage",tag4:""},
-	{name: "Mountain", WalkThrough: 2, DriveThrough: 3, RollThrough: 5, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:5, protectionFactor:0.6,Urbanistics:0,tag1:"Precipitous",tag2:"Bunker",tag3:"Vantage",tag4:""},	
-	{name: "Volcano", WalkThrough: 100, DriveThrough: 100, RollThrough: 100, FlyThrough: 100, SailThrough: 100, DeepSailThrough:100, WadeThrough:100, protectionFactor:10000000,Urbanistics:0,tag1:"Impassable",tag2:"",tag3:"",tag4:""},
-
-	//6-14
-
-	{name: "Road", WalkThrough: 1, DriveThrough: 1, RollThrough: 1, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:1, protectionFactor:1,Urbanistics:1,tag1:"",tag2:"",tag3:"",tag4:""},
-	{name: "Ruins", WalkThrough: 2, DriveThrough: 3, RollThrough: 3, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:2, protectionFactor:0.8,Urbanistics:1,tag1:"Rugged",tag2:"",tag3:"",tag4:""},
-	{name: "Urban District", WalkThrough: 1.5, DriveThrough: 2, RollThrough: 2, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:2, protectionFactor:0.8,Urbanistics:1,tag1:"Rugged",tag2:"",tag3:"",tag4:""},
-	{name: "Industrial District", WalkThrough: 1.5, DriveThrough: 2, RollThrough: 2, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:2, protectionFactor:1,Urbanistics:1,tag1:"",tag2:"",tag3:"",tag4:""},
-	{name: "Military-Industrial Complex", WalkThrough: 1.5, DriveThrough: 2, RollThrough: 2, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:2, protectionFactor:1,Urbanistics:1,tag1:"",tag2:"",tag3:"",tag4:""},
-	{name: "Aviation Industrial Facility", WalkThrough: 1.5, DriveThrough: 2, RollThrough: 2, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:2, protectionFactor:1,Urbanistics:1,tag1:"",tag2:"",tag3:"",tag4:""},
-	{name: "Shipbuilding Facility", WalkThrough: 1.5, DriveThrough: 2, RollThrough: 2, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:2, protectionFactor:1,Urbanistics:1,tag1:"",tag2:"",tag3:"",tag4:""},
-	{name: "Headquarters", WalkThrough: 1.5, DriveThrough: 2, RollThrough: 2, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:2, protectionFactor:0.5,Urbanistics:1,tag1:"",tag2:"",tag3:"",tag4:""},
-	{name: "Command Center", WalkThrough: 1.5, DriveThrough: 2, RollThrough: 2, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:2, protectionFactor:0.5,Urbanistics:1,tag1:"",tag2:"",tag3:"",tag4:""},
-
-	//15-19
-
-	{name: "Taiga", WalkThrough: 1.5, DriveThrough: 2, RollThrough: 2, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:2, protectionFactor:0.8,Urbanistics:0,tag1:"Rugged",tag2:"Concealment",tag3:"",tag4:""},
-	{name: "Desert", WalkThrough: 1, DriveThrough: 1.2, RollThrough: 1.2, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:1, protectionFactor:1,Urbanistics:0,tag1:"Uneven",tag2:"",tag3:"",tag4:""},
-	{name: "Tundra", WalkThrough: 1, DriveThrough: 1.2, RollThrough: 1.2, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:1, protectionFactor:0.8,Urbanistics:0,tag1:"Uneven",tag2:"",tag3:"",tag4:""},
-	{name: "Extreme Desert", WalkThrough: 2, DriveThrough: 5, RollThrough: 3, FlyThrough: 1, SailThrough: 100, DeepSailThrough:100, WadeThrough:5, protectionFactor:1,Urbanistics:0,tag1:"",tag2:"",tag3:"",tag4:""},
-	{name: "Frozen Hellhole", WalkThrough: 2, DriveThrough: 5, RollThrough: 3, FlyThrough: 2, SailThrough: 100, DeepSailThrough:100, WadeThrough:5, protectionFactor:1,Urbanistics:0,tag1:"",tag2:"",tag3:"",tag4:""},
-
-	//20-21
-
-
-	{name: "Bridge", WalkThrough: 1, DriveThrough: 1, RollThrough: 1, FlyThrough: 1, SailThrough: 50, DeepSailThrough:50, WadeThrough:1, protectionFactor:1,Urbanistics:1,tag1:"",tag2:"",tag3:"",tag4:""},
-	{name: "High Bridge", WalkThrough: 1, DriveThrough: 1, RollThrough: 1, FlyThrough: 1, SailThrough: 1, DeepSailThrough:2, WadeThrough:1, protectionFactor:1,Urbanistics:1,tag1:"",tag2:"",tag3:"",tag4:""},
-
-	//22-30
-
-	{name: "River", WalkThrough: 100, DriveThrough: 100, RollThrough: 100, FlyThrough: 1, SailThrough: 1, DeepSailThrough:100, WadeThrough:3, protectionFactor:1.4,Urbanistics:0,tag1:"",tag2:"",tag3:"",tag4:""},
-	{name: "Sea", WalkThrough: 100, DriveThrough: 100, RollThrough: 100, FlyThrough: 1, SailThrough: 1, DeepSailThrough:1, WadeThrough:100, protectionFactor:1,Urbanistics:0,tag1:"",tag2:"",tag3:"",tag4:""},
-	{name: "Reef", WalkThrough: 100, DriveThrough: 100, RollThrough: 100, FlyThrough: 1, SailThrough: 1.2, DeepSailThrough:2, WadeThrough:100, protectionFactor:0.8,Urbanistics:0,tag1:"Tricky Waters",tag2:"Naval Concealment",tag3:"",tag4:""},
-	{name: "Floes", WalkThrough: 100, DriveThrough: 100, RollThrough: 100, FlyThrough: 1, SailThrough: 2, DeepSailThrough:1.25, WadeThrough:100, protectionFactor:0.8,Urbanistics:0,tag1:"Tricky Waters",tag2:"Naval Concealment",tag3:"",tag4:""},
-	{name: "Archipelago", WalkThrough: 100, DriveThrough: 100, RollThrough: 100, FlyThrough: 1, SailThrough: 1.5, DeepSailThrough:2, WadeThrough:100, protectionFactor:0.6,Urbanistics:0,tag1:"Tricky Waters",tag2:"Naval Concealment",tag3:"",tag4:""},
-	{name: "Rock Formation", WalkThrough: 100, DriveThrough: 100, RollThrough: 100, FlyThrough: 1, SailThrough: 1.5, DeepSailThrough:2, WadeThrough:100, protectionFactor:0.6,Urbanistics:0,tag1:"Bunker",tag2:"Tricky Waters",tag3:"Dangerous",tag4:""},
-	{name: "Icebergs", WalkThrough: 100, DriveThrough: 100, RollThrough: 100, FlyThrough: 1, SailThrough: 1.5, DeepSailThrough:2, WadeThrough:100, protectionFactor:0.6,Urbanistics:0,tag1:"Bunker",tag2:"Tricky Waters",tag3:"Dangerous",tag4:""},
-	{name: "Shore", WalkThrough: 1, DriveThrough: 1.2, RollThrough: 1.2, FlyThrough: 1, SailThrough: 1, DeepSailThrough:100, WadeThrough:1, protectionFactor:1.2,Urbanistics:0,tag1:"Shallow",tag2:"Uneven",tag3:"",tag4:""},
-	{name: "Oil Rig", WalkThrough: 100, DriveThrough: 100, RollThrough: 100, FlyThrough: 1, SailThrough: 1, DeepSailThrough:1, WadeThrough:100, protectionFactor:1,Urbanistics:0,tag1:"",tag2:"",tag3:"",tag4:""},
-
-	{name: "RiverSource", WalkThrough: 100, DriveThrough: 100, RollThrough: 100, FlyThrough: 1, SailThrough: 1, DeepSailThrough:100, WadeThrough:2, protectionFactor:100,Urbanistics:0,tag1:"",tag2:"",tag3:"",tag4:""},
-	];
-Units=[
-	{name: "null", HP:0, Armor: "Medium", Attack: 0, Weapon: "Medium", Speed:0, Movement: "Foot", MinRange:1, MaxRange:1, Cost:0 ,tag1:"", tag2:"", tag3:"", tag4:"",StaticOffsetX:[0,0,0,0,0],StaticOffsetY:[0,0,0,0,0],MovementBoxX:0,MovementBoxY:0,MovementOffsetX:[0,0,0,0,0],MovementOffsetY:[0,0,0,0,0],AttackOffsetX:[0,0,0,0,0],AttackOffsetY:[0,0,0,0,0],IdleOffsetX:[0,0,0,0,0],IdleOffsetY:[0,0,0,0,0]},
-	{name: "Light Infantry", HP:50, shortname: "LightInf", Armor: "Light", Attack: 20, Weapon: "Light", Speed:4, Movement: "Foot", MinRange:1, MaxRange:1, Cost:50, tag1:"Conqueror", tag2:"Streamlined", tag3:"", tag4:""},
-	{name: "Infantry", HP:70, shortname: "Infantry", Armor: "Light", Attack: 25, Weapon: "Light", Speed:3, Movement: "Foot", MinRange:1, MaxRange:1, Cost:100, tag1:"Conqueror", tag2:"", tag3:"", tag4:"" ,AttackOffsetX:[0,0,9,0,-9]},
-	{name: "Motorized Infantry", shortname: "Motorinf", HP:70, Armor: "Light", Attack: 25, Weapon: "Medium", Speed:6, Movement: "Wheeled", MinRange:1, MaxRange:1, Cost:200, tag1:"Conqueror", tag2:"", tag3:"", tag4:""},
-	{name: "White Guards", shortname: "Guards", HP:105, Armor: "Light", Attack: 35, Weapon: "Medium", Speed:3, Movement: "Foot", MinRange:1, MaxRange:1, Cost:250, tag1:"Conqueror", tag2:"Heroic", tag3:"", tag4:"", AttackOffsetX:[0,0,8,0,-8]},
-	{name: "Spec-Ops", shortname: "SpecOps", HP:50, Armor: "Light", Attack: 20, Weapon: "Heavy", Speed:4, Movement: "Foot", MinRange:1, MaxRange:1, Cost:250, tag1:"Conqueror", tag2:"Anti-Structure", tag3:"Stealth", tag4:"",AttackOffsetX:[0,0,13,0,-13]},
-	{name: "Transkalite Snipers", shortname: "Snipers", HP:70, Armor: "Light", Attack: 30, Weapon: "Light", Speed:4, Movement: "Foot", MinRange:1, MaxRange:1, Cost:250, tag1:"Conqueror", tag2:"Commando", tag3:"", tag4:"",AttackOffsetX:[0,-2,8,-2,-12]},
-	{name: "Polesian Marines", shortname: "Marines", HP:70, Armor: "Light", Attack: 30, Weapon: "Light", Speed:3, Movement: "Amphibious", MinRange:1, MaxRange:1, Cost:250, tag1:"Conqueror", tag2:"Crab", tag3:"", tag4:"",AttackOffsetX:[0,0,13,0,-13]},
-	{name: "Stormtroopers", shortname: "Stormtroopers", HP:70, Armor: "Light", Attack: 30, Weapon: "Medium", Speed:3, Movement: "Foot", MinRange:1, MaxRange:3, Cost:250, tag1:"Conqueror", tag2:"", tag3:"", tag4:""},
-	{name: "Bolt Tank Battalion", shortname: "Bolt", HP:55, Armor: "Light", Attack: 25, Weapon: "Light", Speed:6, Movement: "Tracked", MinRange:1, MaxRange:1, Cost:235, tag1:"Schwerpunkt", tag2:"", tag3:"", tag4:""},
-	{name: "Asekara Tank Battalion", shortname: "Asekara", HP:70, Armor: "Medium", Attack: 35, Weapon: "Medium", Speed:5, Movement: "Tracked", MinRange:1, MaxRange:1, Cost:340, tag1:"Streamlined", tag2:"Schwerpunkt", tag3:"", tag4:"", AttackOffsetX:[0,-15,-15,-15,-15], AttackOffsetY:[0,-17,-13,-17,-13]},
-	{name: "Gorlitz Tank Battalion", shortname: "Gorlitz", HP:105, Armor: "Heavy", Attack: 50, Weapon: "Heavy", Speed:4, Movement: "Tracked", MinRange:1, MaxRange:1,  Cost:550, tag1:"", tag2:"", tag3:"", tag4:""},
-	{name: "Flak Tank", shortname: "Flak", HP:55, Armor: "Light", Attack: 20, Weapon: "Light", Speed:5, Movement: "Tracked", MinRange:1, MaxRange:1, Cost:285, tag1:"Skysweeper", tag2:"Anti-Air", tag3:"", tag4:"",AttackOffsetX:[0,0,-10,-21,-40],AttackOffsetY:[0,-28,-44,-21,-44]},
-	{name: "Tank-Hunter", shortname: "Hunter", HP:60, Armor: "Medium", Attack: 35, Weapon: "Medium", Speed:5, Movement: "Tracked", MinRange:1, MaxRange:1, Cost:315, tag1:"Anti-Tank", tag2:"", tag3:"", tag4:"",AttackOffsetX:[0,8,-10,7,-49],AttackOffsetY:[0,-40,-44,0,-2]},
-	{name: "Imperterritus Tank Battalion", shortname: "Imperterritus", HP:175, Armor: "Heavy", Attack: 55, Weapon: "Heavy", Speed:3, Movement: "Tracked", MinRange:1, MaxRange:1, Cost:1050 ,tag1:"Anti-Tank", tag2:"Cemented Steel Armor", tag3:"", tag4:"", StaticOffsetX:[0,-22,0,-23,-44], StaticOffsetY:[0,-20,0,-2,0], AttackOffsetX:[0,-32,0,-32,-63], AttackOffsetY:[0,-25,-12,0,-12] ,MovementBoxX:100, MovementBoxY:70,MovementOffsetX:[0,-20,0,0,0],MovementOffsetY:[0,-20,0,-20,-44]},
-	{name: "Koschei Tank Battalion", shortname: "Koschei", HP:100, Armor: "Heavy", Attack: 55, Weapon: "Medium", Speed:4, Movement: "Tracked", MinRange:1, MaxRange:1, Cost:760 ,tag1:"Schwerpunkt", tag2:"Bewegungskrieg", tag3:"", tag4:"", AttackOffsetX:[0,-19,-10,-19,-23], AttackOffsetY:[0,-23,-13,0,-13]},
-	{name: "500mm Big Bertha Battery", shortname: "Thunder", HP:100, Armor: "Medium", Attack: 55, Weapon: "Heavy", Speed:3, Movement: "Tracked", MinRange:3, MaxRange:7, Cost:845 ,tag1:"Anti-Structure", tag2:"", tag3:"", tag4:"", SpriteOffset:[0,0,0,0,0], AttackSpriteOffset:[0,0,0,0,0]},
-	{name: "Crab Tank Battalion", shortname: "Crab", HP:50, Armor: "Light", Attack: 55, Weapon: "Medium", Speed:5, Movement: "Amphibious", MinRange:1, MaxRange:1, Cost:325 ,tag1:"Crab", tag2:"", tag3:"", tag4:""},
-	{name: "AMPAC", shortname: "AMPAC", HP:75, Armor: "Medium", Attack: 55, Weapon: "Medium", Speed:5, Movement: "Tracked", MinRange:1, MaxRange:1, Cost:425 ,tag1:"Anti-Tank", tag2:"Commando", tag3:"Streamlined", tag4:""},
-	{name: "Howitzer Battery", shortname: "Howitzer", HP:40, Armor: "Light", Attack: 30, Weapon: "Heavy", Speed:3, Movement: "Tracked", MinRange:3, MaxRange:5, Cost:375, tag1:"Anti-Structure", tag2:"", tag3:"", tag4:"",AttackOffsetX:[0,-9,0,-9,-7], AttackOffsetY:[0,-14,-7,-14,-14]},
-	{name: "Hellstorm Battery", shortname: "Hellstorm", HP:40, Armor: "Light", Attack: 40, Weapon: "Medium", Speed:6, Movement: "Wheeled", MinRange:2, MaxRange:4,  Cost:550, tag1:"Mobile Battery", tag2:"", tag3:"", tag4:""},
-	{name: "SCADP", shortname: "SCADP", HP:40, Armor: "Light", Attack: 20, Weapon: "Light", Speed:6, Movement: "Wheeled", MinRange:2, MaxRange:4,  Cost:940, tag1:"Anti-Infantry", tag2:"Dispersion", tag3:"", tag4:""},
-	{name: "Raptor Fighter Squadron", shortname: "Raptor", HP:50, Armor: "Light", Attack: 25, Weapon: "Light", Speed:8, Movement: "Flight", MinRange:1, MaxRange:1,  Cost:400, tag1:"Skysweeper", tag2:"", tag3:"", tag4:""},
-	{name: "Eagle Striker Squadron", shortname: "Eagle", HP:50, Armor: "Light", Attack: 30, Weapon: "Medium", Speed:7, Movement: "Flight", MinRange:1, MaxRange:1,  Cost:450, tag1:"", tag2:"", tag3:"", tag4:"",AttackOffsetX:[0,-2,0,-2,0]},
-	{name: "Condor Bomber Squadron", shortname: "Condor", HP:50, Armor: "Light", Attack: 35, Weapon: "Heavy", Speed:6, Movement: "Flight", MinRange:1, MaxRange:1,  Cost:550, tag1:"", tag2:"", tag3:"", tag4:""},
-	{name: "Akontio Torpedor Squadron", shortname: "Akontio", HP:50, Armor: "Light", Attack: 50, Weapon: "Medium", Speed:6, Movement: "Flight", MinRange:1, MaxRange:1,  Cost:500, tag1:"", tag2:"", tag3:"", tag4:""},
-	{name: "Zeus Stormlord", shortname: "Zeus", HP:70, Armor: "Light", Attack: 35, Weapon: "Medium", Speed:10, Movement: "Flight", MinRange:1, MaxRange:1,  Cost:750, tag1:"", tag2:"", tag3:"", tag4:"",AttackOffsetX:[0,-2,0,-2,0]},
-	{name: "Intrepid", shortname: "Intrepid", HP:50, Armor: "Light", Attack: 15, Weapon: "Light", Speed:6, Movement: "Rudder", MinRange:1, MaxRange:1, Cost:170 ,tag1:"Conqueror", tag2:"", tag3:"", tag4:"", SpriteOffset:[0,0,0,0,0], AttackSpriteOffset:[0,0,0,0,0]},
-	{name: "Submersible", shortname: "Submersible", HP:25, Armor: "Light", Attack: 50, Weapon: "Medium", Speed:3, Movement: "Heavy Rudder", MinRange:1, MaxRange:1, Cost:400 ,tag1:"Submarine", tag2:"", tag3:"", tag4:"", SpriteOffset:[0,0,0,0,0], AttackSpriteOffset:[0,0,0,0,0]},
-	{name: "Destroyer", shortname: "Destroyer", HP:50, Armor: "Medium", Attack: 25, Weapon: "Medium", Speed:5, Movement: "Rudder", MinRange:1, MaxRange:2, Cost:300 ,tag1:"Depth Strike", tag2:"Skysweeper", tag3:"Sonar", tag4:"Steer", SpriteOffset:[0,0,0,0,0], AttackSpriteOffset:[0,0,0,0,0]},
-	{name: "Light Cruiser", shortname: "CruiserL", HP:70, Armor: "Medium", Attack: 30, Weapon: "Medium", Speed:5, Movement: "Rudder", MinRange:1, MaxRange:3, Cost:500 ,tag1:"Depth Strike", tag2:"Sonar", tag3:"Skysweeper", tag4:"Anti-Air", SpriteOffset:[0,0,0,0,0], AttackSpriteOffset:[0,0,0,0,0]},
-	{name: "Heavy Cruiser", shortname: "CruiserH", HP:105, Armor: "Heavy", Attack: 40, Weapon: "Heavy", Speed:4, Movement: "Rudder", MinRange:2, MaxRange:5, Cost:700 ,tag1:"Skysweeper", tag2:"", tag3:"", tag4:"", SpriteOffset:[0,0,0,0,0], AttackOffsetX:[0,10,-10,10,-43],AttackOffsetY:[0,-25,-42,-3,-42]},
-	{name: "Capital Ship", shortname: "Battleship", HP:175, Armor: "Heavy", Attack: 50, Weapon: "Heavy", Speed:4, Movement: "Heavy Rudder", MinRange:3, MaxRange:7, Cost:1400 ,tag1:"Skysweeper", tag2:"", tag3:"", tag4:"", AttackOffsetX:[0,-44,-54,-44,-44], AttackOffsetY:[0,-37,-35,-35,-35]},
-	{name: "Aircraft Carrier", shortname: "Carrier", HP:175, Armor: "Heavy", Attack: 35, Weapon: "Medium", Speed:4, Movement: "Heavy Rudder", MinRange:3, MaxRange:10, Cost:1750 ,tag1:"Skysweeper", tag2:"Anti-Ship", tag3:"", tag4:"", StaticOffsetX:[0,-10,-20,-10,-31], StaticOffsetY:[0,-20,-20,-20,-20],MovementOffsetX:[0,-20,-20,-10,-20],MovementOffsetY:[0,-10,0,-10,-15], AttackOffsetX:[0,-10,-17,-10,-31], AttackOffsetY:[0,-20,-20,-20,-20]},
-	{name: "Barricade", shortname:"Barricade", HP:100, Armor:"Medium", Attack:0, Weapon:"None", Speed:0, Movement:"Stationary", MinRange:1, MaxRange:1, Cost:200, tag1:"Delay 1", tag2:"", tag3:"", tag4:"", SpriteOffset:[0,0,0,0,0], AttackSpriteOffset:[0,0,0,0,0]},
-	{name:"Bunker", shortname:"Bunker",HP:100,Armor:"Medium",Attack:25,Weapon:"Light",Speed:0,Movement:"Stationary",MinRange:1,MaxRange:1,Cost:250, tag1:"Delay 1", tag2:"", tag3:"", tag4:"", SpriteOffset:[0,0,0,0,0], AttackOffsetX:[0,-44,-44,-44,-44],AttackOffsetY:[0,-44,-44,-44,-44]},
-	{name:"Turret", shortname:"Turret",HP:140,Armor:"Medium",Attack:35,Weapon:"Medium",Speed:0,Movement:"Stationary",MinRange:2,MaxRange:5,Cost:350, tag1:"Delay 2", tag2:"Skysweeper", tag3:"", tag4:"", SpriteOffset:[0,0,0,0,0], AttackSpriteOffset:[0,0,0,0,0]},
-	{name:"Flak Tower", shortname:"FlakTower",HP:70,Armor:"Medium",Attack:20,Weapon:"Light",Speed:0,Movement:"Stationary",MinRange:2,MaxRange:5,Cost:350, tag1:"Delay 2", tag2:"Skysweeper", tag3:"Anti-Air", tag4:"", SpriteOffset:[0,0,0,0,0], AttackSpriteOffset:[0,0,0,0,0]},
-	{name:"Coastal Battery", shortname:"Coastal",HP:175,Armor:"Heavy",Attack:70,Weapon:"Heavy",Speed:0,Movement:"Stationary",MinRange:3,MaxRange:7,Cost:500, tag1:"Delay 2", tag2:"Coastal", tag3:"", tag4:"", SpriteOffset:[0,0,0,0,0], AttackSpriteOffset:[0,0,0,0,0]},
-	{name:"Radar/Sonar Station", shortname:"Radar",HP:70,Armor:"Medium",Attack:0,Weapon:"None",Speed:0,Movement:"Stationary",MinRange:1,MaxRange:1,Cost:350, tag1:"Delay 2", tag2:"Radar", tag3:"", tag4:"", SpriteOffset:[0,0,0,0,0], AttackSpriteOffset:[0,0,0,0,0]},
-	{name:"Missile Silo", shortname:"Silo",HP:25,Armor:"Medium",Attack:50,Weapon:"Medium",Speed:0,Movement:"Stationary",MinRange:3,MaxRange:10,Cost:500, tag1:"Delay 3", tag2:"Dispersion", tag3:"Self-Destruct", tag4:"", SpriteOffset:[0,0,0,0,0], AttackSpriteOffset:[0,0,0,0,0]},
-	{name: "SAMSON", shortname: "Samson", HP:50, Armor: "Light", Attack: 500, Weapon: "Heavy", Speed:10, Movement: "Flight", MinRange:1, MaxRange:1, Cost:1000 ,tag1:"JUDGEMENT", tag2:"Heroic", tag3:"", tag4:"", SpriteOffset:[0,0,0,0,0], AttackSpriteOffset:[0,0,0,0,0]}
-
-	];
+];
 Units=CampaignUnits;
 Factions=CampaignFactions;
 Terrain=CampaignTerrain;
@@ -207,6 +111,8 @@ TNOFactions=[
 
 	//Fuck Dragnea
 MemeFactions=[];
+
+window.addEventListener("mousedown", () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
 
 window.addEventListener('keydown',(event) => {
 	if(event.key=="f" && FieldMode!="MapEditor"){ToggleBattleflags()};
@@ -1659,9 +1565,8 @@ function AttackAnimation(Unit){
 	let unit=MapRoster[Unit];
 	//alert(unit.unitType);
 	//alert(unit.direction);
-	AttackSFX="Assets/SFX/"+Units[unit.unitType].shortname+"Attack.MP3";
-	var AttackSound = new Audio(AttackSFX);
-	AttackSound.play();
+	battalion.soundPlayer.playSound(Units[unit.unitType].shortname + "Attack");
+
 	let cellX=Units[unit.unitType].AttackBoxX ?? 56;
 	let cellY=Units[unit.unitType].AttackBoxY ?? 56;
 	//alert(cellX + " " + cellY);
@@ -1708,9 +1613,8 @@ function AttackingAnimation(Unit){
 	let unit=MapRoster[Unit];
 	let direction=unit.direction;
 
-	AttackSFX="Assets/SFX/"+Units[unit.unitType].shortname+"Attack.MP3";
-	var AttackSound = new Audio(AttackSFX);
-	if(SoundChoice){AttackSound.play();};
+	battalion.soundPlayer.playSound(Units[unit.unitType].shortname + "Attack");
+
 	//console.log(unit.faction);
 	document.getElementById("EntityCore "+(unit.x+1)+"X"+(unit.y+1)).src="Assets/Units/Attack/"+Units[unit.unitType].shortname+"Attack"+direction+".GIF";
 	if(!Units[unit.unitType].MLPR??false){document.getElementById("EntityMesh "+(unit.x+1)+"X"+(unit.y+1)).src="Assets/Units/AttackMeshes/"+Units[unit.unitType].shortname+"Attack"+"Mesh"+direction+".GIF";}else{document.getElementById("EntityMesh "+(unit.x+1)+"X"+(unit.y+1)).style.visibility="hidden"};
@@ -1757,8 +1661,9 @@ function Build(Structure){
 	}else{
 		YourMoney-=Units[Structure].Cost;
 		document.getElementById('BuildingConstructionPanel').style.visibility="hidden";
-		let Thud=new Audio("Assets/SFX/Thud.mp3");
-		Thud.play();
+
+		battalion.soundPlayer.playSound("Thud");
+
 		let X=UnitIcs;
 		let Y=UnitIgrec;
 		let Santier={
@@ -1873,10 +1778,6 @@ function CallInterlogue(){
 	document.getElementById("InterlogueImage").src="Assets/Paralogues/"+ChosenNation+"X"+ChosenChapter+".JPG";};
 function CallPreloader(){
 	document.getElementById("Disclaimer2").style.visibility="visible";
-
-	MainTheme=new Audio("Assets/BGM/RiversOfSteel.MP3");
-	if(MusicChoice){MainTheme.play();};
-
 	Aphorism=Math.ceil(21*Math.random());
 	//Aphorism=14;
 	document.getElementById("AphorismIllustration").src="Assets/Aphorisms/Aphorism"+Aphorism+".PNG";
@@ -3210,13 +3111,14 @@ function DeployUnit(X,Y,Type,Faction,Direction,LifeIndex,Morale,CustomName,Speci
 	for(let i=0;i<SubRosters.length;i++){if(Faction==SubRosters[i][0].faction){fAcTiOn=i}};
 	//alert(fAcTiOn);
 		let RecruitmentSFX=0;
-		if(Math.ceil(Type/10)==1){RecruitmentSFX="Assets/SFX/InfantryReady.MP3"};
-		if(Math.ceil(Type/10)==2){RecruitmentSFX="Assets/SFX/VehicleReady.MP3"};
-		if(Math.ceil(Type/10)==3){RecruitmentSFX="Assets/SFX/TankReady.MP3"};
-		if(Math.ceil(Type/10)==4){RecruitmentSFX="Assets/SFX/ArtilleryReady.MP3"};
-		if(Math.ceil(Type/10)==5){RecruitmentSFX="Assets/SFX/AircraftReady.MP3"};
-		if(Math.ceil(Type/10)==6){RecruitmentSFX="Assets/SFX/ShipReady.wav"};
-		if(RecruitmentSFX!=0){let RSFX= new Audio(RecruitmentSFX); RSFX.play()}
+		if(Math.ceil(Type/10)==1){RecruitmentSFX="InfantryReady"};
+		if(Math.ceil(Type/10)==2){RecruitmentSFX="VehicleReady"};
+		if(Math.ceil(Type/10)==3){RecruitmentSFX="TankReady"};
+		if(Math.ceil(Type/10)==4){RecruitmentSFX="ArtilleryReady"};
+		if(Math.ceil(Type/10)==5){RecruitmentSFX="AircraftReady"};
+		if(Math.ceil(Type/10)==6){RecruitmentSFX="ShipReady"};
+
+		battalion.soundPlayer.playSound(RecruitmentSFX);
 
 	SubRosters[fAcTiOn][SubRosters[fAcTiOn].length]=UnitData;
 	//console.log(MapRoster);
@@ -3269,9 +3171,7 @@ function drawUnit(Map, UnitType, direction, x, y, index, rostermap){
 	document.getElementById(rostermap[x][y].ID).addEventListener("click", function(){AnalyseSquare('Unit', index)});};
 function EndBattle(){
 	//alert(Victory);
-	//SoundCheck=BattleBGM?false:true;
-	if(MusicChoice){BattleBGM.pause();BattleBGM.currentTime=0;BattleBGM.onloadeddata=null;clearTimeout(BGMLoop)};
-
+	battalion.musicPlayer.stop();
 	
 	document.getElementById("AITurnIndicator").style.visibility="hidden";
 	RemoveKebabIMeanBlep();
@@ -3298,9 +3198,12 @@ function EndBattle(){
 		let Preffix=Factions[Constants.Commanders[1].Allegiance].Preffix;
 		let Quote=0;
 		if(Factions!=CampaignFactions){Preffix="GEN"};
-		let jingle=0;
-		if(Victory){jingle=new Audio("Assets/SFX/Victory.MP3")}else{jingle=new Audio("Assets/SFX/Defeat.MP3");};
-		jingle.play();
+
+		if(Victory) {
+			battalion.soundPlayer.playSound("Victory");
+		} else {
+			battalion.soundPlayer.playSound("Defeat");
+		}
 
 		if(Victory){document.getElementById("EndBattleImage").src="Assets/Paralogues/Victory"+Preffix+".PNG";
 			Quote=Language.VictoryQuotes}else{
@@ -4770,9 +4673,6 @@ function HoverBuilding(Phase,Building){
 
 	};};
 function initializeBattle(Faction,Chapter,Mission){
-
-	if(MusicChoice){MainTheme.pause();};
-
 	//This block runs pre-functions characteristic to the specific level
 
 	wipeMap();
@@ -4894,7 +4794,7 @@ function initializeBattle(Faction,Chapter,Mission){
 
 	if((Constants.OST??0)!=0){OST=Constants.OST};
 
-	if(MusicChoice){PlayBGM(OST);};
+	PlayBGM(OST);
 	
 	if(DialogueChoice){launchDialogueBloc(Language.Prelogues[Faction][Chapter-1][Mission-1],0)};
 
@@ -4966,8 +4866,6 @@ function initializeBattle(Faction,Chapter,Mission){
 
 	EndTurn(SubRosters,Map,Constants,Roster);};
 function initializeSpecialBattle(Level){
-	if(MusicChoice && (MainTheme??0)!=0){MainTheme.pause();};
-
 	wipeMap();
 	Map=Level.Map;
 	Roster=Level.Roster;
@@ -4988,7 +4886,7 @@ function initializeSpecialBattle(Level){
 	YourMoney=Constants.Funds[1];
 	Resolution=false;
 	Victory=false;
-	if(MusicChoice){PlayBGM(0);};
+	PlayBGM(0);
 	FieldMode="Battle";
 
 	BiomeMap=Level.BiomeMap;
@@ -5197,11 +5095,9 @@ function InterphaseBanner(Faction,Turn){
 
 	let banner=setInterval(flashcard,50);
 	let phase=0;
-	let Blurb="Assets/SFX/Blurb.mp3";
-	let BlurbSound=new Audio(Blurb);
-	BlurbSound.autoplay=true;
-	//alert(BlurbSound.autoplay);
-	BlurbSound.play();
+
+	battalion.soundPlayer.playSound("Blurb");
+
 	document.getElementById("InterphaseBanner").style.visibility="visible";
 	//alert(Factions[Faction].color);
 	document.getElementById("InterphaseBanner").style.borderColor=Factions[Faction].color;
@@ -5716,8 +5612,7 @@ function moveUnit(unit, path){
 	let considerX=MapRoster[unit].x;
 	let considerY=MapRoster[unit].y;
 
-	MoveSFX=new Audio("Assets/SFX/"+Units[MapRoster[unit].unitType].shortname+"Move.MP3");
-	if(path.length>0){MoveSFX.play();};
+	if(path.length>0) battalion.soundPlayer.playSound(Units[MapRoster[unit].unitType].shortname + "Move");
 
 	for (let wup=0;wup<path.length;wup++){
 		let permission=true;
@@ -5848,11 +5743,12 @@ function MoveUnit(unit, path){
 
 			let castTime=setInterval(Act,100/path.length);
 			let frame=0;
-			let AudioAddress="Assets/SFX/"+Units[MapRoster[unit].unitType].shortname+"Move.MP3";
-			if((MapRoster[unit].unitType==19 || MapRoster[unit].unitType==42)&&MystSettChoice){AudioAddress="Assets/SFX/HelikopterMove.MP3"}
-			let MoveSFX=new Audio(AudioAddress);
-			MoveSFX.play();
 
+			if((MapRoster[unit].unitType == 19 || MapRoster[unit].unitType == 42) && MystSettChoice) {
+				battalion.soundPlayer.playSound("HelikopterMove");
+			} else {
+				battalion.soundPlayer.playSound(Units[MapRoster[unit].unitType].shortname + "Move");
+			}
 
 			function Act(){
 				//frame=0;
@@ -6171,8 +6067,10 @@ function NudgeMapEditor(X,Y){
 		//alert(EditorStandardY);
 
 		RefreshMapEditor();
-		}else{let clank= new Audio("Assets/SFX/Clank.MP3"); 
-		clank.play()};};
+		} else {
+			battalion.soundPlayer.playSound("Clank");
+		}
+	}
 function OpenSpecialBloc(Bloc){
 	BlocVizat=Bloc;
 	//alert(Bloc[0].Name);
@@ -6184,47 +6082,15 @@ function PickNation(Index){
 
 
 	};
-function PlayBGM(PlaylistVariant,SongIndex){
 
-	//this bloc chooses the playlist
-	//let PlaylistVariant=0;
+const PlayBGM = function(playlistIndex) {
+	if(playlistIndex >= 0 && playlistIndex < PLAYLIST_MAP.length) {
+		const playlistID = PLAYLIST_MAP[playlistIndex];
 
-	//if(ChosenMission==5){PlaylistVariant=1};
+		battalion.musicPlayer.playPlaylist(playlistID);
+	}
+}
 
-	let t=SongIndex??0;
-	//if(t==MusicBank[PlaylistVariant].length){t=0};
-	//console.log(t);
-	if(t==0){RawPlaylist=JSON.parse(JSON.stringify(MusicBank[PlaylistVariant].List));
-	Playlist=[];
-	while(RawPlaylist.length>0){let f=Math.floor(Math.random()*RawPlaylist.length);Playlist[Playlist.length]=JSON.parse(JSON.stringify(RawPlaylist[f]));let Rep=RawPlaylist.splice(f,1)}};
-	//alert(Playlist);
-	//if(t>0){};
-
-		BattleBGM=new Audio("Assets/BGM/"+Playlist[t]);
-		BattleBGM.preload="auto";
-		BattleBGM.load();
-		BattleBGM.play();
-
-	/*
-	for(let i=1;i<Playlist.length;i++){
-		let BGMDuration=BattleBGM.duration;
-		BGMLoop=setTimeout(PlayBGM,BGMDuration)
-		};*/
-
-
-	/*
-	BattleBGM=new Audio("Assets/BGM/"+Playlist[Math.floor(Math.random()*Playlist.length)]);
-	BattleBGM.preload="auto";
-	BattleBGM.load();
-	BattleBGM.play();*/
-
-	BattleBGM.onloadeddata= function(){
-		let BGMDuration=BattleBGM.duration;
-		//alert(Duration);
-		if(t<Playlist.length-1){BGMLoop=setTimeout(PlayBGM,BGMDuration*1000,PlaylistVariant,t+1)}else{BGMLoop=setTimeout(PlayBGM,BGMDuration*1000,PlaylistVariant,0)};
-	};
-
-};
 function PI_Scouter(Unit,Map){
 
 	//Prerequisites
@@ -8391,7 +8257,11 @@ function RunEvent(Event){
 
 					if(Event.Purge!=0){for(let g=0; g<MapRoster.length;g++){if(MapRoster[g].faction==Event.Purge){MapRoster[g].life=0;UnitLost(g)}}};
 
-					if(Event.ChangeTune!=null){if(MusicChoice){BattleBGM.pause();BattleBGM.currentTime=0;BattleBGM.onloadeddata=null;clearTimeout(BGMLoop);PlayBGM(Event.ChangeTune)}};};
+					if(Event.ChangeTune != null) { 
+						battalion.musicPlayer.stop();
+						PlayBGM(Event.ChangeTune);
+					}
+				};
 function SaveGame(){
 	//let expires="expires= 31 Dec 9999 23:59:59 UTC";
 
@@ -8564,7 +8434,7 @@ function ScoutVicinity(X,Y){
 	if(Y>0){if(rostermap[X][Y-1]!=0 && rostermap[X][Y-1].coallition!=Factions[rostermap[X][Y].faction].faction){rostermap[X][Y].isCloaked=false; rostermap[X][Y].willAmbush=true; if( hasCertainTrait(rostermap[X][Y-1].unitType,"Stealth")){if(rostermap[X][Y-1].isCloaked){AdjacentCloakers[AdjacentCloakers.length]=4}}}};
 	if(Y<Map[0].length-1){if(rostermap[X][Y+1]!=0 && rostermap[X][Y+1].coallition!=Factions[rostermap[X][Y].faction].faction){rostermap[X][Y].isCloaked=false; rostermap[X][Y].willAmbush=true; if(hasCertainTrait(rostermap[X][Y+1].unitType,"Stealth")){if(rostermap[X][Y+1].isCloaked??false){AdjacentCloakers[AdjacentCloakers.length]=2}}}};
 
-	if(AdjacentCloakers.length>0 && SoundChoice){let UncloakNoise=new Audio("Assets/SFX/Uncloak.MP3"); UncloakNoise.play()};
+	if(AdjacentCloakers.length > 0) battalion.soundPlayer.playSound("Uncloak");
 	//console.log(AdjacentCloakers);
 
 	//alert(rostermap[X][Y].isCloaked);
@@ -8948,17 +8818,37 @@ function ToggleMoraleBadge(X,Y){
 			}};
 function ToggleOption(Button){
 	switch(Button){
-		case "Sound":
-			SoundChoice= !SoundChoice;
-			if(SoundChoice){document.getElementById("ToggleSound").src="Assets/Miscellaneous/SoundOn.PNG"}else{document.getElementById("ToggleSound").src="Assets/Miscellaneous/SoundOff.PNG"};
+		case "Sound": {
+			const state = battalion.soundPlayer.toggleMute();
+
+			switch(state) {
+				case SoundPlayer.STATE.NONE: {
+					document.getElementById("ToggleSound").src="Assets/Miscellaneous/SoundOn.PNG";
+					break;
+				}
+				case SoundPlayer.STATE.MUTED: {
+					document.getElementById("ToggleSound").src="Assets/Miscellaneous/SoundOff.PNG";
+					break;
+				}
+			}
 			break;
-		case "Music":
-			MusicChoice= !MusicChoice;
-			if(MusicChoice){document.getElementById("ToggleMusic").src="Assets/Miscellaneous/MusicOn.PNG"}else{document.getElementById("ToggleMusic").src="Assets/Miscellaneous/MusicOff.PNG";
-			MainTheme.pause();
-			BattleBGM.pause();BattleBGM.currentTime=0;BattleBGM.onloadeddata=null;clearTimeout(BGMLoop);
-		};
+		}
+		case "Music": {
+			const state = battalion.musicPlayer.toggleMute();
+
+			switch(state) {
+				case MusicPlayer.STATE.NONE: {
+					document.getElementById("ToggleMusic").src="Assets/Miscellaneous/MusicOn.PNG";
+					break;
+				}
+				case MusicPlayer.STATE.MUTED: {
+					document.getElementById("ToggleMusic").src="Assets/Miscellaneous/MusicOff.PNG";
+					break;
+				}
+			}
+
 			break;
+		}
 		case "Dialogue":
 			DialogueChoice= !DialogueChoice;
 			if(DialogueChoice){document.getElementById("ToggleDialogue").src="Assets/Miscellaneous/DialogueOn.PNG"}else{document.getElementById("ToggleDialogue").src="Assets/Miscellaneous/DialogueOff.PNG"
@@ -9312,8 +9202,8 @@ function UndoMove(){
 
 	};};
 function UnitLost(index){
-	var UnitLostSound = new Audio('Assets/SFX/Unit_Lost.mp3');
-	UnitLostSound.play();
+	battalion.soundPlayer.playSound("Unit_Lost");
+
 	KillingUnit=true;
 
 	let castTime=setInterval(Act,35);
@@ -9595,7 +9485,7 @@ function InterfaceFuck(){};
 function InterfaceUnfuck(){};
 
 SoundChoice=true;
-MusicChoice=false;
+MusicChoice=true;
 DialogueChoice=false;
 IdleAnimChoice=false;
 MystSettChoice=false;
