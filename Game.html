@@ -1081,8 +1081,8 @@
 	<img style="position: absolute; top: 0px; left: 147px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG'" onclick="document.getElementById('MapMold').style.visibility='hidden'" />
 	<p style="position: absolute; top:105px; left:112px">↔</p>
 	<p style="position: absolute; top:123px; left:116px">↕</p>
-	<input type="text" id="widthinput" name="testinput" value="100" style="position:absolute; top:119px; left:133px">
-	<input type="text" id="heigthinput" name="testinput" value="100" style="position:absolute; top:140px; left:133px">
+	<input type="text" id="widthinput" name="testinput" value="10" style="position:absolute; top:119px; left:133px">
+	<input type="text" id="heigthinput" name="testinput" value="10" style="position:absolute; top:140px; left:133px">
 	<button id="GenerateEditorMap" onClick="FieldMode='MapEditor'; for(let i=1;i<=10;i++){for(let j=1;j<=10;j++){
 			key=document.getElementById('Slot '+i+' X '+j)??0;if(key!=0){key.remove()};
 		}}; castMapMaker();" style="position:absolute; top:161px; left:145px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto">Generate Blank Map</button>
@@ -1315,37 +1315,37 @@
 	<div style="position: absolute; top:0px; left:0px; height: 665px; width:210px; overflow-y:scroll;">
 		<img style="position: fixed;" src="Assets/Miscellaneous/LoreSelectionPanel.PNG"/>
 
-		<div style="position: absolute; top:35px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(Jokes)">
+		<div style="position: absolute; top:35px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(CODEX.Jokes)">
 		<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 		<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">Jokes</p>
 		</div>
 
-		<div style="position: absolute; top:70px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(Special_Units)">
+		<div style="position: absolute; top:70px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(CODEX.SpecialUnits)">
 		<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 		<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">Special Infantry</p>
 		</div>
 
-		<div style="position: absolute; top:105px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(Special_Armor)">
+		<div style="position: absolute; top:105px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(CODEX.SpecialArmor)">
 		<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 		<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">Special Tanks</p>
 		</div>
 
-		<div style="position: absolute; top:140px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(Special_Aircraft)">
+		<div style="position: absolute; top:140px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(CODEX.SpecialAircraft)">
 		<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 		<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">Special Planes?</p>
 		</div>
 
-		<div style="position: absolute; top:175px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(Special_Ships)">
+		<div style="position: absolute; top:175px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(CODEX.SpecialShips)">
 		<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 		<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">Special Ships?</p>
 		</div>
 
-		<div style="position: absolute; top:210px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(This_World)">
+		<div style="position: absolute; top:210px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(CODEX.ThisWorld)">
 		<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 		<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">This World</p>
 		</div>
 
-		<div style="position: absolute; top:245px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(It_Happened)">
+		<div style="position: absolute; top:245px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(CODEX.ItHappened)">
 		<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 		<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">It Happened</p>
 		</div>
@@ -1417,39 +1417,39 @@
 		</div>
 
 
-		<div style="position: absolute; top:735px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(Operation_TZIMTZUM)">
+		<div style="position: absolute; top:735px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(CODEX.Operation_TZIMTZUM)">
 		<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 		<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation TZIMTZUM</p>
 		</div>
 
 
-		<div style="position: absolute; top:770px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(Operation_GOLCHAB)">
+		<div style="position: absolute; top:770px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(CODEX.Operation_GOLCHAB)">
 		<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 		<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation GOLCHAB</p>
 		</div>
 
 
-		<div style="position: absolute; top:805px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(Operation_GHAAG_SHEBLAH)">
+		<div style="position: absolute; top:805px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(CODEX.Operation_GHAAG_SHEBLAH)">
 		<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 		<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation GHAAG SHEBLAH</p>
 		</div>
 
-		<div style="position: absolute; top:840px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(Operation_OHR_EIN_ZOF)">
+		<div style="position: absolute; top:840px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(CODEX.Operation_OHR_EIN_ZOF)">
 		<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 		<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation OHR EIN ZOF</p>
 		</div>
 
-		<div style="position: absolute; top:875px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(Operation_SAMSON)">
+		<div style="position: absolute; top:875px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(CODEX.Operation_SAMSON)">
 		<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 		<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation SAMSON</p>
 		</div>
 
-		<div style="position: absolute; top:910px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(Operation_THAUMIEL)">
+		<div style="position: absolute; top:910px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(CODEX.Operation_THAUMIEL)">
 		<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 		<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation THAUMIEL</p>
 		</div>
 
-		<div style="position: absolute; top:945px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(War_Plan_ARMAGEDDON)">
+		<div style="position: absolute; top:945px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore(CODEX.War_Plan_ARMAGEDDON)">
 		<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 		<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 14px;">War Plan ARMAGEDDON</p>
 		</div>
@@ -1785,6 +1785,7 @@
 <script src="Extensions/Maps.js"></script>
 <script src="Extensions/GenericData.js"></script>
 <script src="Extensions/SpecialLevels.js"></script>
+<script src="Extensions/Campaigns.js"></script>
 
 <script src="main.js"></script>
 </body>

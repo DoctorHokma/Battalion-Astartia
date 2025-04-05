@@ -51,7 +51,7 @@ Cursor.SCROLL = {
 
 Cursor.prototype.addEventHandler = function(type, onEvent) {
     document.addEventListener(type, (event) => {
-        event.preventDefault();
+        //event.preventDefault();
         onEvent(event);
     });
 }
