@@ -1,6 +1,6 @@
 const LanguageHandler = function() {
     this.languages = new Map();
-    this.currentLanguage = {};
+    this.currentLanguage = null;
 }
 
 LanguageHandler.prototype.selectLanguage = function(languageID) {

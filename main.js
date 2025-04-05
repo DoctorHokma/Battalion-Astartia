@@ -75,6 +75,10 @@ TNOFactions=[
 
 MemeFactions=[];
 
+const selectLanguage = function(languageID) {
+
+}
+
 const initEvents = function(context) {
 	const { client } = context;
 	const { router, cursor } = client;
@@ -1799,7 +1803,8 @@ function CallPreloader(){
 	if(PreloaderFrame%7==0){document.getElementById("PreloaderSplash").innerHTML=Language.LoaderSoundbites[Math.floor(Math.random()*Language.LoaderSoundbites.length)]};
 	document.getElementById("PreloaderBar").style.width=PreloaderFrame*20+"px";
 
-	if(PreloaderFrame==35){clearInterval(Loader)}};};
+	if(PreloaderFrame==35){clearInterval(Loader)}};
+};
 function castMap(){
 	//CallPreloader();
 	for(let i=1;i<=Map.length;i++){
@@ -9551,7 +9556,7 @@ DialogueChoice=false;
 IdleAnimChoice=false;
 MystSettChoice=false;
 
-//CallPreloader();
+CallPreloader();
 //GeneralInitializer();
 
 //castMap();
