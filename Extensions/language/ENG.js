@@ -375,7 +375,8 @@ const LANGUAGE_ENGLISH = {
 };
 
 ENG={
-	LanguageComment:["Suck it, bri'ish people; USA is now the symbol of english lanuage"],
+	CreatorComment: "Suck it, bri'ish people; USA is now the symbol of english lanuage",
+	LanguageComment: "Suck it, bri'ish people; USA is now the symbol of english lanuage",
 
 	//System section(needs implementation)
 	//Plot section(needs implementation)

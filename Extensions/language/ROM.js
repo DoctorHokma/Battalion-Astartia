@@ -1,5 +1,6 @@
 ROM={
-	LanguageComment:"Traducere partiala",
+	CreatorComment: "Made by yours truly(Partial translation)",
+	LanguageComment: "Traducere partiala",
 
 	LoaderSoundbites:["Punând un frac pentru Conferința de la Balbec",
 		"Reîncărcând pușca",

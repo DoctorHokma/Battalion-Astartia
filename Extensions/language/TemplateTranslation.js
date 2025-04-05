@@ -1,5 +1,6 @@
 TEM={
-	LanguageComment:"",
+	CreatorComment: "",
+	LanguageComment: "",
 	SystemTerms:[],
 	StartButtonTexts:[],
 	UnitSpecialNames:[],

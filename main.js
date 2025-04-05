@@ -76,7 +76,38 @@ TNOFactions=[
 MemeFactions=[];
 
 const selectLanguage = function(languageID) {
+	const languageCommentary = document.getElementById('LanguageCommentary');
+	const languageComment = document.getElementById('LanguagePrecommentor');
 
+	switch(languageID) {
+		case Battalion.LANGUAGE.ENGLISH: {
+			Language = ENG;
+			break;
+		}
+		case Battalion.LANGUAGE.SPANISH: {
+			Language = ESP;
+			break;
+		}
+		case Battalion.LANGUAGE.PORTUGUESE: {
+			Language = POR;
+			break;
+		}
+		case Battalion.LANGUAGE.ROMANIAN: {
+			Language = ROM;
+			break;
+		}
+		case Battalion.LANGUAGE.TURKISH: {
+			Language = TUR;
+			break;
+		}
+		default: {
+			Language = ENG;
+			break;
+		}
+	}
+
+	languageCommentary.innerHTML = Language.LanguageComment;
+	languageComment.innerHTML = Language.CreatorComment;
 }
 
 const initEvents = function(context) {

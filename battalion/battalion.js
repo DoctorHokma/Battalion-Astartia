@@ -10,5 +10,6 @@ Battalion.LANGUAGE = {
     SPANISH: 1,
     PORTUGUESE: 2,
     ROMANIAN: 3,
-    TURKISH: 4
+    TURKISH: 4,
+    FRENCH: 5
 };

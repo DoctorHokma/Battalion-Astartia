@@ -1006,10 +1006,11 @@
 				<p style="position: absolute; z-index:11; width:630px; top:-10px;left:auto;text-align:center" id="LanguageCommentary">None except English work for now</p>
 				<img style="position: absolute; z-index:10" src="Assets/Miscellaneous/LanguageSelectPanel.PNG"/>
 				<img src="Assets/Miscellaneous/CloseButton.PNG" onclick="document.getElementById('LanguageSelectionPanel').style.visibility='hidden'" style="position: absolute; z-index:11; top:210px;left:250px">
-				<img style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:7px" onclick="Language=ROM; document.getElementById('LanguageCommentary').innerHTML=Language.LanguageComment" src="Assets/Languages/FlagROM.PNG"/>	
-				<img style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:162px" onclick="Language=ENG; document.getElementById('LanguageCommentary').innerHTML=Language.LanguageComment" src="Assets/Languages/FlagENG.PNG"/>	
-				<img style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:317px" onclick="Language=ESP; document.getElementById('LanguageCommentary').innerHTML=Language.LanguageComment" src="Assets/Languages/FlagESP.PNG"/>	
-				<img style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:472px;visibility: hidden" onclick="Language=POR; document.getElementById('LanguageCommentary').innerHTML=Language.LanguageComment" src="Assets/Languages/FlagPOR.PNG"/>
+				<img style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:7px" onclick="selectLanguage(Battalion.LANGUAGE.ENGLISH);" src="Assets/Languages/FlagENG.PNG"/>	
+				<img style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:162px" onclick="selectLanguage(Battalion.LANGUAGE.SPANISH);" src="Assets/Languages/FlagESP.PNG"/>	
+				<img style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:317px" onclick="selectLanguage(Battalion.LANGUAGE.PORTUGUESE);" src="Assets/Languages/FlagPOR.PNG"/>
+				<img style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:472px" onclick="selectLanguage(Battalion.LANGUAGE.ROMANIAN);" src="Assets/Languages/FlagROM.PNG"/>	
+				<img style="position: absolute; z-index: 11;width:150px; height:100px; top:130px; left:7px" onclick="selectLanguage(Battalion.LANGUAGE.TURKISH);" src="Assets/Languages/FlagTUR.PNG"/>
 			</div>
 		</div>
 
@@ -1348,12 +1349,12 @@
 				<img src="Assets/Miscellaneous/LanguageMiniPanel.PNG"/>
 				<p id="LanguagePrecommentor" style="position:absolute; width:140px; height:140px; left:14px; text-align: center; top:0px; z-index:5; visibility:hidden;"></p>
 
-				<img style="position: absolute; top:3px; left:49px; width:28px; height:21px" src="Assets/Languages/FlagENG.PNG" onclick="Language=ENG; GeneralInitializer(); document.getElementById('LanguagePrecommentor').innerHTML=Language.LanguageComment" />
-				<img style="position: absolute; top:3px; left:84px; width:28px; height:21px" src="Assets/Languages/FlagESP.PNG" onclick="Language=ESP; GeneralInitializer(); document.getElementById('LanguagePrecommentor').innerHTML=Language.LanguageComment"/>
-				<img style="position: absolute; top:3px; left:119px; width:28px; height:21px; visibility:hidden" src="Assets/Languages/FlagPOR.PNG" onclick="Language=POR; GeneralInitializer(); document.getElementById('LanguagePrecommentor').innerHTML=Language.LanguageComment"/>
-				<img style="position: absolute; top:3px; left:119px; width:28px; height:21px" src="Assets/Languages/FlagROM.PNG" onclick="Language=ROM; GeneralInitializer(); document.getElementById('LanguagePrecommentor').innerHTML='Made by yours truly(Partial translation)'"/>
-				<img style="position: absolute; top:3px; left:189px; width:28px; height:21px; visibility:hidden" src="Assets/Languages/FlagTUR.PNG" onclick="Language=TUR; document.getElementById('LanguagePrecommentor').innerHTML='Thank you, Tiffozi(Partial translation)'"/>
-				<img style="position: absolute; top:0px; left:14px; width:28px; height:21px; visibility:hidden" src="Assets/Languages/FlagFRA.PNG" onclick="document.getElementById('LanguagePrecommentor').innerHTML='French translation unavailable'"/>
+				<img style="position: absolute; top:3px; left:49px; width:28px; height:21px" src="Assets/Languages/FlagENG.PNG" onclick="selectLanguage(Battalion.LANGUAGE.ENGLISH); GeneralInitializer();"/>
+				<img style="position: absolute; top:3px; left:84px; width:28px; height:21px" src="Assets/Languages/FlagESP.PNG" onclick="selectLanguage(Battalion.LANGUAGE.SPANISH); GeneralInitializer();"/>
+				<img style="position: absolute; top:3px; left:119px; width:28px; height:21px" src="Assets/Languages/FlagPOR.PNG" onclick="selectLanguage(Battalion.LANGUAGE.PORTUGUESE); GeneralInitializer();"/>
+				<img style="position: absolute; top:3px; left:154px; width:28px; height:21px" src="Assets/Languages/FlagROM.PNG" onclick="selectLanguage(Battalion.LANGUAGE.ROMANIAN); GeneralInitializer();"/>
+				<img style="position: absolute; top:3px; left:189px; width:28px; height:21px" src="Assets/Languages/FlagTUR.PNG" onclick="selectLanguage(Battalion.LANGUAGE.TURKISH); GeneralInitializer();"/>
+				<img style="position: absolute; top:0px; left:14px; width:28px; height:21px; visibility:hidden" src="Assets/Languages/FlagFRA.PNG" onclick="selectLanguage(Battalion.LANGUAGE.FRENCH); GeneralInitializer();"/>
 			</div>
 			
 			<p style="position:absolute; top:400px; color: yellow"></p>
