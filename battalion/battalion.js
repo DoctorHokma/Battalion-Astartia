@@ -6,10 +6,10 @@ const Battalion = function() {
 }
 
 Battalion.LANGUAGE = {
-    ENGLISH: 0,
-    SPANISH: 1,
-    PORTUGUESE: 2,
-    ROMANIAN: 3,
-    TURKISH: 4,
-    FRENCH: 5
+    ENGLISH: "ENGLISH",
+    SPANISH: "SPANISH",
+    PORTUGUESE: "PORTUGUESE",
+    ROMANIAN: "ROMANIAN",
+    TURKISH: "TURKISH",
+    FRENCH: "FRENCH"
 };

@@ -8,6 +8,8 @@ battalion.language.addLanguage(Battalion.LANGUAGE.ROMANIAN, LANGUAGE_ROMANIAN);
 battalion.language.addLanguage(Battalion.LANGUAGE.TURKISH, LANGUAGE_TURKISH);
 battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
 
+var Aphorism = null;
+
 ResolutionXFactor=1;
 ResolutionYFactor=1;
 BattleEnd=false;
@@ -1822,12 +1824,31 @@ function CallInterlogue(){
 	document.getElementById("InterlogueScreen").style.visibility="visible";
 	document.getElementById("InterlogueText").innerHTML=Language.Interlogues[ChosenNation-1][ChosenChapter-1];
 	document.getElementById("InterlogueImage").src="Assets/Paralogues/"+ChosenNation+"X"+ChosenChapter+".JPG";};
+
+const writeAphorismText = function(context, aphorism) {
+	const { language } = context;
+	const { narrator, text } = aphorism;
+	const aphorismHTML = "\"" + language.get(text) + "\"" + "<br><br>" + language.get(narrator);
+
+	document.getElementById("AphorismText").innerHTML = aphorismHTML;
+}
+
+const pickAphorism = function() {
+	const aphorismID = Math.floor(Math.random() * APHORISMS.length);
+	const aphorism = APHORISMS[aphorismID];
+	const { image } = aphorism;
+
+	document.getElementById("AphorismIllustration").src = image;
+
+	return aphorism;
+}
+
 function CallPreloader(){
+	Aphorism = pickAphorism();
+
+	writeAphorismText(battalion, Aphorism);
+
 	document.getElementById("Disclaimer2").style.visibility="visible";
-	Aphorism=Math.ceil(21*Math.random());
-	//Aphorism=14;
-	document.getElementById("AphorismIllustration").src="Assets/Aphorisms/Aphorism"+Aphorism+".PNG";
-	document.getElementById("AphorismText").innerHTML='"'+Language.InitializerAphorisms[Aphorism*2]+'"'+"<br><br>"+Language.InitializerAphorisms[Aphorism*2+1];
 	document.getElementById("PreloaderSplash").innerHTML=Language.LoaderSoundbites[Math.floor(Math.random()*Language.LoaderSoundbites.length)];
 
 	let PreloaderFrame=0;
@@ -4616,7 +4637,10 @@ function GeneralInitializer(){
 	//if(Language!=ENG){LanguageCorrecter(Language)};
 
 	//for(let o=1; o<=70; o++){CampaignUnits[o].name=Language.UnitNames[o]};
-	document.getElementById("AphorismText").innerHTML='"'+Language.InitializerAphorisms[Aphorism*2]+'"'+"<br><br>"+Language.InitializerAphorisms[Aphorism*2+1];
+	if(Aphorism) {
+		writeAphorismText(battalion, Aphorism);
+	}
+
 	document.getElementById("PreloaderSplash").innerHTML=Language.LoaderSoundbites[Math.floor(Math.random()*Language.LoaderSoundbites.length)];
  	//This pretranslates the strings
 	document.getElementById("CampaignButtonP").innerHTML=Language.SystemTerms[6];
@@ -5327,11 +5351,14 @@ function InterphaseBanner(Faction,Turn){
 
 
 		}};
+//AFUERA
 function LanguageCorrecter(Language){
 
+	if(!Language.SystemTerms) Language.SystemTerms=ENG.SystemTerms;
+
 	if((Language.SystemTerms??[]).length==0){Language.SystemTerms=ENG.SystemTerms};
+
 	if((Language.LoaderSoundbites??[]).length==0){Language.LoaderSoundbites=ENG.LoaderSoundbites};
-	if((Language.InitializerAphorisms??[]).length==0){Language.InitializerAphorisms=ENG.InitializerAphorisms};
 	if((Language.NationNames??[]).length==0){Language.NationNames=ENG.NationNames};
 	if((Language.NationDesc??[]).length==0){Language.NationDesc=ENG.NationDesc};
 	if((Language.StartButtonTexts??[]).length==0){Language.StartButtonTexts=ENG.StartButtonTexts};
