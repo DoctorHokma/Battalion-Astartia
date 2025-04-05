@@ -1,7 +1,9 @@
-ROM={
-	CreatorComment: "Made by yours truly(Partial translation)",
-	LanguageComment: "Traducere partiala",
+const LANGUAGE_ROMANIAN = {
+	"LANGUAGE_CREATOR_COMMENT": "Made by yours truly(Partial translation)",
+    "LANGUAGE_DEFAULT_COMMENT": "Traducere partiala"
+};
 
+ROM={
 	LoaderSoundbites:["Punând un frac pentru Conferința de la Balbec",
 		"Reîncărcând pușca",
 		"Panzer brrrr",

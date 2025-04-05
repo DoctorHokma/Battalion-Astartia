@@ -2,10 +2,10 @@ const OPENING_TRACK = "RiversOfSteel";
 const battalion = new Battalion();
 
 battalion.language.addLanguage(Battalion.LANGUAGE.ENGLISH, LANGUAGE_ENGLISH);
-battalion.language.addLanguage(Battalion.LANGUAGE.SPANISH, ESP);
-battalion.language.addLanguage(Battalion.LANGUAGE.PORTUGUESE, POR);
-battalion.language.addLanguage(Battalion.LANGUAGE.ROMANIAN, ROM);
-battalion.language.addLanguage(Battalion.LANGUAGE.TURKISH, TUR);
+battalion.language.addLanguage(Battalion.LANGUAGE.SPANISH, LANGUAGE_SPANISH);
+battalion.language.addLanguage(Battalion.LANGUAGE.PORTUGUESE, LANGUAGE_PORTUGUESE);
+battalion.language.addLanguage(Battalion.LANGUAGE.ROMANIAN, LANGUAGE_ROMANIAN);
+battalion.language.addLanguage(Battalion.LANGUAGE.TURKISH, LANGUAGE_TURKISH);
 battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
 
 ResolutionXFactor=1;
@@ -76,9 +76,15 @@ TNOFactions=[
 MemeFactions=[];
 
 const selectLanguage = function(languageID) {
-	const languageCommentary = document.getElementById('LanguageCommentary');
-	const languageComment = document.getElementById('LanguagePrecommentor');
+	const { language } = battalion;
+	const languageComment = document.getElementById('LanguageCommentary');
+	const creatorComment = document.getElementById('LanguagePrecommentor');
 
+	language.selectLanguage(languageID);
+
+	languageComment.innerHTML = language.get("LANGUAGE_DEFAULT_COMMENT");
+	creatorComment.innerHTML = language.get("LANGUAGE_CREATOR_COMMENT");
+	
 	switch(languageID) {
 		case Battalion.LANGUAGE.ENGLISH: {
 			Language = ENG;
@@ -105,9 +111,6 @@ const selectLanguage = function(languageID) {
 			break;
 		}
 	}
-
-	languageCommentary.innerHTML = Language.LanguageComment;
-	languageComment.innerHTML = Language.CreatorComment;
 }
 
 const initEvents = function(context) {

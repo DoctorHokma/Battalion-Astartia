@@ -1,7 +1,9 @@
-TUR={
-	CreatorComment: "Thank you, Tiffozi(Partial translation)",
-	LanguageComment: "Traducere partiala",
+const LANGUAGE_TURKISH = {
+	"LANGUAGE_CREATOR_COMMENT": "Thank you, Tiffozi(Partial translation)",
+    "LANGUAGE_DEFAULT_COMMENT": "Traducere partiala"
+};
 
+TUR={
 	SystemTerms:["Made by Task Force Tucker","Warning","This game contains bullying, kidnapping, torture, murder, suicide, violence, war crimes, atrocities, Goring's fat ass, Titans, genocidal rampages, freedom, racism, fascism, communism, fascism and communism's ugly-ass baby, paedophilic manchild Sultans, pedophilic psychopaths, traitors, a glass of juice, implied rape, written rape, graphic rape, other types of rape, ethnoreligious genocide, chemical warfare, humanism, Taboritsky's funny clock, drug abuse, sexual perversions, spoilers(a fuckton of them), satire, double satire, dark humour, toilet humour, humour in general, a REALLY thin fourth wall, lampshades, gamer time, special operations, penises, Skoatia, Twitter, Reddit, dystopia, cockroaches, and worst of all... BUREAUCRACY(I'm so sorry guys)","I promise not to steal, otherwise my butt is ready for surprise sex","But seriously, this game gets pretty hardcore. If you're a bitch, don't play it","Any attempt to sell this game is idiotic, this game is free. 0$. Nada. Niente. Only Task Force Tucker and those authorized are allowed to share this game, the others will be hunted. Do not test my patience if you don't want your ass to be fucked.",
 		"Kampanya","Temel Eğitim Kampı","Devam Et","Ayarlar","Krediler","Bonus Haritalar","Fethetme","Harita Düzenleyici","Dünya Efsanesi","Kapat","İlerle","Oyna","Durum:","Yardım","İlerlemeyi Kaydet","Güvenli Mod","Atlamak",
 		"Koordinasyon:","Programlama:","Birim Tasarımları","Ekran Sanatı:","Müzikler:","Senaryo/Yazım:","Eğer bu oyundan herhangi bir şey çalarsanız, sizi bulurum ve sert bir şekilde sikerim",

@@ -1,4 +1,7 @@
 const LANGUAGE_ENGLISH = {
+	"LANGUAGE_CREATOR_COMMENT": "Suck it, bri'ish people; USA is now the symbol of english lanuage",
+    "LANGUAGE_DEFAULT_COMMENT": "Suck it, bri'ish people; USA is now the symbol of english lanuage",
+
     "CODEX_DOCUMENT_SIZE_UNKNOWN": "Unknown Size",
     "CODEX_DOCUMENT_SIZE_EMPTY": "Empty Document",
     "CODEX_DOCUMENT_SIZE_VERY_SHORT": "Very Short Document",
@@ -375,9 +378,6 @@ const LANGUAGE_ENGLISH = {
 };
 
 ENG={
-	CreatorComment: "Suck it, bri'ish people; USA is now the symbol of english lanuage",
-	LanguageComment: "Suck it, bri'ish people; USA is now the symbol of english lanuage",
-
 	//System section(needs implementation)
 	//Plot section(needs implementation)
 	//Lore section(needs implementation)
