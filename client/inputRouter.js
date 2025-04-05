@@ -113,10 +113,15 @@ InputRouter.prototype.handleInput = function(prefix, inputID) {
 
     for(let i = 0; i < commandList.length; i++) {
         const commandID = commandList[i];
-        const command = this.commands.get(commandID);
 
-        if(command) {
-            command();
-        }
+        this.execute(commandID);
     }
-} 
+}
+
+InputRouter.prototype.execute = function(commandID) {
+    const command = this.commands.get(commandID);
+
+    if(command) {
+        command();
+    }
+}

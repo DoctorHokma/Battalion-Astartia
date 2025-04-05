@@ -4,6 +4,8 @@ const Listener = function(type) {
     this.singleObservers = [];
 }
 
+Listener.NEXT_ID = 0;
+
 Listener.OBSERVER_TYPE = {
     DEFAULT: 0,
     SINGLE: 1

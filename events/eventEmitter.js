@@ -26,16 +26,37 @@ EventEmitter.prototype.deafenAll = function() {
     this.listeners.clear();
 }
 
-EventEmitter.prototype.subscribe = function(eventType, subscriberID, onCall, options) {
+EventEmitter.prototype.getID = function(options) {
+    if(!options) {
+        return Listener.NEXT_ID++;
+    }
+
+    const { permanent, id } = options;
+
+    if(permanent) {
+        return EventEmitter.SUPER_ID;
+    }
+
+    if(id) {
+        return id;
+    }
+
+    return Listener.NEXT_ID++;
+}
+
+EventEmitter.prototype.on = function(eventType, onCall, options) {
     const listener = this.listeners.get(eventType);
 
     if(!listener) {
-        return;
+        return null;
     }
 
     const observerType = options && options.once ? Listener.OBSERVER_TYPE.SINGLE : Listener.OBSERVER_TYPE.DEFAULT;
+    const id = this.getID(options);
 
-    listener.addObserver(observerType, subscriberID, onCall);
+    listener.addObserver(observerType, id, onCall);
+
+    return id;
 }
 
 EventEmitter.prototype.unsubscribe = function(eventType, subscriberID) {

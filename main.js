@@ -110,11 +110,11 @@ TNOFactions=[
 
 MemeFactions=[];
 
-window.addEventListener("mousedown", () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
-
 const initEvents = function(context) {
 	const { client } = context;
-	const { router } = client;
+	const { router, cursor } = client;
+
+	cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
 
 	router.load(context, INPUT_DEFAULT);
 
