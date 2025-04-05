@@ -2,7 +2,7 @@ const CODEX = {
 	Jokes: {
 		DocName: "An antholoy of jokes and anecdotes from the Astartian continent",
 		DocDesc: "Collected and adapted by Petru Pitei from many cultures across Astartia. It has recently become didactic material in seminars, as a way of learning to understand culture through humour",
-		LengthIndex: 2,
+		DocSize: 2,
 		DocText: [
 			"Two Somertins on the south front were chit-chatting <br>-You know Gjergy, Ishlam doesn't sound so bad. You get to marry four women and fuck all of them whenever you want. <br>-And four pairs of in-laws to peck at your head... <br>-Oh hell no! Praise Jesus!",
 			"You know what I say? The Cockroach Tank fears the Bolt; the Bolt fears the Asekara; the Asekara fears the Gorlitz; the Gorlitz fears the Koschei, the Koschei fears the Imperterritus, and the Imperterritus fears bridges",
@@ -25,7 +25,7 @@ const CODEX = {
 	SpecialUnits: {
 		DocName: "Special Infantry: A detailed analysis",
 		DocDesc: "Written by General Gustav of Transkal; this booklet explains in detail what exactly determined each nation to develop their iconic infantry units, how they actually work and what is their lay culture",
-		LengthIndex: 3,
+		DocSize: 3,
 		DocText: [
 			"<span style='color:white'>Somertin White Guards</span>",
 			"Originally called 'The Paladin Corps' and held to the utmost doctrinal standard, although that is being zig-zagged. The standards are lowered or raised based on whether Somertin needs more elite infantry or whether it needs better-quality elite infantry.",
@@ -64,7 +64,7 @@ const CODEX = {
 	SpecialArmor: {
 		DocName: "Special Armored Vehicles: A detailed analysis",
 		DocDesc: "Panzer brr",
-		LengthIndex: 2,
+		DocSize: 2,
 		DocText: [
 			"<span style='color:white'>SHAAC Mark G 'Imperterritus'</span><br>",
 			"When it was deemed that the 41-ton Gorlitz was useless, Somertin thought of up-armoring it massively in the hopes that it would advance unimpeded and provide cover for the infantry that was supposed to accompany it. (The Tercio doctrine still dominated at that time, where Somertin High Command believed that land units should be deployed in 3 ranks. One of infantry that would harass the enemy line, one of armor that would repel enemy pushes and one of artillery that would harangue enemy lines from afar.)",
@@ -108,7 +108,7 @@ const CODEX = {
 	SpecialAircraft: {
 		DocName: "Special Aircraft: An abandoned idea",
 		DocDesc: "A testament to us having considered faction-exclusive planes and what ideas we had in mind for each",
-		LengthIndex: 1,
+		DocSize: 1,
 		DocText: [
 			"Back when special units were being decided on, we considered special planes and ships exclusive to each major nation. We will show here a list of which planes those were and why they failed",
 			"Heavy Bomber: Supposed to be a bigger version of the Condor, bigger, more expensive and with better stats. But then again the Kargits could use it as well so it would not be exclusive. Did not end up adding it, as it's merely an upsized Condor and back then we had to conform to a 40-unit roster. Only after the roster overhaul did we reconsider it.",
@@ -122,7 +122,7 @@ const CODEX = {
 	SpecialShips: {
 		DocName: "Special Naval Units?",
 		DocDesc: "An anthology about the idea of implementing special naval units and how it could not be done in the end.",
-		LengthIndex: 2,
+		DocSize: 2,
 		DocText: [
 			"Originally, there were hopes of following the pattern, as to how infantry and armor units have a few that are available to some nations and unavailable to others. Similarly I hoped there would be special ship units available to various nations.",
 			"The issue however, was that besides me wanting to preserve a notion of units being grounded in WW2-era technology, most of the nations did not even have a naval tradition. We'll go over what units were planned for whom, and you will understand what I mean",
@@ -143,7 +143,7 @@ const CODEX = {
 	ThisWorld: {
 		DocName: "Geography 101",
 		DocDesc: "Edited by Petru Pitei, it explains the basic premises of this world's geographic pecularities and goes into detail about the Astartian continent's geography",
-		LengthIndex: 4,
+		DocSize: 4,
 		DocText:[
 				"General geography",
 	
@@ -275,7 +275,7 @@ const CODEX = {
 	ItHappened: {
 		DocName: "A collection of stories during wartime",
 		DocDesc: "Five hundred million souls lived through the Astartian War, many of their lives forever changed by it. Some, for the better; many for the worse. These are their stories",
-		LengthIndex: 4,
+		DocSize: 4,
 		DocText: [
 			"A father's insanity",
 	
@@ -325,7 +325,7 @@ const CODEX = {
 		//Unknown
 		DocName: "Operation TZIMTZUM",
 		DocDesc: "You do not have the clearance necessary to access this document",
-		LengthIndex: 3,
+		DocSize: 3,
 		DocText: [
 			"<br><br><br><span style='color:red; border:3px solid red'>REDACTED</span>",
 			"<span style='color:white'><br><br><br>◆<br>║<br>◆==֎==◆<br>║<br>◆</span>"
@@ -335,7 +335,7 @@ const CODEX = {
 		//ACSF's plans to ensure Kargia never again has the practical means to pose a continental-scale threat.
 		DocName: "Operation GOLCHAB",
 		DocDesc: "You do not have the clearance necessary to access this document",
-		LengthIndex: 3,
+		DocSize: 3,
 		DocText: [
 			"<br><br><br><span style='color:red; border:3px solid red'>REDACTED</span>",
 			"<span style='color:white'><br><br><br>◆<br>║<br>◆==֎==◆<br>║<br>◆</span>"
@@ -345,7 +345,7 @@ const CODEX = {
 		//Unknown
 		DocName: "Operation GHAAG SHEBLAH",
 		DocDesc: "You do not have the clearance necessary to access this document",
-		LengthIndex: 3,
+		DocSize: 3,
 		DocText: [
 			"<br><br><br><span style='color:red; border:3px solid red'>REDACTED</span>",
 			"<span style='color:white'><br><br><br>◆<br>║<br>◆==֎==◆<br>║<br>◆</span>"
@@ -355,7 +355,7 @@ const CODEX = {
 		//White Tulip's plan to force a quick, bloodless capitulation of Polasie
 		DocName: "Operation OHR EIN ZOF",
 		DocDesc: "You do not have the clearance necessary to access this document",
-		LengthIndex: 3,
+		DocSize: 3,
 		DocText: [
 			"<br><br><br><span style='color:red; border:3px solid red'>REDACTED</span>",
 			"<span style='color:white'><br><br><br>Ʌ&nbspɅ&nbspɅ<br>|&nbsp V V &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>\\&nbsp &nbsp &nbsp &nbsp &nbsp/<br>\\&nbsp &nbsp &nbsp/<br></span><span style='color:#00ff00'>|&nbsp|<br>|&nbsp|<br>|&nbsp|<br>|&nbsp|</span>"
@@ -365,7 +365,7 @@ const CODEX = {
 		//Calvary Institute's records regarding the top-secret PROIECT SAMSON
 		DocName: "Operation SAMSON",
 		DocDesc: "You do not have the clearance necessary to access this document",
-		LengthIndex: 3,
+		DocSize: 3,
 		DocText: [
 			"<br><br><br><span style='color:red; border:3px solid red'>REDACTED</span>",
 			"<span style='color:white'><br><br><br>Ʌ&nbspɅ&nbspɅ<br>|&nbsp V V &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>\\&nbsp &nbsp &nbsp &nbsp &nbsp/<br>\\&nbsp &nbsp &nbsp/<br></span><span style='color:#00ff00'>|&nbsp|<br>|&nbsp|<br>|&nbsp|<br>|&nbsp|</span>"
@@ -375,7 +375,7 @@ const CODEX = {
 		//White Tulip's plans to cause structural and moral damage to Polasian society
 		DocName: "Operation THAUMIEL",
 		DocDesc: "You do not have the clearance necessary to access this document",
-		LengthIndex: 3,
+		DocSize: 3,
 		DocText: [
 			"<br><br><br><span style='color:red; border:3px solid red'>REDACTED</span>",
 			"<span style='color:white'><br><br><br>Ʌ&nbspɅ&nbspɅ<br>|&nbsp V V &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>\\&nbsp &nbsp &nbsp &nbsp &nbsp/<br>\\&nbsp &nbsp &nbsp/<br></span><span style='color:#00ff00'>|&nbsp|<br>|&nbsp|<br>|&nbsp|<br>|&nbsp|</span>"
@@ -385,7 +385,7 @@ const CODEX = {
 		//DATA EXPUNGED
 		DocName: "War Plan ARMAGEDDON",
 		DocDesc: "This document has been removed from circulation, for reasons pertaining to its obsolescence. Seek the Kaula Secret Archives for the last preserved copy.",
-		LengthIndex: 5,
+		DocSize: 5,
 		DocText: [
 			"<br><br><br><span style='color:red; border:3px solid red'>DATA EXPUNGED</span>",
 			"<span style='color:red'>It is hereby requested of the following state agents to destroy their copies of the document:</span>",

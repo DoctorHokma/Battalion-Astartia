@@ -2957,18 +2957,53 @@ function CustomizeTile(){
 		if(document.getElementById('EditorLifeDenominator').value!=""){EditorEntityMap[EditorCustoTileX][EditorCustoTileY].HPI=JSON.parse(document.getElementById('EditorLifeDenominator').value); EditorEntityMap[EditorCustoTileX][EditorCustoTileY].hpModifier=JSON.parse(document.getElementById('EditorLifeDenominator').value)};
 		if(document.getElementById('EditorMoraleDenominator').value!=""){EditorEntityMap[EditorCustoTileX][EditorCustoTileY].morale=JSON.parse(document.getElementById('EditorMoraleDenominator').value)};
 	};};
-function DisplayLore(Document){
-	
-	document.getElementById('LoreName').innerHTML=Document.DocName;
-	document.getElementById('LoreDesc').innerHTML=Document.DocDesc;
-	document.getElementById('LorePanel').innerHTML="";
-	for(ll=0;ll<Document.DocText.length;ll++){document.getElementById('LorePanel').innerHTML+=Document.DocText[ll]+"<br><br>";};
-	if(Document.LengthIndex==1){document.getElementById('LoreLength').innerHTML="Very Short Document"}
-	else if(Document.LengthIndex==2){document.getElementById('LoreLength').innerHTML="Short Document"}
-	else if(Document.LengthIndex==3){document.getElementById('LoreLength').innerHTML="Document"}
-	else if(Document.LengthIndex==4){document.getElementById('LoreLength').innerHTML="Long Document"}
-	else if(Document.LengthIndex==5){document.getElementById('LoreLength').innerHTML="Very Long Document"};
-	for(let cx=1;cx<=5;cx++){if(cx<=Document.LengthIndex){document.getElementById("LoreLengthIcon"+cx).src="Assets/Miscellaneous/DocIcon.PNG"}else{document.getElementById("LoreLengthIcon"+cx).src="Assets/Miscellaneous/DocShadow.PNG"}};};
+const DisplayLore = function(documentID){
+	const lore = CODEX[documentID];
+
+	if(!lore) {
+		return;
+	}
+
+	const { DocName = "", DocDesc = "", DocSize = 0, DocText = [] } = lore;
+	const documentLengths = ["Empty Document", "Very Short Document", "Short Document", "Document", "Long Document", "Very Long Document"];
+	const loreName = document.getElementById('LoreName');
+	const loreDesc = document.getElementById('LoreDesc');
+	const loreLength = document.getElementById('LoreLength');
+	const lorePanel = document.getElementById('LorePanel');
+
+	loreName.innerHTML = DocName;
+	loreDesc.innerHTML = DocDesc;
+	loreLength.innerHTML = "";
+	lorePanel.innerHTML = "";
+
+	if(DocSize >= 0 && DocSize < documentLengths.length) {
+		loreLength.innerHTML = documentLengths[DocSize];
+	} else {
+		loreLength.innerHTML = "Unknown Size";
+	}
+
+	for(let i = 0; i < DocText.length; i++) {
+		const text = DocText[i];
+		const htmlText = text + "<br><br>";
+
+		lorePanel.innerHTML += htmlText;
+	}
+
+	const FIRST_ICON_ID = 1;
+	const LAST_ICON_ID = 5;
+
+	for(let i = FIRST_ICON_ID; i <= LAST_ICON_ID; i++) {
+		const lengthIconID = "LoreLengthIcon" + i;
+		const lengthIcon = document.getElementById(lengthIconID);
+
+		if(DocSize < i) {
+			lengthIcon.src = "Assets/Miscellaneous/DocShadow.PNG";
+		} else {
+			lengthIcon.src = "Assets/Miscellaneous/DocIcon.PNG";
+		}
+	}
+}
+
 function DisplayRegions(){
 	if(FieldMode!="MapEditor" && RegionMap!=[0]&&NodeMap!=[0]){};
 	
