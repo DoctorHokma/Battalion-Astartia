@@ -1,4 +1,4 @@
-CampaignTerrain=[
+const CampaignTerrain = [
 	{name: "", passThrough: true, flyThrough: true, sailThrough: false, src:"", traverseFactor:1, protectionFactor:1,Variants:8,Offsets:[0,0,0,0,0,0,0,0]}, 
 
 	//1-5
@@ -59,9 +59,10 @@ CampaignTerrain=[
 	//{name: "Canyon"},
 	//{name: ""},
 	//{name: "RiverSource", WalkThrough: 100, DriveThrough: 100, RollThrough: 100, FlyThrough: 1, SailThrough: 1, DeepSailThrough:100, WadeThrough:2, protectionFactor:100,Urbanistics:0,tag1:"",tag2:"",tag3:"",tag4:""},
+];
 
-	];
-BiomeRegistry=[{Name:null, Nominator:"", LogisticIndex:0},
+const BiomeRegistry = [
+	{Name:null, Nominator:"", LogisticIndex:0},
 	{Name:"Temperate", Nominator:"", LogisticIndex:1},
 	{Name:"Desert", Nominator:"Arid", LogisticIndex:0.75},
 	{Name:"Tundra", Nominator:"Boreal", LogisticIndex:0.75},
@@ -69,8 +70,9 @@ BiomeRegistry=[{Name:null, Nominator:"", LogisticIndex:0},
 	{Name:"Extreme Tundra", Nominator:"Arctic", LogisticIndex:0.5},
 	{Name:"Lunar", Nominator:"Lunar", LogisticIndex:0.25},
 	{Name:"Martian", Nominator:"Martian", LogisticIndex:0.25},
-	];
-CampaignUnits=[
+];
+
+const CampaignUnits = [
 	{name: "Construction Site", shortname:"Skele", HP:50, Armor: "Medium", Attack: 0, Weapon: "Medium", Speed:0, Movement: "Foot", MinRange:1, MaxRange:1, Cost:0 ,tag1:"Inertial", tag2:"", tag3:"", tag4:"",StaticOffsetX:[0,0,0,0,0],StaticOffsetY:[0,0,0,0,0],MovementBoxX:0,MovementBoxY:0,MovementOffsetX:[0,0,0,0,0],MovementOffsetY:[0,0,0,0,0],AttackOffsetX:[0,0,0,0,0],AttackOffsetY:[0,0,0,0,0],IdleOffsetX:[0,0,0,0,0],IdleOffsetY:[0,0,0,0,0]},
 
 	{name: Language.UnitNames[1], HP:50, shortname: "LightInf", MLPR:false, Armor: "Light", Attack: 10, Weapon: "Light", Speed:4, Movement: "Foot", MinRange:1, MaxRange:1, Cost:100, TechLevel:1, Power:10, Role:"", tag1:"Conqueror", tag2:"Streamlined", tag3:"", tag4:"",AttackOffsetX:[0,-1,8,-1,-12]},
@@ -149,10 +151,9 @@ CampaignUnits=[
 	{name: "Bastion", shortname:"Bastion", MLPR:true, HP:250, Armor:"Heavy",Attack:0, Weapon:"None", Speed:0, Movement:"Stationary",MinRange:1,MaxRange:1, Cost:2000, TechLevel:4, Power:0, Role:"", Timer: 2, tag1:"Inertial", tag2:"", tag3:"", tag4:""},
 	{name: "Supply Depot", shortname:"Depot", MLPR:true, HP:100, Armor:"Medium", Attack:35 , Weapon:"None", Speed:0, Movement:"Stationary", MinRange:1, MaxRange:7, Cost:1300, TechLevel:2, Power:75, Role:"", Timer:2, tag1:"Supply Distribution", tag2:"", tag3:"", tag4:""},
 	{name: "Fortress", shortname:"Fortress", MLPR:true, HP:1000, Armor:"Heavy",Attack:50, Weapon:"Medium", Speed:0, Movement:"Stationary",MinRange:1,MaxRange:7, Cost:5000, TechLevel:5, Power:1000, Role:"", Timer: 5, tag1:"Skysweeper", tag2:"", tag3:"", tag4:""}
-	
+];
 
-	];
-CampaignFactions=[
+const CampaignFactions = [
 	{name:"Null", faction:"Idk, man. Neutrals maybe?", color:"Gray", ChromaCode:"hue-rotate(175deg) saturate(0%) brightness(100%)"},
 	{name:"Synarchy of Somertin", powerRanking:"Major Power", faction:"Continental Security League", Access:true , Preffix:"SOM",color:"White",ChromaCode:"hue-rotate(175deg) saturate(0%) brightness(250%)",SpecialInfantry:[true,false,false,false,false],SpecialVehicles:[true,false,false,false,false],SpecialTechnology:[true,false,false,false,false],Currency:"Ɬ",ExchangeRate:0.8},
 	{name:"Kargit Revolutionary Gosudarstvo", powerRanking:"Major Power", faction:"Glorious Coallition", Access:true , Preffix:"KAR",color:"Black",ChromaCode:"hue-rotate(0deg) saturate(0%) brightness(70%) contrast(125%)",SpecialInfantry:[false,true,false,false,false],SpecialVehicles:[false,true,false,false,false],SpecialTechnology:[false,true,false,false,false],Currency:"Ꞣ",ExchangeRate:1},
@@ -179,17 +180,17 @@ CampaignFactions=[
 	{name:"Shallah's Sacrosanct Jihadi Front"},
 	{name:"Rayon Unichtozheniya Skalistykhgor"},
 	{name:"Pulanskiy Morskoy Consortium"}
-	];
-ConquestRegions=[
-	{name:"null", X:0, Y:0, DeJureOwner:0, DeFactoOwner:0, Population:0, Infrastructure:0, Economy:[], FortificationLevel:0, TechLevel:0, AgriculturalProduce:0, CivilianGoods:0, Hydrocarbons:0, Steel:0, Bauxite:0, RareMetals:0, FissileMaterials:0, Armies:[],
-		Terrain:{Plains:0, Tundra:0, Desert:0, Arctic:0, Hellhole:0, Forests:0, Taiga:0, Hills:0, Mountains:0, Supermountains:0, Urban:0, River:0, RiverAxis:"H", Swamp:0, Sea:0, ArcticWater:0, Islets:0}},
-	
+];
+
+const ConquestRegions = [
+	{name:"null", X:0, Y:0, DeJureOwner:0, DeFactoOwner:0, Population:0, Infrastructure:0, Economy:[], FortificationLevel:0, TechLevel:0, AgriculturalProduce:0, CivilianGoods:0, Hydrocarbons:0, Steel:0, Bauxite:0, RareMetals:0, FissileMaterials:0, Armies:[], Terrain:{Plains:0, Tundra:0, Desert:0, Arctic:0, Hellhole:0, Forests:0, Taiga:0, Hills:0, Mountains:0, Supermountains:0, Urban:0, River:0, RiverAxis:"H", Swamp:0, Sea:0, ArcticWater:0, Islets:0}},
 	{name:"null", X:0, Y:0, DeJureOwner:0, DeFactoOwner:0, Population:0, Infrastructure:0, Economy:[], FortificationLevel:0, TechLevel:0, AgriculturalProduce:0, CivilianGoods:0, Hydrocarbons:0, Steel:0, Bauxite:0, RareMetals:0, FissileMaterials:0, Armies:[]},
 	{name:"null", X:0, Y:0, DeJureOwner:0, DeFactoOwner:0, Population:0, Infrastructure:0, Economy:[], FortificationLevel:0, TechLevel:0, AgriculturalProduce:0, CivilianGoods:0, Hydrocarbons:0, Steel:0, Bauxite:0, RareMetals:0, FissileMaterials:0, Armies:[]},
 	{name:"null", X:0, Y:0, DeJureOwner:0, DeFactoOwner:0, Population:0, Infrastructure:0, Economy:[], FortificationLevel:0, TechLevel:0, AgriculturalProduce:0, CivilianGoods:0, Hydrocarbons:0, Steel:0, Bauxite:0, RareMetals:0, FissileMaterials:0, Armies:[]},
 	{name:"null", X:0, Y:0, DeJureOwner:0, DeFactoOwner:0, Population:0, Infrastructure:0, Economy:[], FortificationLevel:0, TechLevel:0, AgriculturalProduce:0, CivilianGoods:0, Hydrocarbons:0, Steel:0, Bauxite:0, RareMetals:0, FissileMaterials:0, Armies:[]},
-	];
-IntraeventLedger=[
+];
+
+const IntraeventLedger = [
 	//Event Zero, or shall we say the template event
 	{Name:"null",Class:"Static", TurnTreshold:3, AlterCredits:0, FactionTarget:1,Intralogue:0, SummonUnits:[], TerrainImpact:[],Inspire:null,Strike:[],Display:null,Purge:0,ChangeTune:null},
 
@@ -369,10 +370,9 @@ IntraeventLedger=[
 	//UnindexedMain
 
 	{},{},{},{},{},{},{}
+];
 
-
-	];
-CommanderTraitDatabase=[
+const CommanderTraitDatabase = [
 	[{DoctrineName:"", OffensiveImpact:0, DefensiveImpact:0, LogisticalImpact:0, CommandImpact:0},{}],
 	[{SpecialisationName:0, AdministrationImpact:0}],
 	[{PoliticalAffiliation:"Rebellious",PoliticalImpact:-20},{PoliticalAffiliation:"Divergent",PoliticalImpact:-10},{PoliticalAffiliation:"Apolitical",PoliticalImpact:0},{PoliticalAffiliation:"Loyal",PoliticalImpact:10},{PoliticalAffiliation:"Sycophant",PoliticalImpact:20}],
@@ -381,9 +381,11 @@ CommanderTraitDatabase=[
 	[{LogisticalTrait:"Stupid",LogisticalImpact:-5},{LogisticalTrait:"Wasteful",LogisticalImpact:-3},{LogisticalTrait:"Insecure",LogisticalImpact:-2},{LogisticalTrait:"Indifferent",LogisticalImpact:-1},{LogisticalTrait:"Measured",LogisticalImpact:0},{LogisticalTrait:"Frugal",LogisticalImpact:1},{LogisticalTrait:"Thrifty",LogisticalImpact:2},{LogisticalTrait:"Rigourous",LogisticalImpact:3},{LogisticalTrait:"Logistical Genius",LogisticalImpact:5}],
 	[{CommandTrait:"Retarded",CommandImpact:-10},{CommandTrait:"Chaotic",CommandImpact:-7},{CommandTrait:"Abrasive",CommandImpact:-5},{CommandTrait:"Introverted",CommandImpact:-3},{CommandTrait:"Ambiverted",CommandImpact:0},{CommandTrait:"Extroverted",CommandImpact:3},{CommandTrait:"Charismatic",CommandImpact:5},{CommandTrait:"Organized",CommandImpact:7},{CommandTrait:"Command Genius",CommandImpact:10}]
 ];
-ArmyNamesNoon={
+
+const ArmyNamesNoon = {
 };
-ArmyNamesMidnight={
+
+const ArmyNamesMidnight = {
 };
 
 

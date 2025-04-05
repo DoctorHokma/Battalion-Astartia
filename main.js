@@ -1,6 +1,13 @@
 const OPENING_TRACK = "RiversOfSteel";
 const battalion = new Battalion();
 
+battalion.language.addLanguage(Battalion.LANGUAGE.ENGLISH, LANGUAGE_ENGLISH);
+battalion.language.addLanguage(Battalion.LANGUAGE.SPANISH, ESP);
+battalion.language.addLanguage(Battalion.LANGUAGE.PORTUGUESE, POR);
+battalion.language.addLanguage(Battalion.LANGUAGE.ROMANIAN, ROM);
+battalion.language.addLanguage(Battalion.LANGUAGE.TURKISH, TUR);
+battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
+
 ResolutionXFactor=1;
 ResolutionYFactor=1;
 BattleEnd=false;
@@ -2958,35 +2965,53 @@ function CustomizeTile(){
 		if(document.getElementById('EditorMoraleDenominator').value!=""){EditorEntityMap[EditorCustoTileX][EditorCustoTileY].morale=JSON.parse(document.getElementById('EditorMoraleDenominator').value)};
 	};};
 const DisplayLore = function(documentID){
+	const { language } = battalion;
 	const lore = CODEX[documentID];
 
 	if(!lore) {
 		return;
 	}
 
-	const { DocName = "", DocDesc = "", DocSize = 0, DocText = [] } = lore;
-	const documentLengths = ["Empty Document", "Very Short Document", "Short Document", "Document", "Long Document", "Very Long Document"];
+	const { DocName = "", DocDesc = "", DocText = "", DocSize = 0 } = lore;
+	const documentSizes = [
+		"CODEX_DOCUMENT_SIZE_EMPTY",
+		"CODEX_DOCUMENT_SIZE_VERY_SHORT",
+		"CODEX_DOCUMENT_SIZE_SHORT",
+		"CODEX_DOCUMENT_SIZE_NORMAL",
+		"CODEX_DOCUMENT_SIZE_LONG",
+		"CODEX_DOCUMENT_SIZE_VERY_LONG"
+	];
 	const loreName = document.getElementById('LoreName');
 	const loreDesc = document.getElementById('LoreDesc');
 	const loreLength = document.getElementById('LoreLength');
 	const lorePanel = document.getElementById('LorePanel');
 
-	loreName.innerHTML = DocName;
-	loreDesc.innerHTML = DocDesc;
+	loreName.innerHTML = language.get(DocName);
+	loreDesc.innerHTML = language.get(DocDesc);
 	loreLength.innerHTML = "";
 	lorePanel.innerHTML = "";
 
-	if(DocSize >= 0 && DocSize < documentLengths.length) {
-		loreLength.innerHTML = documentLengths[DocSize];
+	if(DocSize >= 0 && DocSize < documentSizes.length) {
+		loreLength.innerHTML = language.get(documentSizes[DocSize]);
 	} else {
-		loreLength.innerHTML = "Unknown Size";
+		loreLength.innerHTML = language.get("CODEX_DOCUMENT_SIZE_EMPTY");
 	}
 
-	for(let i = 0; i < DocText.length; i++) {
-		const text = DocText[i];
-		const htmlText = text + "<br><br>";
+	const text = language.get(DocText);
 
-		lorePanel.innerHTML += htmlText;
+	switch(typeof text) {
+		case "object": {
+			for(let i = 0; i < text.length; i++) {
+				const htmlText = text[i] + "<br><br>";
+		
+				lorePanel.innerHTML += htmlText;
+			}
+			break;
+		}
+		default: {
+			lorePanel.innerHTML += text;
+			break;
+		}
 	}
 
 	const FIRST_ICON_ID = 1;
