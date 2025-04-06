@@ -72,7 +72,7 @@ const BiomeRegistry = [
 	{Name:"Martian", Nominator:"Martian", LogisticIndex:0.25},
 ];
 
-const CampaignUnits = [
+const UNITS = [
 	{name: "UNIT_NAME_UNKNOWN", desc: "UNIT_DESC_UNKNOWN", shortname:"Skele", HP:50, Armor: "Medium", Attack: 0, Weapon: "Medium", Speed:0, Movement: "Foot", MinRange:1, MaxRange:1, Cost:0 ,tag1:"Inertial", tag2:"", tag3:"", tag4:"",StaticOffsetX:[0,0,0,0,0],StaticOffsetY:[0,0,0,0,0],MovementBoxX:0,MovementBoxY:0,MovementOffsetX:[0,0,0,0,0],MovementOffsetY:[0,0,0,0,0],AttackOffsetX:[0,0,0,0,0],AttackOffsetY:[0,0,0,0,0],IdleOffsetX:[0,0,0,0,0],IdleOffsetY:[0,0,0,0,0]},
 
 	{name: "UNIT_NAME_LIGHT_INFANRY", desc: "UNIT_DESC_LIGHT_INFANTRY", HP:50, shortname: "LightInf", MLPR:false, Armor: "Light", Attack: 10, Weapon: "Light", Speed:4, Movement: "Foot", MinRange:1, MaxRange:1, Cost:100, TechLevel:1, Power:10, Role:"", tag1:"Conqueror", tag2:"Streamlined", tag3:"", tag4:"",AttackOffsetX:[0,-1,8,-1,-12]},

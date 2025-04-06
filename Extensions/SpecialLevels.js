@@ -315,7 +315,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 
 	Factions:EuropeFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain,
 
@@ -359,7 +359,7 @@ Palawan={
 
 	Factions:CampaignFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 
@@ -465,7 +465,7 @@ UnitRepository={
 				[0,0,0,0,0,0,0,0,0,0]],
 
 				Factions:CampaignFactions,
-				Units:CampaignUnits,
+				Units:UNITS,
 				Terrain:CampaignTerrain};
 
 Ohio={
@@ -617,7 +617,7 @@ Ohio={
 
 	Factions:MemeFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 
@@ -711,7 +711,7 @@ Samara={
 
 	Factions:CampaignFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain,
 
@@ -763,7 +763,7 @@ Arena={
 	[1,1,1,1,1,1,1,1,1,1]],
 
 	Factions:GenericFactions,
-	Units:CampaignUnits,
+	Units:UNITS,
 	Terrain:CampaignTerrain};
 
 
@@ -912,7 +912,7 @@ Albinia={
 
 	Factions:CampaignFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 
@@ -975,7 +975,7 @@ Interjection:["Spruce","Aleks is dead and the Sol fucked off. Fuck this, we wast
 
 	Factions:CampaignFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 
@@ -1072,7 +1072,7 @@ Akkadian_War={
 
 	Factions:CampaignFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain,
 
@@ -1291,7 +1291,7 @@ PulaGulf={
 
 	Factions:MetacanonicalFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 
@@ -1356,7 +1356,7 @@ WhatTheDuck={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain,
 
@@ -1421,7 +1421,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:CampaignUnits,
+Units:UNITS,
 Terrain:CampaignTerrain};
 
 Chess={
@@ -1545,7 +1545,7 @@ Chess={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 	};
@@ -1671,7 +1671,7 @@ TankChess={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 	};
@@ -1798,7 +1798,7 @@ NavalChess={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 
@@ -1869,7 +1869,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:CampaignUnits,
+Units:UNITS,
 Terrain:CampaignTerrain};
 
 Catto={
@@ -1944,7 +1944,7 @@ Catto={
 
 	Factions:CampaignFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain,
 
@@ -1999,7 +1999,7 @@ Hooman={
 	[0,0,0,0,0,0,0,0,0,0]],
 
 	Factions:GenericFactions,
-	Units:CampaignUnits,
+	Units:UNITS,
 	Terrain:CampaignTerrain};
 
 Sealand={
@@ -2035,7 +2035,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:CampaignUnits,
+Units:UNITS,
 Terrain:CampaignTerrain};
 
 LakePanzer={
@@ -2088,7 +2088,7 @@ LakePanzer={
 	[0,0,0,0,0,0,0,0,0,0]],
 
 	Factions:GenericFactions,
-	Units:CampaignUnits,
+	Units:UNITS,
 	Terrain:CampaignTerrain};
 
 ZombieHorde={
@@ -2150,7 +2150,7 @@ ZombieHorde={
 
 
 	Terrain:CampaignTerrain,
-	Units:CampaignUnits,
+	Units:UNITS,
 	Factions:MemeFactions
 
 
@@ -2252,7 +2252,7 @@ Nemesis={
 
 	Factions:NostalgiaFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 
@@ -2327,7 +2327,7 @@ Halo={
 
 	Factions:NostalgiaFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 	};
@@ -2418,7 +2418,7 @@ Beersheba={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain,
 
@@ -2481,7 +2481,7 @@ Hostomel={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain,
 
@@ -2574,7 +2574,7 @@ Ebro={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain,
 
@@ -2681,7 +2681,7 @@ Bilbao={
 	[0,0,0,9,9,9,9,9,9,0,0,0,0,0,0]],
 
 	Factions:GenericFactions,
-	Units:CampaignUnits,
+	Units:UNITS,
 	Terrain:CampaignTerrain};
 
 Mărășești={
@@ -2763,7 +2763,7 @@ Mărășești={
 	[0,0,0,0,0,1,1,1,1,0]],
 
 	Factions:GenericFactions,
-	Units:CampaignUnits,
+	Units:UNITS,
 	Terrain:CampaignTerrain};
 
 Romanian_Unification_War={
@@ -2880,7 +2880,7 @@ Localization:[{X:14,Y:14,name:'București',description:'Capital of Romania'},
 	{X:1,Y:4,name:'Kosice',description:'Seat of Central Slovakia'}, 
 	],
 	Factions:EuropeFactions,
-	Units:CampaignUnits,
+	Units:UNITS,
 	Terrain:CampaignTerrain};
 
 Toyota={
@@ -2927,7 +2927,7 @@ Toyota={
 	[0,0,0,0,0,0,0,0,0,0]],
 
 	Factions:GenericFactions,
-	Units:CampaignUnits,
+	Units:UNITS,
 	Terrain:CampaignTerrain};
 
 Easting73={
@@ -2981,7 +2981,7 @@ BiomeMap:[[2,2,2,2,2,2,2,2,2,2],
 			[2,2,2,2,2,2,2,2,2,4]],
 
 	Factions:GenericFactions,
-	Units:CampaignUnits,
+	Units:UNITS,
 	Terrain:CampaignTerrain};
 
 CastleItter={
@@ -3032,7 +3032,7 @@ CastleItter={
 	[5,5,5,5,5,5,5,5,5,5]],
 
 	Factions:GenericFactions,
-	Units:CampaignUnits,
+	Units:UNITS,
 	Terrain:CampaignTerrain};
 
 
@@ -3155,7 +3155,7 @@ ShreksSwamp={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain,
 
@@ -3200,7 +3200,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 Prelogue:["Kanye","I'm giving this lasagna a massage while preparing to announce I'm doing 9/11! Thank you for your attention"],
 
 Factions:MemeFactions,
-Units:CampaignUnits,
+Units:UNITS,
 Terrain:CampaignTerrain};
 
 FuckingBureaucrats={
@@ -3293,7 +3293,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:CampaignUnits,
+Units:UNITS,
 Terrain:CampaignTerrain}
 
 Backrooms={
@@ -3326,7 +3326,7 @@ Backrooms={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain,
 
@@ -3392,7 +3392,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:CampaignUnits,
+Units:UNITS,
 Terrain:CampaignTerrain};
 
 Sanguine={
@@ -3425,7 +3425,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:CampaignUnits,
+Units:UNITS,
 Terrain:CampaignTerrain};
 
 Phlegmatic={
@@ -3489,7 +3489,7 @@ Phlegmatic={
 		[0,0,0,0,0,0,0,0,0,0]],
 		Factions:GenericFactions,
 
-		Units:CampaignUnits,
+		Units:UNITS,
 
 		Terrain:CampaignTerrain
 		};
@@ -3554,7 +3554,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:CampaignUnits,
+Units:UNITS,
 Terrain:CampaignTerrain};
 
 Supine={
@@ -3588,7 +3588,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:CampaignUnits,
+Units:UNITS,
 Terrain:CampaignTerrain};
 
 American={
@@ -3686,7 +3686,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:CampaignUnits,
+Units:UNITS,
 Terrain:CampaignTerrain};
 
 Golan={
@@ -3747,7 +3747,7 @@ Golan={
 				[2,2,2,2,2,2,2,2,2,2]],
 
 	Factions:GenericFactions,
-	Units:CampaignUnits,
+	Units:UNITS,
 	Terrain:CampaignTerrain};
 
 
@@ -3917,7 +3917,7 @@ RegionMap:[["CommieCen","CommieCen","CommieCen","CommieCen","CommieEst","CommieE
 FactionCommentary:["","Pick this if you are lazy, unemployed and want free shit","Pick this if you have an abnormal fixation with race but are gonna marry someone of another race because women of yours won't give you the time of day","Choose this if you don't give a fuck about politics","Pick this if you've had no father in your life and think there are more than 2 genders","Pick this if you love money more than anything"],
 
 Factions:GenericFactions,
-Units:CampaignUnits,
+Units:UNITS,
 Terrain:CampaignTerrain};
 
 
@@ -3967,7 +3967,7 @@ TutorialLevel1={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain,
 
@@ -4026,7 +4026,7 @@ TutorialLevel2={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain,
 
@@ -4072,7 +4072,7 @@ TutorialLevel3={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain,};
 
@@ -4108,7 +4108,7 @@ TutorialLevel4={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 
@@ -4178,7 +4178,7 @@ TutorialLevel5={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 
@@ -4242,7 +4242,7 @@ TutorialLevel6={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 
@@ -4311,7 +4311,7 @@ TutorialLevel7={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 
@@ -4364,7 +4364,7 @@ TutorialLevel8={
 
 	Factions:CampaignFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 
@@ -4421,7 +4421,7 @@ TutorialLevel9={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 
@@ -4492,7 +4492,7 @@ TutorialLevel10={
 
 	Factions:GenericFactions,
 
-	Units:CampaignUnits,
+	Units:UNITS,
 
 	Terrain:CampaignTerrain
 

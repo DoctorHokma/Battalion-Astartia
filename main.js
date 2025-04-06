@@ -56,7 +56,7 @@ Playlists=[];
 InterlogueBST=[[],[],[],[],[],[],[],[],[],[],[]];
 
 Campaigns=CAMPAIGNS;
-Units=CampaignUnits;
+Units=UNITS;
 Factions=CampaignFactions;
 Terrain=CampaignTerrain;
 TNOFactions=[
@@ -1706,62 +1706,81 @@ function Battle_Lost(){
 	Resolution=true;
 	Victory=false;
 	//alert(Language.DefeatInterjections[3].length);
-	if(BattleEnd){if(DialogueChoice){launchDialogueBloc(Interjection,0);}else{setTimeout(EndBattle,1000)};};
+	if(BattleEnd) {
+		if(DialogueChoice) {
+			launchDialogueBloc(Interjection,0);
+		} else {
+			setTimeout(EndBattle,1000)
+		}
+	}
+
 	BattleEnd=false;
 
-	document.getElementById("EndBattleTitle").innerHTML=Language.SystemTerms[124];	};
+	document.getElementById("EndBattleTitle").innerHTML=Language.SystemTerms[124];
+};
 function Battle_Won(){
 	//BattleEnd=true;
 	Resolution=true;
 	Victory=true;
 	
-	if(BattleEnd){if(DialogueChoice){launchDialogueBloc(Postlogue,0);}else{setTimeout(EndBattle,1000)};};
+	if(BattleEnd) {
+		if(DialogueChoice) {
+			launchDialogueBloc(Postlogue,0);
+		} else {
+			setTimeout(EndBattle,1000);
+		}
+	}
+
 	BattleEnd=false;
 
-	document.getElementById("EndBattleTitle").innerHTML=Language.SystemTerms[123];};
-	//NEYN TODO!!!
+	document.getElementById("EndBattleTitle").innerHTML=Language.SystemTerms[123];
+}
+//NEYN TODO!!!
 function Build(Structure){
+	const unitType = Units[Structure];
 	//alert(hasCertainTrait(Structure,"Seabound"));
-	if(YourMoney<Units[Structure].Cost || (!CanBuildCoastal&&hasCertainTrait(Structure,"Seabound"))){alert("Cannot build");
-	}else{
-		YourMoney-=Units[Structure].Cost;
-		document.getElementById('BuildingConstructionPanel').style.visibility="hidden";
+	if(unitType.Cost > YourMoney || (!CanBuildCoastal && hasCertainTrait(Structure, "Seabound"))) {
+		alert("Cannot build");
+		return;
+	}
 
-		battalion.soundPlayer.playSound("Thud");
+	battalion.soundPlayer.playSound("Thud");
+	document.getElementById('BuildingConstructionPanel').style.visibility = "hidden";
+	YourMoney -= unitType.Cost;
 
-		let X=UnitIcs;
-		let Y=UnitIgrec;
-		let Santier={
-			name: "",
-			description: "",
-			ID:"Unit "+MapRoster.length,
-			index:MapRoster.length-1,
-			x:X, 
-			y:Y, 
-			unitType:0,
-			faction:PlayerChoiceFaction,
-			coallition:Factions[PlayerChoiceFaction].faction,
-			damage:Units[0].Attack, 
-			damageType:Units[0].Weapon,
-			minR:Units[0].MinRange,
-			maxR:Units[0].MaxRange, 
-			life:Units[0].HP, 
-			armor:Units[0].Armor, 
-			speed:Units[0].Speed, 
-			movementType:Units[0].Movement, 
-			morale:0,
-			direction:3,
-			building:Structure,
-			constructionTime:Units[Structure].Timer
-			};
+	let X=UnitIcs;
+	let Y=UnitIgrec;
+	let Santier={
+	name: "",
+	description: "",
+	ID:"Unit "+MapRoster.length,
+	index:MapRoster.length-1,
+	x:X, 
+	y:Y, 
+	unitType:0,
+	faction:PlayerChoiceFaction,
+	coallition:Factions[PlayerChoiceFaction].faction,
+	damage:Units[0].Attack, 
+	damageType:Units[0].Weapon,
+	minR:Units[0].MinRange,
+	maxR:Units[0].MaxRange, 
+	life:Units[0].HP, 
+	armor:Units[0].Armor, 
+	speed:Units[0].Speed, 
+	movementType:Units[0].Movement, 
+	morale:0,
+	direction:3,
+	building:Structure,
+	constructionTime:unitType.Timer
+	};
 
-			MapRoster[MapRoster.length]=Santier;
-			rostermap[X][Y]=Santier;
-			document.getElementById('Entity '+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.visibility="visible";
-			document.getElementById('EntityCore '+(X+1-StandardX)+"X"+(Y+1-StandardY)).src="Assets/Units/Static/Skele3.PNG";
+	MapRoster[MapRoster.length]=Santier;
+	rostermap[X][Y]=Santier;
+	document.getElementById('Entity '+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.visibility="visible";
+	document.getElementById('EntityCore '+(X+1-StandardX)+"X"+(Y+1-StandardY)).src="Assets/Units/Static/Skele3.PNG";
+};
 
-	}};
-	//NEYN TODO!!!
+//NEYN TODO!!!
 function BuildingComplete(Index){
 	let type=MapRoster[Index].building;
 	let Building={
@@ -3136,6 +3155,23 @@ function CustomizeTile(){
 		if(document.getElementById('EditorLifeDenominator').value!=""){EditorEntityMap[EditorCustoTileX][EditorCustoTileY].HPI=JSON.parse(document.getElementById('EditorLifeDenominator').value); EditorEntityMap[EditorCustoTileX][EditorCustoTileY].hpModifier=JSON.parse(document.getElementById('EditorLifeDenominator').value)};
 		if(document.getElementById('EditorMoraleDenominator').value!=""){EditorEntityMap[EditorCustoTileX][EditorCustoTileY].morale=JSON.parse(document.getElementById('EditorMoraleDenominator').value)};
 	};};
+
+const DisplayLoreLength = function(DocSize) {
+	const FIRST_ICON_ID = 1;
+	const LAST_ICON_ID = 5;
+
+	for(let i = FIRST_ICON_ID; i <= LAST_ICON_ID; i++) {
+		const lengthIconID = "LoreLengthIcon" + i;
+		const lengthIcon = document.getElementById(lengthIconID);
+
+		if(DocSize < i) {
+			lengthIcon.src = "Assets/Miscellaneous/DocShadow.PNG";
+		} else {
+			lengthIcon.src = "Assets/Miscellaneous/DocIcon.PNG";
+		}
+	}
+}
+
 const DisplayLore = function(documentID){
 	const { language } = battalion;
 	const lore = CODEX[documentID];
@@ -3186,19 +3222,7 @@ const DisplayLore = function(documentID){
 		}
 	}
 
-	const FIRST_ICON_ID = 1;
-	const LAST_ICON_ID = 5;
-
-	for(let i = FIRST_ICON_ID; i <= LAST_ICON_ID; i++) {
-		const lengthIconID = "LoreLengthIcon" + i;
-		const lengthIcon = document.getElementById(lengthIconID);
-
-		if(DocSize < i) {
-			lengthIcon.src = "Assets/Miscellaneous/DocShadow.PNG";
-		} else {
-			lengthIcon.src = "Assets/Miscellaneous/DocIcon.PNG";
-		}
-	}
+	DisplayLoreLength(DocSize);
 }
 
 function DisplayRegions(){
@@ -3292,8 +3316,9 @@ function DisplayRegions(){
 			document.getElementById("regionMap").style.visibility="hidden";
 			
 		};
-		RegionsToggled=!RegionsToggled;};
-		//NEYN TODO!!!
+	RegionsToggled=!RegionsToggled;
+};
+//NEYN TODO!!!
 function DeployUnit(X,Y,Type,Faction,Direction,LifeIndex,Morale,CustomName,SpecialName,CustomDesc,SpecialDesc){
 	//alert(Faction);
 	let CostFactor=1;
@@ -3360,7 +3385,8 @@ function DeployUnit(X,Y,Type,Faction,Direction,LifeIndex,Morale,CustomName,Speci
 	document.getElementById("Entity "+X+"X"+Y).style.visibility="visible";
 	document.getElementById("Entity "+X+"X"+Y).style.left=(Units[Type].StaticOffsetX??[0,0,0,0,0])[1]+"px";
 	document.getElementById("Entity "+X+"X"+Y).style.top=(Units[Type].StaticOffsetY??[0,0,0,0,0])[1]+"px";
-	document.getElementById("EntityCore "+X+"X"+Y).style.filter=Factions[Faction].ChromaCode;};
+	document.getElementById("EntityCore "+X+"X"+Y).style.filter=Factions[Faction].ChromaCode;
+};
 function drawTile(host,image,x,y,terrain){
 	var newPic=document.createElement("img");
 	newPic.src=image;
@@ -7966,7 +7992,7 @@ function RetrieveAllMapData(){
 
 
 	TotalKey+="\nFactions:GenericFactions,";
-	TotalKey+="\nUnits:CampaignUnits,";
+	TotalKey+="\nUnits:UNITS,";
 	TotalKey+="\nTerrain:CampaignTerrain";
 
 	TotalKey+="};";
@@ -8492,7 +8518,7 @@ function TestMap(){
 	for(let N=0;N<NodeKeyT.length;N++){for(let R=0;R<NodeKeyT[0].length;R++){if(NodeKeyT[N][R]!=1){NodeKey[NodeKey.length]=NodeKeyT[N][R]}}};
 	//alert(typeof(NodeKeyT[0][0]));
 
-	EditorLevel={Map:MapKey, Roster:RosterKey, Constants:ConstantsKey, ControlMap:ControlKey,BiomeMap:BiomeKey,RegionMap:RegionKey,NodeMap:NodeKey,Factions:GenericFactions,Units:CampaignUnits,Terrain:CampaignTerrain};
+	EditorLevel={Map:MapKey, Roster:RosterKey, Constants:ConstantsKey, ControlMap:ControlKey,BiomeMap:BiomeKey,RegionMap:RegionKey,NodeMap:NodeKey,Factions:GenericFactions,Units:UNITS,Terrain:CampaignTerrain};
 	
 	let canBattle=true;
 
@@ -8756,7 +8782,7 @@ function ToggleOption(Button){
 		case "MystSett":
 			MystSettChoice= !MystSettChoice;
 			let zappy=0;
-			if(MystSettChoice){zappy=5; for(let o=61;o<69;o++){CampaignUnits[o].Speed=zappy};document.getElementById("ToggleMysteriousSetting").src="Assets/Miscellaneous/MysteriousSettingOn.PNG";
+			if(MystSettChoice){zappy=5; for(let o=61;o<69;o++){Units[o].Speed=zappy};document.getElementById("ToggleMysteriousSetting").src="Assets/Miscellaneous/MysteriousSettingOn.PNG";
 			document.getElementById("Diff1Text").style.top="30px";
 			document.getElementById("Diff2Text").style.top="67px";
 			document.getElementById("Diff3Text").style.top="104px";
