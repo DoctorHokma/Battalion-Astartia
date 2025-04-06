@@ -8,6 +8,7 @@ battalion.language.addLanguage(Battalion.LANGUAGE.ROMANIAN, LANGUAGE_ROMANIAN);
 battalion.language.addLanguage(Battalion.LANGUAGE.TURKISH, LANGUAGE_TURKISH);
 battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
 
+var Flair = null;
 var Aphorism = null;
 
 ResolutionXFactor=1;
@@ -1825,7 +1826,11 @@ function CallInterlogue(){
 	document.getElementById("InterlogueText").innerHTML=Language.Interlogues[ChosenNation-1][ChosenChapter-1];
 	document.getElementById("InterlogueImage").src="Assets/Paralogues/"+ChosenNation+"X"+ChosenChapter+".JPG";};
 
-const writeAphorismText = function(context, aphorism) {
+const writeAphorism= function(context, aphorism) {
+	if(!aphorism) {
+		return;
+	}
+
 	const { language } = context;
 	const { narrator, text } = aphorism;
 	const aphorismHTML = "\"" + language.get(text) + "\"" + "<br><br>" + language.get(narrator);
@@ -1834,32 +1839,74 @@ const writeAphorismText = function(context, aphorism) {
 }
 
 const pickAphorism = function() {
+	if(APHORISMS.length === 0) {
+		return null;
+	}
+
 	const aphorismID = Math.floor(Math.random() * APHORISMS.length);
 	const aphorism = APHORISMS[aphorismID];
 	const { image } = aphorism;
 
-	document.getElementById("AphorismIllustration").src = image;
+	if(image) {
+		document.getElementById("AphorismIllustration").src = image;
+	}
 
 	return aphorism;
 }
 
+const writeFlair = function(context, flair) {
+	if(!flair) {
+		return;
+	}
+
+	const { language } = context;
+	const { text } = flair;
+	const flairHTML = language.get(text);
+
+	document.getElementById("PreloaderSplash").innerHTML = flairHTML;
+}
+
+const pickFlair = function() {
+	if(FLAIRS.length === 0) {
+		return null;
+	}
+
+	const flairID = Math.floor(Math.random() * FLAIRS.length);
+	const flair = FLAIRS[flairID];
+
+	return flair;
+}
+
 function CallPreloader(){
-	Aphorism = pickAphorism();
-
-	writeAphorismText(battalion, Aphorism);
-
 	document.getElementById("Disclaimer2").style.visibility="visible";
-	document.getElementById("PreloaderSplash").innerHTML=Language.LoaderSoundbites[Math.floor(Math.random()*Language.LoaderSoundbites.length)];
 
-	let PreloaderFrame=0;
-	let Loader=window.setInterval(Preload,50);
+	Aphorism = pickAphorism();
+	Flair = pickFlair();
 
-	function Preload(){if(PreloaderFrame<35){PreloaderFrame++};
-	if(PreloaderFrame%7==0){document.getElementById("PreloaderSplash").innerHTML=Language.LoaderSoundbites[Math.floor(Math.random()*Language.LoaderSoundbites.length)]};
-	document.getElementById("PreloaderBar").style.width=PreloaderFrame*20+"px";
+	writeAphorism(battalion, Aphorism);
+	writeFlair(battalion, Flair);
 
-	if(PreloaderFrame==35){clearInterval(Loader)}};
+	let frame = 0;
+	let loader = null;
+
+	const preload = () => {
+		if(frame < 35) frame++;
+
+		if(frame % 7 === 0) {
+			Flair = pickFlair();
+			writeFlair(battalion, Flair);
+		}
+
+		if(frame === 35) {
+			window.clearInterval(loader);
+		}
+
+		document.getElementById("PreloaderBar").style.width = `${frame * 20}px`;
+	}
+
+	loader = window.setInterval(preload, 50);
 };
+
 function castMap(){
 	//CallPreloader();
 	for(let i=1;i<=Map.length;i++){
@@ -4637,11 +4684,9 @@ function GeneralInitializer(){
 	//if(Language!=ENG){LanguageCorrecter(Language)};
 
 	//for(let o=1; o<=70; o++){CampaignUnits[o].name=Language.UnitNames[o]};
-	if(Aphorism) {
-		writeAphorismText(battalion, Aphorism);
-	}
+	writeAphorism(battalion, Aphorism);
+	writeFlair(battalion, Flair);
 
-	document.getElementById("PreloaderSplash").innerHTML=Language.LoaderSoundbites[Math.floor(Math.random()*Language.LoaderSoundbites.length)];
  	//This pretranslates the strings
 	document.getElementById("CampaignButtonP").innerHTML=Language.SystemTerms[6];
 	document.getElementById("BootCampButtonP").innerHTML=Language.SystemTerms[7];
@@ -5357,8 +5402,6 @@ function LanguageCorrecter(Language){
 	if(!Language.SystemTerms) Language.SystemTerms=ENG.SystemTerms;
 
 	if((Language.SystemTerms??[]).length==0){Language.SystemTerms=ENG.SystemTerms};
-
-	if((Language.LoaderSoundbites??[]).length==0){Language.LoaderSoundbites=ENG.LoaderSoundbites};
 	if((Language.NationNames??[]).length==0){Language.NationNames=ENG.NationNames};
 	if((Language.NationDesc??[]).length==0){Language.NationDesc=ENG.NationDesc};
 	if((Language.StartButtonTexts??[]).length==0){Language.StartButtonTexts=ENG.StartButtonTexts};

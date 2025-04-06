@@ -3,107 +3,86 @@ const LANGUAGE_ROMANIAN = {
     "LANGUAGE_DEFAULT_COMMENT": "Traducere partiala",
 
 	"APHORISM_NARRATOR_1": "Kafka, probably",
-	"APHORISM_TEXT_1": "Bureaucracy sucks, like so fucking bad",
-
 	"APHORISM_NARRATOR_2": "Interviul diplomatului Francois Armand Dupuy pentru Gazeta Lutețiană",
-	"APHORISM_TEXT_2": 	"Ce-au sperat să realizeze Acordurile de la Balbec, la modul realist? Nu am văzut nicio cale posibilă pentru pace și reconciliere, nici bunii mei prieteni Willow [diplomat albion și expert politolog] și Krasnov [diplomat Vostokian]. Mi s-a părut mai degrabă o cheltuială pentru ca Elam să-și arate noua importanță pe continent și sunt destul de sigur că asta a și fost. Un banchet cu confetti și șampanie în cinstea păcii și a camaraderiei, fără ca pacea sau camaraderia să fie vreundeva.",
-
 	"APHORISM_NARRATOR_3": "Interviul diplomatului Francis Woodenston-Willow pentru Londinian Gazette",
-	"APHORISM_TEXT_3": "Kargia nu voia să cumpere cereale ci să dețină mijloacele de producție agricolă, așteptându-se ca Somertin să predea întreaga regiune Panere care, și mai rău, era separată de ei de Iber și Vythm'k. Somertin dorea ca Kargia să desființeze așa pur și simplu armata sa angorjată și să se întoarcă înapoi la felul în care erau lucrurile (deja insuportabile pentru Kargia), astfel încât în viitor să fie lipsite de resurse și de putere iar Somertin i-ar putea înghiți cu totul. Elam voia Shqiperia, fără a avea ceva demn de dat în schimb sau suficientă putere să fie luat în serios de Somertin. Transkal nu a participat deoarece nu se aștepta să fie un combatant atât de curând, se așteptau să intre în război în 1848, nu în 1845. Într-un fel, doar Polazia a obținut ceea ce își dorea. A putut să pretindă în continuare că era neutră și nepartizană, dar pentru ceilalți nu a existat absolut nicio metodă pragmatică de a obține o reconciliere",
-
 	"APHORISM_NARRATOR_4": "Vadim Ilyseevich Krasnov (diplomat și politolog Vostokian) - comentariu publicat în Gazeta Imperială",
-	"APHORISM_TEXT_4": "Am putea fi tentați să spunem că Kargiții ar fi câștigat războiul, dacă Coaliția Glorioasă nu ar fi implicat Reginatul [Transkal] în război. Să nu ne pripim, atât Chromit cât și Marele Lord știau că Vanessa nu și-a făcut simpatiile pro-Somertin secrete nimănui. Și erau mai multe pârghii pe care Chromit să le tragă pentru a-i aduce în război decât ca [Steward General] Shmelev să-i țină afară. Nu era o chestiune de 'dacă' ci de 'când'. Operațiunea ambițioasă a Kargiei de o a asasina pe Majestatea Sa a fost o recunoaștere cinică a situației și o încercare disperată de a face Transkal cât mai inutilizabil pentru interesele Somertin. Să nu credem că Transkal a salvat Kaula de vârful de lance kargit. Privind retrospectiv, forțele locale au fost suficiente pentru a-i alunga, deși transkaliții au ajutat cu siguranță să o facă mai repede",
-
 	"APHORISM_NARRATOR_5": "Felix Kohler, diplomat și politolog Schwartzenwaldian, comentariu în Almanahul Imperial",
-	"APHORISM_TEXT_5": "Oare somertinii credeau că Polazia va rămâne neutră? În ciuda discursului pasional al lui Kronegar, unii încă credeau. John Doe cu toată fațada lui exuberantă și imbecilă știa cum stau lucrurile. Numai printr-un atac surpriză planificat în total secret și executat în tăcere radio completă aveau vreo șansă să securizeze o aterizare pe continent. Și au avut noroc, au găsit Armada de Safir nepregătită și au făcut-o țăndări, în timp ce au forțat două din celelalte trei [armade] să se retragă în confuzia generală și incertitudinea Înaltului Comandament Naval Somertin cu privire la viitorul curs de acțiune. Vor încerca să taie proviziile forței polaziene prin atacuri submarine sau îi vor lăsa să le invadeze țara cu nerușinare? Desigur, au ales prima opțiune iar polazienii i-au reprezentat în propaganda lor ca brute care scufundă vase civile, fără a menționa faptul că au pus intenționat muniții de război în navele civile menționate pentru a-i provoca.",
-
 	"APHORISM_NARRATOR_6": "Diplomatul și politologul spaghetton Lauro Cialdini. comentariu pentru Gazeta Regală",
-	"APHORISM_TEXT_6": "Pentru Elam Acordul de la Balbec a fost ca banchetul de absolvire pentru o domnișoară, șansa de a arăta lumii rochia, machiajul, manichiura și coafura ei aranjate cu migală. Și au reușit, au reconstruit un mic oraș de oază într-o atracție diplomatică pe care toate puterile ar respecta-o. Fotografiile au arătat mobilier luxos și mâncăruri felurite, un sultan zâmbitor toastând pentru pace și camaraderie și participanți activi dezbătând energic. A fost prima victorie de imagine a Elamului de secole și, într-adevăr, își arătase cea mai bună față lumii. Reprezentanții puterilor globale nu au ezitat deloc în a lăuda eforturile lor și în a spera că vor deveni în curând un membru stimabil al 'comunității' internaționale. Această frumoasă fațadă fiind în opoziție puternică cu actele abominabile pe care le-au comis mai târziu.",
-
 	"APHORISM_NARRATOR_7": "Comentator nespecificat",
-	"APHORISM_TEXT_7": "Deși Somertin a convocat o 'Cruciadă împotriva Kargitismului', ei nu prea se așteptau ca mulți să-și lase viața în urmă și să se urce pe o navă spre nicăieri. Dar războiul a durat mult, infrastructura lor era capabilă să-i acomodeze pe mulți iar simpatie pentru ei exista în multe locuri... foarte multe locuri. De-a lungul războiului lung de șapte ani trebuie să fi fost mai mult de o sută de mii de voluntari organizați în diverse stindarde. Cei mai mulți veneau din Vulturia, Statele Unite ale Iețirei, Schwartzenwald și Spaghettone, unii din Maharlika, Chaco, alte țări Iețirane și chiar o mână de veterani din Polazia care au servit cu mult timp în urmă sub generalul Breg. Problema a fost înclinația generalisimului Dumitrescu de a-i trimite în bătălii periculoase, văzându-i drept 'carne de tun gratis', din fericire Chromit și Anders i-au descurajat această atitudine nesăbuită",
-
 	"APHORISM_NARRATOR_8": "Comentator nespecificat",
-	"APHORISM_TEXT_8": "Kargia nu era singură, în ciuda faptului că era în război pentru obiectivele și preocupările naționale proprii ea încă s-a clătinat între naționalism și internaționalism. La fel cum Kargia avea 'ambiții anticoloniale' asupra Astartiei, Imperiul Fusang avea 'ambiții antiimperiale' peste Asiya și așa s-au găsit tovarăși de pat. Totuși, deși Fusang era o națiune cu o populație mare, avea mult mai puține resurse și era mult mai puțin industrializată decât Kargia. O mie de baterii de artilerie antiaeriană ar fi fost un fleac pentru Kargia, dar pentru Fusang era un mare efort. Cu toate astea au încercat pe cât posibil să-i ajute cu arme, voluntari și echipamente, enervându-i iremediabil pe somertini",
-
 	"APHORISM_NARRATOR_9": "Comentator nespecificat",
-	"APHORISM_TEXT_9": "Atât Regina, cât și generalii ei nu au considerat niciodată voluntarii sau ajutorul străin ca o variabilă în calculele lor. Într-adevăr, Fusang avea... alte simpatii, Imperiul Dragon simula neutralitate când de fapt încercau de fapt să salveze fața în fața impotenței lor, Puterile coloniale nu au putut nici măcar să numească Transkal pe hartă, iar Poarta a fost prietenoasă cu Elam, dușmanul lor. Cu toate acestea au existat niște aventurieri, aproximativ o sută (nici măcar nu sunt suficienti pentru a aduna un batalion) care au mers să lupte în steagul lui Gustav. Nu a murit niciunul dintre acești voluntari, fiind staționați în Polazia în unități de garnizoană",
-
 	"APHORISM_NARRATOR_10": "Comentator nespecificat",
-	"APHORISM_TEXT_10": "Polazia părea să fi atras paiul scurt când a venit vorba de ajutor străin și voluntari. Vulturia a anunțat 'neutralitate' în conflictul dintre polazieni și somertini, o neutralitate care trădează în mare măsură afinitățile pro-Somertin datorită abilității diplomatice fantastice a lui Chromit. Schwartzenwald, Spaghettone și Vostok au denunțat Polazia ca agresor ipocrit și au interzis categoric formarea de unități voluntare. Numai Galia și Albion păreau să audă situația lor, dar fără o cale sigură de a transporta voluntari sau echipamente prin blocada somertină și o circumstanță politică dificilă (Parlamentul refuzând de-a dreptul să mai cheltuiască un ban pe fundul insolvabil al polazienilor).<br>Au rămas singuri",
-
 	"APHORISM_NARRATOR_11": "Comentator nespecificat",
-	"APHORISM_TEXT_11": "Când sultanul Ngannangan (succesorul lui Sunanak pe care l-a ucis Polasie) din Trakabuli a trimis o baterie de obuziere în Elam pentru război, a existat multă bucurie, multă propagandă că islamicii din întreaga lume au fost alături de ei. Desigur, asta a fost mai mult în spirit decât în material. Marea majoritate dintre ei fie nu aveau decât voluntari sau puști de trimis, în număr mic, fie rareori reușeau să cumpere lucruri de la puterile coloniale industrializate și să le dăruiască tânărului sultan. Asemenea sultanul Murad a cumpărat o sută de sedanuri din Vulturia, sultanul Chodong a cumpărat și a trimis o baterie de artilerie precum a făcut Ngannangan iar sultanul Gozen din Sunda a făcut și el la fel. Ca scară, era o donație de o sută de sedanuri blindate aduse cu mare dificultate în timp ce marile puteri ale continentului foloseau nu mii, ci zeci de mii de camioane și alte vehicule non-blindate. Ca să nu mai vorbim de artilerie câteva sute de piese de artilerie în timp ce Kargia și Somertin aveau tehnic câte 100.000 fiecare.",
-
 	"APHORISM_NARRATOR_12": "Discursul radiodifuzat al lui Ladislav Chromit",
-	"APHORISM_TEXT_12": "Degenerații ipocriți de la nord nu ne vor învinge; nici păgânii barbari de la sud, nici măcar sataniştii psihopați ai Gosudarstvului! Hoardele lor blestemate poate că au călcat hotarele patriei noastre sfinte; dar nici nu știu ce-au trezit.<br> Le vom rupe armele, le vom spulbera mașinile de război și le vom îneca hoardele blestemate sub un val de oțel! Suntem uniți, necuceriți și de necucerit. Dreptatea pentru spurcăciunile lor va veni prompt, severă și inevitabilă!",
-
 	"APHORISM_NARRATOR_13": "Discursul radiodifuzat al Marelui Lord către poporul kargit",
-	"APHORISM_TEXT_13": "Timpul să intrăm în bârlogul lui Fafnir și să-i luăm comorile este acum. Grâne, metale, aur, toate ne pot aparține dacă cutezăm să punem mâinile pe ele. Cu cât amânăm, cu atât mai mare și mai primejdioasă se face Dihania Albă. Fără fapte hotărâte, cutezătoare vom rămâne o notă de subsol în istorie; fereastra noastră să acționăm se strâmtează pe zi ce trece. Tovarăși, vremea să acționăm, să luăm în coarne Dihania este ACUM! Să mergem uniți împotriva-i; gloria ne așteaptă peste Munții Stâncoși!",
-
 	"APHORISM_NARRATOR_14":	"Primul discurs radiodifuzat al Reginei Transkalului",
-	"APHORISM_TEXT_14": "Azi plătim prețul prostiei, indolenței și indiferenței lorzilor ce au fost. Suntem în război pe două fronturi, înapoiați și dependenți de aliații noștri pentru echipamente de bază. Trebuie să punem țara la cale și trebuie să o facem repede. Pot lorzii să țipe, pot să bocească, să-mi dea cu piciorul în față dacă așa poftesc dar voi trage Transkalul în epoca modernă cu forța dacă asta va fi nevoie",
-
 	"APHORISM_NARRATOR_15": "comentariul președintelui John Doe în companie privată",
-	"APHORISM_TEXT_15": "Bineînțeles că oamenii nu vor război. Vor cadouri, învoiri de la plata dărilor la stat, ajutoare sociale, triumfuri, drepturi și promisiuni, și-i vor vota pe cei a căror responsabilitate și voință e să le ofere. Dar alea trebuie să vină de undeva iar metodele bune, curate, nu sunt mereu suficiente. Și de aici încolo avem război",
-
 	"APHORISM_NARRATOR_16": "Tânărul sultan, explicând politica externă emirilor și agailor",
-	"APHORISM_TEXT_16": "Pornim la Jihad! Împotriva kaffirilor de la nord care stau aroganți în fața noastră; care țin piciorul pe Shqiperia noastră; care cresc zi de zi și se uită la noi cu ochi negri. Mergem să-i ucidem și să răzbunăm umilința de la Sassafras. Shallahu Akbar!",
-
 	"APHORISM_NARRATOR_17":	"'Generalul' Andrzej Vladov",
-	"APHORISM_TEXT_17": "Soldați ai Legiunii, nu aruncați armele cu care ați apărat patria, ridicați-le din nou împotriva nenorociților de kargiți!.<br><br> Chiar și acum oamenii chinuiți din Somertin ne așteaptă,  chiar și acum.<br><br> Salvați-i!",
-
 	"APHORISM_NARRATOR_18": "Pacelli",
-	"APHORISM_TEXT_18": "Și asta va trece",
-
 	"APHORISM_NARRATOR_19": "'Regentul' Shmelev",
-	"APHORISM_TEXT_19": "Nu trebuie să ne îngrijorăm de ne-ar privi istoria ca pe niște mândri patrioți sau ca borfași corupți.<br> Sunt destul de sigur că istoria nu-și va aminti defel de noi.",
-
 	"APHORISM_NARRATOR_20": "Mary Sue",
-	"APHORISM_TEXT_20": "Nu poți face o revoluție în mănuși de catifea",
-
 	"APHORISM_NARRATOR_21": "'Mahdi' Jibril Mutasarif",
-	"APHORISM_TEXT_21": "Jale, jale, jale nouă, în mâna kafirilor e tot estul și Cea Mai Sfântă Nestemată. Îți imaginezi cum ar pune o cruce pe Ka'aba!? NICIODATĂ! Malhama Al-Kubra e peste noi, ziua în care trebuie să ne arătăm puterea pentru ultima oară, Să-l ucidem pe Dajjal sau să murim încercând!",
-
 	"APHORISM_NARRATOR_22": "Bianca", 
-	"APHORISM_TEXT_22": "Nu mă băga în seamă, am să-mi văd de treabă"
+	
+	"APHORISM_TEXT_1": "Bureaucracy sucks, like so fucking bad",
+	"APHORISM_TEXT_2": 	"Ce-au sperat să realizeze Acordurile de la Balbec, la modul realist? Nu am văzut nicio cale posibilă pentru pace și reconciliere, nici bunii mei prieteni Willow [diplomat albion și expert politolog] și Krasnov [diplomat Vostokian]. Mi s-a părut mai degrabă o cheltuială pentru ca Elam să-și arate noua importanță pe continent și sunt destul de sigur că asta a și fost. Un banchet cu confetti și șampanie în cinstea păcii și a camaraderiei, fără ca pacea sau camaraderia să fie vreundeva.",
+	"APHORISM_TEXT_3": "Kargia nu voia să cumpere cereale ci să dețină mijloacele de producție agricolă, așteptându-se ca Somertin să predea întreaga regiune Panere care, și mai rău, era separată de ei de Iber și Vythm'k. Somertin dorea ca Kargia să desființeze așa pur și simplu armata sa angorjată și să se întoarcă înapoi la felul în care erau lucrurile (deja insuportabile pentru Kargia), astfel încât în viitor să fie lipsite de resurse și de putere iar Somertin i-ar putea înghiți cu totul. Elam voia Shqiperia, fără a avea ceva demn de dat în schimb sau suficientă putere să fie luat în serios de Somertin. Transkal nu a participat deoarece nu se aștepta să fie un combatant atât de curând, se așteptau să intre în război în 1848, nu în 1845. Într-un fel, doar Polazia a obținut ceea ce își dorea. A putut să pretindă în continuare că era neutră și nepartizană, dar pentru ceilalți nu a existat absolut nicio metodă pragmatică de a obține o reconciliere",
+	"APHORISM_TEXT_4": "Am putea fi tentați să spunem că Kargiții ar fi câștigat războiul, dacă Coaliția Glorioasă nu ar fi implicat Reginatul [Transkal] în război. Să nu ne pripim, atât Chromit cât și Marele Lord știau că Vanessa nu și-a făcut simpatiile pro-Somertin secrete nimănui. Și erau mai multe pârghii pe care Chromit să le tragă pentru a-i aduce în război decât ca [Steward General] Shmelev să-i țină afară. Nu era o chestiune de 'dacă' ci de 'când'. Operațiunea ambițioasă a Kargiei de o a asasina pe Majestatea Sa a fost o recunoaștere cinică a situației și o încercare disperată de a face Transkal cât mai inutilizabil pentru interesele Somertin. Să nu credem că Transkal a salvat Kaula de vârful de lance kargit. Privind retrospectiv, forțele locale au fost suficiente pentru a-i alunga, deși transkaliții au ajutat cu siguranță să o facă mai repede",
+	"APHORISM_TEXT_5": "Oare somertinii credeau că Polazia va rămâne neutră? În ciuda discursului pasional al lui Kronegar, unii încă credeau. John Doe cu toată fațada lui exuberantă și imbecilă știa cum stau lucrurile. Numai printr-un atac surpriză planificat în total secret și executat în tăcere radio completă aveau vreo șansă să securizeze o aterizare pe continent. Și au avut noroc, au găsit Armada de Safir nepregătită și au făcut-o țăndări, în timp ce au forțat două din celelalte trei [armade] să se retragă în confuzia generală și incertitudinea Înaltului Comandament Naval Somertin cu privire la viitorul curs de acțiune. Vor încerca să taie proviziile forței polaziene prin atacuri submarine sau îi vor lăsa să le invadeze țara cu nerușinare? Desigur, au ales prima opțiune iar polazienii i-au reprezentat în propaganda lor ca brute care scufundă vase civile, fără a menționa faptul că au pus intenționat muniții de război în navele civile menționate pentru a-i provoca.",
+	"APHORISM_TEXT_6": "Pentru Elam Acordul de la Balbec a fost ca banchetul de absolvire pentru o domnișoară, șansa de a arăta lumii rochia, machiajul, manichiura și coafura ei aranjate cu migală. Și au reușit, au reconstruit un mic oraș de oază într-o atracție diplomatică pe care toate puterile ar respecta-o. Fotografiile au arătat mobilier luxos și mâncăruri felurite, un sultan zâmbitor toastând pentru pace și camaraderie și participanți activi dezbătând energic. A fost prima victorie de imagine a Elamului de secole și, într-adevăr, își arătase cea mai bună față lumii. Reprezentanții puterilor globale nu au ezitat deloc în a lăuda eforturile lor și în a spera că vor deveni în curând un membru stimabil al 'comunității' internaționale. Această frumoasă fațadă fiind în opoziție puternică cu actele abominabile pe care le-au comis mai târziu.",
+	"APHORISM_TEXT_7": "Deși Somertin a convocat o 'Cruciadă împotriva Kargitismului', ei nu prea se așteptau ca mulți să-și lase viața în urmă și să se urce pe o navă spre nicăieri. Dar războiul a durat mult, infrastructura lor era capabilă să-i acomodeze pe mulți iar simpatie pentru ei exista în multe locuri... foarte multe locuri. De-a lungul războiului lung de șapte ani trebuie să fi fost mai mult de o sută de mii de voluntari organizați în diverse stindarde. Cei mai mulți veneau din Vulturia, Statele Unite ale Iețirei, Schwartzenwald și Spaghettone, unii din Maharlika, Chaco, alte țări Iețirane și chiar o mână de veterani din Polazia care au servit cu mult timp în urmă sub generalul Breg. Problema a fost înclinația generalisimului Dumitrescu de a-i trimite în bătălii periculoase, văzându-i drept 'carne de tun gratis', din fericire Chromit și Anders i-au descurajat această atitudine nesăbuită",
+	"APHORISM_TEXT_8": "Kargia nu era singură, în ciuda faptului că era în război pentru obiectivele și preocupările naționale proprii ea încă s-a clătinat între naționalism și internaționalism. La fel cum Kargia avea 'ambiții anticoloniale' asupra Astartiei, Imperiul Fusang avea 'ambiții antiimperiale' peste Asiya și așa s-au găsit tovarăși de pat. Totuși, deși Fusang era o națiune cu o populație mare, avea mult mai puține resurse și era mult mai puțin industrializată decât Kargia. O mie de baterii de artilerie antiaeriană ar fi fost un fleac pentru Kargia, dar pentru Fusang era un mare efort. Cu toate astea au încercat pe cât posibil să-i ajute cu arme, voluntari și echipamente, enervându-i iremediabil pe somertini",
+	"APHORISM_TEXT_9": "Atât Regina, cât și generalii ei nu au considerat niciodată voluntarii sau ajutorul străin ca o variabilă în calculele lor. Într-adevăr, Fusang avea... alte simpatii, Imperiul Dragon simula neutralitate când de fapt încercau de fapt să salveze fața în fața impotenței lor, Puterile coloniale nu au putut nici măcar să numească Transkal pe hartă, iar Poarta a fost prietenoasă cu Elam, dușmanul lor. Cu toate acestea au existat niște aventurieri, aproximativ o sută (nici măcar nu sunt suficienti pentru a aduna un batalion) care au mers să lupte în steagul lui Gustav. Nu a murit niciunul dintre acești voluntari, fiind staționați în Polazia în unități de garnizoană",
+	"APHORISM_TEXT_10": "Polazia părea să fi atras paiul scurt când a venit vorba de ajutor străin și voluntari. Vulturia a anunțat 'neutralitate' în conflictul dintre polazieni și somertini, o neutralitate care trădează în mare măsură afinitățile pro-Somertin datorită abilității diplomatice fantastice a lui Chromit. Schwartzenwald, Spaghettone și Vostok au denunțat Polazia ca agresor ipocrit și au interzis categoric formarea de unități voluntare. Numai Galia și Albion păreau să audă situația lor, dar fără o cale sigură de a transporta voluntari sau echipamente prin blocada somertină și o circumstanță politică dificilă (Parlamentul refuzând de-a dreptul să mai cheltuiască un ban pe fundul insolvabil al polazienilor).<br>Au rămas singuri",
+	"APHORISM_TEXT_11": "Când sultanul Ngannangan (succesorul lui Sunanak pe care l-a ucis Polasie) din Trakabuli a trimis o baterie de obuziere în Elam pentru război, a existat multă bucurie, multă propagandă că islamicii din întreaga lume au fost alături de ei. Desigur, asta a fost mai mult în spirit decât în material. Marea majoritate dintre ei fie nu aveau decât voluntari sau puști de trimis, în număr mic, fie rareori reușeau să cumpere lucruri de la puterile coloniale industrializate și să le dăruiască tânărului sultan. Asemenea sultanul Murad a cumpărat o sută de sedanuri din Vulturia, sultanul Chodong a cumpărat și a trimis o baterie de artilerie precum a făcut Ngannangan iar sultanul Gozen din Sunda a făcut și el la fel. Ca scară, era o donație de o sută de sedanuri blindate aduse cu mare dificultate în timp ce marile puteri ale continentului foloseau nu mii, ci zeci de mii de camioane și alte vehicule non-blindate. Ca să nu mai vorbim de artilerie câteva sute de piese de artilerie în timp ce Kargia și Somertin aveau tehnic câte 100.000 fiecare.",
+	"APHORISM_TEXT_12": "Degenerații ipocriți de la nord nu ne vor învinge; nici păgânii barbari de la sud, nici măcar sataniştii psihopați ai Gosudarstvului! Hoardele lor blestemate poate că au călcat hotarele patriei noastre sfinte; dar nici nu știu ce-au trezit.<br> Le vom rupe armele, le vom spulbera mașinile de război și le vom îneca hoardele blestemate sub un val de oțel! Suntem uniți, necuceriți și de necucerit. Dreptatea pentru spurcăciunile lor va veni prompt, severă și inevitabilă!",
+	"APHORISM_TEXT_13": "Timpul să intrăm în bârlogul lui Fafnir și să-i luăm comorile este acum. Grâne, metale, aur, toate ne pot aparține dacă cutezăm să punem mâinile pe ele. Cu cât amânăm, cu atât mai mare și mai primejdioasă se face Dihania Albă. Fără fapte hotărâte, cutezătoare vom rămâne o notă de subsol în istorie; fereastra noastră să acționăm se strâmtează pe zi ce trece. Tovarăși, vremea să acționăm, să luăm în coarne Dihania este ACUM! Să mergem uniți împotriva-i; gloria ne așteaptă peste Munții Stâncoși!",
+	"APHORISM_TEXT_14": "Azi plătim prețul prostiei, indolenței și indiferenței lorzilor ce au fost. Suntem în război pe două fronturi, înapoiați și dependenți de aliații noștri pentru echipamente de bază. Trebuie să punem țara la cale și trebuie să o facem repede. Pot lorzii să țipe, pot să bocească, să-mi dea cu piciorul în față dacă așa poftesc dar voi trage Transkalul în epoca modernă cu forța dacă asta va fi nevoie",
+	"APHORISM_TEXT_15": "Bineînțeles că oamenii nu vor război. Vor cadouri, învoiri de la plata dărilor la stat, ajutoare sociale, triumfuri, drepturi și promisiuni, și-i vor vota pe cei a căror responsabilitate și voință e să le ofere. Dar alea trebuie să vină de undeva iar metodele bune, curate, nu sunt mereu suficiente. Și de aici încolo avem război",
+	"APHORISM_TEXT_16": "Pornim la Jihad! Împotriva kaffirilor de la nord care stau aroganți în fața noastră; care țin piciorul pe Shqiperia noastră; care cresc zi de zi și se uită la noi cu ochi negri. Mergem să-i ucidem și să răzbunăm umilința de la Sassafras. Shallahu Akbar!",
+	"APHORISM_TEXT_17": "Soldați ai Legiunii, nu aruncați armele cu care ați apărat patria, ridicați-le din nou împotriva nenorociților de kargiți!.<br><br> Chiar și acum oamenii chinuiți din Somertin ne așteaptă,  chiar și acum.<br><br> Salvați-i!",
+	"APHORISM_TEXT_18": "Și asta va trece",
+	"APHORISM_TEXT_19": "Nu trebuie să ne îngrijorăm de ne-ar privi istoria ca pe niște mândri patrioți sau ca borfași corupți.<br> Sunt destul de sigur că istoria nu-și va aminti defel de noi.",
+	"APHORISM_TEXT_20": "Nu poți face o revoluție în mănuși de catifea",
+	"APHORISM_TEXT_21": "Jale, jale, jale nouă, în mâna kafirilor e tot estul și Cea Mai Sfântă Nestemată. Îți imaginezi cum ar pune o cruce pe Ka'aba!? NICIODATĂ! Malhama Al-Kubra e peste noi, ziua în care trebuie să ne arătăm puterea pentru ultima oară, Să-l ucidem pe Dajjal sau să murim încercând!",
+	"APHORISM_TEXT_22": "Nu mă băga în seamă, am să-mi văd de treabă",
+
+	"FLAIR_TEXT_1": "Punând un frac pentru Conferința de la Balbec",
+	"FLAIR_TEXT_2": "Reîncărcând pușca",
+	"FLAIR_TEXT_3": "Panzer brrrr",
+	"FLAIR_TEXT_4": "Repopulând Petragora",
+	"FLAIR_TEXT_5": "Kurwa! [rasterizare eșuată]",
+	"FLAIR_TEXT_6": "Construind făbrici",
+	"FLAIR_TEXT_7": "Construind doar artilerie",
+	"FLAIR_TEXT_8": "Antrenând Gărzi Albe",
+	"FLAIR_TEXT_9": "Deschizând parașuta de urgență",
+	"FLAIR_TEXT_10": "Țintind fără lunetă",
+	"FLAIR_TEXT_11": "Asaltând plajele din Heva",
+	"FLAIR_TEXT_12": "Bombardând garnizoanele de pe Sassafras",
+	"FLAIR_TEXT_13": "Botezând Gărzile Cenușii",
+	"FLAIR_TEXT_14": "Plantând Trandafirul Negru",
+	"FLAIR_TEXT_15": "Apărând Munții Altai",
+	"FLAIR_TEXT_16": "Confiscând mijloacele de reproducție",
+	"FLAIR_TEXT_17": "Punând veste explozive",
+	"FLAIR_TEXT_18": "Epurând Socialiști",
+	"FLAIR_TEXT_19": "Epurând Kargitiști",
+	"FLAIR_TEXT_20": "Epurând Ba'atiști",
+	"FLAIR_TEXT_21": "Recruitând Continentaliști",
+	"FLAIR_TEXT_22": "Trimițând feministele în Vulturia",
+	"FLAIR_TEXT_23": "Modernizând Polazia",
+	"FLAIR_TEXT_24": "Ținând Trecătoarea Tako",
+	"FLAIR_TEXT_25": "Ținând Trecătoarea Mari",
+	"FLAIR_TEXT_26": "Ținând Trecătoarea Tatuli",
+	"FLAIR_TEXT_27": "Asaltând Viroaga Kirka",
+	"FLAIR_TEXT_28": "Fortificând Patna",
+	"FLAIR_TEXT_29": "Luptând în Kaula",
+	"FLAIR_TEXT_30": "Asaltând Culmea Burba",
+	"FLAIR_TEXT_31": "Anihilând Megalopolisul Tavar",
+	"FLAIR_TEXT_32": "Bând ciocolată caldă"
 };
 
 ROM={
-	LoaderSoundbites: [
-		"Punând un frac pentru Conferința de la Balbec",
-		"Reîncărcând pușca",
-		"Panzer brrrr",
-		"Repopulând Petragora",
-		"Kurwa! [rasterizare eșuată]",
-		"Construind făbrici",
-		"Construind doar artilerie",
-		"Antrenând Gărzi Albe",
-		"Deschizând parașuta de urgență",
-		"Țintind fără lunetă",
-		"Asaltând plajele din Heva",
-		"Bombardând garnizoanele de pe Sassafras",
-		"Botezând Gărzile Cenușii",
-		"Plantând Trandafirul Negru",
-		"Apărând Munții Altai",
-		"Confiscând mijloacele de reproducție",
-		"Punând veste explozive",
-		"Epurând Socialiști",
-		"Epurând Kargitiști",
-		"Epurând Ba'atiști",
-		"Recruitând Continentaliști",
-		"Trimițând feministele în Vulturia",
-		"Modernizând Polazia",
-		"Ținând Trecătoarea Tako",
-		"Ținând Trecătoarea Mari",
-		"Ținând Trecătoarea Tatuli",
-		"Asaltând Viroaga Kirka",
-		"Fortificând Patna",
-		"Luptând în Kaula",
-		"Asaltând Culmea Burba",
-		"Anihilând Megalopolisul Tavar",
-		"Bând ciocolată caldă"
-	],
 	Tooltips: [	
 		"undefined",
 		"Luptă în Marele Război Astartian, cu orice țară alegi",

@@ -1,72 +1,85 @@
 const LANGUAGE_ENGLISH = {
-	"LANGUAGE_CREATOR_COMMENT": "Suck it, bri'ish people; USA is now the symbol of english lanuage",
-    "LANGUAGE_DEFAULT_COMMENT": "Suck it, bri'ish people; USA is now the symbol of english lanuage",
+	"LANGUAGE_CREATOR_COMMENT": "Suck it, bri'ish people; USA is now the symbol of english language",
+    "LANGUAGE_DEFAULT_COMMENT": "Suck it, bri'ish people; USA is now the symbol of english language",
 
 	"APHORISM_NARRATOR_1": "Kafka, probably",
-	"APHORISM_TEXT_1": "Bureaucracy sucks, like so fucking bad",
-
 	"APHORISM_NARRATOR_2": "Diplomat Francois Armand Dupuy's interview for the Lutetian Gazette",
-	"APHORISM_TEXT_2": "What did the Balbec Accords even hope to achieve, realistically? I saw no possible recourse for peace and reconcilliation, neither did my good friends Willow [albion diplomat and expert politologist] and Krasnov[Vostokian diplomat]. It seemed more like an expense for Elam to show off its newfound importance to the continent and I am fairly certain that's what it was. A confetti and champagne banquet in honor of peace and camaraderie, without peace or camaraderie anywhere to be found.",
-
 	"APHORISM_NARRATOR_3": "Diplomat Francis Woodenston-Willow's interview for the Londinian Gazette",
-	"APHORISM_TEXT_3": "Kargia wanted not to buy grain but to own the means of agricultural production, expecting Somertin to hand the entire Panere region which, worse still was separated from them by Iber and Vythm'k. Somertin wanted Kargia to simply disband its burgeoned army and go back to the way things were(already untenable for Kargia) so that in the future they would be so lacking in resources and power that Somertin would swallow them awhole. Elam wanted Shqiperia, without having anything worthwhile to give in exchange or enough power to be taken seriously by Somertin. Transkal didn't participate, as it didn't expect to be a combatant so soon. At the earliest they expected to enter the war in 1848, not 1845. In a way then, only Polasie got what it wanted. It got to pretend that it was neutral and nonpartisan for a while longer. But for the others, there was absolutely no pragmatic method of obtaining reconciliation. War became an inevitable prospect",
-
 	"APHORISM_NARRATOR_4": "Vadim Ilyseevich Krasnov(Vostokian diplomat and politologist) - commentary published in the Imperial Gazette",
-	"APHORISM_TEXT_4": "One might be tempted to say that the Kargits would have won the war, had the Glorious Coallition not brought the [Transkal] Commonwealth into it. Let us not fool ourselves, both Chromit and the Great Lord knew, Vanessa did not make her pro-Somertin sympathies a secret to anyone. And there were more levers for Chromit to pull to get her into the war than for [Steward General] Shmelev to pull to keep them out of it. It was not a question of if, but of when and by which manner. Kargia's ambitious operation to assassinate Her Majesty was a cynical acknowledgement of the situation, and a desperate attempt to make Transkal as unusable to Somertin interests as possible. And let us not think that Transkal saved Kaula from the kargit spearhead, in retrospect the local forces were enough to drive them out, though the Transkalites certainly did help do it faster",
-
 	"APHORISM_NARRATOR_5": "Felix Kohler, Schwartzenwaldian diplomat and politologist, commentary in the Imperial Almanac",
-	"APHORISM_TEXT_5": "Did Somertins think that Polasie would stay neutral? Despite Kronegar's impassionate speech, some still did. John Doe, for all his boisterous and nonsensical front, knew how things were. That they had but one chance to get a foothold in Somertin, and that was by a surprise attack planned in total secrecy and executed in complete radio silence. And they got lucky, they found the Sapphire Battlefleet and bombed it to smithereens, while forcing two of the other three[battlefleets] to relocate. And they maintained a supply line by virtue of Somertin's naval high command being conflicted as to in what manner they will act. Will they attempt to cut the polasian invasion's supply by submarine attacks or let them invade their nation with impunity. Naturally they chose the first option, and naturally Polasie obtained means to portray them as criminals and brutes who sink civilian vessels in their propaganda, with no mention to the fact that they purposefully put munitions in said merchant vessels so as to provoke them.",
-
 	"APHORISM_NARRATOR_6": "Spaghettonian diplomat and politologist Lauro Cialdini's commentary for the Royal Gazette",
-	"APHORISM_TEXT_6": "For Elam the Balbec Accord was just like the graduation banquet to a young lady, the chance for her to show her most beautiful attire and visage to the world. And they managed, they rebuilt a small oasis town into a diplomatic attraction that all powers could respect. Photographies showed luxurious furniture and copious gourmet dishes, a smiling Sultan toasting to peace and camaraderie and active participants debating energetically. It was Elam's first soft power victory in centuries, and indeed it had showed its best face to the world. Representatives from the global powers did not delay one second in praising their efforts and in hoping that they would soon be an esteemed member of the international 'community'. This beautiful facade being in stark opposition to the abominable acts they would commit later.",
-
 	"APHORISM_NARRATOR_7": "Unspecified commenter",
-	"APHORISM_TEXT_7": "Despite Somertin having called a 'Crusade against Kargitism', they realistically did not expect many to leave their lives behind and get on a ship to buttfucknowhere. But the war was long, their infrastructure capable of handling many, and there was sentiment for them in many places... very many places. Over the course of the seven-year war there must have been more than a hundred thousand volunteers organized in various banners. Most from Eagleland, the United States of Yetsira, Schwartzenwald and Spaghettone, some from Maharlika, Chaco, other Iețiran countries and even a handful veterans from Polasie that long ago served under general Breg. The issue was Generalissimo Dumitrescu's penchant for sending them into dangerous battles, seeing them as 'free manpower', fortunately enough Chromit and Anders dissuaded him from this reckless attitude",
-
 	"APHORISM_NARRATOR_8": "Unspecified commenter",
-	"APHORISM_TEXT_8": "Kargia was not alone, despite mostly being in this for the national goals and concerns it had, it still teetered the edge between nationalism and internationalism. Much like Kargia had 'anticolonial ambitions' on Astartia, the Empire of Fusang had 'antiimperial ambitions' over Asiya. And so they found themselves bedfellows. However though Fusang is a nation with about the same population as Kargia, it has way fewer resources and is way less industrialized. A thousand anti-air artillery bores would be a pittance for Kargia, but for Fusang it was an effort. Still, it did the best it could to send men, rifles and equipment to its ally, and in doing so, angered Somertin irreparably",
-
 	"APHORISM_NARRATOR_9": "Unspecified commenter",
-	"APHORISM_TEXT_9": "Both the Queen and her generals never once took foreign volunteers or aid as a variable in their calculations. Indeed Fusang had...other sympathies, the Dragon Empire was feigning neutrality when really they were trying to save face in face of their impotence, the colonial powers could not even name Transkal on the map and the Porte was chummy with Elam, their enemy. However, there were some adventurers, a hundred or so(not even enough to assemble a battalion) who went to fight in Gustav's banner for the fun of it. None of those volunteers died as they were stationed in Polasie on garrison duty",
-
 	"APHORISM_NARRATOR_10": "Unspecified commenter",
-	"APHORISM_TEXT_10": "Polasie appeared to have drawn the short straw when it came to foreign aid and volunteers. Eagleland announced 'neutrality' on the conflict between the polasians and Somertin, a neutrality betraying pro-Somertin affinities in no small measure owing to Chromit's fantastic diplomatic skill. Schwartzenwald, Spaghettone and Vostok denounced Polasie as a hypocritical aggressor and forbid volunteer battalions from forming. Only Gallia and Albion seemed to hear their plight, but with no safe path of transporting volunteers or equipment through Somertin's blockade, and a difficult political circumstance(the Parliament outright refusing to spend even one more penny on the polasians's insolvent ass).<br>They were alone",
-
 	"APHORISM_NARRATOR_11": "Unspecified commenter",
-	"APHORISM_TEXT_11": "When Sultan Ngannangan(the successor of Sunanak that Polasie murdered) of Trakabuli sent a battery of howitzers to Elam for the war, there was much rejoicing, much propaganda that the ishlamics worldwide stood with them. Of course, that was more in spirit than in material. The vast majority of them either had nothing but volunteers or rifles to send, in small numbers mind you, or rarely they managed to buy things from the industrialized colonial powers and gift them to the young Sultan. Suchlike Sultan Murad bought a hundred Sedans from Eagleland, Sultan Chodong bought and sent a battery of artillery like Ngannangan and Sultan Gozen of Sunda did too. For scale, that was a gift of a hundred armored Sedans brought with great difficulty when the great powers of the continent used not thousands, but tens of thousands of trucks and other non-tank vehicles. To say nothing of artillery, a hundred bores when Kargia and Somertin technically had 100.000 each.",
-
 	"APHORISM_NARRATOR_12": "Ladislav Chromit's radio-broadcasted speech",
-	"APHORISM_TEXT_12": "The hypocritical degenerates of the north shall not vanquish us; neither the barbaric heathens of the south nor even the psychopathic satanists of the Gosudarstvo! Their cursed hordes may have trodden over our sacred hearth; but by God they know not what they awoken.<br>We will break their arms, shatter their warmachines and drown their cursed hordes under a wave of steel! Now we stand united; unconquered and unconquerable. Justice for their travesties shall be forthcoming, severe and inescapable. We shall prevail!",
-
 	"APHORISM_NARRATOR_13": "Great Lord's radio speech to the kargit people",
-	"APHORISM_TEXT_13": "The time to enter Fafnir's den and steal his gold is now. Grain, metals, gold, all can belong to us if we but dare to seize it. The more we delay, the greater the White Monster's threat becomes. Without resolute, determined action we will be consigned to the footnotes of history; and our window to act is growing narrow. The time to act, to skewer the White Monster is NOW, comrades! Let us march forward as one; glory awaits us over the Petric Mountains!",
-
 	"APHORISM_NARRATOR_14": "The Queen's first radio address to the people of Transkal",
-	"APHORISM_TEXT_14": "Today we pay the price of past stewards stupidity, indolence and indifference. We are at war on two fronts, underdeveloped and dependent on others for basic equipment. We need to set things straight and we need to do it quickly. The stewards may shout, the stewards may sob, the stewards may kick me in the face while at it but I shall drag Transkal into the modern age, kicking and screaming if we must",
-
 	"APHORISM_NARRATOR_15": "President John Doe's comment in private company",
-	"APHORISM_TEXT_15": "Of course the people do not want war. They want gifts; tax exemptions, handouts, triumphs, liberties or promises, and they vote those whose prerogative is to do as such. But those have to come from somewhere, and good, clean methods can only provide for so long",
-
 	"APHORISM_NARRATOR_16": "The young sultan, explaining foreign policy to the emirs and aghas",
-	"APHORISM_TEXT_16": "We go to jihad! Against the northern kaffirs who stand proud and haughty in front of us; who hold one foot over dear Shqiperia; who grow day by day and look at us with dark eyes. We go to slay them and avenge the humiliation they gave us over the Sassafras. Allahu Akbar!",
-
 	"APHORISM_NARRATOR_17": "'General' Andrzej Vladov",
-	"APHORISM_TEXT_17": "Soldiers of the Legion, do not throw down the rifles you fired to defend your nation, raise them against the godforsaken kargits once more.<br><br> Even now the tortured people of Somertin are waiting for us, even now.<br><br> Liberate them!",
-
 	"APHORISM_NARRATOR_18": "Pacelli",
-	"APHORISM_TEXT_18": "This too, shall pass",
-
 	"APHORISM_NARRATOR_19": "'Regent' Shmelev",
-	"APHORISM_TEXT_19": "We need not concern ourselves with whether history will remember us as heroes or as corrupt warlords. <br> I am quite certain; history will not remember us at all.",
-
 	"APHORISM_NARRATOR_20": "Mary Sue",
-	"APHORISM_TEXT_20": "You cannot make a revolution in velvet gloves",
-
 	"APHORISM_NARRATOR_21": "'Mahdi' Jibril Mutasarif",
-	"APHORISM_TEXT_21": "Woe, woe, woe to us, in the hands of the kaffir is all the east and the Most Precious Jewel. Can you imagine them putting a cross on the Ka'aba!? NEVER! Malhama Al-Kubra is upon us, the day we must muster our strength for the last time, to slay Dajjal once and for all or die trying!",
-
 	"APHORISM_NARRATOR_22": "Bianca",
+
+	"APHORISM_TEXT_1": "Bureaucracy sucks, like so fucking bad",
+	"APHORISM_TEXT_2": "What did the Balbec Accords even hope to achieve, realistically? I saw no possible recourse for peace and reconcilliation, neither did my good friends Willow [albion diplomat and expert politologist] and Krasnov[Vostokian diplomat]. It seemed more like an expense for Elam to show off its newfound importance to the continent and I am fairly certain that's what it was. A confetti and champagne banquet in honor of peace and camaraderie, without peace or camaraderie anywhere to be found.",
+	"APHORISM_TEXT_3": "Kargia wanted not to buy grain but to own the means of agricultural production, expecting Somertin to hand the entire Panere region which, worse still was separated from them by Iber and Vythm'k. Somertin wanted Kargia to simply disband its burgeoned army and go back to the way things were(already untenable for Kargia) so that in the future they would be so lacking in resources and power that Somertin would swallow them awhole. Elam wanted Shqiperia, without having anything worthwhile to give in exchange or enough power to be taken seriously by Somertin. Transkal didn't participate, as it didn't expect to be a combatant so soon. At the earliest they expected to enter the war in 1848, not 1845. In a way then, only Polasie got what it wanted. It got to pretend that it was neutral and nonpartisan for a while longer. But for the others, there was absolutely no pragmatic method of obtaining reconciliation. War became an inevitable prospect",
+	"APHORISM_TEXT_4": "One might be tempted to say that the Kargits would have won the war, had the Glorious Coallition not brought the [Transkal] Commonwealth into it. Let us not fool ourselves, both Chromit and the Great Lord knew, Vanessa did not make her pro-Somertin sympathies a secret to anyone. And there were more levers for Chromit to pull to get her into the war than for [Steward General] Shmelev to pull to keep them out of it. It was not a question of if, but of when and by which manner. Kargia's ambitious operation to assassinate Her Majesty was a cynical acknowledgement of the situation, and a desperate attempt to make Transkal as unusable to Somertin interests as possible. And let us not think that Transkal saved Kaula from the kargit spearhead, in retrospect the local forces were enough to drive them out, though the Transkalites certainly did help do it faster",
+	"APHORISM_TEXT_5": "Did Somertins think that Polasie would stay neutral? Despite Kronegar's impassionate speech, some still did. John Doe, for all his boisterous and nonsensical front, knew how things were. That they had but one chance to get a foothold in Somertin, and that was by a surprise attack planned in total secrecy and executed in complete radio silence. And they got lucky, they found the Sapphire Battlefleet and bombed it to smithereens, while forcing two of the other three[battlefleets] to relocate. And they maintained a supply line by virtue of Somertin's naval high command being conflicted as to in what manner they will act. Will they attempt to cut the polasian invasion's supply by submarine attacks or let them invade their nation with impunity. Naturally they chose the first option, and naturally Polasie obtained means to portray them as criminals and brutes who sink civilian vessels in their propaganda, with no mention to the fact that they purposefully put munitions in said merchant vessels so as to provoke them.",
+	"APHORISM_TEXT_6": "For Elam the Balbec Accord was just like the graduation banquet to a young lady, the chance for her to show her most beautiful attire and visage to the world. And they managed, they rebuilt a small oasis town into a diplomatic attraction that all powers could respect. Photographies showed luxurious furniture and copious gourmet dishes, a smiling Sultan toasting to peace and camaraderie and active participants debating energetically. It was Elam's first soft power victory in centuries, and indeed it had showed its best face to the world. Representatives from the global powers did not delay one second in praising their efforts and in hoping that they would soon be an esteemed member of the international 'community'. This beautiful facade being in stark opposition to the abominable acts they would commit later.",
+	"APHORISM_TEXT_7": "Despite Somertin having called a 'Crusade against Kargitism', they realistically did not expect many to leave their lives behind and get on a ship to buttfucknowhere. But the war was long, their infrastructure capable of handling many, and there was sentiment for them in many places... very many places. Over the course of the seven-year war there must have been more than a hundred thousand volunteers organized in various banners. Most from Eagleland, the United States of Yetsira, Schwartzenwald and Spaghettone, some from Maharlika, Chaco, other Iețiran countries and even a handful veterans from Polasie that long ago served under general Breg. The issue was Generalissimo Dumitrescu's penchant for sending them into dangerous battles, seeing them as 'free manpower', fortunately enough Chromit and Anders dissuaded him from this reckless attitude",
+	"APHORISM_TEXT_8": "Kargia was not alone, despite mostly being in this for the national goals and concerns it had, it still teetered the edge between nationalism and internationalism. Much like Kargia had 'anticolonial ambitions' on Astartia, the Empire of Fusang had 'antiimperial ambitions' over Asiya. And so they found themselves bedfellows. However though Fusang is a nation with about the same population as Kargia, it has way fewer resources and is way less industrialized. A thousand anti-air artillery bores would be a pittance for Kargia, but for Fusang it was an effort. Still, it did the best it could to send men, rifles and equipment to its ally, and in doing so, angered Somertin irreparably",
+	"APHORISM_TEXT_9": "Both the Queen and her generals never once took foreign volunteers or aid as a variable in their calculations. Indeed Fusang had...other sympathies, the Dragon Empire was feigning neutrality when really they were trying to save face in face of their impotence, the colonial powers could not even name Transkal on the map and the Porte was chummy with Elam, their enemy. However, there were some adventurers, a hundred or so(not even enough to assemble a battalion) who went to fight in Gustav's banner for the fun of it. None of those volunteers died as they were stationed in Polasie on garrison duty",
+	"APHORISM_TEXT_10": "Polasie appeared to have drawn the short straw when it came to foreign aid and volunteers. Eagleland announced 'neutrality' on the conflict between the polasians and Somertin, a neutrality betraying pro-Somertin affinities in no small measure owing to Chromit's fantastic diplomatic skill. Schwartzenwald, Spaghettone and Vostok denounced Polasie as a hypocritical aggressor and forbid volunteer battalions from forming. Only Gallia and Albion seemed to hear their plight, but with no safe path of transporting volunteers or equipment through Somertin's blockade, and a difficult political circumstance(the Parliament outright refusing to spend even one more penny on the polasians's insolvent ass).<br>They were alone",
+	"APHORISM_TEXT_11": "When Sultan Ngannangan(the successor of Sunanak that Polasie murdered) of Trakabuli sent a battery of howitzers to Elam for the war, there was much rejoicing, much propaganda that the ishlamics worldwide stood with them. Of course, that was more in spirit than in material. The vast majority of them either had nothing but volunteers or rifles to send, in small numbers mind you, or rarely they managed to buy things from the industrialized colonial powers and gift them to the young Sultan. Suchlike Sultan Murad bought a hundred Sedans from Eagleland, Sultan Chodong bought and sent a battery of artillery like Ngannangan and Sultan Gozen of Sunda did too. For scale, that was a gift of a hundred armored Sedans brought with great difficulty when the great powers of the continent used not thousands, but tens of thousands of trucks and other non-tank vehicles. To say nothing of artillery, a hundred bores when Kargia and Somertin technically had 100.000 each.",
+	"APHORISM_TEXT_12": "The hypocritical degenerates of the north shall not vanquish us; neither the barbaric heathens of the south nor even the psychopathic satanists of the Gosudarstvo! Their cursed hordes may have trodden over our sacred hearth; but by God they know not what they awoken.<br>We will break their arms, shatter their warmachines and drown their cursed hordes under a wave of steel! Now we stand united; unconquered and unconquerable. Justice for their travesties shall be forthcoming, severe and inescapable. We shall prevail!",
+	"APHORISM_TEXT_13": "The time to enter Fafnir's den and steal his gold is now. Grain, metals, gold, all can belong to us if we but dare to seize it. The more we delay, the greater the White Monster's threat becomes. Without resolute, determined action we will be consigned to the footnotes of history; and our window to act is growing narrow. The time to act, to skewer the White Monster is NOW, comrades! Let us march forward as one; glory awaits us over the Petric Mountains!",
+	"APHORISM_TEXT_14": "Today we pay the price of past stewards stupidity, indolence and indifference. We are at war on two fronts, underdeveloped and dependent on others for basic equipment. We need to set things straight and we need to do it quickly. The stewards may shout, the stewards may sob, the stewards may kick me in the face while at it but I shall drag Transkal into the modern age, kicking and screaming if we must",
+	"APHORISM_TEXT_15": "Of course the people do not want war. They want gifts; tax exemptions, handouts, triumphs, liberties or promises, and they vote those whose prerogative is to do as such. But those have to come from somewhere, and good, clean methods can only provide for so long",
+	"APHORISM_TEXT_16": "We go to jihad! Against the northern kaffirs who stand proud and haughty in front of us; who hold one foot over dear Shqiperia; who grow day by day and look at us with dark eyes. We go to slay them and avenge the humiliation they gave us over the Sassafras. Allahu Akbar!",
+	"APHORISM_TEXT_17": "Soldiers of the Legion, do not throw down the rifles you fired to defend your nation, raise them against the godforsaken kargits once more.<br><br> Even now the tortured people of Somertin are waiting for us, even now.<br><br> Liberate them!",
+	"APHORISM_TEXT_18": "This too, shall pass",
+	"APHORISM_TEXT_19": "We need not concern ourselves with whether history will remember us as heroes or as corrupt warlords. <br> I am quite certain; history will not remember us at all.",
+	"APHORISM_TEXT_20": "You cannot make a revolution in velvet gloves",
+	"APHORISM_TEXT_21": "Woe, woe, woe to us, in the hands of the kaffir is all the east and the Most Precious Jewel. Can you imagine them putting a cross on the Ka'aba!? NEVER! Malhama Al-Kubra is upon us, the day we must muster our strength for the last time, to slay Dajjal once and for all or die trying!",
 	"APHORISM_TEXT_22": "Don't mind me, I'll just mind my own business",
+
+	"FLAIR_TEXT_1": "Putting on a tuxedo for the Balbec Conference",
+	"FLAIR_TEXT_2": "Reloading rifle",
+	"FLAIR_TEXT_3": "Panzer brrrr",
+	"FLAIR_TEXT_4": "Resettling Petric",
+	"FLAIR_TEXT_5": "Kurwa! [failed rasterizing]",
+	"FLAIR_TEXT_6": "Building factories",
+	"FLAIR_TEXT_7": "Building only artillery",
+	"FLAIR_TEXT_8": "Training White Guards",
+	"FLAIR_TEXT_9": "Emergency opening the parachute",
+	"FLAIR_TEXT_10": "Sniping without a scope",
+	"FLAIR_TEXT_11": "Storming the beaches of Heva",
+	"FLAIR_TEXT_12": "Bombarding the Sassafras garrisons",
+	"FLAIR_TEXT_13": "Baptizing the Grey Guards",
+	"FLAIR_TEXT_14": "Planting the Black Rose",
+	"FLAIR_TEXT_15": "Defending the Altay Mountains",
+	"FLAIR_TEXT_16": "Seizing the means of reproduction",
+	"FLAIR_TEXT_17": "Suicide charging at the kaffir",
+	"FLAIR_TEXT_18": "Purging Socialists",
+	"FLAIR_TEXT_19": "Purging Kargitists",
+	"FLAIR_TEXT_20": "Purging Ba'athists",
+	"FLAIR_TEXT_21": "Recruiting Continentalists",
+	"FLAIR_TEXT_22": "Sending feminists to Eagleland",
+	"FLAIR_TEXT_23": "Moderniing Polasie",
+	"FLAIR_TEXT_24": "Holding the Tako Pass",
+	"FLAIR_TEXT_25": "Holding the Mari Pass",
+	"FLAIR_TEXT_26": "Holding the Tatuli Pass",
+	"FLAIR_TEXT_27": "Storming Kirka Gulch",
+	"FLAIR_TEXT_28": "Fortifying Patna",
+	"FLAIR_TEXT_29": "Fighting for Kaula",
+	"FLAIR_TEXT_30": "Storming Burba Ridge",
+	"FLAIR_TEXT_31": "Razing the Tavar Megalopolis",
+	"FLAIR_TEXT_32": "Drinking hot chocolate",
 
     "CODEX_DOCUMENT_SIZE_UNKNOWN": "Unknown Size",
     "CODEX_DOCUMENT_SIZE_EMPTY": "Empty Document",
@@ -468,39 +481,6 @@ ENG={
 		"Victory","Defeat",
 		"Relation","Self","Cordial","Hostile","Attacker","Defender","Offensive Dao","Defensive Dao","Funds:","Tech:","SpecInf","SpecTank","Press C for controls","Commander","Save Map","Conditions","Jethro","Vlad","Kirk",
 		],
-
-	LoaderSoundbites:["Putting on a tuxedo for the Balbec Conference",
-		"Reloading rifle",
-		"Panzer brrrr",
-		"Resettling Petric",
-		"Kurwa! [failed rasterizing]",
-		"Building factories",
-		"Building only artillery",
-		"Training White Guards",
-		"Emergency opening the parachute",
-		"Sniping without a scope",
-		"Storming the beaches of Heva",
-		"Bombarding the Sassafras garrisons",
-		"Baptizing the Grey Guards",
-		"Planting the Black Rose",
-		"Defending the Altay Mountains",
-		"Seizing the means of reproduction",
-		"Suicide charging at the kaffir",
-		"Purging Socialists",
-		"Purging Kargitists",
-		"Purging Ba'athists",
-		"Recruiting Continentalists",
-		"Sending feminists to Eagleland",
-		"Moderniing Polasie",
-		"Holding the Tako Pass",
-		"Holding the Mari Pass",
-		"Holding the Tatuli Pass",
-		"Storming Kirka Gulch",
-		"Fortifying Patna",
-		"Fighting for Kaula",
-		"Storming Burba Ridge",
-		"Razing the Tavar Megalopolis",
-		"Drinking hot chocolate"],
 	Tooltips:[	"undefined",
 				"Fight in the Great Astartian War, with whichever nation you choose to support",
 				"Learn how to play in a few simple missions",
@@ -778,11 +758,8 @@ ENG={
 	//SocIntern
 
 	//Eagleland
-
-
-
+	
 	],
-
 	TerrainName:["null","Plains","Forest","Hills","Mountain","Megamountains","Road","Ruins","Urban District","Industrial District","Military-Industrial Complex","Aviation Industrial Facility","Shipbuilding Facility","Headquarters","Command Center","Taiga","Desert","Tundra","Extreme Desert","Arctic Hellhole","Bridge","High Bridge","River","Sea","Reef","Floes","Archipelago","Rock Formation","Icebergs","Shore","Oil Rig","Marshland","Volcano","Minefield","Naval Mines","Railways","","","","",""],
 	TerrainDesc:[
 		"There is literally nothing here. What are you looking for?",
@@ -820,9 +797,8 @@ ENG={
 		"Impassable to all but air units",
 		"Units who step on this take damage",
 		"Ships who step on this take damage",
-		"Quickly transports land units across the map"],
-
-
+		"Quickly transports land units across the map"
+	],
 	UnitNames:["null",
 		"Light Infantry","Infantry","Assault Infantry","Transkalite Snipers","Polesian Frogmen","Stormtroopers","Spec-Ops","White Guards","Suicide Bombers","White Paladins",
 		"Cavalry","Motorized Infantry","Supply Truck","Flak Tank","Crab Tank","SCADP","Trosky Warmachine","Sisu APC","Boing SH-11 Megacockter","AYIN",
@@ -832,9 +808,6 @@ ENG={
 		"Barge Convoy","Intrepid", "Submersible", "Destroyer", "Light Cruiser","Heavy Cruiser","Capital Ship","Aircraft Carrier","Superbattleship","Supercarrier", 
 		"Barricade","Bunker","Turret","Flak Tower","Coastal Battery","Workshop","Missile Silo","Bastion","Supply Depot","Fortress"
 		],
-
-
-
 	UnitDesc:[
 		"Ad-hoc fortifications are being erected here",
 
@@ -915,7 +888,6 @@ ENG={
 		"Storehouse of food, ammunitions and all supplies your troops need to function",
 		"A formidable citadel capable of holding back an army all by itself"
 		],
-		
 	TraitName:[
 		"",
 
@@ -988,7 +960,6 @@ ENG={
 		"This unit cannot move","Very versatile, but generally slow","Very fast but do not do well in rugged terrain","A good balance of speed and versatility","Very fast and very versatile","Restricted to water tiles but pretty fast","Restricted to water except shallow tiles","This unit can fight both on land and in shallow bodies of water",
 		"Temperate climate, mild precipitations, nothing abnormal","Hot and hostile, troops stationed here deal -25% damage","Cold and hostile, troops stationed here deal -25% damage","Sweltering and unbearable, troops stationed here deal -50% damage","Frigid and unbearable, troops stationed here deal -50% damage","Uninhabitable, troops stationed here deal -75% damage","Uninhabitable, troops stationed here deal -75% damage"
 		],
-
 	//NationName registry is OBSOLETE. No need for translation and should be deleted as soon as we can make sure that doesn't cause unexpected issues
 	NationName:["Synarchy of Somertin ","Kargit Revolutionary Orderstate","Commonwealth of Transkal","Polasie People's Federation","Sublime Caliphate of Elam",
 				"Judas Legion","United Front of the Unbidden","Structuralist Crown Council of Transkal","Democratic Syndicalist Revolutionary Front","Akkadian National Army",
@@ -1040,8 +1011,6 @@ ENG={
 		[]
 
 		],
-
-
 	IntraeventTranscripts:[
 		["Narrator","null"],
 
@@ -2179,8 +2148,6 @@ ENG={
 				[""],[""],[""],[""],[""],[""],[""],[""],[""],[""],
 				[""],[""],[""],[""],[""],[""],[""],[""],[""],[""]
 		],
-
-
 	ChapterName:[["Deluge","Comeback","Skewering the Effete","Strangling the Pathetic","Tide of Steel","Vengeance","Endgame"],
 				["Operatsiya Belaya","Crowning Jewel","Sturm und Drang","End of the Synarchy","Unfinished Business","Master of the Continent","Starless Midnight"],
 				["The Silent Taiga Awakens","The Long March","The Way Forward","Past against Future","End of the Song"],
@@ -5880,9 +5847,6 @@ ENG={
 		[//Campaign 10 - HAHAHA you're not finding this secret nation out until the full release!
 			]
 			],
-
-
-
 	};
 
 Language=ENG;

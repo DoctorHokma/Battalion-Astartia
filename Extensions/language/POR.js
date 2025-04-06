@@ -2271,10 +2271,6 @@ POR={
 			],
 		[//Campaign 10 - HAHAHA you're not finding this secret nation out until the full release!
 			]],
-
-
-
-
 	VictoryQuotes:[
 		["A winner is you","We have defeated the enemy","We stand triumphant","You have won, exactly as I expected of you","We have won!"],
 		["One step closer to the end of this war","The whole world stands behind you. March on!","Your days are numbered, wretches","Arise, great nation. Arise for the great war!","Through machinegun fire and artillery we fearlessly charged, we have driven these devils back."],
@@ -2290,34 +2286,4 @@ POR={
 		["Our spirits will persist, protecting our descendants and granting them wisdom","The final slumber, far away from home","Returning to the nature that birthed us"],
 		["This must be one of those unwinnable plot battles right? Right!?","We are freedom fighters, how can we lose!?","Our future seems to have been painted black"],
 		["Inshallah!","(radio silence)",""]],
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	};
