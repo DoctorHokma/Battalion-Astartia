@@ -2,7 +2,7 @@ const Battalion = function() {
     this.soundPlayer = new SoundPlayer(SOUND);
     this.musicPlayer = new MusicPlayer(MUSIC, PLAYLIST);
     this.client = new Client();
-    this.language = new LanguageHandler();
+    this.language = new LanguageHandler(LANGUAGE_TEMPLATE);
 }
 
 Battalion.LANGUAGE = {

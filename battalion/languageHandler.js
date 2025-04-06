@@ -1,5 +1,6 @@
-const LanguageHandler = function() {
+const LanguageHandler = function(template) {
     this.languages = new Map();
+    this.template = template;
     this.currentLanguage = null;
 }
 
@@ -47,4 +48,51 @@ LanguageHandler.prototype.get = function(key) {
     }
 
     return text;
+}
+
+LanguageHandler.prototype.getAllMissingTags = function(keywords = []) {
+    const languageMissing = new Map();
+
+    for(const [languageID] of this.languages) {
+        const missing = this.getMissingTags(languageID);
+        const filtered = new Set();
+
+        languageMissing.set(languageID, {
+            "regular": missing,
+            "filtered": filtered
+        });
+    }
+
+    for(let i = 0; i < keywords.length; i++) {
+        const keyword = keywords[i];
+
+        languageMissing.forEach(({regular, filtered}) => {
+            for(const tagID of regular) {
+                if(tagID.includes(keyword)) {
+                    filtered.add(tagID);
+                }
+            }
+        });
+    }
+
+    return languageMissing;
+}
+
+LanguageHandler.prototype.getMissingTags = function(languageID) {
+    const missing = new Set();
+    const language = this.languages.get(languageID);
+
+    if(!language) {
+        return missing;
+    }
+
+    for(const tagID in this.template) {
+        const tag = language[tagID];
+
+        if(!tag || (tag.length === 0 && LanguageHandler.STRICT)) {
+            missing.add(tagID);
+        }
+    }
+
+    return missing;
 }

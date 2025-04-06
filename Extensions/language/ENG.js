@@ -560,7 +560,7 @@ const LANGUAGE_ENGLISH = {
 	"UNIT_NAME_MEME_SPARTANS": "Spartans",
 
 	"UNIT_DESC_UNKNOWN": "Ad-hoc fortifications are being erected here",
-	"UNIT_DESC_LIGHT_INFANRY": "Lightly equipped and almost untrained, these men aren't the best for combat, but they're easy to pump out.",
+	"UNIT_DESC_LIGHT_INFANTRY": "Lightly equipped and almost untrained, these men aren't the best for combat, but they're easy to pump out.",
 	"UNIT_DESC_INFANTRY": "The backbone of every army. Reliable, durable and most importantly, cheap.",
 	"UNIT_DESC_ASSAULT_INFANTRY": "Well trained, well equipped and ready for your command",
 	"UNIT_DESC_SNIPER": "Raised in the harsh taigas of Transkal, these men had to hunt to survive. Very good in rugged terrain.",
