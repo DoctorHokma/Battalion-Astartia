@@ -9075,18 +9075,35 @@ function ToggleTileBlock(Block){
 
 	};
 function Tooltip(Tooltip){
-	
-	let TooltipFrame=0;
-	let TooltipFloat=setInterval(Float,100);
-	function Float(){
-		TooltipFrame++;
+	const { language } = battalion;
+	const tooltipID = `TOOLTIP_${Tooltip}`;
+	const tooltipHTML = language.get(tooltipID);
 
-		if(TooltipFrame==5){document.getElementById("GeneralTooltipText").innerHTML=Language.Tooltips[Tooltip]};
+	let frame = 0;
+	let interval = null;
 
-		if(TooltipFrame==10){document.getElementById("GeneralTooltip").style.visibility="inherit";};
+	const tooltipDisplay = () => {
+		switch(frame) {
+			case 5: {
+				document.getElementById("GeneralTooltipText").innerHTML = tooltipHTML;
+				break;
+			}
+			case 10: {
+				document.getElementById("GeneralTooltip").style.visibility = "inherit";
+				break;
+			}
+			case 20: {
+				document.getElementById("GeneralTooltip").style.visibility = "hidden";
+				clearInterval(interval);
+				break;
+			}
+		}
 
-		if(TooltipFrame==20){document.getElementById("GeneralTooltip").style.visibility="hidden"; clearInterval(TooltipFloat)};
-	}};
+		frame++;
+	}
+
+	setInterval(tooltipDisplay, 100);
+};
 	
 	
 function traitDetail(traitIndex,UnitCase){

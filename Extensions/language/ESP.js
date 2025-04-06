@@ -4,7 +4,8 @@ const LANGUAGE_SPANISH = {
 };
 
 ESP={
-	SystemTerms:["Made by Task Force Tucker","Warning","This game contains bullying, kidnapping, torture, murder, suicide, violence, war crimes, atrocities, Goring's fat ass, Titans, genocidal rampages, freedom, racism, fascism, communism, fascism and communism's ugly-ass baby, paedophilic manchild Sultans, pedophilic psychopaths, traitors, a glass of juice, implied rape, written rape, graphic rape, other types of rape, ethnoreligious genocide, chemical warfare, humanism, Taboritsky's funny clock, drug abuse, sexual perversions, spoilers(a fuckton of them), satire, double satire, dark humour, toilet humour, humour in general, a REALLY thin fourth wall, lampshades, gamer time, special operations, penises, Skoatia, Twitter, Reddit, dystopia, cockroaches, and worst of all... BUREAUCRACY(I'm so sorry guys)","I promise not to steal, otherwise my butt is ready for surprise sex","But seriously, this game gets pretty hardcore. If you're a bitch, don't play it","Any attempt to sell this game is idiotic, this game is free. 0$. Nada. Niente. Only Task Force Tucker and those authorized are allowed to share this game, the others will be hunted. Do not test my patience if you don't want your ass to be fucked.",
+	SystemTerms:[
+		"Made by Task Force Tucker","Warning","This game contains bullying, kidnapping, torture, murder, suicide, violence, war crimes, atrocities, Goring's fat ass, Titans, genocidal rampages, freedom, racism, fascism, communism, fascism and communism's ugly-ass baby, paedophilic manchild Sultans, pedophilic psychopaths, traitors, a glass of juice, implied rape, written rape, graphic rape, other types of rape, ethnoreligious genocide, chemical warfare, humanism, Taboritsky's funny clock, drug abuse, sexual perversions, spoilers(a fuckton of them), satire, double satire, dark humour, toilet humour, humour in general, a REALLY thin fourth wall, lampshades, gamer time, special operations, penises, Skoatia, Twitter, Reddit, dystopia, cockroaches, and worst of all... BUREAUCRACY(I'm so sorry guys)","I promise not to steal, otherwise my butt is ready for surprise sex","But seriously, this game gets pretty hardcore. If you're a bitch, don't play it","Any attempt to sell this game is idiotic, this game is free. 0$. Nada. Niente. Only Task Force Tucker and those authorized are allowed to share this game, the others will be hunted. Do not test my patience if you don't want your ass to be fucked.",
 		"Campaña","Campo de Entrenamiento","Continuar","Opciones","Créditos","Mapas Adicionales","Conquista","Editor de mapas","Información del mundo","Cerrar","Proceder","Jugar","Estado:","Ayuda","Guardar Progreso","Modo seguro","Salir",
         "Coordinación:","Programación:","Diseño de unidades","Arte de pantalla:","Banda Sonora:","Trama/Guión:","Si robas algo de éste juego voy a encontrar tu culo y voy a jodértelo duro.",
         "Nación:","Facción:","Sinopsis:","Capítulo 1","Capítulo 2","Capítulo 3","Capítulo 4","Capítulo 5","Capítulo 6","Capítulo 7","Dificultad","Gran Poder","Poder Regional","Poder Menor",
@@ -17,39 +18,9 @@ ESP={
         "Unidades de Infantería","Unidades Motorizadas","Unidades Blindadas","Unități de Artillería","Unidades de aviación","Unidades Navales","Unidades Estáticas",
 		"Victoria","Derrota",
 		"Coalición","Yo","Cordial","Hostil","Atacante","Defensor","Dao ofensivo","Dao defensivo","Fondos:","Tecnología:","SpecInf","SpecTank","Prensa C de controles","Comandante","Save Map","Conditions","Jethro","Vlad","Kirk",
-		],
-	Tooltips:[	"undefined",
-				"Fight in the Great Astartian War, with whichever nation you choose to support",
-				"Learn how to play in a few simple missions",
-				"Continue the last level you were playing",
-				"Adjust sound, music, etcetera",
-				"Special thanks to all those who helped us make this!",
-				"Make your own maps and play them",
-				"Read lore about the in-game universe",
-				"Play a multitude of special levels",
-				"Choose a nation and try to conquer the continent(or just survive)",
-				"The classical campaign, where Somertin and Transkal fight against Kargia, Polasie and Elam. 195 missions over 10 campaigns",
-				"Fight for Maharlika, Nusantara, Gyros or other states in a series of short minicampaigns. 25 missions over 5 campaigns",
-				"A gritty, wrathful war over Astartia's ashes; scarred by Kargia's conquest and brutalization. 25 missions",
-				"Choose the chapter",
-				"Choose the mission",
-				"Choose the difficulty",
-				"Play this mission with friends on the same device",
-				"Here you can see if the mission has any special objectives or properties",
-				"Choose a tile. Hold Shift to fast-paint with it. Right-click to fill the screen with it.",
-				"Choose a unit. Click the lateral buttons to move to a different unit cateogry",
-				"Choose which nation the next unit/tile belongs to",
-				"Modify level parameters such as tiles to defend, tiles to capture, etc",
-				"Modify a tile or unit's properties(name, description, morale, life)",
-				"How did you find this!? There is nothing for you here, go away! >:(",
-				"Turn background music on or off. Maybe they gave you ear cancer or psychological trauma, I don't know",
-				"Turn attack/movement SFX on or off. You shouldn't be playing games at school tho",
-				"Turn dialogue/narration on or off. We have a skip button for that, you know?",
-				"Turns idle animations on or off. Some may find jiggly tanks uncanny",
-				"I wonder what this button does :)",
-				"How sizable this document is"],
-
-	StartButtonTexts:["¡Por Dios, el Pueblo y la Madre Patria!",
+	],
+	StartButtonTexts:[
+		"¡Por Dios, el Pueblo y la Madre Patria!",
 		"¡Panzer Vorwarts!",
 		"¡Marchen, Fusileros de Transkalite!",
 		"¡Por la Libertad!!",
@@ -59,7 +30,8 @@ ESP={
 		"Do you know da wae to da quen?",
 		"¡Proletarios, rompan sus cadenas!",
         "El gigante despierta",
-		"¡DESATEN LA GRAN CRUZADA!"],
+		"¡DESATEN LA GRAN CRUZADA!"
+	],
 	UnitSpecialNames:[null,
 
 		//Somertin: 1-7: Guard Banners | 15-28: Militias | 29-35: Armored Divisions | 36-42: Fighter Squadrons | 43-49: various | 50:ALEPH

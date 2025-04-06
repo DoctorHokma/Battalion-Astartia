@@ -81,6 +81,36 @@ const LANGUAGE_ENGLISH = {
 	"FLAIR_TEXT_31": "Razing the Tavar Megalopolis",
 	"FLAIR_TEXT_32": "Drinking hot chocolate",
 
+	"TOOLTIP_1": "Fight in the Great Astartian War, with whichever nation you choose to support",
+	"TOOLTIP_2": "Learn how to play in a few simple missions",
+	"TOOLTIP_3": "Continue the last level you were playing",
+	"TOOLTIP_4": "Adjust sound, music, etcetera",
+	"TOOLTIP_5": "Special thanks to all those who helped us make this!",
+	"TOOLTIP_6": "Make your own maps and play them",
+	"TOOLTIP_7": "Read lore about the in-game universe",
+	"TOOLTIP_8": "Play a zmultitude of special levels",
+	"TOOLTIP_9": "Choose a nation and try to conquer the continent(or just survive)",
+	"TOOLTIP_10": "The classical campaign, where Somertin and Transkal fight against Kargia, Polasie and Elam. 195 missions over 10 campaigns",
+	"TOOLTIP_11": "Fight for Maharlika, Nusantara, Gyros or other states in a series of short minicampaigns. 25 missions over 5 campaigns",
+	"TOOLTIP_12": "A gritty, wrathful war over Astartia's ashes; scarred by Kargia's conquest and brutalization. 25 missions",
+	"TOOLTIP_13": "Choose the chapter",
+	"TOOLTIP_14": "Choose the mission",
+	"TOOLTIP_15": "Choose the difficulty",
+	"TOOLTIP_16": "Play this mission with friends on the same device",
+	"TOOLTIP_17": "Here you can see if the mission has any special objectives or properties",
+	"TOOLTIP_18": "Choose a tile. Hold Shift to fast-paint with it. Right-click to fill the screen with it.",
+	"TOOLTIP_19": "Choose a unit. Click the lateral buttons to move to a different unit cateogry",
+	"TOOLTIP_20": "Choose which nation the next unit/tile belongs to",
+	"TOOLTIP_21": "Modify level parameters such as tiles to defend, tiles to capture, etc",
+	"TOOLTIP_22": "Modify a tile or unit's properties(name, description, morale, life)",
+	"TOOLTIP_23": "How did you find this!? There is nothing for you here, go away! >:(",
+	"TOOLTIP_24": "Turn background music on or off. Maybe they gave you ear cancer or psychological trauma, I don't know",
+	"TOOLTIP_25": "Turn attack/movement SFX on or off. You shouldn't be playing games at school tho",
+	"TOOLTIP_26": "Turn dialogue/narration on or off. We have a skip button for that, you know?",
+	"TOOLTIP_27": "Turns idle animations on or off. Some may find jiggly tanks uncanny",
+	"TOOLTIP_28": "I wonder what this button does :)",
+	"TOOLTIP_29": "How sizable this document is",
+
     "CODEX_DOCUMENT_SIZE_UNKNOWN": "Unknown Size",
     "CODEX_DOCUMENT_SIZE_EMPTY": "Empty Document",
     "CODEX_DOCUMENT_SIZE_VERY_SHORT": "Very Short Document",
@@ -481,37 +511,8 @@ ENG={
 		"Victory","Defeat",
 		"Relation","Self","Cordial","Hostile","Attacker","Defender","Offensive Dao","Defensive Dao","Funds:","Tech:","SpecInf","SpecTank","Press C for controls","Commander","Save Map","Conditions","Jethro","Vlad","Kirk",
 		],
-	Tooltips:[	"undefined",
-				"Fight in the Great Astartian War, with whichever nation you choose to support",
-				"Learn how to play in a few simple missions",
-				"Continue the last level you were playing",
-				"Adjust sound, music, etcetera",
-				"Special thanks to all those who helped us make this!",
-				"Make your own maps and play them",
-				"Read lore about the in-game universe",
-				"Play a zmultitude of special levels",
-				"Choose a nation and try to conquer the continent(or just survive)",
-				"The classical campaign, where Somertin and Transkal fight against Kargia, Polasie and Elam. 195 missions over 10 campaigns",
-				"Fight for Maharlika, Nusantara, Gyros or other states in a series of short minicampaigns. 25 missions over 5 campaigns",
-				"A gritty, wrathful war over Astartia's ashes; scarred by Kargia's conquest and brutalization. 25 missions",
-				"Choose the chapter",
-				"Choose the mission",
-				"Choose the difficulty",
-				"Play this mission with friends on the same device",
-				"Here you can see if the mission has any special objectives or properties",
-				"Choose a tile. Hold Shift to fast-paint with it. Right-click to fill the screen with it.",
-				"Choose a unit. Click the lateral buttons to move to a different unit cateogry",
-				"Choose which nation the next unit/tile belongs to",
-				"Modify level parameters such as tiles to defend, tiles to capture, etc",
-				"Modify a tile or unit's properties(name, description, morale, life)",
-				"How did you find this!? There is nothing for you here, go away! >:(",
-				"Turn background music on or off. Maybe they gave you ear cancer or psychological trauma, I don't know",
-				"Turn attack/movement SFX on or off. You shouldn't be playing games at school tho",
-				"Turn dialogue/narration on or off. We have a skip button for that, you know?",
-				"Turns idle animations on or off. Some may find jiggly tanks uncanny",
-				"I wonder what this button does :)",
-				"How sizable this document is"],
 
+		//NOTE: This has to do with the nation { name } is a property of the nation blob.
 	NationNames:["Neutral",
 				"Synarchy of Somertin",
 				"Kargit Gosudarstvo",
@@ -525,6 +526,7 @@ ENG={
 				"Akkadian Mahdist Revolt"],
 
 			
+				//NOTE: These also seem to be properties of the nation { victoryQuotes, defeatQuotes}.
 	VictoryQuotes:[
 		["A winner is you","We have defeated the enemy","We stand triumphant","You have won, exactly as I expected of you","We have won!"],
 		["One step closer to the end of this war","The whole world stands behind you. March on!","Your days are numbered, wretches. Our bayonets we shall drive into your throats!","Arise, unbidden nation. Arise for the great war!","Through machinegun fire and artillery we fearlessly charged, we have driven these devils back."],
@@ -541,7 +543,7 @@ ENG={
 		["This must be one of those unwinnable plot battles right? Right!?","We are freedom fighters, how can we lose!?","Our future seems to have been painted black","Our worst fear - consequences for our actions","The time for debauchery and excess has come to an end"],
 		["Inshallah!","(radio silence)","She said she was actually 400 years old, officer","Masaka! This cannot be!","The power of friendship ain't doing shit"]],
 
-
+		//NOTE: This has to do with the nation { startButtonText } is a property of the nation blob.
 	StartButtonTexts:["For God, People and the Motherland!",
 		"Pantser Vorwarts!",
 		"March on, Transkalite Riflemen!",
@@ -758,7 +760,7 @@ ENG={
 	//SocIntern
 
 	//Eagleland
-	
+
 	],
 	TerrainName:["null","Plains","Forest","Hills","Mountain","Megamountains","Road","Ruins","Urban District","Industrial District","Military-Industrial Complex","Aviation Industrial Facility","Shipbuilding Facility","Headquarters","Command Center","Taiga","Desert","Tundra","Extreme Desert","Arctic Hellhole","Bridge","High Bridge","River","Sea","Reef","Floes","Archipelago","Rock Formation","Icebergs","Shore","Oil Rig","Marshland","Volcano","Minefield","Naval Mines","Railways","","","","",""],
 	TerrainDesc:[
