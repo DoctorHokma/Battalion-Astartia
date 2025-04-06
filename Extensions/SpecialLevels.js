@@ -2277,10 +2277,10 @@ Halo={
 	[4,4,1,1,1,14,1,1,1,22],
 	[4,4,4,1,1,1,1,1,1,4]],
 	Roster:[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0},
-	{id:71 , faction:4 , direction:3, x:1, y:5, morale:0, hpModifier:0, CustomName:"Spartan",CustomDescription:"Spartans like to kick ass"},
-	{id:71 , faction:4 , direction:4, x:3, y:4, morale:0, hpModifier:0, CustomName:"Spartan",CustomDescription:"Spartans like to kick ass"},
-	{id:71 , faction:4 , direction:3, x:3, y:5, morale:0, hpModifier:0, CustomName:"Spartan",CustomDescription:"Spartans like to kick ass"},
-	{id:71 , faction:4 , direction:2, x:3, y:6, morale:0, hpModifier:0, CustomName:"Spartan",CustomDescription:"Spartans like to kick ass"},
+	{id:71 , faction:4 , direction:3, x:1, y:5, morale:0, hpModifier:0},
+	{id:71 , faction:4 , direction:4, x:3, y:4, morale:0, hpModifier:0},
+	{id:71 , faction:4 , direction:3, x:3, y:5, morale:0, hpModifier:0},
+	{id:71 , faction:4 , direction:2, x:3, y:6, morale:0, hpModifier:0},
 	{id:28 , faction:5 , direction:2, x:6, y:0, morale:0, hpModifier:0},
 	{id:6 , faction:5 , direction:2, x:7, y:1, morale:0, hpModifier:0},
 	{id:23 , faction:5 , direction:2, x:8, y:0, morale:0, hpModifier:0},
@@ -2327,7 +2327,7 @@ Halo={
 
 	Factions:NostalgiaFactions,
 
-	Units:MemeUnits,
+	Units:CampaignUnits,
 
 	Terrain:CampaignTerrain
 	};

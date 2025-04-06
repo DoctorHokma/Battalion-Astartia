@@ -1505,7 +1505,7 @@ function AttackEstimate(Attacker,Defender){
 
 	};
 function AnalyseSquare(entityType,X,Y){
-	
+	const { language } = battalion;
 	//index=23;
 	if(entityType=="Tile"){
 		index=Map[X][Y];
@@ -1557,17 +1557,32 @@ function AnalyseSquare(entityType,X,Y){
 		document.getElementById("DamageHeader").innerHTML=Language.SystemTerms[45];
 		document.getElementById("MovementHeader").innerHTML=Language.SystemTerms[46];
 
-		//document.getElementById("DetBarName").innerHTML=Units[unit.unitType].name;
-		//alert(Language.LanguageComment);
-		let Name=Language.UnitNames[unit.unitType];
-		if(unit.hasSpecialName??0!=0){Name=Language.UnitSpecialNames[unit.hasSpecialName]};
-		if(unit.hasCustomName??0!=0){Name=unit.hasCustomName};
-		Name=rostermap[X][Y].name;
-		//alert(Name);
-		let Desc=Language.UnitDesc[unit.unitType];
-		if(unit.hasSpecialDesc??0!=0){Desc=Language.UnitSpecialDesc[unit.hasSpecialDesc]};
-		if(unit.hasCustomDesc??0!=0){Desc=unit.hasCustomDesc};
-		Desc=rostermap[X][Y].description;
+		let Name = "";
+
+		if(unit.customName) {
+			Name = unit.customName
+		} else if(unit.hasSpecialName) {
+			Name = Language.UnitSpecialNames[unit.hasSpecialName]
+		} else {
+			const unitType = Units[unit.unitType];
+			const name = language.get(unitType.name);
+
+			Name = name;
+		}
+
+		let Desc = "";
+
+		if(unit.customDesc) {
+			Desc = unit.customDesc;
+		} else if(unit.hasSpecialDesc) {
+			Desc = Language.UnitSpecialDesc[unit.hasSpecialDesc];
+		} else {
+			const unitType = Units[unit.unitType];
+			const desc = language.get(unitType.desc);
+
+			Desc = desc;
+		}
+
 		document.getElementById("DetBarName").innerHTML=Name;
 		document.getElementById("DetBarDescription").style.width="210px";
 		document.getElementById("DetBarDescription").innerHTML=Desc;
@@ -1704,6 +1719,7 @@ function Battle_Won(){
 	BattleEnd=false;
 
 	document.getElementById("EndBattleTitle").innerHTML=Language.SystemTerms[123];};
+	//NEYN TODO!!!
 function Build(Structure){
 	//alert(hasCertainTrait(Structure,"Seabound"));
 	if(YourMoney<Units[Structure].Cost || (!CanBuildCoastal&&hasCertainTrait(Structure,"Seabound"))){alert("Cannot build");
@@ -1716,8 +1732,8 @@ function Build(Structure){
 		let X=UnitIcs;
 		let Y=UnitIgrec;
 		let Santier={
-			name: Units[0].name,
-			description: Language.UnitDesc[0],
+			name: "",
+			description: "",
 			ID:"Unit "+MapRoster.length,
 			index:MapRoster.length-1,
 			x:X, 
@@ -1745,11 +1761,12 @@ function Build(Structure){
 			document.getElementById('EntityCore '+(X+1-StandardX)+"X"+(Y+1-StandardY)).src="Assets/Units/Static/Skele3.PNG";
 
 	}};
+	//NEYN TODO!!!
 function BuildingComplete(Index){
 	let type=MapRoster[Index].building;
 	let Building={
-			name: Units[type].name,
-			description: Language.UnitDesc[type],
+			name: "",
+			description: "",
 			ID:"Unit "+MapRoster.length,
 			index:Index,
 			x:MapRoster[Index].x, 
@@ -2474,13 +2491,19 @@ function castMapMaker(){
 
 		};};
 		RefreshMapEditor();};
+
+const Unit = function() {
+
+}
+
 function CastEntityMap(Map, Roster){
+	const { language } = battalion;
+
 	map=Map;
 	var mapWidth=map[0].length;
 	var mapHeight=map.length;
 	rostermap=[];
 	var line=[];
-	var index=Roster.length;
 	MapRoster=[0];
 	for(i=0;i<mapWidth;i++){line[i]=0;};
 		line=JSON.parse(JSON.stringify(line));
@@ -2488,70 +2511,89 @@ function CastEntityMap(Map, Roster){
 		rostermap=JSON.parse(JSON.stringify(rostermap));
 
 	//alert(rostermap.length);
-	for(var k=1; k<index; k++){
-		//alert(Roster[k].hpModifier);
-		unit={name: Language.UnitSpecialNames[Roster[k].SpecialName] ?? Language.UnitNames[Roster[k].id],
-			description: Language.UnitSpecialDesc[Roster[k].SpecialDescription] ?? Language.UnitDesc[Roster[k].id],
-			ID:"Unit "+k,
-			index:k,
-			x:Roster[k].x, 
-			y:Roster[k].y, 
-			unitType:Roster[k].id,
-			faction:Roster[k].faction,
-			coallition:Factions[Roster[k].faction].faction, 
-			damage:Units[Roster[k].id].Attack, 	
-			damageType:Units[Roster[k].id].Weapon,
-			minR:Units[Roster[k].id].MinRange,
-			maxR:Units[Roster[k].id].MaxRange, 
-			life:Math.round(Units[Roster[k].id].HP*(1+Roster[k].hpModifier)), 
-			armor:Units[Roster[k].id].Armor, 
-			speed:Units[Roster[k].id].Speed, 
-			movementType:Units[Roster[k].id].Movement, 
-			morale:Roster[k].morale,
-			direction:Roster[k].direction,
-			cargo:Roster[k].cargo??0,
-			isCloaked:rostermap[Roster[k].x][Roster[k].y].isCloaked??false,
-			hasSpecialName:Roster[k].SpecialName??0,
-			hasSpecialDesc:Roster[k].SpecialDescription??0,
-			hasCustomName:Roster[k].CustomName??0,
-			hasCustomDesc:Roster[k].CustomDescription??0
-		};
-		unit.name=Roster[k].CustomName??unit.name;
-		unit.description=Roster[k].CustomDescription??unit.description;
-		//alert(unit.faction);
-		
-	let Stealth=Cloak(Roster[k].x,Roster[k].y,Roster[k].id,Factions[Roster[k].faction].faction);
-	unit.isCloaked=Stealth;
-	
+	for(var k = 1; k < Roster.length; k++) {
+		const element = Roster[k];
+		const { 
+			id, //int
+			faction, //int
+			x, //int
+			y, //int
+			morale, //float
+			direction, //int
+			hpModifier, //float
+			cargo = 0, //int
+			CustomName = "", //string
+			CustomDescription = "", //string
+			SpecialName, //int
+			SpecialDescription //int
+		} = element;
+
+		const unitType = Units[id];
+		const name = language.get(unitType.name);
+		const desc = language.get(unitType.desc);
+
+		const unit = {
+			name: CustomName.length !== 0 ? CustomName : (Language.UnitSpecialNames[SpecialName] ?? name),
+			description: CustomDescription.length !== 0 ? CustomDescription : (Language.UnitSpecialDesc[SpecialDescription] ?? desc),
+			ID: "Unit " + k,
+			index: k,
+			x: x, 
+			y: y, 
+			unitType: id,
+			faction: faction,
+			coallition: Factions[faction].faction, 
+			damage: unitType.Attack, 	
+			damageType: unitType.Weapon,
+			minR: unitType.MinRange,
+			maxR: unitType.MaxRange, 
+			life: Math.round(unitType.HP * (1 + hpModifier)), 
+			armor: unitType.Armor, 
+			speed: unitType.Speed, 
+			movementType: unitType.Movement, 
+			morale: morale,
+			direction: direction,
+			cargo: cargo,
+			isCloaked: Cloak(x, y, id, Factions[faction].faction),
+			hasSpecialName: SpecialName ?? 0,
+			hasSpecialDesc: SpecialDescription ?? 0,
+			customName: CustomName,
+			customDesc: CustomDescription
+		}
+
+		MapRoster[k] = unit;
+		rostermap[x][y] = unit;	
+
+		let ics=Roster[k].x;
+		let igrec=Roster[k].y;
+
+		//if(ics>=StandardX && ics<StandardX+10 && igrec>=StandardY && igrec <StandardY+10){
+		if(true){
+			document.getElementById("EntityCore "+(ics+1)+"X"+(igrec+1)).style.visibility="inherit";
+			document.getElementById("Entity "+(ics+1)+"X"+(igrec+1)).style.top=(Units[MapRoster[k].unitType].StaticOffsetY ?? [0,0,0,0,0])[MapRoster[k].direction] + "px";
+			document.getElementById("Entity "+(ics+1)+"X"+(igrec+1)).style.left=(Units[MapRoster[k].unitType].StaticOffsetX ?? [0,0,0,0,0])[MapRoster[k].direction] + "px";
+			document.getElementById("EntityCore "+(ics+1)+"X"+(igrec+1)).src="Assets/Units/Static/"+Units[MapRoster[k].unitType].shortname+MapRoster[k].direction+".PNG";
+
+			if(!Units[MapRoster[k].unitType].MLPR??false) {
+				document.getElementById("EntityMesh "+(ics+1)+"X"+(igrec+1)).style.visibility="inherit";
+				document.getElementById("EntityMesh "+(ics+1)+"X"+(igrec+1)).src="Assets/Units/StaticMeshes/"+Units[MapRoster[k].unitType].shortname+"Mesh"+MapRoster[k].direction+".PNG";
+			}
+			//alert(Factions);
+			let Filter=Factions[MapRoster[k].faction].ChromaCode;
 
 
-	rostermap[Roster[k].x][Roster[k].y]=unit;	
-	MapRoster[k]=unit;
-	let ics=Roster[k].x;
-	let igrec=Roster[k].y;
-	//if(ics>=StandardX && ics<StandardX+10 && igrec>=StandardY && igrec <StandardY+10){
-	if(true){
-	document.getElementById("EntityCore "+(ics+1)+"X"+(igrec+1)).style.visibility="inherit";
-	document.getElementById("Entity "+(ics+1)+"X"+(igrec+1)).style.top=(Units[MapRoster[k].unitType].StaticOffsetY ?? [0,0,0,0,0])[MapRoster[k].direction] + "px";
-	document.getElementById("Entity "+(ics+1)+"X"+(igrec+1)).style.left=(Units[MapRoster[k].unitType].StaticOffsetX ?? [0,0,0,0,0])[MapRoster[k].direction] + "px";
-	document.getElementById("EntityCore "+(ics+1)+"X"+(igrec+1)).src="Assets/Units/Static/"+Units[MapRoster[k].unitType].shortname+MapRoster[k].direction+".PNG";
+			//alert(rostermap[unit.x][unit.y].isCloaked);
+			if(rostermap[unit.x][unit.y].isCloaked??false) {
+				document.getElementById("Entity "+(ics+1)+"X"+(igrec+1)).style.filter="opacity(0%)";
+			}
 
-	if(!Units[MapRoster[k].unitType].MLPR??false){
-	document.getElementById("EntityMesh "+(ics+1)+"X"+(igrec+1)).style.visibility="inherit";
-	document.getElementById("EntityMesh "+(ics+1)+"X"+(igrec+1)).src="Assets/Units/StaticMeshes/"+Units[MapRoster[k].unitType].shortname+"Mesh"+MapRoster[k].direction+".PNG";
-	};
-	//alert(Factions);
-	let Filter=Factions[MapRoster[k].faction].ChromaCode;
+			document.getElementById("EntityCore "+(ics+1)+"X"+(igrec+1)).style.filter=Filter;
+			//drawUnit(Map, Roster[k].id, Roster[k].direction, Roster[k].x, Roster[k].y, k, rostermap);
+			//alert(MapRoster[k].x+" "+MapRoster[k].y);
+			//for(let i=0; i<0+10; i++){for(let j=0; j<0+10; j++){}};
+		}
+	}
+}
 
-
-	//alert(rostermap[unit.x][unit.y].isCloaked);
-	if(rostermap[unit.x][unit.y].isCloaked??false){document.getElementById("Entity "+(ics+1)+"X"+(igrec+1)).style.filter="opacity(0%)"};
-	document.getElementById("EntityCore "+(ics+1)+"X"+(igrec+1)).style.filter=Filter;};
-
-	//drawUnit(Map, Roster[k].id, Roster[k].direction, Roster[k].x, Roster[k].y, k, rostermap);
-	//alert(MapRoster[k].x+" "+MapRoster[k].y);
-	//for(let i=0; i<0+10; i++){for(let j=0; j<0+10; j++){}};
-	};};
 function CaptureProperty(ControlMap,Faction){
 	for(let X=0;X<ControlMap.length;X++){for(let Y=0;Y<ControlMap[0].length;Y++){
 		if(rostermap[X][Y]!=0 && rostermap[X][Y].life>0 && hasCertainTrait(rostermap[X][Y].unitType,"Conqueror") && rostermap[X][Y].coallition!=Factions[ControlMap[X][Y]].faction){ControlMap[X][Y]=Faction;FocalTileRefresh(X,Y)};
@@ -3015,6 +3057,8 @@ function Counterattack(Attacker,Defender){
 	if(Def.life<=0){setTimeout(UnitLost,1000,Defender);};
 	EvaluateDynamicEvent('Action','null');};
 function ConvoyPickup(Unit){
+	const { language } = battalion;
+
 	if(IsConvoy){
 		let HPIndex=rostermap[Unit.x][Unit.y].life/100;
 		let Cargo=rostermap[Unit.x][Unit.y].cargo;
@@ -3029,8 +3073,18 @@ function ConvoyPickup(Unit){
 		rostermap[Unit.x][Unit.y].maxR=Units[Cargo].MaxRange;
 		rostermap[Unit.x][Unit.y].speed=Units[Cargo].Speed;
 		rostermap[Unit.x][Unit.y].movementType=Units[Cargo].Movement;
-		if((MapRoster[Unit.index].CustomName ?? true) || (MapRoster[Unit.index].SpecialName ?? true)){rostermap[Unit.x][Unit.y].name=Language.UnitNames[Cargo];};
-		if((MapRoster[Unit.index].CustomDescription ?? true) || (MapRoster[Unit.index].SpecialDescription ?? true)){rostermap[Unit.x][Unit.y].description=Language.UnitDesc[Cargo];};
+		if((MapRoster[Unit.index].CustomName ?? true) || (MapRoster[Unit.index].SpecialName ?? true)) {
+			const name = language.get(Units[Cargo].name);
+
+			rostermap[Unit.x][Unit.y].name = name;
+		}
+
+		if((MapRoster[Unit.index].CustomDescription ?? true) || (MapRoster[Unit.index].SpecialDescription ?? true)) {
+			const desc = language.get(Units[Cargo].desc);
+
+			rostermap[Unit.x][Unit.y].description = desc;
+		}
+
 		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).src="Assets/Units/Static/"+Units[Cargo].shortname+rostermap[Unit.x][Unit.y].direction+".PNG";
 		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).style.left=(Units[Cargo].StaticOffsetX??[0,0,0,0,0])[rostermap[Unit.x][Unit.y].direction]+"px";
 		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).style.top=(Units[Cargo].StaticOffsetY??[0,0,0,0,0])[rostermap[Unit.x][Unit.y].direction]+"px";
@@ -3053,8 +3107,19 @@ function ConvoyPickup(Unit){
 		rostermap[Unit.x][Unit.y].maxR=1;
 		rostermap[Unit.x][Unit.y].speed=5;
 		rostermap[Unit.x][Unit.y].movementType="Rudder";
-		if((MapRoster[Unit.index].CustomName ?? true) || (MapRoster[Unit.index].SpecialName ?? true)){rostermap[Unit.x][Unit.y].name=Language.UnitNames[51];};
-		if((MapRoster[Unit.index].CustomDescription ?? true) || (MapRoster[Unit.index].SpecialDescription ?? true)){rostermap[Unit.x][Unit.y].description=Language.UnitDesc[51];};
+
+		if((MapRoster[Unit.index].CustomName ?? true) || (MapRoster[Unit.index].SpecialName ?? true)){
+			const name = language.get("UNIT_NAME_BARGE_CONVOY");
+
+			rostermap[Unit.x][Unit.y].name = name;
+		}
+
+		if((MapRoster[Unit.index].CustomDescription ?? true) || (MapRoster[Unit.index].SpecialDescription ?? true)){
+			const desc = language.get("UNIT_DESC_BARGE_CONVOY");
+
+			rostermap[Unit.x][Unit.y].description = desc;
+		}
+
 		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).src="Assets/Units/Static/Convoy"+rostermap[Unit.x][Unit.y].direction+".PNG";
 
 
@@ -3228,6 +3293,7 @@ function DisplayRegions(){
 			
 		};
 		RegionsToggled=!RegionsToggled;};
+		//NEYN TODO!!!
 function DeployUnit(X,Y,Type,Faction,Direction,LifeIndex,Morale,CustomName,SpecialName,CustomDesc,SpecialDesc){
 	//alert(Faction);
 	let CostFactor=1;
@@ -3245,12 +3311,11 @@ function DeployUnit(X,Y,Type,Faction,Direction,LifeIndex,Morale,CustomName,Speci
 	MoraleIndex+=Speciation;
 	let RosterData={index:MapRoster.length-1, id:Type, faction:Faction, direction:1, x:X-1, y:Y-1, morale:0, hpModifier:0};
 
-	
 	MapRoster[MapRoster.length]={index:MapRoster.length-1, id:Type, faction:Faction, direction:1, x:X-1, y:Y-1, morale:MoraleIndex, hpModifier:0};
-	//alert((CustomName??SpecialName)??Units[Type].name);
+
 	let UnitData={
-			name: (CustomName??SpecialName)??Units[Type].name,
-			description: (CustomDesc??SpecialDesc)??Language.UnitDesc[Type],
+			name: (CustomName??SpecialName)?? "",
+			description: (CustomDesc??SpecialDesc)?? "",
 			ID:"Unit "+MapRoster.length,
 			index:MapRoster.length-1,
 			x:X-1, 
@@ -3750,598 +3815,231 @@ function FactionInformations(Ordinal){
 
 		};
 
-	document.getElementById("FactionDetails").style.visibility="inherit"};
-//fillMap() is deprecated and has been replaced by FillMap()
-function fillMap(Map){
+	document.getElementById("FactionDetails").style.visibility="inherit"
+};
 
-	for(let X=StandardX;X<StandardX+Map.length;X++){
-	for(let Y=StandardY;Y<StandardY+Map[0].length;Y++){
-		let Tile=Map[X][Y];
-		let Address="Tile "+(X+1)+"X"+(Y+1);
-		let Strucdress="Structure "+(X+1)+"X"+(Y+1);
-
-		document.getElementById(Strucdress).style.visibility="hidden";
-		document.getElementById(Strucdress).style.filter="";
-		/*
-		let EdgeA=document.getElementById("A "+(X+1-StdX)+ " X " +(Y+1-StdY));
-		let EdgeB=document.getElementById("B "+(X+1-StdX)+ " X " +(Y+1-StdY));
-		let EdgeC=document.getElementById("C "+(X+1-StdX)+ " X " +(Y+1-StdY));
-		let EdgeD=document.getElementById("D "+(X+1-StdX)+ " X " +(Y+1-StdY));
-		if(EdgeA!=null){EdgeA.remove()};
-		if(EdgeB!=null){EdgeB.remove()};
-		if(EdgeC!=null){EdgeC.remove()};
-		if(EdgeD!=null){EdgeD.remove()};
-		*/
-
-		document.getElementById("A "+(X+1)+"X"+(Y+1)).style.visibility="hidden";
-		document.getElementById("B "+(X+1)+"X"+(Y+1)).style.visibility="hidden";
-		document.getElementById("C "+(X+1)+"X"+(Y+1)).style.visibility="hidden";
-		document.getElementById("D "+(X+1)+"X"+(Y+1)).style.visibility="hidden";
-
-
-
-		switch(Tile){
-
-		case 1:
-			var type= Math.ceil(Math.random()*8);
-			var offset=0;
-			variant= "Assets/Tiles/Plains"+type+".PNG";
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src=variant;
-			break;
-
-		case 2:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			if(type==2){offset=-4};
-			if(type==3){offset=-3};
-			if(type==4){offset=-12}
-			variant= "Assets/Tiles/Forest"+type+".PNG";
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src=variant;
-			break;
-
-		case 3:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			if(type==3){offset=-4};
-			if(type==4){offset=-5};
-			variant= "Assets/Tiles/Hills"+type+".PNG";
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src=variant;
-			break;
-
-		case 4:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			if(type==2){offset=-4};
-			if(type==3){offset=-9};
-			if(type==4){offset=-10};
-			variant= "Assets/Tiles/Mountains"+type+".PNG";
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src=variant;
-			break;
-
-		case 5:
-			var offset=-8;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Volcano.PNG";
-			break;
-
-		case 6:
-			var offset=0;
-			var variant=0;
-			
-			if(X>0){if(Terrain[Map[X-1][Y]].Urbanistics > 0){variant+=1}};
-			if(Y+1<Map[0].length){if(Terrain[Map[X][Y+1]].Urbanistics>0){variant+=2}};
-			if(X+1<Map.length){if(Terrain[Map[X+1][Y]].Urbanistics>0){variant+=4}};
-			if(Y>0){if(Terrain[Map[X][Y-1]].Urbanistics > 0){variant+=8}};
-			//if(X>0){if((Map[X-1][Y]>5 && Map[X-1][Y]<15) || (Map[X-1][Y]>20 && (Map[X-1][Y]<23))){variant+=1}};
-			//if(Y<Map[0].length){if((Map[X][Y+1]>5 && Map[X][Y+1]<15) || (Map[X][Y+1]>20 && (Map[X][Y+1]<23))){variant+=2}};
-			//if(X<Map.length){if((Map[X+1][Y]>5 && Map[X+1][Y]<15) || (Map[X+1][Y]>20 && (Map[X+1][Y]<23))){variant+=4}};
-			//if(Y>0){if((Map[X][Y-1]>5 && Map[X][Y-1]<15) || (Map[X][Y-1]>20 && (Map[X][Y-1]<23))){variant+=2}};
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src="Assets/Tiles/Road"+variant+".PNG";
-			break;
-
-		case 7:
-			var offset=-14;
-			var type= Math.ceil(Math.random()*2);
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Ruins"+type+".PNG";
-			break;
-
-		case 8:
-			var offset=-14;
-			var type= Math.ceil(Math.random()*4);
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Urban District"+type+".PNG";
-			break;
-
-		case 9:
-			var offset=-10;
-			document.getElementById(Address).style.top="0px";
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Industrial District.PNG";
-			document.getElementById(Strucdress).style.filter=Factions[ControlMap[X][Y]].ChromaCode;
-			break;
-
-		case 10:
-			var offset=-8;
-			document.getElementById(Address).style.top="0px";
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Military-Industrial Complex.PNG";
-			document.getElementById(Strucdress).style.filter=Factions[ControlMap[X][Y]].ChromaCode;
-			break;
-
-		case 11:
-			var offset=-14;
-			document.getElementById(Address).style.top="0px";
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Aviation Industrial Facility.PNG";
-			document.getElementById(Strucdress).style.filter=Factions[ControlMap[X][Y]].ChromaCode;
-			break;
-
-		case 12:
-			var offset=-14;
-			document.getElementById(Address).style.top="0px";
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Shipbuilding Facility.PNG";
-			document.getElementById(Strucdress).style.filter=Factions[ControlMap[X][Y]].ChromaCode;
-			break;
-
-		case 13:
-			var offset=0;
-			document.getElementById(Address).style.top="0px";
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Headquarters.PNG";
-			document.getElementById(Strucdress).style.filter=Factions[ControlMap[X][Y]].ChromaCode;
-			break;
-
-		case 14:
-			var offset=-18;
-			document.getElementById(Address).style.top="0px";
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Command Center.PNG";
-			document.getElementById(Strucdress).style.filter=Factions[ControlMap[X][Y]].ChromaCode;
-			break;
-
-		case 15:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			if(type==2){offset=-4};
-			if(type==3){offset=-3};
-			if(type==4){offset=-12}
-			variant= "Assets/Tiles/Taiga"+type+".PNG";
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src=variant;
-			break;
-
-		case 16:
-			var type= Math.ceil(Math.random()*3);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Desert"+type+".PNG";
-			break;
-
-		case 17:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			variant= "Assets/Tiles/Tundra"+type+".PNG";
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src=variant;
-			break;
-
-		case 18:
-			var type= Math.ceil(Math.random()*3);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Extreme Desert"+type+".PNG";
-			break;
-
-		case 19:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Arctic Hellhole"+type+".PNG";
-			break;
-
-		case 20:
-			var offset=0;
-			var axis="V";
-			var variant=0;
-			if(X>0){if(Terrain[Map[X-1][Y]].SailThrough<100){axis="H"}};
-			if(Y<Map[0].length-1){if(Terrain[Map[X][Y+1]].SailThrough<100){axis="V"}};
-			if(X<Map.length-1){if(Terrain[Map[X+1][Y]].SailThrough<100){axis="H"}};
-			if(Y>0){if(Terrain[Map[X][Y-1]].SailThrough<100){axis="V"}};
-			if(X>0){if(Map[X-1][Y]==20 || Map[X-1][Y]==21){axis="V"}};
-			if(Y<Map[0].length-1){if(Map[X][Y+1]==20 || Map[X][Y+1]==21){axis="H"}};
-			if(X<Map.length-1){if(Map[X+1][Y]==20 || Map[X+1][Y]==21){axis="V"}};
-			if(Y>0){if(Map[X][Y-1]==20 || Map[X][Y-1]==21){axis="H"}};
-
-			if(axis=="V"){
-			if(X>0){if(Terrain[Map[X-1][Y]].WalkThrough<100){variant+=1;}};
-			if(X<Map.length-1){if(Terrain[Map[X+1][Y]].WalkThrough<100){variant+=2;}};};
-			if(axis=="H"){if(Y>0){if(Terrain[Map[X][Y-1]].WalkThrough<100){variant+=1;}};
-			if(Y<Map[0].length-1){if(Terrain[Map[X][Y+1]].WalkThrough<100){variant+=2;}};};
-
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Bridge"+axis+variant+".PNG";
-			break;
-
-		case 21:
-			var offset=0;
-			var axis="V";
-			var variant=0;
-			if(X>0){if(Terrain[Map[X-1][Y]].SailThrough<100){axis="H"}};
-			if(Y<Map[0].length-1){if(Terrain[Map[X][Y+1]].SailThrough<100){axis="V"}};
-			if(X<Map.length-1){if(Terrain[Map[X+1][Y]].SailThrough<100){axis="H"}};
-			if(Y>0){if(Terrain[Map[X][Y-1]].SailThrough<100){axis="V"}};
-			if(X>0){if(Map[X-1][Y]==20 || Map[X-1][Y]==21){axis="V"}};
-			if(Y<Map[0].length-1){if(Map[X][Y+1]==20 || Map[X][Y+1]==21){axis="H"}};
-			if(X<Map.length-1){if(Map[X+1][Y]==20 || Map[X+1][Y]==21){axis="V"}};
-			if(Y>0){if(Map[X][Y-1]==20 || Map[X][Y-1]==21){axis="H"}};
-
-			if(axis=="V"){
-			if(X>0){if(Terrain[Map[X-1][Y]].WalkThrough<100){variant+=1;}};
-			if(X<Map.length-1){if(Terrain[Map[X+1][Y]].WalkThrough<100){variant+=2;}};};
-			if(axis=="H"){if(Y>0){if(Terrain[Map[X][Y-1]].WalkThrough<100){variant+=1;}};
-			if(Y<Map[0].length-1){if(Terrain[Map[X][Y+1]].WalkThrough<100){variant+=2;}};};
-
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/HighBridge"+axis+variant+".PNG";
-			break;
-
-		case 22:
-			var offset=0;
-			var variant=0;
-
-			if(X>0){if(Terrain[Map[X-1][Y]].SailThrough<100){variant+=1;}};
-			if(Y<Map[0].length-1){if(Terrain[Map[X][Y+1]].SailThrough<100){variant+=2;}};
-			if(X<Map.length-1){if(Terrain[Map[X+1][Y]].SailThrough<100){variant+=4;}};
-			if(Y>0){if(Terrain[Map[X][Y-1]].SailThrough<100){variant+=8;}};
-
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/River"+variant+".PNG";
-			break;
-
-		case 23:
-			var offset=0;
-			var variant=0;
-			//alert(Y);
-			if(X>0){if(Terrain[Map[X-1][Y]].SailThrough<100){variant+=1;}};
-			if(Y<Map[0].length-1){if(Terrain[Map[X][Y+1]].SailThrough<100){variant+=2;}};
-			if(X<Map.length-1){if(Terrain[Map[X+1][Y]].SailThrough<100){variant+=4;}};
-			if(Y>0){if(Terrain[Map[X][Y-1]].SailThrough<100){variant+=8;}};
-			if(X==0){variant+=1};
-			if(Y==Map[0].length-1){variant+=2};
-			if(X==Map.length-1){variant+=4};
-			if(Y==0){variant+=8};
-
-			if(X>0 && Y>0){if(Terrain[Map[X-1][Y-1]].SailThrough==100 && (variant==15 || variant==11 || variant==13)){document.getElementById("A "+(X+1)+"X"+(Y+1)).style.visibility="visible"}};
-			if(X>0 && Y<Map[0].length-1){if(Terrain[Map[X-1][Y+1]].SailThrough==100 && (variant==15 || variant==7 || variant==11)){document.getElementById("B "+(X+1)+"X"+(Y+1)).style.visibility="visible"}};
-			if(X<Map.length-1 && Y>0){if(Terrain[Map[X+1][Y-1]].SailThrough==100 && (variant==15 || variant==13 || variant==14)){document.getElementById("C "+(X+1)+"X"+(Y+1)).style.visibility="visible"}};
-			if(X<Map.length-1 && Y<Map[0].length-1){if(Terrain[Map[X+1][Y+1]].SailThrough==100 && (variant==15 || variant==7 || variant==14)){document.getElementById("D "+(X+1)+"X"+(Y+1)).style.visibility="visible"}};
-
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Sea"+variant+".PNG";
-			break;
-
-		case 24:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Reef"+type+".PNG";
-			break;
-
-		case 25:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Floes"+type+".PNG";
-			break;	
-
-		case 26:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Archipelago"+type+".PNG";
-			break;	
-
-		case 27:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Rocks"+type+".PNG";
-			break;	
-
-		case 28:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Icebergs"+type+".PNG";
-			break;	
-
-		case 29:
-			var offset=0;
-			var variant=0;
-
-			if(X>0){if(Terrain[Map[X-1][Y]].SailThrough==100){variant+=1;}};
-			if(Y<Map[0].length-1){if(Terrain[Map[X][Y+1]].SailThrough==100){variant+=2;}};
-			if(X<Map.length-1){if(Terrain[Map[X+1][Y]].SailThrough==100){variant+=4;}};
-			if(Y>0){if(Terrain[Map[X][Y-1]].SailThrough==100){variant+=8;}};
-
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Shore"+variant+".PNG";
-			break;
-
-		case 30:
-			var offset=-9;
-			document.getElementById(Address).src="Assets/Tiles/Sea.PNG";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Oil Rig.PNG";
-			document.getElementById(Strucdress).style.filter=Factions[ControlMap[X][Y]].ChromaCode;
-			break;		
-
-		};
-
-	};};};
 function FillMap(Map){
 	//At last, I've been waiting for this moment for so long. No more provisional map generators and stopgap measures. This time it's for real.
 	//-Good, because now it's personal.
 	//You don't think this is personal for me too!? I'll start at 80% of my power!
 
 	//alert("a");
-	for(let a=0;a<Map.length;a++){
-	for(let b=0; b<Map[0].length; b++){
-	let D1=0;
-	let D2=0;
-	let D3=0;
-	let D4=0;
-
-	let Biome=BiomeMap[a][b];
-		if((Terrain[Map[a][b]].BiomeIndex??0)!=0){Biome=1};
-		if(Biome==1){Biome=""};
-		if(Biome==2){Biome="Arid"};
-		if(Biome==3){Biome="Boreal"};
-		if(Biome==4){Biome="Barren"};
-		if(Biome==5){Biome="Arctic"};
-		if(Biome==6){Biome="Lunar"};
-		if(Biome==7){Biome="Martian"};
-
-	if(a>0){D1=Map[a-1][b]};
-	if(b<Map[0].length-1){D2=Map[a][b+1]};
-	if(a<Map.length-1){D3=Map[a+1][b]};
-	if(b>0){D4=Map[a][b-1]};
-
-	let Class=Terrain[Map[a][b]].Class;
-	let TileAdress="Tile "+(a+1)+"X"+(b+1);
-	let Strucdress="Structure "+(a+1)+"X"+(b+1);
-	document.getElementById(Strucdress).style.visibility="hidden";
-
-	switch(Class){
-
-		case "LF":
-			var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
-			var offset=Terrain[Map[a][b]].Offsets[type-1];
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
-			document.getElementById(TileAdress).style.top=offset+"px";
-			document.getElementById(TileAdress).src=variant;
-			break;
-
-		case "LA":
-			var type=0;
-
-			if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="S"){type+=1};
-			if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="S"){type+=2};
-			if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S"){type+=4};
-			if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){type+=8};
-
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
-			document.getElementById(TileAdress).style.top="0px";
-			document.getElementById(TileAdress).src=Var;
-			break;
-
-		case "WE":
-			var type=0;
-
-			if(Terrain[D1].Class=="WF" || Terrain[D1].Class=="WA" || Terrain[D1].Class=="WE" || Terrain[D1].Class=="WS" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="B" || a==0){type+=1};
-			if(Terrain[D2].Class=="WF" || Terrain[D2].Class=="WA" || Terrain[D2].Class=="WE" || Terrain[D2].Class=="WS" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="B" || b==Map[0].length-1){type+=2};
-			if(Terrain[D3].Class=="WF" || Terrain[D3].Class=="WA" || Terrain[D3].Class=="WE" || Terrain[D3].Class=="WS" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="B" || a==Map.length-1){type+=4};
-			if(Terrain[D4].Class=="WF" || Terrain[D4].Class=="WA" || Terrain[D4].Class=="WE" || Terrain[D4].Class=="WS" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="B" || b==0){type+=8};
-
-			if(a>=1 && b>=1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("A "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("A "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeA"+BiomeRegistry[BiomeMap[a-1][b-1]].Nominator+".PNG"}};
-			if(a>=1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("B "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("B "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeB"+BiomeRegistry[BiomeMap[a-1][b+1]].Nominator+".PNG"}};
-			if(a<Map.length-1 && b>=1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("C "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("C "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeC"+BiomeRegistry[BiomeMap[a+1][b-1]].Nominator+".PNG"}};
-			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("D "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("D "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeD"+BiomeRegistry[BiomeMap[a+1][b+1]].Nominator+".PNG"}};
-
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
-			document.getElementById(TileAdress).style.top="0px";
-			document.getElementById(TileAdress).src=Var;
-
-
-
-			break;
-
-		case "WA":
-			var type=0;
-
-			if(Terrain[D1].Class=="WA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="WF" || Terrain[D1].Class=="WE" || Terrain[D1].Class=="B"){type+=1};
-			if(Terrain[D2].Class=="WA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="WF" || Terrain[D2].Class=="WE" || Terrain[D2].Class=="B"){type+=2};
-			if(Terrain[D3].Class=="WA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="WF" || Terrain[D3].Class=="WE" || Terrain[D3].Class=="B"){type+=4};
-			if(Terrain[D4].Class=="WA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="WF" || Terrain[D4].Class=="WE" || Terrain[D4].Class=="B"){type+=8};
-
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
-			document.getElementById(TileAdress).style.top="0px";
-			document.getElementById(TileAdress).src=Var;
-
-			break;
-
-		case "WF":
-			var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
-			var offset=Terrain[Map[a][b]].Offsets[type-1];
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".PNG";
-			document.getElementById(TileAdress).style.top=offset+"px";
-			document.getElementById(TileAdress).src=variant;
-
-			break;
-
-		case "WS":
-			var underType=0;
-			if(Terrain[D1].SailThrough<100){underType+=1};
-			if(Terrain[D2].SailThrough<100){underType+=2};
-			if(Terrain[D3].SailThrough<100){underType+=4};
-			if(Terrain[D4].SailThrough<100){underType+=8};
-
-			if(a>=1 && b>=1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("A "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("A "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeA"+BiomeRegistry[BiomeMap[a-1][b-1]].Nominator+".PNG"}};
-			if(a>=1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("B "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("B "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeB"+BiomeRegistry[BiomeMap[a-1][b+1]].Nominator+".PNG"}};
-			if(a<Map.length-1 && b>=1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("C "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("C "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeC"+BiomeRegistry[BiomeMap[a+1][b-1]].Nominator+".PNG"}};
-			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("D "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("D "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeD"+BiomeRegistry[BiomeMap[a+1][b+1]].Nominator+".PNG"}};
+	for(let a = 0; a < Map.length; a++) {
+		for(let b = 0; b < Map[0].length; b++) {
+			let D1=0;
+			let D2=0;
+			let D3=0;
+			let D4=0;
+
+			let Biome=BiomeMap[a][b];
+			if((Terrain[Map[a][b]].BiomeIndex??0)!=0){Biome=1};
+			if(Biome==1){Biome=""};
+			if(Biome==2){Biome="Arid"};
+			if(Biome==3){Biome="Boreal"};
+			if(Biome==4){Biome="Barren"};
+			if(Biome==5){Biome="Arctic"};
+			if(Biome==6){Biome="Lunar"};
+			if(Biome==7){Biome="Martian"};
+
+			if(a>0){D1=Map[a-1][b]};
+			if(b<Map[0].length-1){D2=Map[a][b+1]};
+			if(a<Map.length-1){D3=Map[a+1][b]};
+			if(b>0){D4=Map[a][b-1]};
+
+			let Class=Terrain[Map[a][b]].Class;
+			let TileAdress="Tile "+(a+1)+"X"+(b+1);
+			let Strucdress="Structure "+(a+1)+"X"+(b+1);
+			document.getElementById(Strucdress).style.visibility="hidden";
+
+			switch(Class) {
+				case "LF":
+					var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
+					var offset=Terrain[Map[a][b]].Offsets[type-1];
+					var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+					document.getElementById(TileAdress).style.top=offset+"px";
+					document.getElementById(TileAdress).src=variant;
+					break;
+
+				case "LA":
+					var type=0;
+
+					if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="S"){type+=1};
+					if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="S"){type+=2};
+					if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S"){type+=4};
+					if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){type+=8};
+
+					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+					document.getElementById(TileAdress).style.top="0px";
+					document.getElementById(TileAdress).src=Var;
+					break;
+
+				case "WE":
+					var type=0;
+
+					if(Terrain[D1].Class=="WF" || Terrain[D1].Class=="WA" || Terrain[D1].Class=="WE" || Terrain[D1].Class=="WS" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="B" || a==0){type+=1};
+					if(Terrain[D2].Class=="WF" || Terrain[D2].Class=="WA" || Terrain[D2].Class=="WE" || Terrain[D2].Class=="WS" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="B" || b==Map[0].length-1){type+=2};
+					if(Terrain[D3].Class=="WF" || Terrain[D3].Class=="WA" || Terrain[D3].Class=="WE" || Terrain[D3].Class=="WS" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="B" || a==Map.length-1){type+=4};
+					if(Terrain[D4].Class=="WF" || Terrain[D4].Class=="WA" || Terrain[D4].Class=="WE" || Terrain[D4].Class=="WS" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="B" || b==0){type+=8};
+
+					if(a>=1 && b>=1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("A "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("A "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeA"+BiomeRegistry[BiomeMap[a-1][b-1]].Nominator+".PNG"}};
+					if(a>=1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("B "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("B "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeB"+BiomeRegistry[BiomeMap[a-1][b+1]].Nominator+".PNG"}};
+					if(a<Map.length-1 && b>=1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("C "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("C "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeC"+BiomeRegistry[BiomeMap[a+1][b-1]].Nominator+".PNG"}};
+					if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("D "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("D "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeD"+BiomeRegistry[BiomeMap[a+1][b+1]].Nominator+".PNG"}};
+
+					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+					document.getElementById(TileAdress).style.top="0px";
+					document.getElementById(TileAdress).src=Var;
+					break;
+
+				case "WA":
+					var type=0;
+
+					if(Terrain[D1].Class=="WA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="WF" || Terrain[D1].Class=="WE" || Terrain[D1].Class=="B"){type+=1};
+					if(Terrain[D2].Class=="WA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="WF" || Terrain[D2].Class=="WE" || Terrain[D2].Class=="B"){type+=2};
+					if(Terrain[D3].Class=="WA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="WF" || Terrain[D3].Class=="WE" || Terrain[D3].Class=="B"){type+=4};
+					if(Terrain[D4].Class=="WA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="WF" || Terrain[D4].Class=="WE" || Terrain[D4].Class=="B"){type+=8};
+
+					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+					document.getElementById(TileAdress).style.top="0px";
+					document.getElementById(TileAdress).src=Var;
+					break;
+
+				case "WF":
+					var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
+					var offset=Terrain[Map[a][b]].Offsets[type-1];
+					var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".PNG";
+					document.getElementById(TileAdress).style.top=offset+"px";
+					document.getElementById(TileAdress).src=variant;
+					break;
+
+				case "WS":
+					var underType=0;
+					if(Terrain[D1].SailThrough<100){underType+=1};
+					if(Terrain[D2].SailThrough<100){underType+=2};
+					if(Terrain[D3].SailThrough<100){underType+=4};
+					if(Terrain[D4].SailThrough<100){underType+=8};
+
+					if(a>=1 && b>=1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("A "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("A "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeA"+BiomeRegistry[BiomeMap[a-1][b-1]].Nominator+".PNG"}};
+					if(a>=1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("B "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("B "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeB"+BiomeRegistry[BiomeMap[a-1][b+1]].Nominator+".PNG"}};
+					if(a<Map.length-1 && b>=1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("C "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("C "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeC"+BiomeRegistry[BiomeMap[a+1][b-1]].Nominator+".PNG"}};
+					if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("D "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("D "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeD"+BiomeRegistry[BiomeMap[a+1][b+1]].Nominator+".PNG"}};
+
+
+					//EditorControlMap[a][b]=EditationColor;
+					var offset=Terrain[Map[a][b]].Offset;
+					var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".PNG";
+					var undervar="Assets/Tiles/Sea"+underType+".PNG";
+					document.getElementById(Strucdress).style.visibility="inherit";
+					document.getElementById(Strucdress).style.filter=Factions[ControlMap[a][b]].ChromaCode;
+					document.getElementById(Strucdress).style.top=offset+"px";
+					document.getElementById(Strucdress).src=variant;
+					document.getElementById(TileAdress).src=undervar;
+					break;
+
+				case "MC":
+					var type=0;
+					var axis="H";
+					var alttype=0;
+
+					if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="LF" || Terrain[D1].Class=="S" || Terrain[D1].Class=="MC"){axis="V"};
+					if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="LF" || Terrain[D2].Class=="S" || Terrain[D2].Class=="MC"){axis="H"};
+					if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="LF" || Terrain[D3].Class=="S" || Terrain[D3].Class=="MC"){axis="V"};
+					if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="LF" || Terrain[D4].Class=="S" || Terrain[D4].Class=="MC"){axis="H"};
+
+					if((Terrain[D2].Class=="LA" || Terrain[D2].Class=="LF" || Terrain[D2].Class=="S")&&(Terrain[D4].Class=="LA" || Terrain[D4].Class=="LF" || Terrain[D4].Class=="S")){axis="H"};
+					if((Terrain[D1].Class=="LA" || Terrain[D1].Class=="LF" || Terrain[D1].Class=="S")&&(Terrain[D3].Class=="LA" || Terrain[D3].Class=="LF" || Terrain[D3].Class=="S")){axis="V"};
+
+					if(Terrain[D1].Class=="MC"){axis="V"};
+					if(Terrain[D2].Class=="MC"){axis="H"};
+					if(Terrain[D3].Class=="MC"){axis="V"};
+					if(Terrain[D4].Class=="MC"){axis="H"};
+
+					if(Terrain[D1].Class=="MC"){alttype+=1};
+					if(Terrain[D2].Class=="MC"){alttype+=2};
+					if(Terrain[D3].Class=="MC"){alttype+=4};
+					if(Terrain[D4].Class=="MC"){alttype+=8};
+			
+					for(let c=0; c<4; c++){if(alttype==15-Math.pow(2,c)){axis="T"}};
+					if(alttype==15){axis="O"};
+
+					if(axis=="H"){
+
+					if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="LF" || Terrain[D4].Class=="S"){type+=1};
+					if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="LF" || Terrain[D2].Class=="S"){type+=2};
+					if(type>0){type+=Biome};
+
+
+					}else if(axis=="V"){
+
+					if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="LF" || Terrain[D1].Class=="S"){type+=1};
+					if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="LF" || Terrain[D3].Class=="S"){type+=2};
+					if(type>0){type+=Biome};
+
+					}else if(axis=="T"){
+						type="";
+						if(alttype==14){type="A"};
+						if(alttype==13){type="B"};
+						if(alttype==11){type="C"};
+						if(alttype==7){type="D"};
+
+
+					}else if(axis=="O"){
+						type="";
+
+					};
+
+					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+axis+type+".PNG";
+					document.getElementById(TileAdress).style.top=Terrain[Map[a][b]].Offset+"px";
+					document.getElementById(TileAdress).src=Var;
+					break;
+
+				case "B":
+					var type=0;
+
+					/*if(Terrain[D1].Class=="LF" || Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || a==0){type+=1};
+					if(Terrain[D2].Class=="LF" || Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || b==Map[0].length-1){type+=2};
+					if(Terrain[D3].Class=="LF" || Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || a==Map.length-1){type+=4};
+					if(Terrain[D4].Class=="LF" || Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || b==0){type+=8};*/
+
+					if(Terrain[D1].Class=="LF" || Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="S"){type+=1};
+					if(Terrain[D2].Class=="LF" || Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="S"){type+=2};
+					if(Terrain[D3].Class=="LF" || Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S"){type+=4};
+					if(Terrain[D4].Class=="LF" || Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){type+=8};
+
+					if(a>1 && b>1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("A "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("A "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeA"+BiomeRegistry[BiomeMap[a-1][b-1]].Nominator+".PNG"}};
+					if(a>1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("B "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("B "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeB"+BiomeRegistry[BiomeMap[a-1][b+1]].Nominator+".PNG"}};
+					if(a<Map.length-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("C "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("C "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeC"+BiomeRegistry[BiomeMap[a+1][b-1]].Nominator+".PNG"}};
+					if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("D "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("D "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeD"+BiomeRegistry[BiomeMap[a+1][b+1]].Nominator+".PNG"}};
+
+					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+					document.getElementById(TileAdress).style.top="0px";
+					document.getElementById(TileAdress).src=Var;
+					break;
+
+				case "S":
+					//To do: Manipulate underlying terrain to be a proper road, not a grass tile
+					let undertype=0;
+					if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="S"){undertype+=1};
+					if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="S"){undertype+=2};
+					if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S"){undertype+=4};
+					if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){undertype+=8};
+
+
+
+					var offset=Terrain[Map[a][b]].Offset;
+					var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".PNG";
+					var undervar="Assets/Tiles/Road"+undertype+Biome+".PNG";
+					document.getElementById(Strucdress).style.visibility="visible";
+					document.getElementById(Strucdress).style.filter=Factions[ControlMap[a][b]].ChromaCode;
+					document.getElementById(Strucdress).style.top=offset+"px";
+					document.getElementById(Strucdress).src=variant;
+					document.getElementById(TileAdress).src=undervar;
+					break;
+			}
+		}
+	}
+}
 
-
-			//EditorControlMap[a][b]=EditationColor;
-			var offset=Terrain[Map[a][b]].Offset;
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".PNG";
-			var undervar="Assets/Tiles/Sea"+underType+".PNG";
-			document.getElementById(Strucdress).style.visibility="inherit";
-			document.getElementById(Strucdress).style.filter=Factions[ControlMap[a][b]].ChromaCode;
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src=variant;
-			document.getElementById(TileAdress).src=undervar;
-
-
-			break;
-
-		case "MC":
-			var type=0;
-			var axis="H";
-			var alttype=0;
-
-			if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="LF" || Terrain[D1].Class=="S" || Terrain[D1].Class=="MC"){axis="V"};
-			if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="LF" || Terrain[D2].Class=="S" || Terrain[D2].Class=="MC"){axis="H"};
-			if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="LF" || Terrain[D3].Class=="S" || Terrain[D3].Class=="MC"){axis="V"};
-			if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="LF" || Terrain[D4].Class=="S" || Terrain[D4].Class=="MC"){axis="H"};
-
-			if((Terrain[D2].Class=="LA" || Terrain[D2].Class=="LF" || Terrain[D2].Class=="S")&&(Terrain[D4].Class=="LA" || Terrain[D4].Class=="LF" || Terrain[D4].Class=="S")){axis="H"};
-			if((Terrain[D1].Class=="LA" || Terrain[D1].Class=="LF" || Terrain[D1].Class=="S")&&(Terrain[D3].Class=="LA" || Terrain[D3].Class=="LF" || Terrain[D3].Class=="S")){axis="V"};
-
-			if(Terrain[D1].Class=="MC"){axis="V"};
-			if(Terrain[D2].Class=="MC"){axis="H"};
-			if(Terrain[D3].Class=="MC"){axis="V"};
-			if(Terrain[D4].Class=="MC"){axis="H"};
-
-			if(Terrain[D1].Class=="MC"){alttype+=1};
-			if(Terrain[D2].Class=="MC"){alttype+=2};
-			if(Terrain[D3].Class=="MC"){alttype+=4};
-			if(Terrain[D4].Class=="MC"){alttype+=8};
-	
-			for(let c=0; c<4; c++){if(alttype==15-Math.pow(2,c)){axis="T"}};
-			if(alttype==15){axis="O"};
-
-			if(axis=="H"){
-
-			if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="LF" || Terrain[D4].Class=="S"){type+=1};
-			if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="LF" || Terrain[D2].Class=="S"){type+=2};
-			if(type>0){type+=Biome};
-
-
-			}else if(axis=="V"){
-
-			if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="LF" || Terrain[D1].Class=="S"){type+=1};
-			if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="LF" || Terrain[D3].Class=="S"){type+=2};
-			if(type>0){type+=Biome};
-
-			}else if(axis=="T"){
-				type="";
-				if(alttype==14){type="A"};
-				if(alttype==13){type="B"};
-				if(alttype==11){type="C"};
-				if(alttype==7){type="D"};
-
-
-			}else if(axis=="O"){
-				type="";
-
-			};
-
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+axis+type+".PNG";
-			document.getElementById(TileAdress).style.top=Terrain[Map[a][b]].Offset+"px";
-			document.getElementById(TileAdress).src=Var;
-
-			break;
-
-		case "B":
-			var type=0;
-
-			/*if(Terrain[D1].Class=="LF" || Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || a==0){type+=1};
-			if(Terrain[D2].Class=="LF" || Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || b==Map[0].length-1){type+=2};
-			if(Terrain[D3].Class=="LF" || Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || a==Map.length-1){type+=4};
-			if(Terrain[D4].Class=="LF" || Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || b==0){type+=8};*/
-
-			if(Terrain[D1].Class=="LF" || Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="S"){type+=1};
-			if(Terrain[D2].Class=="LF" || Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="S"){type+=2};
-			if(Terrain[D3].Class=="LF" || Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S"){type+=4};
-			if(Terrain[D4].Class=="LF" || Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){type+=8};
-
-			if(a>1 && b>1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("A "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("A "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeA"+BiomeRegistry[BiomeMap[a-1][b-1]].Nominator+".PNG"}};
-			if(a>1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("B "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("B "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeB"+BiomeRegistry[BiomeMap[a-1][b+1]].Nominator+".PNG"}};
-			if(a<Map.length-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("C "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("C "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeC"+BiomeRegistry[BiomeMap[a+1][b-1]].Nominator+".PNG"}};
-			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("D "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("D "+(a+1)+"X"+(b+1)).src="Assets/Tiles/EdgeD"+BiomeRegistry[BiomeMap[a+1][b+1]].Nominator+".PNG"}};
-
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
-			document.getElementById(TileAdress).style.top="0px";
-			document.getElementById(TileAdress).src=Var;
-
-			break;
-
-		case "S":
-			//To do: Manipulate underlying terrain to be a proper road, not a grass tile
-			let undertype=0;
-			if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="S"){undertype+=1};
-			if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="S"){undertype+=2};
-			if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S"){undertype+=4};
-			if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){undertype+=8};
-
-
-
-			var offset=Terrain[Map[a][b]].Offset;
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".PNG";
-			var undervar="Assets/Tiles/Road"+undertype+Biome+".PNG";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.filter=Factions[ControlMap[a][b]].ChromaCode;
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src=variant;
-			document.getElementById(TileAdress).src=undervar;
-
-			break;}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	}};};
 function FillMapEditor(Tile){
 	let a=Math.floor(document.getElementById("TileContainer").scrollTop/56);
 	//alert(document.getElementById("TileContainer").scrollLeft-1);
@@ -4683,7 +4381,6 @@ function GeneralInitializer(){
 
 	//if(Language!=ENG){LanguageCorrecter(Language)};
 
-	//for(let o=1; o<=70; o++){CampaignUnits[o].name=Language.UnitNames[o]};
 	writeAphorism(battalion, Aphorism);
 	writeFlair(battalion, Flair);
 
@@ -5412,8 +5109,6 @@ function LanguageCorrecter(Language){
 
 	if((Language.TerrainName??[]).length==0){Language.TerrainName=ENG.TerrainName};
 	if((Language.TerrainDesc??[]).length==0){Language.TerrainDesc=ENG.TerrainDesc};
-	if((Language.UnitNames??[]).length==0){Language.UnitNames=ENG.UnitNames};
-	if((Language.UnitDesc??[]).length==0){Language.UnitDesc=ENG.UnitDesc};
 	if((Language.TraitName??[]).length==0){Language.TraitName=ENG.TraitName};
 	if((Language.TraitDesc??[]).length==0){Language.TraitDesc=ENG.TraitDesc};
 	if((Language.ClassTraitName??[]).length==0){Language.ClassTraitName=ENG.ClassTraitName};
@@ -6094,23 +5789,30 @@ function MoveUnit(unit, path){
 		//alert(MapRoster[unit].isVized);
 	};
 function MontreUnit(Class){
-	document.getElementById("UnitMontre").src="Assets/Units/Move/"+Units[Class].shortname+"Movement2.GIF";
-	document.getElementById("UnitMontre").style.left=Units[Class].MovementOffsetX+"px";
-	document.getElementById("UnitMontre").style.top=Units[Class].MovementOffsetY+"px";
-	if(!Units[Class].MLPR??false){document.getElementById("UnitMontre"+Class+"Mesh").src="Assets/Units/MoveMeshes/"+Units[Class].shortname+"MovementMesh3.GIF"; document.getElementById("UnitMontreMesh").src="Assets/Units/MoveMeshes/"+Units[Class].shortname+"MovementMesh2.GIF"}else{document.getElementById("UnitMontre"+Class+"Mesh").src="Assets/Miscellaneous/Nothing.PNG";document.getElementById("UnitMontreMesh").src="Assets/Miscellaneous/Nothing.PNG"};
-	document.getElementById("MontreArmor").src="Assets/Traits/"+Units[Class].Armor+"Armor.PNG";
-	document.getElementById("MontreAttack").src="Assets/Traits/"+Units[Class].Weapon+"Weapon.PNG";
-	document.getElementById("MontreLocomotion").src="Assets/Traits/"+Units[Class].Movement+".PNG";
-	document.getElementById("MontreArmorText").innerHTML=Units[Class].HP+"/"+Units[Class].HP;
-	document.getElementById("MontreAttackText").innerHTML=Units[Class].Attack+"("+Units[Class].MinRange+"-"+Units[Class].MaxRange+")";
-	document.getElementById("MontreLocomotionText").innerHTML=Units[Class].Speed;
-	document.getElementById("MontreTrait1").src="Assets/Traits/"+Units[Class].tag1+".PNG";
-	document.getElementById("MontreTrait2").src="Assets/Traits/"+Units[Class].tag2+".PNG";
-	document.getElementById("MontreTrait3").src="Assets/Traits/"+Units[Class].tag3+".PNG";
-	document.getElementById("MontreTrait4").src="Assets/Traits/"+Units[Class].tag4+".PNG";
-	document.getElementById("MontreName").innerHTML=Language.UnitNames[Class];
-	document.getElementById("MontreDescription").innerHTML=Language.UnitDesc[Class];
-	HighlightedEntity=Units[Class];
+	const { language } = battalion;
+	const unitType = Units[Class];
+
+	document.getElementById("UnitMontre").src="Assets/Units/Move/"+unitType.shortname+"Movement2.GIF";
+	document.getElementById("UnitMontre").style.left=unitType.MovementOffsetX+"px";
+	document.getElementById("UnitMontre").style.top=unitType.MovementOffsetY+"px";
+
+	if(!unitType.MLPR??false){document.getElementById("UnitMontre"+Class+"Mesh").src="Assets/Units/MoveMeshes/"+unitType.shortname+"MovementMesh3.GIF"; document.getElementById("UnitMontreMesh").src="Assets/Units/MoveMeshes/"+unitType.shortname+"MovementMesh2.GIF"}else{document.getElementById("UnitMontre"+Class+"Mesh").src="Assets/Miscellaneous/Nothing.PNG";document.getElementById("UnitMontreMesh").src="Assets/Miscellaneous/Nothing.PNG"};
+	
+	document.getElementById("MontreArmor").src="Assets/Traits/"+unitType.Armor+"Armor.PNG";
+	document.getElementById("MontreAttack").src="Assets/Traits/"+unitType.Weapon+"Weapon.PNG";
+	document.getElementById("MontreLocomotion").src="Assets/Traits/"+unitType.Movement+".PNG";
+	document.getElementById("MontreArmorText").innerHTML=unitType.HP+"/"+unitType.HP;
+	document.getElementById("MontreAttackText").innerHTML=unitType.Attack+"("+unitType.MinRange+"-"+unitType.MaxRange+")";
+	document.getElementById("MontreLocomotionText").innerHTML=unitType.Speed;
+	document.getElementById("MontreTrait1").src="Assets/Traits/"+unitType.tag1+".PNG";
+	document.getElementById("MontreTrait2").src="Assets/Traits/"+unitType.tag2+".PNG";
+	document.getElementById("MontreTrait3").src="Assets/Traits/"+unitType.tag3+".PNG";
+	document.getElementById("MontreTrait4").src="Assets/Traits/"+unitType.tag4+".PNG";
+
+	document.getElementById("MontreName").innerHTML = language.get(unitType.name);
+	document.getElementById("MontreDescription").innerHTML = language.get(unitType.desc);
+
+	HighlightedEntity=unitType;
 
 	//there was an attempt
 	//let UMTI=Class;
@@ -8670,6 +8372,7 @@ function SplashAttack(Atk,X,Y){
 		if(Def.life<=0){setTimeout(UnitLost,700,Def.index);};
 	};};
 function StorkPickup(Unit){
+	const { language } = battalion;
 	//alert(IsStork);
 	if(IsStork){
 		let HPIndex=rostermap[Unit.x][Unit.y].life/30;
@@ -8685,8 +8388,18 @@ function StorkPickup(Unit){
 		rostermap[Unit.x][Unit.y].maxR=Units[Cargo].MaxRange;
 		rostermap[Unit.x][Unit.y].speed=Units[Cargo].Speed;
 		rostermap[Unit.x][Unit.y].movementType=Units[Cargo].Movement;
-		if((MapRoster[Unit.index].CustomName ?? true) || (MapRoster[Unit.index].SpecialName ?? true)){rostermap[Unit.x][Unit.y].name=Language.UnitNames[Cargo];};
-		if((MapRoster[Unit.index].CustomDescription ?? true) || (MapRoster[Unit.index].SpecialDescription ?? true)){rostermap[Unit.x][Unit.y].description=Language.UnitDesc[Cargo];};
+
+		if((MapRoster[Unit.index].CustomName ?? true) || (MapRoster[Unit.index].SpecialName ?? true)){
+			const name = language.get(Units[Cargo].name);
+
+			rostermap[Unit.x][Unit.y].name = name;
+		}
+
+		if((MapRoster[Unit.index].CustomDescription ?? true) || (MapRoster[Unit.index].SpecialDescription ?? true)){
+			const desc = language.get(Units[Cargo].desc);
+
+			rostermap[Unit.x][Unit.y].description = desc;
+		};
 		document.getElementById("Entity "+(Unit.x-StandardX+1)+"X"+(Unit.y-StandardY+1)).src="Assets/Units/Static/"+Units[Cargo].shortname+rostermap[Unit.x][Unit.y].direction+".PNG";
 
 	}else{
@@ -8707,8 +8420,19 @@ function StorkPickup(Unit){
 		rostermap[Unit.x][Unit.y].maxR=1;
 		rostermap[Unit.x][Unit.y].speed=7;
 		rostermap[Unit.x][Unit.y].movementType="Flight";
-		if((MapRoster[Unit.index].CustomName ?? true) || (MapRoster[Unit.index].SpecialName ?? true)){rostermap[Unit.x][Unit.y].name=Language.UnitNames[41];};
-		if((MapRoster[Unit.index].CustomDescription ?? true) || (MapRoster[Unit.index].SpecialDescription ?? true)){rostermap[Unit.x][Unit.y].description=Language.UnitDesc[41];};
+		//Stork Transport -> UNIT_NAME_STORK_TRANSPORT
+		if((MapRoster[Unit.index].CustomName ?? true) || (MapRoster[Unit.index].SpecialName ?? true)){
+			const name = language.get("UNIT_NAME_STORK_TRANSPORT");
+
+			rostermap[Unit.x][Unit.y].name = name;
+		}
+
+		if((MapRoster[Unit.index].CustomDescription ?? true) || (MapRoster[Unit.index].SpecialDescription ?? true)){
+			const desc = language.get("UNIT_DESC_STORK_TRANSPORT");
+
+			rostermap[Unit.x][Unit.y].description = desc;
+		}
+
 		document.getElementById("Entity "+(Unit.x-StandardX+1)+"X"+(Unit.y-StandardY+1)).src="Assets/Units/Static/Stork"+rostermap[Unit.x][Unit.y].direction+".PNG";
 		//rostermap[Unit.x][Unit.y].name="";
 
