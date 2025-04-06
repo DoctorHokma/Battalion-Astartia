@@ -15,47 +15,47 @@
 				<img style="position:absolute; visibility: inherit; left:0px; top:0px" src="TEMP/AsekaraMeshOpaque.PNG"/>
 			</div>
 
-			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:280px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('Main Menu').style.visibility='hidden';document.getElementById('CampaignSelectionScreen').style.visibility='visible'; let ElamFlagVariant=1; for(let j=1;j<5;j++){if(Campaigns[4][j-1][4].Finished??false){ElamFlagVariant=j+1}}; if(!MystSettChoice){ElamFlagVariant=1};document.getElementById('Elam Flag').src='Assets/Flags/FlagELM'+ElamFlagVariant+'.PNG'" onmouseover="document.getElementById('CampaignButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('CampaignButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CampaignButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" oncontextmenu="Tooltip(1)">
+			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:280px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('Main Menu').style.visibility='hidden';document.getElementById('CampaignSelectionScreen').style.visibility='visible'; let ElamFlagVariant=1; for(let j=1;j<5;j++){if(Campaigns[4][j-1][4].Finished??false){ElamFlagVariant=j+1}}; if(!MystSettChoice){ElamFlagVariant=1};document.getElementById('Elam Flag').src='Assets/Flags/FlagELM'+ElamFlagVariant+'.PNG'" onmouseover="document.getElementById('CampaignButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('CampaignButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CampaignButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" oncontextmenu='Tooltip("TOOLTIP_CAMPAIGN")'>
 				<img id="CampaignButton" style="position:absolute;" src="Assets/Miscellaneous/GenericButton.PNG"/>
 				<p id='CampaignButtonP' style="position:relative; text-align: center; margin-top:19%">Campaign</p>
 			</div>
 
-			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="alert('Work in progress')" onmouseover="" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'" oncontextmenu="Tooltip(3)">
+			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="alert('Work in progress')" onmouseover="" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'" oncontextmenu='Tooltip("TOOLTIP_CONTINUE")'>
 				<img id="ContinueButton" style="position:absolute;" src="Assets/Miscellaneous/NonButton.PNG"/>
 				<p id='ContinueButtonP' style="position:relative; text-align: center; margin-top:19%; color:black">Continue</p>
 			</div>
 
-			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:420px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="TutorialLevel=0;document.getElementById('Main Menu').style.visibility='hidden'; document.getElementById('Tutorial Levels').style.visibility='visible'" onmouseover="document.getElementById('BootCampButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('BootCampButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('BootCampButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" oncontextmenu="Tooltip(2)">
+			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:420px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="TutorialLevel=0;document.getElementById('Main Menu').style.visibility='hidden'; document.getElementById('Tutorial Levels').style.visibility='visible'" onmouseover="document.getElementById('BootCampButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('BootCampButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('BootCampButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" oncontextmenu='Tooltip("TOOLTIP_BOOTCAMP")'>
 				<img id="BootCampButton" style="position:absolute;" src="Assets/Miscellaneous/GenericButton.PNG" />
 				<p id='BootCampButtonP' style="position:relative; text-align: center; margin-top:19%; color:black">Boot Camp</p>
 			</div>
 
-			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:0px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('Credits').style.visibility='visible'" onclick="document.getElementById('Credits').style.visibility='visible'" onmouseover="document.getElementById('CreditsButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('CreditsButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CreditsButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" oncontextmenu="Tooltip(5)" >
+			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:0px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('Credits').style.visibility='visible'" onclick="document.getElementById('Credits').style.visibility='visible'" onmouseover="document.getElementById('CreditsButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('CreditsButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CreditsButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" oncontextmenu='Tooltip("TOOLTIP_CREDITS")' >
 				<img id="CreditsButton" style="position:absolute;" src="Assets/Miscellaneous/GenericButton.PNG" onclick="document.getElementById('Credits').style.visibility='visible'"/>
 				<p id='CreditsButtonP' style="position:relative; text-align: center; margin-top:19%; color:black">Credits</p>
 			</div>
 
-			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('Options').style.visibility='visible'" onmouseover="document.getElementById('OptionsButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('OptionsButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('OptionsButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" oncontextmenu="Tooltip(4)">
+			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('Options').style.visibility='visible'" onmouseover="document.getElementById('OptionsButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('OptionsButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('OptionsButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" oncontextmenu='Tooltip("TOOLTIP_OPTIONS")'>
 				<img id="OptionsButton" style="position:absolute;" src="Assets/Miscellaneous/GenericButton.PNG"/>
 				<p id='OptionsButtonP' style="position:relative; text-align: center; margin-top:19%; color:black" onclick="document.getElementById('Options').style.visibility='visible'">Options</p>
 			</div>
 
-			<div style="position:absolute; z-index:1; top:0px; left:0px; width:126px; height: 71px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('BonusLevelsButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('BonusLevelsButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('BonusLevelsButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" onclick="document.getElementById('Main Menu').style.visibility='hidden'; document.getElementById('Special Levels').style.visibility='visible'; NivelVizat=Samara" oncontextmenu="Tooltip(8)">
+			<div style="position:absolute; z-index:1; top:0px; left:0px; width:126px; height: 71px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('BonusLevelsButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('BonusLevelsButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('BonusLevelsButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" onclick="document.getElementById('Main Menu').style.visibility='hidden'; document.getElementById('Special Levels').style.visibility='visible'; NivelVizat=Samara" oncontextmenu='Tooltip("TOOLTIP_BONUS_LEVELS")'>
 				<img id="BonusLevelsButton" style="position: absolute;" src="Assets/Miscellaneous/GenericButton.PNG" />
 				<p id='BonusLevelsButtonP' style="position:relative; text-align: center; margin-top:19%; color:black">Bonus Maps</p>
 			</div>
 
-			<div style="position:absolute; z-index:1; top:0px; left:560px; width:126px; height: 71px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('LevelEditorButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('LevelEditorButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('LevelEditorButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" onclick="document.getElementById('MapMold').style.visibility='visible'" oncontextmenu="Tooltip(6)">
+			<div style="position:absolute; z-index:1; top:0px; left:560px; width:126px; height: 71px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('LevelEditorButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('LevelEditorButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('LevelEditorButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" onclick="document.getElementById('MapMold').style.visibility='visible'" oncontextmenu='Tooltip("TOOLTIP_MAP_EDITOR")'>
 				<img id="LevelEditorButton"  style="position: absolute;" src="Assets/Miscellaneous/GenericButton.PNG"/>
 				<p id='LevelEditorButtonP' style="position:relative; text-align: center; margin-top:19%; color:black">Level Editor</p>
 			</div>
 
-			<div style="position: absolute; z-index:1;top:70px; left:0px; width:126px; height: 71px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('ConquestButton').src='Assets/Miscellaneous/NonButton.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('ConquestButton').src='Assets/Miscellaneous/NonButton.PNG'" onmousedown="document.getElementById('ConquestButton').src='Assets/Miscellaneous/NonButton.PNG'" onclick="alert('Work in progress')" oncontextmenu="Tooltip(9)" >
+			<div style="position: absolute; z-index:1;top:70px; left:0px; width:126px; height: 71px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('ConquestButton').src='Assets/Miscellaneous/NonButton.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('ConquestButton').src='Assets/Miscellaneous/NonButton.PNG'" onmousedown="document.getElementById('ConquestButton').src='Assets/Miscellaneous/NonButton.PNG'" onclick="alert('Work in progress')" oncontextmenu='Tooltip("TOOLTIP_CONQUEST")' >
 				<img id="ConquestButton" style="position: absolute;" src="Assets/Miscellaneous/NonButton.PNG"/>
 				<p id='ConquestButtonP' style="position:relative; text-align: center; margin-top:19%; color:black">Conquest</p>
 			</div>
 
-			<div style="position: absolute; z-index:1;top:70px; left:560px; width:126px; height: 71px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('CodexButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('CodexButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CodexButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" onclick="document.getElementById('Codex').style.visibility='visible';document.getElementById('Main Menu').style.visibility='hidden'" oncontextmenu="Tooltip(7)" >
+			<div style="position: absolute; z-index:1;top:70px; left:560px; width:126px; height: 71px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('CodexButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('CodexButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CodexButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" onclick="document.getElementById('Codex').style.visibility='visible';document.getElementById('Main Menu').style.visibility='hidden'" oncontextmenu='Tooltip("TOOLTIP_CODEX")' >
 				<img id="CodexButton" style="position: absolute;" src="Assets/Miscellaneous/GenericButton.PNG"/>
 				<p id='CodexButtonP' style="position:relative; text-align: center; margin-top:19%; color:black">Codex</p>
 			</div>
@@ -705,7 +705,7 @@
 			<div id="TileContainer" style="position:absolute; top:0px; left:0px; overflow:hidden; scroll-behavior: smooth;"></div>
 			<img style="position: absolute; top: 595px; left: 588px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG'" onclick="document.getElementById('EditorMap').style.visibility='hidden'; document.getElementById('Main Menu').style.visibility='visible'" />
 
-			<div id="Tilelist" style="position: absolute; left: -91px; top: -10px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" oncontextmenu="Tooltip(18)" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';">
+			<div id="Tilelist" style="position: absolute; left: -91px; top: -10px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" oncontextmenu="Tooltip('TOOLTIP_CHOOSE_TILE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';">
 				<img src="Assets/Miscellaneous/EditorPanel.PNG"/>
 				<img id="EditorTile1" style="position:absolute; top:10px; left:7px" src="Assets/Tiles/Plains.PNG" onclick="ChosenTerrain=TerrainLedger[0];EditationToggle='Tile'" oncontextmenu="FillMapEditor(TerrainLedger[0])" />
 				<img id="EditorTile2" style="position:absolute; top:10px; left:7px" src="Assets/Tiles/Forest.PNG" onclick="ChosenTerrain=TerrainLedger[1];EditationToggle='Tile'" oncontextmenu="FillMapEditor(TerrainLedger[1])"/>
@@ -765,7 +765,7 @@
 			<p style="position: absolute; top:601px; left:-49px; z-index:3">↕</p>
 			<p id="EditorHePointer" style="position: absolute; top:602px; left:-35px; z-index:3">10</p>
 
-			<div id="regionMap" style="position:absolute; visibility: hidden; top:0px; left:0px; height:560px; width:560px; overflow:hidden; overflow-y:hidden;" oncontextmenu="Tooltip(23); document.getElementById('Backpanel').style.visibility='inherit'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';"></div>
+			<div id="regionMap" style="position:absolute; visibility: hidden; top:0px; left:0px; height:560px; width:560px; overflow:hidden; overflow-y:hidden;" oncontextmenu="Tooltip('TOOLTIP_GO_AWAY'); document.getElementById('Backpanel').style.visibility='inherit'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';"></div>
 			
 			<div id="Backpanel" style="position: absolute; visibility: hidden; top:56px; left:560px; height:210px; z-index: 6; width:350px; border:5px solid black; background-color:grey">
 				<input id="RegionNodeOwner" style="position: absolute; top:15px; left:110px">
@@ -782,7 +782,7 @@
 				<button id="RegionApplyP" style="position:absolute; top:140px; left:100px; width: 150px;" onclick="AddRegionalNode()">Add Regional Node</button>
 			</div>
 
-			<div id="EditorDetailPanel" style="position: absolute; visibility: hidden; top:56px; left:560px; height:280px; z-index: 6; width:350px; border:5px solid black; background-color:grey" oncontextmenu="Tooltip(22)" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';">
+			<div id="EditorDetailPanel" style="position: absolute; visibility: hidden; top:56px; left:560px; height:280px; z-index: 6; width:350px; border:5px solid black; background-color:grey" oncontextmenu="Tooltip('TOOLTIP_EDIT_PROPERTIES')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';">
 				<input id="EditorNameDenominator" style="position: absolute; top:15px; left:110px" onkeyup="if(document.getElementById('EditorNameDenominator').value[0]=='#' && document.getElementById('EditorNameDenominator').value.length>1){let index=document.getElementById('EditorNameDenominator').value.slice(1); document.getElementById('MetadataNameI').innerHTML=Language.UnitSpecialNames[index]}else{document.getElementById('MetadataNameI').innerHTML=''}">
 				<input id="EditorDescDenominator" style="position: absolute; top:70px; left:10px; width:210px; height:105px" onkeyup="if(document.getElementById('EditorDescDenominator').value[0]=='#' && document.getElementById('EditorDescDenominator').value.length>1){let index=document.getElementById('EditorDescDenominator').value.slice(1); document.getElementById('MetadataDescI').innerHTML=Language.UnitSpecialDesc[index]}else{document.getElementById('MetadataDescI').innerHTML=''}">
 				<input id="EditorLifeDenominator" style="position: absolute; top:185px; left:110px">
@@ -797,7 +797,7 @@
 				<button id="MetadataApplyP" style="position: absolute; left:140px; top:250px" onclick="CustomizeTile()">Apply</button>
 			</div>
 			
-			<div id="Unitlist" style="position: absolute; left: 581px; top: -10px" oncontextmenu="Tooltip(19)" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';">
+			<div id="Unitlist" style="position: absolute; left: 581px; top: -10px" oncontextmenu="Tooltip('TOOLTIP_CHOOSE_UNIT')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';">
 				<img src="Assets/Miscellaneous/EditorPanelAlter.PNG"/>
 				<img id="EditorUnitShowcase1" style="position:absolute; top:10px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Units/Static/LightInf2.PNG" onclick="ChosenUnit=1;EditationToggle='Unit'"/>
 				<img id="EditorUnitShowcase2" style="position:absolute; top:68px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Units/Static/Infantry2.PNG" onclick="ChosenUnit=2;EditationToggle='Unit'"/>
@@ -957,27 +957,27 @@
 				<img style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/LanguageButton.PNG"/>
 			</div>
 
-			<div style="position:absolute; z-index:8; left:10px; top:70px; width:105px; height:58px; text-align:center" oncontextmenu="Tooltip(25);" onmouseover="this.style.filter='brightness(125%)'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; ToggleOption('Sound')">
+			<div style="position:absolute; z-index:8; left:10px; top:70px; width:105px; height:58px; text-align:center" oncontextmenu="Tooltip('TOOLTIP_OPTION_SOUND');" onmouseover="this.style.filter='brightness(125%)'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; ToggleOption('Sound')">
 				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.PNG"/>
 				<img id="ToggleSound" style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/SoundOn.PNG"/>
 			</div>
 
-			<div style="position:absolute; z-index:8; left:115px; top:70px; width:105px; height:58px; text-align:center" oncontextmenu="Tooltip(24);" onmouseover="this.style.filter='brightness(125%)'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; ToggleOption('Music')">
+			<div style="position:absolute; z-index:8; left:115px; top:70px; width:105px; height:58px; text-align:center" oncontextmenu="Tooltip('TOOLTIP_OPTION_MUSIC');" onmouseover="this.style.filter='brightness(125%)'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; ToggleOption('Music')">
 				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.PNG"/>
 				<img id="ToggleMusic" style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/MusicOn.PNG"/>
 			</div>
 
-			<div style="position:absolute; z-index:8; left:224px; top:70px; width:105px; height:58px; text-align:center" oncontextmenu="Tooltip(26);" onmouseover="this.style.filter='brightness(125%)'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; ToggleOption('Dialogue')">
+			<div style="position:absolute; z-index:8; left:224px; top:70px; width:105px; height:58px; text-align:center" oncontextmenu="Tooltip('TOOLTIP_OPTION_DIALOGUE');" onmouseover="this.style.filter='brightness(125%)'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; ToggleOption('Dialogue')">
 				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.PNG"/>
 				<img id="ToggleDialogue" style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/DialogueOn.PNG"/>
 			</div>
 
-			<div style="position:absolute; z-index:8; left:329px; top:70px; width:105px; height:58px; text-align:center" oncontextmenu="Tooltip(27);" onmouseover="this.style.filter='brightness(125%)'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; ToggleOption('IdleAnim')">
+			<div style="position:absolute; z-index:8; left:329px; top:70px; width:105px; height:58px; text-align:center" oncontextmenu="Tooltip('TOOLTIP_OPTION_IDLE_ANIMATIONS');" onmouseover="this.style.filter='brightness(125%)'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; ToggleOption('IdleAnim')">
 				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.PNG"/>
 				<img id="ToggleIdleAnimations" style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/IdleAnimOn.PNG"/>
 			</div>
 
-			<div style="position:absolute; z-index:8; left:329px; top:10px; width:105px; height:58px; text-align:center" oncontextmenu="Tooltip(28);" onmouseover="this.style.filter='brightness(125%)'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; ToggleOption('MystSett')">
+			<div style="position:absolute; z-index:8; left:329px; top:10px; width:105px; height:58px; text-align:center" oncontextmenu="Tooltip('TOOLTIP_OPTION_MYSTERY');" onmouseover="this.style.filter='brightness(125%)'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; ToggleOption('MystSett')">
 				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.PNG"/>
 				<img id="ToggleMysteriousSetting" style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/MysteriousSettingOff.PNG"/>
 			</div>
@@ -1318,11 +1318,11 @@
 				</div>
 
 				<p id="LoreLength" style="position:absolute; top:-4px; left: 4px; width:350px; text-align:center;">Document</p>
-				<img id="LoreLengthIcon1" src="Assets/Miscellaneous/DocShadow.PNG" style="position:absolute; top:35px; left:14px" oncontextmenu="Tooltip(29)" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'"/>
-				<img id="LoreLengthIcon2" src="Assets/Miscellaneous/DocShadow.PNG" style="position:absolute; top:35px; left:84px" oncontextmenu="Tooltip(29)" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'"/>
-				<img id="LoreLengthIcon3" src="Assets/Miscellaneous/DocShadow.PNG" style="position:absolute; top:35px; left:154px" oncontextmenu="Tooltip(29)" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'"/>
-				<img id="LoreLengthIcon4" src="Assets/Miscellaneous/DocShadow.PNG" style="position:absolute; top:35px; left:224px" oncontextmenu="Tooltip(29)" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'"/>
-				<img id="LoreLengthIcon5" src="Assets/Miscellaneous/DocShadow.PNG" style="position:absolute; top:35px; left:294px" oncontextmenu="Tooltip(29)" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'"/>
+				<img id="LoreLengthIcon1" src="Assets/Miscellaneous/DocShadow.PNG" style="position:absolute; top:35px; left:14px" oncontextmenu="Tooltip('TOOLTIP_DOCUMENT_SIZE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'"/>
+				<img id="LoreLengthIcon2" src="Assets/Miscellaneous/DocShadow.PNG" style="position:absolute; top:35px; left:84px" oncontextmenu="Tooltip('TOOLTIP_DOCUMENT_SIZE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'"/>
+				<img id="LoreLengthIcon3" src="Assets/Miscellaneous/DocShadow.PNG" style="position:absolute; top:35px; left:154px" oncontextmenu="Tooltip('TOOLTIP_DOCUMENT_SIZE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'"/>
+				<img id="LoreLengthIcon4" src="Assets/Miscellaneous/DocShadow.PNG" style="position:absolute; top:35px; left:224px" oncontextmenu="Tooltip('TOOLTIP_DOCUMENT_SIZE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'"/>
+				<img id="LoreLengthIcon5" src="Assets/Miscellaneous/DocShadow.PNG" style="position:absolute; top:35px; left:294px" oncontextmenu="Tooltip('TOOLTIP_DOCUMENT_SIZE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'"/>
 			</div>
 		</div>
 
@@ -1456,7 +1456,7 @@
 			<div id="CampaignScreen" style="visibility: hidden; position:absolute; width: 1000px; height: 700px; background-color:#202020; text-align:center">
 				<img id="ChapterIllustration" style="position: absolute; width:1000px; height:700px; top:0px; left:0px" src="Assets/Paralogues/1-1.jpg"/>
 
-				<div style="position: absolute; width: 100px; height:250px; top:105px; left:100px" oncontextmenu="Tooltip(13);this.style.opacity=0.35" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.opacity=1">
+				<div style="position: absolute; width: 100px; height:250px; top:105px; left:100px" oncontextmenu="Tooltip('TOOLTIP_CHOOSE_CHAPTER');this.style.opacity=0.35" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.opacity=1">
 					<img style="position:absolute; left:0px" src="Assets/Miscellaneous/ChapterPanel.PNG"/>
 					<img id="ChapterPanelPointer" style="position: absolute; left:-40px; top:-6px" src="Assets/Miscellaneous/ArrowPointer.PNG"/>
 
@@ -1496,13 +1496,13 @@
 					</div>
 				</div>
 
-				<div style="position: absolute; top:357px; left: 95px; width: 100px; height: 130px" oncontextmenu="Tooltip(16);this.style.opacity=0.35" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.opacity=1">
+				<div style="position: absolute; top:357px; left: 95px; width: 100px; height: 130px" oncontextmenu="Tooltip('TOOLTIP_HOTSEAT');this.style.opacity=0.35" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.opacity=1">
 					<img style="position:absolute; left:0px" src="Assets/Miscellaneous/HotseatPanel.PNG"/>
 					<p style="position:relative; top:0px; left:5px; z-index:1">Hotseat Settings</p>
 					<p style="position:relative; top:0px; left:5px; z-index:1">Work in Progress</p>
 				</div>
 
-				<div style="position: absolute; top: 490px; left: 95px" oncontextmenu="Tooltip(15);this.style.opacity=0.35" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.opacity=1">
+				<div style="position: absolute; top: 490px; left: 95px" oncontextmenu="Tooltip('TOOLTIP_CHOOSE_DIFFICULTY');this.style.opacity=0.35" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.opacity=1">
 					<img src="Assets/Miscellaneous/DifficultyPanel.png"/>
 					<img style="position: absolute; top: 50px; left: 15px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/DifficultyBarEasy.PNG" onclick="Difficulty=1; document.getElementById('DifficultyPanelPointer').style.top='35px'"/>
 					<img style="position: absolute; top: 87px; left: 15px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/DifficultyBarMedium.PNG" onclick="Difficulty=2; document.getElementById('DifficultyPanelPointer').style.top='72px'"/>
@@ -1520,7 +1520,7 @@
 				<img style="position: absolute; top:-50px; left:325px" src="Assets/Miscellaneous/TitlePanel.PNG" onmouseover="this.style.opacity=0.35" onmouseout="this.style.opacity=1"/>
 				<p id="CampaignName" style="position: relative; z-index:7">This is Chapter Black</p>
 
-				<div style="position:absolute; left:280px; top: 100px; width:500px; height:70px" oncontextmenu="Tooltip(14);this.style.opacity=0.35" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.opacity=1">
+				<div style="position:absolute; left:280px; top: 100px; width:500px; height:70px" oncontextmenu="Tooltip('TOOLTIP_CHOOSE_MISSION');this.style.opacity=0.35" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.opacity=1">
 					<img id="EmblemSlot" style="position:absolute; top:-16px; left:0px; z-index:1" id="EmblemHighlighter" src="Assets/Miscellaneous/EmblemSlot.PNG"/>
 					<img id="Emblem1" style="position: absolute; left:15px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/EmblemSOM.PNG" onclick="ChooseMission(1)" />
 					<img id="Emblem2" style="position: absolute; left:100px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="ChooseMission(2)" />
@@ -1529,7 +1529,7 @@
 					<img id="Emblem5" style="position: absolute; left:355px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="ChooseMission(5)" />
 				</div>
 
-				<div style="position: absolute; left:800px; top:105px" oncontextmenu="Tooltip(17);this.style.opacity=0.35" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.opacity=1">
+				<div style="position: absolute; left:800px; top:105px" oncontextmenu="Tooltip('TOOLTIP_MISSION_PROPERTIES');this.style.opacity=0.35" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.opacity=1">
 					<img src="Assets/Miscellaneous/SpecificationsPanel.PNG"/>
 					<p id="SpecificationText" style="position:absolute; text-align: center; width:168px; top:0px; left:0px; font-size:12px">Specifications</p>
 					<img id="CampaignSpecification1" style="position: absolute; left:49px; top: 35px" src="Assets/Miscellaneous/MoneySpecification.PNG" onmouseover="AnalyzeSpecification(1)" />

@@ -9074,9 +9074,8 @@ function ToggleTileBlock(Block){
 
 
 	};
-function Tooltip(Tooltip){
+function Tooltip(tooltipID){
 	const { language } = battalion;
-	const tooltipID = `TOOLTIP_${Tooltip}`;
 	const tooltipHTML = language.get(tooltipID);
 
 	let frame = 0;
@@ -9094,7 +9093,7 @@ function Tooltip(Tooltip){
 			}
 			case 20: {
 				document.getElementById("GeneralTooltip").style.visibility = "hidden";
-				clearInterval(interval);
+				window.clearInterval(interval);
 				break;
 			}
 		}
@@ -9102,7 +9101,7 @@ function Tooltip(Tooltip){
 		frame++;
 	}
 
-	setInterval(tooltipDisplay, 100);
+	interval = window.setInterval(tooltipDisplay, 100);
 };
 	
 	
