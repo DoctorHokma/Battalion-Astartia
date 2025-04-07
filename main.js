@@ -8,8 +8,8 @@ battalion.language.addLanguage(Battalion.LANGUAGE.ROMANIAN, LANGUAGE_ROMANIAN);
 battalion.language.addLanguage(Battalion.LANGUAGE.TURKISH, LANGUAGE_TURKISH);
 battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
 
-var Flair = null;
-var Aphorism = null;
+var Flair = -1;
+var Aphorism = -1;
 
 ResolutionXFactor=1;
 ResolutionYFactor=1;
@@ -58,7 +58,7 @@ InterlogueBST=[[],[],[],[],[],[],[],[],[],[],[]];
 Campaigns=CAMPAIGNS;
 Units=UNITS;
 Factions=CampaignFactions;
-Terrain=CampaignTerrain;
+Terrain=TERRAIN;
 TNOFactions=[
 	{name:"Null", faction:"Idk, man. Neutrals maybe?", color:"ShitBrown"},
 	{name:"West Russian Revolutionary Front", faction:"SocIntern", color:"Red", ChromaCode:""},
@@ -1528,11 +1528,12 @@ function AttackEstimate(Attacker,Defender){
 
 
 
-	};
+};
+
 function AnalyseSquare(entityType,X,Y){
 	const { language } = battalion;
 	//index=23;
-	if(entityType=="Tile"){
+	if(entityType === "Tile") {
 		index=Map[X][Y];
 		//if(index>9 && index<13){ActiveIndustrialNode={X:X,Y:Y};LaunchRecruitmentPanel(index-9);};
 		HighlightedEntity=Terrain[index];
@@ -1555,8 +1556,7 @@ function AnalyseSquare(entityType,X,Y){
 		if(Terrain[index].tag1==""){document.getElementById("Trait1").src=""}else{document.getElementById("Trait1").src="Assets/Traits/"+Terrain[index].tag1+".PNG";};
 		if(Terrain[index].tag2==""){document.getElementById("Trait2").src=""}else{document.getElementById("Trait2").src="Assets/Traits/"+Terrain[index].tag2+".PNG";};		
 		if(Terrain[index].tag3==""){document.getElementById("Trait3").src=""}else{document.getElementById("Trait3").src="Assets/Traits/"+Terrain[index].tag3+".PNG";};
-		if(Terrain[index].tag4==""){document.getElementById("Trait4").src=""}else{document.getElementById("Trait4").src="Assets/Traits/"+Terrain[index].tag4+".PNG";};
-		
+		if(Terrain[index].tag4==""){document.getElementById("Trait4").src=""}else{document.getElementById("Trait4").src="Assets/Traits/"+Terrain[index].tag4+".PNG";};	
 	};
 
 	if(entityType=="Unit"){
@@ -1585,9 +1585,9 @@ function AnalyseSquare(entityType,X,Y){
 		let Name = "";
 
 		if(unit.customName) {
-			Name = unit.customName
+			Name = unit.customName;
 		} else if(unit.hasSpecialName) {
-			Name = Language.UnitSpecialNames[unit.hasSpecialName]
+			Name = Language.UnitSpecialNames[unit.hasSpecialName];
 		} else {
 			const unitType = Units[unit.unitType];
 			const name = language.get(unitType.name);
@@ -1639,8 +1639,6 @@ function AnalyseSquare(entityType,X,Y){
 		if(Units[unit.unitType].tag2==""){document.getElementById("Trait2").src=""}else{document.getElementById("Trait2").src="Assets/Traits/"+Units[unit.unitType].tag2+".PNG";};		
 		if(Units[unit.unitType].tag3==""){document.getElementById("Trait3").src=""}else{document.getElementById("Trait3").src="Assets/Traits/"+Units[unit.unitType].tag3+".PNG";};
 		if(Units[unit.unitType].tag4==""){document.getElementById("Trait4").src=""}else{document.getElementById("Trait4").src="Assets/Traits/"+Units[unit.unitType].tag4+".PNG";};
-
-
 	};
 
 	if(entityType=="Structure"){};};
@@ -1776,27 +1774,27 @@ function Build(Structure){
 	let X=UnitIcs;
 	let Y=UnitIgrec;
 	let Santier={
-	name: "",
-	description: "",
-	ID:"Unit "+MapRoster.length,
-	index:MapRoster.length-1,
-	x:X, 
-	y:Y, 
-	unitType:0,
-	faction:PlayerChoiceFaction,
-	coallition:Factions[PlayerChoiceFaction].faction,
-	damage:Units[0].Attack, 
-	damageType:Units[0].Weapon,
-	minR:Units[0].MinRange,
-	maxR:Units[0].MaxRange, 
-	life:Units[0].HP, 
-	armor:Units[0].Armor, 
-	speed:Units[0].Speed, 
-	movementType:Units[0].Movement, 
-	morale:0,
-	direction:3,
-	building:Structure,
-	constructionTime:unitType.Timer
+		name: "",
+		description: "",
+		ID:"Unit "+MapRoster.length,
+		index:MapRoster.length-1,
+		x:X, 
+		y:Y, 
+		unitType:0,
+		faction:PlayerChoiceFaction,
+		coallition:Factions[PlayerChoiceFaction].faction,
+		damage:Units[0].Attack, 
+		damageType:Units[0].Weapon,
+		minR:Units[0].MinRange,
+		maxR:Units[0].MaxRange, 
+		life:Units[0].HP, 
+		armor:Units[0].Armor, 
+		speed:Units[0].Speed, 
+		movementType:Units[0].Movement, 
+		morale:0,
+		direction:3,
+		building:Structure,
+		constructionTime:unitType.Timer
 	};
 
 	MapRoster[MapRoster.length]=Santier;
@@ -1882,26 +1880,47 @@ function CallCampaignScreen(){
 	if(Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Constants.Capture.length>0){document.getElementById("CampaignSpecification5").style.visibility="inherit"}else{document.getElementById("CampaignSpecification5").style.visibility="hidden"};
 	if(Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Constants.Protect.length>0){document.getElementById("CampaignSpecification6").style.visibility="inherit"}else{document.getElementById("CampaignSpecification6").style.visibility="hidden"};
 	if(Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Constants.Defeat.length>0){document.getElementById("CampaignSpecification7").style.visibility="inherit"}else{document.getElementById("CampaignSpecification7").style.visibility="hidden"};};
-function CallInterlogue(){
+
+function CallInterlogue() {
 	document.getElementById("InterlogueScreen").style.visibility="visible";
 	document.getElementById("InterlogueText").innerHTML=Language.Interlogues[ChosenNation-1][ChosenChapter-1];
-	document.getElementById("InterlogueImage").src="Assets/Paralogues/"+ChosenNation+"X"+ChosenChapter+".JPG";};
+	document.getElementById("InterlogueImage").src="Assets/Paralogues/"+ChosenNation+"X"+ChosenChapter+".JPG";
+};
 
-const writeAphorism= function(context, aphorism) {
-	if(!aphorism) {
+/**
+ * neyn 07.04.2025
+ * 
+ * @param {Battalion} context 
+ * @param {int} aphorismID 
+ * @returns 
+ */
+const writeAphorism = function(context, aphorismID) {
+	if(aphorismID < 0 || aphorismID >= APHORISMS.length) {
 		return;
 	}
 
 	const { language } = context;
+	const aphorism = APHORISMS[aphorismID];
 	const { narrator, text } = aphorism;
 	const aphorismHTML = "\"" + language.get(text) + "\"" + "<br><br>" + language.get(narrator);
 
 	document.getElementById("AphorismText").innerHTML = aphorismHTML;
 }
 
+/**
+ * neyn 07.04.2025
+ * 
+ * Returns a random index in APHORISMS.
+ * 
+ * Returns -1 if APHORISMS is empty.
+ * 
+ * Also sets the "AphorismIllustration".
+ * 
+ * @returns {int}
+ */
 const pickAphorism = function() {
 	if(APHORISMS.length === 0) {
-		return null;
+		return -1;
 	}
 
 	const aphorismID = Math.floor(Math.random() * APHORISMS.length);
@@ -1912,30 +1931,46 @@ const pickAphorism = function() {
 		document.getElementById("AphorismIllustration").src = image;
 	}
 
-	return aphorism;
+	return aphorismID;
 }
 
-const writeFlair = function(context, flair) {
-	if(!flair) {
+/**
+ * neyn 07.04.2025
+ * 
+ * @param {Battalion} context 
+ * @param {int} flairID 
+ * @returns 
+ */
+const writeFlair = function(context, flairID) {
+	if(flairID < 0 || flairID >= FLAIRS.length) {
 		return;
 	}
 
 	const { language } = context;
+	const flair = FLAIRS[flairID];
 	const { text } = flair;
 	const flairHTML = language.get(text);
 
 	document.getElementById("PreloaderSplash").innerHTML = flairHTML;
 }
 
+/**
+ * neyn 07.04.2025
+ * 
+ * Returns a random index in FLAIRS.
+ * 
+ * Returns -1 if FLAIRS is empty.
+ * 
+ * @returns {int}
+ */
 const pickFlair = function() {
 	if(FLAIRS.length === 0) {
-		return null;
+		return -1;
 	}
 
 	const flairID = Math.floor(Math.random() * FLAIRS.length);
-	const flair = FLAIRS[flairID];
 
-	return flair;
+	return flairID;
 }
 
 function CallPreloader(){
@@ -4154,7 +4189,7 @@ function FocalTileRefresh(X,Y){
 		let Strucdress="Structure "+ics+"X"+igrec;
 		document.getElementById(TileAdress).style.top="0px";
 		let unit=rostermap[ics-1][igrec-1];
-		let Biome=CampaignTerrain[Map[ics-1][igrec-1]].BiomeIndex??BiomeMap[ics-1][igrec-1];
+		let Biome=Terrain[Map[ics-1][igrec-1]].BiomeIndex??BiomeMap[ics-1][igrec-1];
 		if(Biome!=undefined){BiomeMap[ics-1][igrec-1]=Biome;};
 		if(Biome==1){Biome=""};
 		if(Biome==2){Biome="Arid"};
@@ -4163,7 +4198,7 @@ function FocalTileRefresh(X,Y){
 		if(Biome==5){Biome="Arctic"};
 		if(Biome==6){Biome="Lunar"};
 		if(Biome==7){Biome="Martian"};
-		if((CampaignTerrain[Map[ics-1][igrec-1]].BiomeIndex??0)!=0){Biome=""};
+		if((Terrain[Map[ics-1][igrec-1]].BiomeIndex??0)!=0){Biome=""};
 
 		document.getElementById(Strucdress).style.visibility="hidden";
 		document.getElementById("A "+(ics)+"X"+(igrec)).style.visibility="hidden";
@@ -4181,7 +4216,7 @@ function FocalTileRefresh(X,Y){
 		}else{document.getElementById(Altdress).style.visibility="hidden";};
 
 
-		let Class=CampaignTerrain[Map[ics-1][igrec-1]].Class;
+		let Class=Terrain[Map[ics-1][igrec-1]].Class;
 		let a=X;
 		let b=Y;
 		let D1=0;
@@ -4215,7 +4250,7 @@ function FocalTileRefresh(X,Y){
 			if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S"){type+=4};
 			if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){type+=8};
 
-			//console.log(CampaignTerrain[EditorMap[ics-1][igrec-1]].BiomeIndex);
+			//console.log(Terrain[EditorMap[ics-1][igrec-1]].BiomeIndex);
 			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
 			document.getElementById(TileAdress).style.top="0px";
 			document.getElementById(TileAdress).src=Var;
@@ -7066,7 +7101,7 @@ function RefreshTile(X,Y){
 		let Strucdress="Structure "+X+" X "+Y;
 		document.getElementById(TileAdress).style.top="0px";
 		let unit=EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1];
-		let Biome=CampaignTerrain[EditorMap[ics-1][igrec-1]].BiomeIndex??EditorBiomeMap[X-1][Y-1];
+		let Biome=Terrain[EditorMap[ics-1][igrec-1]].BiomeIndex??EditorBiomeMap[X-1][Y-1];
 		if(Biome!=undefined){EditorBiomeMap[X-1][Y-1]=Biome;};
 		if(Biome==1){Biome=""};
 		if(Biome==2){Biome="Arid"};
@@ -7075,7 +7110,7 @@ function RefreshTile(X,Y){
 		if(Biome==5){Biome="Arctic"};
 		if(Biome==6){Biome="Lunar"};
 		if(Biome==7){Biome="Martian"};
-		if((CampaignTerrain[EditorMap[ics-1][igrec-1]].BiomeIndex??0)!=0){Biome=""};
+		if((Terrain[EditorMap[ics-1][igrec-1]].BiomeIndex??0)!=0){Biome=""};
 
 		document.getElementById(Strucdress).style.visibility="hidden";
 		//alert("a "+(X-EditorStandardX)+" X "+(Y-EditorStandardY));
@@ -7095,7 +7130,7 @@ function RefreshTile(X,Y){
 
 
 
-		let Class=CampaignTerrain[EditorMap[ics-1][igrec-1]].Class;
+		let Class=Terrain[EditorMap[ics-1][igrec-1]].Class;
 		//alert(ics+" "+igrec);
 		//let TileAdress="Tile "+(ics+1)+" X "+(igrec+1);
 		//let Strucdress="Structure "+(ics+1)+" X "+(igrec+1);
@@ -7131,7 +7166,7 @@ function RefreshTile(X,Y){
 			if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S"){type+=4};
 			if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){type+=8};
 
-			//console.log(CampaignTerrain[EditorMap[ics-1][igrec-1]].BiomeIndex);
+			//console.log(Terrain[EditorMap[ics-1][igrec-1]].BiomeIndex);
 			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
 			document.getElementById(TileAdress).style.top="0px";
 			document.getElementById(TileAdress).src=Var;
@@ -7341,7 +7376,7 @@ function RefreshMapEditor(){
 
 
 
-		let Class=CampaignTerrain[EditorMap[ics-1][igrec-1]].Class;
+		let Class=Terrain[EditorMap[ics-1][igrec-1]].Class;
 		//alert(ics+" "+igrec);
 		//let TileAdress="Tile "+(ics+1)+" X "+(igrec+1);
 		//let Strucdress="Structure "+(ics+1)+" X "+(igrec+1);
@@ -7352,7 +7387,7 @@ function RefreshMapEditor(){
 		let D3=0;
 		let D4=0;
 
-		let BiomeIndicator=CampaignTerrain[EditorMap[ics-1][igrec-1]].BiomeIndex??1;
+		let BiomeIndicator=Terrain[EditorMap[ics-1][igrec-1]].BiomeIndex??1;
 		if(BiomeIndicator!=1){EditorBiomeMap[ics-1][igrec-1]=BiomeIndicator};
 		let Biome=EditorBiomeMap[ics-1][igrec-1]??1;
 
@@ -7366,7 +7401,7 @@ function RefreshMapEditor(){
 		if(Biome==6){Biome="Lunar"};
 		if(Biome==7){Biome="Martian"};
 
-		if((CampaignTerrain[EditorMap[ics-1][igrec-1]].BiomeIndex??0)!=0){Biome=""};
+		if((Terrain[EditorMap[ics-1][igrec-1]].BiomeIndex??0)!=0){Biome=""};
 
 
 		if(a>0){D1=EditorMap[a-1][b]};
@@ -8011,7 +8046,7 @@ function RetrieveAllMapData(){
 
 	TotalKey+="\nFactions:GenericFactions,";
 	TotalKey+="\nUnits:UNITS,";
-	TotalKey+="\nTerrain:CampaignTerrain";
+	TotalKey+="\nTerrain:TERRAIN";
 
 	TotalKey+="};";
 
@@ -8536,7 +8571,7 @@ function TestMap(){
 	for(let N=0;N<NodeKeyT.length;N++){for(let R=0;R<NodeKeyT[0].length;R++){if(NodeKeyT[N][R]!=1){NodeKey[NodeKey.length]=NodeKeyT[N][R]}}};
 	//alert(typeof(NodeKeyT[0][0]));
 
-	EditorLevel={Map:MapKey, Roster:RosterKey, Constants:ConstantsKey, ControlMap:ControlKey,BiomeMap:BiomeKey,RegionMap:RegionKey,NodeMap:NodeKey,Factions:GenericFactions,Units:UNITS,Terrain:CampaignTerrain};
+	EditorLevel={Map:MapKey, Roster:RosterKey, Constants:ConstantsKey, ControlMap:ControlKey,BiomeMap:BiomeKey,RegionMap:RegionKey,NodeMap:NodeKey,Factions:GenericFactions,Units:UNITS,Terrain:TERRAIN};
 	
 	let canBattle=true;
 
@@ -8870,8 +8905,14 @@ function Tooltip(tooltipID){
 	}
 
 	interval = window.setInterval(tooltipDisplay, 100);
-};
-	
+}
+
+/**
+ * neyn 07.04.2025
+ * 
+ * @param {int} tagID 
+ * @returns 
+ */
 const getTraitIDFromHighlighted = function(tagID) {
 	if(!HighlightedEntity) {
 		console.warn("No highlighted entity!");
@@ -8887,7 +8928,13 @@ const getTraitIDFromHighlighted = function(tagID) {
 	}
 }
 
-//NEYN TODO!!!
+/**
+ * neyn 07.04.2025
+ * 
+ * @param {Battalion} context 
+ * @param {string} traitID 
+ * @returns 
+ */
 const showTraitDetail = function(context, traitID) {
 	const { language } = context;
 	const trait = TRAITS[traitID];
@@ -8910,6 +8957,13 @@ const showTraitDetail = function(context, traitID) {
 	document.getElementById("TraitDescription").innerHTML = traitDesc;
 }
 
+/**
+ * neyn 07.04.2025
+ * 
+ * @param {int} tagID 
+ * @param {string} useCase 
+ * @returns 
+ */
 const traitDetail = function(tagID, useCase){
 	//Bag pula-n curul lui Dincă <- lol -neyn
 

@@ -2,6 +2,7 @@ const LanguageHandler = function(template) {
     this.languages = new Map();
     this.template = template;
     this.currentLanguage = null;
+    this.currentLanguageID = null;
 }
 
 LanguageHandler.STRICT = true;
@@ -14,6 +15,7 @@ LanguageHandler.prototype.selectLanguage = function(languageID) {
     }
 
     this.currentLanguage = language;
+    this.currentLanguageID = languageID;
 }
 
 LanguageHandler.prototype.addLanguage = function(languageID, language) {
@@ -34,14 +36,16 @@ LanguageHandler.prototype.get = function(key) {
     const text = this.currentLanguage[key];
 
     if(text === undefined) {
-        console.warn("Translation does not exist!", key);
+        if(LanguageHandler.STRICT) {
+            console.warn("Translation does not exist!", key, this.currentLanguageID);
+        }
 
         return key;
     }
 
     if(LanguageHandler.STRICT) {
         if(text.length === 0) {
-            console.warn("Translation is empty!", key);
+            console.warn("Translation is empty!", key, this.currentLanguageID);
 
             return key;
         }

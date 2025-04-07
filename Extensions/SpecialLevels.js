@@ -317,7 +317,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain,
+	Terrain:TERRAIN,
 
 
 
@@ -361,7 +361,7 @@ Palawan={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 
 
 	};
@@ -466,7 +466,7 @@ UnitRepository={
 
 				Factions:CampaignFactions,
 				Units:UNITS,
-				Terrain:CampaignTerrain};
+				Terrain:TERRAIN};
 
 Ohio={
 	Name:"Ohio",
@@ -619,7 +619,7 @@ Ohio={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 
 
 
@@ -713,7 +713,7 @@ Samara={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain,
+	Terrain:TERRAIN,
 
 	Prelogue:["Narrator","This is a <span style='color:yellow'> secret </span> map used for testing"],
 	Postlogue:["Narrator","Congratulations, now get the fuck out"],
@@ -764,7 +764,7 @@ Arena={
 
 	Factions:GenericFactions,
 	Units:UNITS,
-	Terrain:CampaignTerrain};
+	Terrain:TERRAIN};
 
 
 
@@ -914,7 +914,7 @@ Albinia={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 
 
 	};
@@ -977,7 +977,7 @@ Interjection:["Spruce","Aleks is dead and the Sol fucked off. Fuck this, we wast
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 
 	};
 
@@ -1074,7 +1074,7 @@ Akkadian_War={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain,
+	Terrain:TERRAIN,
 
 	Prelogue:["Great Lord","Sultan Faruk, I hope the expeditionary corps reached its destination.",
 			"Faruk","Twenty thousand men and two hundred armored vehicles have landed, half of this shall be deployed soon enough.",
@@ -1293,7 +1293,7 @@ PulaGulf={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 
 
 
@@ -1358,7 +1358,7 @@ WhatTheDuck={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain,
+	Terrain:TERRAIN,
 
 
 	};
@@ -1422,7 +1422,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 
 Factions:GenericFactions,
 Units:UNITS,
-Terrain:CampaignTerrain};
+Terrain:TERRAIN};
 
 Chess={
 	Name:"Chess",
@@ -1547,7 +1547,7 @@ Chess={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 	};
 
 TankChess={
@@ -1673,7 +1673,7 @@ TankChess={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 	};
 
 NavalChess={
@@ -1800,7 +1800,7 @@ NavalChess={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 
 	};
 
@@ -1870,7 +1870,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 
 Factions:GenericFactions,
 Units:UNITS,
-Terrain:CampaignTerrain};
+Terrain:TERRAIN};
 
 Catto={
 	Name:"Catto",
@@ -1946,7 +1946,7 @@ Catto={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain,
+	Terrain:TERRAIN,
 
 	Prelogue:["Narrator","This is a catto!","Narrator","Fight to establish what colour the cat will have. Grey is your ally."],
 
@@ -2000,7 +2000,7 @@ Hooman={
 
 	Factions:GenericFactions,
 	Units:UNITS,
-	Terrain:CampaignTerrain};
+	Terrain:TERRAIN};
 
 Sealand={
 	Name:"Sealand",
@@ -2036,7 +2036,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 
 Factions:GenericFactions,
 Units:UNITS,
-Terrain:CampaignTerrain};
+Terrain:TERRAIN};
 
 LakePanzer={
 	Name:"Panzer of the Lake",
@@ -2089,7 +2089,7 @@ LakePanzer={
 
 	Factions:GenericFactions,
 	Units:UNITS,
-	Terrain:CampaignTerrain};
+	Terrain:TERRAIN};
 
 ZombieHorde={
 
@@ -2149,7 +2149,7 @@ ZombieHorde={
 
 
 
-	Terrain:CampaignTerrain,
+	Terrain:TERRAIN,
 	Units:UNITS,
 	Factions:MemeFactions
 
@@ -2254,7 +2254,7 @@ Nemesis={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 
 	};
 Halo={
@@ -2329,7 +2329,7 @@ Halo={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 	};
 
 Beersheba={
@@ -2420,7 +2420,7 @@ Beersheba={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain,
+	Terrain:TERRAIN,
 
 	Prelogue:["Aussie","Ahead is the city. Let's take it and get a drink before we shrivel up and die."],
 	Postlogue:["Aussie","Alright ya cunts! Go and drink!"],
@@ -2483,7 +2483,7 @@ Hostomel={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain,
+	Terrain:TERRAIN,
 
 	Prelogue:["Boris","It ain't so bad lads. We need to hold out long enough and we'll be saved right?"],
 	Postlogue:["Boris","We held out a bit. Where's the choppers? What do you mean there's no choppers? Fucking Grozny 2.0","Boris","Alright, fuck it, we're surrendering"],
@@ -2576,7 +2576,7 @@ Ebro={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain,
+	Terrain:TERRAIN,
 
 	};
 Bilbao={
@@ -2682,7 +2682,7 @@ Bilbao={
 
 	Factions:GenericFactions,
 	Units:UNITS,
-	Terrain:CampaignTerrain};
+	Terrain:TERRAIN};
 
 Mărășești={
 	Name:"Mărășești",
@@ -2764,7 +2764,7 @@ Mărășești={
 
 	Factions:GenericFactions,
 	Units:UNITS,
-	Terrain:CampaignTerrain};
+	Terrain:TERRAIN};
 
 Romanian_Unification_War={
 	Name:"Romanian Unification War",
@@ -2881,7 +2881,7 @@ Localization:[{X:14,Y:14,name:'București',description:'Capital of Romania'},
 	],
 	Factions:EuropeFactions,
 	Units:UNITS,
-	Terrain:CampaignTerrain};
+	Terrain:TERRAIN};
 
 Toyota={
 	Name:"Toyota War",
@@ -2928,7 +2928,7 @@ Toyota={
 
 	Factions:GenericFactions,
 	Units:UNITS,
-	Terrain:CampaignTerrain};
+	Terrain:TERRAIN};
 
 Easting73={
 	Name:"Easting 73",
@@ -2982,7 +2982,7 @@ BiomeMap:[[2,2,2,2,2,2,2,2,2,2],
 
 	Factions:GenericFactions,
 	Units:UNITS,
-	Terrain:CampaignTerrain};
+	Terrain:TERRAIN};
 
 CastleItter={
 	Name:"Castle Itter",
@@ -3033,7 +3033,7 @@ CastleItter={
 
 	Factions:GenericFactions,
 	Units:UNITS,
-	Terrain:CampaignTerrain};
+	Terrain:TERRAIN};
 
 
 ShreksSwamp={
@@ -3157,7 +3157,7 @@ ShreksSwamp={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain,
+	Terrain:TERRAIN,
 
 
 
@@ -3201,7 +3201,7 @@ Prelogue:["Kanye","I'm giving this lasagna a massage while preparing to announce
 
 Factions:MemeFactions,
 Units:UNITS,
-Terrain:CampaignTerrain};
+Terrain:TERRAIN};
 
 FuckingBureaucrats={
 Name:"FUCKING BUREAUCRATS!",
@@ -3294,7 +3294,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 
 Factions:GenericFactions,
 Units:UNITS,
-Terrain:CampaignTerrain}
+Terrain:TERRAIN}
 
 Backrooms={
 
@@ -3328,7 +3328,7 @@ Backrooms={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain,
+	Terrain:TERRAIN,
 
 	};
 
@@ -3393,7 +3393,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 
 Factions:GenericFactions,
 Units:UNITS,
-Terrain:CampaignTerrain};
+Terrain:TERRAIN};
 
 Sanguine={
 Name:"Sanguine",
@@ -3426,7 +3426,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 
 Factions:GenericFactions,
 Units:UNITS,
-Terrain:CampaignTerrain};
+Terrain:TERRAIN};
 
 Phlegmatic={
 		Name:"Phlegmatic",
@@ -3491,7 +3491,7 @@ Phlegmatic={
 
 		Units:UNITS,
 
-		Terrain:CampaignTerrain
+		Terrain:TERRAIN
 		};
 
 Melancholic={
@@ -3555,7 +3555,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 
 Factions:GenericFactions,
 Units:UNITS,
-Terrain:CampaignTerrain};
+Terrain:TERRAIN};
 
 Supine={
 Name:"Supine",
@@ -3589,7 +3589,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 
 Factions:GenericFactions,
 Units:UNITS,
-Terrain:CampaignTerrain};
+Terrain:TERRAIN};
 
 American={
 Name:"American",
@@ -3687,7 +3687,7 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 
 Factions:GenericFactions,
 Units:UNITS,
-Terrain:CampaignTerrain};
+Terrain:TERRAIN};
 
 Golan={
 	Name:"Golan Heights",
@@ -3748,7 +3748,7 @@ Golan={
 
 	Factions:GenericFactions,
 	Units:UNITS,
-	Terrain:CampaignTerrain};
+	Terrain:TERRAIN};
 
 
 
@@ -3918,7 +3918,7 @@ FactionCommentary:["","Pick this if you are lazy, unemployed and want free shit"
 
 Factions:GenericFactions,
 Units:UNITS,
-Terrain:CampaignTerrain};
+Terrain:TERRAIN};
 
 
 
@@ -3969,7 +3969,7 @@ TutorialLevel1={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain,
+	Terrain:TERRAIN,
 
 	};
 TutorialLevel2={
@@ -4028,7 +4028,7 @@ TutorialLevel2={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain,
+	Terrain:TERRAIN,
 
 	};
 TutorialLevel3={
@@ -4074,7 +4074,7 @@ TutorialLevel3={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain,};
+	Terrain:TERRAIN,};
 
 TutorialLevel4={
 
@@ -4110,7 +4110,7 @@ TutorialLevel4={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 
 
 	};
@@ -4180,7 +4180,7 @@ TutorialLevel5={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 
 	};
 TutorialLevel6={
@@ -4244,7 +4244,7 @@ TutorialLevel6={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 
 	};
 TutorialLevel7={
@@ -4313,7 +4313,7 @@ TutorialLevel7={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 
 	};
 TutorialLevel8={
@@ -4366,7 +4366,7 @@ TutorialLevel8={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 
 	};
 TutorialLevel9={
@@ -4423,7 +4423,7 @@ TutorialLevel9={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 
 	};
 TutorialLevel10={
@@ -4494,7 +4494,7 @@ TutorialLevel10={
 
 	Units:UNITS,
 
-	Terrain:CampaignTerrain
+	Terrain:TERRAIN
 
 	};
 
