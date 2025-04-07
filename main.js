@@ -221,6 +221,31 @@ initEvents(battalion);
 //EDIT to EDIT: Fuck me, there was an annoying bug because I didn't follow it.
 //Note to self: Wine really helps write more code 8)
 
+const hasCertainTrait = function(typeID, traitID){
+	const unitType = Units[typeID];
+
+	if(!unitType) {
+		console.warn(`Unit ${typeID} does not exist!`);
+		return false;
+	}
+
+	const traitType = TRAITS[traitID];
+
+	if(!traitType) {
+		console.warn(`Trait ${traitID} does not exist!`);
+		return false;
+	}
+
+	const { tag1, tag2, tag3, tag4 } = unitType;
+
+	if(tag1 === traitID) return true;
+	if(tag2 === traitID) return true;
+	if(tag3 === traitID) return true;
+	if(tag4 === traitID) return true;
+
+	return false;
+}
+
 function AddRegionalNode(){
 	let X=parseInt(document.getElementById("RegionNodeX").value);
 	let Y=parseInt(document.getElementById("RegionNodeY").value);
@@ -4497,16 +4522,9 @@ function GenerateRevenue(Value,X,Y){
 	clearInterval(moola);};
 	};
 
-	return Value};
-function hasCertainTrait(UnitType,necessaryTrait){
-	glossary=Units[UnitType]??Units[63];
-	//if((glossary??0)==0){return false};
-	if(glossary.tag1==necessaryTrait){return true};
-	if(glossary.tag2==necessaryTrait){return true};
-	if(glossary.tag3==necessaryTrait){return true};
-	if(glossary.tag4==necessaryTrait){return true};
+	return Value
+};
 
-	return false;};
 function HitAnimation(Target,Variant){
 	let ics=0;
 	let igrec=0;
@@ -8854,198 +8872,79 @@ function Tooltip(tooltipID){
 	interval = window.setInterval(tooltipDisplay, 100);
 };
 	
+const getTraitIDFromHighlighted = function(tagID) {
+	if(!HighlightedEntity) {
+		console.warn("No highlighted entity!");
+		return null;
+	}
+
+	switch(tagID) {
+		case 1: return HighlightedEntity.tag1;
+		case 2: return HighlightedEntity.tag2;
+		case 3: return HighlightedEntity.tag3;
+		case 4: return HighlightedEntity.tag4;
+		default: return null;
+	}
+}
+
+//NEYN TODO!!!
+const showTraitDetail = function(context, traitID) {
+	const { language } = context;
+	const trait = TRAITS[traitID];
+
+	if(!trait) {
+		return;
+	}
+
+	const { name, desc } = trait;
+	const traitName = language.get(name);
+	const traitDesc = language.get(desc);
+
+	if(traitDesc.length > 65) {
+		document.getElementById("TraitTooltipImage").src = "Assets/Miscellaneous/TraitTooltipPlus.PNG";
+	} else {
+		document.getElementById("TraitTooltipImage").src = "Assets/Miscellaneous/TraitTooltip.PNG";
+	}
 	
-function traitDetail(traitIndex,UnitCase){
-	//Bag pula-n curul lui Dincă
-	document.getElementById("TraitTooltip").style.visibility="visible";
+	document.getElementById("TraitName").innerHTML = traitName;
+	document.getElementById("TraitDescription").innerHTML = traitDesc;
+}
 
-	//alert(document.getElementById("TraitTooltip").style.visibility);
-	if(traitIndex==1){traitIndex=HighlightedEntity.tag1};
-	if(traitIndex==2){traitIndex=HighlightedEntity.tag2};
-	if(traitIndex==3){traitIndex=HighlightedEntity.tag3};
-	if(traitIndex==4){traitIndex=HighlightedEntity.tag4};
-	switch(traitIndex){
-		case "Uneven":
-			trait=1;
-			break;
-		case "Rugged":
-			trait=2;
-			break;
-		case "Precipitous":
-			trait=3;
-			break;
-		case "Impassable":
-			trait=4;
-			break;
-		case "Tricky Waters":
-			trait=5;
-			break;
-		case "Concealment":
-			trait=6;
-			break;
-		case "Naval Concealment":
-			trait=7;
-			break;		
-		case "Bunker":
-			trait=8;
-			break;
-		case "Shallow":
-			trait=9;
-			break;
-		case "Vantage":
-			trait=10;
-			break;		
-		case "Dangerous":
-			trait=11;
-			break;
-		case "Logistic Challenge":
-			trait=12;
-			break;
-		case "Logistic Nightmare":
-			trait=13;
-			break;
-		case "Financial Center":
-			trait=14;
-			break;
-		case "Fiscal Center":
-			trait=15;		
-			break;
-		case "Fiduciary Center":
-			trait=16;
-			break;
+const traitDetail = function(tagID, useCase){
+	//Bag pula-n curul lui Dincă <- lol -neyn
 
+	const traitTooltip = document.getElementById("TraitTooltip");
+	const traitID = getTraitIDFromHighlighted(tagID);
 
+	if(!traitID) {
+		console.warn(`Missing traitID!`);
+		return;
+	}
 
+	switch(useCase) {
+		case "Details": {
+			traitTooltip.style.visibility = "visible";
+			traitTooltip.style.left="400px";
+			traitTooltip.style.top="-35px"
+			break;
+		}
+		case "Constructor": {
+			traitTooltip.style.visibility = "visible";
+			traitTooltip.style.left="200px";
+			traitTooltip.style.top="-525px"
+			break;
+		}
+		default: {
+			console.warn(`Invalid useCase! ${useCase}`);
+			//traitTooltip.style.left="400px";
+			//traitTooltip.style.top="0px";
+			break;
+		}
+	}
 
-		case "Conqueror":
-			trait=17;
-			break;
-		case "Skysweeper":
-			trait=18;
-			break;			
-		case "Depth Charge":
-			trait=19;
-			break;
-		case "Sonar":
-			trait=20;
-			break;
-		case "Radar":
-			trait=21;
-			break;
-		case "Anti-Infantry":
-			trait=22;
-			break;
-		case "Anti-Tank":
-			trait=23;
-			break;			
-		case "Anti-Air":
-			trait=24;
-			break;
-		case "Anti-Ship":
-			trait=25;
-			break;
-		case "Anti-Structure":
-			trait=26;
-			break;
-		case "Stealth":
-			trait=27;
-			break;
-		case "Submerged":
-			trait=28;
-			break;			
-		case "Commando":
-			trait=29;
-			break;
-		case "Crab":
-			trait=30;
-			break;
-		case "Steer":
-			trait=31;
-			break;
-		case "Indomitable":
-			trait=32;
-			break;
-		case "Schwerpunkt":
-			trait=33;
-			break;			
-		case "Bewegungskrieg":
-			trait=34;
-			break;
-		case "Mobile Battery":
-			trait=35;
-			break;
-		case "Streamlined":
-			trait=36;
-			break;
-		case "Cemented Steel Armor":
-			trait=37;
-			break;
-		case "Cavitation Explosion":
-			trait=38;
-			break;			
-		case "Seabound":
-			trait=39;
-			break;
-		case "Self-Destruct":
-			trait=40;
-			break;
-		case "Dispersion":
-			trait=41;
-			break;
-		case "JUDGEMENT":
-			trait=42;
-			break;
-		case "Supply Distribution":
-			trait=43;
-			break;
-		case "Inertial":
-			trait=44;
-			break;
-		case "Streamblast":
-			trait=45;
-			break;
-		case "Airborne":
-			trait=46;
-			break;
-		case "Heroic":
-			trait=47;
-			break;
-		case "Tank-Hunter":
-			trait=48;
-			break;
-		case "Naval Transport":
-			trait=49;
-			break;
-		case "Air Transport":
-			trait=50;
-			break;
-		case "Unbuilt":
-			trait=51;
-			break;
-		case "Tank Pooper":
-			trait=52;
-			break;
-		case "Absorber":
-			trait=53;
-			break;			
-		case "Terrifying":
-			trait=54;
-			break;
-		case "Lynchpin":
-			trait=55;
-			break;
-		case "Inflaming":
-			trait=56;
-			break;
-		default:
-		trait=0;	
-	};
-	//document.getElementById("TraitTooltip").style.left="400px"; document.getElementById("TraitTooltip").style.top="0px";
-	if(UnitCase=='Details'){document.getElementById("TraitTooltip").style.left="400px"; document.getElementById("TraitTooltip").style.top="-35px"};
-	if(UnitCase=='Constructor'){document.getElementById("TraitTooltip").style.left="200px"; document.getElementById("TraitTooltip").style.top="-525px"};
-	if(Language.TraitDesc[trait].length>65){document.getElementById("TraitTooltipImage").src="Assets/Miscellaneous/TraitTooltipPlus.PNG"}else{document.getElementById("TraitTooltipImage").src="Assets/Miscellaneous/TraitTooltip.PNG"};
-	document.getElementById("TraitName").innerHTML=Language.TraitName[trait];
-	document.getElementById("TraitDescription").innerHTML=Language.TraitDesc[trait];};
+	showTraitDetail(battalion, traitID);
+}
+
 function UndoMove(){
 	if((LastMove.ID ?? 0!=0) && !(KillingUnit??false)){
 		//alert(LastMove.DIR);
