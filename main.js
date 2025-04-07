@@ -4886,9 +4886,6 @@ function initializeSpecialBattle(Level){
 	//alert(Constants.YourFaction);
 
 	Factions=Level.Factions;
-	Units=Level.Units;
-	Terrain=Level.Terrain;
-
 
 	if((Constants.AttackerFaction??[]).length>0){
 	DaoLedger=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
@@ -5188,8 +5185,7 @@ function LanguageCorrecter(Language){
 
 	if((Language.TerrainName??[]).length==0){Language.TerrainName=ENG.TerrainName};
 	if((Language.TerrainDesc??[]).length==0){Language.TerrainDesc=ENG.TerrainDesc};
-	if((Language.TraitName??[]).length==0){Language.TraitName=ENG.TraitName};
-	if((Language.TraitDesc??[]).length==0){Language.TraitDesc=ENG.TraitDesc};
+
 	if((Language.ClassTraitName??[]).length==0){Language.ClassTraitName=ENG.ClassTraitName};
 	if((Language.ClassTraitDesc??[]).length==0){Language.ClassTraitDesc=ENG.ClassTraitDesc};
 
@@ -6030,10 +6026,13 @@ function OpenSpecialBloc(Bloc){
 	};};
 function PickNation(Index){
 
+};
 
-
-	};
-
+/**
+ * neyn 07.04.2025
+ * 
+ * @param {int} playlistIndex 
+ */
 const PlayBGM = function(playlistIndex) {
 	if(playlistIndex >= 0 && playlistIndex < PLAYLIST_MAP.length) {
 		const playlistID = PLAYLIST_MAP[playlistIndex];
@@ -7954,110 +7953,132 @@ function RemoveKebabIMeanBlep(){
 	function ToggleTargetMarker(Type){};};
 function RemoveMarker(index){
 	marker=document.getElementById("Marker"+index);
-	marker.remove();};
-function RetrieveAllMapData(){
-	//console.log("Protocol={");
-	let TotalKey="Protocol={\n";
+	marker.remove();
+};
 
-	TotalKey+='Name:"",\n';
-	TotalKey+='Desc:"",\n';
+const getMapString = function(array2D) {
+	const str = [];
 
+	for(let i = 0; i < array2D.length; i++) {
+		str.push(`[${array2D[i]}]`);
+	}
+
+	return str;
+}
+
+const getLocalizationString = function() {
+	const str = [];
+
+	for(let i = 0; i < Localization.length; i++) {
+		str.push(`{"X": ${Localization[i].X-1}, "Y": ${Localization[i].Y-1}, "name": "${Localization[i].name}", "Description": "${Localization[i].description}"}`);
+	}
+
+	return str;
+}
+
+function RetrieveAllMapData() {
 	let GeneralsList=[Nobody,WhiteGeneral,BlackGeneral,GreyGeneral,IndigoGeneral,GreenGeneral,GrayGeneral,YellowGeneral,BrownGeneral,RedGeneral,BlueGeneral];
 	let GeneralsListAlter=["Nobody","WhiteGeneral","BlackGeneral","GreyGeneral","IndigoGeneral","GreenGeneral","GrayGeneral","YellowGeneral","BrownGeneral","RedGeneral","BlueGeneral"];
-	let CommanderList=[Nobody];
-	CommanderList[1]=GeneralsList[EditationColor];
+	let CommanderList=[Nobody, GeneralsList[EditationColor]];
 
+	const roster = [];
 
+	roster.push(`{ "index": 0, "id": null, "faction": null, "direction": null, "x": null, "y": null, "morale": 0, "hpModifier": 0, "defaultX": 0, "defaultY": 0 }`);
 
-	
+	for(let i = 0; i < x; i++) {
+		for(let j = 0; j < y; j++) {
+			if(EditorEntityMap[i][j] != 0) {
+				let UnitEntry = `{ "id": ${EditorEntityMap[i][j].id}, "faction": ${EditorEntityMap[i][j].faction}, "direction": ${EditorEntityMap[i][j].direction}, "x": ${EditorEntityMap[i][j].x}, "y": ${EditorEntityMap[i][j].y}, "morale": ${Math.min(2,Math.max(-4,EditorEntityMap[i][j].morale??0))}, "hpModifier": ${Math.min(4,Math.max(-0.99, EditorEntityMap[i][j].HPI??0))}`;
+				//let hek=typeof(JSON.parse(EditorEntityMap[i][j].CustomName));
+				//alert(hek);
+				let canAdd=true;
+				for(let k=1; k<CommanderList.length; k++){if(EditorEntityMap[i][j].faction==CommanderList[k].Allegiance){canAdd=false}};
+				if(canAdd){CommanderList[CommanderList.length]=GeneralsList[EditorEntityMap[i][j].faction]};
 
-	let MapKey="Map:[";
-	for(let i=0;i<x;i++){MapKey+="["+EditorMap[i]+"]";
-	if(i<x-1){MapKey+=",\n";};};
-	MapKey+="],\n";
-	//console.log(MapKey);
+				NumeSpecial=false;
+				DescriereSpeciala=false;
+				if((EditorEntityMap[i][j].CustomName??[false])[0]=='#'){NumeSpecial=true};
+				if((EditorEntityMap[i][j].CustomDescription??[false])[0]=='#'){DescriereSpeciala=true};
+				if(EditorEntityMap[i][j].CustomName??0 !=0) {
+					if(!NumeSpecial) {
+						UnitEntry += `, "CustomName": "${EditorEntityMap[i][j].CustomName}"`;
+					} else {
+						let CheieNume=EditorEntityMap[i][j].CustomName;
+						CheieNume=CheieNume.substring(1);
+						//CheieNume=JSON.parse(CheieNume);
+						//alert(CheieNume);
+						//alert(Language.UnitSpecialNames[CheieNume]);
+						UnitEntry += `, "SpecialName": "${JSON.parse(CheieNume)}"`;
+					}
+				};
 
-	let RosterKey='Roster:[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0}\n';
+				if(EditorEntityMap[i][j].CustomDescription??0 !=0) {
+					if(!DescriereSpeciala) {
+						UnitEntry += `, "CustomDescription": "${EditorEntityMap[i][j].CustomDescription}"`;
+					} else {
+						let CheieDescriere=EditorEntityMap[i][j].CustomName;
+						CheieDescriere=CheieDescriere.substring(1);
+						UnitEntry += `, "SpecialDescription": "${JSON.parse(CheieDescriere)}"`;
+					}
+				}
 
-	for(let i=0; i<x;i++){for(let j=0; j<y;j++){
-		if(EditorEntityMap[i][j]!=0){
-			UnitEntry=',{id:'+EditorEntityMap[i][j].id+' , faction:'+EditorEntityMap[i][j].faction+' , direction:'+EditorEntityMap[i][j].direction+', x:'+EditorEntityMap[i][j].x+', y:'+EditorEntityMap[i][j].y+', morale:'+Math.min(2,Math.max(-4,EditorEntityMap[i][j].morale??0))+', hpModifier:'+Math.min(4,Math.max(-0.99, EditorEntityMap[i][j].HPI??0));
-			//let hek=typeof(JSON.parse(EditorEntityMap[i][j].CustomName));
-			//alert(hek);
-			let canAdd=true;
-			for(let k=1; k<CommanderList.length; k++){if(EditorEntityMap[i][j].faction==CommanderList[k].Allegiance){canAdd=false}};
-			if(canAdd){CommanderList[CommanderList.length]=GeneralsList[EditorEntityMap[i][j].faction]};
+				UnitEntry += ` }`;
 
-			NumeSpecial=false;
-			DescriereSpeciala=false;
-			if((EditorEntityMap[i][j].CustomName??[false])[0]=='#'){NumeSpecial=true};
-			if((EditorEntityMap[i][j].CustomDescription??[false])[0]=='#'){DescriereSpeciala=true};
-			if(EditorEntityMap[i][j].CustomName??0 !=0){if(!NumeSpecial){UnitEntry+=', CustomName:'+"'"+EditorEntityMap[i][j].CustomName+"'"}else{
-				let CheieNume=EditorEntityMap[i][j].CustomName;
-				CheieNume=CheieNume.substring(1);
-				//CheieNume=JSON.parse(CheieNume);
-				//alert(CheieNume);
-				//alert(Language.UnitSpecialNames[CheieNume]);
-				UnitEntry+=', SpecialName:'+JSON.parse(CheieNume);
-			}};
+				roster.push(UnitEntry);
+			}
+		}
+	}
 
-			if(EditorEntityMap[i][j].CustomDescription??0 !=0){if(!DescriereSpeciala){UnitEntry+=', CustomDescription:'+"'"+EditorEntityMap[i][j].CustomDescription+"'"}else{
-				let CheieDescriere=EditorEntityMap[i][j].CustomName;
-				CheieDescriere=CheieDescriere.substring(1);
-				UnitEntry+=', SpecialDescription:'+JSON.parse(CheieDescriere);
-			}};
-			UnitEntry+='}\n';
-			RosterKey+=UnitEntry;
-		};
-	}};
-	//console.log(RosterKey);
-	RosterKey+="],\n"
-	let ControlKey="ControlMap:[";
-	for(let i=0;i<x;i++){ControlKey+="["+EditorControlMap[i]+"]";
-	if(i<x-1){ControlKey+=",\n";};};
-	ControlKey+="],\n";
+	const SurviveTimer = parseInt(document.getElementById("SurviveInput").value??77777)??77777;
+	const TimeLimit = parseInt(document.getElementById("TimeLimitInput").value??77777)??77777;
+	const commanderList = [];
 
-	let BiomeKey="BiomeMap:[";
-	for(let i=0;i<x;i++){BiomeKey+="["+EditorBiomeMap[i]+"]";
-	if(i<x-1){BiomeKey+=",\n";};};
-	BiomeKey+="],\n";
+	for(let i = 0; i < CommanderList.length; i++) {
+		commanderList.push(GeneralsListAlter[i]);
+	}
 
-	let LocKey="LocKey:[";
-	for(let i=0;i<Localization.length;i++){
-		let LK="{X:"+(Localization[i].X-1)+",Y:"+(Localization[i].Y-1)+",name:'"+Localization[i].name+"',Description:'"+Localization[i].description+"}, \n";
-	LocKey+=LK;
-	};
-	LocKey+="],";
+	const file = new InefficientJSONExporter(4)
+	.open()
+	.writeLine("Name", 1, "")
+	.writeLine("Desc", 1, "")
+	.writeLine("Width", 1, EditorMap[0].length)
+	.writeLine("Height", 1, EditorMap.length)
+	.writeList("Map", 1, getMapString(EditorMap), InefficientJSONExporter.LIST_TYPE.ARRAY)
+	.writeList("BiomeMap", 1, getMapString(EditorBiomeMap), InefficientJSONExporter.LIST_TYPE.ARRAY)
+	.writeList("ControlMap", 1, getMapString(EditorControlMap), InefficientJSONExporter.LIST_TYPE.ARRAY)
+	.writeList("RegionMap", 1, getMapString(EditorRegionMap), InefficientJSONExporter.LIST_TYPE.ARRAY)
+	.writeList("Roster", 1, roster, InefficientJSONExporter.LIST_TYPE.ARRAY)
+	.openList("Constants", 1, InefficientJSONExporter.LIST_TYPE.OBJECT)
+	.writeLine("YourFaction", 2, EditationColor)
+	.writeLine("defaultX", 2, 0)
+	.writeLine("defaultY", 2, 0)
+	.writeLine("Survival", 2, SurviveTimer)
+	.writeLine("TimeLimit", 2, TimeLimit)
+	.writeLine("Capture", 2, [])
+	.writeLine("Defend", 2, [])
+	.writeLine("Defeat", 2, [])
+	.writeLine("Protect", 2, [])
+	.writeLine("Funds", 2, [0, 0, 0])
+	.writeLine("Commanders", 2, commanderList)
+	.closeList()
+	.writeList("LocKey", 1, getLocalizationString(), InefficientJSONExporter.LIST_TYPE.ARRAY)
+	.writeLine("Factions", 1, "GenericFactions")
+	.close();
 
-	let SurviveTimer=parseInt(document.getElementById("SurviveInput").value??77777)??77777;
-	let TimeLimit=parseInt(document.getElementById("TimeLimitInput").value??77777)??77777;
+	file.download("new_map");
 
-	let StringCom="[Nobody";
-	for(let d=1; d<CommanderList.length; d++){StringCom+=","+GeneralsListAlter[d]};
-	StringCom+="]";
-	CommanderList=StringCom;
-	//CommanderList=JSON.stringify(CommanderList);
-	let ConstantsKey="Constants:{YourFaction:"+EditationColor+",defaultX:0,defaultY:0,Survival:"+SurviveTimer+",TimeLimit:"+TimeLimit+",Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:"+CommanderList+"},\n";
-	TotalKey+=ConstantsKey;
+	console.log(file.jsonString);
+}
 
-	TotalKey+=MapKey+RosterKey+ControlKey+BiomeKey;
-	if(Localization.length>0){TotalKey+=LocKey};
-
-
-	TotalKey+="\nFactions:GenericFactions,";
-	TotalKey+="\nUnits:UNITS,";
-	TotalKey+="\nTerrain:TERRAIN";
-
-	TotalKey+="};";
-
-	console.log(TotalKey)};
-function RetrieveControlCode(){
+function RetrieveControlCode() {
 	let ControlKey="[";
 	for(let i=0;i<x;i++){ControlKey+="["+EditorControlMap[i]+"]";
 	if(i<x-1){ControlKey+=",\n";};};
 	ControlKey+="]";
-	alert(ControlKey);};
-function RetrieveLocalization(){
+	alert(ControlKey);
+}
+
+function RetrieveLocalization() {
 	let LocKey="[";
 	for(let i=0;i<Localization.length;i++){
 		let LK="{X:"+(Localization[i].X-1)+",Y:"+(Localization[i].Y-1)+",name:'"+Localization[i].name+"',Description:'"+Localization[i].description+"'}, \n";
@@ -8065,14 +8086,18 @@ function RetrieveLocalization(){
 	};
 	//LocKey.pop();
 	LocKey+="],";
-	alert(LocKey);};
-function RetrieveMapCode(){
+	alert(LocKey);
+}
+
+function RetrieveMapCode() {
 	let MapKey="[";
 	for(let i=0;i<x;i++){MapKey+="["+EditorMap[i]+"]";
 	if(i<x-1){MapKey+=",\n";};};
 	MapKey+="]";
-	console.log(MapKey);};
-function RetrieveRegionCode(){
+	console.log(MapKey);
+}
+
+function RetrieveRegionCode() {
 	let RegionKey="[";
 	for(let i=0;i<x;i++){RegionKey+="["+EditorRegionMap[i]+"]";
 	if(i<x-1){RegionKey+=",\n";};};
@@ -8089,7 +8114,9 @@ function RetrieveRegionCode(){
 	}}
 	NodeKey+="]";
 	console.log(RegionKey);
-	alert(NodeKey)};
+	alert(NodeKey)
+}
+
 function RetrieveRosterCode(){
 	let RosterKey='[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0},\n';
 
@@ -8120,7 +8147,9 @@ function RetrieveRosterCode(){
 			RosterKey+=UnitEntry;
 		};
 	}};
-	alert(RosterKey);};
+	alert(RosterKey);
+}
+
 function RollMap(Direction){
 	if(Direction==1){document.getElementById('UnitMap').scrollBy(0,-56);document.getElementById('RegionMap').scrollBy(0,-56)};
 	if(Direction==2){document.getElementById('UnitMap').scrollBy(56,0);document.getElementById('RegionMap').scrollBy(56,0)};
@@ -8571,7 +8600,16 @@ function TestMap(){
 	for(let N=0;N<NodeKeyT.length;N++){for(let R=0;R<NodeKeyT[0].length;R++){if(NodeKeyT[N][R]!=1){NodeKey[NodeKey.length]=NodeKeyT[N][R]}}};
 	//alert(typeof(NodeKeyT[0][0]));
 
-	EditorLevel={Map:MapKey, Roster:RosterKey, Constants:ConstantsKey, ControlMap:ControlKey,BiomeMap:BiomeKey,RegionMap:RegionKey,NodeMap:NodeKey,Factions:GenericFactions,Units:UNITS,Terrain:TERRAIN};
+	const EditorLevel={
+		Map:MapKey,
+		Roster:RosterKey,
+		Constants:ConstantsKey,
+		ControlMap:ControlKey,
+		BiomeMap:BiomeKey,
+		RegionMap:RegionKey,
+		NodeMap:NodeKey,
+		Factions:GenericFactions
+	};
 	
 	let canBattle=true;
 
@@ -9375,8 +9413,8 @@ function InterfaceUnfuck(){};
 
 SoundChoice=true;
 MusicChoice=true;
-DialogueChoice=false;
-IdleAnimChoice=false;
+DialogueChoice=true;
+IdleAnimChoice=true;
 MystSettChoice=false;
 
 CallPreloader();

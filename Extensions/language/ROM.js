@@ -259,6 +259,42 @@ const LANGUAGE_ROMANIAN = {
     "UNIT_DESC_MEME_SPARTANS": ""
 };
 
+/*
+	TraitName:[
+		"",
+
+		"Inconstant","Teren accidentat","Teren în pantă","Impasabil","Ape dificile",
+		"Ascunziș","Acoperire navală","Buncăr",
+		"Vad","Punct strategic","Periculos",
+		"Provocare Logistică","Coșmar Logistic",
+		"Centru Financiar","Centru Fiscal","Centru Fiduciar",
+		"Cuceritor","Bofors","Șarje de profunzime","Sonar","Radar",
+		"Anti-Infanterie","Anti-Tanc","Anti-Aerian","Anti-Naval","Anti-Fortificație",
+		"Stealth","Submorjat","Comando","Crab","Manevrabil",
+		"Indomitabil","Schwerpunkt","Bewegungskrieg","Artilerie Mobilă","Standardizat",
+		"Blindaj Oțel-Crom","Explozie cu Cavitație","Exclusiv Marin","Autodistrugere","Dispersie","ANIHILARE",
+		"Logistic","Inert","Val Neutronic","Aeropurtat","Eroic","Vânător de Tancuri",
+		"Transport Naval","Transport Aerian","Incomplet",
+		"Căcător de tancuri","Drenaj","Terifiant","Strategic","Vivifiant"
+
+		],
+	TraitDesc:[
+		"",
+		"Vehiculele vor avea o oarecare dificultate la traversare","Dificil de parcurs","Pante abrupte și serpentine","Pe aici nu se trece","Greu de navigat în această zonă",
+		"Reduce pagubele primite cu 20%","Reduce pagubele primite cu 20%","Reduce pagubele primite cu 40%",
+		"Navele cu pescaj adânc trebuie să evite această zonă","Uniățile de distanță pot trage mai departe fiindcă sunt pe teren înalt","Unitățile staționate aici primesc pagube în fiecare tură",
+		"Pagubele provocate de unitatea staționată aici -20%","Pagubele provocate de unitatea staționată aici -40%",
+		"În fiecare tură, produce 100 de credite","În fiecare tură, produce 200 de credite","În fiecare tură, produce 300 de credite",
+		"Această unitate poate captura proprietăți","Această unitate poate ataca avioane","Această unitate poate ataca submearine","Această unitate poate intercepta submarine","Această unitate poate depista unități stealth",
+		"Provoacă pagube triple infanteriei","Nu poate fi contraatacat de blindate","Interceptează unitățile aeriene","Provoacă pagube triple navelor","Provoacă mai multe pagube fortificațiilor",
+		"Dacă atacă nedepistat, provoacă pagube duble","Nu poate fi atacat de majoritatea unităților","Provoacă mai multe pagube și primește mai puține","Poate trece rîuri și vaduri dar NU e crab","Primește mai puține pagube de la unități încete",
+		"Vom lupta pînă la moarte!","Provoacă 40% mai multe pagube infanteriei","Poate ataca de două ori dacă distruge o unitate","Nu poate fi contraatacat","Poate fi deplasat mai departe de unitatea industrială",
+		"Primește cu 25 de pagube mai puțin","Ignora Blindajul Greu","Ataca exclusiv unități navale","Această unitate se auto-distruge după atac","Atacul său lovește o zonă de 3X3 sectoare","AI BELIT PULA",
+		"Acțiunea sa realimentează unitățile aliate","Această unitate nu contează la calcularea eșecului militar","Lovește toate țintele în linie dreaptă","Poate fi transportat aerian","Această unitate supraviețuiește cu 1HP","Dacă e atacat de un blindat, atacă primul",
+		"Nu e rapid, dar transportă orice unitate","Transport rapid, dar fragil","Această structură nu e terminată",
+		"Cacă tancuri!","Recuperează HP când provoacă pagube","Devastează moralul unităților pe care le atacă","Pierderea acestuia este catastrofală","Mărește moralul unui aliat"
+		],
+*/
 ROM={
 	SystemTerms: [
 		"Made by Task Force Tucker","Warning","This game contains bullying, kidnapping, torture, murder, suicide, violence, war crimes, atrocities, Goring's fat ass, Titans, genocidal rampages, freedom, racism, fascism, communism, fascism and communism's ugly-ass baby, paedophilic manchild Sultans, pedophilic psychopaths, traitors, a glass of juice, implied rape, written rape, graphic rape, other types of rape, ethnoreligious genocide, chemical warfare, humanism, Taboritsky's funny clock, drug abuse, sexual perversions, spoilers(a fuckton of them), satire, double satire, dark humour, toilet humour, humour in general, a REALLY thin fourth wall, lampshades, gamer time, special operations, penises, Skoatia, Twitter, Reddit, dystopia, cockroaches, and worst of all... BUREAUCRACY(I'm so sorry guys)","I promise not to steal, otherwise my butt is ready for surprise sex","But seriously, this game gets pretty hardcore. If you're a bitch, don't play it","Any attempt to sell this game is idiotic, this game is free. 0$. Nada. Niente. Only Task Force Tucker and those authorized are allowed to share this game, the others will be hunted. Do not test my patience if you don't want your ass to be fucked.",
@@ -527,40 +563,6 @@ ROM={
 		"Navele ce trec pe aici suferă avarii",
 		"Transportă unități repede de-a lungul hărții"
 	],
-	TraitName:[
-		"",
-
-		"Inconstant","Teren accidentat","Teren în pantă","Impasabil","Ape dificile",
-		"Ascunziș","Acoperire navală","Buncăr",
-		"Vad","Punct strategic","Periculos",
-		"Provocare Logistică","Coșmar Logistic",
-		"Centru Financiar","Centru Fiscal","Centru Fiduciar",
-		"Cuceritor","Bofors","Șarje de profunzime","Sonar","Radar",
-		"Anti-Infanterie","Anti-Tanc","Anti-Aerian","Anti-Naval","Anti-Fortificație",
-		"Stealth","Submorjat","Comando","Crab","Manevrabil",
-		"Indomitabil","Schwerpunkt","Bewegungskrieg","Artilerie Mobilă","Standardizat",
-		"Blindaj Oțel-Crom","Explozie cu Cavitație","Exclusiv Marin","Autodistrugere","Dispersie","ANIHILARE",
-		"Logistic","Inert","Val Neutronic","Aeropurtat","Eroic","Vânător de Tancuri",
-		"Transport Naval","Transport Aerian","Incomplet",
-		"Căcător de tancuri","Drenaj","Terifiant","Strategic","Vivifiant"
-
-		],
-	TraitDesc:[
-		"",
-		"Vehiculele vor avea o oarecare dificultate la traversare","Dificil de parcurs","Pante abrupte și serpentine","Pe aici nu se trece","Greu de navigat în această zonă",
-		"Reduce pagubele primite cu 20%","Reduce pagubele primite cu 20%","Reduce pagubele primite cu 40%",
-		"Navele cu pescaj adânc trebuie să evite această zonă","Uniățile de distanță pot trage mai departe fiindcă sunt pe teren înalt","Unitățile staționate aici primesc pagube în fiecare tură",
-		"Pagubele provocate de unitatea staționată aici -20%","Pagubele provocate de unitatea staționată aici -40%",
-		"În fiecare tură, produce 100 de credite","În fiecare tură, produce 200 de credite","În fiecare tură, produce 300 de credite",
-		"Această unitate poate captura proprietăți","Această unitate poate ataca avioane","Această unitate poate ataca submearine","Această unitate poate intercepta submarine","Această unitate poate depista unități stealth",
-		"Provoacă pagube triple infanteriei","Nu poate fi contraatacat de blindate","Interceptează unitățile aeriene","Provoacă pagube triple navelor","Provoacă mai multe pagube fortificațiilor",
-		"Dacă atacă nedepistat, provoacă pagube duble","Nu poate fi atacat de majoritatea unităților","Provoacă mai multe pagube și primește mai puține","Poate trece rîuri și vaduri dar NU e crab","Primește mai puține pagube de la unități încete",
-		"Vom lupta pînă la moarte!","Provoacă 40% mai multe pagube infanteriei","Poate ataca de două ori dacă distruge o unitate","Nu poate fi contraatacat","Poate fi deplasat mai departe de unitatea industrială",
-		"Primește cu 25 de pagube mai puțin","Ignora Blindajul Greu","Ataca exclusiv unități navale","Această unitate se auto-distruge după atac","Atacul său lovește o zonă de 3X3 sectoare","AI BELIT PULA",
-		"Acțiunea sa realimentează unitățile aliate","Această unitate nu contează la calcularea eșecului militar","Lovește toate țintele în linie dreaptă","Poate fi transportat aerian","Această unitate supraviețuiește cu 1HP","Dacă e atacat de un blindat, atacă primul",
-		"Nu e rapid, dar transportă orice unitate","Transport rapid, dar fragil","Această structură nu e terminată",
-		"Cacă tancuri!","Recuperează HP când provoacă pagube","Devastează moralul unităților pe care le atacă","Pierderea acestuia este catastrofală","Mărește moralul unui aliat"
-		],
 	ClassTraitName:["",
 
 		"Blindaj Ușor",

@@ -180,6 +180,17 @@ const TERRAIN = [
 	//{name: "RiverSource", WalkThrough: 100, DriveThrough: 100, RollThrough: 100, FlyThrough: 1, SailThrough: 1, DeepSailThrough:100, WadeThrough:2, protectionFactor:100,Urbanistics:0,tag1:"",tag2:"",tag3:"",tag4:""},
 ];
 
+const BIOMES = [
+	{Name:null, Nominator:"", LogisticIndex:0, icon: "", edgeA: "", edgeB: "", edgeC: "", edgeD: ""},
+	{Name:"Temperate", Nominator:"", LogisticIndex:1, icon: "", edgeA: "", edgeB: "", edgeC: "", edgeD: ""},
+	{Name:"Desert", Nominator:"Arid", LogisticIndex:0.75, icon: "", edgeA: "", edgeB: "", edgeC: "", edgeD: ""},
+	{Name:"Tundra", Nominator:"Boreal", LogisticIndex:0.75, icon: "", edgeA: "", edgeB: "", edgeC: "", edgeD: ""},
+	{Name:"Extreme Desert", Nominator:"Barren", LogisticIndex:0.5, icon: "", edgeA: "", edgeB: "", edgeC: "", edgeD: ""},
+	{Name:"Extreme Tundra", Nominator:"Arctic", LogisticIndex:0.5, icon: "", edgeA: "", edgeB: "", edgeC: "", edgeD: ""},
+	{Name:"Lunar", Nominator:"Lunar", LogisticIndex:0.25, icon: "", edgeA: "", edgeB: "", edgeC: "", edgeD: ""},
+	{Name:"Martian", Nominator:"Martian", LogisticIndex:0.25, icon: "", edgeA: "", edgeB: "", edgeC: "", edgeD: ""},
+];
+
 const BiomeRegistry = [
 	{Name:null, Nominator:"", LogisticIndex:0},
 	{Name:"Temperate", Nominator:"", LogisticIndex:1},

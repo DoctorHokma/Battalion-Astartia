@@ -861,7 +861,7 @@
 			<img src="Assets/Miscellaneous/VertiPlaqueNAV.PNG" style="position: absolute; top: 443px; left:721px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ShowcaseUnitCategory(6)"/>
 			<img src="Assets/Miscellaneous/VertiPlaqueSTR.PNG" style="position: absolute; top: 533px; left:721px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ShowcaseUnitCategory(7)"/>
 
-			<div style="position: absolute; visibility: hidden; top:-610px; z-index: 2;">
+			<div style="position: absolute; visibility: visible; top:-610px; z-index: 2;">
 				<button id="EditorP1" style="position:absolute;top:560px;left:0px; width:140px; height:21px" onclick="RetrieveMapCode()" oncontextmenu="EditorMap=REPOZITORIUL1.Map;RefreshMapEditor()">Fetch Grid Data</button>
 				<button id="EditorP2" style="position:absolute;top:560px;left:140px; width:140px; height:21px" onclick="RetrieveControlCode()" oncontextmenu="EditorControlMap=REPOZITORIUL1.ControlMap;RefreshMapEditor()">Fetch Building Data</button>
 				<button id="EditorP3" style="position:absolute;top:560px;left:280px; width:140px; height:21px" onclick="RetrieveRosterCode()" oncontextmenu="for(let a=0;a<EditorMap.length;a++){for(let b=0;b<EditorMap[0].length;b++){EditorEntityMap[a][b]=0}};for(let c=1;c<REPOZITORIUL1.Roster.length;c++){EditorEntityMap[REPOZITORIUL1.Roster[c].x][REPOZITORIUL1.Roster[c].y]=REPOZITORIUL1.Roster[c]};RefreshMapEditor()">Fetch Roster</button>

@@ -149,6 +149,44 @@ const LANGUAGE_TURKISH = {
     "UNIT_DESC_MEME_SPARTANS": ""
 };
 
+/*
+	TraitName:[
+		"",
+
+		"Düz olmayan", "Engebeli", "Dik", "Geçilmez", "Zorlu Sular",
+		"Kamuflaj", "Deniz Kamuflajı", "Sığınak",
+		"Sığ", "Stratejik nokta", "Tehlikeli",
+		"Problemli Lojistik", "Lojistik Cehennemi", 
+		"Finans Merkezi", "Mali Merkezi","Güven Merkezi",
+		"Fatih", "Gökyüzü Süpürücü", "Derin Darbe", "Sonar", "Radar",
+		"Piyadesavar", "TankSavar", "Ucaksavar", "Gemisavar", "Yapı Tahripçisi",
+		"Kamufle", "Sualtında ", "Komando", "Yengeç", "Yönlendir",
+		"Dirençli", "Schwerpunkt", "Bewegungskrieg", "Mobil Batarya", "Hızlı akışlı ",
+		"Cemented Steel Armor", "Kavitasyon Patlaması", "Denize Bağlı", "Kendini İmha Eden", "Dağınık", "YARGIÇ",
+		"Tedarik Dağıtımı", "İnertial", "Streamblast", "Havadan indirilen", "Kahraman", "Tank Avcısı",
+		"Deniz Taşımacılığı", "Hava Taşımacılığı", "İnşa Edilmemiş",
+		"Tank Sıçan","Süngüleyici","Dehşet Verici","Stratejik Nokta","Kararlı"
+
+
+		],
+	TraitDesc:[
+		"",
+		"Araçlar buradan geçerken biraz zorlanacaklar","Zorlu arazi, kolay geçilemez","Dik yamaçlarla dolu çok zorlu arazi","Hiçbir birim bu bölgeden geçemez","Gemiler bu bölgeden geçerken zorlanacak",
+		"Alınan hasarı %20 azaltır","Alınan hasarı %20 azaltır","Alınan hasarı %40 azaltır",
+		"Düşük dümenli gemiler bu karelerden kaçınmalıdır, aksi takdirde karaya otururlar.","Bu alanda bulunan menzilli birimler daha uzak mesafeden ateş eder çünkü daha yüksek yerdedirler.","Burada duran birime tur başına 20 can hasarı verir",
+		
+		"Bu birim binaları ele geçirebilir","Bu birim uçaklara saldırabilir","Bu birim denizaltılara saldırabilir","Bu birim, dalış yapmış birimleri tespit edebilir","Bu birim, kamufle olan birimleri tespit edebilir.",
+		"DPiyade birimlerine karşı x3 hasar verir","Tanklar tarafından karşı saldırıya uğramaz","Yakınındaki uçakları engeller","Gemilere karşı 3 kat daha fazla hasar verir","Yapılara daha fazla hasar verir",
+		"Bu birim kamufle iken saldırırsa, hasarı ikiye katlanır.","Coğu birim tarafından saldırılamaz","Engebeli arazide daha fazla hasar verir ve daha az hasar alır.","Nehirleri geçebilir ve bu süreçte savunmasız değildir. Ancak bir yengeç DEĞİLDİR.","Denizaltılardan daha az hasar alır ve her zaman onlara ilk vuran taraf olur.",
+		"Geri adım ve teslim olmak yok!","Eğer ilk saldırıyı yaparsa piyade birimlerine +%40 daha fazla hasar verir.","Bir birimi yok ederse, tekrar saldırabilir (sadece bir turda bir kez).","Karşı saldırıya uğramaz.","Üsten daha uzak bir noktaya konuşlandırılabilir.",
+		"Orta veya Hafif silahlardan daha az hasar alır","Cemented Steel Armor özelliğini yoksayar","Sadece deniz birimlerine saldırabilir","Saldırdıktan sonra kendini imha eder","Saldırısı 3x3 alanı etkiler. alan piyade dolu ise geçmiş olsun",
+		"Eylemi müttefik birimlerin gücünü yeniden doldurur","Bu birimin hayatta kalması, askeri yenilgiyi engellemez.","Düz bir çizgide tüm düşmanlara saldırır","Bir taşıma uçağına binip düşman hatlarının arkasına atlayabilir","Bu birim ölmeyi reddeder ve 1HP ile hayatta kalır","Bir tank tarafından saldırıya uğrarsa ilk saldıran olur",
+		"Uniteleri taşımak için çok hızlı bir yöntem değil, ancak her şeyi taşır","En hızlı taşıma aracı, ancak kolaylıkla vurulabilir","Bu birim henüz inşa edilmemiştir",
+		"Tank sıçar!","Verdiği hasara bağlı olarak canını yeniler.","Saldırıları bir birimin Moralini altüst eder.","Bunun kontrolü hayati öneme sahiptir.","Bu birimi 1HP dışında ölmeyi reddeder."
+
+		],
+*/
+
 TUR={
 	SystemTerms:["Made by Task Force Tucker","Warning","This game contains bullying, kidnapping, torture, murder, suicide, violence, war crimes, atrocities, Goring's fat ass, Titans, genocidal rampages, freedom, racism, fascism, communism, fascism and communism's ugly-ass baby, paedophilic manchild Sultans, pedophilic psychopaths, traitors, a glass of juice, implied rape, written rape, graphic rape, other types of rape, ethnoreligious genocide, chemical warfare, humanism, Taboritsky's funny clock, drug abuse, sexual perversions, spoilers(a fuckton of them), satire, double satire, dark humour, toilet humour, humour in general, a REALLY thin fourth wall, lampshades, gamer time, special operations, penises, Skoatia, Twitter, Reddit, dystopia, cockroaches, and worst of all... BUREAUCRACY(I'm so sorry guys)","I promise not to steal, otherwise my butt is ready for surprise sex","But seriously, this game gets pretty hardcore. If you're a bitch, don't play it","Any attempt to sell this game is idiotic, this game is free. 0$. Nada. Niente. Only Task Force Tucker and those authorized are allowed to share this game, the others will be hunted. Do not test my patience if you don't want your ass to be fucked.",
 		"Kampanya","Temel Eğitim Kampı","Devam Et","Ayarlar","Krediler","Bonus Haritalar","Fethetme","Harita Düzenleyici","Dünya Efsanesi","Kapat","İlerle","Oyna","Durum:","Yardım","İlerlemeyi Kaydet","Güvenli Mod","Atlamak",
@@ -379,41 +417,6 @@ TUR={
 		"Denizin karayla buluştuğu kenar. Hem karadan geçilebilir, hem de dümeni yeterince yüksek olan gemiler tarafından geçilebilir.", 
 		"Stratejik mülk, onu kontrol etmek her dönemde size kaynak kazandırır. "
 	],
-	TraitName:[
-		"",
-
-		"Düz olmayan", "Engebeli", "Dik", "Geçilmez", "Zorlu Sular",
-		"Kamuflaj", "Deniz Kamuflajı", "Sığınak",
-		"Sığ", "Stratejik nokta", "Tehlikeli",
-		"Problemli Lojistik", "Lojistik Cehennemi", 
-		"Finans Merkezi", "Mali Merkezi","Güven Merkezi",
-		"Fatih", "Gökyüzü Süpürücü", "Derin Darbe", "Sonar", "Radar",
-		"Piyadesavar", "TankSavar", "Ucaksavar", "Gemisavar", "Yapı Tahripçisi",
-		"Kamufle", "Sualtında ", "Komando", "Yengeç", "Yönlendir",
-		"Dirençli", "Schwerpunkt", "Bewegungskrieg", "Mobil Batarya", "Hızlı akışlı ",
-		"Cemented Steel Armor", "Kavitasyon Patlaması", "Denize Bağlı", "Kendini İmha Eden", "Dağınık", "YARGIÇ",
-		"Tedarik Dağıtımı", "İnertial", "Streamblast", "Havadan indirilen", "Kahraman", "Tank Avcısı",
-		"Deniz Taşımacılığı", "Hava Taşımacılığı", "İnşa Edilmemiş",
-		"Tank Sıçan","Süngüleyici","Dehşet Verici","Stratejik Nokta","Kararlı"
-
-
-		],
-	TraitDesc:[
-		"",
-		"Araçlar buradan geçerken biraz zorlanacaklar","Zorlu arazi, kolay geçilemez","Dik yamaçlarla dolu çok zorlu arazi","Hiçbir birim bu bölgeden geçemez","Gemiler bu bölgeden geçerken zorlanacak",
-		"Alınan hasarı %20 azaltır","Alınan hasarı %20 azaltır","Alınan hasarı %40 azaltır",
-		"Düşük dümenli gemiler bu karelerden kaçınmalıdır, aksi takdirde karaya otururlar.","Bu alanda bulunan menzilli birimler daha uzak mesafeden ateş eder çünkü daha yüksek yerdedirler.","Burada duran birime tur başına 20 can hasarı verir",
-		
-		"Bu birim binaları ele geçirebilir","Bu birim uçaklara saldırabilir","Bu birim denizaltılara saldırabilir","Bu birim, dalış yapmış birimleri tespit edebilir","Bu birim, kamufle olan birimleri tespit edebilir.",
-		"DPiyade birimlerine karşı x3 hasar verir","Tanklar tarafından karşı saldırıya uğramaz","Yakınındaki uçakları engeller","Gemilere karşı 3 kat daha fazla hasar verir","Yapılara daha fazla hasar verir",
-		"Bu birim kamufle iken saldırırsa, hasarı ikiye katlanır.","Coğu birim tarafından saldırılamaz","Engebeli arazide daha fazla hasar verir ve daha az hasar alır.","Nehirleri geçebilir ve bu süreçte savunmasız değildir. Ancak bir yengeç DEĞİLDİR.","Denizaltılardan daha az hasar alır ve her zaman onlara ilk vuran taraf olur.",
-		"Geri adım ve teslim olmak yok!","Eğer ilk saldırıyı yaparsa piyade birimlerine +%40 daha fazla hasar verir.","Bir birimi yok ederse, tekrar saldırabilir (sadece bir turda bir kez).","Karşı saldırıya uğramaz.","Üsten daha uzak bir noktaya konuşlandırılabilir.",
-		"Orta veya Hafif silahlardan daha az hasar alır","Cemented Steel Armor özelliğini yoksayar","Sadece deniz birimlerine saldırabilir","Saldırdıktan sonra kendini imha eder","Saldırısı 3x3 alanı etkiler. alan piyade dolu ise geçmiş olsun",
-		"Eylemi müttefik birimlerin gücünü yeniden doldurur","Bu birimin hayatta kalması, askeri yenilgiyi engellemez.","Düz bir çizgide tüm düşmanlara saldırır","Bir taşıma uçağına binip düşman hatlarının arkasına atlayabilir","Bu birim ölmeyi reddeder ve 1HP ile hayatta kalır","Bir tank tarafından saldırıya uğrarsa ilk saldıran olur",
-		"Uniteleri taşımak için çok hızlı bir yöntem değil, ancak her şeyi taşır","En hızlı taşıma aracı, ancak kolaylıkla vurulabilir","Bu birim henüz inşa edilmemiştir",
-		"Tank sıçar!","Verdiği hasara bağlı olarak canını yeniler.","Saldırıları bir birimin Moralini altüst eder.","Bunun kontrolü hayati öneme sahiptir.","Bu birimi 1HP dışında ölmeyi reddeder."
-
-		],
 	ClassTraitName:[
 		"",
 

@@ -149,6 +149,43 @@ const LANGUAGE_PORTUGUESE = {
     "UNIT_DESC_MEME_SPARTANS": ""
 };
 
+/*
+	TraitName:[
+		"",
+
+		"Desigual","Robusto","Precipitado","Intransponível","Águas complicadas",
+		"Ocultação","Ocultação Naval","Bunker",
+		"Raso","Vantagem","Perigoso",
+		"Desafio logístico","Pesadelo Logístico",
+		"Centro Financeiro","Centro Fiscal","Centro Fiduciário",
+		"Conquistador","M51 Skysweeper","Golpe de Profundidade","Sonar","Radar",
+		"Anti-Infantaria","Anti-Tanque","Anti-Aério","Anti-Navio","Anti-Estrutura",
+		"Furtivo","Submerso","Comando","Caranguejo","Dirigir",
+		"Indomável","Schwerpunkt","Bewegungskrieg","Bateria Móvel","Simplificado",
+		"Armadura de aço cimentado","Explosão de cavitação","Marítimo","Autodestruição","Dispersão","JULGAMENTO",
+		"Distribuição de suprimentos","Inercial","Explosão de fluxo","Aerotransportado","Heroico","Caça-tanques",
+		"Transporte Naval","Transporte Aéreo","Não Construído",
+		"Tanque criador de Tanques","Absorvedor","Aterrorizante","Eixo Central","Desafiador"
+
+		],
+	TraitDesc:[
+		"",
+		"Veículos terão uma leve dificuldade para atravessar isso","Terreno acidentado, difícil de atravessar","Declives altos e terreno muito difícil","Nenhuma unidade pode passar","Navios terão mais dificuldade em navegar",
+		"Reduz o dano recebido em 20%","Reduz o dano recebido em 20%","Reduz o dano recebido em 40%",
+		"Navios com leme baixo devem evitar esses ladrilhos ou encalharão","Unidades de longo alcance aqui atiram mais longe porque têm terreno mais alto.","Ficar aqui danifica suas unidades em 20HP por turno",
+		"Habilidade de luta prejudicada em 20%","Habilidade de luta prejudicada em 40%",
+		"Ganha 100 créditos por turno","Ganha 200 créditos por turno","Ganha 300 créditos por turno",
+		"Esta unidade pode capturar edifícios","Esta unidade pode atacar aeronaves","Esta unidade pode atacar submarinos","Esta unidade pode localizar unidades submersas","Esta unidade pode detectar unidades furtivas",
+		"Causa x3 de dano contra infantaria","Não pode ser contra-atacado por tanques","Intercepta aeronaves próximas","Causa 3x mais dano contra navios","Causa mais dano a estruturas",
+		"Se esta unidade atacar camuflada, causa o dobro de dano","Não pode ser atacada pela maioria das unidades","Causa mais dano e recebe menos em terreno acidentado","Pode cruzar rios e não fica indefesa no processo. Mas NÃO é um caranguejo","Recebe menos dano de submarinos; e sempre os atinge primeiro",
+		"Sem retirada; sem rendição!","Causa +40% de dano à infantaria se atacar primeiro","Se destruir uma unidade, ela pode atacar novamente (apenas uma vez por turno)","Não pode ser contra-atacado","Pode ser implantado mais longe da base",
+		"Recebe menos dano de armas médias ou leves","Ignora o tipo de armadura de aço cimentado","Só pode atacar unidades marítimas","Depois de atacar, esta unidade autodestrói-se","Seu ataque atinge um círculo de 3x3","VOCÊS ESTÃO FUDIDOS",
+		"Sua ação reabastece a força das unidades aliadas","A sobrevivência desta unidade não impede a derrota militar","Atinge todos os inimigos em linha direta","Pode embarcar em um avião de transporte e pular atrás das linhas inimigas","Esta unidade recusa-se a morrer e sobreviverá com 1HP","Atacará primeiro se for atacado por um tanque",
+		"Não é um método muito rápido de transportar unidades, mas carrega qualquer coisa","O transporte mais rápido, mas pode ser facilmente abatido","Esta unidade ainda não foi construída",
+		"Põe Tanques!","Recupera HP com base no dano causado","Os seus ataques devastam o moral de uma unidade","O controle disto é essencial",
+
+		],
+*/
 POR={
 	SystemTerms:["Made by Task Force Tucker","Warning","This game contains bullying, kidnapping, torture, murder, suicide, violence, war crimes, atrocities, Goring's fat ass, Titans, genocidal rampages, freedom, racism, fascism, communism, fascism and communism's ugly-ass baby, paedophilic manchild Sultans, pedophilic psychopaths, traitors, a glass of juice, implied rape, written rape, graphic rape, other types of rape, ethnoreligious genocide, chemical warfare, humanism, Taboritsky's funny clock, drug abuse, sexual perversions, spoilers(a fuckton of them), satire, double satire, dark humour, toilet humour, humour in general, a REALLY thin fourth wall, lampshades, gamer time, special operations, penises, Skoatia, Twitter, Reddit, dystopia, cockroaches, and worst of all... BUREAUCRACY(I'm so sorry guys)","I promise not to steal, otherwise my butt is ready for surprise sex","But seriously, this game gets pretty hardcore. If you're a bitch, don't play it","Any attempt to sell this game is idiotic, this game is free. 0$. Nada. Niente. Only Task Force Tucker and those authorized are allowed to share this game, the others will be hunted. Do not test my patience if you don't want your ass to be fucked.",
 		"Campanha","Campo de treino","Continuar","Opções","Créditos","Mapas Bônus","Conquista","Editor de Mapa","Conhecimento Mundial","Fechar","Continuar","Jogar ","Estatísticas:","Ajuda","Salvar progresso","Modo de segurança","Saltar",
@@ -380,41 +417,6 @@ POR={
 		"Corpos de gelo quase flutuantes, mas enganosamente perigosos, que devem ser navegados com cuidado.",
 		"A borda onde o mar encontra o solo. Pode ser atravessada tanto por unidades terrestres quanto por navios cujo leme é alto o suficiente",
 		"Recurso estratégico, controlando isso obtem recursos a cada turno. "],
-	TraitName:[
-		"",
-
-		"Desigual","Robusto","Precipitado","Intransponível","Águas complicadas",
-		"Ocultação","Ocultação Naval","Bunker",
-		"Raso","Vantagem","Perigoso",
-		"Desafio logístico","Pesadelo Logístico",
-		"Centro Financeiro","Centro Fiscal","Centro Fiduciário",
-		"Conquistador","M51 Skysweeper","Golpe de Profundidade","Sonar","Radar",
-		"Anti-Infantaria","Anti-Tanque","Anti-Aério","Anti-Navio","Anti-Estrutura",
-		"Furtivo","Submerso","Comando","Caranguejo","Dirigir",
-		"Indomável","Schwerpunkt","Bewegungskrieg","Bateria Móvel","Simplificado",
-		"Armadura de aço cimentado","Explosão de cavitação","Marítimo","Autodestruição","Dispersão","JULGAMENTO",
-		"Distribuição de suprimentos","Inercial","Explosão de fluxo","Aerotransportado","Heroico","Caça-tanques",
-		"Transporte Naval","Transporte Aéreo","Não Construído",
-		"Tanque criador de Tanques","Absorvedor","Aterrorizante","Eixo Central","Desafiador"
-
-		],
-	TraitDesc:[
-		"",
-		"Veículos terão uma leve dificuldade para atravessar isso","Terreno acidentado, difícil de atravessar","Declives altos e terreno muito difícil","Nenhuma unidade pode passar","Navios terão mais dificuldade em navegar",
-		"Reduz o dano recebido em 20%","Reduz o dano recebido em 20%","Reduz o dano recebido em 40%",
-		"Navios com leme baixo devem evitar esses ladrilhos ou encalharão","Unidades de longo alcance aqui atiram mais longe porque têm terreno mais alto.","Ficar aqui danifica suas unidades em 20HP por turno",
-		"Habilidade de luta prejudicada em 20%","Habilidade de luta prejudicada em 40%",
-		"Ganha 100 créditos por turno","Ganha 200 créditos por turno","Ganha 300 créditos por turno",
-		"Esta unidade pode capturar edifícios","Esta unidade pode atacar aeronaves","Esta unidade pode atacar submarinos","Esta unidade pode localizar unidades submersas","Esta unidade pode detectar unidades furtivas",
-		"Causa x3 de dano contra infantaria","Não pode ser contra-atacado por tanques","Intercepta aeronaves próximas","Causa 3x mais dano contra navios","Causa mais dano a estruturas",
-		"Se esta unidade atacar camuflada, causa o dobro de dano","Não pode ser atacada pela maioria das unidades","Causa mais dano e recebe menos em terreno acidentado","Pode cruzar rios e não fica indefesa no processo. Mas NÃO é um caranguejo","Recebe menos dano de submarinos; e sempre os atinge primeiro",
-		"Sem retirada; sem rendição!","Causa +40% de dano à infantaria se atacar primeiro","Se destruir uma unidade, ela pode atacar novamente (apenas uma vez por turno)","Não pode ser contra-atacado","Pode ser implantado mais longe da base",
-		"Recebe menos dano de armas médias ou leves","Ignora o tipo de armadura de aço cimentado","Só pode atacar unidades marítimas","Depois de atacar, esta unidade autodestrói-se","Seu ataque atinge um círculo de 3x3","VOCÊS ESTÃO FUDIDOS",
-		"Sua ação reabastece a força das unidades aliadas","A sobrevivência desta unidade não impede a derrota militar","Atinge todos os inimigos em linha direta","Pode embarcar em um avião de transporte e pular atrás das linhas inimigas","Esta unidade recusa-se a morrer e sobreviverá com 1HP","Atacará primeiro se for atacado por um tanque",
-		"Não é um método muito rápido de transportar unidades, mas carrega qualquer coisa","O transporte mais rápido, mas pode ser facilmente abatido","Esta unidade ainda não foi construída",
-		"Põe Tanques!","Recupera HP com base no dano causado","Os seus ataques devastam o moral de uma unidade","O controle disto é essencial",
-
-		],
 	ClassTraitName:[
 		"",
 

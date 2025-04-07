@@ -315,165 +315,159 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 
 	Factions:EuropeFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN,
+	
 
 
 
 	};
 
-Palawan={
+Palawan = {
 	Name:"Palawan",
 	Map:[
-	[23,23,23,23,23,23,23,23,23,23,23],
-	[23,23,23,23,23,23,23,3 ,1 ,23,23],
-	[23,23,23,23,23,23,3 ,3 ,1 ,23,23],
-	[23,23,23,23,23,1 ,3 ,1 ,23,23,23],
-	[23,23,23,23,4 ,4 ,3 ,1 ,23,23,23],
-	[23,23,23,1 ,4 ,4 ,1 ,23,23,23,23],
-	[23,23,1 ,1 ,4 ,1 ,23,23,23,23,23],
-	[23,1 ,1 ,1 ,1 ,23,23,23,23,23,23],
-	[23,1 ,3 ,1 ,23,23,23,23,23,23,23],
-	[23,23,23,23,23,23,23,23,23,23,23],
-	[23,23,23,23,23,23,23,23,23,23,23]
+		[23,23,23,23,23,23,23,23,23,23,23],
+		[23,23,23,23,23,23,23,3 ,1 ,23,23],
+		[23,23,23,23,23,23,3 ,3 ,1 ,23,23],
+		[23,23,23,23,23,1 ,3 ,1 ,23,23,23],
+		[23,23,23,23,4 ,4 ,3 ,1 ,23,23,23],
+		[23,23,23,1 ,4 ,4 ,1 ,23,23,23,23],
+		[23,23,1 ,1 ,4 ,1 ,23,23,23,23,23],
+		[23,1 ,1 ,1 ,1 ,23,23,23,23,23,23],
+		[23,1 ,3 ,1 ,23,23,23,23,23,23,23],
+		[23,23,23,23,23,23,23,23,23,23,23],
+		[23,23,23,23,23,23,23,23,23,23,23]
 	],
 	Constants:{YourFaction:1,defaultX:0,defaultY:0,Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0,0],Commanders:[Nobody, Anders, Bernard]},
-
 	Roster:[
-	{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0,CustomName:null,SpecialName:null},
-	{id:4, faction:1, direction:4, x:2, y:8, morale:0, hpModifier:0, SpecialName:1},
-	{id:4, faction:1, direction:3, x:2, y:6, morale:0, hpModifier:0, SpecialName:2},
-	{id:55, faction:1, direction:2, x:2, y:9, morale:0, hpModifier:0, CustomName:"Boat1"},
-	{id:54, faction:1, direction:2, x:5, y:9, morale:0, hpModifier:0, CustomName:"Boat2"},
-	{id:53, faction:1, direction:2, x:8, y:9, morale:0, hpModifier:0, CustomName:"Boat3"},
-	{id:2, faction:4, direction:2, x:2, y:7, morale:0, hpModifier:0, CustomName:"Simps"},
-	{id:2, faction:4, direction:2, x:4, y:7, morale:0, hpModifier:0, CustomName:"Coomers"},
-	{id:54, faction:4, direction:2, x:10, y:2, morale:0, hpModifier:0, CustomName:"Boat1"},
-	{id:56, faction:4, direction:2, x:10, y:7, morale:0, hpModifier:0, CustomName:"Boat2"},
-	{id:54, faction:4, direction:2, x:10, y:8, morale:0, hpModifier:0, CustomName:"Boat3"},
-	{id:54, faction:4, direction:2, x:4, y:1, morale:0, hpModifier:0, CustomName:"Weird Boat"},
-	{id:54, faction:4, direction:2, x:5, y:1, morale:0, hpModifier:0, CustomName:"Another Weird Boat"}],
-
+		{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0,CustomName:null,SpecialName:null},
+		{id:4, faction:1, direction:4, x:2, y:8, morale:0, hpModifier:0, SpecialName:1},
+		{id:4, faction:1, direction:3, x:2, y:6, morale:0, hpModifier:0, SpecialName:2},
+		{id:55, faction:1, direction:2, x:2, y:9, morale:0, hpModifier:0, CustomName:"Boat1"},
+		{id:54, faction:1, direction:2, x:5, y:9, morale:0, hpModifier:0, CustomName:"Boat2"},
+		{id:53, faction:1, direction:2, x:8, y:9, morale:0, hpModifier:0, CustomName:"Boat3"},
+		{id:2, faction:4, direction:2, x:2, y:7, morale:0, hpModifier:0, CustomName:"Simps"},
+		{id:2, faction:4, direction:2, x:4, y:7, morale:0, hpModifier:0, CustomName:"Coomers"},
+		{id:54, faction:4, direction:2, x:10, y:2, morale:0, hpModifier:0, CustomName:"Boat1"},
+		{id:56, faction:4, direction:2, x:10, y:7, morale:0, hpModifier:0, CustomName:"Boat2"},
+		{id:54, faction:4, direction:2, x:10, y:8, morale:0, hpModifier:0, CustomName:"Boat3"},
+		{id:54, faction:4, direction:2, x:4, y:1, morale:0, hpModifier:0, CustomName:"Weird Boat"},
+		{id:54, faction:4, direction:2, x:5, y:1, morale:0, hpModifier:0, CustomName:"Another Weird Boat"}
+	],
 	ControlMap:[],
+	Factions:CampaignFactions
+};
 
-	Factions:CampaignFactions,
+UnitRepository = {
+	Name:"Debug Units",
+	Desc:"A repository for all units so that one can do comparative analysis and UI testing",
+	Constants:{YourFaction:2,defaultX:0,defaultY:0,Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody, WhiteGeneral, BlackGeneral]},
+	Map:[
+		[1,1,1,1,1,23,1,1,1,1],
+		[1,1,1,1,1,23,1,1,1,1],
+		[1,1,1,1,1,23,1,1,1,1],
+		[1,1,1,1,1,23,1,1,1,1],
+		[1,1,1,1,1,23,1,1,1,1],
+		[1,1,1,1,1,23,1,1,1,1],
+		[1,1,1,1,1,23,1,1,1,1],
+		[1,1,1,1,1,23,1,1,1,1],
+		[1,1,1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1,1,1]
+	],
+	Roster:[
+		{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0},
+		{id:1 , faction:1 , direction:2, x:0, y:0, morale:0, hpModifier:0},
+		{id:11 , faction:1 , direction:2, x:0, y:1, morale:0, hpModifier:0},
+		{id:21 , faction:1 , direction:2, x:0, y:2, morale:0, hpModifier:0},
+		{id:31 , faction:1 , direction:2, x:0, y:3, morale:0, hpModifier:0},
+		{id:41 , faction:1 , direction:2, x:0, y:4, morale:0, hpModifier:0},
+		{id:51 , faction:1 , direction:2, x:0, y:5, morale:0, hpModifier:0},
+		{id:61 , faction:1 , direction:2, x:0, y:6, morale:0, hpModifier:0},
+		{id:2 , faction:1 , direction:2, x:1, y:0, morale:0, hpModifier:0},
+		{id:12 , faction:1 , direction:2, x:1, y:1, morale:0, hpModifier:0},
+		{id:22 , faction:1 , direction:2, x:1, y:2, morale:0, hpModifier:0},
+		{id:32 , faction:1 , direction:2, x:1, y:3, morale:0, hpModifier:0},
+		{id:42 , faction:1 , direction:2, x:1, y:4, morale:0, hpModifier:0},
+		{id:52 , faction:1 , direction:2, x:1, y:5, morale:0, hpModifier:0},
+		{id:62 , faction:1 , direction:2, x:1, y:6, morale:0, hpModifier:0},
+		{id:3 , faction:1 , direction:2, x:2, y:0, morale:0, hpModifier:0},
+		{id:13 , faction:1 , direction:2, x:2, y:1, morale:0, hpModifier:0},
+		{id:23 , faction:1 , direction:2, x:2, y:2, morale:0, hpModifier:0},
+		{id:33 , faction:1 , direction:2, x:2, y:3, morale:0, hpModifier:0},
+		{id:43 , faction:1 , direction:2, x:2, y:4, morale:0, hpModifier:0},
+		{id:53 , faction:1 , direction:2, x:2, y:5, morale:0, hpModifier:0},
+		{id:63 , faction:1 , direction:2, x:2, y:6, morale:0, hpModifier:0},
+		{id:4 , faction:1 , direction:2, x:3, y:0, morale:0, hpModifier:0},
+		{id:14 , faction:1 , direction:2, x:3, y:1, morale:0, hpModifier:0},
+		{id:24 , faction:1 , direction:2, x:3, y:2, morale:0, hpModifier:0},
+		{id:34 , faction:1 , direction:2, x:3, y:3, morale:0, hpModifier:0},
+		{id:44 , faction:1 , direction:2, x:3, y:4, morale:0, hpModifier:0},
+		{id:54 , faction:1 , direction:2, x:3, y:5, morale:0, hpModifier:0},
+		{id:64 , faction:1 , direction:2, x:3, y:6, morale:0, hpModifier:0},
+		{id:5 , faction:1 , direction:2, x:4, y:0, morale:0, hpModifier:0},
+		{id:15 , faction:1 , direction:2, x:4, y:1, morale:0, hpModifier:0},
+		{id:25 , faction:1 , direction:2, x:4, y:2, morale:0, hpModifier:0},
+		{id:35 , faction:1 , direction:2, x:4, y:3, morale:0, hpModifier:0},
+		{id:45 , faction:1 , direction:2, x:4, y:4, morale:0, hpModifier:0},
+		{id:55 , faction:1 , direction:2, x:4, y:5, morale:0, hpModifier:0},
+		{id:65 , faction:1 , direction:2, x:4, y:6, morale:0, hpModifier:0},
+		{id:6 , faction:1 , direction:2, x:5, y:0, morale:0, hpModifier:0},
+		{id:16 , faction:1 , direction:2, x:5, y:1, morale:0, hpModifier:0},
+		{id:26 , faction:1 , direction:2, x:5, y:2, morale:0, hpModifier:0},
+		{id:36 , faction:1 , direction:2, x:5, y:3, morale:0, hpModifier:0},
+		{id:46 , faction:1 , direction:2, x:5, y:4, morale:0, hpModifier:0},
+		{id:56 , faction:1 , direction:2, x:5, y:5, morale:0, hpModifier:0},
+		{id:66 , faction:1 , direction:2, x:5, y:6, morale:0, hpModifier:0},
+		{id:7 , faction:1 , direction:2, x:6, y:0, morale:0, hpModifier:0},
+		{id:17 , faction:1 , direction:2, x:6, y:1, morale:0, hpModifier:0},
+		{id:27 , faction:1 , direction:2, x:6, y:2, morale:0, hpModifier:0},
+		{id:37 , faction:1 , direction:2, x:6, y:3, morale:0, hpModifier:0},
+		{id:47 , faction:1 , direction:2, x:6, y:4, morale:0, hpModifier:0},
+		{id:57 , faction:1 , direction:2, x:6, y:5, morale:0, hpModifier:0},
+		{id:67 , faction:1 , direction:2, x:6, y:6, morale:0, hpModifier:0},
+		{id:8 , faction:1 , direction:2, x:7, y:0, morale:0, hpModifier:0},
+		{id:18 , faction:1 , direction:2, x:7, y:1, morale:0, hpModifier:0},
+		{id:28 , faction:1 , direction:2, x:7, y:2, morale:0, hpModifier:0},
+		{id:38 , faction:1 , direction:2, x:7, y:3, morale:0, hpModifier:0},
+		{id:48 , faction:1 , direction:2, x:7, y:4, morale:0, hpModifier:0},
+		{id:58 , faction:1 , direction:2, x:7, y:5, morale:0, hpModifier:0},
+		{id:68 , faction:1 , direction:2, x:7, y:6, morale:0, hpModifier:0},
+		{id:9 , faction:1 , direction:2, x:8, y:0, morale:0, hpModifier:0},
+		{id:19 , faction:1 , direction:2, x:8, y:1, morale:0, hpModifier:0},
+		{id:29 , faction:1 , direction:2, x:8, y:2, morale:0, hpModifier:0},
+		{id:39 , faction:1 , direction:2, x:8, y:3, morale:0, hpModifier:0},
+		{id:49 , faction:1 , direction:2, x:8, y:4, morale:0, hpModifier:0},
+		{id:59 , faction:1 , direction:2, x:8, y:5, morale:0, hpModifier:0},
+		{id:69 , faction:1 , direction:2, x:8, y:6, morale:0, hpModifier:0},
+		{id:10 , faction:1 , direction:2, x:9, y:0, morale:0, hpModifier:0},
+		{id:20 , faction:1 , direction:2, x:9, y:1, morale:0, hpModifier:0},
+		{id:30 , faction:1 , direction:2, x:9, y:2, morale:0, hpModifier:0},
+		{id:40 , faction:1 , direction:2, x:9, y:3, morale:0, hpModifier:0},
+		{id:50 , faction:1 , direction:2, x:9, y:4, morale:0, hpModifier:0},
+		{id:60 , faction:1 , direction:2, x:9, y:5, morale:0, hpModifier:0},
+		{id:70 , faction:1 , direction:2, x:9, y:6, morale:0, hpModifier:0},
+		{id:21 , faction:2 , direction:4, x:9, y:9, morale:0, hpModifier:0}
+	],
+	ControlMap:[
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0]
+	],
+	Factions:CampaignFactions
+};
 
-	Units:UNITS,
-
-	Terrain:TERRAIN
-
-
-	};
-
-UnitRepository={
-				Name:"Debug Units",
-				Desc:"A repository for all units so that one can do comparative analysis and UI testing",
-				Constants:{YourFaction:2,defaultX:0,defaultY:0,Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody, WhiteGeneral, BlackGeneral]},
-				Map:[[1,1,1,1,1,23,1,1,1,1],
-				[1,1,1,1,1,23,1,1,1,1],
-				[1,1,1,1,1,23,1,1,1,1],
-				[1,1,1,1,1,23,1,1,1,1],
-				[1,1,1,1,1,23,1,1,1,1],
-				[1,1,1,1,1,23,1,1,1,1],
-				[1,1,1,1,1,23,1,1,1,1],
-				[1,1,1,1,1,23,1,1,1,1],
-				[1,1,1,1,1,1,1,1,1,1],
-				[1,1,1,1,1,1,1,1,1,1]],
-				Roster:[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0}
-				,{id:1 , faction:1 , direction:2, x:0, y:0, morale:0, hpModifier:0}
-				,{id:11 , faction:1 , direction:2, x:0, y:1, morale:0, hpModifier:0}
-				,{id:21 , faction:1 , direction:2, x:0, y:2, morale:0, hpModifier:0}
-				,{id:31 , faction:1 , direction:2, x:0, y:3, morale:0, hpModifier:0}
-				,{id:41 , faction:1 , direction:2, x:0, y:4, morale:0, hpModifier:0}
-				,{id:51 , faction:1 , direction:2, x:0, y:5, morale:0, hpModifier:0}
-				,{id:61 , faction:1 , direction:2, x:0, y:6, morale:0, hpModifier:0}
-				,{id:2 , faction:1 , direction:2, x:1, y:0, morale:0, hpModifier:0}
-				,{id:12 , faction:1 , direction:2, x:1, y:1, morale:0, hpModifier:0}
-				,{id:22 , faction:1 , direction:2, x:1, y:2, morale:0, hpModifier:0}
-				,{id:32 , faction:1 , direction:2, x:1, y:3, morale:0, hpModifier:0}
-				,{id:42 , faction:1 , direction:2, x:1, y:4, morale:0, hpModifier:0}
-				,{id:52 , faction:1 , direction:2, x:1, y:5, morale:0, hpModifier:0}
-				,{id:62 , faction:1 , direction:2, x:1, y:6, morale:0, hpModifier:0}
-				,{id:3 , faction:1 , direction:2, x:2, y:0, morale:0, hpModifier:0}
-				,{id:13 , faction:1 , direction:2, x:2, y:1, morale:0, hpModifier:0}
-				,{id:23 , faction:1 , direction:2, x:2, y:2, morale:0, hpModifier:0}
-				,{id:33 , faction:1 , direction:2, x:2, y:3, morale:0, hpModifier:0}
-				,{id:43 , faction:1 , direction:2, x:2, y:4, morale:0, hpModifier:0}
-				,{id:53 , faction:1 , direction:2, x:2, y:5, morale:0, hpModifier:0}
-				,{id:63 , faction:1 , direction:2, x:2, y:6, morale:0, hpModifier:0}
-				,{id:4 , faction:1 , direction:2, x:3, y:0, morale:0, hpModifier:0}
-				,{id:14 , faction:1 , direction:2, x:3, y:1, morale:0, hpModifier:0}
-				,{id:24 , faction:1 , direction:2, x:3, y:2, morale:0, hpModifier:0}
-				,{id:34 , faction:1 , direction:2, x:3, y:3, morale:0, hpModifier:0}
-				,{id:44 , faction:1 , direction:2, x:3, y:4, morale:0, hpModifier:0}
-				,{id:54 , faction:1 , direction:2, x:3, y:5, morale:0, hpModifier:0}
-				,{id:64 , faction:1 , direction:2, x:3, y:6, morale:0, hpModifier:0}
-				,{id:5 , faction:1 , direction:2, x:4, y:0, morale:0, hpModifier:0}
-				,{id:15 , faction:1 , direction:2, x:4, y:1, morale:0, hpModifier:0}
-				,{id:25 , faction:1 , direction:2, x:4, y:2, morale:0, hpModifier:0}
-				,{id:35 , faction:1 , direction:2, x:4, y:3, morale:0, hpModifier:0}
-				,{id:45 , faction:1 , direction:2, x:4, y:4, morale:0, hpModifier:0}
-				,{id:55 , faction:1 , direction:2, x:4, y:5, morale:0, hpModifier:0}
-				,{id:65 , faction:1 , direction:2, x:4, y:6, morale:0, hpModifier:0}
-				,{id:6 , faction:1 , direction:2, x:5, y:0, morale:0, hpModifier:0}
-				,{id:16 , faction:1 , direction:2, x:5, y:1, morale:0, hpModifier:0}
-				,{id:26 , faction:1 , direction:2, x:5, y:2, morale:0, hpModifier:0}
-				,{id:36 , faction:1 , direction:2, x:5, y:3, morale:0, hpModifier:0}
-				,{id:46 , faction:1 , direction:2, x:5, y:4, morale:0, hpModifier:0}
-				,{id:56 , faction:1 , direction:2, x:5, y:5, morale:0, hpModifier:0}
-				,{id:66 , faction:1 , direction:2, x:5, y:6, morale:0, hpModifier:0}
-				,{id:7 , faction:1 , direction:2, x:6, y:0, morale:0, hpModifier:0}
-				,{id:17 , faction:1 , direction:2, x:6, y:1, morale:0, hpModifier:0}
-				,{id:27 , faction:1 , direction:2, x:6, y:2, morale:0, hpModifier:0}
-				,{id:37 , faction:1 , direction:2, x:6, y:3, morale:0, hpModifier:0}
-				,{id:47 , faction:1 , direction:2, x:6, y:4, morale:0, hpModifier:0}
-				,{id:57 , faction:1 , direction:2, x:6, y:5, morale:0, hpModifier:0}
-				,{id:67 , faction:1 , direction:2, x:6, y:6, morale:0, hpModifier:0}
-				,{id:8 , faction:1 , direction:2, x:7, y:0, morale:0, hpModifier:0}
-				,{id:18 , faction:1 , direction:2, x:7, y:1, morale:0, hpModifier:0}
-				,{id:28 , faction:1 , direction:2, x:7, y:2, morale:0, hpModifier:0}
-				,{id:38 , faction:1 , direction:2, x:7, y:3, morale:0, hpModifier:0}
-				,{id:48 , faction:1 , direction:2, x:7, y:4, morale:0, hpModifier:0}
-				,{id:58 , faction:1 , direction:2, x:7, y:5, morale:0, hpModifier:0}
-				,{id:68 , faction:1 , direction:2, x:7, y:6, morale:0, hpModifier:0}
-				,{id:9 , faction:1 , direction:2, x:8, y:0, morale:0, hpModifier:0}
-				,{id:19 , faction:1 , direction:2, x:8, y:1, morale:0, hpModifier:0}
-				,{id:29 , faction:1 , direction:2, x:8, y:2, morale:0, hpModifier:0}
-				,{id:39 , faction:1 , direction:2, x:8, y:3, morale:0, hpModifier:0}
-				,{id:49 , faction:1 , direction:2, x:8, y:4, morale:0, hpModifier:0}
-				,{id:59 , faction:1 , direction:2, x:8, y:5, morale:0, hpModifier:0}
-				,{id:69 , faction:1 , direction:2, x:8, y:6, morale:0, hpModifier:0}
-				,{id:10 , faction:1 , direction:2, x:9, y:0, morale:0, hpModifier:0}
-				,{id:20 , faction:1 , direction:2, x:9, y:1, morale:0, hpModifier:0}
-				,{id:30 , faction:1 , direction:2, x:9, y:2, morale:0, hpModifier:0}
-				,{id:40 , faction:1 , direction:2, x:9, y:3, morale:0, hpModifier:0}
-				,{id:50 , faction:1 , direction:2, x:9, y:4, morale:0, hpModifier:0}
-				,{id:60 , faction:1 , direction:2, x:9, y:5, morale:0, hpModifier:0}
-				,{id:70 , faction:1 , direction:2, x:9, y:6, morale:0, hpModifier:0}
-				,{id:21 , faction:2 , direction:4, x:9, y:9, morale:0, hpModifier:0}
-				],
-				ControlMap:[[0,0,0,0,0,0,0,0,0,0],
-				[0,0,0,0,0,0,0,0,0,0],
-				[0,0,0,0,0,0,0,0,0,0],
-				[0,0,0,0,0,0,0,0,0,0],
-				[0,0,0,0,0,0,0,0,0,0],
-				[0,0,0,0,0,0,0,0,0,0],
-				[0,0,0,0,0,0,0,0,0,0],
-				[0,0,0,0,0,0,0,0,0,0],
-				[0,0,0,0,0,0,0,0,0,0],
-				[0,0,0,0,0,0,0,0,0,0]],
-
-				Factions:CampaignFactions,
-				Units:UNITS,
-				Terrain:TERRAIN};
-
-Ohio={
+Ohio = {
 	Name:"Ohio",
 	Desc:"Something has changed, all communications with Militarbezirk Ohienstaat have been cut, soon enough they marched panzers to all borders. All surrounding states agree that Ohio is a serious, immediate threat and unless stopped, they will bring [REDACTED] upon this world.",
-
-
-	Map:[[13,22,22,22,22,22,22,22,22,13],
+	Map:[
+		[13,22,22,22,22,22,22,22,22,13],
 		[1,22,1,1,14,3,3,3,21,3],
 		[1,21,1,1,1,3,3,3,22,3],
 		[1,22,1,1,1,4,4,1,22,22],
@@ -487,11 +481,9 @@ Ohio={
 		[1,1,1,1,1,22,1,1,1,2],
 		[1,1,13,1,1,22,3,1,1,2],
 		[1,1,1,1,3,22,3,1,1,1],
-		[1,1,1,3,3,22,3,3,1,13]],
-
-
+		[1,1,1,3,3,22,3,3,1,13]
+	],
 	Constants:{YourFaction:2,defaultX:0,defaultY:0,Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,1000,1000,1000,1000,1000],Commanders:[Nobody,Osborn,Williams,Coulson,Kotick,Benteke]},
-
 	Roster:[
 		{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0,CustomName:null,SpecialName:null},
 		{id:6 , faction:5 , direction:2, x:0, y:0, morale:0, hpModifier:0},
@@ -591,15 +583,14 @@ Ohio={
 		{id:47 , faction:2 , direction:1, x:14, y:1, morale:0, hpModifier:0},
 		{id:43 , faction:2 , direction:1, x:14, y:2, morale:0, hpModifier:0},
 		{id:44 , faction:2 , direction:1, x:14, y:3, morale:0, hpModifier:0}
-
 	],
-
-		Localization:[
+	Localization:[
 		{X:6,Y:8,name:"Country Roads",description:"TAKE ME HOOOME! COUNTRYY ROAADSS!"},
-		{X:6,Y:9,name:"Country Roads",description:"WEST VIRGINIAAAAAA! MOUNTAIN MOMMMAAAAA!"}],
+		{X:6,Y:9,name:"Country Roads",description:"WEST VIRGINIAAAAAA! MOUNTAIN MOMMMAAAAA!"}
 		//{X:6,Y:5,name:"Samara Shipbuilding Inc.",description:"Been used to build a gargantuan yacht for Oktan, maybe it can build a carrier all the same then?"}
-
-	ControlMap:[[5,0,0,0,0,0,0,0,0,4],
+	],
+	ControlMap:[
+		[5,0,0,0,0,0,0,0,0,4],
 		[0,0,0,0,1,0,0,0,0,0],
 		[0,0,0,0,0,0,0,0,0,0],
 		[0,0,0,0,0,0,0,0,0,0],
@@ -613,71 +604,57 @@ Ohio={
 		[0,0,0,0,0,0,0,0,0,0],
 		[0,0,2,0,0,0,0,0,0,0],
 		[0,0,0,0,0,0,0,0,0,0],
-		[0,0,0,0,0,0,0,0,0,3]],
-
-	Factions:MemeFactions,
-
-	Units:UNITS,
-
-	Terrain:TERRAIN
-
-
-
-	};
-
-Samara={
-	Name:"Samara",
-
-	Map:[
-	[2 ,22,2 ,2 ,2 ,2 ,2 ,2 ,2 ,2 ,2],
-	[2 ,22,2 ,2 ,2 ,5 ,2 ,2 ,2 ,2 ,2],
-	[6 ,20,6 ,6 ,6 ,1 ,1 ,1 ,2 ,2 ,2],
-	[1 ,22,22,22,6 ,6 ,1 ,1 ,1 ,1 ,1],
-	[1 ,1 ,3 ,22,22,10,1 ,1 ,1 ,1 ,1],
-	[1 ,1 ,1 ,13,22,11,1 ,1 ,1 ,1 ,1],
-	[1 ,1 ,3 ,22,22,12,1 ,1 ,3 ,1 ,1],
-	[1 ,22,22,22,6 ,6 ,1 ,1 ,1 ,1 ,1],
-	[6 ,21,6 ,6 ,6 ,1 ,1 ,1 ,1 ,4 ,4],
-	[1 ,22,1 ,1 ,1 ,1 ,1 ,1 ,4 ,5 ,5]
+		[0,0,0,0,0,0,0,0,0,3]
 	],
+	Factions:MemeFactions
+};
 
+Samara = {
+	Name:"Samara",
+	Map:[
+		[2 ,22,2 ,2 ,2 ,2 ,2 ,2 ,2 ,2 ,2],
+		[2 ,22,2 ,2 ,2 ,5 ,2 ,2 ,2 ,2 ,2],
+		[6 ,20,6 ,6 ,6 ,1 ,1 ,1 ,2 ,2 ,2],
+		[1 ,22,22,22,6 ,6 ,1 ,1 ,1 ,1 ,1],
+		[1 ,1 ,3 ,22,22,10,1 ,1 ,1 ,1 ,1],
+		[1 ,1 ,1 ,13,22,11,1 ,1 ,1 ,1 ,1],
+		[1 ,1 ,3 ,22,22,12,1 ,1 ,3 ,1 ,1],
+		[1 ,22,22,22,6 ,6 ,1 ,1 ,1 ,1 ,1],
+		[6 ,21,6 ,6 ,6 ,1 ,1 ,1 ,1 ,4 ,4],
+		[1 ,22,1 ,1 ,1 ,1 ,1 ,1 ,4 ,5 ,5]
+	],
 	Constants:{YourFaction:1,defaultX:0,defaultY:0,Survival:77777,TimeLimit:77777,Capture:[{x:1,y:1}],Defend:[],Defeat:[],Protect:[],Funds:[0,4000,100],Commanders:[Nobody, Stoyan, Kulik],AttackerFaction:["Glorious Coallition"],OffensiveDao:[0,0,0,0],DefensiveDao:[0,6,0,0], StaticEvents:[]},
-
 	DynamicEvents:[
 		{selfswitch:false, Turn:1, UnitDead:0, UnitsDead:[], FactionDead:2, TilesCaptured:[{x:5,y:5}], LineCrossed:{X:5, Y:5, gyro:'North'}, Event:{Name:"null", Class:"Dynamic", AlterCredits:0, FactionTarget:1,Intralogue:0, SummonUnits:[], TerrainImpact:[],Inspire:null,Strike:[],Display:null,Purge:0,ChangeTune:null}}
-
-
-
-		],
-
-	Roster:[
-	{id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0},
-	//{id:23, faction:5, direction:3, x:5, y:3, morale:0, hpModifier:0},
-	//{id:27, faction:2, direction:4, x:2, y:5, morale:0, hpModifier:0},
-	{id:45, faction:1, direction:2, x:0, y:0, morale:0, hpModifier:0},
-	{id:3, faction:1, direction:3, x:2, y:7, morale:0, hpModifier:-0.5},
-	//{id:27, faction:2, direction:4, x:3, y:7, morale:0, hpModifier:0},
-	//{index:6, id:10, faction:2, direction:2, x:2, y:0, morale:0, hpModifier:0},
-	//{id:63, faction:2, direction:2, x:0, y:5, morale:0, hpModifier:0},
-	//{index:8, id:2, faction:2, direction:2, x:4, y:0, morale:0, hpModifier:0},
-	//{index:9, id:2, faction:2, direction:2, x:5, y:0, morale:0, hpModifier:0},
-	//{index:10, id:2, faction:2, direction:2, x:6, y:0, morale:0, hpModifier:0},
-	//{index:11, id:10, faction:2, direction:2, x:7, y:0, morale:0, hpModifier:0},
-	//{index:12, id:10, faction:2, direction:2, x:8, y:0, morale:0, hpModifier:0},
-	//{index:13, id:10, faction:2, direction:2, x:9, y:0, morale:0, hpModifier:0},
-	//{index:14, id:2, faction:2, direction:2, x:4, y:1, morale:0, hpModifier:0},
-	//{index:15, id:1, faction:2, direction:1, x:6, y:6, morale:0, hpModifier:0},
-	//{index:16, id:1, faction:2, direction:1, x:7, y:6, morale:0, hpModifier:0},
-	//{index:17, id:1, faction:2, direction:1, x:8, y:6, morale:0, hpModifier:0},
-	//{index:18, id:1, faction:2, direction:1, x:6, y:7, morale:0, hpModifier:0},
-	//{index:19, id:1, faction:2, direction:1, x:7, y:7, morale:0, hpModifier:0},
-	//{index:20, id:6, faction:2, direction:1, x:6, y:7, morale:0, hpModifier:0},
-	//{index:21, id:1, faction:2, direction:1, x:6, y:8, morale:0, hpModifier:0},
-	{id:23, faction:2, direction:3, x:2, y:6, morale:3, hpModifier:0},
-	{id:1, faction:1, direction:2, x:2, y:1, morale:0, hpModifier:0}
-	//{index:24, id:4, faction:9, direction:4, x:9, y:2, morale:0, hpModifier:0}
 	],
 
+	Roster:[
+		{id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0},
+		//{id:23, faction:5, direction:3, x:5, y:3, morale:0, hpModifier:0},
+		//{id:27, faction:2, direction:4, x:2, y:5, morale:0, hpModifier:0},
+		{id:45, faction:1, direction:2, x:0, y:0, morale:0, hpModifier:0},
+		{id:3, faction:1, direction:3, x:2, y:7, morale:0, hpModifier:-0.5},
+		//{id:27, faction:2, direction:4, x:3, y:7, morale:0, hpModifier:0},
+		//{index:6, id:10, faction:2, direction:2, x:2, y:0, morale:0, hpModifier:0},
+		//{id:63, faction:2, direction:2, x:0, y:5, morale:0, hpModifier:0},
+		//{index:8, id:2, faction:2, direction:2, x:4, y:0, morale:0, hpModifier:0},
+		//{index:9, id:2, faction:2, direction:2, x:5, y:0, morale:0, hpModifier:0},
+		//{index:10, id:2, faction:2, direction:2, x:6, y:0, morale:0, hpModifier:0},
+		//{index:11, id:10, faction:2, direction:2, x:7, y:0, morale:0, hpModifier:0},
+		//{index:12, id:10, faction:2, direction:2, x:8, y:0, morale:0, hpModifier:0},
+		//{index:13, id:10, faction:2, direction:2, x:9, y:0, morale:0, hpModifier:0},
+		//{index:14, id:2, faction:2, direction:2, x:4, y:1, morale:0, hpModifier:0},
+		//{index:15, id:1, faction:2, direction:1, x:6, y:6, morale:0, hpModifier:0},
+		//{index:16, id:1, faction:2, direction:1, x:7, y:6, morale:0, hpModifier:0},
+		//{index:17, id:1, faction:2, direction:1, x:8, y:6, morale:0, hpModifier:0},
+		//{index:18, id:1, faction:2, direction:1, x:6, y:7, morale:0, hpModifier:0},
+		//{index:19, id:1, faction:2, direction:1, x:7, y:7, morale:0, hpModifier:0},
+		//{index:20, id:6, faction:2, direction:1, x:6, y:7, morale:0, hpModifier:0},
+		//{index:21, id:1, faction:2, direction:1, x:6, y:8, morale:0, hpModifier:0},
+		{id:23, faction:2, direction:3, x:2, y:6, morale:3, hpModifier:0},
+		{id:1, faction:1, direction:2, x:2, y:1, morale:0, hpModifier:0}
+		//{index:24, id:4, faction:9, direction:4, x:9, y:2, morale:0, hpModifier:0}
+	],
 	ControlMap:[
 		[0,0,0,0,0,0,0,0,0,0],
 		[0,0,0,0,0,0,0,0,0,0],
@@ -688,90 +665,79 @@ Samara={
 		[0,0,0,0,0,1,0,0,0,0],
 		[0,0,0,0,0,0,0,0,0,0],
 		[0,0,0,0,0,0,0,0,0,0],
-		[0,0,0,0,0,0,0,0,0,0]],
-
-	RegionMap:[["Cisamara",1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
-	["Cisamara",1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
-	["Cisamara",1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
-	["Cisamara",1,1,1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
-	["Cisamara","Cisamara","Cisamara",1,1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
-	["Cisamara","Cisamara","Cisamara","Cisamara",1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
-	["Cisamara","Cisamara","Cisamara",1,1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
-	["Cisamara",1,1,1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
-	["Cisamara",1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
-	["Cisamara",1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"]],
-
-	NodeMap:[{Owner:2,Capitol:"Zhigulovsk",CapitolX:3,CapitolY:5,Name:"Cisamara"},
-	{Owner:1,Capitol:"Samara",CapitolX:5,CapitolY:5,Name:"Transamara"}],
-
+		[0,0,0,0,0,0,0,0,0,0]
+	],
+	RegionMap:[
+		["Cisamara",1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
+		["Cisamara",1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
+		["Cisamara",1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
+		["Cisamara",1,1,1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
+		["Cisamara","Cisamara","Cisamara",1,1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
+		["Cisamara","Cisamara","Cisamara","Cisamara",1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
+		["Cisamara","Cisamara","Cisamara",1,1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
+		["Cisamara",1,1,1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
+		["Cisamara",1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"],
+		["Cisamara",1,"Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara","Transamara"]
+	],
+	NodeMap:[
+		{Owner:2,Capitol:"Zhigulovsk",CapitolX:3,CapitolY:5,Name:"Cisamara"},
+		{Owner:1,Capitol:"Samara",CapitolX:5,CapitolY:5,Name:"Transamara"}
+	],
 	Localization:[
 		{X:4,Y:5,name:"Zhigulovsk Factory Complex",description:"Can it build Zhiguli cars?"},
 		{X:5,Y:5,name:"Novosamarovsk Vodka Factory",description:"Fuelling Vlasovite economy since 1950"},
-		{X:6,Y:5,name:"Samara Shipbuilding Inc.",description:"Been used to build a gargantuan yacht for Oktan, maybe it can build a carrier all the same then?"}],
+		{X:6,Y:5,name:"Samara Shipbuilding Inc.",description:"Been used to build a gargantuan yacht for Oktan, maybe it can build a carrier all the same then?"}
+	],
 
 	Factions:CampaignFactions,
-
-	Units:UNITS,
-
-	Terrain:TERRAIN,
-
 	Prelogue:["Narrator","This is a <span style='color:yellow'> secret </span> map used for testing"],
 	Postlogue:["Narrator","Congratulations, now get the fuck out"],
-	Interjection:["Narrator","Alright, here's the way out. Now fuck off"],
+	Interjection:["Narrator","Alright, here's the way out. Now fuck off"]
+};
 
-	};
-
-
-
-
-Arena={
+Arena = {
 	Name:"Arena",
 	Desc:"Secret map used for testing shit",
 	//Constants:{YourFaction:1,defaultX:0,defaultY:0,Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody,WhiteGeneral,BlackGeneral,IndigoGeneral,GreenGeneral,YellowGeneral,BrownGeneral,RedGeneral,BlueGeneral]},
 	Constants:{YourFaction:1,defaultX:0,defaultY:0,Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody,WhiteGeneral,BlackGeneral,IndigoGeneral,GreenGeneral]},
 
-	Map:[[23,23,23,23,4,4,23,23,23,23],
-	[23,23,4,4,1,1,4,4,23,23],
-	[23,4,1,1,1,1,1,1,4,23],
-	[23,4,1,1,1,1,1,1,4,23],
-	[4,1,1,1,1,1,1,1,1,4],
-	[4,1,1,1,1,1,1,1,1,4],
-	[23,4,1,1,1,1,1,1,4,23],
-	[23,4,1,1,1,1,1,1,4,23],
-	[23,23,4,4,1,1,4,4,23,23],
-	[23,23,23,23,4,4,23,23,23,23]],
-	Roster:[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0}
-
-	,{id:28 , faction:1 , direction:2, x:5, y:1, morale:0, hpModifier:0}
-	,{id:1 , faction:2 , direction:4, x:4, y:8, morale:0, hpModifier:0}
-	,{id:1 , faction:4 , direction:1, x:8, y:5, morale:0, hpModifier:0}
-	,{id:1 , faction:5 , direction:3, x:1, y:4, morale:0, hpModifier:0}
-	//,{id:1 , faction:7 , direction:2, x:2, y:2, morale:0, hpModifier:0}
-	//,{id:1 , faction:8 , direction:3, x:2, y:7, morale:0, hpModifier:0}
-	//,{id:1 , faction:9 , direction:4, x:7, y:7, morale:0, hpModifier:0}
-	//,{id:1 , faction:10 , direction:1, x:7, y:2, morale:0, hpModifier:0}
+	Map:[
+		[23,23,23,23,4,4,23,23,23,23],
+		[23,23,4,4,1,1,4,4,23,23],
+		[23,4,1,1,1,1,1,1,4,23],
+		[23,4,1,1,1,1,1,1,4,23],
+		[4,1,1,1,1,1,1,1,1,4],
+		[4,1,1,1,1,1,1,1,1,4],
+		[23,4,1,1,1,1,1,1,4,23],
+		[23,4,1,1,1,1,1,1,4,23],
+		[23,23,4,4,1,1,4,4,23,23],
+		[23,23,23,23,4,4,23,23,23,23]
 	],
-	ControlMap:[[1,1,1,1,1,1,1,1,1,1],
-	[1,1,1,1,0,0,1,1,1,1],
-	[1,1,1,0,0,0,1,1,1,1],
-	[1,1,0,0,0,0,0,0,1,1],
-	[1,0,0,0,0,0,0,0,1,1],
-	[1,0,0,0,0,0,0,0,2,1],
-	[1,1,0,0,0,0,0,0,1,1],
-	[1,1,1,0,0,0,0,1,1,1],
-	[1,1,1,1,0,4,1,1,1,1],
-	[1,1,1,1,1,1,1,1,1,1]],
-
-	Factions:GenericFactions,
-	Units:UNITS,
-	Terrain:TERRAIN};
-
-
-
-
-
-
-
+	Roster:[
+		{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0},
+		{id:28 , faction:1 , direction:2, x:5, y:1, morale:0, hpModifier:0},
+		{id:1 , faction:2 , direction:4, x:4, y:8, morale:0, hpModifier:0},
+		{id:1 , faction:4 , direction:1, x:8, y:5, morale:0, hpModifier:0},
+		{id:1 , faction:5 , direction:3, x:1, y:4, morale:0, hpModifier:0},
+		//{id:1 , faction:7 , direction:2, x:2, y:2, morale:0, hpModifier:0},
+		//{id:1 , faction:8 , direction:3, x:2, y:7, morale:0, hpModifier:0},
+		//{id:1 , faction:9 , direction:4, x:7, y:7, morale:0, hpModifier:0},
+		//{id:1 , faction:10 , direction:1, x:7, y:2, morale:0, hpModifier:0}
+	],
+	ControlMap:[
+		[1,1,1,1,1,1,1,1,1,1],
+		[1,1,1,1,0,0,1,1,1,1],
+		[1,1,1,0,0,0,1,1,1,1],
+		[1,1,0,0,0,0,0,0,1,1],
+		[1,0,0,0,0,0,0,0,1,1],
+		[1,0,0,0,0,0,0,0,2,1],
+		[1,1,0,0,0,0,0,0,1,1],
+		[1,1,1,0,0,0,0,1,1,1],
+		[1,1,1,1,0,4,1,1,1,1],
+		[1,1,1,1,1,1,1,1,1,1]
+	],
+	Factions:GenericFactions
+};
 
 Albinia={
 
@@ -912,9 +878,9 @@ Albinia={
 
 	Factions:CampaignFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN
+	
 
 
 	};
@@ -975,9 +941,9 @@ Interjection:["Spruce","Aleks is dead and the Sol fucked off. Fuck this, we wast
 
 	Factions:CampaignFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN
+	
 
 	};
 
@@ -1072,9 +1038,9 @@ Akkadian_War={
 
 	Factions:CampaignFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN,
+	
 
 	Prelogue:["Great Lord","Sultan Faruk, I hope the expeditionary corps reached its destination.",
 			"Faruk","Twenty thousand men and two hundred armored vehicles have landed, half of this shall be deployed soon enough.",
@@ -1291,9 +1257,9 @@ PulaGulf={
 
 	Factions:MetacanonicalFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN
+	
 
 
 
@@ -1352,16 +1318,10 @@ WhatTheDuck={
 	{id:23 , faction:5 , direction:1, x:9, y:2, morale:0, hpModifier:0},
 	{id:23 , faction:5 , direction:1, x:9, y:3, morale:0, hpModifier:0},
 	{id:23 , faction:4 , direction:1, x:9, y:5, morale:0, hpModifier:0},
-	{id:23 , faction:4 , direction:1, x:9, y:6, morale:0, hpModifier:0}],
-
-	Factions:GenericFactions,
-
-	Units:UNITS,
-
-	Terrain:TERRAIN,
-
-
-	};
+	{id:23 , faction:4 , direction:1, x:9, y:6, morale:0, hpModifier:0}
+	],
+	Factions:GenericFactions
+};
 
 Fish={
 Name:"Fish",
@@ -1421,8 +1381,8 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:UNITS,
-Terrain:TERRAIN};
+
+};
 
 Chess={
 	Name:"Chess",
@@ -1545,9 +1505,9 @@ Chess={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN
+	
 	};
 
 TankChess={
@@ -1671,9 +1631,9 @@ TankChess={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN
+	
 	};
 
 NavalChess={
@@ -1798,9 +1758,9 @@ NavalChess={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN
+	
 
 	};
 
@@ -1869,8 +1829,8 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:UNITS,
-Terrain:TERRAIN};
+
+};
 
 Catto={
 	Name:"Catto",
@@ -1944,9 +1904,9 @@ Catto={
 
 	Factions:CampaignFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN,
+	
 
 	Prelogue:["Narrator","This is a catto!","Narrator","Fight to establish what colour the cat will have. Grey is your ally."],
 
@@ -1999,8 +1959,8 @@ Hooman={
 	[0,0,0,0,0,0,0,0,0,0]],
 
 	Factions:GenericFactions,
-	Units:UNITS,
-	Terrain:TERRAIN};
+	
+	};
 
 Sealand={
 	Name:"Sealand",
@@ -2035,8 +1995,8 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:UNITS,
-Terrain:TERRAIN};
+
+};
 
 LakePanzer={
 	Name:"Panzer of the Lake",
@@ -2088,8 +2048,8 @@ LakePanzer={
 	[0,0,0,0,0,0,0,0,0,0]],
 
 	Factions:GenericFactions,
-	Units:UNITS,
-	Terrain:TERRAIN};
+	
+	};
 
 ZombieHorde={
 
@@ -2149,8 +2109,8 @@ ZombieHorde={
 
 
 
-	Terrain:TERRAIN,
-	Units:UNITS,
+	
+	
 	Factions:MemeFactions
 
 
@@ -2252,9 +2212,9 @@ Nemesis={
 
 	Factions:NostalgiaFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN
+	
 
 	};
 Halo={
@@ -2327,9 +2287,9 @@ Halo={
 
 	Factions:NostalgiaFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN
+	
 	};
 
 Beersheba={
@@ -2418,9 +2378,9 @@ Beersheba={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN,
+	
 
 	Prelogue:["Aussie","Ahead is the city. Let's take it and get a drink before we shrivel up and die."],
 	Postlogue:["Aussie","Alright ya cunts! Go and drink!"],
@@ -2481,9 +2441,9 @@ Hostomel={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN,
+	
 
 	Prelogue:["Boris","It ain't so bad lads. We need to hold out long enough and we'll be saved right?"],
 	Postlogue:["Boris","We held out a bit. Where's the choppers? What do you mean there's no choppers? Fucking Grozny 2.0","Boris","Alright, fuck it, we're surrendering"],
@@ -2574,9 +2534,9 @@ Ebro={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN,
+	
 
 	};
 Bilbao={
@@ -2681,8 +2641,8 @@ Bilbao={
 	[0,0,0,9,9,9,9,9,9,0,0,0,0,0,0]],
 
 	Factions:GenericFactions,
-	Units:UNITS,
-	Terrain:TERRAIN};
+	
+	};
 
 Mărășești={
 	Name:"Mărășești",
@@ -2763,8 +2723,8 @@ Mărășești={
 	[0,0,0,0,0,1,1,1,1,0]],
 
 	Factions:GenericFactions,
-	Units:UNITS,
-	Terrain:TERRAIN};
+	
+	};
 
 Romanian_Unification_War={
 	Name:"Romanian Unification War",
@@ -2880,8 +2840,8 @@ Localization:[{X:14,Y:14,name:'București',description:'Capital of Romania'},
 	{X:1,Y:4,name:'Kosice',description:'Seat of Central Slovakia'}, 
 	],
 	Factions:EuropeFactions,
-	Units:UNITS,
-	Terrain:TERRAIN};
+	
+	};
 
 Toyota={
 	Name:"Toyota War",
@@ -2927,8 +2887,8 @@ Toyota={
 	[0,0,0,0,0,0,0,0,0,0]],
 
 	Factions:GenericFactions,
-	Units:UNITS,
-	Terrain:TERRAIN};
+	
+	};
 
 Easting73={
 	Name:"Easting 73",
@@ -2981,8 +2941,8 @@ BiomeMap:[[2,2,2,2,2,2,2,2,2,2],
 			[2,2,2,2,2,2,2,2,2,4]],
 
 	Factions:GenericFactions,
-	Units:UNITS,
-	Terrain:TERRAIN};
+	
+	};
 
 CastleItter={
 	Name:"Castle Itter",
@@ -3032,8 +2992,8 @@ CastleItter={
 	[5,5,5,5,5,5,5,5,5,5]],
 
 	Factions:GenericFactions,
-	Units:UNITS,
-	Terrain:TERRAIN};
+	
+	};
 
 
 ShreksSwamp={
@@ -3155,9 +3115,9 @@ ShreksSwamp={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN,
+	
 
 
 
@@ -3200,8 +3160,8 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 Prelogue:["Kanye","I'm giving this lasagna a massage while preparing to announce I'm doing 9/11! Thank you for your attention"],
 
 Factions:MemeFactions,
-Units:UNITS,
-Terrain:TERRAIN};
+
+};
 
 FuckingBureaucrats={
 Name:"FUCKING BUREAUCRATS!",
@@ -3293,8 +3253,8 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:UNITS,
-Terrain:TERRAIN}
+
+}
 
 Backrooms={
 
@@ -3326,9 +3286,9 @@ Backrooms={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN,
+	
 
 	};
 
@@ -3392,8 +3352,8 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:UNITS,
-Terrain:TERRAIN};
+
+};
 
 Sanguine={
 Name:"Sanguine",
@@ -3425,8 +3385,8 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:UNITS,
-Terrain:TERRAIN};
+
+};
 
 Phlegmatic={
 		Name:"Phlegmatic",
@@ -3489,9 +3449,9 @@ Phlegmatic={
 		[0,0,0,0,0,0,0,0,0,0]],
 		Factions:GenericFactions,
 
-		Units:UNITS,
+		
 
-		Terrain:TERRAIN
+		
 		};
 
 Melancholic={
@@ -3554,8 +3514,8 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:UNITS,
-Terrain:TERRAIN};
+
+};
 
 Supine={
 Name:"Supine",
@@ -3588,8 +3548,8 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:UNITS,
-Terrain:TERRAIN};
+
+};
 
 American={
 Name:"American",
@@ -3686,8 +3646,8 @@ ControlMap:[[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0]],
 
 Factions:GenericFactions,
-Units:UNITS,
-Terrain:TERRAIN};
+
+};
 
 Golan={
 	Name:"Golan Heights",
@@ -3747,8 +3707,8 @@ Golan={
 				[2,2,2,2,2,2,2,2,2,2]],
 
 	Factions:GenericFactions,
-	Units:UNITS,
-	Terrain:TERRAIN};
+	
+	};
 
 
 
@@ -3917,8 +3877,8 @@ RegionMap:[["CommieCen","CommieCen","CommieCen","CommieCen","CommieEst","CommieE
 FactionCommentary:["","Pick this if you are lazy, unemployed and want free shit","Pick this if you have an abnormal fixation with race but are gonna marry someone of another race because women of yours won't give you the time of day","Choose this if you don't give a fuck about politics","Pick this if you've had no father in your life and think there are more than 2 genders","Pick this if you love money more than anything"],
 
 Factions:GenericFactions,
-Units:UNITS,
-Terrain:TERRAIN};
+
+};
 
 
 
@@ -3967,9 +3927,9 @@ TutorialLevel1={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN,
+	
 
 	};
 TutorialLevel2={
@@ -4026,9 +3986,9 @@ TutorialLevel2={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN,
+	
 
 	};
 TutorialLevel3={
@@ -4072,9 +4032,9 @@ TutorialLevel3={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN,};
+	};
 
 TutorialLevel4={
 
@@ -4108,9 +4068,9 @@ TutorialLevel4={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN
+	
 
 
 	};
@@ -4178,9 +4138,9 @@ TutorialLevel5={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN
+	
 
 	};
 TutorialLevel6={
@@ -4242,9 +4202,9 @@ TutorialLevel6={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN
+	
 
 	};
 TutorialLevel7={
@@ -4311,9 +4271,9 @@ TutorialLevel7={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN
+	
 
 	};
 TutorialLevel8={
@@ -4364,9 +4324,9 @@ TutorialLevel8={
 
 	Factions:CampaignFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN
+	
 
 	};
 TutorialLevel9={
@@ -4421,9 +4381,9 @@ TutorialLevel9={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN
+	
 
 	};
 TutorialLevel10={
@@ -4492,9 +4452,9 @@ TutorialLevel10={
 
 	Factions:GenericFactions,
 
-	Units:UNITS,
+	
 
-	Terrain:TERRAIN
+	
 
 	};
 

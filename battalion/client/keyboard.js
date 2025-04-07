@@ -13,7 +13,7 @@ const Keyboard = function() {
         const { key } = event;
 
         if(this.reservedKeys.has(key)) {
-            event.preventDefault();
+            //event.preventDefault();
             this.onKeyDown(event.key);
         }
     });
@@ -22,7 +22,7 @@ const Keyboard = function() {
         const { key } = event;
 
         if(this.reservedKeys.has(key)) {
-            event.preventDefault();
+            //event.preventDefault();
             this.onKeyUp(event.key);
         }
     });
