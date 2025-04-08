@@ -11,6 +11,13 @@ battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
 var Flair = -1;
 var Aphorism = -1;
 
+var ActionRegister = {}; //used by ai
+var ActiveRoster = []; //used by ai
+var Funds = 0; //used by ai
+var InternalDelayerFactor = 0; //used by ai
+var isAITurn = false; //used by ai
+var Pizdamatii = []; //used by ai
+
 ResolutionXFactor=1;
 ResolutionYFactor=1;
 BattleEnd=false;
@@ -55,11 +62,11 @@ Difficulty=2;
 Playlists=[];
 InterlogueBST=[[],[],[],[],[],[],[],[],[],[],[]];
 
-Campaigns=CAMPAIGNS;
-Units=UNITS;
-Factions=CampaignFactions;
-Terrain=TERRAIN;
-TNOFactions=[
+var Campaigns=CAMPAIGNS;
+var Units=UNITS;
+var Factions=CampaignFactions;
+var Terrain=TERRAIN;
+var TNOFactions=[
 	{name:"Null", faction:"Idk, man. Neutrals maybe?", color:"ShitBrown"},
 	{name:"West Russian Revolutionary Front", faction:"SocIntern", color:"Red", ChromaCode:""},
 	{name:"Russian Liberation Army", faction:"Vlasovtsy", color:"Dark Grey", ChromaCode:""},
@@ -221,6 +228,13 @@ initEvents(battalion);
 //EDIT to EDIT: Fuck me, there was an annoying bug because I didn't follow it.
 //Note to self: Wine really helps write more code 8)
 
+/**
+ * neyn 07.04.2025
+ * 
+ * @param {int} typeID 
+ * @param {string} traitID 
+ * @returns 
+ */
 const hasCertainTrait = function(typeID, traitID){
 	const unitType = Units[typeID];
 
@@ -261,7 +275,11 @@ function AddRegionalNode(){
 	document.getElementById("regional Capital "+X+" "+Y).style.visibility='inherit';
 	//alert((Y+EditorStandardX)+" "+(X+EditorStandardY));
 	let adr=EditorMap[Y+EditorStandardX][X+EditorStandardY];
-	if(adr==13 || adr==14 || adr==30){CapitolNodeRegistry[Y+EditorStandardX][X+EditorStandardY]={Owner:Owner,Capitol:Capitol,CapitolX:X+EditorStandardY,CapitolY:Y+EditorStandardX,Name:Region};};};
+	if(adr==13 || adr==14 || adr==30){
+		CapitolNodeRegistry[Y+EditorStandardX][X+EditorStandardY]={Owner:Owner,Capitol:Capitol,CapitolX:X+EditorStandardY,CapitolY:Y+EditorStandardX,Name:Region};
+	}
+}
+
 function AI_Act(i){
 	let InternalDelayerFactor=0;
 	ActionRegister={Movement:0,Attack:0,Counter:0,Liquidate:0};
@@ -275,65 +293,88 @@ function AI_Act(i){
 	
 	//console.log(i+"|"+MAXI);
 	if(i<MAXI){
-		//alert(Units[ActiveRoster[i].unitType].Cost/2);
-		
-			//alert(Constants.Funds[AttackOrder[(Turn-1)%SubRosters.length]]);
-		if(Funds>Units[ActiveRoster[i].unitType].Cost/2 && ActiveRoster[i].life/Units[ActiveRoster[i].unitType].HP<0.2*Difficulty){let randomizer=Math.ceil(Math.random()*10);
-			if(randomizer<=Difficulty*3+1){ActiveRoster[i].life=Units[ActiveRoster[i].unitType].HP;Funds-=Math.round(Units[ActiveRoster[i].unitType].Cost/2);
-			Constants.Funds[AttackOrder[(Turn-1)%SubRosters.length]]=Funds};
-			};
+		if(Funds>Units[ActiveRoster[i].unitType].Cost/2 && ActiveRoster[i].life/Units[ActiveRoster[i].unitType].HP<0.2*Difficulty){
+			let randomizer=Math.ceil(Math.random()*10);
+
+			if(randomizer<=Difficulty*3+1){
+				ActiveRoster[i].life=Units[ActiveRoster[i].unitType].HP;
+				Funds-=Math.round(Units[ActiveRoster[i].unitType].Cost/2);
+				Constants.Funds[AttackOrder[(Turn-1)%SubRosters.length]]=Funds;
+			}
+		}
 		//setTimeout(AI_Scouter, 100*i, ActiveRoster[i], Map);
 		AI_Scouter(ActiveRoster[i], Map);
 		//function RemainingAct(){
 		InternalDelayerFactor+=200;
-		if(ActionRegister.Movement!=0){setTimeout(MoveUnit,InternalDelayerFactor,ActiveRoster[i].index,ActionRegister.Movement);InternalDelayerFactor+=800};
-		if(ActionRegister.Attack!=0 && ActionRegister.Movement==0){setTimeout(Attack,InternalDelayerFactor,ActiveRoster[i].index,ActionRegister.Attack);
-			InternalDelayerFactor+=400;
-			AttackEstimate(ActiveRoster[i].index,ActionRegister.Attack)};
-		if(ActionRegister.Attack!=0 && ActionRegister.Movement!=0){setTimeout(Attack,InternalDelayerFactor+400,ActiveRoster[i].index,ActionRegister.Attack);
-			InternalDelayerFactor+=400;
-			AttackEstimate(ActiveRoster[i].index,ActionRegister.Attack)};
 
-		if(ActionRegister.Counter!=0 || ActionRegister.Liquidate!=0){InternalDelayerFactor+=1000};
+		if(ActionRegister.Movement!=0){
+			setTimeout(MoveUnit,InternalDelayerFactor,ActiveRoster[i].index,ActionRegister.Movement);
+			InternalDelayerFactor+=800
+		}
+
+		if(ActionRegister.Attack!=0 && ActionRegister.Movement==0){
+			setTimeout(() => {
+				Attack(ActiveRoster[i].index, ActionRegister.Attack);
+			}, InternalDelayerFactor);
+
+			InternalDelayerFactor += 400;
+
+			AttackEstimate(ActiveRoster[i].index,ActionRegister.Attack);
+		}
+
+		if(ActionRegister.Attack!=0 && ActionRegister.Movement!=0){
+			InternalDelayerFactor += 400;
+
+			setTimeout(() => {
+				Attack(ActiveRoster[i].index, ActionRegister.Attack);
+			}, InternalDelayerFactor);
+
+			AttackEstimate(ActiveRoster[i].index,ActionRegister.Attack);
+		}
+
+		if(ActionRegister.Counter!=0 || ActionRegister.Liquidate!=0) {
+			InternalDelayerFactor+=1000;
+		}
 		
 		//setTimeout(RemainingAct,0);
 
 		//console.log(InternalDelayerFactor);
 		GlobalDelayerConstant=InternalDelayerFactor;
 
-		setTimeout(AI_Act,InternalDelayerFactor+100,i+1)};
-	if(i==MAXI){
+		setTimeout(AI_Act,InternalDelayerFactor+100,i+1)
+	} else if(i==MAXI){
 		//console.log(i+"|"+MAXI);
 		//console.log(Turn+"|"+SubRosters.length);
-		setTimeout(EndTurn,GlobalDelayerConstant,SubRosters,Map,Constants,Roster);
+		setTimeout(EndTurn, GlobalDelayerConstant, SubRosters, Map, Constants, Roster);
+
 		if((Turn)%SubRosters.length==1){
-			function DeactivateAIMarker(){document.getElementById('AITurnIndicator').style.visibility='hidden'; isAITurn=false;};
-			setTimeout(DeactivateAIMarker,GlobalDelayerConstant);
+			setTimeout(() => {
+				document.getElementById('AITurnIndicator').style.visibility='hidden';
+				isAITurn=false;
+			}, GlobalDelayerConstant);
 			//setTimeout(EndTurn,GlobalDelayerConstant,SubRosters,Map,Constants,Roster);
 			//DeactvateAIMarker();
-		}};
-	};
+		}
+	}
+}
+
 function AI_Scouter(Unit,Map){
-	//Prerequisites
-	var Speed=Unit.speed;
-	var Type=Unit.movementType;
-	var Faction=Unit.faction;
-	var Coallition=Unit.coallition;
-	var Lat=Unit.x;
-	var Long=Unit.y;
-	var SPD=Unit.speed;
-	var X=Lat;
-	var Y=Long;
-	let unitIndex=Unit.index;
+	const Type=Unit.movementType;
+	const Faction=Unit.faction;
+	const Coallition=Unit.coallition;
+	const Lat=Unit.x;
+	const Long=Unit.y;
+	const unitIndex=Unit.index;
+	const mapWidth = Map[0].length;
+	const mapHeight = Map.length;
+	const Stepmap = getStepMap(Map, mapHeight, mapWidth, Type);
+
+	let SPD=Unit.speed;
+	let X=Lat;
+	let Y=Long;
+
 	Path=[1];
 	Pizdamatii=[];
-	MapClone=JSON.parse(JSON.stringify(Map));
-	//alert(Map[0][0]);
-	let mapWidth=Map[0].length;
-	let mapHeight=Map.length;
-	var Stepmap=JSON.parse(JSON.stringify(Map));
-	var Targetmap=JSON.parse(JSON.stringify(Map));
-
 	//Here it pans the camera
 	PanX=Math.min(Math.max(X-5,0),Map.length)*56;
 	PanY=Math.min(Math.max(Y-5,0),Map[0].length)*56;
@@ -345,109 +386,95 @@ function AI_Scouter(Unit,Map){
 	//document.getElementById("UnitMap").scrollBy(-Map.length*56,-Map[0].length*56+PanX);
 	//document.getElementById("UnitMap").scrollBy(PanY,PanX);
 	document.getElementById("UnitMap").scroll(PanY,PanX);
-	
-
-	
-	//Here lies the switch to get the stepmap.	
-	switch(Type){
-		case "Foot":
-		for(let P=0;P<mapHeight;P++){for(Q=0;Q<mapWidth;Q++){Stepmap[P][Q]=Terrain[MapClone[P][Q]].WalkThrough;}};
-		break;
-
-		case "Wheeled":
-		for(let P=0;P<mapHeight;P++){for(Q=0;Q<mapWidth;Q++){Stepmap[P][Q]=Terrain[MapClone[P][Q]].DriveThrough}};
-		break;
-
-		case "Tracked":
-		for(let P=0;P<mapHeight;P++){for(Q=0;Q<mapWidth;Q++){Stepmap[P][Q]=Terrain[MapClone[P][Q]].RollThrough}};
-		break;
-
-		case "Amphibious":
-		for(let P=0;P<mapHeight;P++){for(Q=0;Q<mapWidth;Q++){Stepmap[P][Q]=Terrain[MapClone[P][Q]].WadeThrough}};
-		break;
-
-		case "Flight":
-		for(let P=0;P<mapHeight;P++){for(Q=0;Q<mapWidth;Q++){Stepmap[P][Q]=Terrain[MapClone[P][Q]].FlyThrough}};
-		break;
-
-		case "Rudder":
-		for(let P=0;P<mapHeight;P++){for(Q=0;Q<mapWidth;Q++){Stepmap[P][Q]=Terrain[MapClone[P][Q]].SailThrough}};
-		break;
-
-		case "Heavy Rudder":
-		for(let P=0;P<mapHeight;P++){for(Q=0;Q<mapWidth;Q++){Stepmap[P][Q]=Terrain[MapClone[P][Q]].DeepSailThrough}};
-		break;
-
-		};
-		
 
 	//Standard-Issue Pathing Loop
 	while(Path.length>0){
-			CollisionCheck=false;
-			let x=(Path[Path.length-1]-2)*(Path[Path.length-1])%2;
-			let y=(3-Path[Path.length-1])*(Path[Path.length-1]-1)%2;
+		CollisionCheck=false;
 
-		if(X+x<0 || Y+y<0){Path[Path.length-1]+=1};
-		if(X+x>=Map.length || Y+y>=Map[0].length){Path[Path.length-1]++;};
+		let x=(Path[Path.length-1]-2)*(Path[Path.length-1])%2;
+		let y=(3-Path[Path.length-1])*(Path[Path.length-1]-1)%2;
+
+		if(X+x<0 || Y+y<0) Path[Path.length-1]+=1;
+
+		if(X+x>=Map.length || Y+y>=Map[0].length) Path[Path.length-1]++;
+
 		if(X+x<Map.length && X+x>=0 && Y+y<Map[0].length && Y+y>=0){
-		if(rostermap[X+x][Y+y].coallition!=Coallition && rostermap[X+x][Y+y]!=0){CollisionCheck=true};};
+			if(rostermap[X+x][Y+y].coallition != Coallition && rostermap[X+x][Y+y]!=0) CollisionCheck=true;
+		}
 
-	//The block that checks whether advancing is possible and advances
-
-
+		//The block that checks whether advancing is possible and advances
 		if(SPD>0 && Path[Path.length-1]<5 && X+x<Map.length && Y+y<Map[0].length){
 			let x=(Path[Path.length-1]-2)*(Path[Path.length-1])%2;
 			let y=(3-Path[Path.length-1])*(Path[Path.length-1]-1)%2;
 
 			//alert(Stepmap[X][Y]);
 			if(SPD>=Stepmap[X+x][Y+y] && CollisionCheck==false){
-			X=X+x;
-			Y=Y+y;
-			//alert(Path);
-			Pizdamatii[Pizdamatii.length]={x:X,y:Y,z:[],F:0};
-			Path[Path.length]=1;
-			for(let p=0;p<Path.length;p++){
-				Pizdamatii[Pizdamatii.length-1].z[p]=Path[p];
-				if(p>0){if(Path[p]%2==Path[p-1]%2 && Path[p]!=Path[p-1]){Pizdamatii[Pizdamatii.length-1].F-=10}};
-				//MedianUnit as defined here shall be purged once a proper equation has been established from the outside
-				//MedianUnit={X:0,Y:0}; 
-				//if(MedianUnit??0==0){MedianUnit={X:0,Y:0}};	
-				};
+				X=X+x;
+				Y=Y+y;
+				//alert(Path);
+				Pizdamatii[Pizdamatii.length]={x:X,y:Y,z:[],F:0};
+				Path[Path.length]=1;
+				for(let p=0;p<Path.length;p++) {
+					Pizdamatii[Pizdamatii.length-1].z[p]=Path[p];
+
+					if(p>0) {
+						if(Path[p]%2==Path[p-1]%2 && Path[p]!=Path[p-1]){
+							Pizdamatii[Pizdamatii.length-1].F-=10;
+						}
+					}
+
+						//MedianUnit as defined here shall be purged once a proper equation has been established from the outside
+						//MedianUnit={X:0,Y:0}; 
+						//if(MedianUnit??0==0){MedianUnit={X:0,Y:0}};	
+				}
+
 				let XDev=Math.min(MedianUnit.X-X, X-MedianUnit.X);
 				let YDev=Math.min(MedianUnit.Y-Y, Y-MedianUnit.Y);
+
 				Pizdamatii[Pizdamatii.length-1].F+=XDev;
 				Pizdamatii[Pizdamatii.length-1].F+=YDev;
-				if(Difficulty>1 && TileFlagMap[Pizdamatii[Pizdamatii.length-1].x][Pizdamatii[Pizdamatii.length-1].y]>1){Pizdamatii[Pizdamatii.length-1].F+=100};
+
+				if(Difficulty>1 && TileFlagMap[Pizdamatii[Pizdamatii.length-1].x][Pizdamatii[Pizdamatii.length-1].y]>1){
+					Pizdamatii[Pizdamatii.length-1].F+=100;
+				}
+
 				Pizdamatii[Pizdamatii.length-1].F+=5*Pizdamatii[Pizdamatii.length-1].z.length;
-			//Pizdamatii[Pizdamatii.length-1].z=Path;
-			
-			SPD=SPD-Stepmap[X][Y];}else{Path[Path.length-1]+=1;};
+				//Pizdamatii[Pizdamatii.length-1].z=Path;
+				SPD=SPD-Stepmap[X][Y];
+			} else {
+				Path[Path.length-1]+=1;
 			}
-	//The block that checks if backtracking is needed and does so
+		} else if(SPD==0 || Path[Path.length-1]>=5) {
+				//The block that checks if backtracking is needed and does so
+				//alert(Path[Path.length-1]);
+				if(Path.length>=2){reverse=Path[Path.length-2];}else{break;};
+				SPD=SPD+Stepmap[X][Y];
 
-		else if(SPD==0 || Path[Path.length-1]>=5){
-			//alert(Path[Path.length-1]);
-			if(Path.length>=2){reverse=Path[Path.length-2];}else{break;};
-			SPD=SPD+Stepmap[X][Y];
+				X=X-(reverse-2)*(reverse%2);
+				Y=Y-(3-reverse)*(reverse-1)%2;
 
-			X=X-(reverse-2)*(reverse%2);
-			Y=Y-(3-reverse)*(reverse-1)%2;
+				
 
-			
+				Path.length-=1;
+				Path[Path.length-1]+=1;
 
-			Path.length-=1;
-			Path[Path.length-1]+=1;
+				//else if(Path[Path.length-1]>=5){alert("Please don't fuck up the script")};
+				//alert("Path length: "+Path.length+ "; SPD= "+SPD+ "; X= "+X+"; Y= "+Y+"; direction: "+Path[Path.length-1]+" Path: "+Path+ "CollChek: "+ CollisionCheck);
+		}
+	}
 
-			
-			}
-			//else if(Path[Path.length-1]>=5){alert("Please don't fuck up the script")};
-		//alert("Path length: "+Path.length+ "; SPD= "+SPD+ "; X= "+X+"; Y= "+Y+"; direction: "+Path[Path.length-1]+" Path: "+Path+ "CollChek: "+ CollisionCheck);
-		
-		};
 	AddressMap=[];
-	AddressMapLine=[];
-	for(let i=0;i<Map[0].length;i++){AddressMapLine[AddressMapLine.length]=0};
-	for(let j=0;j<Map.length;j++){AddressMap[AddressMap.length]=AddressMapLine};
+
+	for(let i = 0; i < mapHeight; i++) {
+		const mapLine = [];
+
+		for(let j = 0; j < mapWidth; j++) {
+			mapLine[j] = 0;
+		}
+
+		AddressMap[i] = mapLine;
+	}
+
 	Thing=JSON.parse(JSON.stringify(AddressMap));
 	//AddressMap=[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]];
 	
@@ -475,436 +502,427 @@ function AI_Scouter(Unit,Map){
 			//if(Pizdamatii[h].y<Map.length[0]-1){if(rostermap[Pizdamatii[h].x][Pizdamatii[h].y+1]!=0){TargetList[TargetList.length]=pathway}};
 		//if(rostermap[Pizdamatii[h].x][Pizdamatii[h].y]!=0){TargetList[TargetList.length]=pathway};
 
-		};};
-		//alert(TargetList[0]);
-		//alert(X+" "+Y);
+		}
+	}
 
-		if(Units[Unit.unitType].MaxRange==1){attackType="Contact"}else{attackType="Ranged"};
-		//alert(attackType);
+	attackType = Units[Unit.unitType].MaxRange == 1 ? "Contact": "Ranged";
 
-
-
-	if(attackType=="Contact"){
-
-
-		for(let h=0;h<Pizdamatii.length;h++){
-			let pathway=Pizdamatii[h].z;
-			pathway.pop();
-			let valableTarget=false;
-
-			if(Pizdamatii[h].x>0){if(rostermap[Pizdamatii[h].x-1][Pizdamatii[h].y]!=0){//TargetList[TargetList.length]=pathway;
-				//alert(rostermap[Pizdamatii[h].x-1][Pizdamatii[h].y].x + " " + rostermap[Pizdamatii[h].x-1][Pizdamatii[h].y].y + " " + pathway);
-				if(rostermap[Pizdamatii[h].x-1][Pizdamatii[h].y].coallition!=Coallition){valableTarget=true;};
-			}};
-			if(Pizdamatii[h].x<Map.length-1){if(rostermap[Pizdamatii[h].x+1][Pizdamatii[h].y]!=0){//TargetList[TargetList.length]=pathway;
-				if(rostermap[Pizdamatii[h].x+1][Pizdamatii[h].y].coallition!=Coallition){valableTarget=true;};
-			}};
-			if(Pizdamatii[h].y>0){if(rostermap[Pizdamatii[h].x][Pizdamatii[h].y-1]!=0){//TargetList[TargetList.length]=pathway;
-				if(rostermap[Pizdamatii[h].x][Pizdamatii[h].y-1].coallition!=Coallition){valableTarget=true;};
-			}};
-			if(Pizdamatii[h].y<Map.length[0]-1){if(rostermap[Pizdamatii[h].x][Pizdamatii[h].y+1]!=0){//TargetList[TargetList.length]=pathway;
-				if(rostermap[Pizdamatii[h].x][Pizdamatii[h].y+1].coallition!=Coallition){valableTarget=true;};
-			}};
-
-			//alert(X + " " + Y);
-			if(Pizdamatii[h].x == X && Pizdamatii[h].y == Y){valableTarget=false;};
-			//if(rostermap[Pizdamatii[h].x][Pizdamatii[h].y]!=0){
-				//alert(Pizdamatii[h].x +" "+Pizdamatii[h].y);
-			//};
-			if(valableTarget){TargetList[TargetList.length]=pathway;};
-
-
-		};
-		//alert(TargetList[0]);
-
-		ContactTargetList=[];
-
-
-
-		for(let mu=0;mu<TargetList.length;mu++){
-		let OX=X;
-		let OY=Y;
-		let ics=JSON.parse(JSON.stringify(X));
-		let igrec=JSON.parse(JSON.stringify(Y));
-		//alert(ics+" "+igrec);
-			for(let nu=0;nu<TargetList[mu].length;nu++){
-		if(TargetList[mu][nu]==1){ics-=1};
-		if(TargetList[mu][nu]==2){igrec+=1};
-		if(TargetList[mu][nu]==3){ics+=1};
-		if(TargetList[mu][nu]==4){igrec-=1};
-		//alert(MapClone[ics][igrec]);
-		//if(MapClone[ics][igrec]>SPD){alert("River")};
-		//alert(ics+" "+igrec);
-		};
-
-		
-		if(ics>0){if(rostermap[ics-1][igrec].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:TargetList[mu],X:ics,Y:igrec,TX:-1,TY:0,F:0};}};
-		if(ics<Map.length-1){if(rostermap[ics+1][igrec].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:TargetList[mu],X:ics,Y:igrec,TX:1,TY:0,F:0};}};
-		if(igrec>0){if(rostermap[ics][igrec-1].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:TargetList[mu],X:ics,Y:igrec,TX:0,TY:-1,F:0};}};
-		if(igrec<Map[0].length-1){if(rostermap[ics][igrec+1].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:TargetList[mu],X:ics,Y:igrec,TX:0,TY:1,F:0};}};
-		//while((ContactTargetList[ContactTargetList.length-1].X+ContactTargetList[ContactTargetList.length-1].TX == OX) && (ContactTargetList[ContactTargetList.length-1].Y+ContactTargetList[ContactTargetList.length-1].TY == OY)){ContactTargetList.pop()};
-
-		};
-
-		if(X>0){if(rostermap[X-1][Y]!=0){if(rostermap[X-1][Y].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:[],X:X,Y:Y,TX:-1,TY:0,F:0}}}};
-		if(X<Map.length-1){if(rostermap[X+1][Y]!=0){if(rostermap[X+1][Y].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:[],X:X,Y:Y,TX:1,TY:0,F:0}}}};
-		if(Y>0){if(rostermap[X][Y-1]!=0){if(rostermap[X][Y-1].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:[],X:X,Y:Y,TX:0,TY:-1,F:0}}}};
-		if(Y<Map[0].length-1){if(rostermap[X][Y+1]!=0){if(rostermap[X][Y+1].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:[],X:X,Y:Y,TX:0,TY:1,F:0}}}};
-
-		BackupTargetList=[];
-		//if(X>0){if(rostermap[X-1][Y]!=0 && rostermap[X-1][Y].coallition!=Coallition){BackupTargetList[BackupTargetList.length]={path:[],X:X,Y:Y,TX:-1,TY:0}}};
-		//if(X<Map.length-1){if(rostermap[X+1][Y]!=0 && rostermap[X+1][Y].coallition!=Coallition){BackupTargetList[BackupTargetList.length]={path:[],X:X,Y:Y,TX:1,TY:0}}};
-		//if(Y>0){if(rostermap[X][Y-1]!=0 && rostermap[X][Y-1].coallition!=Coallition){BackupTargetList[BackupTargetList.length]={path:[],X:X,Y:Y,TX:0,TY:-1}}};
-		//if(Y<Map[0].length-1){if(rostermap[X][Y+1]!=0 && rostermap[X][Y+1].coallition!=Coallition){BackupTargetList[BackupTargetList.length]={path:[],X:X,Y:Y,TX:0,TY:1}}};
-
-
-
-		for(let h=0;h<ContactTargetList.length;h++){
-			//alert(ContactTargetList[h].path);
-			let CUS=ContactTargetList[h];
-			let CanAttack=true;
-			let TargetChecker=rostermap[CUS.X+CUS.TX][CUS.Y+CUS.TY];
-			//alert(hasCertainTrait(Unit.unitType,"Skysweeper"));
-			//alert(TargetChecker);
-			//if(hasCertainTrait(Unit.unitType,"Seabound") && TargetChecker.movementType!="Rudder" && TargetChecker.movementType!="Heavy Rudder"){CanAttack=false};
-			if(!hasCertainTrait(Unit.unitType,"Skysweeper") && TargetChecker.movementType=="Flight"){CanAttack=false};
-			if(!hasCertainTrait(Unit.unitType,"Depth Strike") && hasCertainTrait(TargetChecker.unitType??1,"Submerged")){CanAttack=false};
-			//alert(CanAttack);
-			//alert(TargetChecker+" "+CanAttack);
-			/*
-			let ix=Lat; let iy=Long;
-			for(let i=0; i<CUS.path.length-1;i++){let crk=CUS.path[i];
-				if(crk==1){iy-=1};
-				if(crk==2){ix+=1};
-				if(crk==3){iy+=1};
-				if(crk==4){ix-=1};
-				//if(rostermap[iy][ix]!=0){CanAttack=false};
-				};*/
-
-
-
-
-			//This is where we calculate attack priority indices
-			//ContactTargetList[h].F=0;
-			//let Atk=rostermap[ContactTargetList[h].X][ContactTargetList[h].Y];
-			let Atk=rostermap[Unit.x][Unit.y];
-			//console.log(ContactTargetList[h].X+" "+ContactTargetList[h].Y + " "+rostermap[2][9]+Atk);
-			//console.log(ContactTargetList[h].X+"|"+ContactTargetList[h].Y);
-			//if(ContactTargetList[h].X==6 && ContactTargetList[h].Y==7){console.log("null")};
-			let Def=rostermap[ContactTargetList[h].X+ContactTargetList[h].TX][ContactTargetList[h].Y+ContactTargetList[h].TY];
-				//console.log(Atk+" "+Def);
-
-			if(Atk!=0 && Def!=0 && Difficulty>1){
-				//console.log(Atk+" "+Def);
-
-				let Riposte=true;
-				let Intercept=false;
-				let Dmg=Atk.damage;
-				let TargetTerrain=Map[ContactTargetList[h].X+ContactTargetList[h].TX][ContactTargetList[h].Y+ContactTargetList[h].TY];
-				Dmg*=Terrain[TargetTerrain].protectionFactor;
-				if(Terrain[TargetTerrain].protectionFactor<1 && hasCertainTrait(Atk.unitType,"Commando")){Dmg*=1.25};
-				Dmg*=BiomeRegistry[BiomeMap[ContactTargetList[h].X][ContactTargetList[h].Y]].LogisticIndex;
-				if(!hasCertainTrait(Atk.unitType,"Indomitable")){Dmg*=Atk.life/Units[Atk.unitType].HP};
-				if(Atk.damageType==Def.armor && Atk.damageType!="Medium"){Dmg*=1.5};
-				if(Atk.damageType=="Light"&&Def.armor=="Heavy"){Dmg*=0.5};
-				if(Atk.damageType=="Heavy"&&Def.armor=="Light"){Dmg*=0.5};
-				if(Def.movementType=="Foot"&&hasCertainTrait(Atk.unitType,"Anti-Infantry")){Dmg*=3};
-				if((Def.movementType=="Foot" || Def.unitType<12)&&hasCertainTrait(Atk.unitType,"Schwerpunkt")){Dmg*=1.4};
-				if(Def.movementType=="Flight"&&hasCertainTrait(Atk.unitType,"Anti-Air")){Dmg*=3};
-				if(Def.movementType=="Rudder"&&hasCertainTrait(Atk.unitType,"Anti-Ship")){Dmg*=3};
-				if(Def.movementType=="Heavy Rudder"&&hasCertainTrait(Atk.unitType,"Anti-Ship")){Dmg*=3};
-				if(Def.movementType=="Static"&&hasCertainTrait(Atk.unitType,"Anti-Structure")){Dmg*=2};
-				if(Def.movementType=="Tracked"&&hasCertainTrait(Atk.unitType,"Anti-Tank")&&!hasCertainTrait(Def.unitType,"Anti-Tank")&&!hasCertainTrait(Atk.unitType,"Tank-Hunter")){Riposte=false};
-				if(hasCertainTrait(Atk.unitType,"Mobile Battery")&&Def.maxR>1&&!hasCertainTrait(Def.unitType,"Mobile Battery")){Riposte=false};
-				if(hasCertainTrait(Atk.unitType,"Submerged")&&!hasCertainTrait(Def.unitType,"Depth Charge")){Riposte=false};
-				if(Atk.movementType=="Flight"&&!hasCertainTrait(Def.unitType,"Skysweeper")){Riposte=false};
-				if(hasCertainTrait(Def.unitType,"Seabound")&&Atk.movementType!="Rudder"&&Atk.movementType!="Heavy Rudder"){Riposte=false};
-				if(hasCertainTrait(Def.unitType,"Steer")&&(Atk.movementType=="Rudder" || Atk.movementType=="Heavy Rudder")){Dmg*=Math.min(1,Math.max(0.4,Atk.speed-Atk.speed))};
-				if(hasCertainTrait(Def.unitType,"Tank-Hunter")&&!hasCertainTrait(Atk.unitType,"Tank-Hunter")&&Atk.movementType=="Tracked"){Intercept=true};
-				if(hasCertainTrait(Atk.unitType,"Submerged")&&hasCertainTrait(Def.unitType,"Sonar")){Intercept=true};
-				if(hasCertainTrait(Atk.unitType,"Stealth")){Dmg*=2};
-				if(hasCertainTrait(Atk.unitType,"Supply Distribution")){Dmg*=-1};
-				if(hasCertainTrait(Atk.unitType,"Bewegungskrieg")){Dmg*=1};//Bewegungskrieg not yet considered
-				Dmg*=Math.min(2,Math.max(0.2,1+Atk.morale/5));
-				if(hasCertainTrait(Def.unitType,"Cemented Steel Armor")&&!hasCertainTrait(Atk.unitType,"Cavitation Explosion")){Dmg=Math.max(0,Dmg-20)};
-				if(Dmg>Def.life){Riposte=false};
-
-				if(Riposte){let Ctk=Def.damage;
-				if(!hasCertainTrait(Def.unitType,"Indomitable")){Ctk*=Def.life/Units[Def.unitType].HP};
-					Ctk*=Terrain[(Map[X][Y]??1)].protectionFactor??1;
-					//console.log(X);
-					Ctk*=BiomeRegistry[(BiomeMap[Math.max(0,X)][Math.max(0,Y)]??1)].logisticIndex??1;
-					if(Terrain[Map[X][Y]].protectionFactor<1 && hasCertainTrait(Def.unitType,"Commando")){Ctk*=1.25};
-					if(hasCertainTrait(Atk.unitType,"Cemented Steel Armor") && !hasCertainTrait(Def.unitType,"Cavitation Explosion")){Ctk-=20};
-					if(Atk.damageType==Atk.armor && Def.damageType!="Medium"){Ctk*=1.5};
-					if(Atk.damageType=="Light"&&Def.armor=="Heavy"){Ctk*=0.5};
-					if(Atk.damageType=="Heavy"&&Def.armor=="Light"){Ctk*=0.5};
-
-					if(Atk.movementType=="Foot"&&hasCertainTrait(Def.unitType,"Anti-Infantry")){Ctk*=3};
-					if(Atk.movementType=="Foot"&&hasCertainTrait(Def.unitType,"Schwerpunkt")){Ctk*=1.4};
-					if(Atk.movementType=="Flight"&&hasCertainTrait(Def.unitType,"Anti-Air")){Ctk*=3};
-					if(Atk.movementType=="Rudder"&&hasCertainTrait(Def.unitType,"Anti-Ship")){Ctk*=3};
-					if(Atk.movementType=="Heavy Rudder"&&hasCertainTrait(Def.unitType,"Anti-Ship")){Ctk*=3};
-					if(Atk.movementType=="Static"&&hasCertainTrait(Def.unitType,"Anti-Structure")){Ctk*=2};
-					if(hasCertainTrait(Atk.unitType,"Steer")&&(Def.movementType=="Rudder" || Def.movementType=="Heavy Rudder")){Ctk*=Math.min(1,Math.max(0.4,Def.speed-Def.speed))};
-					Ctk*=Math.min(2,Math.max(0.2,1+Def.morale/5));
-
-
-				//console.log(Dmg+" "+Ctk/2);
-				Dmg-=Ctk/2};
-
-
-				//if(ContactTargetList[h].X==6 && ContactTargetList[h].Y==7){console.log("fuck")};
-
-
-				ContactTargetList[h].F+=Dmg;
-				//console.log(ContactTargetList[h].F);
-				
-				//console.log(ContactTargetList[h].X+"|"+ContactTargetList[h].Y+" "+ContactTargetList[h].TX+"|"+ContactTargetList[h].TY+" "+ContactTargetList[h].F);
-				};
-
-			
-			//console.log(ContactTargetList[h].F);
-			if(TargetChecker!=0 && CanAttack){BackupTargetList[BackupTargetList.length]=ContactTargetList[h]};
+	switch(attackType) {
+		case "Contact": {
+			for(let h=0;h<Pizdamatii.length;h++){
+				let pathway=Pizdamatii[h].z;
+				pathway.pop();
+				let valableTarget=false;
+	
+				if(Pizdamatii[h].x>0){if(rostermap[Pizdamatii[h].x-1][Pizdamatii[h].y]!=0){//TargetList[TargetList.length]=pathway;
+					//alert(rostermap[Pizdamatii[h].x-1][Pizdamatii[h].y].x + " " + rostermap[Pizdamatii[h].x-1][Pizdamatii[h].y].y + " " + pathway);
+					if(rostermap[Pizdamatii[h].x-1][Pizdamatii[h].y].coallition!=Coallition){valableTarget=true;};
+				}};
+				if(Pizdamatii[h].x<Map.length-1){if(rostermap[Pizdamatii[h].x+1][Pizdamatii[h].y]!=0){//TargetList[TargetList.length]=pathway;
+					if(rostermap[Pizdamatii[h].x+1][Pizdamatii[h].y].coallition!=Coallition){valableTarget=true;};
+				}};
+				if(Pizdamatii[h].y>0){if(rostermap[Pizdamatii[h].x][Pizdamatii[h].y-1]!=0){//TargetList[TargetList.length]=pathway;
+					if(rostermap[Pizdamatii[h].x][Pizdamatii[h].y-1].coallition!=Coallition){valableTarget=true;};
+				}};
+				if(Pizdamatii[h].y<Map.length[0]-1){if(rostermap[Pizdamatii[h].x][Pizdamatii[h].y+1]!=0){//TargetList[TargetList.length]=pathway;
+					if(rostermap[Pizdamatii[h].x][Pizdamatii[h].y+1].coallition!=Coallition){valableTarget=true;};
+				}};
+	
+				//alert(X + " " + Y);
+				if(Pizdamatii[h].x == X && Pizdamatii[h].y == Y){valableTarget=false;};
+				//if(rostermap[Pizdamatii[h].x][Pizdamatii[h].y]!=0){
+					//alert(Pizdamatii[h].x +" "+Pizdamatii[h].y);
+				//};
+				if(valableTarget){TargetList[TargetList.length]=pathway;};
+	
+	
 			};
-			ContactTargetList=BackupTargetList;
-
-
-			//if((ContactTargetList[h].X+ContactTargetList[h].TX != X) || (ContactTargetList[h].Y+ContactTargetList[h].TY != Y)){BackupTargetList[BackupTargetList.length]=ContactTargetList[h];}
-	//alert(ContactTargetList[0]);
-		//for(let h=0;h<ContactTargetList.length;h++){alert((ContactTargetList[h].X+ContactTargetList[h].TX)+" "+(ContactTargetList[h].Y+ContactTargetList[h].TY))};
-
-			};	
-
-
-
-	if(attackType=="Ranged"){
-		//alert("Chuchu!");
-		RangedTargetList=[];
-		let OX=Math.max(X-10,0);
-		let OY=Math.max(Y-10,0);
-		let FX=Math.min(10,X+10);
-		let FY=Math.min(10,Y+10);
-		let RealRange=Units[Unit.unitType].MaxRange;
-		let TerrainChecker=Terrain[Map[X][Y]];
-		if(TerrainChecker.tag1=="Vantage" || TerrainChecker.tag2=="Vantage" || TerrainChecker.tag3=="Vantage" || TerrainChecker.tag4=="Vantage"){RealRange+=1};
-
-		for(let ics=OX;ics<FX;ics++){for(let igrec=OY;igrec<FY;igrec++){
-			CanAttack=true;
-			distance=Math.sqrt((X-ics)*(X-ics)+(Y-igrec)*(Y-igrec));
-			if(distance<=RealRange && distance>=Units[Unit.unitType].MinRange){
-				//alert(ics+" "+igrec);
-				let TargetChecker=rostermap[ics][igrec];
-				//alert(TargetChecker.movementType);
-			if(hasCertainTrait(Unit.unitType,"Seabound") && TargetChecker.movementType!="Rudder" && TargetChecker.movementType!="Heavy Rudder"){CanAttack=false};
-			if(!hasCertainTrait(Unit.unitType,"Skysweeper") && TargetChecker.movementType=="Flight"){CanAttack=false};
-			if(!hasCertainTrait(Unit.unitType,"Depth Strike") && hasCertainTrait(TargetChecker.unitType??1,"Submerged")){CanAttack=false};
-				if(rostermap[ics][igrec]!=0 && rostermap[ics][igrec].coallition!=Coallition && CanAttack){
-					//alert(rostermap[ics][igrec]);
-					//alert(ics+" "+igrec);
+			//alert(TargetList[0]);
+	
+			ContactTargetList=[];
+	
+	
+	
+			for(let mu=0;mu<TargetList.length;mu++){
+			let OX=X;
+			let OY=Y;
+			let ics=JSON.parse(JSON.stringify(X));
+			let igrec=JSON.parse(JSON.stringify(Y));
+			//alert(ics+" "+igrec);
+				for(let nu=0;nu<TargetList[mu].length;nu++){
+			if(TargetList[mu][nu]==1){ics-=1};
+			if(TargetList[mu][nu]==2){igrec+=1};
+			if(TargetList[mu][nu]==3){ics+=1};
+			if(TargetList[mu][nu]==4){igrec-=1};
+			//alert(MapClone[ics][igrec]);
+			//if(MapClone[ics][igrec]>SPD){alert("River")};
+			//alert(ics+" "+igrec);
+			};
+	
+			
+			if(ics>0){if(rostermap[ics-1][igrec].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:TargetList[mu],X:ics,Y:igrec,TX:-1,TY:0,F:0};}};
+			if(ics<Map.length-1){if(rostermap[ics+1][igrec].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:TargetList[mu],X:ics,Y:igrec,TX:1,TY:0,F:0};}};
+			if(igrec>0){if(rostermap[ics][igrec-1].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:TargetList[mu],X:ics,Y:igrec,TX:0,TY:-1,F:0};}};
+			if(igrec<Map[0].length-1){if(rostermap[ics][igrec+1].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:TargetList[mu],X:ics,Y:igrec,TX:0,TY:1,F:0};}};
+			//while((ContactTargetList[ContactTargetList.length-1].X+ContactTargetList[ContactTargetList.length-1].TX == OX) && (ContactTargetList[ContactTargetList.length-1].Y+ContactTargetList[ContactTargetList.length-1].TY == OY)){ContactTargetList.pop()};
+	
+			};
+	
+			if(X>0){if(rostermap[X-1][Y]!=0){if(rostermap[X-1][Y].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:[],X:X,Y:Y,TX:-1,TY:0,F:0}}}};
+			if(X<Map.length-1){if(rostermap[X+1][Y]!=0){if(rostermap[X+1][Y].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:[],X:X,Y:Y,TX:1,TY:0,F:0}}}};
+			if(Y>0){if(rostermap[X][Y-1]!=0){if(rostermap[X][Y-1].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:[],X:X,Y:Y,TX:0,TY:-1,F:0}}}};
+			if(Y<Map[0].length-1){if(rostermap[X][Y+1]!=0){if(rostermap[X][Y+1].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:[],X:X,Y:Y,TX:0,TY:1,F:0}}}};
+	
+			BackupTargetList=[];
+			//if(X>0){if(rostermap[X-1][Y]!=0 && rostermap[X-1][Y].coallition!=Coallition){BackupTargetList[BackupTargetList.length]={path:[],X:X,Y:Y,TX:-1,TY:0}}};
+			//if(X<Map.length-1){if(rostermap[X+1][Y]!=0 && rostermap[X+1][Y].coallition!=Coallition){BackupTargetList[BackupTargetList.length]={path:[],X:X,Y:Y,TX:1,TY:0}}};
+			//if(Y>0){if(rostermap[X][Y-1]!=0 && rostermap[X][Y-1].coallition!=Coallition){BackupTargetList[BackupTargetList.length]={path:[],X:X,Y:Y,TX:0,TY:-1}}};
+			//if(Y<Map[0].length-1){if(rostermap[X][Y+1]!=0 && rostermap[X][Y+1].coallition!=Coallition){BackupTargetList[BackupTargetList.length]={path:[],X:X,Y:Y,TX:0,TY:1}}};
+	
+	
+	
+			for(let h = 0; h < ContactTargetList.length; h++){
+				//alert(ContactTargetList[h].path);
+				let CUS=ContactTargetList[h];
+				let CanAttack=true;
+				let TargetChecker=rostermap[CUS.X+CUS.TX][CUS.Y+CUS.TY];
+				//alert(hasCertainTrait(Unit.unitType,"Skysweeper"));
+				//alert(TargetChecker);
+				//if(hasCertainTrait(Unit.unitType,"Seabound") && TargetChecker.movementType!="Rudder" && TargetChecker.movementType!="Heavy Rudder"){CanAttack=false};
+				if(!hasCertainTrait(Unit.unitType,"Skysweeper") && TargetChecker.movementType=="Flight"){CanAttack=false};
+				if(!hasCertainTrait(Unit.unitType,"Depth Strike") && hasCertainTrait(TargetChecker.unitType??1,"Submerged")){CanAttack=false};
+				//alert(CanAttack);
+				//alert(TargetChecker+" "+CanAttack);
+				/*
+				let ix=Lat; let iy=Long;
+				for(let i=0; i<CUS.path.length-1;i++){let crk=CUS.path[i];
+					if(crk==1){iy-=1};
+					if(crk==2){ix+=1};
+					if(crk==3){iy+=1};
+					if(crk==4){ix-=1};
+					//if(rostermap[iy][ix]!=0){CanAttack=false};
+					};*/
+	
+	
+	
+	
+				//This is where we calculate attack priority indices
+				//ContactTargetList[h].F=0;
+				//let Atk=rostermap[ContactTargetList[h].X][ContactTargetList[h].Y];
+				let Atk=rostermap[Unit.x][Unit.y];
+				//console.log(ContactTargetList[h].X+" "+ContactTargetList[h].Y + " "+rostermap[2][9]+Atk);
+				//console.log(ContactTargetList[h].X+"|"+ContactTargetList[h].Y);
+				//if(ContactTargetList[h].X==6 && ContactTargetList[h].Y==7){console.log("null")};
+				let Def=rostermap[ContactTargetList[h].X+ContactTargetList[h].TX][ContactTargetList[h].Y+ContactTargetList[h].TY];
+					//console.log(Atk+" "+Def);
+	
+				if(Atk!=0 && Def!=0 && Difficulty>1){
+					//console.log(Atk+" "+Def);
+	
 					let Riposte=true;
 					let Intercept=false;
-					let Atk=rostermap[X][Y];
-					let Def=rostermap[ics][igrec];
-					let DMG=Atk.damage;
-					DMG*=Terrain[Map[ics][igrec]].protectionFactor??1;
-					DMG*=Terrain[Map[X][Y]].logisticFactor??1;
-					if(Terrain[Map[ics][igrec]].protectionFactor<1 && hasCertainTrait(Atk.unitType,"Commando")){DMG*=1.25};
-					if(!hasCertainTrait(Atk.unitType,"Indomitable")){DMG*=Atk.life/Units[Atk.unitType].HP};
-					if(hasCertainTrait(Def.unitType,"Cemented Steel Armor") && !hasCertainTrait(Atk.unitType,"Cavitation Explosion")){DMG-=20};
-					if(Atk.damageType==Def.armor && Atk.damageType!="Medium"){DMG*=1.5};
-					if(Atk.damageType=="Light"&&Def.armor=="Heavy"){DMG*=0.5};
-					if(Atk.damageType=="Heavy"&&Def.armor=="Light"){DMG*=0.5};
-
-					if(Def.movementType=="Foot"&&hasCertainTrait(Atk.unitType,"Anti-Infantry")){DMG*=3};
-					if(Def.movementType=="Foot"&&hasCertainTrait(Atk.unitType,"Schwerpunkt")){DMG*=1.4};
-					if(Def.movementType=="Flight"&&hasCertainTrait(Atk.unitType,"Anti-Air")){DMG*=3};
-					if(Def.movementType=="Rudder"&&hasCertainTrait(Atk.unitType,"Anti-Ship")){DMG*=3};
-					if(Def.movementType=="Heavy Rudder"&&hasCertainTrait(Atk.unitType,"Anti-Ship")){DMG*=3};
-					if(Def.movementType=="Static"&&hasCertainTrait(Atk.unitType,"Anti-Structure")){DMG*=2};
+					let Dmg=Atk.damage;
+					let TargetTerrain=Map[ContactTargetList[h].X+ContactTargetList[h].TX][ContactTargetList[h].Y+ContactTargetList[h].TY];
+					Dmg*=Terrain[TargetTerrain].protectionFactor;
+					if(Terrain[TargetTerrain].protectionFactor<1 && hasCertainTrait(Atk.unitType,"Commando")){Dmg*=1.25};
+					Dmg*=BiomeRegistry[BiomeMap[ContactTargetList[h].X][ContactTargetList[h].Y]].LogisticIndex;
+					if(!hasCertainTrait(Atk.unitType,"Indomitable")){Dmg*=Atk.life/Units[Atk.unitType].HP};
+					if(Atk.damageType==Def.armor && Atk.damageType!="Medium"){Dmg*=1.5};
+					if(Atk.damageType=="Light"&&Def.armor=="Heavy"){Dmg*=0.5};
+					if(Atk.damageType=="Heavy"&&Def.armor=="Light"){Dmg*=0.5};
+					if(Def.movementType=="Foot"&&hasCertainTrait(Atk.unitType,"Anti-Infantry")){Dmg*=3};
+					if((Def.movementType=="Foot" || Def.unitType<12)&&hasCertainTrait(Atk.unitType,"Schwerpunkt")){Dmg*=1.4};
+					if(Def.movementType=="Flight"&&hasCertainTrait(Atk.unitType,"Anti-Air")){Dmg*=3};
+					if(Def.movementType=="Rudder"&&hasCertainTrait(Atk.unitType,"Anti-Ship")){Dmg*=3};
+					if(Def.movementType=="Heavy Rudder"&&hasCertainTrait(Atk.unitType,"Anti-Ship")){Dmg*=3};
+					if(Def.movementType=="Static"&&hasCertainTrait(Atk.unitType,"Anti-Structure")){Dmg*=2};
 					if(Def.movementType=="Tracked"&&hasCertainTrait(Atk.unitType,"Anti-Tank")&&!hasCertainTrait(Def.unitType,"Anti-Tank")&&!hasCertainTrait(Atk.unitType,"Tank-Hunter")){Riposte=false};
-				if(hasCertainTrait(Atk.unitType,"Mobile Battery")&&Def.maxR>1&&!hasCertainTrait(Def.unitType,"Mobile Battery")){Riposte=false};
-				if(hasCertainTrait(Atk.unitType,"Submerged")&&!hasCertainTrait(Def.unitType,"Depth Charge")){Riposte=false};
-				if(Atk.movementType=="Flight"&&!hasCertainTrait(Def.unitType,"Skysweeper")){Riposte=false};
-				if(hasCertainTrait(Def.unitType,"Seabound")&&Atk.movementType!="Rudder"&&Atk.movementType!="Heavy Rudder"){Riposte=false};
-				if(hasCertainTrait(Def.unitType,"Steer")&&(Atk.movementType=="Rudder" || Atk.movementType=="Heavy Rudder")){DMG*=Math.min(1,Math.max(0.4,Atk.speed-Atk.speed))};
-				if(hasCertainTrait(Def.unitType,"Tank-Hunter")&&!hasCertainTrait(Atk.unitType,"Tank-Hunter")&&Atk.movementType=="Tracked"){Intercept=true};
-				if(hasCertainTrait(Atk.unitType,"Submerged")&&hasCertainTrait(Def.unitType,"Sonar")){Intercept=true};
-				if(hasCertainTrait(Atk.unitType,"Stealth")){DMG*=2};
-				if(hasCertainTrait(Atk.unitType,"Supply Distribution")){DMG*=-1};
-				if(hasCertainTrait(Def.unitType,"Supply Distribution")){Riposte=false};
-				if(hasCertainTrait(Atk.unitType,"Bewegungskrieg")){DMG*=1};//Bewegungskrieg not yet considered
-				DMG*=Math.min(2,Math.max(0.2,1+Atk.morale/5));
-				if(hasCertainTrait(Atk.unitType,"Dispersion")){
-					let targets=0;
-					for(let x=Math.max(0,ics-2); x<Math.min(Map.length,ics+2);x++){for(let y=Math.max(0,igrec-2); y<Math.min(Map[0].length,igrec+2);y++){
-						if((ics-x)*(ics-x)<=4 && (igrec-y)*(igrec-y)<=4 && rostermap[x][y]!=0){targets++};
-
-						}};
-						DMG*=targets;
-
-					};
-				//Do the same as Dispersion for Judgement, but with larger range
-
+					if(hasCertainTrait(Atk.unitType,"Mobile Battery")&&Def.maxR>1&&!hasCertainTrait(Def.unitType,"Mobile Battery")){Riposte=false};
+					if(hasCertainTrait(Atk.unitType,"Submerged")&&!hasCertainTrait(Def.unitType,"Depth Charge")){Riposte=false};
+					if(Atk.movementType=="Flight"&&!hasCertainTrait(Def.unitType,"Skysweeper")){Riposte=false};
+					if(hasCertainTrait(Def.unitType,"Seabound")&&Atk.movementType!="Rudder"&&Atk.movementType!="Heavy Rudder"){Riposte=false};
+					if(hasCertainTrait(Def.unitType,"Steer")&&(Atk.movementType=="Rudder" || Atk.movementType=="Heavy Rudder")){Dmg*=Math.min(1,Math.max(0.4,Atk.speed-Atk.speed))};
+					if(hasCertainTrait(Def.unitType,"Tank-Hunter")&&!hasCertainTrait(Atk.unitType,"Tank-Hunter")&&Atk.movementType=="Tracked"){Intercept=true};
+					if(hasCertainTrait(Atk.unitType,"Submerged")&&hasCertainTrait(Def.unitType,"Sonar")){Intercept=true};
+					if(hasCertainTrait(Atk.unitType,"Stealth")){Dmg*=2};
+					if(hasCertainTrait(Atk.unitType,"Supply Distribution")){Dmg*=-1};
+					if(hasCertainTrait(Atk.unitType,"Bewegungskrieg")){Dmg*=1};//Bewegungskrieg not yet considered
+					Dmg*=Math.min(2,Math.max(0.2,1+Atk.morale/5));
+					if(hasCertainTrait(Def.unitType,"Cemented Steel Armor")&&!hasCertainTrait(Atk.unitType,"Cavitation Explosion")){Dmg=Math.max(0,Dmg-20)};
+					if(Dmg>Def.life){Riposte=false};
+	
+					if(Riposte){let Ctk=Def.damage;
+					if(!hasCertainTrait(Def.unitType,"Indomitable")){Ctk*=Def.life/Units[Def.unitType].HP};
+						Ctk*=Terrain[(Map[X][Y]??1)].protectionFactor??1;
+						//console.log(X);
+						Ctk*=BiomeRegistry[(BiomeMap[Math.max(0,X)][Math.max(0,Y)]??1)].logisticIndex??1;
+						if(Terrain[Map[X][Y]].protectionFactor<1 && hasCertainTrait(Def.unitType,"Commando")){Ctk*=1.25};
+						if(hasCertainTrait(Atk.unitType,"Cemented Steel Armor") && !hasCertainTrait(Def.unitType,"Cavitation Explosion")){Ctk-=20};
+						if(Atk.damageType==Atk.armor && Def.damageType!="Medium"){Ctk*=1.5};
+						if(Atk.damageType=="Light"&&Def.armor=="Heavy"){Ctk*=0.5};
+						if(Atk.damageType=="Heavy"&&Def.armor=="Light"){Ctk*=0.5};
+	
+						if(Atk.movementType=="Foot"&&hasCertainTrait(Def.unitType,"Anti-Infantry")){Ctk*=3};
+						if(Atk.movementType=="Foot"&&hasCertainTrait(Def.unitType,"Schwerpunkt")){Ctk*=1.4};
+						if(Atk.movementType=="Flight"&&hasCertainTrait(Def.unitType,"Anti-Air")){Ctk*=3};
+						if(Atk.movementType=="Rudder"&&hasCertainTrait(Def.unitType,"Anti-Ship")){Ctk*=3};
+						if(Atk.movementType=="Heavy Rudder"&&hasCertainTrait(Def.unitType,"Anti-Ship")){Ctk*=3};
+						if(Atk.movementType=="Static"&&hasCertainTrait(Def.unitType,"Anti-Structure")){Ctk*=2};
+						if(hasCertainTrait(Atk.unitType,"Steer")&&(Def.movementType=="Rudder" || Def.movementType=="Heavy Rudder")){Ctk*=Math.min(1,Math.max(0.4,Def.speed-Def.speed))};
+						Ctk*=Math.min(2,Math.max(0.2,1+Def.morale/5));
+	
+	
+					//console.log(Dmg+" "+Ctk/2);
+					Dmg-=Ctk/2};
+	
+	
+					//if(ContactTargetList[h].X==6 && ContactTargetList[h].Y==7){console.log("fuck")};
+	
+	
+					ContactTargetList[h].F+=Dmg;
+					//console.log(ContactTargetList[h].F);
 					
-				if(DMG>Def.life){Riposte=false};
-
-				if(Riposte){let Ctk=Def.damage;
-				if(!hasCertainTrait(Def.unitType,"Indomitable")){Ctk*=Def.life/Units[Def.unitType].HP};
-					Ctk*=Terrain[Map[X][Y]].protectionFactor??1;
-					Ctk*=Terrain[Map[ics][igrec]].logisticFactor??1;
-					if(Terrain[Map[X][Y]].protectionFactor<1 && hasCertainTrait(Def.unitType,"Commando")){Ctk*=1.25};
-					if(hasCertainTrait(Atk.unitType,"Cemented Steel Armor") && !hasCertainTrait(Def.unitType,"Cavitation Explosion")){Ctk-=20};
-					if(Atk.damageType==Atk.armor && Def.damageType!="Medium"){Ctk*=1.5};
-					if(Atk.damageType=="Light"&&Def.armor=="Heavy"){Ctk*=0.5};
-					if(Atk.damageType=="Heavy"&&Def.armor=="Light"){Ctk*=0.5};
-
-					if(Atk.movementType=="Foot"&&hasCertainTrait(Def.unitType,"Anti-Infantry")){Ctk*=3};
-					if(Atk.movementType=="Foot"&&hasCertainTrait(Def.unitType,"Schwerpunkt")){Ctk*=1.4};
-					if(Atk.movementType=="Flight"&&hasCertainTrait(Def.unitType,"Anti-Air")){Ctk*=3};
-					if(Atk.movementType=="Rudder"&&hasCertainTrait(Def.unitType,"Anti-Ship")){Ctk*=3};
-					if(Atk.movementType=="Heavy Rudder"&&hasCertainTrait(Def.unitType,"Anti-Ship")){Ctk*=3};
-					if(Atk.movementType=="Static"&&hasCertainTrait(Def.unitType,"Anti-Structure")){Ctk*=2};
-					if(hasCertainTrait(Atk.unitType,"Steer")&&(Def.movementType=="Rudder" || Def.movementType=="Heavy Rudder")){Ctk*=Math.min(1,Math.max(0.4,Def.speed-Def.speed))};
-					Ctk*=Math.min(2,Math.max(0.2,1+Def.morale/5));
-
-
-				DMG-=Ctk/2};
-
-				//console.log(DMG);
-				RangedTargetList[RangedTargetList.length]={x:ics,y:igrec,F:DMG};
-				//RangedTargetList[RangedTargetList.length-1].F+=DMG
-				};
-			};
-
-
-		}};
-
-
-
-		};
-
-	if(attackType=="Contact"){
-		//console.log(ContactTargetList.length);
-		let cekA=true;
-		if(ContactTargetList.length==0){cekA=false};
-		if(cekA){
-			
-			if(Difficulty==1){DefaultAttack=ContactTargetList[Math.floor(Math.random()*ContactTargetList.length)]};
-			if(Difficulty>1){
-
-			let MAX=0;
-			for(let jd=0; jd<ContactTargetList.length; jd++){if(ContactTargetList[jd].F>ContactTargetList[MAX].F){MAX=jd}};
-			//console.log(ContactTargetList[MAX].F+" "+ContactTargetList.length);
-			DefaultAttack=ContactTargetList[MAX];
-			};
-			//console.log(DefaultAttack);
-			//alert(DefaultAttack.path);
-			//alert(DefaultAttack);
-			//alert(DefaultAttack.path);
-			
-			
-			let ics=DefaultAttack.X;
-			let igrec=DefaultAttack.Y;
-
-			for(let w=0;w<DefaultAttack.path.length;w++){
-				let v=DefaultAttack.path[w];
-				if(v==1){ics-=1};
-				if(v==2){igrec+=1};
-				if(v==3){ics+=1};
-				if(v==4){igrec-=1};
-			};
-
-
-			let canAttack=true;
-
-			//if((rostermap[ics][igrec] ?? 0)!=0){};
-			if((rostermap[DefaultAttack.X][DefaultAttack.Y] ?? 0)!=0){if(DefaultAttack.X!=X || DefaultAttack.Y!=Y){canAttack=false}};
-			//alert(canAttack);
-			if(DefaultAttack.path.length>0 && rostermap[DefaultAttack.X][DefaultAttack.Y]==0){
-				ActionRegister.Movement=DefaultAttack.path;
-				//MoveUnit(unitIndex,DefaultAttack.path);
-				};
-
-			//alert(DefaultAttack.X+" "+DefaultAttack.Y);
-			//if(hasCertainTrait(Unit.unitType,"Seabound") && TargetChecker.movementType!="Rudder" && TargetChecker.movementType!="Heavy Rudder"){CanAttack=false};
-			//if(!hasCertainTrait(Unit.unitType,"Skysweeper") && TargetChecker.movementType=="Flight"){CanAttack=false};
-			//if(!hasCertainTrait(Unit.unitType,"Depth Strike") && hasCertainTrait(TargetChecker.unitType??1,"Submerged")){CanAttack=false};
-
-			//alert((ics+DefaultAttack.TX)+" "+(igrec+DefaultAttack.TY)+"             "+ics+" "+igrec);
-			//alert(rostermap[DefaultAttack.TX][DefaultAttack.TY]);
-			//alert(rostermap[ics+DefaultAttack.TX][igrec+DefaultAttack.TY].index);
-			if(canAttack){ActionRegister.Attack=rostermap[DefaultAttack.X+DefaultAttack.TX][DefaultAttack.Y+DefaultAttack.TY].index;
-				//setTimeout(Attack,700,unitIndex,rostermap[DefaultAttack.X+DefaultAttack.TX][DefaultAttack.Y+DefaultAttack.TY].index);
-				};
-			//Attack(unitIndex,rostermap[ics+DefaultAttack.TX][igrec+DefaultAttack.TY].index);
-
-		};
-
-		if(!cekA){
-			//console.log(Pizdamatii.length);
-			let DefaultMovement=[];
-			if(Difficulty==1 && Pizdamatii.length>0){DefaultMovement=Pizdamatii[Math.ceil(Math.random()*Pizdamatii.length)-1].z};
-			if(Difficulty>1 && Pizdamatii.length>0){let MAX=0;
-			for(let a=0; a<Pizdamatii.length; a++){if(Pizdamatii[a].F>Pizdamatii[MAX].F){MAX=a}};
-			DefaultMovement=Pizdamatii[MAX].z};
-		//DefaultMovement.pop();
-		let DestinationValability=true;
-		let ics=Lat;
-		let igrec=Long;
-
-
-		//console.log(DefaultMovement);
-		for(let w=0;w<DefaultMovement.length;w++){ics+=(DefaultMovement[w]-2)*(DefaultMovement[w]%2);
-		igrec+=(3-DefaultMovement[w])*((DefaultMovement[w]-1)%2);
-		if(rostermap[ics][igrec]!=0){DestinationValability=false};}
-		//alert(rostermap[ics][igrec]);
+					//console.log(ContactTargetList[h].X+"|"+ContactTargetList[h].Y+" "+ContactTargetList[h].TX+"|"+ContactTargetList[h].TY+" "+ContactTargetList[h].F);
+				}
 	
-		if(DestinationValability){
-			MoveUnit(unitIndex,DefaultMovement);
-			};};
+				
+				//console.log(ContactTargetList[h].F);
+				if(TargetChecker!=0 && CanAttack) BackupTargetList[BackupTargetList.length]=ContactTargetList[h];
+			}
 
-	};
-	if(attackType=="Ranged"){
-		let cekA=true;
-		if(RangedTargetList.length==0){cekA=false};
-		if(cekA){
-			if(Difficulty==1){DefaultAttack=RangedTargetList[Math.floor(Math.random()*RangedTargetList.length)]};
-			if(Difficulty>1){let MAX=0;
-			for(let jd=0; jd<RangedTargetList.length; jd++){if(RangedTargetList[jd].F>RangedTargetList[MAX].F){MAX=jd}};
-			//console.log(ContactTargetList[MAX].F+" "+ContactTargetList.length);
-			DefaultAttack=RangedTargetList[MAX];
-			};
-			Target=rostermap[DefaultAttack.x][DefaultAttack.y].index;
-			let Attacker=rostermap[X][Y].index;
-			ActionRegister.Attack=Target;
-			//Attack(Attacker,Target);
-			//alert(Attacker);
-		};
-		if(!cekA){
-			let DefaultMovement=[];
-			if(Difficulty==1 && Pizdamatii.length>0){DefaultMovement=Pizdamatii[Math.ceil(Math.random()*Pizdamatii.length)-1].z};
-			if(Difficulty>1 && Pizdamatii.length>0){let MAX=0;
-			for(let a=0; a<Pizdamatii.length; a++){if(Pizdamatii[a].F>Pizdamatii[MAX].F){MAX=a}};
-			DefaultMovement=Pizdamatii[MAX].z};
-		//DefaultMovement.pop();
-		let DestinationValability=true;
-		let ics=Lat;
-		let igrec=Long;
-
-		for(let w=0;w<DefaultMovement.length;w++){ics+=(DefaultMovement[w]-2)*(DefaultMovement[w]%2);
-		igrec+=(3-DefaultMovement[w])*((DefaultMovement[w]-1)%2);};
-		if(rostermap[ics][igrec]!=0){DestinationValability=false};
+			ContactTargetList=BackupTargetList;
 	
-		if(DestinationValability){
-			ActionRegister.Movement=DefaultMovement;
-			MoveUnit(unitIndex,DefaultMovement);
-			};
+	
+			//if((ContactTargetList[h].X+ContactTargetList[h].TX != X) || (ContactTargetList[h].Y+ContactTargetList[h].TY != Y)){BackupTargetList[BackupTargetList.length]=ContactTargetList[h];}
+			//alert(ContactTargetList[0]);
+			//for(let h=0;h<ContactTargetList.length;h++){alert((ContactTargetList[h].X+ContactTargetList[h].TX)+" "+(ContactTargetList[h].Y+ContactTargetList[h].TY))};	
+
+			if(ContactTargetList.length !== 0){
+				if(Difficulty==1){DefaultAttack=ContactTargetList[Math.floor(Math.random()*ContactTargetList.length)]};
+				if(Difficulty>1){
+
+				let MAX=0;
+				for(let jd=0; jd<ContactTargetList.length; jd++){if(ContactTargetList[jd].F>ContactTargetList[MAX].F){MAX=jd}};
+				//console.log(ContactTargetList[MAX].F+" "+ContactTargetList.length);
+				DefaultAttack=ContactTargetList[MAX];
+				};
+				//console.log(DefaultAttack);
+				//alert(DefaultAttack.path);
+				//alert(DefaultAttack);
+				//alert(DefaultAttack.path);
+				
+				
+				let ics=DefaultAttack.X;
+				let igrec=DefaultAttack.Y;
+
+				for(let w=0;w<DefaultAttack.path.length;w++){
+					let v=DefaultAttack.path[w];
+					if(v==1){ics-=1};
+					if(v==2){igrec+=1};
+					if(v==3){ics+=1};
+					if(v==4){igrec-=1};
+				};
 
 
-			};};
+				let canAttack=true;
+
+				//if((rostermap[ics][igrec] ?? 0)!=0){};
+				if((rostermap[DefaultAttack.X][DefaultAttack.Y] ?? 0)!=0){if(DefaultAttack.X!=X || DefaultAttack.Y!=Y){canAttack=false}};
+				//alert(canAttack);
+				if(DefaultAttack.path.length>0 && rostermap[DefaultAttack.X][DefaultAttack.Y]==0){
+					ActionRegister.Movement=DefaultAttack.path;
+					//MoveUnit(unitIndex,DefaultAttack.path);
+					};
+
+				//alert(DefaultAttack.X+" "+DefaultAttack.Y);
+				//if(hasCertainTrait(Unit.unitType,"Seabound") && TargetChecker.movementType!="Rudder" && TargetChecker.movementType!="Heavy Rudder"){CanAttack=false};
+				//if(!hasCertainTrait(Unit.unitType,"Skysweeper") && TargetChecker.movementType=="Flight"){CanAttack=false};
+				//if(!hasCertainTrait(Unit.unitType,"Depth Strike") && hasCertainTrait(TargetChecker.unitType??1,"Submerged")){CanAttack=false};
+
+				//alert((ics+DefaultAttack.TX)+" "+(igrec+DefaultAttack.TY)+"             "+ics+" "+igrec);
+				//alert(rostermap[DefaultAttack.TX][DefaultAttack.TY]);
+				//alert(rostermap[ics+DefaultAttack.TX][igrec+DefaultAttack.TY].index);
+				if(canAttack){ActionRegister.Attack=rostermap[DefaultAttack.X+DefaultAttack.TX][DefaultAttack.Y+DefaultAttack.TY].index;
+					//setTimeout(Attack,700,unitIndex,rostermap[DefaultAttack.X+DefaultAttack.TX][DefaultAttack.Y+DefaultAttack.TY].index);
+					};
+				//Attack(unitIndex,rostermap[ics+DefaultAttack.TX][igrec+DefaultAttack.TY].index);
+
+			} else {
+				//console.log(Pizdamatii.length);
+				let DefaultMovement=[];
+				if(Difficulty==1 && Pizdamatii.length>0){DefaultMovement=Pizdamatii[Math.ceil(Math.random()*Pizdamatii.length)-1].z};
+				if(Difficulty>1 && Pizdamatii.length>0){let MAX=0;
+				for(let a=0; a<Pizdamatii.length; a++){if(Pizdamatii[a].F>Pizdamatii[MAX].F){MAX=a}};
+				DefaultMovement=Pizdamatii[MAX].z};
+			//DefaultMovement.pop();
+			let DestinationValability=true;
+			let ics=Lat;
+			let igrec=Long;
+
+
 			//console.log(DefaultMovement);
-			};
+			for(let w=0;w<DefaultMovement.length;w++){ics+=(DefaultMovement[w]-2)*(DefaultMovement[w]%2);
+			igrec+=(3-DefaultMovement[w])*((DefaultMovement[w]-1)%2);
+			if(rostermap[ics][igrec]!=0){DestinationValability=false};}
+			//alert(rostermap[ics][igrec]);
+		
+				if(DestinationValability){
+					MoveUnit(unitIndex,DefaultMovement);
+				}
+			}
+			break;
+		}
+		case "Ranged": {
+			//alert("Chuchu!");
+			RangedTargetList=[];
+			let OX=Math.max(X-10,0);
+			let OY=Math.max(Y-10,0);
+			let FX=Math.min(10,X+10);
+			let FY=Math.min(10,Y+10);
+			let RealRange=Units[Unit.unitType].MaxRange;
+			let TerrainChecker=Terrain[Map[X][Y]];
+			if(TerrainChecker.tag1=="Vantage" || TerrainChecker.tag2=="Vantage" || TerrainChecker.tag3=="Vantage" || TerrainChecker.tag4=="Vantage"){RealRange+=1};
+
+			for(let ics=OX;ics<FX;ics++){
+				for(let igrec=OY;igrec<FY;igrec++){
+				CanAttack=true;
+				distance=Math.sqrt((X-ics)*(X-ics)+(Y-igrec)*(Y-igrec));
+				if(distance<=RealRange && distance>=Units[Unit.unitType].MinRange){
+					//alert(ics+" "+igrec);
+					let TargetChecker=rostermap[ics][igrec];
+					//alert(TargetChecker.movementType);
+				if(hasCertainTrait(Unit.unitType,"Seabound") && TargetChecker.movementType!="Rudder" && TargetChecker.movementType!="Heavy Rudder"){CanAttack=false};
+				if(!hasCertainTrait(Unit.unitType,"Skysweeper") && TargetChecker.movementType=="Flight"){CanAttack=false};
+				if(!hasCertainTrait(Unit.unitType,"Depth Strike") && hasCertainTrait(TargetChecker.unitType??1,"Submerged")){CanAttack=false};
+					if(rostermap[ics][igrec]!=0 && rostermap[ics][igrec].coallition!=Coallition && CanAttack){
+						//alert(rostermap[ics][igrec]);
+						//alert(ics+" "+igrec);
+						let Riposte=true;
+						let Intercept=false;
+						let Atk=rostermap[X][Y];
+						let Def=rostermap[ics][igrec];
+						let DMG=Atk.damage;
+						DMG*=Terrain[Map[ics][igrec]].protectionFactor??1;
+						DMG*=Terrain[Map[X][Y]].logisticFactor??1;
+						if(Terrain[Map[ics][igrec]].protectionFactor<1 && hasCertainTrait(Atk.unitType,"Commando")){DMG*=1.25};
+						if(!hasCertainTrait(Atk.unitType,"Indomitable")){DMG*=Atk.life/Units[Atk.unitType].HP};
+						if(hasCertainTrait(Def.unitType,"Cemented Steel Armor") && !hasCertainTrait(Atk.unitType,"Cavitation Explosion")){DMG-=20};
+						if(Atk.damageType==Def.armor && Atk.damageType!="Medium"){DMG*=1.5};
+						if(Atk.damageType=="Light"&&Def.armor=="Heavy"){DMG*=0.5};
+						if(Atk.damageType=="Heavy"&&Def.armor=="Light"){DMG*=0.5};
+
+						if(Def.movementType=="Foot"&&hasCertainTrait(Atk.unitType,"Anti-Infantry")){DMG*=3};
+						if(Def.movementType=="Foot"&&hasCertainTrait(Atk.unitType,"Schwerpunkt")){DMG*=1.4};
+						if(Def.movementType=="Flight"&&hasCertainTrait(Atk.unitType,"Anti-Air")){DMG*=3};
+						if(Def.movementType=="Rudder"&&hasCertainTrait(Atk.unitType,"Anti-Ship")){DMG*=3};
+						if(Def.movementType=="Heavy Rudder"&&hasCertainTrait(Atk.unitType,"Anti-Ship")){DMG*=3};
+						if(Def.movementType=="Static"&&hasCertainTrait(Atk.unitType,"Anti-Structure")){DMG*=2};
+						if(Def.movementType=="Tracked"&&hasCertainTrait(Atk.unitType,"Anti-Tank")&&!hasCertainTrait(Def.unitType,"Anti-Tank")&&!hasCertainTrait(Atk.unitType,"Tank-Hunter")){Riposte=false};
+					if(hasCertainTrait(Atk.unitType,"Mobile Battery")&&Def.maxR>1&&!hasCertainTrait(Def.unitType,"Mobile Battery")){Riposte=false};
+					if(hasCertainTrait(Atk.unitType,"Submerged")&&!hasCertainTrait(Def.unitType,"Depth Charge")){Riposte=false};
+					if(Atk.movementType=="Flight"&&!hasCertainTrait(Def.unitType,"Skysweeper")){Riposte=false};
+					if(hasCertainTrait(Def.unitType,"Seabound")&&Atk.movementType!="Rudder"&&Atk.movementType!="Heavy Rudder"){Riposte=false};
+					if(hasCertainTrait(Def.unitType,"Steer")&&(Atk.movementType=="Rudder" || Atk.movementType=="Heavy Rudder")){DMG*=Math.min(1,Math.max(0.4,Atk.speed-Atk.speed))};
+					if(hasCertainTrait(Def.unitType,"Tank-Hunter")&&!hasCertainTrait(Atk.unitType,"Tank-Hunter")&&Atk.movementType=="Tracked"){Intercept=true};
+					if(hasCertainTrait(Atk.unitType,"Submerged")&&hasCertainTrait(Def.unitType,"Sonar")){Intercept=true};
+					if(hasCertainTrait(Atk.unitType,"Stealth")){DMG*=2};
+					if(hasCertainTrait(Atk.unitType,"Supply Distribution")){DMG*=-1};
+					if(hasCertainTrait(Def.unitType,"Supply Distribution")){Riposte=false};
+					if(hasCertainTrait(Atk.unitType,"Bewegungskrieg")){DMG*=1};//Bewegungskrieg not yet considered
+					DMG*=Math.min(2,Math.max(0.2,1+Atk.morale/5));
+					if(hasCertainTrait(Atk.unitType,"Dispersion")){
+						let targets=0;
+						for(let x=Math.max(0,ics-2); x<Math.min(Map.length,ics+2);x++){for(let y=Math.max(0,igrec-2); y<Math.min(Map[0].length,igrec+2);y++){
+							if((ics-x)*(ics-x)<=4 && (igrec-y)*(igrec-y)<=4 && rostermap[x][y]!=0){targets++};
+
+							}};
+							DMG*=targets;
+
+						};
+					//Do the same as Dispersion for Judgement, but with larger range
+
+						
+					if(DMG>Def.life){Riposte=false};
+
+					if(Riposte){let Ctk=Def.damage;
+					if(!hasCertainTrait(Def.unitType,"Indomitable")){Ctk*=Def.life/Units[Def.unitType].HP};
+						Ctk*=Terrain[Map[X][Y]].protectionFactor??1;
+						Ctk*=Terrain[Map[ics][igrec]].logisticFactor??1;
+						if(Terrain[Map[X][Y]].protectionFactor<1 && hasCertainTrait(Def.unitType,"Commando")){Ctk*=1.25};
+						if(hasCertainTrait(Atk.unitType,"Cemented Steel Armor") && !hasCertainTrait(Def.unitType,"Cavitation Explosion")){Ctk-=20};
+						if(Atk.damageType==Atk.armor && Def.damageType!="Medium"){Ctk*=1.5};
+						if(Atk.damageType=="Light"&&Def.armor=="Heavy"){Ctk*=0.5};
+						if(Atk.damageType=="Heavy"&&Def.armor=="Light"){Ctk*=0.5};
+
+						if(Atk.movementType=="Foot"&&hasCertainTrait(Def.unitType,"Anti-Infantry")){Ctk*=3};
+						if(Atk.movementType=="Foot"&&hasCertainTrait(Def.unitType,"Schwerpunkt")){Ctk*=1.4};
+						if(Atk.movementType=="Flight"&&hasCertainTrait(Def.unitType,"Anti-Air")){Ctk*=3};
+						if(Atk.movementType=="Rudder"&&hasCertainTrait(Def.unitType,"Anti-Ship")){Ctk*=3};
+						if(Atk.movementType=="Heavy Rudder"&&hasCertainTrait(Def.unitType,"Anti-Ship")){Ctk*=3};
+						if(Atk.movementType=="Static"&&hasCertainTrait(Def.unitType,"Anti-Structure")){Ctk*=2};
+						if(hasCertainTrait(Atk.unitType,"Steer")&&(Def.movementType=="Rudder" || Def.movementType=="Heavy Rudder")){Ctk*=Math.min(1,Math.max(0.4,Def.speed-Def.speed))};
+						Ctk*=Math.min(2,Math.max(0.2,1+Def.morale/5));
+
+
+					DMG-=Ctk/2};
+
+					//console.log(DMG);
+					RangedTargetList[RangedTargetList.length]={x:ics,y:igrec,F:DMG};
+					//RangedTargetList[RangedTargetList.length-1].F+=DMG
+					};
+				};
+
+
+				}
+			}
+
+			let cekA = true;
+
+			if(RangedTargetList.length==0){cekA=false}
+
+			if(cekA){
+				if(Difficulty==1){DefaultAttack=RangedTargetList[Math.floor(Math.random()*RangedTargetList.length)]};
+				if(Difficulty>1){let MAX=0;
+				for(let jd=0; jd<RangedTargetList.length; jd++){if(RangedTargetList[jd].F>RangedTargetList[MAX].F){MAX=jd}};
+				//console.log(ContactTargetList[MAX].F+" "+ContactTargetList.length);
+				DefaultAttack=RangedTargetList[MAX];
+				};
+				Target=rostermap[DefaultAttack.x][DefaultAttack.y].index;
+				let Attacker=rostermap[X][Y].index;
+				ActionRegister.Attack=Target;
+				//Attack(Attacker,Target);
+				//alert(Attacker);
+			}
+
+			if(!cekA){
+				let DefaultMovement=[];
+				if(Difficulty==1 && Pizdamatii.length>0){DefaultMovement=Pizdamatii[Math.ceil(Math.random()*Pizdamatii.length)-1].z};
+				if(Difficulty>1 && Pizdamatii.length>0){let MAX=0;
+				for(let a=0; a<Pizdamatii.length; a++){if(Pizdamatii[a].F>Pizdamatii[MAX].F){MAX=a}};
+				DefaultMovement=Pizdamatii[MAX].z};
+			//DefaultMovement.pop();
+			let DestinationValability=true;
+			let ics=Lat;
+			let igrec=Long;
+	
+			for(let w=0;w<DefaultMovement.length;w++){
+				ics+=(DefaultMovement[w]-2)*(DefaultMovement[w]%2);
+				igrec+=(3-DefaultMovement[w])*((DefaultMovement[w]-1)%2);
+			}
+
+			if(rostermap[ics][igrec]!=0){DestinationValability=false};
+		
+				if(DestinationValability){
+					ActionRegister.Movement=DefaultMovement;
+					MoveUnit(unitIndex,DefaultMovement);
+				}
+			}
+
+			break;
+		}
+	}
+}
+
 function AITurn(Roster,Map,Constants){
 	//Map=Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Map;
 	if(!Resolution){document.getElementById("AITurnIndicator").style.visibility="visible"};
@@ -1092,23 +1110,55 @@ function AITurn(Roster,Map,Constants){
 		//alert(SubRosters.length);
 		//alert((Turn+1)%SubRosters.length);
 		if((Turn+1)%SubRosters.length==1){setTimeout(DeactivateAIMarker,1400*ActiveRoster.length);}
-		};
-function Attack(Attacker,Defender){
+}
+
+/**
+ * neyn 08.04.2025
+ * 
+ * @param {int} attackerX 
+ * @param {int} attackerY 
+ * @param {int} defenderX 
+ * @param {int} defenderY 
+ * @returns 
+ */
+const getAttackingDirection = function(attackerX, attackerY, defenderX, defenderY) {
+	if(attackerY === defenderY) {
+		if(attackerX > defenderX) {
+			return Battalion.DIRECTION.EAST;
+		}
+
+		if(defenderX < attackerX) {
+			return Battalion.DIRECTION.WEST;
+		}
+	} else if(attackerY < defenderY) {
+		return Battalion.DIRECTION.SOUTH;
+	} else {
+		return Battalion.DIRECTION.NORTH;
+	}
+
+	return Battalion.DIRECTION.NONE;
+}
+
+function Attack(Attacker, Defender){
 	//alert(Defender);
+	let direction = Battalion.DIRECTION.NONE;
 	let Interceptor=Defender;
-	let Atk=MapRoster[Attacker];
-	let Def=MapRoster[Defender];
+	let Atk = MapRoster[Attacker];
+	let Def = MapRoster[Defender];
 	//Map=Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Map;
-	Map=Map;
 	let AttackerTile=Terrain[Map[Atk.x][Atk.y]];
 	let DefenderTile=Terrain[Map[Def.x][Def.y]];
 	//if(Atk.direction<2.5){direction=Atk.direction+2}else{direction=Atk.direction-2};
 	let DirSeed=Atk.direction;
-	if(Atk.x>Def.x){direction=1};
-	if(Atk.x<Def.x){direction=3};
-	if(Atk.y<Def.y){direction=2};
-	if(Atk.y>Def.y){direction=4};
-	Atk.direction=direction;
+
+	if(Atk.x > Def.x) direction = Battalion.DIRECTION.EAST;
+	if(Atk.x < Def.x) direction = Battalion.DIRECTION.WEST;
+	if(Atk.y < Def.y) direction = Battalion.DIRECTION.SOUTH;
+	if(Atk.y > Def.y) direction = Battalion.DIRECTION.NORTH;
+
+	if(direction !== Battalion.DIRECTION.NONE) {
+		Atk.direction = direction;
+	}
 	//if(Atk.x>=StandardX&&Atk.x<StandardX+10&&Atk.y>=StandardY&&Atk.y<StandardY+10){AttackingAnimation(Attacker)};
 	
 	let DamageModifier=1;
@@ -1346,11 +1396,23 @@ function Attack(Attacker,Defender){
 
 	EvaluateDynamicEvent('Action','null');
 	
-	if(Atk.isVized){let ShouldProbablyCheck=false;
-		for(let l=0; l<Constants.Defeat.length; l++){if(Constants.Defeat[l]==Defender && Def.life<=0){ShouldProbablyCheck=true}};
-		for(let l=0; l<Constants.Protect.length; l++){if(Constants.Protect[l]==Attacker && Atk.life<=0){ShouldProbablyCheck=true}};
-		if(Map.length*Map[0].length<=1000){ShouldProbablyCheck=true};
-		if(ShouldProbablyCheck){Inspection(Turn,Constants,Roster);Atk.isVized=false}}};
+	if(Atk.isVized) {
+		let ShouldProbablyCheck=false;
+
+		for(let l=0; l<Constants.Defeat.length; l++){
+			if(Constants.Defeat[l]==Defender && Def.life<=0){ShouldProbablyCheck=true}
+		}
+
+		for(let l=0; l<Constants.Protect.length; l++){
+			if(Constants.Protect[l]==Attacker && Atk.life<=0){ShouldProbablyCheck=true}
+		}
+
+		if(Map.length*Map[0].length<=1000){ShouldProbablyCheck=true}
+
+		if(ShouldProbablyCheck){Inspection(Turn,Constants,Roster);Atk.isVized=false}
+	}
+}
+
 function AttackEstimate(Attacker,Defender){
 	let Interceptor=Defender;
 	let Atk=MapRoster[Attacker];
@@ -6041,8 +6103,50 @@ const PlayBGM = function(playlistIndex) {
 	}
 }
 
-function PI_Scouter(Unit,Map){
+/**
+ * neyn 08.04.2025
+ * 
+ * @param {int[][]} gameMap 
+ * @param {int} mapHeight 
+ * @param {int} mapWidth 
+ * @param {string} stepType 
+ * @returns 
+ */
+const getStepMap = function(gameMap, mapHeight, mapWidth, stepType) {
+	const STEP_TYPES = {
+		"Foot": "WalkThrough",
+		"Wheeled": "DriveThrough",
+		"Tracked": "RollThrough",
+		"Amphibious": "WadeThrough",
+		"Flight": "FlyThrough",
+		"Rudder": "SailThrough",
+		"HeavyRudder": "DeepSailThrough"
+	};
 
+	const selectedType = STEP_TYPES[stepType];
+	const stepMap = [];
+
+	for(let i = 0; i < mapHeight; i++) {
+		const row = gameMap[i];
+		const stepRow = [];
+
+		for(let j = 0; j < mapWidth; j++) {
+			const terrainID = row[j];
+
+			if(!selectedType) {
+				stepRow[j] = terrainID;
+			} else {
+				stepRow[j] = Terrain[terrainID][selectedType];
+			}
+		}
+
+		stepMap[i] = stepRow;
+	}
+
+	return stepMap;
+}
+
+function PI_Scouter(Unit, Map){
 	//Prerequisites
 	var Speed=Unit.speed;
 	var Type=Unit.movementType;
@@ -6055,15 +6159,15 @@ function PI_Scouter(Unit,Map){
 	var Y=Long;
 	let unitIndex=Unit.index;
 	let Path=[1];
+
+	const mapWidth = Map[0].length;
+	const mapHeight = Map.length;
+	const Stepmap = getStepMap(Map, mapHeight, mapWidth, Type);
+
 	BLARG=[{X:Lat,Y:Long}];
 	//SBLARG(X,Y);
 	Pizdamatii=[];
 	TargetList=[];
-	//alert(Unit);
-
-	MapClone=JSON.parse(JSON.stringify(Map));
-	//alert(MapClone[0][0]);
-
 
 	//Stepmap and Targetmap initializer. Is this comment still necessary?
 	//IDC, leave it here in case players want to explore the script
@@ -6089,114 +6193,78 @@ function PI_Scouter(Unit,Map){
 	//STFU, we're not a soulless corporation. Let it be free.
 	//Yeah... the cost will be having to listen to our brainfarts.
 	//Silix, Wisp, Luna! Cut it out and get back to work.
-	let mapWidth=Map[0].length;
-	let mapHeight=Map.length;
-	var Stepmap=JSON.parse(JSON.stringify(Map));
-	var Targetmap=JSON.parse(JSON.stringify(Map));	
 
 	AddressMap=[];
-	AddressMapLine=[];
-	for(let i=0;i<Map[0].length;i++){AddressMapLine[AddressMapLine.length]=0};
-	for(let j=0;j<Map.length;j++){AddressMap[AddressMap.length]=AddressMapLine};
-	AddressMap=JSON.parse(JSON.stringify(AddressMap));
+
+	for(let i = 0; i < mapHeight; i++) {
+		const mapLine = [];
+
+		for(let j = 0; j < mapWidth; j++) {
+			mapLine[j] = 0;
+		}
+
+		AddressMap[i] = mapLine;
+	}
+
 	Thing=JSON.parse(JSON.stringify(AddressMap));
 
-	
-	//Here lies the switch to get the stepmap.	
-	switch(Type){
-		case "Foot":
-		for(let P=0;P<mapHeight;P++){for(Q=0;Q<mapWidth;Q++){Stepmap[P][Q]=Terrain[MapClone[P][Q]].WalkThrough;}};
-		break;
-
-		case "Wheeled":
-		for(let P=0;P<mapHeight;P++){for(Q=0;Q<mapWidth;Q++){Stepmap[P][Q]=Terrain[MapClone[P][Q]].DriveThrough}};
-		break;
-
-		case "Tracked":
-		for(let P=0;P<mapHeight;P++){for(Q=0;Q<mapWidth;Q++){Stepmap[P][Q]=Terrain[MapClone[P][Q]].RollThrough}};
-		break;
-
-		case "Amphibious":
-		for(let P=0;P<mapHeight;P++){for(Q=0;Q<mapWidth;Q++){Stepmap[P][Q]=Terrain[MapClone[P][Q]].WadeThrough}};
-		break;
-
-		case "Flight":
-		for(let P=0;P<mapHeight;P++){for(Q=0;Q<mapWidth;Q++){Stepmap[P][Q]=Terrain[MapClone[P][Q]].FlyThrough}};
-		break;
-
-		case "Rudder":
-		for(let P=0;P<mapHeight;P++){for(Q=0;Q<mapWidth;Q++){Stepmap[P][Q]=Terrain[MapClone[P][Q]].SailThrough}};
-		break;
-
-		case "Heavy Rudder":
-		for(let P=0;P<mapHeight;P++){for(Q=0;Q<mapWidth;Q++){Stepmap[P][Q]=Terrain[MapClone[P][Q]].DeepSailThrough}};
-		break;
-
-		};
-		
-
 	//Standard-Issue Pathing Loop
-	while(Path.length>0){
-			CollisionCheck=false;
-			let x=(Path[Path.length-1]-2)*(Path[Path.length-1])%2;
-			let y=(3-Path[Path.length-1])*(Path[Path.length-1]-1)%2;
+	while(Path.length>0) {
+		CollisionCheck=false;
+		let x=(Path[Path.length-1]-2)*(Path[Path.length-1]) % 2;
+		let y=(3-Path[Path.length-1])*(Path[Path.length-1]-1) % 2;
 
-		if(X+x<0 || Y+y<0){Path[Path.length-1]+=1};
-		if(X+x>=Map.length || Y+y>=Map[0].length){Path[Path.length-1]++;};
+		if(X+x<0 || Y+y<0) Path[Path.length-1]+=1;
+
+		if(X+x>=Map.length || Y+y>=Map[0].length)Path[Path.length-1]++;
+
 		if(X+x<Map.length && X+x>=0 && Y+y<Map[0].length && Y+y>=0){
-		if(rostermap[X+x][Y+y]!=0){
-			if((rostermap[X+x][Y+y].coallition!=Coallition && !hasCertainTrait(Unit.unitType,"Supply Distribution")) || (rostermap[X+x][Y+y].coallition==Coallition && hasCertainTrait(Unit.unitType,"Supply Distribution"))){
-			CollisionCheck=true;
-			if(rostermap[X+x][Y+y]!=0 && rostermap[X+x][Y+y].coallition==Coallition){Thing[X+x][Y+y]=1000};
-			};
-			};};
+			if(rostermap[X+x][Y+y]!=0){
+				if((rostermap[X+x][Y+y].coallition!=Coallition && !hasCertainTrait(Unit.unitType,"Supply Distribution")) || (rostermap[X+x][Y+y].coallition==Coallition && hasCertainTrait(Unit.unitType,"Supply Distribution"))){
+					CollisionCheck=true;
+					if(rostermap[X+x][Y+y]!=0 && rostermap[X+x][Y+y].coallition==Coallition) Thing[X+x][Y+y]=1000;
+				}
+			}
+		}
 
-	//The block that checks whether advancing is possible and advances
-
-
-		if(SPD>0 && Path[Path.length-1]<5 && X+x<Map.length && Y+y<Map[0].length){
+		if(SPD>0 && Path[Path.length-1]<5 && X+x<Map.length && Y+y<Map[0].length) {
+			//The block that checks whether advancing is possible and advances
 			let x=(Path[Path.length-1]-2)*(Path[Path.length-1])%2;
 			let y=(3-Path[Path.length-1])*(Path[Path.length-1]-1)%2;
 
 			//alert(Stepmap[X][Y]);
-			if(SPD>=Stepmap[X+x][Y+y] && CollisionCheck==false){
-			X=X+x;
-			Y=Y+y;
-			//alert(Path);
-			Pizdamatii[Pizdamatii.length]={x:X-StandardX,y:Y-StandardY,z:[]};
-			Path[Path.length]=1;
-			for(let p=0;p<Path.length;p++){Pizdamatii[Pizdamatii.length-1].z[p]=Path[p]};
-			//Pizdamatii[Pizdamatii.length-1].z=Path;
-			
-			SPD=SPD-Stepmap[X][Y];}else{Path[Path.length-1]+=1;};
+			if(SPD>=Stepmap[X+x][Y+y] && CollisionCheck==false) {
+				X=X+x;
+				Y=Y+y;
+				//alert(Path);
+				Pizdamatii[Pizdamatii.length]={x:X-StandardX,y:Y-StandardY,z:[]};
+				Path[Path.length]=1;
+				for(let p=0;p<Path.length;p++) Pizdamatii[Pizdamatii.length-1].z[p]=Path[p];
+				//Pizdamatii[Pizdamatii.length-1].z=Path;
+				
+				SPD=SPD-Stepmap[X][Y];}else{Path[Path.length-1]+=1;
 			}
-	//The block that checks if backtracking is needed and does so
-
-		else if(SPD==0 || Path[Path.length-1]>=5){
+		} else if(SPD==0 || Path[Path.length-1]>=5){
+			//The block that checks if backtracking is needed and does so
 			//alert(Path[Path.length-1]);
-			if(Path.length>=2){reverse=Path[Path.length-2];}else{break;};
+			if(Path.length>=2) {
+				reverse=Path[Path.length-2];
+			} else {
+				break;
+			}
+
 			SPD=SPD+Stepmap[X][Y];
 
 			X=X-(reverse-2)*(reverse%2);
 			Y=Y-(3-reverse)*(reverse-1)%2;
 
-			
-
 			Path.length-=1;
 			Path[Path.length-1]+=1;
 
-			
-			}
 			//else if(Path[Path.length-1]>=5){alert("Please don't fuck up the script")};
-		//alert("Path length: "+Path.length+ "; SPD= "+SPD+ "; X= "+X+"; Y= "+Y+"; direction: "+Path[Path.length-1]+" Path: "+Path+ "CollChek: "+ CollisionCheck);
-		
-		};
-	
-
-	//AddressMap=[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]];
-	
-	//Ctepmap=JSON.parse(JSON.stringify(AddressMap));
-	
+			//alert("Path length: "+Path.length+ "; SPD= "+SPD+ "; X= "+X+"; Y= "+Y+"; direction: "+Path[Path.length-1]+" Path: "+Path+ "CollChek: "+ CollisionCheck);		
+		}
+	}
 
 	//This does the ctep pathing
 
@@ -6348,13 +6416,16 @@ function PI_Scouter(Unit,Map){
 
 					};
 
-				if(canAttack){setTimeout(Attack,500,unitIndex,rostermap[r][t].index);
-				document.getElementById("Canceler "+ChosenUnit.ics+"X"+ChosenUnit.igrec).style.visibility="hidden";
-				RemoveKebabIMeanBlep();
-				//alert(ChosenUnit.ics);
-				MarkerMap[ChosenUnit.ics-1][ChosenUnit.igrec-1]=false;
-				
-				ChosenUnit.definite=false;
+				if(canAttack){
+					setTimeout(() => {
+						Attack(unitIndex,rostermap[r][t].index);
+					}, 500);
+					document.getElementById("Canceler "+ChosenUnit.ics+"X"+ChosenUnit.igrec).style.visibility="hidden";
+					RemoveKebabIMeanBlep();
+					//alert(ChosenUnit.ics);
+					MarkerMap[ChosenUnit.ics-1][ChosenUnit.igrec-1]=false;
+					
+					ChosenUnit.definite=false;
 				};
 				});
 				document.getElementById("UnitMap").appendChild(spep);
@@ -6483,7 +6554,14 @@ function PI_Scouter(Unit,Map){
 				//alert((r+StandardX)+" "+(t+StandardY));
 				//alert(rostermap[finalX][finalY].isCloaked);
 					if(finalX<0){finalX=0};
-				if(rostermap[r][t+StandardY]){setTimeout(Attack,1000,unitIndex,rostermap[r][t+StandardY].index);}}else{document.getElementById("Marker "+ChosenUnit.ics+"X"+ChosenUnit.igrec).style.visibility="visible";};
+					if(rostermap[r][t+StandardY]){
+						setTimeout(() => {
+							Attack(unitIndex,rostermap[r][t+StandardY].index);
+						}, 1000);
+					}
+				}else{
+					document.getElementById("Marker "+ChosenUnit.ics+"X"+ChosenUnit.igrec).style.visibility="visible";
+				}
 				//alert(finalX+" "+finalY);
 				//if(!Cloak(Math.max(finalX,0),Math.max(finalY,0),Unit.unitType,Coallition)){MapRoster[unitIndex].isCloaked=false; rostermap[finalX][finalY].isCloaked=false}else{MapRoster[unitIndex].isCloaked=true; rostermap[finalX][finalY].isCloaked=true};
 				document.getElementById("Canceler "+ChosenUnit.ics+"X"+ChosenUnit.igrec).style.visibility="hidden";
@@ -6501,8 +6579,10 @@ function PI_Scouter(Unit,Map){
 			};
 
 
-		};};
-	};};
+		};
+		}
+	}
+}
 function PITurn(Roster,Map,Constants){
 	//Map=Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Map;
 	//alert(Roster.length);
@@ -7956,6 +8036,12 @@ function RemoveMarker(index){
 	marker.remove();
 };
 
+/**
+ * neyn 07.04.2025
+ * 
+ * @param {int[][]} array2D 
+ * @returns 
+ */
 const getMapString = function(array2D) {
 	const str = [];
 
@@ -7966,6 +8052,11 @@ const getMapString = function(array2D) {
 	return str;
 }
 
+/**
+ * neyn 07.04.2025
+ * 
+ * @returns 
+ */
 const getLocalizationString = function() {
 	const str = [];
 

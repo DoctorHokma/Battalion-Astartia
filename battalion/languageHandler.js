@@ -55,15 +55,18 @@ LanguageHandler.prototype.get = function(key) {
 }
 
 LanguageHandler.prototype.getAllMissingTags = function(keywords = []) {
+    const templateSize = Object.keys(this.template).length;
     const languageMissing = new Map();
 
     for(const [languageID] of this.languages) {
         const missing = this.getMissingTags(languageID);
         const filtered = new Set();
+        const percentDone = (1 - (missing.size / templateSize)) * 100;
 
         languageMissing.set(languageID, {
             "regular": missing,
-            "filtered": filtered
+            "filtered": filtered,
+            "done": percentDone
         });
     }
 
