@@ -22,3 +22,15 @@ const resolvePath = function(directory, source) {
 
     return path;
 }
+
+const getRandomElement = function(array) {
+    const length = array.length;
+
+    if(length === 0) {
+        return null;
+    }
+
+    const index = Math.floor(Math.random() * length);
+
+    return array[index];
+}

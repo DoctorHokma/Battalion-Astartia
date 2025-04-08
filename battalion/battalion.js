@@ -16,8 +16,8 @@ Battalion.LANGUAGE = {
 
 Battalion.DIRECTION = {
     NONE: 0,
-    WEST: 1,
-    SOUTH: 2,
-    EAST: 3,
-    NORTH: 4
-}
+    NORTH: 1,
+    WEST: 2,
+    SOUTH: 3,
+    EAST: 4
+};
