@@ -1112,33 +1112,6 @@ function AITurn(Roster,Map,Constants){
 		if((Turn+1)%SubRosters.length==1){setTimeout(DeactivateAIMarker,1400*ActiveRoster.length);}
 }
 
-/**
- * neyn 08.04.2025
- * 
- * @param {int} attackerX 
- * @param {int} attackerY 
- * @param {int} defenderX 
- * @param {int} defenderY 
- * @returns 
- */
-const getAttackingDirection = function(attackerX, attackerY, defenderX, defenderY) {
-	if(attackerY === defenderY) {
-		if(attackerX > defenderX) {
-			return Battalion.DIRECTION.EAST;
-		}
-
-		if(defenderX < attackerX) {
-			return Battalion.DIRECTION.WEST;
-		}
-	} else if(attackerY < defenderY) {
-		return Battalion.DIRECTION.SOUTH;
-	} else {
-		return Battalion.DIRECTION.NORTH;
-	}
-
-	return Battalion.DIRECTION.NONE;
-}
-
 function AttackEstimate(Attacker,Defender){
 	let Interceptor=Defender;
 	let Atk=MapRoster[Attacker];
@@ -1482,36 +1455,9 @@ function AttackAnimation(Unit){
 	document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).style.left=0+"px";
 	document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).style.clip="auto";
 
-	};
-	};};
-function AttackingAnimation(Unit){
-	let unit=MapRoster[Unit];
-	let direction=unit.direction;
-
-	battalion.soundPlayer.playSound(Units[unit.unitType].shortname + "Attack");
-
-	//console.log(unit.faction);
-	document.getElementById("EntityCore "+(unit.x+1)+"X"+(unit.y+1)).src="Assets/Units/Attack/"+Units[unit.unitType].shortname+"Attack"+direction+".GIF";
-	if(!Units[unit.unitType].MLPR??false){document.getElementById("EntityMesh "+(unit.x+1)+"X"+(unit.y+1)).src="Assets/Units/AttackMeshes/"+Units[unit.unitType].shortname+"Attack"+"Mesh"+direction+".GIF";}else{document.getElementById("EntityMesh "+(unit.x+1)+"X"+(unit.y+1)).style.visibility="hidden"};
-	document.getElementById("Entity "+(unit.x+1)+"X"+(unit.y+1)).style.left=(Units[unit.unitType].AttackOffsetX ?? [0,0,0,0,0])[unit.direction]+"px";
-	document.getElementById("Entity "+(unit.x+1)+"X"+(unit.y+1)).style.top=(Units[unit.unitType].AttackOffsetY ?? [0,0,0,0,0])[unit.direction]+"px";
-	document.getElementById("Entity "+(unit.x+1)+"X"+(unit.y+1)).style.zIndex=6;
-
-	let castTime=setInterval(Act,35);
-	let frame=0;
-
-	function Act(){
-	frame++;
-
-	if(frame==17){clearInterval(castTime);
-	document.getElementById("EntityCore "+(unit.x+1)+"X"+(unit.y+1)).src="Assets/Units/Static/"+Units[unit.unitType].shortname+direction+".PNG";
-	if(!Units[unit.unitType].MLPR??false){document.getElementById("EntityMesh "+(unit.x+1)+"X"+(unit.y+1)).src="Assets/Units/StaticMeshes/"+Units[unit.unitType].shortname+"Mesh"+direction+".PNG";}else{document.getElementById("EntityMesh "+(unit.x+1)+"X"+(unit.y+1)).style.visibility="hidden"};
-	document.getElementById("Entity "+(unit.x+1)+"X"+(unit.y+1)).style.left=(Units[unit.unitType].StaticOffsetX ?? [0,0,0,0,0])[unit.direction]+"px";
-	document.getElementById("Entity "+(unit.x+1)+"X"+(unit.y+1)).style.top=(Units[unit.unitType].StaticOffsetY ?? [0,0,0,0,0])[unit.direction]+"px";
-	document.getElementById("Entity "+(unit.x+1)+"X"+(unit.y+1)).style.zIndex=4;
-		};
-
-	};};
+	}
+	}
+}
 function Battle_Lost(){
 	//BattleEnd=true;
 	Resolution=true;
