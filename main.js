@@ -1495,7 +1495,7 @@ function AttackingAnimation(Unit){
 	if(!Units[unit.unitType].MLPR??false){document.getElementById("EntityMesh "+(unit.x+1)+"X"+(unit.y+1)).src="Assets/Units/AttackMeshes/"+Units[unit.unitType].shortname+"Attack"+"Mesh"+direction+".GIF";}else{document.getElementById("EntityMesh "+(unit.x+1)+"X"+(unit.y+1)).style.visibility="hidden"};
 	document.getElementById("Entity "+(unit.x+1)+"X"+(unit.y+1)).style.left=(Units[unit.unitType].AttackOffsetX ?? [0,0,0,0,0])[unit.direction]+"px";
 	document.getElementById("Entity "+(unit.x+1)+"X"+(unit.y+1)).style.top=(Units[unit.unitType].AttackOffsetY ?? [0,0,0,0,0])[unit.direction]+"px";
-	document.getElementById("Entity "+(unit.x+1)+"X"+(unit.y+1)).style.zIndex=5;
+	document.getElementById("Entity "+(unit.x+1)+"X"+(unit.y+1)).style.zIndex=6;
 
 	let castTime=setInterval(Act,35);
 	let frame=0;
