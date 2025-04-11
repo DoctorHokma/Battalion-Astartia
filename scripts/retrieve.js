@@ -2,7 +2,7 @@
  * neyn 07.04.2025
  * 
  * @param {int[][]} array2D 
- * @returns 
+ * @returns {string[]}
  */
 const getMapString = function(array2D) {
 	const str = [];

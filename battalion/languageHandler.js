@@ -1,6 +1,5 @@
-const LanguageHandler = function(template) {
+const LanguageHandler = function() {
     this.languages = new Map();
-    this.template = template;
     this.currentLanguage = null;
     this.currentLanguageID = null;
 }
@@ -54,12 +53,12 @@ LanguageHandler.prototype.get = function(key) {
     return text;
 }
 
-LanguageHandler.prototype.getAllMissingTags = function(keywords = []) {
-    const templateSize = Object.keys(this.template).length;
+LanguageHandler.prototype.getAllMissingTags = function(template, keywords = []) {
+    const templateSize = Object.keys(template).length;
     const languageMissing = new Map();
 
     for(const [languageID] of this.languages) {
-        const missing = this.getMissingTags(languageID);
+        const missing = this.getMissingTags(template, languageID);
         const filtered = new Set();
         const percentDone = (1 - (missing.size / templateSize)) * 100;
 
@@ -85,7 +84,7 @@ LanguageHandler.prototype.getAllMissingTags = function(keywords = []) {
     return languageMissing;
 }
 
-LanguageHandler.prototype.getMissingTags = function(languageID) {
+LanguageHandler.prototype.getMissingTags = function(template, languageID) {
     const missing = new Set();
     const language = this.languages.get(languageID);
 
@@ -93,7 +92,7 @@ LanguageHandler.prototype.getMissingTags = function(languageID) {
         return missing;
     }
 
-    for(const tagID in this.template) {
+    for(const tagID in template) {
         const tag = language[tagID];
 
         if(!tag || (tag.length === 0 && LanguageHandler.STRICT)) {
