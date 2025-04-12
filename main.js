@@ -1308,7 +1308,16 @@ function Build(Structure){
 	const Y = UnitIgrec;
 	const unit = new Entity(`Unit ${MapRoster.length}`);
 
-	unit.initConstruction(MapRoster.length, X, Y, Structure);
+	unit.init({
+		id: 0,
+		x: X,
+		y: Y,
+		faction: PlayerChoiceFaction,
+		direction: Battalion.DIRECTION.SOUTH
+	}, Entity.TYPE.CONSTRUCTION, MapRoster.length);
+
+	unit.building = Structure;
+	unit.constructionTime = unitType.Timer;
 
 	MapRoster[MapRoster.length] = unit;
 	rostermap[X][Y] = unit;
@@ -1401,7 +1410,6 @@ function CallInterlogue() {
 };
 
 function castMap(){
-	//CallPreloader();
 	for(let i=1;i<=Map.length;i++){
 		for(let j=1;j<=Map[0].length;j++){
 			var Slot=document.createElement("div");
@@ -1986,7 +1994,7 @@ function CastEntityMap(Map, Roster){
 		const config = Roster[k];
 		const unit = new Entity(`Unit ${k}`);
 
-		unit.initUnit(config, k);
+		unit.init(config, Entity.TYPE.UNIT, k);
 
 		MapRoster[k] = unit;
 		rostermap[config.x][config.y] = unit;	
@@ -2677,7 +2685,7 @@ function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomNam
 
 	const unit = new Entity(`Unit ${MapRoster.length}`);
 
-	unit.initUnit({
+	unit.init({
 		id: Type,
 		faction: Faction,
 		x: X - 1,
@@ -2685,7 +2693,7 @@ function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomNam
 		morale: Morale ?? MoraleIndex,
 		direction: Direction ?? Battalion.DIRECTION.NORTH,
 		hpModifier: LifeIndex ?? 0
-	}, MapRoster.length);
+	}, Entity.TYPE.UNIT, MapRoster.length);
 
 	rostermap[X - 1][Y - 1] = unit;
 	MapRoster[MapRoster.length] = unit;
@@ -3016,6 +3024,7 @@ function EndBattle(){
 			};
 
 	for(let eth=0; eth<MapRoster.length; eth++){MapRoster[eth].life=-1};};
+
 function EndTurn(SubRosters,Map,Constants,Roster){
 	//Map=Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Map;
 	//alert(Roster);
@@ -3054,14 +3063,14 @@ function EndTurn(SubRosters,Map,Constants,Roster){
 	}else{
 		//alert(CurrentTurn);
 
-		if(!Resolution){AITurn(SubRosters[CurrentTurn],Map,Constants);
-		//alert("AI");
-
-		//EndTurn(SubRosters,Map,Constants,Roster)
-		};
+		if(!Resolution){
+			AITurn(SubRosters[CurrentTurn],Map,Constants);
+		}
 		//InterphaseBanner(AttackOrder[CurrentTurn],Turn)
 
-	};};
+	}
+}
+
 function EvaluateDynamicEvent(Comutator,LastUnit){
 	let TriggerKey=false;
 	if(Comutator=='Locomotion'){
@@ -4061,7 +4070,9 @@ function initializeBattle(Faction,Chapter,Mission){
 	Turn=0;
 	TurnIndex=0;
 
-	EndTurn(SubRosters,Map,Constants,Roster);};
+	EndTurn(SubRosters,Map,Constants,Roster);
+}
+
 function initializeSpecialBattle(Level){
 	wipeMap();
 	Map=Level.Map;
@@ -4224,7 +4235,8 @@ function initializeSpecialBattle(Level){
 	TurnIndex=0;
 
 	EndTurn(SubRosters,Map,Constants,Roster);
-	};
+}
+
 /**
  * 
  * @param {int} Turn 
@@ -5779,11 +5791,9 @@ function PI_Scouter(Unit, Map){
 	}
 }
 function PITurn(Roster,Map,Constants){
-	//Map=Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Map;
-	//alert(Roster.length);
 	RemoveKebabIMeanBlep();
 
-	for(let i=0; i < MapRoster.length;i++){
+	for(let i=0; i < MapRoster.length; i++) {
 		if(MapRoster[i].unitType == 0 && MapRoster[i].faction == PlayerChoiceFaction) {
 			advanceBuilding(i);
 		}
@@ -5898,7 +5908,9 @@ function PITurn(Roster,Map,Constants){
 	
 	setTimeout(InterphaseBanner,GlobalDelayerConstant,AttackOrder[CurrentTurn],Turn);
 	if(ControlMap??false){setTimeout(CaptureProperty,GlobalDelayerConstant,ControlMap,PlayerChoiceFaction);};
-	GlobalDelayerConstant=0;};
+	GlobalDelayerConstant=0;
+}
+
 function PostDialogueFrame(Portrait, Name, Text){
 
 	document.getElementById("Portrait").id=Portrait;

@@ -2,20 +2,23 @@ const Entity = function(id) {
     this.ID = id;
     this.type = Entity.TYPE.NONE;
     this.index = -1;
-    this.x = -1;
-    this.y = -1;
-    this.unitType = -1;
-    this.faction = -1;
-    this.coallition = "";
+
+    this.life = 0;
+    this.maxLife = 0;
     this.damage = 0;
     this.damageType = "";
     this.minR = 1;
     this.maxR = 1;
-    this.life = 0;
-    this.maxLife = 0;
     this.armor = "";
     this.speed = 0;
     this.movementType = "";
+
+    this.x = -1;
+    this.y = -1;
+    this.unitType = -1;
+
+    this.faction = -1;
+    this.coallition = "";
     this.morale = 0;
     this.direction = Battalion.DIRECTION.NONE;
     this.cargo = 0;
@@ -38,6 +41,11 @@ Entity.TYPE = {
     BUILDING: 3
 };
 
+
+Entity.prototype.onTurnPassed = function() {
+    
+}
+
 Entity.prototype.initDefault = function(id) {
     if(id < 0 || id >= UNITS.length) {
         return;
@@ -57,7 +65,7 @@ Entity.prototype.initDefault = function(id) {
     this.movementType = unitType.Movement; 
 }
 
-Entity.prototype.initUnit = function(config, index) {
+Entity.prototype.init = function(config, type, index) {
     const { 
         id = -1, //int
         faction = -1, //int
@@ -75,7 +83,9 @@ Entity.prototype.initUnit = function(config, index) {
 
     this.initDefault(id);
 
+    this.type = type;
     this.index = index;
+
     this.x = x; 
     this.y = y; 
     this.faction = faction;
@@ -89,24 +99,6 @@ Entity.prototype.initUnit = function(config, index) {
     this.specialDescID = SpecialDescription;
     this.customName = CustomName;
     this.customDesc = CustomDescription;
-    this.type = Entity.TYPE.UNIT;
-}
-
-Entity.prototype.initConstruction = function(index, X, Y, structure) {
-    const result = UNITS[structure];
-
-    this.initDefault(0);
-
-    this.index = index;
-    this.x = X; 
-    this.y = Y; 
-    this.faction = PlayerChoiceFaction;
-    this.coallition = Factions[PlayerChoiceFaction].faction;
-    this.morale = 0;
-    this.direction = Battalion.DIRECTION.SOUTH;
-    this.building = structure;
-    this.constructionTime = result.Timer;
-    this.type = Entity.TYPE.CONSTRUCTION;
 }
 
 Entity.prototype.completeBuilding = function() {
@@ -118,7 +110,7 @@ Entity.prototype.completeBuilding = function() {
 
     this.building = -1;
     this.morale = 0;
-    this.direction = 3;
+    this.direction = Battalion.DIRECTION.SOUTH;
     this.type = Entity.TYPE.BUILDING;
 }
 
@@ -130,7 +122,13 @@ Entity.prototype.getDescription = function(battalion) {
     }
     
     if(this.specialDescID !== -1) {
-        return Language.UnitSpecialDesc[this.specialDescID];
+        const desc = Language.UnitSpecialDesc[this.specialDescID];
+
+        if(!desc || desc.length === 0) {
+            return "NOT_TRANSLATED_YET";
+        }
+
+        return desc;
     } 
 
     const unitType = UNITS[this.unitType];
@@ -147,7 +145,13 @@ Entity.prototype.getName = function(battalion) {
     }
     
     if(this.specialNameID !== -1) {
-        return Language.UnitSpecialNames[this.specialNameID];
+        const name = Language.UnitSpecialNames[this.specialNameID];
+
+        if(!name || name.length === 0) {
+            return "NOT_TRANSLATED_YET";
+        }
+
+        return name;
     }
 
     const unitType = UNITS[this.unitType];
