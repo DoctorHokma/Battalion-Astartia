@@ -307,8 +307,11 @@ function AI_Act(i){
 		InternalDelayerFactor+=200;
 
 		if(ActionRegister.Movement!=0){
-			setTimeout(MoveUnit,InternalDelayerFactor,ActiveRoster[i].index,ActionRegister.Movement);
-			InternalDelayerFactor+=800
+			setTimeout(() => {
+				MoveUnit(ActiveRoster[i].index, ActionRegister.Movement);
+			}, InternalDelayerFactor);
+
+			InternalDelayerFactor += 800;
 		}
 
 		if(ActionRegister.Attack!=0 && ActionRegister.Movement==0){
@@ -317,8 +320,6 @@ function AI_Act(i){
 			}, InternalDelayerFactor);
 
 			InternalDelayerFactor += 400;
-
-			AttackEstimate(ActiveRoster[i].index,ActionRegister.Attack, Map);
 		}
 
 		if(ActionRegister.Attack!=0 && ActionRegister.Movement!=0){
@@ -327,8 +328,6 @@ function AI_Act(i){
 			setTimeout(() => {
 				Attack(ActiveRoster[i].index, ActionRegister.Attack, Map);
 			}, InternalDelayerFactor);
-
-			AttackEstimate(ActiveRoster[i].index,ActionRegister.Attack, Map);
 		}
 
 		if(ActionRegister.Counter!=0 || ActionRegister.Liquidate!=0) {
@@ -1067,7 +1066,7 @@ function AITurn(Roster,Map,Constants){
 		if(UnitOptions.length>0 && Difficulty>1){let BestYet=0; for(let p=0; p<UnitOptions.length; p++){if(UnitOptions[p].V>UnitOptions[BestYet].V){BestYet=p}}; UnitChoice=UnitOptions[BestYet]};
 
 		//This almost works, but not yet
-		if(UnitChoice!=0){DeployUnit(Industry[I].X+1,Industry[I].Y+1,UnitChoice.K,AIFaction,1); let AssBackwardsRefund=Units[UnitChoice.K].Cost; YourMoney+=AssBackwardsRefund; Constants.Funds[AIFaction]-=AssBackwardsRefund};
+		if(UnitChoice!=0){DeployUnit(Industry[I].X+1, Industry[I].Y+1, UnitChoice.K, AIFaction, 1); let AssBackwardsRefund=Units[UnitChoice.K].Cost; YourMoney+=AssBackwardsRefund; Constants.Funds[AIFaction]-=AssBackwardsRefund};
 		};
 
 		};
@@ -1109,184 +1108,6 @@ function AITurn(Roster,Map,Constants){
 		//alert(SubRosters.length);
 		//alert((Turn+1)%SubRosters.length);
 		if((Turn+1)%SubRosters.length==1){setTimeout(DeactivateAIMarker,1400*ActiveRoster.length);}
-}
-
-function AttackEstimate(Attacker,Defender,Map){
-	let Interceptor=Defender;
-	let Atk=MapRoster[Attacker];
-	let Def=MapRoster[Defender];
-	let AttackerTile=Terrain[Map[Atk.x][Atk.y]];
-	let DefenderTile=Terrain[Map[Def.x][Def.y]];
-	let DirSeed=Atk.direction;
-	if(Atk.x>Def.x){direction=1};
-	if(Atk.x<Def.x){direction=3};
-	if(Atk.y<Def.y){direction=2};
-	if(Atk.y>Def.y){direction=4};
-	//Atk.direction=direction;
-	let HypoLifeA=JSON.parse(JSON.stringify(Atk.life));
-	let HypoLifeE=JSON.parse(JSON.stringify(Atk.life));
-	
-	let DamageModifier=1;
-	let dist =((Atk.x-Def.x)*(Atk.x-Def.x)+(Atk.y-Def.y)*(Atk.y-Def.y));
-	if(hasCertainTrait(Atk.unitType,"Indomitable")){DamageModifier=1;};
-	DamageModifier*=(AttackerTile.logisticFactor??1);
-
-	if(Atk.damageType==Def.armor&&Atk.damageType!="Medium"){DamageModifier=DamageModifier*1.5;};
-	if(Atk.damageType=="Light"&&Def.armor=="Heavy"){DamageModifier=DamageModifier*0.5;};
-	if(Atk.damageType=="Heavy"&&Def.armor=="Light"){DamageModifier=DamageModifier*0.5;};
-	if(hasCertainTrait(Atk.unitType,"Stealth")){if(Atk.willAmbush??false){DamageModifier*=2; Atk.willAmbush=false}};
-
-	DamageModifier=DamageModifier*DefenderTile.protectionFactor;
-	if(hasCertainTrait(Atk.unitType,"Commando")&&DefenderTile.protectionFactor<1){DamageModifier*=1.25};
-	if(hasCertainTrait(Def.unitType,"Commando")&&DefenderTile.protectionFactor<1){DamageModifier*=0.8};
-	DamageModifier*=(5+Atk.morale)/5;
-	let canCounterattack=true;
-	let isIntercepted=false;
-
-	if(hasCertainTrait(Def.unitType,"Sonar") && hasCertainTrait(Atk.unitType,"Submerged")){isIntercepted=true};
-
-	if(MapRoster[Attacker].movementType=="Flight"){
-		InterceptorList=[];
-		for(let a=Math.max(Atk.x-3,0); a<Math.min(Atk.x+3,Map.length); a++){for(let b=Math.max(Atk.y-3,0); b<Math.min(Atk.y+3,Map[0].length); b++){
-			let canIntercept=true;
-			if(rostermap[a][b]==0){canIntercept=false}else{if(!hasCertainTrait(rostermap[a][b].unitType,"Skysweeper")){canIntercept=false;}};
-
-			if((a-Atk.x)*(a-Atk.x)+(b-Atk.y)*(b-Atk.y)<=9 && canIntercept==true){InterceptorList[InterceptorList.length]={x:a,y:b}};
-			}};
-		OpportuneInterceptor=InterceptorList[Math.floor(Math.random()*InterceptorList.length)];
-		if(InterceptorList.length>0){isIntercepted=true; Interceptor=rostermap[OpportuneInterceptor.x][OpportuneInterceptor.y].index};
-		};
-	if(hasCertainTrait(Atk.unitType,"Submerged") && !isIntercepted){
-		InterceptorList=[];
-		for(let a=Math.max(Atk.x-3,0); a<Math.min(Atk.x+3,Map.length); a++){for(let b=Math.max(Atk.y-3,0); b<Math.min(Atk.y+3,Map[0].length); b++){
-			let canIntercept=true;
-			if(rostermap[a][b]==0){canIntercept=false}else{if(!hasCertainTrait(rostermap[a][b].unitType,"Sonar")){canIntercept=false;}};
-
-			if((a-Atk.x)*(a-Atk.x)+(b-Atk.y)*(b-Atk.y)<=9 && canIntercept==true){InterceptorList[InterceptorList.length]={x:a,y:b}};
-			}};
-		OpportuneInterceptor=InterceptorList[Math.floor(Math.random()*InterceptorList.length)];
-		if(InterceptorList.length>0){isIntercepted=true; Interceptor=rostermap[OpportuneInterceptor.x][OpportuneInterceptor.y].index};
-
-
-
-
-
-		};
-
-
-	if(MapRoster[Defender].unitType<12 && hasCertainTrait(MapRoster[Attacker].unitType,"Anti-Infantry")){DamageModifier*=3};
-	if(MapRoster[Defender].unitType<12 && hasCertainTrait(MapRoster[Attacker].unitType,"Schwerpunkt")){DamageModifier*=1.4};
-	if(MapRoster[Defender].movementType=="Tracked" && hasCertainTrait(MapRoster[Attacker].unitType,"Anti-Tank") && !hasCertainTrait(MapRoster[Defender].unitType,"Anti-Tank")){canCounterattack=false};
-	if(MapRoster[Defender].movementType=="Flight" && hasCertainTrait(MapRoster[Attacker].unitType,"Anti-Air")){DamageModifier*=2};
-	if(hasCertainTrait(Atk.unitType,"Anti-Ship") && (Units[Def.unitType].Movement=="Rudder" || Units[Def.unitType].Movement=="Heavy Rudder")){DamageModifier*=3};
-	if(MapRoster[Defender].movementType=="Stationary" && hasCertainTrait(MapRoster[Attacker].unitType,"Anti-Structure")){DamageModifier*=2};
-
-	if(hasCertainTrait(Def.unitType,"Steer")&&(Units[Def.unitType].Movement=="Rudder" || Units[Def.unitType].Movement=="Heavy Rudder")){DamageModifier*=1+(Math.max(Math.min(Atk.speed-Def.speed,0),-4)*0.15)};
-
-	if(hasCertainTrait(Def.unitType,"Tank-Hunter") && MapRoster[Attacker].movementType=="Tracked"){isIntercepted=true};
-	if(hasCertainTrait(Atk.unitType,"Tank-Hunter")){isIntercepted=false};
-	if(hasCertainTrait(Def.unitType,"Self-Destruct")){isIntercepted=false};
-	
-	if(dist>(Units[Def.unitType].MaxRange*Units[Def.unitType].MaxRange)){canCounterattack=false; isIntercepted=false};
-	if(Atk.movementType=="Flight" && !hasCertainTrait(Def.unitType,"Skysweeper")){canCounterattack=false};
-	if(hasCertainTrait(Atk.unitType,"Submerged") && !hasCertainTrait(Def.unitType,"Depth Strike")){canCounterattack=false};
-	if(hasCertainTrait(Def.unitType,"Seabound") && Units[Atk.unitType].Movement!="Rudder" && Units[Atk.unitType].Movement!="Heavy Rudder"){canCounterattack=false};
-
-	if(isIntercepted){HypoLifeA-=25};
-
-	DamageModifier*=Atk.life/Units[Atk.unitType].HP
-
-	let Damage=Math.ceil(Atk.damage*DamageModifier);
-	if(hasCertainTrait(Def.unitType,"Cemented Steel Armor") && !hasCertainTrait(Atk.unitType,"Supply Distribution") && !hasCertainTrait(Atk.unitType,"Cavitation Explosion")){Damage-=20};
-	Damage=Math.max(Damage,0);
-	if(MapRoster[Defender].movementType=="Flight" && !hasCertainTrait(MapRoster[Attacker].unitType,"Anti-Air")){if(Damage>25){Damage=25}};
-	if(hasCertainTrait(MapRoster[Attacker].unitType,"Supply Distribution")){Damage*=-1; canCounterattack=false;};
-
-	if(hasCertainTrait(Atk.unitType,"Terrifying")){if(Units[Def.unitType].Cost<1000&&Def.morale>-3){Def.morale-=1}};
-	if(hasCertainTrait(Atk.unitType,"Inflaming")){if(Def.morale<3){Def.morale+=1}};
-
-
-
-	if(HypoLifeA>0){
-	MarkerMap[Atk.x][Atk.y]=0;
-	document.getElementById("Marker "+(Atk.x+1-StandardX)+"X"+(Atk.y+1-StandardY)).style.visibility="hidden";
-	HitAnimStyle="Standard";
-	if(hasCertainTrait(Atk.unitType,"Supply Distribution")){HitAnimStyle="Supply"};
-	if(hasCertainTrait(Atk.unitType,"Dispersion")){HitAnimStyle="Gaswave"};
-	if(hasCertainTrait(Atk.unitType,"Streamblast")){HitAnimStyle="Neutron Wave"};
-	//if(Atk.x>=StandardX&&Atk.x<StandardX+Map.length&&Atk.y>=StandardY&&Atk.y<StandardY+Map[0].length){if(!isIntercepted){AttackingAnimation(Attacker)}else{setTimeout(AttackingAnimation, 800, Attacker)}};
-	//if(Def.x>=StandardX&&Def.x<StandardX+Map.length&&Def.y>=StandardY&&Def.y<StandardY+Map[0].length){if(!isIntercepted){HitAnimation(Defender,HitAnimStyle)}else{setTimeout(HitAnimation, 800, Defender, HitAnimStyle)}};
-
-	if(HitAnimStyle=="Standard" || HitAnimStyle=="Supply"){HypoLifeE-=Damage;
-	}else if(HitAnimStyle=="Gaswave"){
-		for(let x=Math.max(0,Def.x-1); x<=Math.min(Map.length-1,Def.x+1);x++){for(let y=Math.max(0,Def.y-1); y<=Math.min(Map[0].length-1,Def.y+1); y++){
-			//SplashAttack(Atk,x,y);
-		}};
-
-	}else if(HitAnimStyle=="Neutron Wave"){
-		LaserVar=0;
-		if(Def.x<Atk.x){LaserVar=1;LaserConstX=-1;LaserConstY=0};
-		if(Def.x>Atk.x){LaserVar=3;LaserConstX=1;LaserConstY=0};
-		if(Def.y>Atk.y){LaserVar=2;LaserConstX=0;LaserConstY=1};
-		if(Def.y<Atk.y){LaserVar=4;LaserConstX=0;LaserConstY=-1};
-		for(let l=1; l<=7; l++){
-			if(Atk.x+l*LaserConstX<Map.length && Atk.y+l*LaserConstY<Map[0].length && Atk.x+l*LaserConstX>=0 && Atk.y+l*LaserConstY>=0){//SplashAttack(Atk,Atk.x+l*LaserConstX,Atk.y+l*LaserConstY)
-		};
-		};
-
-	}else if(HitAnimStyle=="Antimatter"){};
-
-		//ScoutVicinity(Atk.x,Atk.y);
-		/*LastMove.Uncloaked=AdjacentCloakers;
-		if(!rostermap[Atk.x][Atk.y].isCloaked){document.getElementById("Entity "+(Atk.x+1)+"X"+(Atk.y+1)).style.filter=Factions[Atk.faction].ChromaCode;};
-		for(let c=0;c<AdjacentCloakers.length;c++){
-		if(AdjacentCloakers[c]==1){document.getElementById("Entity "+(Atk.x)+"X"+(Atk.y+1)).style.filter=Factions[rostermap[Atk.x-1][Atk.y].faction].ChromaCode};
-		if(AdjacentCloakers[c]==2){document.getElementById("Entity "+(Atk.x+1)+"X"+(Atk.y+2)).style.filter=Factions[rostermap[Atk.x][Atk.y+1].faction].ChromaCode};		
-		if(AdjacentCloakers[c]==3){document.getElementById("Entity "+(Atk.x+2)+"X"+(Atk.y+1)).style.filter=Factions[rostermap[Atk.x+1][Atk.y].faction].ChromaCode};
-		if(AdjacentCloakers[c]==4){document.getElementById("Entity "+(Atk.x+1)+"X"+(Atk.y)).style.filter=Factions[rostermap[Atk.x][Atk.y-1].faction].ChromaCode};
-			};*/
-
-	//if(hasCertainTrait(Atk.unitType,"Absorber")){let HealIndex=Math.min(Damage,Math.abs(Def.life),Units[Atk.unitType].HP-Atk.life); Atk.life+=HealIndex};
-	if(Def.life>Units[Def.unitType].HP){Def.life=Units[Def.unitType].HP};
-	};
-
-	if(hasCertainTrait(Atk.unitType,"Self-Destruct")){Atk.life=0;canCounterattack=false};
-	if(HypoLifeA<=0){ActionRegister.Liquidate=Atk};
-	
-	if(HypoLifeE<=0){
-		//let canEncore=false;
-		ActionRegister.Liquidate=Def;
-		//if(hasCertainTrait(Atk.unitType,"Bewegungskrieg")&&Atk.canEncore){canEncore=true;Atk.canEncore=false};
-		//alert(Atk.x+" "+Atk.y);
-		//if(canEncore){MarkerMap[Atk.x][Atk.y]=true;
-		//document.getElementById("Marker "+(Atk.x+1-StandardX)+"X"+(Atk.y+1-StandardY)).style.visibility="visible";}
-	}else{
-		//Counterattack(Defender,Attacker)
-		if(dist<Def.minR*Def.minR){canCounterattack=false};
-		if(dist>Def.maxR*Def.maxR){canCounterattack=false};
-		//alert(Atk.MaxRange);
-		if(hasCertainTrait(Atk.unitType,"Mobile Battery") && Units[Atk.unitType].MaxRange>1 && !hasCertainTrait(Def.unitType,"Mobile Battery")){canCounterattack=false};
-		if(hasCertainTrait(Def.unitType,"Self-Destruct")){canCounterattack=false};
-		if(Def.damageType=="None"){canCounterattack=false};
-		if(isIntercepted){canCounterattack=false};
-		//if(false){canCounterattack=false};
-		if(canCounterattack){
-			ActionRegister.Counter=Def;
-		//setTimeout(Counterattack, 800, Defender, Attacker);};
-
-	}};
-
-	//EvaluateDynamicEvent('Action','null');
-	
-	if(Atk.isVized){let ShouldProbablyCheck=false;
-		for(let l=0; l<Constants.Defeat.length; l++){if(Constants.Defeat[l]==Defender && Def.life<=0){ShouldProbablyCheck=true}};
-		for(let l=0; l<Constants.Protect.length; l++){if(Constants.Protect[l]==Attacker && Atk.life<=0){ShouldProbablyCheck=true}};
-		if(Map.length*Map[0].length<=1000){ShouldProbablyCheck=true};
-		ShouldProbablyCheck=false;
-		if(ShouldProbablyCheck){Inspection(Turn,Constants,Roster);Atk.isVized=false}}
-
-
-
 }
 
 function AnalyseSquare(entityType,X,Y){
@@ -1512,8 +1333,6 @@ function Build(Structure){
 	let X=UnitIcs;
 	let Y=UnitIgrec;
 	let Santier={
-		name: "",
-		description: "",
 		ID:"Unit "+MapRoster.length,
 		index:MapRoster.length-1,
 		x:X, 
@@ -1545,8 +1364,6 @@ function Build(Structure){
 function BuildingComplete(Index){
 	let type=MapRoster[Index].building;
 	let Building={
-			name: "",
-			description: "",
 			ID:"Unit "+MapRoster.length,
 			index:Index,
 			x:MapRoster[Index].x, 
@@ -2198,8 +2015,6 @@ function castMapMaker() {
 }
 
 function CastEntityMap(Map, Roster){
-	const { language } = battalion;
-
 	map=Map;
 	var mapWidth=map[0].length;
 	var mapHeight=map.length;
@@ -2230,12 +2045,8 @@ function CastEntityMap(Map, Roster){
 		} = element;
 
 		const unitType = Units[id];
-		const name = language.get(unitType.name);
-		const desc = language.get(unitType.desc);
 
 		const unit = {
-			name: CustomName.length !== 0 ? CustomName : (Language.UnitSpecialNames[SpecialName] ?? name),
-			description: CustomDescription.length !== 0 ? CustomDescription : (Language.UnitSpecialDesc[SpecialDescription] ?? desc),
 			ID: "Unit " + k,
 			index: k,
 			x: x, 
@@ -2261,37 +2072,41 @@ function CastEntityMap(Map, Roster){
 			customDesc: CustomDescription
 		}
 
-		MapRoster[k] = unit;
+		MapRoster[k]= unit;
 		rostermap[x][y] = unit;	
 
 		let ics=Roster[k].x;
 		let igrec=Roster[k].y;
 
+		document.getElementById("EntityCore "+(ics+1)+"X"+(igrec+1)).style.visibility="inherit";
+		document.getElementById("Entity "+(ics+1)+"X"+(igrec+1)).style.top=(Units[unit.unitType].StaticOffsetY ?? [0,0,0,0,0])[unit.direction] + "px";
+		document.getElementById("Entity "+(ics+1)+"X"+(igrec+1)).style.left=(Units[unit.unitType].StaticOffsetX ?? [0,0,0,0,0])[unit.direction] + "px";
+		document.getElementById("EntityCore "+(ics+1)+"X"+(igrec+1)).src="Assets/Units/Static/"+Units[unit.unitType].shortname+unit.direction+".PNG";
+
+		if(!Units[unit.unitType].MLPR) {
+			document.getElementById("EntityMesh "+(ics+1)+"X"+(igrec+1)).style.visibility="inherit";
+			document.getElementById("EntityMesh "+(ics+1)+"X"+(igrec+1)).src="Assets/Units/StaticMeshes/"+Units[unit.unitType].shortname+"Mesh"+unit.direction+".PNG";
+		}
+		//alert(Factions);
+		let Filter=Factions[unit.faction].ChromaCode;
+
+
+		//alert(rostermap[unit.x][unit.y].isCloaked);
+		if(rostermap[unit.x][unit.y].isCloaked) {
+			document.getElementById("Entity "+(ics+1)+"X"+(igrec+1)).style.filter="opacity(0%)";
+		}
+
+		document.getElementById("EntityCore "+(ics+1)+"X"+(igrec+1)).style.filter=Filter;
+
+		/*
 		//if(ics>=StandardX && ics<StandardX+10 && igrec>=StandardY && igrec <StandardY+10){
 		if(true){
-			document.getElementById("EntityCore "+(ics+1)+"X"+(igrec+1)).style.visibility="inherit";
-			document.getElementById("Entity "+(ics+1)+"X"+(igrec+1)).style.top=(Units[MapRoster[k].unitType].StaticOffsetY ?? [0,0,0,0,0])[MapRoster[k].direction] + "px";
-			document.getElementById("Entity "+(ics+1)+"X"+(igrec+1)).style.left=(Units[MapRoster[k].unitType].StaticOffsetX ?? [0,0,0,0,0])[MapRoster[k].direction] + "px";
-			document.getElementById("EntityCore "+(ics+1)+"X"+(igrec+1)).src="Assets/Units/Static/"+Units[MapRoster[k].unitType].shortname+MapRoster[k].direction+".PNG";
-
-			if(!Units[MapRoster[k].unitType].MLPR??false) {
-				document.getElementById("EntityMesh "+(ics+1)+"X"+(igrec+1)).style.visibility="inherit";
-				document.getElementById("EntityMesh "+(ics+1)+"X"+(igrec+1)).src="Assets/Units/StaticMeshes/"+Units[MapRoster[k].unitType].shortname+"Mesh"+MapRoster[k].direction+".PNG";
-			}
-			//alert(Factions);
-			let Filter=Factions[MapRoster[k].faction].ChromaCode;
-
-
-			//alert(rostermap[unit.x][unit.y].isCloaked);
-			if(rostermap[unit.x][unit.y].isCloaked??false) {
-				document.getElementById("Entity "+(ics+1)+"X"+(igrec+1)).style.filter="opacity(0%)";
-			}
-
-			document.getElementById("EntityCore "+(ics+1)+"X"+(igrec+1)).style.filter=Filter;
+			
 			//drawUnit(Map, Roster[k].id, Roster[k].direction, Roster[k].x, Roster[k].y, k, rostermap);
-			//alert(MapRoster[k].x+" "+MapRoster[k].y);
+			//alert(unit.x+" "+unit.y);
 			//for(let i=0; i<0+10; i++){for(let j=0; j<0+10; j++){}};
 		}
+		*/
 	}
 }
 
@@ -2715,6 +2530,7 @@ function ConvoyPickup(Unit){
 	if(IsConvoy){
 		let HPIndex=rostermap[Unit.x][Unit.y].life/100;
 		let Cargo=rostermap[Unit.x][Unit.y].cargo;
+
 		MapRoster[Unit.index].id=Cargo;
 		rostermap[Unit.x][Unit.y].cargo=0;
 		rostermap[Unit.x][Unit.y].unitType=Cargo;
@@ -2726,17 +2542,6 @@ function ConvoyPickup(Unit){
 		rostermap[Unit.x][Unit.y].maxR=Units[Cargo].MaxRange;
 		rostermap[Unit.x][Unit.y].speed=Units[Cargo].Speed;
 		rostermap[Unit.x][Unit.y].movementType=Units[Cargo].Movement;
-		if((MapRoster[Unit.index].CustomName ?? true) || (MapRoster[Unit.index].SpecialName ?? true)) {
-			const name = language.get(Units[Cargo].name);
-
-			rostermap[Unit.x][Unit.y].name = name;
-		}
-
-		if((MapRoster[Unit.index].CustomDescription ?? true) || (MapRoster[Unit.index].SpecialDescription ?? true)) {
-			const desc = language.get(Units[Cargo].desc);
-
-			rostermap[Unit.x][Unit.y].description = desc;
-		}
 
 		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).src="Assets/Units/Static/"+Units[Cargo].shortname+rostermap[Unit.x][Unit.y].direction+".PNG";
 		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).style.left=(Units[Cargo].StaticOffsetX??[0,0,0,0,0])[rostermap[Unit.x][Unit.y].direction]+"px";
@@ -2761,25 +2566,10 @@ function ConvoyPickup(Unit){
 		rostermap[Unit.x][Unit.y].speed=5;
 		rostermap[Unit.x][Unit.y].movementType="Rudder";
 
-		if((MapRoster[Unit.index].CustomName ?? true) || (MapRoster[Unit.index].SpecialName ?? true)){
-			const name = language.get("UNIT_NAME_BARGE_CONVOY");
-
-			rostermap[Unit.x][Unit.y].name = name;
-		}
-
-		if((MapRoster[Unit.index].CustomDescription ?? true) || (MapRoster[Unit.index].SpecialDescription ?? true)){
-			const desc = language.get("UNIT_DESC_BARGE_CONVOY");
-
-			rostermap[Unit.x][Unit.y].description = desc;
-		}
-
 		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).src="Assets/Units/Static/Convoy"+rostermap[Unit.x][Unit.y].direction+".PNG";
+	}
+}
 
-
-
-
-
-	};};	
 function CustomizeTile(){
 	//alert(EditorCustoTileX+" "+EditorCustoTileY);
 	if(EditorEntityMap[EditorCustoTileX][EditorCustoTileY]==0){Localization[Localization.length]={X:EditorCustoTileX+1,Y:EditorCustoTileY+1, name:document.getElementById('EditorNameDenominator').value, description:document.getElementById('EditorDescDenominator').value}};
@@ -2953,7 +2743,7 @@ function DisplayRegions(){
 	RegionsToggled=!RegionsToggled;
 };
 //NEYN TODO!!!
-function DeployUnit(X,Y,Type,Faction,Direction,LifeIndex,Morale,CustomName,SpecialName,CustomDesc,SpecialDesc){
+function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomName, SpecialName, CustomDesc, SpecialDesc) {
 	//alert(Faction);
 	let CostFactor=1;
 	if(Speciation==-2){CostFactor=0.8};
@@ -2973,25 +2763,23 @@ function DeployUnit(X,Y,Type,Faction,Direction,LifeIndex,Morale,CustomName,Speci
 	MapRoster[MapRoster.length]={index:MapRoster.length-1, id:Type, faction:Faction, direction:1, x:X-1, y:Y-1, morale:MoraleIndex, hpModifier:0};
 
 	let UnitData={
-			name: (CustomName??SpecialName)?? "",
-			description: (CustomDesc??SpecialDesc)?? "",
-			ID:"Unit "+MapRoster.length,
-			index:MapRoster.length-1,
-			x:X-1, 
-			y:Y-1, 
-			unitType:Type,
-			faction:Faction,
-			coallition:Factions[Faction].faction, 
-			damage:Units[Type].Attack, 
-			damageType:Units[Type].Weapon,
-			minR:Units[Type].MinRange,
-			maxR:Units[Type].MaxRange, 
-			life:Math.round(Units[Type].HP*(LifeIndex??1)), 
-			armor:Units[Type].Armor, 
-			speed:Units[Type].Speed, 
-			movementType:Units[Type].Movement, 
-			morale:Morale??MoraleIndex,
-			direction:Direction??1
+		ID:"Unit "+ MapRoster.length,
+		index:MapRoster.length-1,
+		x:X-1, 
+		y:Y-1, 
+		unitType:Type,
+		faction:Faction,
+		coallition:Factions[Faction].faction, 
+		damage:Units[Type].Attack, 
+		damageType:Units[Type].Weapon,
+		minR:Units[Type].MinRange,
+		maxR:Units[Type].MaxRange, 
+		life:Math.round(Units[Type].HP*(LifeIndex??1)), 
+		armor:Units[Type].Armor, 
+		speed:Units[Type].Speed, 
+		movementType:Units[Type].Movement, 
+		morale:Morale??MoraleIndex,
+		direction:Direction??1
 	};
 	//alert(UnitData.direction??1);
 	//alert(UnitData.x+" "+UnitData.y);
@@ -6240,7 +6028,7 @@ function RecruitUnit(Class){
 				Crep.style.zIndex=4;
 				Crep.addEventListener("click",function(){
 					if(YourMoney>=Units[Class].Cost*CostFactor){
-					DeployUnit(i,j,Class,PlayerChoiceFaction);
+					DeployUnit(i, j, Class, PlayerChoiceFaction);
 					let pos=document.getElementById("Crep-"+i+"-"+j);
 					pos.remove();
 					}else{RemoveKebabIMeanBlep();
@@ -7549,7 +7337,7 @@ function RollMapEditor(Direction){
 	if(Direction==3){document.getElementById('TileContainer').scrollBy(0,280)};
 	if(Direction==4){document.getElementById('TileContainer').scrollBy(-280,0)};};
 function RunEvent(Event){
-
+	console.log(Event);
 	if(Event.Intralogue!=0){if(DialogueChoice && Event.FactionTarget==PlayerChoiceFaction){launchDialogueBloc(Language.IntraeventTranscripts[Event.Intralogue],0)}};
 
 					if(Event.SummonUnits.length>0){for(let c=0;c<Event.SummonUnits.length;c++){
@@ -7569,7 +7357,7 @@ function RunEvent(Event){
 						//alert(rostermap[newunit.x-1][newunit.y-1].index+" "+[newunit.x-1,newunit.y-1]);
 
 							if(SpilloverFraction.length==0){MapRoster[rostermap[newunit.x-1][newunit.y-1].index].life=0; rostermap[newunit.x-1][newunit.y-1].life=0; UnitLost(rostermap[newunit.x-1][newunit.y-1].index)}};
-						DeployUnit(newunit.x,newunit.y,newunit.id,newunit.all,newunit.dir,newunit.hpi,newunit.mor,Language.UnitSpecialNames[newunit.cun??0],newunit.spn,Language.UnitSpecialDesc[newunit.cud??0],newunit.spd);
+						DeployUnit(newunit.x, newunit.y, newunit.id, newunit.all, newunit.dir, newunit.hpi, newunit.mor, Language.UnitSpecialNames[newunit.cun??0], newunit.spn,Language.UnitSpecialDesc[newunit.cud??0], newunit.spd);
 						for(let d=0;d<AttackOrder.length;d++){if(newunit.all==AttackOrder[d]){Constants.Funds[d+1]+=Units[newunit.id].Cost/2}; YourMoney=Constants.Funds[1]};
 						setTimeout(function(){document.getElementById("Entity "+newunit.x+"X"+newunit.y).style.visibility='visible';
 							document.getElementById("Entity "+newunit.x+"X"+newunit.y).style.top=(Units[newunit.id].StaticOffsetY??[0,0,0,0,0])[newunit.dir]+"px";
@@ -7821,17 +7609,26 @@ function SelectSpecialLevel(Level){
 		document.getElementById("NatOpP").style.visibility="inherit";
 		document.getElementById("NatOpP").innerHTML=Language.SystemTerms[30];
 		let MaxFactions=NivelVizat.Constants.Commanders.length-1;
-		for(let x=1;x<=MaxFactions;x++){document.getElementById("NatOp"+x).style.visibility='inherit';document.getElementById("NatOp"+x).style.filter=NivelVizat.Factions[NivelVizat.Constants.Commanders[x].Allegiance].ChromaCode};
+		for(let x=1; x<=MaxFactions; x++) {
+			document.getElementById("NatOp"+x).style.visibility='inherit';
+			document.getElementById("NatOp"+x).style.filter=NivelVizat.Factions[NivelVizat.Constants.Commanders[x].Allegiance].ChromaCode
+		}
+	}
+}
 
-
-		};
-
-
-	};
 function ShowcaseUnitCategory(Category){
-	EditorUnitClass=Category;
-	for(let a=1; a<=10; a++){document.getElementById('EditorUnitShowcase'+a).src='Assets/Units/Static/'+Units[Category*10-10+a].shortname+'2.PNG';
-	if(!Units[Category*10-10+a].MLPR??false){document.getElementById("EditorUnitMesh"+a).src="Assets/Units/StaticMeshes/"+Units[Category*10-10+a].shortname+"Mesh2.PNG"}else{document.getElementById("EditorUnitMesh"+a).src="Assets/Miscellaneous/Nothing.PNG"}};};
+	EditorUnitClass = Category;
+
+	for(let a = 1; a <= 10; a++) {
+		document.getElementById('EditorUnitShowcase'+a).src='Assets/Units/Static/'+Units[Category*10-10+a].shortname+'2.PNG';
+		if(!Units[Category*10-10+a].MLPR??false) {
+			document.getElementById("EditorUnitMesh"+a).src="Assets/Units/StaticMeshes/"+Units[Category*10-10+a].shortname+"Mesh2.PNG";
+		} else {
+			document.getElementById("EditorUnitMesh"+a).src="Assets/Miscellaneous/Nothing.PNG";
+		}
+	}
+}
+
 function ShowCharacterBio(){
 	document.getElementById("CommanderBio").style.visibility="visible";
 	document.getElementById("CommanderBio").style.border="3px solid "+GenericFactions[Commander.Allegiance].color;
@@ -7843,33 +7640,11 @@ function ShowCharacterBio(){
 
 	let Biography="";
 	for(let b=0; b<Commander.Description.length; b++){Biography+=Commander.Description[b]+"<br>"};
-	document.getElementById("CommanderBiography").innerHTML=Biography+"<br><br>"+("<span style='color:orange'>"+Commander.NicknameCommentary[0]+"</span>");};
-function SplashAttack(Atk,X,Y){
+	document.getElementById("CommanderBiography").innerHTML=Biography+"<br><br>"+("<span style='color:orange'>"+Commander.NicknameCommentary[0]+"</span>");
+}
 
-	if(rostermap[X][Y]!=0){
-		
-		let Def=rostermap[X][Y];
-		let DefenderTile=Terrain[Map[Def.x][Def.y]];
-		let DamageModifier=Atk.life/Units[Atk.unitType].HP;
-
-		if(hasCertainTrait(Atk.unitType,"Indomitable")){DamageModifier=1;};
-
-		if(Atk.damageType==Def.armor&&Atk.damageType!="Medium"){DamageModifier=DamageModifier*1.5;};
-		if(Atk.damageType=="Light"&&Def.armor=="Heavy"){DamageModifier=DamageModifier*0.5;};
-		if(Atk.damageType=="Heavy"&&Def.armor=="Light"){DamageModifier=DamageModifier*0.5;};
-
-		DamageModifier=DamageModifier*DefenderTile.protectionFactor;
-		DamageModifier*=(5+Atk.morale)/5;
-		if(Def.unitType<12 && hasCertainTrait(Atk.unitType,"Anti-Infantry")){DamageModifier*=3};
-		let Damage=Math.ceil(Atk.damage*DamageModifier);
-		Damage=Math.max(Damage,0);
-		//alert(DamageModifier);
-		Def.life-=Damage;
-		if(Def.life<=0){setTimeout(UnitLost,700,Def.index);};
-	};};
+//NEYN TODO!
 function StorkPickup(Unit){
-	const { language } = battalion;
-	//alert(IsStork);
 	if(IsStork){
 		let HPIndex=rostermap[Unit.x][Unit.y].life/30;
 		let Cargo=rostermap[Unit.x][Unit.y].cargo;
@@ -7885,17 +7660,6 @@ function StorkPickup(Unit){
 		rostermap[Unit.x][Unit.y].speed=Units[Cargo].Speed;
 		rostermap[Unit.x][Unit.y].movementType=Units[Cargo].Movement;
 
-		if((MapRoster[Unit.index].CustomName ?? true) || (MapRoster[Unit.index].SpecialName ?? true)){
-			const name = language.get(Units[Cargo].name);
-
-			rostermap[Unit.x][Unit.y].name = name;
-		}
-
-		if((MapRoster[Unit.index].CustomDescription ?? true) || (MapRoster[Unit.index].SpecialDescription ?? true)){
-			const desc = language.get(Units[Cargo].desc);
-
-			rostermap[Unit.x][Unit.y].description = desc;
-		};
 		document.getElementById("Entity "+(Unit.x-StandardX+1)+"X"+(Unit.y-StandardY+1)).src="Assets/Units/Static/"+Units[Cargo].shortname+rostermap[Unit.x][Unit.y].direction+".PNG";
 
 	}else{
@@ -7916,24 +7680,11 @@ function StorkPickup(Unit){
 		rostermap[Unit.x][Unit.y].maxR=1;
 		rostermap[Unit.x][Unit.y].speed=7;
 		rostermap[Unit.x][Unit.y].movementType="Flight";
-		//Stork Transport -> UNIT_NAME_STORK_TRANSPORT
-		if((MapRoster[Unit.index].CustomName ?? true) || (MapRoster[Unit.index].SpecialName ?? true)){
-			const name = language.get("UNIT_NAME_STORK_TRANSPORT");
-
-			rostermap[Unit.x][Unit.y].name = name;
-		}
-
-		if((MapRoster[Unit.index].CustomDescription ?? true) || (MapRoster[Unit.index].SpecialDescription ?? true)){
-			const desc = language.get("UNIT_DESC_STORK_TRANSPORT");
-
-			rostermap[Unit.x][Unit.y].description = desc;
-		}
 
 		document.getElementById("Entity "+(Unit.x-StandardX+1)+"X"+(Unit.y-StandardY+1)).src="Assets/Units/Static/Stork"+rostermap[Unit.x][Unit.y].direction+".PNG";
-		//rostermap[Unit.x][Unit.y].name="";
+	}
+}
 
-		//alert(rostermap[Unit.x][Unit.y].unitType);
-	};};
 function TestMap(){
 	//alert(EditorMap[0]);
 	//let MapKey="[";

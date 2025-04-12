@@ -7,7 +7,6 @@ const Entity = function() {
     this.customDesc = "";
     this.customName = "";
     this.damage = 0;
-    this.description = "";
     this.direction = Battalion.DIRECTION.NONE;
     this.faction = 1;
     this.hasSpecialDesc = 0;
@@ -21,10 +20,14 @@ const Entity = function() {
     this.minR = 1;
     this.morale = 0;
     this.movementType = "";
-    this.name = "";
     this.speed = 0;
     this.unitType = -1;
     this.willAmbush = false;
     this.x = -1;
     this.y = -1;
 }
+
+Entity.TYPE = {
+    UNIT: 0,
+    BUILDING: 1
+};
