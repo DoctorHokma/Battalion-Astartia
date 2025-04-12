@@ -132,6 +132,32 @@ const T2 = [
 	"TRAIT_DESC_INFLAMING"
 ];
 
+/**
+ * neyn 12.04.2025
+ * 
+ * Helper function to re-order traits.
+ * 
+ * @param {string} fName 
+ */
+const exportTraits = function(fName){
+    const list = Object.keys(TRAITS);
+    const file = new InefficientJSONExporter(4);
+    file.open();
+
+    for(let i = 0; i < list.length; i++) {
+        const traitID = list[i];
+        const trait = TRAITS[traitID];
+        const line = { "name": trait.name, "desc": trait.desc, "icon": `Assets/Traits/${traitID}.png` };
+
+        file.writeLine(traitID, 1, line);
+    }
+
+    file.close();
+    file.download(fName);
+};
+
+//exportTraits("traits");
+
 /*
 orderedExport("esp_t1", T1, [
     "Desigual","Escabroso","Precipitado","Infranqueable","Aguas engañosas",

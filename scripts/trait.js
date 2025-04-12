@@ -1,4 +1,36 @@
 /**
+ * neyn 07.04.2025
+ * 
+ * @param {int} typeID 
+ * @param {string} traitID 
+ * @returns 
+ */
+const hasCertainTrait = function(typeID, traitID){
+	const unitType = UNITS[typeID];
+
+	if(!unitType) {
+		console.warn(`Unit ${typeID} does not exist!`);
+		return false;
+	}
+
+	const traitType = TRAITS[traitID];
+
+	if(!traitType) {
+		console.warn(`Trait ${traitID} does not exist!`);
+		return false;
+	}
+
+	const { tag1, tag2, tag3, tag4 } = unitType;
+
+	if(tag1 === traitID) return true;
+	if(tag2 === traitID) return true;
+	if(tag3 === traitID) return true;
+	if(tag4 === traitID) return true;
+
+	return false;
+}
+
+/**
  * neyn 11.04.2025
  */
 const hideTraitDetail = function() {
@@ -97,4 +129,23 @@ const traitDetail = function(tagID, useCase){
 	}
 
 	showTraitDetail(battalion, traitID);
+}
+
+/**
+ * neyn 12.04.2025
+ * 
+ * @param {string} traitID 
+ * @returns {string}
+ */
+const getTraitIcon = function(traitID) {
+	const trait = TRAITS[traitID];
+
+	if(!trait) {
+		console.warn(`Trait ${traitID} does not exist!`);
+		return "";
+	}
+
+	const { icon } = trait;
+
+	return icon;
 }

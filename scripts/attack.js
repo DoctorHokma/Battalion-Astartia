@@ -109,7 +109,7 @@ const getHitAnimStyle = function(attacker) {
  */
 const getDamageModifier = function(attacker, defender, worldMap, attackType) {
 	const DefenderTile = Terrain[worldMap[defender.x][defender.y]];
-    const biomeLogisticFactor = BiomeRegistry[BiomeMap[attacker.x][attacker.y]].LogisticIndex;
+    const biomeLogisticFactor = BIOMES[BiomeMap[attacker.x][attacker.y]].logisticIndex;
 
 	let DamageModifier = 1;
 
