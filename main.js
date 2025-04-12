@@ -1162,35 +1162,9 @@ function AnalyseSquare(entityType,X,Y){
 		document.getElementById("DamageHeader").innerHTML=Language.SystemTerms[45];
 		document.getElementById("MovementHeader").innerHTML=Language.SystemTerms[46];
 
-		let Name = "";
-
-		if(unit.customName) {
-			Name = unit.customName;
-		} else if(unit.hasSpecialName) {
-			Name = Language.UnitSpecialNames[unit.hasSpecialName];
-		} else {
-			const unitType = Units[unit.unitType];
-			const name = language.get(unitType.name);
-
-			Name = name;
-		}
-
-		let Desc = "";
-
-		if(unit.customDesc) {
-			Desc = unit.customDesc;
-		} else if(unit.hasSpecialDesc) {
-			Desc = Language.UnitSpecialDesc[unit.hasSpecialDesc];
-		} else {
-			const unitType = Units[unit.unitType];
-			const desc = language.get(unitType.desc);
-
-			Desc = desc;
-		}
-
-		document.getElementById("DetBarName").innerHTML=Name;
+		document.getElementById("DetBarName").innerHTML=unit.getName(battalion);
 		document.getElementById("DetBarDescription").style.width="210px";
-		document.getElementById("DetBarDescription").innerHTML=Desc;
+		document.getElementById("DetBarDescription").innerHTML=unit.getDescription(battalion);
 		document.getElementById("DetBar").src="Assets/Miscellaneous/UnitDetailBar.PNG";
 
 		document.getElementById("Health").style.visibility="inherit";
@@ -1320,7 +1294,7 @@ function Battle_Won(){
 //NEYN TODO!!!
 function Build(Structure){
 	const unitType = Units[Structure];
-	//alert(hasCertainTrait(Structure,"Seabound"));
+
 	if(unitType.Cost > YourMoney || (!CanBuildCoastal && hasCertainTrait(Structure, "Seabound"))) {
 		alert("Cannot build");
 		return;
@@ -1330,71 +1304,53 @@ function Build(Structure){
 	document.getElementById('BuildingConstructionPanel').style.visibility = "hidden";
 	YourMoney -= unitType.Cost;
 
-	let X=UnitIcs;
-	let Y=UnitIgrec;
-	let Santier={
-		ID:"Unit "+MapRoster.length,
-		index:MapRoster.length-1,
-		x:X, 
-		y:Y, 
-		unitType:0,
-		faction:PlayerChoiceFaction,
-		coallition:Factions[PlayerChoiceFaction].faction,
-		damage:Units[0].Attack, 
-		damageType:Units[0].Weapon,
-		minR:Units[0].MinRange,
-		maxR:Units[0].MaxRange, 
-		life:Units[0].HP, 
-		armor:Units[0].Armor, 
-		speed:Units[0].Speed, 
-		movementType:Units[0].Movement, 
-		morale:0,
-		direction:3,
-		building:Structure,
-		constructionTime:unitType.Timer
-	};
+	const X = UnitIcs;
+	const Y = UnitIgrec;
+	const unit = new Entity(`Unit ${MapRoster.length}`);
 
-	MapRoster[MapRoster.length]=Santier;
-	rostermap[X][Y]=Santier;
+	unit.initConstruction(MapRoster.length, X, Y, Structure);
+
+	MapRoster[MapRoster.length] = unit;
+	rostermap[X][Y] = unit;
 	document.getElementById('Entity '+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.visibility="visible";
 	document.getElementById('EntityCore '+(X+1-StandardX)+"X"+(Y+1-StandardY)).src="Assets/Units/Static/Skele3.PNG";
 }
 
-//NEYN TODO!!!
-function BuildingComplete(Index){
-	let type=MapRoster[Index].building;
-	let Building={
-			ID:"Unit "+MapRoster.length,
-			index:Index,
-			x:MapRoster[Index].x, 
-			y:MapRoster[Index].y, 
-			unitType:type,
-			faction:PlayerChoiceFaction,
-			coallition:Factions[PlayerChoiceFaction].faction,
-			damage:Units[type].Attack, 
-			damageType:Units[type].Weapon,
-			minR:Units[type].MinRange,
-			maxR:Units[type].MaxRange, 
-			life:Units[type].HP, 
-			armor:Units[type].Armor, 
-			speed:Units[type].Speed, 
-			movementType:Units[type].Movement, 
-			morale:0,
-			direction:3
-		};
-		//alert(Building.x+" "+Building.y);
-		MapRoster[Index]=Building;
-		rostermap[Building.x][Building.y]=Building;
+/**
+ * neyn 12.04.2025
+ * 
+ * @param {int} index 
+ * @returns 
+ */
+const advanceBuilding = function(index) {
+	const construction = MapRoster[index];
 
-		if(Building.x>=StandardX && Building.x<StandardX+10 && Building.y>=StandardY && Building.y<StandardY+10){document.getElementById("EntityCore "+(Building.x+2-StandardX)+"X"+(Building.y+2-StandardY)).src="Assets/Units/Static/"+Units[Building.unitType].shortname+"3.PNG";
-			document.getElementById("EntityCore "+(Building.x+2-StandardX)+"X"+(Building.y+2-StandardY)).style.filter=Factions[PlayerChoiceFaction].ChromaCode;
+	if(construction.type !== Entity.TYPE.CONSTRUCTION) {
+		return;
+	}
 
-	};
+	construction.constructionTime--;
 
-	SubRosters[0][SubRosters[0].length]=Building;
+	if(construction.constructionTime > 0) {
+		return;
+	}
+
+	construction.completeBuilding();
+
+	if(construction.x >= StandardX && construction.x < StandardX + 10 && construction.y >= StandardY && construction.y < StandardY + 10) {
+		const core = document.getElementById("EntityCore "+(construction.x+2-StandardX)+"X"+(construction.y+2-StandardY));
+
+		core.src="Assets/Units/Static/"+Units[construction.unitType].shortname+"3.PNG";
+		core.style.filter=Factions[PlayerChoiceFaction].ChromaCode;
+	}
+
+	SubRosters[0][SubRosters[0].length] = construction;
 }
 
-function Buttsecks(){document.getElementById('Disclaimer').style.visibility='hidden';};
+function Buttsecks() {
+	document.getElementById('Disclaimer').style.visibility='hidden';
+}
+
 function CallCampaignScreen(){
 
 	Emblem="Assets/Emblems/Emblem"+Factions[ChosenNation].Preffix+".PNG";
@@ -2026,83 +1982,41 @@ function CastEntityMap(Map, Roster){
 	for(j=0;j<mapHeight;j++){rostermap[j]=line};
 		rostermap=JSON.parse(JSON.stringify(rostermap));
 
-	//alert(rostermap.length);
 	for(var k = 1; k < Roster.length; k++) {
-		const element = Roster[k];
-		const { 
-			id, //int
-			faction, //int
-			x, //int
-			y, //int
-			morale, //float
-			direction, //int
-			hpModifier, //float
-			cargo = 0, //int
-			CustomName = "", //string
-			CustomDescription = "", //string
-			SpecialName, //int
-			SpecialDescription //int
-		} = element;
+		const config = Roster[k];
+		const unit = new Entity(`Unit ${k}`);
 
-		const unitType = Units[id];
+		unit.initUnit(config, k);
 
-		const unit = {
-			ID: "Unit " + k,
-			index: k,
-			x: x, 
-			y: y, 
-			unitType: id,
-			faction: faction,
-			coallition: Factions[faction].faction, 
-			damage: unitType.Attack, 	
-			damageType: unitType.Weapon,
-			minR: unitType.MinRange,
-			maxR: unitType.MaxRange, 
-			life: Math.round(unitType.HP * (1 + hpModifier)), 
-			armor: unitType.Armor, 
-			speed: unitType.Speed, 
-			movementType: unitType.Movement, 
-			morale: morale,
-			direction: direction,
-			cargo: cargo,
-			isCloaked: Cloak(x, y, id, Factions[faction].faction),
-			hasSpecialName: SpecialName ?? 0,
-			hasSpecialDesc: SpecialDescription ?? 0,
-			customName: CustomName,
-			customDesc: CustomDescription
-		}
+		MapRoster[k] = unit;
+		rostermap[config.x][config.y] = unit;	
 
-		MapRoster[k]= unit;
-		rostermap[x][y] = unit;	
+		const X = config.x + 1;
+		const Y = config.y + 1;
 
-		let ics=Roster[k].x;
-		let igrec=Roster[k].y;
-
-		document.getElementById("EntityCore "+(ics+1)+"X"+(igrec+1)).style.visibility="inherit";
-		document.getElementById("Entity "+(ics+1)+"X"+(igrec+1)).style.top=(Units[unit.unitType].StaticOffsetY ?? [0,0,0,0,0])[unit.direction] + "px";
-		document.getElementById("Entity "+(ics+1)+"X"+(igrec+1)).style.left=(Units[unit.unitType].StaticOffsetX ?? [0,0,0,0,0])[unit.direction] + "px";
-		document.getElementById("EntityCore "+(ics+1)+"X"+(igrec+1)).src="Assets/Units/Static/"+Units[unit.unitType].shortname+unit.direction+".PNG";
+		document.getElementById("EntityCore "+(X)+"X"+(Y)).style.visibility="inherit";
+		document.getElementById("Entity "+(X)+"X"+(Y)).style.top=(Units[unit.unitType].StaticOffsetY ?? [0,0,0,0,0])[unit.direction] + "px";
+		document.getElementById("Entity "+(X)+"X"+(Y)).style.left=(Units[unit.unitType].StaticOffsetX ?? [0,0,0,0,0])[unit.direction] + "px";
+		document.getElementById("EntityCore "+(X)+"X"+(Y)).src="Assets/Units/Static/"+Units[unit.unitType].shortname+unit.direction+".PNG";
 
 		if(!Units[unit.unitType].MLPR) {
-			document.getElementById("EntityMesh "+(ics+1)+"X"+(igrec+1)).style.visibility="inherit";
-			document.getElementById("EntityMesh "+(ics+1)+"X"+(igrec+1)).src="Assets/Units/StaticMeshes/"+Units[unit.unitType].shortname+"Mesh"+unit.direction+".PNG";
-		}
-		//alert(Factions);
-		let Filter=Factions[unit.faction].ChromaCode;
-
-
-		//alert(rostermap[unit.x][unit.y].isCloaked);
-		if(rostermap[unit.x][unit.y].isCloaked) {
-			document.getElementById("Entity "+(ics+1)+"X"+(igrec+1)).style.filter="opacity(0%)";
+			document.getElementById("EntityMesh "+(X)+"X"+(Y)).style.visibility="inherit";
+			document.getElementById("EntityMesh "+(X)+"X"+(Y)).src="Assets/Units/StaticMeshes/"+Units[unit.unitType].shortname+"Mesh"+unit.direction+".PNG";
 		}
 
-		document.getElementById("EntityCore "+(ics+1)+"X"+(igrec+1)).style.filter=Filter;
+		let Filter = Factions[unit.faction].ChromaCode;
+
+		if(unit.isCloaked) {
+			document.getElementById("Entity "+(X)+"X"+(Y)).style.filter="opacity(0%)";
+		}
+
+		document.getElementById("EntityCore "+(X)+"X"+(Y)).style.filter=Filter;
 
 		/*
 		//if(ics>=StandardX && ics<StandardX+10 && igrec>=StandardY && igrec <StandardY+10){
 		if(true){
 			
-			//drawUnit(Map, Roster[k].id, Roster[k].direction, Roster[k].x, Roster[k].y, k, rostermap);
+			//drawUnit(Map, config.id, config.direction, config.x, config.y, k, rostermap);
 			//alert(unit.x+" "+unit.y);
 			//for(let i=0; i<0+10; i++){for(let j=0; j<0+10; j++){}};
 		}
@@ -2524,6 +2438,7 @@ function Cloak(X,Y,type,faction){
 		return Stealth;
 }
 
+//neyn TODO!!!
 function ConvoyPickup(Unit){
 	const { language } = battalion;
 
@@ -2744,7 +2659,6 @@ function DisplayRegions(){
 };
 //NEYN TODO!!!
 function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomName, SpecialName, CustomDesc, SpecialDesc) {
-	//alert(Faction);
 	let CostFactor=1;
 	if(Speciation==-2){CostFactor=0.8};
 	if(Speciation==-1){CostFactor=0.9};
@@ -2755,60 +2669,53 @@ function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomNam
 	if(CustomName==""){CustomName=null};
 	//alert(Math.round(Units[Type].Cost));
 	//alert(DaoLedger[PlayerChoiceFaction/2]);
-	let MoraleIndex=0;
-	MoraleIndex+=Math.min(5,Math.max(-4,DaoLedger[PlayerChoiceFaction]/2));
-	MoraleIndex+=Speciation;
-	let RosterData={index:MapRoster.length-1, id:Type, faction:Faction, direction:1, x:X-1, y:Y-1, morale:0, hpModifier:0};
+	let MoraleIndex = 0;
 
-	MapRoster[MapRoster.length]={index:MapRoster.length-1, id:Type, faction:Faction, direction:1, x:X-1, y:Y-1, morale:MoraleIndex, hpModifier:0};
+	//MoraleIndex+=Math.min(5,Math.max(-4,DaoLedger[PlayerChoiceFaction]/2));
+	MoraleIndex = 5;
+	MoraleIndex += Speciation;
 
-	let UnitData={
-		ID:"Unit "+ MapRoster.length,
-		index:MapRoster.length-1,
-		x:X-1, 
-		y:Y-1, 
-		unitType:Type,
-		faction:Faction,
-		coallition:Factions[Faction].faction, 
-		damage:Units[Type].Attack, 
-		damageType:Units[Type].Weapon,
-		minR:Units[Type].MinRange,
-		maxR:Units[Type].MaxRange, 
-		life:Math.round(Units[Type].HP*(LifeIndex??1)), 
-		armor:Units[Type].Armor, 
-		speed:Units[Type].Speed, 
-		movementType:Units[Type].Movement, 
-		morale:Morale??MoraleIndex,
-		direction:Direction??1
-	};
-	//alert(UnitData.direction??1);
-	//alert(UnitData.x+" "+UnitData.y);
-	rostermap[X-1][Y-1]=UnitData;
-	MapRoster[MapRoster.length-1]=UnitData;
-	//alert(UnitData.name);
-	//alert(rostermap[UnitData.x][UnitData.y].index);
+	const unit = new Entity(`Unit ${MapRoster.length}`);
+
+	unit.initUnit({
+		id: Type,
+		faction: Faction,
+		x: X - 1,
+		y: Y - 1,
+		morale: Morale ?? MoraleIndex,
+		direction: Direction ?? Battalion.DIRECTION.NORTH,
+		hpModifier: LifeIndex ?? 0
+	}, MapRoster.length);
+
+	rostermap[X - 1][Y - 1] = unit;
+	MapRoster[MapRoster.length] = unit;
+
 	let fAcTiOn=0;
-	for(let i=0;i<SubRosters.length;i++){if(Faction==SubRosters[i][0].faction){fAcTiOn=i}};
-	//alert(fAcTiOn);
-		let RecruitmentSFX=0;
-		if(Math.ceil(Type/10)==1){RecruitmentSFX="InfantryReady"};
-		if(Math.ceil(Type/10)==2){RecruitmentSFX="VehicleReady"};
-		if(Math.ceil(Type/10)==3){RecruitmentSFX="TankReady"};
-		if(Math.ceil(Type/10)==4){RecruitmentSFX="ArtilleryReady"};
-		if(Math.ceil(Type/10)==5){RecruitmentSFX="AircraftReady"};
-		if(Math.ceil(Type/10)==6){RecruitmentSFX="ShipReady"};
 
-		battalion.soundPlayer.playSound(RecruitmentSFX);
+	for(let i = 0; i < SubRosters.length; i++) {
+		if(Faction == SubRosters[i][0].faction) fAcTiOn = i;
+	}
 
-	SubRosters[fAcTiOn][SubRosters[fAcTiOn].length]=UnitData;
-	//console.log(MapRoster);
-	//console.log(SubRosters[fAcTiOn]);
-	document.getElementById("EntityCore "+X+"X"+Y).src="Assets/Units/Static/"+Units[Type].shortname+UnitData.direction+".PNG";
+	//TODO: SFX per type, not in code!
+	let RecruitmentSFX=0;
+	if(Math.ceil(Type/10)==1){RecruitmentSFX="InfantryReady"};
+	if(Math.ceil(Type/10)==2){RecruitmentSFX="VehicleReady"};
+	if(Math.ceil(Type/10)==3){RecruitmentSFX="TankReady"};
+	if(Math.ceil(Type/10)==4){RecruitmentSFX="ArtilleryReady"};
+	if(Math.ceil(Type/10)==5){RecruitmentSFX="AircraftReady"};
+	if(Math.ceil(Type/10)==6){RecruitmentSFX="ShipReady"};
+
+	battalion.soundPlayer.playSound(RecruitmentSFX);
+
+	SubRosters[fAcTiOn][SubRosters[fAcTiOn].length] = unit;
+
+	document.getElementById("EntityCore "+X+"X"+Y).src="Assets/Units/Static/"+Units[Type].shortname+unit.direction+".PNG";
 	document.getElementById("Entity "+X+"X"+Y).style.visibility="visible";
 	document.getElementById("Entity "+X+"X"+Y).style.left=(Units[Type].StaticOffsetX??[0,0,0,0,0])[1]+"px";
 	document.getElementById("Entity "+X+"X"+Y).style.top=(Units[Type].StaticOffsetY??[0,0,0,0,0])[1]+"px";
 	document.getElementById("EntityCore "+X+"X"+Y).style.filter=Factions[Faction].ChromaCode;
-};
+}
+
 function drawTile(host,image,x,y,terrain){
 	var newPic=document.createElement("img");
 	newPic.src=image;
@@ -2832,6 +2739,7 @@ function drawEditorTile(){
 	newPic.addEventListener("click", function(){});
 	//if(image=="Blep.png"){newPic.style.zIndex=2;};
 	document.getElementById(host).appendChild(newPic);};
+
 function drawUnit(Map, UnitType, direction, x, y, index, rostermap){
 	//drawUnit seems to be a residual function
 	var newPic=document.createElement("img");
@@ -2849,7 +2757,9 @@ function drawUnit(Map, UnitType, direction, x, y, index, rostermap){
 	//newPic.style.opacity=0.5;
 	document.getElementById("UnitMap").appendChild(newPic);
 	//document.getElementById(rostermap[x][y].ID).addEventListener("click", function(){selectUnit(Map, unit, x, y);});
-	document.getElementById(rostermap[x][y].ID).addEventListener("click", function(){AnalyseSquare('Unit', index)});};
+	document.getElementById(rostermap[x][y].ID).addEventListener("click", function(){AnalyseSquare('Unit', index)});
+}
+
 function EndBattle(){
 	//alert(Victory);
 	battalion.musicPlayer.stop();
@@ -3119,7 +3029,7 @@ function EndTurn(SubRosters,Map,Constants,Roster){
 	CurrentTurn=(Turn-1)%AttackOrder.length;
 
 	//console.log(Roster);
-	Inspection(Turn,Constants,Roster);
+	Inspection(Turn, Constants);
 
 	for(let a=1; a<=GlassPanels; a++){
 		let dudeIndex=SubRosters[(Turn-1+a)%AttackOrder.length][0].faction;
@@ -4315,7 +4225,12 @@ function initializeSpecialBattle(Level){
 
 	EndTurn(SubRosters,Map,Constants,Roster);
 	};
-function Inspection(Turn,Constants,Roster){
+/**
+ * 
+ * @param {int} Turn 
+ * @param {object} Constants 
+ */
+function Inspection(Turn, Constants){
 	let Resolution=false;
 	let Survive=Constants.Survival;
 	let TimeLimit=Constants.TimeLimit;
@@ -5196,7 +5111,7 @@ function MoveUnit(unit, path){
 		let mustCheck=false;
 		for(let l=0; l<Constants.Capture.length; l++){if(destX==Constants.Capture[l].x&&destY==Constants.Capture[l].y){mustCheck=true}};
 		for(let l=0; l<Constants.Defend.length; l++){if(destX==Constants.Defend[l].x&&destY==Constants.Defend[l].y){mustCheck=true}};
-		if(mustCheck){Inspection(Turn,Constants,Roster)};
+		if(mustCheck){Inspection(Turn, Constants)};
 
 			}else{
 		if(MapRoster[unit].faction==PlayerChoiceFaction){document.getElementById("Marker "+(MapRoster[unit].x+1)+"X"+(MapRoster[unit].y+1)).style.visibility="visible"};
@@ -5868,12 +5783,11 @@ function PITurn(Roster,Map,Constants){
 	//alert(Roster.length);
 	RemoveKebabIMeanBlep();
 
-			for(let i=0; i<MapRoster.length;i++){
-			if(MapRoster[i].unitType==0 && MapRoster[i].faction==PlayerChoiceFaction){
-			//alert(i);
-			MapRoster[i].constructionTime-=1;
-			if(MapRoster[i].constructionTime<1){BuildingComplete(i)};
-			};};
+	for(let i=0; i < MapRoster.length;i++){
+		if(MapRoster[i].unitType == 0 && MapRoster[i].faction == PlayerChoiceFaction) {
+			advanceBuilding(i);
+		}
+	}
 
 
 	LastMove={ID:0};

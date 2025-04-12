@@ -33,7 +33,7 @@ const getInterceptorByTrait = function(attacker, map, roster, traitID) {
     for(let i = startX; i < endX; i++) {
         for(let j = startY; j < endY; j++) {
             const entity = roster[i][j];
-            const canIntercept = entity && entity.hasCertainTrait(entity.unitType, traitID);
+            const canIntercept = entity && hasCertainTrait(entity.unitType, traitID);
 
             if(canIntercept) {
                 const range = (i - attacker.x) * (i - attacker.x) + (j - attacker.y) * (j - attacker.y);
@@ -99,15 +99,6 @@ const getHitAnimStyle = function(attacker) {
 }
 
 /**
- * neyn 10.04.2025
- * 
- * @param {int} morale 
- */
-const getMoraleAmplifier = function(morale) {
-	return (5 + morale) / 5;
-}
-
-/**
  * neyn 12.04.2025
  * 
  * @param {object} attacker 
@@ -152,7 +143,7 @@ const getDamageModifier = function(attacker, defender, worldMap, attackType) {
         DamageModifier *= 0.8;
     }
 
-	DamageModifier *= getMoraleAmplifier(attacker.morale);
+	DamageModifier *= (5 + attacker.morale) / 5;
 
 	if(defender.unitType.movementType == "Foot" && hasCertainTrait(attacker.unitType, "Anti-Infantry")) {
         DamageModifier *= 3;
@@ -221,8 +212,6 @@ const getDamage = function(attacker, defender, worldMap, attackType) {
 		}
 	}
 
-	console.log(Damage);
-	
 	return Damage;
 }
 
@@ -746,7 +735,7 @@ function Counterattack(Attacker, Defender, Map){
 		Atk.life += HealIndex;
 	}
 
-	Def.life-=Damage;
+	Def.life -= Damage;
 
 	if(Def.life <= 0) {
 		setTimeout(() => {
@@ -770,7 +759,7 @@ function SplashAttack(Atk, Map, X, Y){
 	}
 
 	const Def = rostermap[X][Y];
-	const Damage = getDamage(Atk, Def, Map);
+	const Damage = getDamage(Atk, Def, Map, ATTACK_TYPE.FIRST);
 
 	Def.life -= Damage;
 
