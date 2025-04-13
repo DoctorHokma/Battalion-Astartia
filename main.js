@@ -8054,7 +8054,7 @@ function UndoMove(){
 		if(LastMove.E2ID??0!=0){document.getElementById("EntityCore "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).src="Assets/Units/Static/"+Units[LastMove.GRV2.unitType].shortname+LastMove.GRV2.direction+".PNG";
 		document.getElementById("EntityCore "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.visibility="inherit";
 		document.getElementById("EntityCore "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.top="0px";
-		if(!Units[LastMove.GRV2.unitType].MLPR??false){document.getElementById("EntityMesh "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).src="Assets/Units/StaticMeshes/"+Units[LastMove.GRV.unitType].shortname+"Mesh"+LastMove.GRV2.direction+".PNG"}else{document.getElementById("EntityMesh "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.visibility="hidden";};
+		if(!Units[LastMove.GRV2.unitType].MLPR??false){document.getElementById("EntityMesh "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).src="Assets/Units/StaticMeshes/"+Units[LastMove.GRV2.unitType].shortname+"Mesh"+LastMove.GRV2.direction+".PNG"}else{document.getElementById("EntityMesh "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.visibility="hidden";};
 		document.getElementById("Entity "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.top=(Units[LastMove.GRV2.unitType].StaticOffsetY ?? [0,0,0,0,0])[LastMove.GRV2.direction]+"px";
 		document.getElementById("Entity "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.left=(Units[LastMove.GRV2.unitType].StaticOffsetX ?? [0,0,0,0,0])[LastMove.GRV2.direction]+"px";
 		document.getElementById("Entity "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.visibility="visible"
