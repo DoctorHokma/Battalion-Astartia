@@ -7885,7 +7885,7 @@ function UndoMove(){
 		if(LastMove.encore??false){MapRoster[LastMove.ID].canEncore=true};
 		//alert(rostermap[exX][exY]);
 		//alert(AdjacentCloakers);
-		if(Units[MapRoster[LastMove.ID].unitType].MaxRange==1 && (LastMove.encore??false)){document.getElementById("Marker "+(exX+1)+"X"+(exY+1)).style.visibility="hidden"};
+		//if(Units[MapRoster[LastMove.ID].unitType].MaxRange==1 && (LastMove.encore??false)){document.getElementById("Marker "+(exX+1)+"X"+(exY+1)).style.visibility="hidden"};
 		for(let a=0;a<AdjacentCloakers.length;a++){
 			//the last part of the 1-directional might have something to do with uncloaking allies, but that never happens. Maybe it was once an issue but not anymore?
 			if(AdjacentCloakers[a]==1){document.getElementById("Entity "+(exX)+"X"+(exY+1)).style.filter="opacity(0%)"; MapRoster[rostermap[exX-1][exY].index].isCloaked=true; if(rostermap[exX-1][exY].coallition==Factions[PlayerChoiceFaction].faction){document.getElementById("Entity "+(exX)+"X"+(exY+1)).style.filter="opacity(50%)"}};
