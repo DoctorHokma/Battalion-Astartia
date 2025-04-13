@@ -41,7 +41,6 @@ Entity.TYPE = {
     BUILDING: 3
 };
 
-
 Entity.prototype.onTurnPassed = function() {
     
 }

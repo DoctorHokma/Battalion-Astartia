@@ -5,7 +5,6 @@ TEM={
 	UnitSpecialDesc:[],
 	TerrainName:[],
 	TerrainDesc:[],
-	NationName:[],
 	NationDesc:[],
 	Intralogues:[],
 	ChapterName:[],

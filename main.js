@@ -7,6 +7,7 @@ battalion.language.addLanguage(Battalion.LANGUAGE.PORTUGUESE, LANGUAGE_PORTUGUES
 battalion.language.addLanguage(Battalion.LANGUAGE.ROMANIAN, LANGUAGE_ROMANIAN);
 battalion.language.addLanguage(Battalion.LANGUAGE.TURKISH, LANGUAGE_TURKISH);
 battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
+battalion.timer.start();
 
 var ActionRegister = {}; //used by ai
 var ActiveRoster = []; //used by ai
@@ -1527,9 +1528,10 @@ function castMap(){
 				
 			});
 
-			Tile.addEventListener("click", function(){
+			Tile.addEventListener("click", function() {
 				//alert("{id:2, faction:5, direction:1, x:"+(i-1) + ", y:" + (j-1)+", morale:0, hpModifier:0},");
-								AnalyseSquare('Tile',i-1,j-1)});
+				AnalyseSquare('Tile', i-1, j-1);
+			});
 
 			Entity.addEventListener("mouseover", function(){ToggleHealthBar(i,j); ToggleMoraleBadge(i,j)});
 			Entity.addEventListener("mouseout", function(){document.getElementById("HPContainer "+i+"X"+j).style.visibility="hidden";document.getElementById("HPBar "+i+"X"+j).style.visibility="hidden";document.getElementById("Badge "+i+"X"+j).style.visibility='hidden'; document.getElementById("Cargo "+i+"X"+j).style.visibility='hidden';});			
@@ -1606,7 +1608,6 @@ function castMap(){
 			document.getElementById(Slot.id).appendChild(EdgeC);
 			document.getElementById(Slot.id).appendChild(EdgeD);
 			document.getElementById(Slot.id).appendChild(BLARG);
-
 
 			var RegionTile=document.createElement("div");
 			var RegionColor=document.createElement("div");
@@ -1689,15 +1690,10 @@ function castMap(){
 			document.getElementById(RegionTile.id).appendChild(BorderE);
 			document.getElementById(RegionTile.id).appendChild(BorderS);
 			document.getElementById(RegionTile.id).appendChild(BorderW);
+		}
+	}
+}
 
-
-
-
-
-
-
-
-			};};};
 function castMapMaker() {
 	Factions=GenericFactions;
 	document.getElementById("EditorMap").style.visibility="visible";
@@ -1865,11 +1861,11 @@ function castMapMaker() {
 			regionTile.style.height="56px";
 			regionTile.style.width="56px";
 			regionTile.addEventListener("click",function(){RegionalizeTile(i,j)});
-			regionTile.addEventListener("contextmenu",function(){document.getElementById('Backpanel').style.visibility='inherit';
-			document.getElementById('RegionNodeX').value=i;
-			document.getElementById('RegionNodeY').value=j;
-
-				});
+			regionTile.addEventListener("contextmenu",function() {
+				document.getElementById('Backpanel').style.visibility='inherit';
+				document.getElementById('RegionNodeX').value=i;
+				document.getElementById('RegionNodeY').value=j;
+			});
 
 			regionColor.id="regional Color "+i+" "+j;
 			regionColor.style.position="absolute";

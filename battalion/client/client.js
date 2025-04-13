@@ -5,8 +5,10 @@ const Client = function() {
 
     this.createKeyboardListener(Keyboard.EVENT.KEY_PRESSED, InputRouter.PREFIX.DOWN);
     this.createKeyboardListener(Keyboard.EVENT.KEY_RELEASED, InputRouter.PREFIX.UP);
+    this.createKeyboardListener(Keyboard.EVENT.KEY_DOWN, InputRouter.PREFIX.HOLD);
     this.createMouseListener(Cursor.EVENT.BUTTON_DOWN, InputRouter.PREFIX.DOWN);
     this.createMouseListener(Cursor.EVENT.BUTTON_CLICK, InputRouter.PREFIX.UP);
+    this.createMouseListener(Cursor.EVENT.BUTTON_HOLD, InputRouter.PREFIX.HOLD);
 }
 
 Client.BUTTON_MAP = {

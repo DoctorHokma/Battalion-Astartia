@@ -3,6 +3,16 @@ const Battalion = function() {
     this.musicPlayer = new MusicPlayer(MUSIC, PLAYLIST);
     this.client = new Client();
     this.language = new LanguageHandler();
+    this.timer = new Timer();
+    this.state = Battalion.GAME_STATE.NONE;
+
+    this.timer.input = () => {
+        this.client.update();
+    }
+
+    this.timer.update = () => {}
+
+    this.timer.render = () => {}
 }
 
 Battalion.LANGUAGE = {
@@ -12,6 +22,12 @@ Battalion.LANGUAGE = {
     ROMANIAN: "ROMANIAN",
     TURKISH: "TURKISH",
     FRENCH: "FRENCH"
+};
+
+Battalion.GAME_STATE = {
+    NONE: 0,
+    MAP_EDITOR: 1,
+    BATTLE: 2
 };
 
 Battalion.DIRECTION = {
@@ -60,4 +76,30 @@ Battalion.prototype.getMissingLanguageTags = function() {
 	file.download("missing_tags");
 
     return missing;
+}
+
+Battalion.prototype.setState = function(stateID) {
+    if(Battalion.GAME_STATE[stateID] === undefined) {
+        return;
+    }
+
+    //Exit behavior
+    switch(this.state) {
+        default: {
+            break;
+        }
+    }
+
+    //Entry behavior
+    switch(stateID) {
+        case Battalion.GAME_STATE.BATTLE: {
+
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+
+    this.state = stateID;
 }

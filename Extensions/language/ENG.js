@@ -817,40 +817,40 @@ ENG={
 		"Infantry Units","Motorized Units","Armored Units","Artillery Units","Air Units","Naval Units","Static Units",
 		"Victory","Defeat",
 		"Relation","Self","Cordial","Hostile","Attacker","Defender","Offensive Dao","Defensive Dao","Funds:","Tech:","SpecInf","SpecTank","Press C for controls","Commander","Save Map","Conditions","Jethro","Vlad","Kirk",
-		],
+	],
 
-		//NOTE: This has to do with the nation { name } is a property of the nation blob.
-	NationNames:["Neutral",
-				"Synarchy of Somertin",
-				"Kargit Gosudarstvo",
-				"Commonwealth of Transkal",
-				"Polasie Social Republic",
-				"Sublime Caliphate of Elam",
-				"Judas Legion",
-				"Slave Uprising",
-				"Transkal Structuralist Junta",
-				"Syndical-Socialist Revolution",
-				"Akkadian Mahdist Revolt"],
-
-			
-				//NOTE: These also seem to be properties of the nation { victoryQuotes, defeatQuotes }.
-	VictoryQuotes:[
+	//NOTE: This has to do with the nation { name } is a property of the nation blob.
+	NationNames: [
+		"Neutral",
+		"Synarchy of Somertin",
+		"Kargit Gosudarstvo",
+		"Commonwealth of Transkal",
+		"Polasie Social Republic",
+		"Sublime Caliphate of Elam",
+		"Judas Legion",
+		"Slave Uprising",
+		"Transkal Structuralist Junta",
+		"Syndical-Socialist Revolution",
+		"Akkadian Mahdist Revolt"
+	],
+	//NOTE: These also seem to be properties of the nation { victoryQuotes, defeatQuotes }.
+	VictoryQuotes: [
 		["A winner is you","We have defeated the enemy","We stand triumphant","You have won, exactly as I expected of you","We have won!"],
 		["One step closer to the end of this war","The whole world stands behind you. March on!","Your days are numbered, wretches. Our bayonets we shall drive into your throats!","Arise, unbidden nation. Arise for the great war!","Through machinegun fire and artillery we fearlessly charged, we have driven these devils back."],
 		["PANZER BRRRRRRR!!!","SCHNELL! SCHNELL! SCHNELL!","Press the advantage, unto the breach!","Comrades, let's seize the means of reproduction now! Comfort women for everyone!","With victory comes phat lewt. Comrades, let's redistribute all their shit!","Avalov would be proud"],
 		["March on, our trials are not yet fulfilled","We have brought her Majesty great honour","Our ancestors look proudly towards us, we have honored our bloodline","So much wasted manflesh. Their bodies could feed an entire village","A fruitful hunt, blessed with spoils"],
 		["Freedom prevails!","We'll be home by Christmas for sure","FFFFFFRRRRRRREEEEEEEEEEEEEDDDDDOOOOOOOMMMMMM!!!","Let's liberate ourselves a nice bottle of champagne boys","Victory tastes like freedom"],
-		["Shallahu Akbar!","March on, this ordeal will be long and arduous","We have successfully weathered this storm","Tatakae!","Free lolis for everyone!"]],
-
-	DefeatQuotes:[
+		["Shallahu Akbar!","March on, this ordeal will be long and arduous","We have successfully weathered this storm","Tatakae!","Free lolis for everyone!"]
+	],
+	DefeatQuotes: [
 		["Didn't have enough Soft Attack, ey?","A shameful display","Another one bites the dust","Tonight you dine in hell","Skill issue"],
 		["Dies irae dies illa, solvet saeculum in favilla","Commence Operation APOCALYPSE","War does not decide who is right, but who is left","We will never surrender!","The war will not end until every one of us is a rotting corpse"],
 		["So this is the Clausewitz Culmination, huh...","Noooo! Our panzers must keep brrrrr-ing!","We're gonna adorn the noose now, aren't we?","Nooo! We were so close!","We didn't lose, we merely failed to win!"],
 		["Our spirits will persist, protecting our descendants and granting them wisdom","The final slumber, far away from home","Returning to the nature that birthed us","This wasn't our war to begin with","A worthy end for a warrior people"],
 		["This must be one of those unwinnable plot battles right? Right!?","We are freedom fighters, how can we lose!?","Our future seems to have been painted black","Our worst fear - consequences for our actions","The time for debauchery and excess has come to an end"],
-		["Inshallah!","(radio silence)","She said she was actually 400 years old, officer","Masaka! This cannot be!","The power of friendship ain't doing shit"]],
-
-		//NOTE: This has to do with the nation { startButtonText } is a property of the nation blob.
+		["Inshallah!","(radio silence)","She said she was actually 400 years old, officer","Masaka! This cannot be!","The power of friendship ain't doing shit"]
+	],
+	//NOTE: This has to do with the nation { startButtonText } is a property of the nation blob.
 	StartButtonTexts:["For God, People and the Motherland!",
 		"Pantser Vorwarts!",
 		"March on, Transkalite Riflemen!",
@@ -861,9 +861,8 @@ ENG={
 		"Do you know da wae to da quen?",
 		"Proletarians, break your chains!",
 		"A giant awakens",
-		"T̴̯̈́H̶̦̓Ȇ̶͚ ̵̳̑G̷̻̽R̵̬̉E̸̗͑Ȧ̸̰T̷̗̽ ̷̼̕V̴̘̀Ë̵͙́N̶̦̄Ġ̶̙Ḛ̷͊À̴̳N̷͙̈C̵̻̎E̶̅͜ ̸̦̅A̴̦̽W̴̳̚Ä̶̠́Ḯ̵̭T̶̻̄Ś̵͍"],
-
-
+		"T̴̯̈́H̶̦̓Ȇ̶͚ ̵̳̑G̷̻̽R̵̬̉E̸̗͑Ȧ̸̰T̷̗̽ ̷̼̕V̴̘̀Ë̵͙́N̶̦̄Ġ̶̙Ḛ̷͊À̴̳N̷͙̈C̵̻̎E̶̅͜ ̸̦̅A̴̦̽W̴̳̚Ä̶̠́Ḯ̵̭T̶̻̄Ś̵͍"
+	],
 	UnitSpecialNames:[null,
 
 		//Somertin: 1-7: Guard Banners | 15-28: Militias | 29-35: Armored Divisions | 36-42: Fighter Squadrons | 43-49: various | 50:ALEPH
@@ -1069,7 +1068,9 @@ ENG={
 	//Eagleland
 
 	],
-	TerrainName:["null","Plains","Forest","Hills","Mountain","Megamountains","Road","Ruins","Urban District","Industrial District","Military-Industrial Complex","Aviation Industrial Facility","Shipbuilding Facility","Headquarters","Command Center","Taiga","Desert","Tundra","Extreme Desert","Arctic Hellhole","Bridge","High Bridge","River","Sea","Reef","Floes","Archipelago","Rock Formation","Icebergs","Shore","Oil Rig","Marshland","Volcano","Minefield","Naval Mines","Railways","","","","",""],
+	TerrainName:[
+		"null","Plains","Forest","Hills","Mountain","Megamountains","Road","Ruins","Urban District","Industrial District","Military-Industrial Complex","Aviation Industrial Facility","Shipbuilding Facility","Headquarters","Command Center","Taiga","Desert","Tundra","Extreme Desert","Arctic Hellhole","Bridge","High Bridge","River","Sea","Reef","Floes","Archipelago","Rock Formation","Icebergs","Shore","Oil Rig","Marshland","Volcano","Minefield","Naval Mines","Railways","","","","",""
+	],
 	TerrainDesc:[
 		"There is literally nothing here. What are you looking for?",
 		"Plains are easy to cross, perfect for mobile warfare, but offer no defensive at all.", 
@@ -1108,11 +1109,6 @@ ENG={
 		"Ships who step on this take damage",
 		"Quickly transports land units across the map"
 	],
-	//NationName registry is OBSOLETE. No need for translation and should be deleted as soon as we can make sure that doesn't cause unexpected issues
-	NationName:["Synarchy of Somertin ","Kargit Revolutionary Orderstate","Commonwealth of Transkal","Polasie People's Federation","Sublime Caliphate of Elam",
-				"Judas Legion","United Front of the Unbidden","Structuralist Crown Council of Transkal","Democratic Syndicalist Revolutionary Front","Akkadian National Army",
-				"Penisland Phallocracy","Republic of Cobrastan","Republic of Skoatia",
-				"Astartian Continental Reclamation Front","Gyros Republic","Notverwaltung Festungstaat Sabrak"],
 	NationDesc:[
 		/*
 		"Millions of square kilometers, inhabited by hundreds of millions of people all of different ethnicity, language or religion. Somertin is the largest and most powerful nation on the continent. And abounding in resources, culture and wealth, it's a beautiful nation. Everyone knows utopia can never exist, but decent societies surely can and Somertin is surprisingly functional considering its size and conditions; quite a decent place to be in. As long as one pays his dues and doesn't start trouble, they recieve the state's protection and benefits. Trying to describe the way it works is like trying to find the kernel of an onion; Somertin politics are a mystery wrapped inside an enigma, with a complex but surprisingly reliable way of doing things. It comes off as obvious that such a vast and rich nation would be envied by its neighbours. That they'd seek to devour it. And when a series of tragedies brought the giant to its knees, the vultures smelled blood. Their cursed hordes are, as we speak, thrusting deep into the Motherland's tender nether regions while comitting the most vile travesties on our people. We desired no war, but if war is imposed upon us we'll fight without fear and without mercy! March on brothers, shoulder to shoulder against the Devil himself! We will not rest, we will not stop until the foundries of Hell are closed, until peace reigns supreme, and justice for the innocents triumphs!",

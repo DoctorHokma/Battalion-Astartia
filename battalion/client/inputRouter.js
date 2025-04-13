@@ -6,7 +6,7 @@ const InputRouter = function() {
 InputRouter.PREFIX = {
     DOWN: "+",
     UP: "-",
-    HOLD: "="
+    HOLD: "~"
 };
 
 InputRouter.CURSOR_INPUT = {
@@ -37,7 +37,7 @@ InputRouter.prototype.loadInput = function(keyboard, inputID, commandID) {
     }
 
     const prefixID = inputID[0];
-    const isPrefixed = inputID.length > 1 && (prefixID === InputRouter.PREFIX.DOWN || prefixID === InputRouter.PREFIX.UP);
+    const isPrefixed = inputID.length > 1 && (prefixID === InputRouter.PREFIX.DOWN || prefixID === InputRouter.PREFIX.UP || prefixID === InputRouter.PREFIX.HOLD);
 
     if(isPrefixed) {
         const keyID = inputID.slice(1);

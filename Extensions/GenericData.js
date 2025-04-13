@@ -530,98 +530,12 @@ const CommanderTraitDatabase = [
 	[{CommandTrait:"Retarded",CommandImpact:-10},{CommandTrait:"Chaotic",CommandImpact:-7},{CommandTrait:"Abrasive",CommandImpact:-5},{CommandTrait:"Introverted",CommandImpact:-3},{CommandTrait:"Ambiverted",CommandImpact:0},{CommandTrait:"Extroverted",CommandImpact:3},{CommandTrait:"Charismatic",CommandImpact:5},{CommandTrait:"Organized",CommandImpact:7},{CommandTrait:"Command Genius",CommandImpact:10}]
 ];
 
-const ArmyNamesNoon = {
-};
+var ArmyNamesNoon = {};
 
-const ArmyNamesMidnight = {
-};
+var ArmyNamesMidnight = {};
 
-
-/* AFUERA LATER, maybe.
-MemeUnits=[
-	{name: "Construction Site", shortname:"Skele", HP:50, Armor: "Medium", Attack: 0, Weapon: "Medium", Speed:0, Movement: "Foot", MinRange:1, MaxRange:1, Cost:0 ,tag1:"Inertial", tag2:"", tag3:"", tag4:"",StaticOffsetX:[0,0,0,0,0],StaticOffsetY:[0,0,0,0,0],MovementBoxX:0,MovementBoxY:0,MovementOffsetX:[0,0,0,0,0],MovementOffsetY:[0,0,0,0,0],AttackOffsetX:[0,0,0,0,0],AttackOffsetY:[0,0,0,0,0],IdleOffsetX:[0,0,0,0,0],IdleOffsetY:[0,0,0,0,0]},
-
-	{name: Language.UnitNames[1], HP:50, shortname: "LightInf", MLPR:true, Armor: "Light", Attack: 10, Weapon: "Light", Speed:4, Movement: "Foot", MinRange:1, MaxRange:1, Cost:100, TechLevel:1, Power:10, Role:"", tag1:"Conqueror", tag2:"Streamlined", tag3:"", tag4:"",AttackOffsetX:[0,-1,8,-1,-12]},
-	{name: Language.UnitNames[2], HP:70, shortname: "Infantry", MLPR:true, Armor: "Light", Attack: 20, Weapon: "Light", Speed:3, Movement: "Foot", MinRange:1, MaxRange:1, Cost:150, TechLevel:1, Power:15, Role:"", tag1:"Conqueror", tag2:"", tag3:"", tag4:"" ,AttackOffsetX:[0,0,9,0,-9]},
-	{name: Language.UnitNames[3], shortname: "AssaultInf", MLPR:true, HP:80, Armor:"Light", Attack: 25, Weapon: "Medium", Speed:3, Movement: "Foot", MinRange:1, MaxRange:1, Cost:200, TechLevel:2, Power:25, Role:"", tag1:"Conqueror", tag2:"Schwerpunkt", tag3:"", tag4:"",AttackOffsetX:[0,0,12,0,-12]},
-	{name: Language.UnitNames[4], shortname: "Snipers", MLPR:true, HP:70, Armor: "Light", Attack: 30, Weapon: "Light", Speed:4, Movement: "Foot", MinRange:1, MaxRange:1, Cost:250, TechLevel:3, Power:35, Role:"", tag1:"Conqueror", tag2:"Commando", tag3:"", tag4:"", FactionSpecificity:3,AttackOffsetX:[0,-2,8,-2,-12]},
-	{name: Language.UnitNames[5], shortname: "Marines", MLPR:true, HP:80, Armor: "Light", Attack: 25, Weapon: "Light", Speed:4, Movement: "Amphibious", MinRange:1, MaxRange:1, Cost:250, TechLevel:3, Power:30, Role:"", tag1:"Conqueror", tag2:"Crab", tag3:"", tag4:"", FactionSpecificity:4,AttackOffsetX:[0,0,13,0,-13]},
-	{name: Language.UnitNames[6], shortname: "Stormtroopers", MLPR:true, HP:70, Armor: "Light", Attack: 30, Weapon: "Medium", Speed:3, Movement: "Foot", MinRange:1, MaxRange:3, Cost:250, TechLevel:3, Power:25, Role:"", tag1:"Conqueror", tag2:"", tag3:"", tag4:"", FactionSpecificity:5,AttackOffsetX:[0,0,10,0,-10]},
-	{name: Language.UnitNames[7], shortname: "SpecOps", MLPR:true, HP:50, Armor: "Light", Attack: 20, Weapon: "Medium", Speed:4, Movement: "Foot", MinRange:1, MaxRange:1, Cost:300, TechLevel:4, Power:25, Role:"", tag1:"Conqueror", tag2:"Anti-Structure", tag3:"Stealth", tag4:"Airborne", FactionSpecificity:2, AttackOffsetX:[0,0,13,0,-13]},
-	{name: Language.UnitNames[8], shortname: "Guards", MLPR:true, HP:105, Armor: "Light", Attack: 35, Weapon: "Medium", Speed:3, Movement: "Foot", MinRange:1, MaxRange:1, Cost:350, TechLevel:5, Power:50, Role:"", tag1:"Conqueror", tag2:"Indomitable", tag3:"", tag4:"", FactionSpecificity:1, AttackOffsetX:[0,0,8,0,-8]},
-	{name: Language.UnitNames[9], shortname: "Suicide", MLPR:true, HP:50, Armor: "Light", Attack: 23, Weapon: "Heavy", Speed:3, Movement: "Foot", MinRange:1, MaxRange:1, Cost:250, TechLevel:1, Power:25, Role:"", tag1:"Self-Destruct", tag2:"Indomitable", tag3:"Cavitation Explosion", tag4:"Tank-Hunter", FactionSpecificity:5,AttackOffsetX:[0,0,0,0,0]},
-	{name: "White Paladin", shortname:"Paladin", MLPR:true, HP: 140, Armor:"Medium", Attack:50, Weapon:"Medium",Speed:2, Movement:"Foot", MinRange:1, MaxRange:1, Cost:700, TechLevel:6, Power:110, Role:"", tag1: "Conqueror", tag2: "Indomitable", tag3: "Heroic", tag4: "", FactionSpecificity:1},
-
-	{name: "Cavalry", shortname:"Cavalry", MLPR:true, HP:80, Armor: "Light", Attack: 20, Weapon: "Light", Speed:5, Movement: "Foot", MinRange:1, MaxRange:1, Cost:200, TechLevel:1, Power:20, Role:"", tag1:"Conqueror", tag2:"", tag3:"", tag4:"",StaticOffsetX:[0,9,-3,9,-3],StaticOffsetY:[0,1,5,1,5],MovementOffsetX:[0,14,0,14,0],MovementOffsetY:[0,0,8,0,8],AttackOffsetX:[0,10,0,10,0],AttackOffsetY:[0,0,5,0,5]},
-	{name: "Motorized Infantry", shortname: "MotorInf", MLPR:true, HP:80, Armor: "Light", Attack: 25, Weapon: "Medium", Speed:6, Movement: "Wheeled", MinRange:1, MaxRange:1, Cost:200, TechLevel:2, Power:30, Role:"", tag1:"Conqueror", tag2:"", tag3:"", tag4:"",AttackOffsetX:[0,0,0,0,-14]},
-	{name: "Supply Truck", shortname:"Supply", MLPR:true, HP:30, Armor:"Light", Attack:20, Weapon:"None", Speed:6, Movement:"Wheeled", MinRange:1, MaxRange:3, Cost:400, TechLevel:2, Power:10, Role:"", tag1:"Supply Distribution", tag2:"", tag3:"", tag4:""},
-	{name: "Flak Tank", shortname: "Flak", MLPR:true, HP:60, Armor: "Medium", Attack: 20, Weapon: "Light", Speed:5, Movement: "Tracked", MinRange:1, MaxRange:3, Cost:485, TechLevel:3, Power:25, Role:"", tag1:"Skysweeper", tag2:"Anti-Air", tag3:"", tag4:"",AttackOffsetX:[0,0,-10,-21,-40],AttackOffsetY:[0,-33,-44,-21,-44]},
-	{name: "Crab Tank Battalion", shortname: "Crab", MLPR:true, HP:90, Armor: "Medium", Attack: 30, Weapon: "Light", Speed:6, Movement: "Amphibious", MinRange:1, MaxRange:1, Cost:325, TechLevel:3, Power:35, Role:"" ,tag1:"Crab", tag2:"", tag3:"", tag4:"", FactionSpecificity:4, AttackOffsetX:[0,-16,-15,-15,-15], AttackOffsetY:[0,-19,-13,-17,-13]},
-	{name: "SCADP", shortname: "SCADP", MLPR:true, HP:40, Armor: "Light", Attack: 20, Weapon: "Light", Speed:6, Movement: "Wheeled", MinRange:1, MaxRange:3,  Cost:940, TechLevel:5, Power:60, Role:"", tag1:"Anti-Infantry", tag2:"Dispersion", tag3:"", tag4:"",AttackOffsetX:[0,0,0,0,-14],AttackOffsetY:[0,-18,0,-2,0]},	
-	{name: "Trosky Warmachine", shortname:"Warmachine", MLPR:true, HP:100, Armor: "Medium", Attack: 25, Weapon: "Medium", Speed:4, Movement: "Tracked", MinRange:2, MaxRange:6, Cost:2000, TechLevel:1, Power:50, Role:"", tag1:"Tank Pooper", tag2:"", tag3:"", tag4:"",StaticOffsetY:[0,-23,-23,-23,-23],MovementOffsetX:[0,-23,-23,-23,-23],MovementBoxY:79,MovementOffsetY:[0,0,0,0,0]},
-	{name: "Sisu AIC", shortname:"Sisu", MLPR:true, HP:100, Armor:"Light", Attack:30, Weapon: "Light", Speed:5, Movement:"Wheeled", MinRange:1, MaxRange:1, Cost:640, TechLevel:4, Power:45, Role:"", tag1:"Conqueror", tag2:"Commando", tag3:"", tag4:"", FactionSpecificity:3},
-	{name: "Boing SH-11 Megacockter", shortname:"Megacockter", MLPR:true, HP:30, Armor:"Light", Attack: 30, Weapon: "Light", Speed:7, Movement: "Flight", MinRange:1, MaxRange:1,  Cost:500, TechLevel:5, Power:50, Role:"", tag1:"Bewegungskrieg", tag2:"Schwerpunkt", tag3:"", tag4:"", FactionSpecificity:4, AttackOffsetX:[0,0,0,0,-7], AttackOffsetY:[0,-14,0,0,0]},
-	{name: "AYIN", shortname:"AYIN", MLPR:true, HP:40, Armor:"Medium", Attack:25, Weapon:"Medium", Speed:5, Movement:"Tracked", MinRange:1, MaxRange:7, Cost:1885, TechLevel:6, Power:50, Role:"", tag1:"Streamblast", tag2:"", tag3:"", tag4:""},
-
-	{name: Language.UnitNames[21], shortname: "Cockroach", MLPR:true, HP:50, Armor:"Light", Attack:15, Weapon:"Light", Speed:8, Movement:"Tracked", MinRange:1, MaxRange:1, Cost:190, TechLevel:1, Power:15, Role:"", tag1:"Streamlined", tag2:"", tag3:"", tag4:""},
-	{name: Language.UnitNames[22], shortname: "Bolt", MLPR:true, HP:75, Armor: "Light", Attack: 25, Weapon: "Light", Speed:6, Movement: "Tracked", MinRange:1, MaxRange:1, Cost:340, TechLevel:2, Power:30, Role:"", tag1:"Schwerpunkt", tag2:"", tag3:"", tag4:"", AttackOffsetX:[0,-12,-0,-12,-20], AttackOffsetY:[0,-9,-0, 9,-0]},
-	{name: Language.UnitNames[23], shortname: "Asekara", MLPR:false, HP:100, Armor: "Medium", Attack: 35, Weapon: "Medium", Speed:5, Movement: "Tracked", MinRange:1, MaxRange:1, Cost:500, TechLevel:3, Power:40, Role:"", tag1:"Streamlined", tag2:"Schwerpunkt", tag3:"Bewegungskrieg", tag4:"", AttackOffsetX:[0,-16,-15,-15,-15], AttackOffsetY:[0,-19,-13,-17,-13]},
-	{name: Language.UnitNames[24], shortname: "Gorlitz", MLPR:true, HP:110, Armor: "Heavy", Attack: 50, Weapon: "Heavy", Speed:4, Movement: "Tracked", MinRange:1, MaxRange:1,  Cost:800, TechLevel:4, Power:50, Role:"", tag1:"", tag2:"", tag3:"", tag4:"", StaticOffsetX:[0,0,-7,0,-7], AttackOffsetX:[0,0,-14,0,-14]},
-	{name: Language.UnitNames[25], shortname: "Hunter", MLPR:true, HP:100, Armor: "Medium", Attack: 35, Weapon: "Medium", Speed:5, Movement: "Tracked", MinRange:1, MaxRange:1, Cost:425, TechLevel:3, Power:40, Role:"", tag1:"Anti-Tank", tag2:"", tag3:"", tag4:"",AttackOffsetX:[0,8,-10,7,-49],AttackOffsetY:[0,-40,-44,0,-2]},
-	{name: Language.UnitNames[26], shortname: "AMPAC", MLPR:true, HP:100, Armor: "Medium", Attack: 35, Weapon: "Heavy", Speed:6, Movement: "Tracked", MinRange:1, MaxRange:1, Cost:650, TechLevel:4, Power:60, Role:"" ,tag1:"Anti-Tank", tag2:"Tank-Hunter", tag3:"Streamlined", tag4:"", FactionSpecificity:5,StaticOffsetX:[0,-3,0,-3,-10],AttackOffsetX:[0,-11,-1,-11,-23],AttackOffsetY:[0,-10,-5,5,-5]},
-	{name: Language.UnitNames[27], shortname: "Koschei", MLPR:true, HP:120, Armor: "Heavy", Attack: 55, Weapon: "Medium", Speed:5, Movement: "Tracked", MinRange:1, MaxRange:1, Cost:950, TechLevel:5, Power:120, Role:"" ,tag1:"Schwerpunkt", tag2:"Bewegungskrieg", tag3:"", tag4:"", FactionSpecificity:2, AttackOffsetX:[0,-19,-10,-19,-25], AttackOffsetY:[0,-28,-15,0,-15]},
-	{name: Language.UnitNames[28], shortname: "Imperterritus", MLPR:true, HP:175, Armor: "Heavy", Attack: 55, Weapon: "Heavy", Speed:3, Movement: "Tracked", MinRange:1, MaxRange:1, Cost:2450, TechLevel:5, Power:200, Role:"" ,tag1:"Cemented Steel Armor", tag2:"Terrifying", tag3:"", tag4:"", FactionSpecificity:1, StaticOffsetX:[0,-22,0,-23,-44], StaticOffsetY:[0,-20,0,-2,0], AttackOffsetX:[0,-31,-3,-33,-59], AttackOffsetY:[0,-25,-5,-5,-5],MovementOffsetX:[0,-20,0,-0,0],MovementOffsetY:[0,-20,0,-20,-44]},
-	{name: "Entwicklung Pantser", shortname:"Entwicklung", MLPR:true, HP:170, Armor:"Heavy", Attack:65, Weapon:"Medium", Speed:7, Movement:"Tracked", MinRange:1, MaxRange:1, Cost:1500, TechLevel:6, Power:340, Role:"" ,tag1:"Schwerpunkt", tag2:"Bewegungskrieg", tag3:"Mobile Battery", tag4:"Terrifying", AttackOffsetX:[0,-19,-10,-19,-25], AttackOffsetY:[0,-28,-15,0,-15]},
-	{name: "GBC Roland MkIII",shortname:"Roland", MLPR:true, HP:245, Armor:"Heavy", Attack:70, Weapon:"Heavy", Speed:5, Movement: "Tracked", MinRange:1, MaxRange:1, Cost:3500, TechLevel:6, Power:500, Role:"", tag1:"Cemented Steel Armor", tag2:"Schwerpunkt", tag3:"Bewegungskrieg", tag4:"Terrifying", StaticOffsetX:[0,-22,0,-23,-44], StaticOffsetY:[0,-20,0,-2,0], AttackOffsetX:[0,-31,-3,-33,-59], AttackOffsetY:[0,-25,-5,-5,-5],MovementOffsetX:[0,-20,0,-0,0],MovementOffsetY:[0,-20,0,-20,-44]},
-
-	{name: "Howitzer Battery", shortname: "Howitzer", MLPR:true, HP:40, Armor: "Light", Attack: 25, Weapon: "Medium", Speed:3, Movement: "Foot", MinRange:2, MaxRange:5, Cost:375, TechLevel:2, Power:20, Role:"", tag1:"Anti-Structure", tag2:"", tag3:"", tag4:"",AttackOffsetX:[0,-9,0,-9,-7], AttackOffsetY:[0,-14,-7,-14,-14]},
-	{name: "AA Artillery", shortname:"AA", MLPR:true, HP:40, Armor:"Light", Attack:20, Weapon:"Light", Speed:3, Movement: "Foot", MinRange:1, MaxRange:3, Cost:340, TechLevel:2, Power:20, Role:"", tag1:"Skysweeper",tag2:"Anti-Air",tag3:"",tag4:"",AttackOffsetX:[0,0,7,0,-7],AttackOffsetY:[0,-14,-7,-14,-7]},
-	{name: "Anti-Tank Artillery", shortname:"AT", MLPR:true, HP:40, Armor:"Light", Attack:30, Weapon:"Heavy",Speed:3, Movement:"Foot", MinRange:1, MaxRange:3, Cost:420, TechLevel:2, Power:25, Role:"", tag1:"", tag2:"", tag3:"", tag4:"",AttackOffsetX:[0,0,0,0,-21],AttackOffsetY:[0,-21,0,-7,0]},
-	{name: "Moldan Battery", shortname: "Moldan", MLPR:true, HP:40, Armor: "Light", Attack: 25, Weapon: "Medium", Speed:6, Movement: "Wheeled", MinRange:2, MaxRange:4,  Cost:550, TechLevel:3, Power:35, Role:"", tag1:"Mobile Battery", tag2:"Schwerpunkt", tag3:"", tag4:"",StaticOffsetX:[0,0,-7,0,-7],StaticOffsetY:[0,0,-12,0,-12],AttackOffsetX:[0,0,-7,0,-20],AttackOffsetY:[0,-35,-22,-3,-22]},
-	{name: "SPAB", shortname: "SPAB", MLPR:true,HP:60, Armor:"Medium", Attack:30, Weapon:"Medium", Speed:5, Movement:"Tracked", MinRange:2, MaxRange:5, Cost:580, TechLevel:3, Power:40, Role:"", tag1:"Anti-Structure", tag2:"Mobile Battery", tag3:"", tag4:"",AttackOffsetX:[0,0,0,0,-14],AttackOffsetY:[0,-14,0,0,0]},
-	{name: "Rocket Tank", shortname:"Rocketank", MLPR:true, HP:60, Armor: "Light", Attack: 30, Weapon: "Light", Speed:4, Movement: "Foot", MinRange:1, MaxRange:4, Cost:500, TechLevel:4, Power:40, Role:"", tag1:"Schwerpunkt", tag2:"Mobile Battery", tag3:"", tag4:"",AttackOffsetX:[0,0,-2,0,-12],AttackOffsetY:[0,-7,-16,0,-16]},
-	{name: "400mm Big Bertha", shortname: "Bertha", MLPR:true, HP:80, Armor: "Medium", Attack: 45, Weapon: "Heavy", Speed:2, Movement: "Tracked", MinRange:3, MaxRange:7, Cost:1100, TechLevel:5, Power:150, Role:"" ,tag1:"Anti-Structure", tag2:"", tag3:"", tag4:"", FactionSpecificity:3, StaticOffsetX:[0,0,-5,0,-6], StaticOffsetY:[0,-10,0,-10,0], AttackOffsetX:[0,0,0,0,-11], AttackOffsetY:[0,-39,-26,-10,-26]},
-	{name: "Pula SRBMDP", shortname:"Pula", MLPR:true, HP:60, Armor:"Medium", Attack:20, Weapon:"Medium", Speed:5, Movement:"Wheeled", MinRange:3, MaxRange:10, Cost: 1000, TechLevel:5, Power:50, Role:"", tag1:"Anti-Structure", tag2:"", tag3:"", tag4:"", AttackOffsetX:[0,0,-6,0,3], AttackOffsetY:[0,6,-38,-7,-38]},
-	{name: "Tugarin ATMB", shortname:"Tugarin", MLPR:true, HP:90, Armor:"Light", Attack:50, Weapon:"Heavy", Speed:5, Movement:"Wheeled", MinRange:2, MaxRange:5, Cost:1500, TechLevel:6, Power:180, Role:"", tag1:"Tank Hunter", tag2:"Anti-Tank", tag3:"Mobile Battery", tag4:"Bewegungskrieg",AttackOffsetX:[0,0,0,0,-14],AttackOffsetY:[0,-18,0,-2,0]},
-	{name: "Brimstone Battery", shortname:"Brimstone", MLPR:true, HP:100, Armor:"Light", Attack:70, Weapon:"Medium", Speed:5, Movement:"Wheeled", MinRange:3, MaxRange:7, Cost: 2500, TechLevel:6, Power:350, Role:"", tag1:"Bewegungskrieg", tag2:"Schwerpunkt", tag3:"Mobile Battery", tag4:"", StaticOffsetX:[0,0,-5,0,-6], StaticOffsetY:[0,-10,0,-10,0], AttackOffsetX:[0,0,0,0,-11], AttackOffsetY:[0,-39,-26,-10,-26]},
-	
-	{name: "Stork Transport", shortname: "Stork", MLPR:true, HP:30, Armor: "Light", Attack:0, Weapon:"None", Speed:7, Movement:"Flight", MinRange:1, MaxRange:1, Cost:150, TechLevel:2, Power:0, Role:"", tag1:"Air Transport",tag2:"",tag3:"",tag4:""},
-	{name: "Pelikan Transport Heli", shortname:"Pelikan", MLPR:true, HP:30, Armor: "Light", Attack:30, Weapon:"None", Speed:6, Movement:"Flight", MinRange:1, MaxRange:1, Cost:500, TechLevel:3, Power:15, Role:"", tag1:"Supply Distribution",tag2:"",tag3:"",tag4:""},
-	{name: "Raptor Fighter", shortname: "Raptor", MLPR:true, HP:50, Armor: "Light", Attack: 15, Weapon: "Light", Speed:8, Movement: "Flight", MinRange:1, MaxRange:1,  Cost:400, TechLevel:3, Power:20, Role:"", tag1:"Skysweeper", tag2:"", tag3:"", tag4:""},
-	{name: "Eagle Striker", shortname: "Eagle", MLPR:true, HP:50, Armor: "Light", Attack: 25, Weapon: "Medium", Speed:7, Movement: "Flight", MinRange:1, MaxRange:1,  Cost:450, TechLevel:3, Power:25, Role:"", tag1:"", tag2:"", tag3:"", tag4:"",AttackOffsetX:[0,-2,0,-2,-4]},
-	{name: "Condor Bomber", shortname: "Condor", MLPR:true, HP:50, Armor: "Light", Attack: 35, Weapon: "Medium", Speed:6, Movement: "Flight", MinRange:1, MaxRange:1,  Cost:550, TechLevel:4, Power:35, Role:"", tag1:"Cavitation Explosion", tag2:"", tag3:"", tag4:"",AttackOffsetX:[0,0,0,0,-56],AttackOffsetY:[0,-56,0,0,0]},
-	{name: "Akontio Torpedor", shortname: "Akontio", MLPR:true, HP:50, Armor: "Light", Attack: 50, Weapon: "Medium", Speed:5, Movement: "Flight", MinRange:1, MaxRange:1,  Cost:550, TechLevel:4, Power:50, Role:"", tag1:"Seabound", tag2:"Cavitation Explosion", tag3:"", tag4:""},
-	{name: "Zeus Stormlord", shortname: "Zeus", MLPR:true, HP:70, Armor: "Light", Attack: 35, Weapon: "Medium", Speed:10, Movement: "Flight", MinRange:1, MaxRange:1,  Cost:910, TechLevel:5, Power:80, Role:"", tag1:"Skysweeper", tag2:"", tag3:"", tag4:"",AttackOffsetX:[0,-2,0,-2,0]},
-	{name: "Solovey Superbomber", shortname:"Solovey", MLPR:true, HP:100, Armor:"Light", Attack:40, Weapon:"Heavy", Speed:6, Movement:"Flight",MinRange:1, MaxRange:1, Cost:850, TechLevel:5, Power:80, Role:"", tag1:"Anti-Structure", tag2:"", tag3:"", tag4:"", FactionSpecificity:2,AttackOffsetX:[0,0,0,0,-56],AttackOffsetY:[0,-56,0,0,0]},
-	{name: "AVN-1 Stihie", shortname:"Stihie", MLPR:true, HP: 70, Armor:"Light", Attack: 40, Weapon: "Light", Speed:10, Movement: "Flight", MinRange:1, MaxRange:1,  Cost:1400, TechLevel:6, Power:150, Role:"", tag1:"Skysweeper", tag2:"Stealth", tag3:"", tag4:""},
-	{name: "ALEPH", shortname: "ALEPH", MLPR:true, HP:50, Armor: "Light", Attack: 5000, Weapon: "Heavy", Speed:6, Movement: "Flight", MinRange:1, MaxRange:1, Cost:5000, TechLevel:7, Power:1000, Role:"" ,tag1:"JUDGEMENT", tag2:"Indomitable", tag3:"Self-Destruct", tag4:"Inertial",AttackOffsetX:[0,0,0,0,-56],AttackOffsetY:[0,-56,0,0,0]},
-	
-	{name: "Barge Convoy", shortname: "Convoy", MLPR:true, HP:100, Armor: "Medium", Attack:0, Weapon:"None", Speed:5, Movement: "Rudder", MinRange:1, MaxRange:1, Cost:100, TechLevel:1, Power:0, Role:"", tag1:"Naval Transport", tag2:"", tag3:"", tag4:"", StaticOffsetY:[0,-25,-22,-22,-22],MovementOffsetX:[0,-25,-22,-22,-22]},
-	{name: "Intrepid", shortname: "Intrepid", MLPR:true, HP:50, Armor: "Light", Attack: 15, Weapon: "Light", Speed:6, Movement: "Rudder", MinRange:1, MaxRange:1, Cost:170, TechLevel:1, Power:10, Role:"" ,tag1:"Conqueror", tag2:"", tag3:"", tag4:"", SpriteOffset:[0,0,0,0,0], AttackOffsetX:[0,0,0,0,-9],AttackOffsetY:[0,-5,2,-5,2]},
-	{name: "Submersible", shortname: "Submersible", MLPR:true, HP:50, Armor: "Light", Attack: 50, Weapon: "Medium", Speed:3, Movement: "Heavy Rudder", MinRange:1, MaxRange:1, Cost:500, TechLevel:2, Power:50, Role:"" ,tag1:"Submerged", tag2:"Seabound", tag3:"Stealth", tag4:"", SpriteOffset:[0,0,0,0,0], AttackSpriteOffset:[0,0,0,0,0]},
-	{name: "Destroyer", shortname: "Destroyer", MLPR:true, HP:100, Armor: "Medium", Attack: 25, Weapon: "Medium", Speed:6, Movement: "Rudder", MinRange:1, MaxRange:1, Cost:300, TechLevel:2, Power:50, Role:"" ,tag1:"Depth Charge", tag2:"Skysweeper", tag3:"Sonar", tag4:"Steer", AttackOffsetX:[0,0,0,0,-28], AttackOffsetY:[0,-4,-14,0,-14]},
-	{name: "Light Cruiser", shortname: "CruiserL", MLPR:true, HP:250, Armor: "Medium", Attack: 30, Weapon: "Medium", Speed:5, Movement: "Rudder", MinRange:1, MaxRange:3, Cost:1000, TechLevel:3, Power:150, Role:"" ,tag1:"Depth Charge", tag2:"Skysweeper", tag3:"Sonar", tag4:"Anti-Air", AttackOffsetX:[0,-44,-44,-44,-44], AttackOffsetY:[0,-37,-37,-35,-37]},
-	{name: "Heavy Cruiser", shortname: "CruiserH", MLPR:true, HP:500, Armor: "Heavy", Attack: 60, Weapon: "Heavy", Speed:4, Movement: "Rudder", MinRange:2, MaxRange:5, Cost:2000, TechLevel:3, Power:500, Role:"" ,tag1:"Skysweeper", tag2:"", tag3:"", tag4:"", SpriteOffset:[0,0,0,0,0], AttackOffsetX:[0,10,-6,9.75,-40],AttackOffsetY:[0,-25,-42,-3,-42]},
-	{name: "Battleship", shortname: "Battleship", MLPR:true, HP:1500, Armor: "Heavy", Attack: 100, Weapon: "Heavy", Speed:4, Movement: "Heavy Rudder", MinRange:3, MaxRange:7, Cost:5000, TechLevel:4, Power:3000, Role:"" ,tag1:"Skysweeper", tag2:"Cemented Steel Armor", tag3:"", tag4:"", AttackOffsetX:[0,-44,-49,-44,-39], AttackOffsetY:[0,-32,-33,-35,-33]},
-	{name: "Aircraft Carrier", shortname: "Carrier", MLPR:true, HP:1050, Armor: "Heavy", Attack: 70, Weapon: "Medium", Speed:4, Movement: "Heavy Rudder", MinRange:3, MaxRange:10, Cost:7000, TechLevel:5, Power:5000, Role:"" ,tag1:"Skysweeper", tag2:"Anti-Ship", tag3:"Mobile Battery", tag4:"Cemented Steel Armor", StaticOffsetX:[0,-10,-20,-10,-31], StaticOffsetY:[0,-20,-20,-20,-20],MovementOffsetX:[0,-20,-20,-10,-20],MovementOffsetY:[0,-10,0,-10,-15], AttackOffsetX:[0,-10,-20,-10,-31], AttackOffsetY:[0,-20,-20,-20,-20]},
-	{name: "Superbattleship", shortname: "Superbattleship", MLPR:true, HP:2500, Armor: "Heavy", Attack: 250, Weapon: "Heavy", Speed:4, Movement: "Heavy Rudder", MinRange:4, MaxRange:8, Cost:10000, TechLevel:5, Power:10000, Role:"" ,tag1:"Skysweeper", tag2:"Cemented Steel Armor", tag3:"", tag4:"", AttackOffsetX:[0,-44,-49,-44,-39], AttackOffsetY:[0,-32,-33,-35,-33]},
-	{name: "Supercarrier", shortname: "Supercarrier", MLPR:true, HP:2450, Armor: "Heavy", Attack: 200, Weapon: "Medium", Speed:4, Movement: "Heavy Rudder", MinRange:3, MaxRange:10, Cost:15000, TechLevel:6, Power:25000, Role:"" ,tag1:"Skysweeper", tag2:"Anti-Ship", tag3:"Seabound", tag4:"Cemented Steel Armor", StaticOffsetX:[0,-10,-20,-10,-31], StaticOffsetY:[0,-20,-20,-20,-20],MovementOffsetX:[0,-20,-20,-10,-20],MovementOffsetY:[0,-10,0,-10,-15], AttackOffsetX:[0,-10,-20,-10,-31], AttackOffsetY:[0,-20,-20,-20,-20]},
-	
-	{name: "Barricade", shortname:"Barricade", MLPR:true, HP:100, Armor:"Medium", Attack:0, Weapon:"None", Speed:0, Movement:"Stationary", MinRange:1, MaxRange:1, Cost:200, TechLevel:1, Power:0, Role:"", Timer:1, tag1:"Inertial", tag2:"", tag3:"", tag4:"", SpriteOffset:[0,0,0,0,0], AttackSpriteOffset:[0,0,0,0,0]},
-	{name: "Bunker", shortname:"Bunker", MLPR:true,HP:100,Armor:"Medium",Attack:25,Weapon:"Light",Speed:0,Movement:"Stationary",MinRange:1,MaxRange:1,Cost:250, TechLevel:1, Power:20, Role:"", Timer:1, tag1:"", tag2:"", tag3:"", tag4:"", SpriteOffsetY:[0,0,0,0,0], AttackOffsetX:[0,-44,-44,-44,-44],AttackOffsetY:[0,-44,-44,-44,-44]},
-	{name: "Turret", shortname:"Turret", MLPR:true,HP:150,Armor:"Medium",Attack:30,Weapon:"Medium",Speed:0,Movement:"Stationary",MinRange:2,MaxRange:5,Cost:350, TechLevel:2, Power:70, Role:"", Timer:1, tag1:"", tag2:"", tag3:"", tag4:"", AttackOffsetX:[0,-45,-44,-44,-44],AttackOffsetY:[0,-34,-34.5,-34.5,-34.5]},
-	{name: "Flak Tower", shortname:"FlakTower", MLPR:true,HP:150,Armor:"Medium",Attack:25,Weapon:"Light",Speed:0,Movement:"Stationary",MinRange:2,MaxRange:5,Cost:350, TechLevel:3, Power:90, Role:"", Timer:1, tag1:"Skysweeper", tag2:"Anti-Air", tag3:"", tag4:"", StaticOffsetX:[0,0,0,0,-7], StaticOffsetY:[0,-14,0,0,0], AttackOffsetX:[0,0,0,0,-14],AttackOffsetY:[0,-21,0,0,0]},
-	{name: "Coastal Battery", shortname:"Coastal", MLPR:true,HP:500,Armor:"Heavy",Attack:120,Weapon:"Heavy",Speed:0,Movement:"Stationary",MinRange:3,MaxRange:7,Cost:800, TechLevel:3, Power:500, Role:"", Timer:1, tag1:"Seabound", tag2:"Cavitation Explosion", tag3:"", tag4:"", StaticOffsetX:[0,-7,5,0,-20], StaticOffsetY:[0,-25,0,0,0] , AttackOffsetX:[0,-55,-58,-56,-53],AttackOffsetY:[0,-49,-46,-48,-45]},
-	{name: "Workshop", shortname:"Workshop", MLPR:true,HP:50,Armor:"Medium",Attack:0,Weapon:"None",Speed:0,Movement:"Stationary",MinRange:1,MaxRange:3,Cost:1000, TechLevel:3, Power:0, Role:"", Timer:2, tag1:"Supply Distribution", tag2:"Financial Center", tag3:"Inertial", tag4:"", AttackOffsetX:[0,0,0,0,0],AttackOffsetY:[0,0,0,0,0]},
-	{name: "Missile Battery", shortname:"Missile", MLPR:true,HP:160,Armor:"Medium",Attack:50, Weapon:"Medium",Speed:0,Movement:"Stationary",MinRange:2,MaxRange:7,Cost:1200, TechLevel:5, Power:160, Role:"", Timer:2, tag1:"Skysweeper", tag2:"", tag3:"", tag4:"", StaticOffsetX:[0,0,0,0,0], StaticOffsetY:[0,-21,-14,-21,-14], AttackOffsetX:[0,0,0,0,-14],AttackOffsetY:[0,-51,-14,-14,-14]},
-	{name: "Bastion", shortname:"Bastion", MLPR:true, HP:250, Armor:"Heavy",Attack:0, Weapon:"None", Speed:0, Movement:"Stationary",MinRange:1,MaxRange:1, Cost:2000, TechLevel:4, Power:0, Role:"", Timer: 2, tag1:"Inertial", tag2:"", tag3:"", tag4:""},
-	{name: "Supply Depot", shortname:"Depot", MLPR:true, HP:100, Armor:"Medium", Attack:35 , Weapon:"None", Speed:0, Movement:"Stationary", MinRange:1, MaxRange:7, Cost:1300, TechLevel:2, Power:75, Role:"", Timer:2, tag1:"Supply Distribution", tag2:"", tag3:"", tag4:""},
-	{name: "Fortress", shortname:"Fortress", MLPR:true, HP:1000, Armor:"Heavy",Attack:50, Weapon:"Medium", Speed:0, Movement:"Stationary",MinRange:1,MaxRange:7, Cost:5000, TechLevel:5, Power:1000, Role:"", Timer: 5, tag1:"Skysweeper", tag2:"", tag3:"", tag4:""},
-	
-	{name: "Spartans", shortname:"Guards", MLPR:true, HP:220, Armor:"Medium", Attack:90, Weapon:"Medium", Speed:5, Movement:"Foot", MinRange:1, MaxRange:1, Cost:1337, tag1:"Indomitable", tag2:"", tag3:"", tag4:"", AttackOffsetX:[0,0,8,0,-8]}
-];
-*/
-GenericFactions=[	{name:"Null", faction:"Idk, man. Neutrals maybe?", color:"Gray", ChromaCode:"hue-rotate(175deg) saturate(0%) brightness(100%)"},
+var GenericFactions = [
+	{name:"Null", faction:"Idk, man. Neutrals maybe?", color:"Gray", ChromaCode:"hue-rotate(175deg) saturate(0%) brightness(100%)"},
 	{name:"White", powerRanking:"Major Power", faction:"White", Access:true , Preffix:"SOM",color:"White",ChromaCode:"hue-rotate(175deg) saturate(0%) brightness(250%)",SpecialInfantry:[true,false,false,false,false],SpecialVehicles:[true,false,false,false,false]},
 	{name:"Black", powerRanking:"Major Power", faction:"Black", Access:true , Preffix:"KAR",color:"Black",ChromaCode:"hue-rotate(0deg) saturate(0%) brightness(70%) contrast(125%)",SpecialInfantry:[false,true,false,false,false],SpecialVehicles:[false,true,false,false,false]},
 	{name:"Grey", powerRanking:"Regional Power", faction:"Grey", Access:true , Preffix:"TRK",color:"Grey",ChromaCode:"hue-rotate(175deg) saturate(0%) brightness(125%)",SpecialInfantry:[false,false,true,false,false],SpecialVehicles:[false,false,true,false,false]},
@@ -633,7 +547,8 @@ GenericFactions=[	{name:"Null", faction:"Idk, man. Neutrals maybe?", color:"Gray
 	{name:"Red", faction:"Red", Access:false , Preffix:"SOV",color:"Red",ChromaCode:"hue-rotate(0deg) saturate(100%) brightness(100%)",SpecialInfantry:[false,false,false,true,false],SpecialVehicles:[false,false,false,true,false]},
 	{name:"Blue", faction:"Blue", Access:false , Preffix:"ELA",color:"Blue",ChromaCode:"hue-rotate(250deg) saturate(100%) brightness(100%)",SpecialInfantry:[false,false,false,false,true],SpecialVehicles:[false,false,false,false,true]},
 ];
-MetacanonicalFactions=[
+
+var MetacanonicalFactions = [
 	{name:"Null", faction:"Idk, man. Neutrals maybe?", color:"Gray", ChromaCode:"hue-rotate(175deg) saturate(0%) brightness(100%)"},
 	{name:"Somertin Federation", powerRanking:"Major Power", faction:"Continental Security League", Access:true , Preffix:"SOM",color:"White",ChromaCode:"hue-rotate(175deg) saturate(0%) brightness(250%)",SpecialInfantry:[true,false,false,false,false],SpecialVehicles:[true,false,false,false,false]},
 	{name:"Kargit Order State", powerRanking:"Major Power", faction:"Glorious Coallition", Access:true , Preffix:"KAR",color:"Black",ChromaCode:"hue-rotate(0deg) saturate(0%) brightness(70%) contrast(125%)",SpecialInfantry:[false,true,false,false,false],SpecialVehicles:[false,true,false,false,false]},
@@ -643,20 +558,11 @@ MetacanonicalFactions=[
 	{name:"Republic of Cobrastan", faction:"Pula Gulf League", Access:false, Preffix:"COB", color:"Orange",ChromaCode:"hue-rotate(100deg) saturate(100%) brightness(100%)",SpecialInfantry:[false,false,false,false,false],SpecialVehicles:[false,false,false,false,false]},
 	{name:"Penistan Phallocracy", faction:"Pula Gulf League", Access:false, Preffix:"DICK", color:"Beige",ChromaCode:"hue-rotate(100deg) saturate(35%) brightness(200%)",SpecialInfantry:[false,false,false,false,false],SpecialVehicles:[false,false,false,false,false]},
 	{name:"Gyros Federal Republic", faction:"Continental Security League", Access:false, Preffix:"GYR", color:"Cyan",ChromaCode:"hue-rotate(100deg) saturate(35%) brightness(200%)",SpecialInfantry:[false,false,false,false,false],SpecialVehicles:[false,false,false,false,false]},
-	
+];
 
+var ParacanonicalFactions = [];
 
-
-
-	];
-ParacanonicalFactions=[
-
-
-
-
-
-	];
-MemeFactions=[
+var MemeFactions = [
 	{name:"Neutral", faction:"Neutral", color:"Gray"},
 	{name:"Militarbezirsk Ohienstaat", faction:"OHIO", Access:true , Preffix:"OHI",color:"Red",ChromaCode:"hue-rotate(0deg) saturate(100%) brightness(100%)",SpecialInfantry:[true,true,true,true,true],SpecialVehicles:[true,true,true,true,true]},
 	{name:"Republic of Kentucky", faction:"Anti-Ohio Bulwark", Access:true , Preffix:"KEN",color:"DarkBlue",ChromaCode:"hue-rotate(250deg) saturate(150%) brightness(50%)",SpecialInfantry:[true,true,true,true,true],SpecialVehicles:[true,true,true,true,true]},
@@ -668,11 +574,10 @@ MemeFactions=[
 	{name:"Task Force Tucker", faction:"Task Force Tucker",Access:true,Preffix:"TFT",color:"White",ChromaCode:"hue-rotate(175deg) saturate(0%) brightness(300%)",SpecialInfantry:[true,true,true,true,true],SpecialVehicles:[true,true,true,true,true]},
 	{name:"Cockroach Horde", faction:"Cockroach Coallition",Access:true,Preffix:"COK",color:"Brown",ChromaCode:"hue-rotate(50deg) saturate(70%) brightness(100%)",SpecialInfantry:[true,true,true,true,true],SpecialVehicles:[true,true,true,true,true]},
 	{name:"Kanye West's Junta", faction:"Kanye West",Access:true,Preffix:"KAN",color:"Red",ChromaCode:"hue-rotate(0deg) saturate(100%) brightness(100%)",SpecialInfantry:[true,true,true,true,true],SpecialVehicles:[true,true,true,true,true]},
-	{name:"New York Defense Force", faction:"USA",Access:true,Preffix:"USA",color:"Indigo",ChromaCode:"hue-rotate(250deg) saturate(125%) brightness(70%)",SpecialInfantry:[true,true,true,true,true],SpecialVehicles:[true,true,true,true,true]}	
-		
-	];
+	{name:"New York Defense Force", faction:"USA",Access:true,Preffix:"USA",color:"Indigo",ChromaCode:"hue-rotate(250deg) saturate(125%) brightness(70%)",SpecialInfantry:[true,true,true,true,true],SpecialVehicles:[true,true,true,true,true]}			
+];
 
-RomaniaFactions=[
+var RomaniaFactions = [
 	{name:"Muntenia", faction:"Muntenia", Access:true , Preffix:"OHI",color:"Indigo",ChromaCode:"hue-rotate(0deg) saturate(100%) brightness(100%)",SpecialInfantry:[true,true,true,true,true],SpecialVehicles:[true,true,true,true,true]},
 	{name:"Moldova", faction:"Moldova", Access:true , Preffix:"OHI",color:"Red",ChromaCode:"hue-rotate(0deg) saturate(100%) brightness(100%)",SpecialInfantry:[true,true,true,true,true],SpecialVehicles:[true,true,true,true,true]},
 	{name:"Transilvania", faction:"OHIO", Access:true , Preffix:"OHI",color:"Red",ChromaCode:"hue-rotate(0deg) saturate(100%) brightness(100%)",SpecialInfantry:[true,true,true,true,true],SpecialVehicles:[true,true,true,true,true]},
@@ -686,14 +591,9 @@ RomaniaFactions=[
 	{name:"Bugeac", faction:"OHIO", Access:true , Preffix:"OHI",color:"Red",ChromaCode:"hue-rotate(0deg) saturate(100%) brightness(100%)",SpecialInfantry:[true,true,true,true,true],SpecialVehicles:[true,true,true,true,true]},
 	{name:"Bucovina", faction:"OHIO", Access:true , Preffix:"OHI",color:"Red",ChromaCode:"hue-rotate(0deg) saturate(100%) brightness(100%)",SpecialInfantry:[true,true,true,true,true],SpecialVehicles:[true,true,true,true,true]},
 	{name:"Banatul de Vest", faction:"OHIO", Access:true , Preffix:"OHI",color:"Red",ChromaCode:"hue-rotate(0deg) saturate(100%) brightness(100%)",SpecialInfantry:[true,true,true,true,true],SpecialVehicles:[true,true,true,true,true]},
+];
 
-
-
-
-
-
-	];
-EuropeFactions=[
+var EuropeFactions = [
 	{name:"Neutral", faction:"Neutral", color:"Gray",ChromaCode:"hue-rotate(175deg) saturate(0%) brightness(100%)",SpecialInfantry:[false,false,false,false,false],SpecialVehicles:[false,false,false,false,false]},
 	{name:"Romania", faction:"Romania", color:"Yellow",ChromaCode:"hue-rotate(100deg) saturate(140%) brightness(250%)",SpecialInfantry:[false,true,true,false,false],SpecialVehicles:[false,true,false,true,true]},
 	{name:"Hungary", faction:"Hungary", color:"LimeGreen",ChromaCode:"hue-rotate(100deg) saturate(100%) brightness(200%)",SpecialInfantry:[false,true,false,false,false],SpecialVehicles:[false,true,false,false,false]},
@@ -751,16 +651,20 @@ EuropeFactions=[
 	{name:"Sealand",faction:"Sealand",color:"LightSkyBlue",ChromaCode:"hue-rotate(250deg) saturate(70%) brightness(150%)",SpecialInfantry:[false,false,false,true,false],SpecialVehicles:[false,false,false,true,false]},
 	{name:"Georgia",faction:"Georgia",color:"#7E3817",ChromaCode:"hue-rotate(100deg) saturate(50%) brightness(140%)",SpecialInfantry:[false,false,true,false,false],SpecialVehicles:[false,false,false,false,true]},
 	{name:"Israel",faction:"Israel",color:"LightSkyBlue",ChromaCode:"hue-rotate(225deg) saturate(100%) brightness(350%)",SpecialInfantry:[false,false,true,false,false],SpecialVehicles:[false,true,false,false,true]},
-	];
-HistoricalFactions={};
-NostalgiaFactions=[
+];
+
+var HistoricalFactions = {};
+
+var NostalgiaFactions = [
 	{name:"Null", faction:"Idk, man. Neutrals maybe?", color:"Gray", ChromaCode:"hue-rotate(175deg) saturate(0%) brightness(100%)"},
 	{name:"Northern Federation", faction:"Federation Alliance", color:"Red", Preffix:"NFE", ChromaCode:"hue-rotate(0deg) saturate(100%) brightness(100%)",SpecialInfantry:[false,false,false,false,true],SpecialVehicles:[true,true,false,false,true]},
 	{name:"Akkadian Empire", faction:"Akkadian Alliance", color:"Blue", Preffix:"AKK", ChromaCode:"hue-rotate(250deg) saturate(100%) brightness(100%)",SpecialInfantry:[false,false,false,false,true],SpecialVehicles:[true,true,false,false,true]},
 	{name:"Dragoon Nation", faction:"Federation Alliance", color:"Green", Preffix:"DRG", ChromaCode:"hue-rotate(150deg) saturate(100%) brightness(120%)",SpecialInfantry:[false,false,false,false,true],SpecialVehicles:[true,true,false,false,true]},
 	{name:"Space Marines", faction:"Akkadian Alliance", color:"Green", Preffix:"SPA", ChromaCode:"hue-rotate(150deg) saturate(100%) brightness(120%)",SpecialInfantry:[false,false,false,false,true],SpecialVehicles:[true,true,true,true,true]},
-	{name:"Mystery Army", faction:"Federation Alliance", color:"Black", Preffix:"MYS", ChromaCode:"hue-rotate(0deg) saturate(0%) brightness(70%) contrast(125%)",SpecialInfantry:[true,false,false,false,false],SpecialVehicles:[false,false,false,false,false]}];
-AnniversaryFactions=[
+	{name:"Mystery Army", faction:"Federation Alliance", color:"Black", Preffix:"MYS", ChromaCode:"hue-rotate(0deg) saturate(0%) brightness(70%) contrast(125%)",SpecialInfantry:[true,false,false,false,false],SpecialVehicles:[false,false,false,false,false]}
+];
+
+var AnniversaryFactions = [
 	{name:"Null", faction:"Idk, man. Neutrals maybe?", color:"Gray", ChromaCode:"hue-rotate(175deg) saturate(0%) brightness(100%)"},
 	{},
 	{},
@@ -772,5 +676,4 @@ AnniversaryFactions=[
 	{name:"Beri many okok", faction:"Okok", color:"Brown",ChromaCode:"hue-rotate(50deg) saturate(70%) brightness(100%)",SpecialInfantry:[false,false,false,false,false],SpecialVehicles:[false,false,false,false,false]},
 	{},
 	{}
-
-	];
+];

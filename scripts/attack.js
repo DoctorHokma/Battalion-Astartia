@@ -16,7 +16,7 @@ const ATTACK_TYPE = {
 /**
  * neyn 09.04.2025
  * 
- * @param {object} attacker 
+ * @param {Entity} attacker 
  * @param {int[][]} map 
  * @param {object[][]} roster
  * @param {string} traitID 
@@ -78,7 +78,7 @@ const getAttackingDirection = function(attackerX, attackerY, defenderX, defender
 /**
  * neyn 09.04.2025
  * 
- * @param {object} attacker 
+ * @param {Entity} attacker 
  */
 const getHitAnimStyle = function(attacker) {
 	const unitType = attacker.unitType;
@@ -101,8 +101,8 @@ const getHitAnimStyle = function(attacker) {
 /**
  * neyn 12.04.2025
  * 
- * @param {object} attacker 
- * @param {object} defender 
+ * @param {Entity} attacker 
+ * @param {Entity} defender 
  * @param {object} worldMap
  * @param {int} attackType 
  * @returns 
@@ -183,8 +183,8 @@ const getDamageModifier = function(attacker, defender, worldMap, attackType) {
 /**
  * neyn 12.04.2025
  * 
- * @param {object} attacker 
- * @param {object} defender 
+ * @param {Entity} attacker 
+ * @param {Entity} defender 
  * @param {object} worldMap
  * @param {int} attackType 
  * @returns 
@@ -748,7 +748,7 @@ function Counterattack(Attacker, Defender, Map){
 
 /**
  * 
- * @param {object} Atk 
+ * @param {Entity} Atk 
  * @param {int} X 
  * @param {int} Y 
  * @returns 
