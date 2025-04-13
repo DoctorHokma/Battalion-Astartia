@@ -1,13 +1,17 @@
 const OPENING_TRACK = "RiversOfSteel";
 const battalion = new Battalion();
 
+battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
+
 battalion.language.addLanguage(Battalion.LANGUAGE.ENGLISH, LANGUAGE_ENGLISH);
 battalion.language.addLanguage(Battalion.LANGUAGE.SPANISH, LANGUAGE_SPANISH);
 battalion.language.addLanguage(Battalion.LANGUAGE.PORTUGUESE, LANGUAGE_PORTUGUESE);
 battalion.language.addLanguage(Battalion.LANGUAGE.ROMANIAN, LANGUAGE_ROMANIAN);
 battalion.language.addLanguage(Battalion.LANGUAGE.TURKISH, LANGUAGE_TURKISH);
 battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
+
 battalion.timer.start();
+battalion.setState(Battalion.STATE.MAIN_MENU);
 
 var ActionRegister = {}; //used by ai
 var ActiveRoster = []; //used by ai
@@ -16,13 +20,13 @@ var InternalDelayerFactor = 0; //used by ai
 var isAITurn = false; //used by ai
 var Pizdamatii = []; //used by ai
 
-ResolutionXFactor=1;
-ResolutionYFactor=1;
-BattleEnd=false;
-
 var ChosenNation = 1;
 var ChosenChapter = 1;
 var ChosenMission = 1;
+
+ResolutionXFactor=1;
+ResolutionYFactor=1;
+BattleEnd=false;
 
 TutorialLevel=0;
 StandardX=0;
@@ -36,8 +40,6 @@ BarsToggled=false;
 CargoToggled=false;
 RegionsToggled=false;
 //UnlockedLevels=[true,false,false,false,false];
-
-FieldMode="Null";
 
 ChosenTerrain=1;
 EditorUnitClass=1;
@@ -85,6 +87,48 @@ var TNOFactions=[
 
 MemeFactions=[];
 
+document.getElementById("GenerateEditorMap").onclick = () => {
+	battalion.setState(Battalion.STATE.MAP_EDITOR);
+
+	for(let i=1;i<=10;i++) {
+		for(let j=1;j<=10;j++) {
+			key=document.getElementById('Slot '+i+' X '+j)??0;
+			
+			if(key!=0) {
+				key.remove();
+			}
+		}
+	}
+	
+	castMapMaker();
+}
+
+document.getElementById("EndBattleCloseButton").onclick = () => {
+	battalion.setState(Battalion.STATE.MAIN_MENU);
+	battalion.musicPlayer.playTrack(OPENING_TRACK);
+
+	document.getElementById("EndBattleCloseButton").src='Assets/Miscellaneous/CloseButtonPressed.PNG';
+	
+	for(let a=1; a<Constants.Commanders.length; a++) {
+		let elem=document.getElementById('AnalysisBlock'+Factions[Constants.Commanders[a].Allegiance].Preffix);
+		elem.remove();
+	}
+	
+	for(let b=0; b<Coallitions.length; b++) {
+		let elem=document.getElementById('CoallitionTitle'+Coallitions[b]);
+		elem.remove();
+	}
+	
+	Factions=CampaignFactions;
+	document.getElementById('EndBattleScreen').style.visibility='hidden';
+	
+	if(ChosenMission==5 && Victory) {
+		CallInterlogue();
+	} else {
+		document.getElementById('Main Menu').style.visibility='visible';
+	}
+}
+
 const selectLanguage = function(languageID) {
 	const { language } = battalion;
 	const languageComment = document.getElementById('LanguageCommentary');
@@ -122,98 +166,6 @@ const selectLanguage = function(languageID) {
 		}
 	}
 }
-
-const initEvents = function(context) {
-	const { client } = context;
-	const { router, cursor } = client;
-
-	cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
-
-	router.load(context, INPUT_DEFAULT);
-
-	//if(event.key=="f" && FieldMode!="MapEditor") ToggleBattleflags();
-	//if(event.key=="g" && FieldMode!="MapEditor"){ToggleMoraleBadges()};
-	//if(event.key=="h" && FieldMode!="MapEditor"){ToggleHealthBars()};
-
-	//if(event.key=="l"){alert(LastMove.X+" "+LastMove.Y)};
-	//if(event.key=="c"){alert('Press F to see which tiles need to be captured, which enemies assassinated and so on and so forth. Press F again to cancel');
-	//alert('You can also press tab to see the region map mode, but that does not do much at the moment; it will glitch the entire level. Except Samara, it works for that map ')};
-
-	//if(event.key=="ArrowUp" || event.key=="w" || event.key=="W"){if(FieldMode=="MapEditor"){RollMapEditor(1)}else{RollMap(1);if(FlagsToggled){ToggleBattleflags();ToggleBattleflags()};if(BadgesToggled){ToggleMoraleBadges();ToggleMoraleBadges()};if(BarsToggled){ToggleHealthBars();ToggleHealthBars()};if(RegionsToggled){DisplayRegions();DisplayRegions()}}};
-	//if(event.key=="ArrowRight" || event.key=="d" || event.key=="D"){if(FieldMode=="MapEditor"){RollMapEditor(2)}else{RollMap(2);if(FlagsToggled){ToggleBattleflags();ToggleBattleflags()};if(BadgesToggled){ToggleMoraleBadges();ToggleMoraleBadges()};if(BarsToggled){ToggleHealthBars();ToggleHealthBars()};if(RegionsToggled){DisplayRegions();DisplayRegions()}}};
-	//if(event.key=="ArrowDown" || event.key=="s" || event.key=="S"){if(FieldMode=="MapEditor"){RollMapEditor(3)}else{RollMap(3);if(FlagsToggled){ToggleBattleflags();ToggleBattleflags()};if(BadgesToggled){ToggleMoraleBadges();ToggleMoraleBadges()};if(BarsToggled){ToggleHealthBars();ToggleHealthBars()};if(RegionsToggled){DisplayRegions();DisplayRegions()}}};
-	//if(event.key=="ArrowLeft" || event.key=="a" || event.key=="A"){if(FieldMode=="MapEditor"){RollMapEditor(4)}else{RollMap(4);if(FlagsToggled){ToggleBattleflags();ToggleBattleflags()};if(BadgesToggled){ToggleMoraleBadges();ToggleMoraleBadges()};if(BarsToggled){ToggleHealthBars();ToggleHealthBars()};if(RegionsToggled){DisplayRegions();DisplayRegions()}}};
-
-	router.on("TOGGLE_BATTLE_FLAGS", () => {
-		if(FieldMode != "MapEditor") {
-			ToggleBattleflags();
-		}
-	});
-
-	router.on("DISPLAY_REGIONS", () => {
-		DisplayRegions();
-	});
-
-	router.on("SHRINK_TILE_CONTAINER", () => {
-		document.getElementById("TileContainer").style.scale="10%";
-		document.getElementById("TileContainer").style.overflow="visible";
-		document.getElementById("TileContainer").style.top="-250px";
-		document.getElementById("TileContainer").style.left="-700px";
-		document.getElementById("TileContainer").style.zIndex="10";
-	});
-
-	router.on("TOGGLE_TRACK_FILL_SWITCH", () => {
-		if(FieldMode == "MapEditor") {
-			TrackFillSwitch = !TrackFillSwitch;
-		}
-	});
-
-	router.on("MAP_UP", () => {
-		document.getElementById('RegionMap').scrollBy(0,-280);
-		document.getElementById('regionMap').scrollBy(0,-280);
-		
-		if(FieldMode=="MapEditor") {
-			RollMapEditor(1);
-		} else {
-			document.getElementById('TopScrollBar').click();
-		}
-	});
-
-	router.on("MAP_LEFT", () => {
-		document.getElementById('RegionMap').scrollBy(-280,0);
-		document.getElementById('regionMap').scrollBy(-280,0);
-		
-		if(FieldMode=="MapEditor") {
-			RollMapEditor(4);
-		} else {
-			document.getElementById('LeftScrollBar').click();
-		}
-	});
-
-	router.on("MAP_DOWN", () => {
-		document.getElementById('RegionMap').scrollBy(0,280);
-		document.getElementById('regionMap').scrollBy(0,280);
-		
-		if(FieldMode=="MapEditor") {
-			RollMapEditor(3);
-		} else {
-			document.getElementById('BottomScrollBar').click();
-		}
-	});
-
-	router.on("MAP_RIGHT", () => {
-		document.getElementById('RegionMap').scrollBy(280,0);
-		document.getElementById('regionMap').scrollBy(280,0);
-		
-		if(FieldMode=="MapEditor") {
-			RollMapEditor(2);
-		} else {
-			document.getElementById('RightScrollBar').click();
-		}
-	});
-}
-
-initEvents(battalion);
 
 //Useful note:
 //Z-Index 0 is for divs with no specific priority
@@ -2427,28 +2379,29 @@ const DisplayLore = function(documentID){
 }
 
 function DisplayRegions(){
-	if(FieldMode!="MapEditor" && RegionMap!=[0]&&NodeMap!=[0]){};
+	if(battalion.state !== Battalion.STATE.MAP_EDITOR && RegionMap!=[0]&&NodeMap!=[0]){};
 	
 
-	if(FieldMode=="MapEditor"){Map=EditorMap;
-	RegionMap=[];
-	let RegionCell=[];
-	NodeMap=[];
-	for(let x=0;x<Map[0].length;x++){RegionCell[RegionCell.length]=0};
-		for(let y=0;y<Map.length;y++){RegionMap[RegionMap.length]=RegionCell};
-		RegionMap=JSON.parse(JSON.stringify(RegionMap));	
+	if(battalion.state === Battalion.STATE.MAP_EDITOR){
+		Map=EditorMap;
+		RegionMap=[];
+		let RegionCell=[];
+		NodeMap=[];
+		for(let x=0;x<Map[0].length;x++){RegionCell[RegionCell.length]=0};
+			for(let y=0;y<Map.length;y++){RegionMap[RegionMap.length]=RegionCell};
+			RegionMap=JSON.parse(JSON.stringify(RegionMap));	
 	};
 	
 	
 
 	if(!RegionsToggled){
 
-		if(FieldMode=="Battle"){document.getElementById("RegionMap").style.visibility="visible"}else{document.getElementById("regionMap").style.visibility="visible"};
+		if(battalion.state === Battalion.STATE.BATTLE){document.getElementById("RegionMap").style.visibility="visible"}else{document.getElementById("regionMap").style.visibility="visible"};
 
 		
 
 
-		if(FieldMode!="MapEditor" && RegionMap!=[0] && NodeMap!=[0]){
+		if(battalion.state !== Battalion.STATE.MAP_EDITOR && RegionMap!=[0] && NodeMap!=[0]){
 
 			for(let i=1;i<Map[0].length;i++){for(let j=1;j<Map.length;j++){
 			document.getElementById("NBorder "+i+"X"+j).style.visibility="hidden";
@@ -2486,7 +2439,7 @@ function DisplayRegions(){
 
 
 
-		}else if(FieldMode=="MapEditor"){
+		}else if(battalion.state === Battalion.STATE.MAP_EDITOR){
 			for(let i=1;i<=EditorMap.length;i++){for(let j=1;j<=EditorMap[0].length;j++){
 				X=0;
 				for(let k=1;k<=CapitolNodeRegistry.length;k++){for(let l=1;l<=CapitolNodeRegistry[0].length;l++){
@@ -2630,22 +2583,25 @@ function EndBattle(){
 	RemoveKebabIMeanBlep();
 	
 
-	for(let i=1;i<=10;i++){for(let j=1;j<=10;j++){
-	document.getElementById("Entity "+i+"X"+j).style.visibility="hidden";
-	document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
-	document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
-	document.getElementById("Structure "+i+"X"+j).style.visibility="hidden";
-	}};
+	for(let i=1;i<=10;i++){
+		for(let j=1;j<=10;j++){
+			document.getElementById("Entity "+i+"X"+j).style.visibility="hidden";
+			document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
+			document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
+			document.getElementById("Structure "+i+"X"+j).style.visibility="hidden";
+		}
+	}
 
-	for(let z=1;z<=4;z++){document.getElementById("Trait"+z).src=""};
-	document.getElementById("DetBar").src="Assets/Miscellaneous/PlainDetailBar.PNG";
-	document.getElementById("Icon").style.visibility="hidden";
-	document.getElementById("DetBarName").innerHTML="";
-	document.getElementById("DetBarDescription").innerHTML="";
-	document.getElementById("Health").style.visibility="hidden";
-	document.getElementById("Damage").style.visibility="hidden";
-	document.getElementById("Movement").style.visibility="hidden";
-	document.getElementById("Biome").style.visibility="hidden";
+	for(let z = 1; z <= 4; z++) {
+		document.getElementById("Trait"+z).src=""};
+		document.getElementById("DetBar").src="Assets/Miscellaneous/PlainDetailBar.PNG";
+		document.getElementById("Icon").style.visibility="hidden";
+		document.getElementById("DetBarName").innerHTML="";
+		document.getElementById("DetBarDescription").innerHTML="";
+		document.getElementById("Health").style.visibility="hidden";
+		document.getElementById("Damage").style.visibility="hidden";
+		document.getElementById("Movement").style.visibility="hidden";
+		document.getElementById("Biome").style.visibility="hidden";
 
 
 		let Preffix=Factions[Constants.Commanders[1].Allegiance].Preffix;
@@ -2661,8 +2617,7 @@ function EndBattle(){
 		if(Victory){document.getElementById("EndBattleImage").src="Assets/Paralogues/Victory"+Preffix+".PNG";
 			Quote=Language.VictoryQuotes}else{
 			document.getElementById("EndBattleImage").src="Assets/Paralogues/Defeat"+Preffix+".PNG";
-			Quote=Language.DefeatQuotes
-
+			Quote=Language.DefeatQuotes;
 		};
 
 		if(Factions!=CampaignFactions){Quote=Quote[0]}else{Quote=Quote[Constants.Commanders[1].Allegiance]};
@@ -2671,38 +2626,43 @@ function EndBattle(){
 		document.getElementById("EndBattleQuote").style.color=Factions[Constants.Commanders[1].Allegiance].color;
 
 
-	if(!Victory && Resolution){
-		//alert("It's ok bro, we're not all Chuck Norris");
-	Resolution=false;
-	document.getElementById("Battlemap").style.visibility="hidden";
-	document.getElementById("Main Menu").style.visibility="visible";
-	rostermap=0;
-	for(let i=1;i<=10;i++){for(let j=1;j<=10;j++){
-	document.getElementById("Entity "+i+"X"+j).style.visibility="hidden";
-	document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
-	document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
-	document.getElementById("Structure "+i+"X"+j).style.visibility="hidden";
-	}};
-	};
+		if(!Victory && Resolution) {
+			//alert("It's ok bro, we're not all Chuck Norris");
+			Resolution=false;
+			document.getElementById("Battlemap").style.visibility="hidden";
+			document.getElementById("Main Menu").style.visibility="visible";
+			rostermap=0;
+
+			for(let i=1;i<=10;i++) {
+				for(let j=1;j<=10;j++) {
+					document.getElementById("Entity "+i+"X"+j).style.visibility="hidden";
+					document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
+					document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
+					document.getElementById("Structure "+i+"X"+j).style.visibility="hidden";
+				}
+			}
+		}
 
 
-	if(Victory && Resolution){
-		//alert("GG bro! You won the level!");
-	Victory=false;
-	Resolution=false;
-	document.getElementById("Battlemap").style.visibility="hidden";
-	if(ChosenMission==5){CallInterlogue()};
-	for(let i=1;i<=10;i++){for(let j=1;j<=10;j++){
-	//alert(document.getElementById("Entity "+i+"X"+j).style.visibility);
-	document.getElementById("Entity "+i+"X"+j).style.visibility="hidden";
-	document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
-	document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
-	document.getElementById("Structure "+i+"X"+j).style.visibility="hidden";
-	if(ChosenNation!=0){Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Finished=true};
-	}};
-	};
+		if(Victory && Resolution){
+			//alert("GG bro! You won the level!");
+			Victory=false;
+			Resolution=false;
+			document.getElementById("Battlemap").style.visibility="hidden";
 
+			if(ChosenMission==5){CallInterlogue()};
 
+			for(let i=1;i<=10;i++) {
+				for(let j=1;j<=10;j++) {
+					//alert(document.getElementById("Entity "+i+"X"+j).style.visibility);
+					document.getElementById("Entity "+i+"X"+j).style.visibility="hidden";
+					document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
+					document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
+					document.getElementById("Structure "+i+"X"+j).style.visibility="hidden";
+					if(ChosenNation!=0){Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Finished=true};
+				}
+			}
+		}
 
 	//This bloc calls the endbattle screen
 
@@ -3741,7 +3701,7 @@ function initializeBattle(Faction,Chapter,Mission){
 	isAITurn=false;
 	BattleEnd=true;
 	Resolution=false;
-	FieldMode="Battle";
+	battalion.setState(Battalion.STATE.BATTLE);
 	Chuchu=0;
 
 	Map=Campaigns[Faction-1][Chapter-1][Mission-1].Map;
@@ -3948,7 +3908,7 @@ function initializeSpecialBattle(Level){
 	Resolution=false;
 	Victory=false;
 	PlayBGM(0);
-	FieldMode="Battle";
+	battalion.setState(Battalion.STATE.BATTLE);
 
 	BiomeMap=Level.BiomeMap;
 	if((BiomeMap??0)==0){BiomeMap=[]; let BiomeLine=[];for(let b=0; b<Map[0].length;b++){BiomeLine[BiomeLine.length]=1}; for(let a=0; a<Map.length;a++){BiomeMap[BiomeMap.length]=BiomeLine}};
@@ -7480,7 +7440,7 @@ function TestMap(){
 	RosterKey=RosterKey.slice(0,-2);
 	RosterKey+="]";
 	*/
-	FieldMode="Battle";
+	battalion.setState(Battalion.STATE.BATTLE);
 	let RosterKey=[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0}];
 	for(let x=0;x<EditorEntityMap.length;x++){for (let y=0;y<EditorEntityMap[0].length;y++){if(EditorEntityMap[x][y]!=0){RosterKey[RosterKey.length]=EditorEntityMap[x][y]}}};
 

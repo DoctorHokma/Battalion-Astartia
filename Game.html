@@ -703,7 +703,7 @@
 
 		<div id="EditorMap" style='position:absolute; visibility:hidden; top:10px; left:350px'>
 			<div id="TileContainer" style="position:absolute; top:0px; left:0px; overflow:hidden; scroll-behavior: smooth;"></div>
-			<img style="position: absolute; top: 595px; left: 588px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG'" onclick="document.getElementById('EditorMap').style.visibility='hidden'; document.getElementById('Main Menu').style.visibility='visible'" />
+			<img style="position: absolute; top: 595px; left: 588px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG'" onclick="document.getElementById('EditorMap').style.visibility='hidden'; document.getElementById('Main Menu').style.visibility='visible'; battalion.setState(Battalion.STATE.MAIN_MENU);" />
 
 			<div id="Tilelist" style="position: absolute; left: -91px; top: -10px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" oncontextmenu="Tooltip('TOOLTIP_CHOOSE_TILE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';">
 				<img src="Assets/Miscellaneous/EditorPanel.PNG"/>
@@ -945,7 +945,7 @@
 			<p style="position: absolute; top:123px; left:116px">↕</p>
 			<input type="text" id="widthinput" name="testinput" value="10" style="position:absolute; top:119px; left:133px">
 			<input type="text" id="heigthinput" name="testinput" value="10" style="position:absolute; top:140px; left:133px">
-			<button id="GenerateEditorMap" onClick="FieldMode='MapEditor'; for(let i=1;i<=10;i++){for(let j=1;j<=10;j++){key=document.getElementById('Slot '+i+' X '+j)??0;if(key!=0){key.remove()};}}; castMapMaker();" style="position:absolute; top:161px; left:145px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto">Generate Blank Map</button>
+			<button id="GenerateEditorMap" style="position:absolute; top:161px; left:145px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto">Generate Blank Map</button>
 		</div>
 
 		<div id="Options" style="position:relative; visibility:hidden; left:448px;top:140px;z-index:7">
@@ -1568,7 +1568,7 @@
 				<img id="EndBattleImage" style="position:fixed; background-attachment: local; top:0px; left:167px; width:1001px; height:700px" />
 				<div style="position:fixed; width:980px; height:70px; top:510px; left:282px; scroll-behavior:smooth;" onmouseover="ScrollDown=setInterval(ScrollEndScreenDown,5); function ScrollEndScreenDown(){document.getElementById('EndBattleScreen').scrollBy(0,1)}" onmouseout="clearInterval(ScrollDown)"></div>
 				<div style="position:fixed; width:980px; height:70px; top:20px; left:282px; scroll-behavior:smooth;" onmouseover="ScrollUp=setInterval(ScrollEndScreenUp,5); function ScrollEndScreenUp(){document.getElementById('EndBattleScreen').scrollBy(0,-1)}" onmouseout="clearInterval(ScrollUp)"></div>
-				<img style="position:fixed; top: 630px; left: 617px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onclick="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG';for(let a=1; a<Constants.Commanders.length; a++){let elem=document.getElementById('AnalysisBlock'+Factions[Constants.Commanders[a].Allegiance].Preffix); elem.remove()}; for(let b=0; b<Coallitions.length; b++){let elem=document.getElementById('CoallitionTitle'+Coallitions[b]); elem.remove()}; Factions=CampaignFactions; document.getElementById('EndBattleScreen').style.visibility='hidden'; if(ChosenMission==5 && Victory){CallInterlogue()}else{document.getElementById('Main Menu').style.visibility='visible'};"/>
+				<img id="EndBattleCloseButton" style="position:fixed; top: 630px; left: 617px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'"/>
 			</div>
 		</div>
 		
