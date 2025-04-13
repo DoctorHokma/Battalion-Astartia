@@ -5,8 +5,6 @@ TEM={
 	UnitSpecialDesc:[],
 	TerrainName:[],
 	TerrainDesc:[],
-	ClassTraitName:[],
-	ClassTraitDesc:[],
 	NationName:[],
 	NationDesc:[],
 	Intralogues:[],

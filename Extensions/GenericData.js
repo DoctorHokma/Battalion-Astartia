@@ -114,7 +114,34 @@ const TRAITS = {
     "Absorber": {"name":"TRAIT_NAME_ABSORBER","desc":"TRAIT_DESC_ABSORBER","icon":"Assets/Traits/Absorber.png"},
     "Terrifying": {"name":"TRAIT_NAME_TERRIFYING","desc":"TRAIT_DESC_TERRIFYING","icon":"Assets/Traits/Terrifying.png"},
     "Lynchpin": {"name":"TRAIT_NAME_LYNCHPIN","desc":"TRAIT_DESC_LYNCHPIN","icon":"Assets/Traits/Lynchpin.png"},
-    "Inflaming": {"name":"TRAIT_NAME_INFLAMING","desc":"TRAIT_DESC_INFLAMING","icon":"Assets/Traits/Inflaming.png"}
+    "Inflaming": {"name":"TRAIT_NAME_INFLAMING","desc":"TRAIT_DESC_INFLAMING","icon":"Assets/Traits/Inflaming.png"},
+
+
+    "LightArmor": {"name":"TRAIT_NAME_LIGHT_ARMOR","desc":"TRAIT_DESC_LIGHT_ARMOR","icon":"Assets/Traits/.png"},
+    "MediumArmor": {"name":"TRAIT_NAME_MEDIUM_ARMOR","desc":"TRAIT_DESC_MEDIUM_ARMOR","icon":"Assets/Traits/.png"},
+    "HeavyArmor": {"name":"TRAIT_NAME_HEAVY_ARMOR","desc":"TRAIT_DESC_HEAVY_ARMOR","icon":"Assets/Traits/.png"},
+
+    "NoneWeapon": {"name":"TRAIT_NAME_NO_WEAPON","desc":"TRAIT_DESC_NO_WEAPON","icon":"Assets/Traits/.png"},
+    "LightWeapon": {"name":"TRAIT_NAME_LIGHT_WEAPON","desc":"TRAIT_DESC_LIGHT_WEAPON","icon":"Assets/Traits/.png"},
+    "MediumWeapon": {"name":"TRAIT_NAME_MEDIUM_WEAPON","desc":"TRAIT_DESC_MEDIUM_WEAPON","icon":"Assets/Traits/.png"},
+    "HeavyWeapon": {"name":"TRAIT_NAME_HEAVY_WEAPON","desc":"TRAIT_DESC_HEAVY_WEAPON","icon":"Assets/Traits/.png"},
+
+    "Stationary": {"name":"TRAIT_NAME_STATIONARY","desc":"TRAIT_DESC_STATIONARY","icon":"Assets/Traits/.png"},
+    "Foot": {"name":"TRAIT_NAME_FOOT","desc":"TRAIT_DESC_FOOT","icon":"Assets/Traits/.png"},
+    "Wheeled": {"name":"TRAIT_NAME_WHEELED","desc":"TRAIT_DESC_WHEELED","icon":"Assets/Traits/.png"},
+    "Tracked": {"name":"TRAIT_NAME_TRACKED","desc":"TRAIT_DESC_TRACKED","icon":"Assets/Traits/.png"},
+    "Flight": {"name":"TRAIT_NAME_FLIGHT","desc":"TRAIT_DESC_FLIGHT","icon":"Assets/Traits/.png"},
+    "Rudder": {"name":"TRAIT_NAME_RUDDER","desc":"TRAIT_DESC_RUDDER","icon":"Assets/Traits/.png"},
+    "HeavyRudder": {"name":"TRAIT_NAME_HEAVY_RUDDER","desc":"TRAIT_DESC_HEAVY_RUDDER","icon":"Assets/Traits/.png"},
+    "Amphibious": {"name":"TRAIT_NAME_AMPHIBIOUS","desc":"TRAIT_DESC_AMPHIBIOUS","icon":"Assets/Traits/.png"},
+
+    "Temperate": {"name":"TRAIT_NAME_TEMPERATE","desc":"TRAIT_DESC_TEMPERATE","icon":"Assets/Traits/.png"},
+    "Arid": {"name":"TRAIT_NAME_ARID","desc":"TRAIT_DESC_ARID","icon":"Assets/Traits/.png"},
+    "Boreal": {"name":"TRAIT_NAME_BOREAL","desc":"TRAIT_DESC_BOREAL","icon":"Assets/Traits/.png"},
+    "Barren": {"name":"TRAIT_NAME_BARREN","desc":"TRAIT_DESC_BARREN","icon":"Assets/Traits/.png"},
+    "Arctic": {"name":"TRAIT_NAME_ARCTIC","desc":"TRAIT_DESC_ARCTIC","icon":"Assets/Traits/.png"},
+    "Lunar": {"name":"TRAIT_NAME_LUNAR","desc":"TRAIT_DESC_LUNAR","icon":"Assets/Traits/.png"},
+    "Martian": {"name":"TRAIT_NAME_MARTIAN","desc":"TRAIT_DESC_MARTIAN","icon":"Assets/Traits/.png"}
 };
 
 const TERRAIN = [

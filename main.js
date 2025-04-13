@@ -2285,119 +2285,6 @@ function ChooseMission(Mission){
 	}
 }
 
-function ClassTraitDetail(Slot,UnitCase){
-	let indexer = null;
-	let index=0;
-
-	if(UnitCase=='Details') {
-		if(Slot=="ArmorType"){indexer=ArmorShowcase; document.getElementById("TraitTooltip").style.left="200px"; document.getElementById("TraitTooltip").style.top="-35px"};
-		if(Slot=="DamageType"){indexer=WeaponShowcase; index=3; document.getElementById("TraitTooltip").style.left="280px"; document.getElementById("TraitTooltip").style.top="-35px"};
-		if(Slot=="MovementType"){indexer=MovementShowcase; document.getElementById("TraitTooltip").style.left="357px"; document.getElementById("TraitTooltip").style.top="-35px"};
-		if(Slot=="Biome") {
-			indexer=BIOMES[LocalBiome].nominator;
-			document.getElementById("TraitTooltip").style.left="357px";
-			document.getElementById("TraitTooltip").style.top="-35px"
-		}
-	}
-
-	if(UnitCase=='Constructor') {
-		ArmorShowcase=HighlightedEntity.Armor;
-		WeaponShowcase=HighlightedEntity.Weapon;
-		MovementShowcase=HighlightedEntity.Movement;
-		if(Slot=="ArmorType"){indexer=ArmorShowcase; document.getElementById("TraitTooltip").style.left="-70px"; document.getElementById("TraitTooltip").style.top="-525px"};
-		if(Slot=="DamageType"){indexer=WeaponShowcase; index=3; document.getElementById("TraitTooltip").style.left="0px"; document.getElementById("TraitTooltip").style.top="-525px"};
-		if(Slot=="MovementType"){indexer=MovementShowcase; document.getElementById("TraitTooltip").style.left="70px"; document.getElementById("TraitTooltip").style.top="-525px"}
-	}
-
-	switch(indexer){
-		case "Light":
-		index+=1;
-		break;
-
-		case "Medium":
-		index+=2;
-		break;
-
-		case "Heavy":
-		index+=3;
-		break;		
-
-		case "None":
-		index+=4;
-		break;
-
-		case "Stationary":
-		index=8;
-		break;
-
-		case "Foot":
-		index=9;
-		break;
-
-		case "Wheeled":
-		index=10;
-		break;
-
-		case "Tracked":
-		index=11;
-		break;
-
-		case "Flight":
-		index=12;
-		break;
-
-		case "Rudder":
-		index=13;
-		break;
-
-		case "Heavy Rudder":
-		index=14;
-		break;
-
-		case "Amphibious":
-		index=15;
-		break;
-
-		case "Temperate":
-		index=16;
-		break;
-
-		case "Arid":
-		index=17;
-		break;
-
-		case "Boreal":
-		index=18;
-		break;
-
-		case "Barren":
-		index=19;
-		break;
-
-		case "Arctic":
-		index=20;
-		break;
-
-		case "Lunar":
-		index=21;
-		break;
-
-		case "Martian":
-		index=22;
-		break;
-
-		default:
-		index=0;
-	}
-
-	document.getElementById("TraitTooltip").style.visibility="visible";
-
-	if(Language.ClassTraitDesc[index].length > 65){document.getElementById("TraitTooltipImage").src="Assets/Miscellaneous/TraitTooltipPlus.PNG"}else{document.getElementById("TraitTooltipImage").src="Assets/Miscellaneous/TraitTooltip.PNG"};
-	
-	document.getElementById("TraitName").innerHTML=Language.ClassTraitName[index];
-	document.getElementById("TraitDescription").innerHTML=Language.ClassTraitDesc[index];
-}
-
 function Cloak(X,Y,type,faction){
 		let Stealth=false;
 		if(hasCertainTrait(type,"Stealth")){Stealth=true};
@@ -2421,8 +2308,6 @@ function Cloak(X,Y,type,faction){
 
 //neyn TODO!!!
 function ConvoyPickup(Unit){
-	const { language } = battalion;
-
 	if(IsConvoy){
 		let HPIndex=rostermap[Unit.x][Unit.y].life/100;
 		let Cargo=rostermap[Unit.x][Unit.y].cargo;
@@ -4426,9 +4311,6 @@ function LanguageCorrecter(Language){
 
 	if((Language.TerrainName??[]).length==0){Language.TerrainName=ENG.TerrainName};
 	if((Language.TerrainDesc??[]).length==0){Language.TerrainDesc=ENG.TerrainDesc};
-
-	if((Language.ClassTraitName??[]).length==0){Language.ClassTraitName=ENG.ClassTraitName};
-	if((Language.ClassTraitDesc??[]).length==0){Language.ClassTraitDesc=ENG.ClassTraitDesc};
 
 	if((Language.ChapterName??[]).length==0){Language.ChapterName=ENG.ChapterName};
 	if((Language.MissionName??[]).length==0){Language.MissionName=ENG.MissionName};

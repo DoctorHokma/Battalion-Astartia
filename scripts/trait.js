@@ -1,3 +1,5 @@
+const TRAIT_DESC_MAX_LENGTH = 65;
+
 /**
  * neyn 07.04.2025
  * 
@@ -58,7 +60,24 @@ const getTraitIDFromHighlighted = function(tagID) {
 	}
 }
 
-const TRAIT_DESC_MAX_LENGTH = 65;
+/**
+ * neyn 12.04.2025
+ * 
+ * @param {string} traitID 
+ * @returns {string}
+ */
+const getTraitIcon = function(traitID) {
+	const trait = TRAITS[traitID];
+
+	if(!trait) {
+		console.warn(`Trait ${traitID} does not exist!`);
+		return "";
+	}
+
+	const { icon } = trait;
+
+	return icon;
+}
 
 /**
  * neyn 07.04.2025
@@ -72,6 +91,7 @@ const showTraitDetail = function(context, traitID) {
 	const trait = TRAITS[traitID];
 
 	if(!trait) {
+		console.log(`Trait ${traitID} does not exist!`);
 		return;
 	}
 
@@ -97,27 +117,25 @@ const showTraitDetail = function(context, traitID) {
  * @returns 
  */
 const traitDetail = function(tagID, useCase){
-	//Bag pula-n curul lui Dincă <- lol -neyn
-
 	const traitTooltip = document.getElementById("TraitTooltip");
 	const traitID = getTraitIDFromHighlighted(tagID);
 
 	if(!traitID) {
-		console.warn(`Missing traitID!`);
+		console.log(`Trait ${traitID} does not exist!`);
 		return;
 	}
 
 	switch(useCase) {
 		case "Details": {
 			traitTooltip.style.visibility = "visible";
-			traitTooltip.style.left="400px";
-			traitTooltip.style.top="-35px"
+			traitTooltip.style.left = "400px";
+			traitTooltip.style.top = "-35px";
 			break;
 		}
 		case "Constructor": {
 			traitTooltip.style.visibility = "visible";
-			traitTooltip.style.left="200px";
-			traitTooltip.style.top="-525px"
+			traitTooltip.style.left = "200px";
+			traitTooltip.style.top = "-525px";
 			break;
 		}
 		default: {
@@ -132,20 +150,76 @@ const traitDetail = function(tagID, useCase){
 }
 
 /**
- * neyn 12.04.2025
+ * neyn 13.04.2025
  * 
- * @param {string} traitID 
- * @returns {string}
+ * @param {string} slot 
+ * @param {string} useCase 
  */
-const getTraitIcon = function(traitID) {
-	const trait = TRAITS[traitID];
+const classTraitDetail = function(slot, useCase) {
+	const traitTooltip = document.getElementById("TraitTooltip");
+	let traitID = "";
 
-	if(!trait) {
-		console.warn(`Trait ${traitID} does not exist!`);
-		return "";
+	switch(useCase) {
+		case "Details": {
+			traitTooltip.style.visibility = "visible";
+			traitTooltip.style.top = "-35px";
+
+			switch(slot) {
+				case "ArmorType": {
+					traitTooltip.style.left = "200px";
+					traitID = ArmorShowcase + "Armor";
+					break;
+				}
+				case "DamageType": {
+					traitTooltip.style.left = "280px";
+					traitID = WeaponShowcase + "Weapon";
+					break;
+				}
+				case "MovementType": {
+					traitTooltip.style.left = "357px";
+					traitID = MovementShowcase;
+					break;
+				}
+				case "Biome": {
+					traitTooltip.style.left = "357px";
+					traitID = BIOMES[LocalBiome].nominator;
+					break;
+				}
+			}
+			break;
+		}
+		case "Constructor": {
+			traitTooltip.style.visibility = "visible";
+			traitTooltip.style.top = "-525px";
+
+			ArmorShowcase = HighlightedEntity.Armor;
+			WeaponShowcase = HighlightedEntity.Weapon;
+			MovementShowcase = HighlightedEntity.Movement;
+
+			switch(slot) {
+				case "ArmorType": {
+					traitTooltip.style.left = "-70px";
+					traitID = ArmorShowcase + "Armor";
+					break;
+				}
+				case "DamageType": {
+					traitTooltip.style.left = "0px";
+					traitID = WeaponShowcase + "Weapon";
+					break;
+				}
+				case "MovementType": {
+					traitTooltip.style.left = "70px";
+					traitID = MovementShowcase;
+					break;
+				}
+			}
+			break;
+		}
+		default: {
+			console.warn(`Invalid useCase! ${useCase}`);
+			break;
+		}
 	}
 
-	const { icon } = trait;
-
-	return icon;
+	showTraitDetail(battalion, traitID);
 }
