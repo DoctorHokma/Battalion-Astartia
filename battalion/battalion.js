@@ -56,7 +56,7 @@ Battalion.DIRECTION_FLIP = {
  * @returns {Map}
  */
 Battalion.prototype.getMissingLanguageTags = function() {
-	const file = new InefficientJSONExporter(4);
+	const file = new PrettyJSON(4);
 	const missing = this.language.getAllMissingTags(LANGUAGE_TEMPLATE);
 
 	file.open();
@@ -64,10 +64,10 @@ Battalion.prototype.getMissingLanguageTags = function() {
 	for(const [languageID, obj] of missing) {
 		const { regular } = obj;
 		
-		file.openList(languageID, 1);
+		file.openList(languageID);
 
 		for(const id of regular) {
-			file.writeLine(id, 2, "");
+			file.writeLine(id, "");
 		}
 
 		file.closeList();

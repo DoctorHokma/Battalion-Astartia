@@ -8,14 +8,14 @@
  * @param {string[]} toExport 
  */
 const orderedExport = function(fName, schema, toExport) {
-    const file = new InefficientJSONExporter(4);
+    const file = new PrettyJSON(4);
     file.open();
 
     for(let i = 0; i < schema.length; i++) {
         if(i >= toExport.length) {
-            file.writeLine(schema[i], 1, "");
+            file.writeLine(schema[i], "");
         } else {
-            file.writeLine(schema[i], 1, toExport[i]);
+            file.writeLine(schema[i], toExport[i]);
         }
     }
 
@@ -193,6 +193,7 @@ const T4 = [
 
 //orderedExport("fName", T3, []);
 
+
 /**
  * neyn 12.04.2025
  * 
@@ -202,7 +203,7 @@ const T4 = [
  */
 const exportTraits = function(fName){
     const list = Object.keys(TRAITS);
-    const file = new InefficientJSONExporter(4);
+    const file = new PrettyJSON(4);
     file.open();
 
     for(let i = 0; i < list.length; i++) {
@@ -210,7 +211,7 @@ const exportTraits = function(fName){
         const trait = TRAITS[traitID];
         const line = { "name": trait.name, "desc": trait.desc, "icon": `Assets/Traits/${traitID}.png` };
 
-        file.writeLine(traitID, 1, line);
+        file.writeLine(traitID, line);
     }
 
     file.close();
