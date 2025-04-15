@@ -165,6 +165,7 @@ PrettyJSON.prototype.build = function() {
 }
 
 PrettyJSON.prototype.reset = function() {
+    this.depth = 0;
     this.openLists = [];
     this.jsonString = "";
     this.writes = 0;

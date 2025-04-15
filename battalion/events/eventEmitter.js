@@ -2,8 +2,6 @@ const EventEmitter = function() {
     this.listeners = new Map();
 }
 
-EventEmitter.SUPER_ID = "#";
-
 EventEmitter.prototype.listen = function(eventType) {
     if(this.listeners.has(eventType)) {
         return;
@@ -26,41 +24,28 @@ EventEmitter.prototype.deafenAll = function() {
     this.listeners.clear();
 }
 
-EventEmitter.prototype.getID = function(options) {
-    if(!options) {
-        return Listener.NEXT_ID++;
-    }
-
-    const { permanent, id } = options;
-
-    if(permanent) {
-        return EventEmitter.SUPER_ID;
-    }
-
-    if(id) {
-        return id;
-    }
-
-    return Listener.NEXT_ID++;
-}
-
 EventEmitter.prototype.on = function(eventType, onCall, options) {
     const listener = this.listeners.get(eventType);
 
     if(!listener) {
-        return null;
+        return Listener.ID.ERROR;
     }
 
-    const observerType = options && options.once ? Listener.OBSERVER_TYPE.SINGLE : Listener.OBSERVER_TYPE.DEFAULT;
-    const id = this.getID(options);
+    if(typeof onCall !== "function") {
+        console.warn("onCall must be a function!");
+        return Listener.ID.ERROR;
+    }
 
-    listener.addObserver(observerType, id, onCall);
+    const observerType = listener.getType(options);
+    const observerID = listener.getID(options);
 
-    return id;
+    listener.addObserver(observerType, observerID, onCall);
+
+    return observerID;
 }
 
 EventEmitter.prototype.unsubscribe = function(eventType, subscriberID) {
-    if(subscriberID === EventEmitter.SUPER_ID) {
+    if(subscriberID === Listener.ID.SUPER) {
         return;
     }
 
@@ -70,16 +55,16 @@ EventEmitter.prototype.unsubscribe = function(eventType, subscriberID) {
         return;
     }
 
-    listener.filterObservers((observer) => observer.subscriber !== subscriberID);
+    listener.filterObservers((observer) => observer.id !== subscriberID);
 }
 
 EventEmitter.prototype.unsubscribeAll = function(subscriberID) {
-    if(subscriberID === EventEmitter.SUPER_ID) {
+    if(subscriberID === Listener.ID.SUPER) {
         return;
     }
 
     this.listeners.forEach((listener) => {
-        listener.filterObservers((observer) => observer.subscriber !== subscriberID);
+        listener.filterObservers((observer) => observer.id !== subscriberID);
     });
 }
 
@@ -90,12 +75,12 @@ EventEmitter.prototype.mute = function(eventType) {
         return;
     }
 
-    listener.filterObservers((observer) => observer.subscriber === EventEmitter.SUPER_ID);
+    listener.filterObservers((observer) => observer.id === Listener.ID.SUPER);
 }
 
 EventEmitter.prototype.muteAll = function() {
     this.listeners.forEach((listener) => {
-        listener.filterObservers((observer) => observer.subscriber === EventEmitter.SUPER_ID);
+        listener.filterObservers((observer) => observer.id === Listener.ID.SUPER);
     });
 }
 
@@ -106,17 +91,5 @@ EventEmitter.prototype.emit = function(eventType, ...args) {
         return;
     }
 
-    for(let i = 0; i < listener.observers.length; i++) {
-        const observer = listener.observers[i];
-
-        observer.onCall(...args);
-    }
-
-    for(let i = 0; i < listener.singleObservers.length; i++) {
-        const observer = listener.singleObservers[i];
-
-        observer.onCall(...args);
-    }
-
-    listener.singleObservers.length = 0;
+    listener.emit(args);
 }
