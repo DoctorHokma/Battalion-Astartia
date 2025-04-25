@@ -1,12 +1,12 @@
 const OPENING_TRACK = "RiversOfSteel";
 const battalion = new Battalion();
-const moraleShiftHandler = new MoraleShiftHandler();
+const moraleHandler = new MoraleHandler();
 
-moraleShiftHandler.addParticulator("MoraleParticulator0", "VERY_NEGATIVE");
-moraleShiftHandler.addParticulator("MoraleParticulator1", "NEGATIVE");
-moraleShiftHandler.addParticulator("MoraleParticulator2", "NEUTRAL");
-moraleShiftHandler.addParticulator("MoraleParticulator3", "POSITIVE");
-moraleShiftHandler.addParticulator("MoraleParticulator4", "VERY_POSITIVE");
+moraleHandler.addParticulator("MoraleParticulator0", "VERY_NEGATIVE");
+moraleHandler.addParticulator("MoraleParticulator1", "NEGATIVE");
+moraleHandler.addParticulator("MoraleParticulator2", "NEUTRAL");
+moraleHandler.addParticulator("MoraleParticulator3", "POSITIVE");
+moraleHandler.addParticulator("MoraleParticulator4", "VERY_POSITIVE");
 
 battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
 
@@ -573,7 +573,7 @@ function AI_Scouter(Unit,Map){
 					if(hasCertainTrait(Atk.unitType,"Stealth")){Dmg*=2};
 					if(hasCertainTrait(Atk.unitType,"Supply Distribution")){Dmg*=-1};
 					if(hasCertainTrait(Atk.unitType,"Bewegungskrieg")){Dmg*=1};//Bewegungskrieg not yet considered
-					Dmg*=Math.min(2,Math.max(0.2,1+Atk.morale/5));
+					Dmg *= MoraleHandler.getDamageModifier(Atk.morale);
 					if(hasCertainTrait(Def.unitType,"Cemented Steel Armor")&&!hasCertainTrait(Atk.unitType,"Cavitation Explosion")){Dmg=Math.max(0,Dmg-20)};
 					if(Dmg>Def.life){Riposte=false};
 	
@@ -595,7 +595,7 @@ function AI_Scouter(Unit,Map){
 						if(Atk.movementType=="Heavy Rudder"&&hasCertainTrait(Def.unitType,"Anti-Ship")){Ctk*=3};
 						if(Atk.movementType=="Static"&&hasCertainTrait(Def.unitType,"Anti-Structure")){Ctk*=2};
 						if(hasCertainTrait(Atk.unitType,"Steer")&&(Def.movementType=="Rudder" || Def.movementType=="Heavy Rudder")){Ctk*=Math.min(1,Math.max(0.4,Def.speed-Def.speed))};
-						Ctk*=Math.min(2,Math.max(0.2,1+Def.morale/5));
+						Ctk *= MoraleHandler.getDamageModifier(Def.morale);
 	
 	
 					//console.log(Dmg+" "+Ctk/2);
@@ -755,7 +755,7 @@ function AI_Scouter(Unit,Map){
 					if(hasCertainTrait(Atk.unitType,"Supply Distribution")){DMG*=-1};
 					if(hasCertainTrait(Def.unitType,"Supply Distribution")){Riposte=false};
 					if(hasCertainTrait(Atk.unitType,"Bewegungskrieg")){DMG*=1};//Bewegungskrieg not yet considered
-					DMG*=Math.min(2,Math.max(0.2,1+Atk.morale/5));
+					DMG *= MoraleHandler.getDamageModifier(Atk.morale);
 					if(hasCertainTrait(Atk.unitType,"Dispersion")){
 						let targets=0;
 						for(let x=Math.max(0,ics-2); x<Math.min(Map.length,ics+2);x++){for(let y=Math.max(0,igrec-2); y<Math.min(Map[0].length,igrec+2);y++){
@@ -787,7 +787,7 @@ function AI_Scouter(Unit,Map){
 						if(Atk.movementType=="Heavy Rudder"&&hasCertainTrait(Def.unitType,"Anti-Ship")){Ctk*=3};
 						if(Atk.movementType=="Static"&&hasCertainTrait(Def.unitType,"Anti-Structure")){Ctk*=2};
 						if(hasCertainTrait(Atk.unitType,"Steer")&&(Def.movementType=="Rudder" || Def.movementType=="Heavy Rudder")){Ctk*=Math.min(1,Math.max(0.4,Def.speed-Def.speed))};
-						Ctk*=Math.min(2,Math.max(0.2,1+Def.morale/5));
+						Ctk *= MoraleHandler.getDamageModifier(Def.morale);
 
 
 					DMG-=Ctk/2};
@@ -1935,7 +1935,6 @@ function CastEntityMap(Map, Roster){
 		}
 
 		document.getElementById("EntityCore "+(X)+"X"+(Y)).style.filter=Filter;
-
 		/*
 		//if(ics>=StandardX && ics<StandardX+10 && igrec>=StandardY && igrec <StandardY+10){
 		if(true){
@@ -2481,8 +2480,8 @@ function DisplayRegions(){
 };
 //NEYN TODO!!!
 function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomName, SpecialName, CustomDesc, SpecialDesc) {
-	const shift = moraleShiftHandler.getShift();
-	const costFactor = moraleShiftHandler.getCostFactor();
+	const shift = moraleHandler.getShift();
+	const costFactor = moraleHandler.getCostFactor();
 
 	YourMoney-=Math.round(Units[Type].Cost*costFactor);
 	CustomName=document.getElementById("ParticularNameBox").value;
@@ -3957,7 +3956,7 @@ function initializeSpecialBattle(Level){
 	for(let a=0;a<Constants.Commanders.length;a++){Stance="Defender";
 		for(let b=0;b<Constants.AttackerFaction.length;b++){if(Factions[Constants.Commanders[a].Allegiance].faction==Constants.AttackerFaction[b]){Stance="Attacker"}};
 		Stance=="Defender"?DaoLedger[Constants.Commanders[a].Allegiance]=Constants.DefensiveDao[a]:DaoLedger[Constants.Commanders[a].Allegiance]=Constants.OffensiveDao[a]};
-
+		//NEYN TODO the fuck is goin on? MORALE
 	for(let c=1;c<Roster.length;c++){Roster[c].morale=Math.min(Math.max(Roster[c].morale+Math.round(DaoLedger[Roster[c].faction]/2),-4),5)};};
 
 	document.getElementById("Battlemap").style.visibility="visible";
@@ -4374,7 +4373,7 @@ function LaunchRecruitmentPanel(IndustrialBranch){
 	MontreIndexBasis=IndustrialBranch*10+20;
 	if(IndustrialBranch==1){MontreIndexBasis-=30};
 
-	moraleShiftHandler.reset();
+	moraleHandler.reset();
 
 	let InfantrySelection=Factions[PlayerChoiceFaction].SpecialInfantry;
 	let VehicleSelection=Factions[PlayerChoiceFaction].SpecialVehicles;
@@ -5723,7 +5722,7 @@ function PostDialogueFrame(Portrait, Name, Text){
 	document.getElementById("DialogueBox").style.visibility="visible";};
 function RazeFaction(Faction){};
 function RecruitUnit(Class){
-	const costFactor = moraleShiftHandler.getCostFactor();
+	const costFactor = moraleHandler.getCostFactor();
 	//alert(ActiveIndustrialNode.X+"X"+ActiveIndustrialNode.Y);
 	for(let x=1;x<Map.length;x++){for(let y=1;y<Map[0].length;y++){let crep=document.getElementById("Crep-"+x+"-"+y) ?? 0; if(crep!=0){crep.remove()};}};
 	let RecC=document.getElementById("CloseRecruiterX")??0;if(RecC!=0){RecC.remove()};
@@ -7125,9 +7124,13 @@ function RunEvent(Event){
 							//RefreshMap(Map);
 					};
 					if(Event.Inspire!=null){
-						for(let h=0;h<MapRoster.length;h++){if(MapRoster[h].faction==Event.Inspire.fct){MapRoster[h].morale+=Event.Inspire.value}};
+						for(let h=0;h<MapRoster.length;h++) {
+							if(MapRoster[h].faction==Event.Inspire.fct) {
+								MapRoster[h].updateMorale(Event.Inspire.value);
+							}
+						}
+					}
 
-						};
 					if(Event.Strike.length>0){
 						for(let f=0;f<Event.Strike.length;f++){
 							let target=Event.Strike[f];

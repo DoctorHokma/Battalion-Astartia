@@ -41,6 +41,15 @@ Entity.TYPE = {
     BUILDING: 3
 };
 
+Entity.prototype.updateMorale = function(value) {
+    const nextMorale = this.morale + value;
+    const updatedMorale = MoraleHandler.clampMoraleValue(nextMorale);
+
+    this.morale = updatedMorale;
+
+    return this.morale;
+}
+
 Entity.prototype.onTurnPassed = function() {
     
 }
@@ -90,7 +99,6 @@ Entity.prototype.init = function(config, type, index) {
     this.faction = faction;
     this.coallition = Factions[faction].faction; 
     this.life *= (1 + hpModifier); 
-    this.morale = morale;
     this.direction = direction;
     this.cargo = cargo;
     this.isCloaked = Cloak(x, y, id, Factions[faction].faction);
@@ -98,6 +106,7 @@ Entity.prototype.init = function(config, type, index) {
     this.specialDescID = SpecialDescription;
     this.customName = CustomName;
     this.customDesc = CustomDescription;
+    this.updateMorale(morale);
 }
 
 Entity.prototype.completeBuilding = function() {

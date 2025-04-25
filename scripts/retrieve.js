@@ -41,7 +41,7 @@ function RetrieveAllMapData() {
 	for(let i = 0; i < x; i++) {
 		for(let j = 0; j < y; j++) {
 			if(EditorEntityMap[i][j] != 0) {
-				let UnitEntry = `{ "id": ${EditorEntityMap[i][j].id}, "faction": ${EditorEntityMap[i][j].faction}, "direction": ${EditorEntityMap[i][j].direction}, "x": ${EditorEntityMap[i][j].x}, "y": ${EditorEntityMap[i][j].y}, "morale": ${Math.min(2,Math.max(-4,EditorEntityMap[i][j].morale??0))}, "hpModifier": ${Math.min(4,Math.max(-0.99, EditorEntityMap[i][j].HPI??0))}`;
+				let UnitEntry = `{ "id": ${EditorEntityMap[i][j].id}, "faction": ${EditorEntityMap[i][j].faction}, "direction": ${EditorEntityMap[i][j].direction}, "x": ${EditorEntityMap[i][j].x}, "y": ${EditorEntityMap[i][j].y}, "morale": ${Math.min(2,Math.max(-4,EditorEntityMap[i][j].morale))}, "hpModifier": ${Math.min(4,Math.max(-0.99, EditorEntityMap[i][j].HPI ?? 0))}`;
 				//let hek=typeof(JSON.parse(EditorEntityMap[i][j].CustomName));
 				//alert(hek);
 				let canAdd=true;
@@ -176,7 +176,7 @@ function RetrieveRosterCode(){
 
 	for(let i=0; i<x;i++){for(let j=0; j<y;j++){
 		if(EditorEntityMap[i][j]!=0){
-			UnitEntry='{id:'+EditorEntityMap[i][j].id+' , faction:'+EditorEntityMap[i][j].faction+' , direction:'+EditorEntityMap[i][j].direction+', x:'+EditorEntityMap[i][j].x+', y:'+EditorEntityMap[i][j].y+', morale:'+Math.min(2,Math.max(-4,EditorEntityMap[i][j].morale??0))+', hpModifier:'+Math.min(4,Math.max(-0.99, EditorEntityMap[i][j].HPI??0));
+			UnitEntry='{id:'+EditorEntityMap[i][j].id+' , faction:'+EditorEntityMap[i][j].faction+' , direction:'+EditorEntityMap[i][j].direction+', x:'+EditorEntityMap[i][j].x+', y:'+EditorEntityMap[i][j].y+', morale:'+Math.min(2,Math.max(-4,EditorEntityMap[i][j].morale))+', hpModifier:'+Math.min(4,Math.max(-0.99, EditorEntityMap[i][j].HPI??0));
 			//let hek=typeof(JSON.parse(EditorEntityMap[i][j].CustomName));
 			//alert(hek);
 			NumeSpecial=false;

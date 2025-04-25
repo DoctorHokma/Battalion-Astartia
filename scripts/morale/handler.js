@@ -1,10 +1,49 @@
-const MoraleShiftHandler = function() {
+const MoraleHandler = function() {
     this.particulators = new Map();
     this.shift = 0;
     this.costFactor = 1;
 }
 
-MoraleShiftHandler.prototype.addParticulator = function(particulatorID, shiftID) {
+MoraleHandler.MORALE_OFFSET = 4; //Morale goes from -4 to +5;
+
+MoraleHandler.clampMoraleValue = function(moraleIndex) {
+    const shiftedIndex = moraleIndex + MoraleHandler.MORALE_OFFSET;
+
+    if(shiftedIndex < 0) {
+        return 0;
+    } else if(shiftedIndex >= MORALE_MAP.length) {
+        return MORALE_MAP.length - 1 - MoraleHandler.MORALE_OFFSET;
+    } else {
+        return moraleIndex;
+    }
+}
+
+MoraleHandler.getDamageModifier = function(index) {
+    const type = MoraleHandler.getMoraleType(index);
+
+    if(!type) {
+        return 1;
+    }
+
+    const { damageModifier } = type;
+
+    return damageModifier;
+}
+
+MoraleHandler.getMoraleType = function(index) {
+    const shiftedIndex = index + MoraleHandler.MORALE_OFFSET;
+
+    if(shiftedIndex < 0 || shiftedIndex >= MORALE_MAP.length) {
+        return null;
+    }
+
+    const moraleID = MORALE_MAP[shiftedIndex];
+    const moraleType = MORALE[moraleID];
+
+    return moraleType;
+}
+
+MoraleHandler.prototype.addParticulator = function(particulatorID, shiftID) {
     if(this.particulators.has(particulatorID)) {
         return;
     }
@@ -26,7 +65,7 @@ MoraleShiftHandler.prototype.addParticulator = function(particulatorID, shiftID)
     this.particulators.set(particulatorID, particulator);
 }
 
-MoraleShiftHandler.prototype.onClick = function(particulatorID) {
+MoraleHandler.prototype.onClick = function(particulatorID) {
     const particulator = this.particulators.get(particulatorID);
 
     if(!particulator) {
@@ -46,15 +85,15 @@ MoraleShiftHandler.prototype.onClick = function(particulatorID) {
     updatePriceTags(costFactor);
 } 
 
-MoraleShiftHandler.prototype.getShift = function() {
+MoraleHandler.prototype.getShift = function() {
     return this.shift;
 }
 
-MoraleShiftHandler.prototype.getCostFactor = function() {
+MoraleHandler.prototype.getCostFactor = function() {
     return this.costFactor;
 }
 
-MoraleShiftHandler.prototype.reset = function() {
+MoraleHandler.prototype.reset = function() {
     this.shift = 0;
     this.costFactor = 1;
     this.particulators.forEach(particulator => particulator.reset());

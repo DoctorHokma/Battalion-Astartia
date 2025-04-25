@@ -1,5 +1,10 @@
 var Interceptor = -1;
 
+const ATTACK_TRAIT = {
+	INFLAMING_MAX: 3,
+	TERRIFYING_MAX: -3
+};
+
 const HIT_ANIM_STYLE = {
 	STANDARD: "Standard",
 	SUPPLY: "Supply",
@@ -143,7 +148,7 @@ const getDamageModifier = function(attacker, defender, worldMap, attackType) {
         DamageModifier *= 0.8;
     }
 
-	DamageModifier *= (5 + attacker.morale) / 5;
+	DamageModifier *= MoraleHandler.getDamageModifier(attacker.morale);
 
 	if(defender.unitType.movementType == "Foot" && hasCertainTrait(attacker.unitType, "Anti-Infantry")) {
         DamageModifier *= 3;
@@ -304,18 +309,15 @@ function Attack(Attacker, Defender, Map){
 
 	if(hasCertainTrait(Atk.unitType, "Terrifying")) {
 		const TERRIFYING_COST = 1000;
-		const TERRIFYING_MORALE = -3;
 
-		if(Units[Def.unitType].Cost < TERRIFYING_COST && Def.morale > TERRIFYING_MORALE) {
-			Def.morale -= 1;
+		if(Units[Def.unitType].Cost < TERRIFYING_COST && Def.morale > ATTACK_TRAIT.TERRIFYING_MAX) {
+			Def.updateMorale(-1);
 		}
 	}
 
 	if(hasCertainTrait(Atk.unitType, "Inflaming")) {
-		const INFLAMING_MORALE = 3;
-	
-		if(Def.morale < INFLAMING_MORALE) {
-			Def.morale += 1;
+		if(Def.morale < ATTACK_TRAIT.INFLAMING_MAX) {
+			Def.updateMorale(1);
 		}
 	}
 
@@ -718,14 +720,14 @@ function Counterattack(Attacker, Defender, Map){
 	const Damage = getDamage(Atk, Def, Map, ATTACK_TYPE.COUNTER);
 
 	if(hasCertainTrait(Atk.unitType, "Terrifying")) {
-		if(Units[Def.unitType].Cost < 1000 && Def.morale > -3) {
-			Def.morale -= 1;
+		if(Units[Def.unitType].Cost < 1000 && Def.morale > ATTACK_TRAIT.TERRIFYING_MAX) {
+			Def.updateMorale(-1);
 		}
 	}
 
 	if(hasCertainTrait(Atk.unitType, "Inflaming")) {
-		if(Def.morale < 3) {
-			Def.morale += 1;
+		if(Def.morale < ATTACK_TRAIT.INFLAMING_MAX) {
+			Def.updateMorale(1);
 		}
 	}
 
