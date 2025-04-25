@@ -162,7 +162,7 @@ const LANGUAGE_SPANISH = {
     "TRAIT_DESC_LUNAR": "",
     "TRAIT_DESC_MARTIAN": "",
 
-	"UNIT_NAME_UNKNOWN": "Sitio de Construcción",
+	"UNIT_NAME_CONSTRUCTION": "Sitio de Construcción",
 	"UNIT_NAME_LIGHT_INFANRY": "Infantería Ligera",
 	"UNIT_NAME_INFANTRY": "Infantería",
 	"UNIT_NAME_ASSAULT_INFANTRY": "Infantería de Asalto",
@@ -235,7 +235,7 @@ const LANGUAGE_SPANISH = {
 	"UNIT_NAME_FORTRESS": "Fortaleza",
 	"UNIT_NAME_MEME_SPARTANS": "",
 
-	"UNIT_DESC_UNKNOWN": "Aquí se están erigiendo fortificaciones ad-hoc",
+	"UNIT_DESC_CONSTRUCTION": "Aquí se están erigiendo fortificaciones ad-hoc",
 	"UNIT_DESC_LIGHT_INFANTRY": "Poco equipados y casi sin entrenamiento, estos hombres no son los mejores para el combate, pero son fáciles de desplegar",
 	"UNIT_DESC_INFANTRY": "La columna vertebral de todo ejército. Fiable, duradero y, lo más importante, económico.",
 	"UNIT_DESC_ASSAULT_INFANTRY": "Bien entrenado, bien equipado y listo para su mando",

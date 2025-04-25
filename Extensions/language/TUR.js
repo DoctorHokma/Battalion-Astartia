@@ -162,7 +162,7 @@ const LANGUAGE_TURKISH = {
     "TRAIT_DESC_LUNAR": "",
     "TRAIT_DESC_MARTIAN": "",
 
-	"UNIT_NAME_UNKNOWN": "İnşaat Alanı",
+	"UNIT_NAME_CONSTRUCTION": "İnşaat Alanı",
 	"UNIT_NAME_LIGHT_INFANRY": "Hafif Piyade",
 	"UNIT_NAME_INFANTRY": "Piyade",
 	"UNIT_NAME_ASSAULT_INFANTRY": "Taaruz Piyadesi",
@@ -235,7 +235,7 @@ const LANGUAGE_TURKISH = {
 	"UNIT_NAME_FORTRESS": "",
 	"UNIT_NAME_MEME_SPARTANS": "",
 
-	"UNIT_DESC_UNKNOWN": "Burada Barikat inşa ediliyor.",
+	"UNIT_DESC_CONSTRUCTION": "Burada Barikat inşa ediliyor.",
     "UNIT_DESC_LIGHT_INFANTRY": "Az donanımlı ve neredeyse eğitimsiz olan bu askerler, savaş için en iyiler değiller, ancak kolayca üretebilirler.",
     "UNIT_DESC_INFANTRY": "Her ordunun omurgası. Güvenilir, dayanıklı ve en önemlisi, ucuz",
     "UNIT_DESC_ASSAULT_INFANTRY": "İyi eğitimli, iyi donanımlı ve komutanlığınıza hazır.",

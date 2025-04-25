@@ -2482,14 +2482,13 @@ function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomNam
 	YourMoney-=Math.round(Units[Type].Cost*CostFactor);
 	CustomName=document.getElementById("ParticularNameBox").value;
 	if(CustomName==""){CustomName=null};
+
 	//alert(Math.round(Units[Type].Cost));
 	//alert(DaoLedger[PlayerChoiceFaction/2]);
-	let MoraleIndex = 0;
-
 	//MoraleIndex+=Math.min(5,Math.max(-4,DaoLedger[PlayerChoiceFaction]/2));
-	MoraleIndex = 5;
-	MoraleIndex += Speciation;
 
+
+	const buyMorale = 5 + Speciation;
 	const unit = new Entity(`Unit ${MapRoster.length}`);
 
 	unit.init({
@@ -2497,7 +2496,7 @@ function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomNam
 		faction: Faction,
 		x: X - 1,
 		y: Y - 1,
-		morale: Morale ?? MoraleIndex,
+		morale: Morale ?? buyMorale,
 		direction: Direction ?? Battalion.DIRECTION.NORTH,
 		hpModifier: LifeIndex ?? 0
 	}, Entity.TYPE.UNIT, MapRoster.length);
@@ -2951,22 +2950,58 @@ function EvaluateDynamicEvent(Comutator,LastUnit){
 
 		if(TriggerKey&&DynamicEvents[d].selfswitch){DynamicEvents[d].selfswitch=false; RunEvent(DynamicEvents[d].Event)};};
 	}else{}};
-function ExecuteSpeciation(Speciator){
-	//CostFactor=1;
-	if(Speciator==-2){CostFactor=0.8};
-	if(Speciator==-1){CostFactor=0.9};
-	if(Speciator==-0){CostFactor=1};
-	if(Speciator==1){CostFactor=1.4};
-	if(Speciator==2){CostFactor=2};
-	Speciation=Speciator;
-	for(let i=-2; i<3;i++){document.getElementById('MoraleParticulator'+i).src='Assets/Traits/Morale0.PNG'};
-	document.getElementById('MoraleParticulator'+Speciator).src='Assets/Traits/Morale'+Speciator+'.PNG';
-	let IndustrialLimit=40; 
-	if(IndustrialBranchBrowsed!=1){IndustrialLimit=10};
-	for(let m=1;m<=IndustrialLimit;m++){document.getElementById('PriceTag'+m).innerHTML='₤'+Math.round(Units[MontreIndexBasis+m].Cost*CostFactor); if(YourMoney<Math.round(Units[MontreIndexBasis+m].Cost*CostFactor)){document.getElementById("UnitFrame"+m).src="Assets/Miscellaneous/UnitUnavailableFrame.PNG"}else{document.getElementById("UnitFrame"+m).src="Assets/Miscellaneous/UnitAvailableFrame.PNG"}}
 
+/**
+ * neyn 25.04.2025
+ * 
+ * @param {string} shiftID 
+ * @param { string } particulatorID
+ * @returns 
+ */
+const executeSpeciation = function(shiftID, particulatorID) {
+	const moraleShift = MORALE_SHIFT[shiftID];
+	const moraleElement = document.getElementById(particulatorID);
 
-	};
+	if(!moraleShift || !moraleElement) {
+		return;
+	}
+
+	const { shift, costFactor, icon } = moraleShift;
+
+	for(let i = 0; i < 5; i++) {
+		const particulatorID = `MoraleParticulator${i}`;
+		const particulator = document.getElementById(particulatorID);
+
+		particulator.src = MORALE_SHIFT.NEUTRAL.icon;
+	}
+
+	Speciation = shift;
+	moraleElement.src = icon;
+
+	let industrialLimit = 40;
+
+	if(IndustrialBranchBrowsed !== 1) {
+		industrialLimit = 10;
+	}
+
+	for(let i = 1; i <= industrialLimit; i++) {
+		const priceTagID = `PriceTag${i}`;
+		const priceTag = document.getElementById(priceTagID);
+		const cost = Math.round(Units[MontreIndexBasis + i].Cost * costFactor);
+
+		priceTag.innerHTML = `₤${cost}`;
+
+		const unitFrameID = `UnitFrame${i}`;
+		const unitFrame = document.getElementById(unitFrameID);
+
+		if(YourMoney < cost) {
+			unitFrame.src = "Assets/Miscellaneous/UnitUnavailableFrame.PNG";
+		} else {
+			unitFrame.src = "Assets/Miscellaneous/UnitAvailableFrame.PNG";
+		}
+	}
+}
+
 function FactionInformations(Ordinal){
 
 	//alert(AttackOrder);
@@ -4386,7 +4421,10 @@ function LaunchRecruitmentPanel(IndustrialBranch){
 	if(IndustrialBranch==1){MontreIndexBasis-=30};
 	Speciation=0;
 	CostFactor=1;
-	for(let i=-2; i<3;i++){document.getElementById("MoraleParticulator"+i).src="Assets/Traits/Morale0.PNG"};
+
+	for(let i = 0; i < 5; i++) {
+		document.getElementById("MoraleParticulator"+i).src = "Assets/Traits/Morale0.PNG";
+	}
 
 	let InfantrySelection=Factions[PlayerChoiceFaction].SpecialInfantry;
 	let VehicleSelection=Factions[PlayerChoiceFaction].SpecialVehicles;

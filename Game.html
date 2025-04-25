@@ -330,11 +330,11 @@
 				<div style="position: absolute; z-index:8; top: 2px; left:567px">
 					<img id="Particulator" style="position: absolute; top:0px; left:0px" src="Assets/Miscellaneous/UnitParticulatorBar.PNG"/>
 					<input id="ParticularNameBox" style="position: absolute; width:210px; height:20px; top:20px; text-align: center; left:30px; background-color:#3D4C48">
-					<img id="MoraleParticulator-2" style="position: absolute; top: 50px; left:80px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Traits/Morale0.PNG" onmouseover="this.src='Assets/Traits/Morale-2.PNG'" onmouseout="if(Speciation!=-2){this.src='Assets/Traits/Morale0.PNG'}" onclick="ExecuteSpeciation(-2)"/>
-					<img id="MoraleParticulator-1" style="position: absolute; top: 50px; left:105px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Traits/Morale0.PNG" onmouseover="this.src='Assets/Traits/Morale-1.PNG'" onmouseout="if(Speciation!=-1){this.src='Assets/Traits/Morale0.PNG'}" onclick="ExecuteSpeciation(-1)"/>
-					<img id="MoraleParticulator0" style="position: absolute; top: 50px; left:130px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Traits/Morale0.PNG" onmouseover="" onmouseout="" onclick="ExecuteSpeciation(0)"/>
-					<img id="MoraleParticulator1" style="position: absolute; top: 50px; left:155px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Traits/Morale0.PNG" onmouseover="this.src='Assets/Traits/Morale1.PNG'" onmouseout="if(Speciation!=1){this.src='Assets/Traits/Morale0.PNG'}" onclick="ExecuteSpeciation(1)"/>
-					<img id="MoraleParticulator2" style="position: absolute; top: 50px; left:180px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Traits/Morale0.PNG" onmouseover="this.src='Assets/Traits/Morale2.PNG'" onmouseout="if(Speciation!=2){this.src='Assets/Traits/Morale0.PNG'}" onclick="ExecuteSpeciation(2)"/>
+					<img id="MoraleParticulator0" style="position: absolute; top: 50px; left:80px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src=MORALE_SHIFT.NEUTRAL.icon onmouseover="this.src=MORALE_SHIFT.VERY_NEGATIVE.icon" onmouseout="if(Speciation!=-2){this.src=MORALE_SHIFT.NEUTRAL.icon}" onclick="executeSpeciation('VERY_NEGATIVE', 'MoraleParticulator0')"/>
+					<img id="MoraleParticulator1" style="position: absolute; top: 50px; left:105px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src=MORALE_SHIFT.NEUTRAL.icon onmouseover="this.src=MORALE_SHIFT.NEGATIVE.icon" onmouseout="if(Speciation!=-1){this.src=MORALE_SHIFT.NEUTRAL.icon}" onclick="executeSpeciation('NEGATIVE', 'MoraleParticulator1')"/>
+					<img id="MoraleParticulator2" style="position: absolute; top: 50px; left:130px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src=MORALE_SHIFT.NEUTRAL.icon onmouseover="" onmouseout="" onclick="executeSpeciation('NEUTRAL', 'MoraleParticulator2')"/>
+					<img id="MoraleParticulator3" style="position: absolute; top: 50px; left:155px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src=MORALE_SHIFT.NEUTRAL.icon onmouseover="this.src=MORALE_SHIFT.POSITIVE.icon" onmouseout="if(Speciation!=1){this.src=MORALE_SHIFT.NEUTRAL.icon}" onclick="executeSpeciation('POSITIVE', 'MoraleParticulator3')"/>
+					<img id="MoraleParticulator4" style="position: absolute; top: 50px; left:180px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src=MORALE_SHIFT.NEUTRAL.icon onmouseover="this.src=MORALE_SHIFT.VERY_POSITIVE.icon" onmouseout="if(Speciation!=2){this.src=MORALE_SHIFT.NEUTRAL.icon}" onclick="executeSpeciation('VERY_POSITIVE', 'MoraleParticulator4')"/>
 				</div>
 					
 				<img id="UnitTypeBar1" style="position:absolute; z-index:9; top: 140px" src="Assets/Miscellaneous/UnitTypeBar.PNG"/>
@@ -725,8 +725,6 @@
 				<img src="Assets/Miscellaneous/VertiPlaqueCON.PNG" style="position: absolute; top: 362px; left:-31px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ToggleTileBlock(5)"/>
 				<img src="Assets/Miscellaneous/VertiPlaqueBUI.PNG" style="position: absolute; top: 452px; left:-31px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ToggleTileBlock(6)"/>
 				<img src="Assets/Miscellaneous/VertiPlaqueOTH.PNG" style="position: absolute; top: 542px; left:-31px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ToggleTileBlock(7)"/>
-
-
 
 				<img style="position:absolute; visibility: hidden; top:112px; left:140px" src="Assets/Tiles/Aviation Industrial Facility.PNG" onclick="ChosenTerrain=11;EditationToggle='Tile'"/>
 				<img style="position:absolute; visibility: hidden; top:112px; left:203px" src="Assets/Tiles/Shipbuilding Facility.PNG" onclick="ChosenTerrain=12;EditationToggle='Tile'"/>
@@ -1616,7 +1614,6 @@
 		<script src="Extensions/language/TUR.js"></script>
 
 		<script src="Extensions/Characters.js"></script>
-		<script src="Extensions/Codex.js"></script>
 		<script src="Extensions/Intraevents.js"></script>
 		<script src="Extensions/Maps.js"></script>
 		<script src="Extensions/GenericData.js"></script>

@@ -162,7 +162,7 @@ const LANGUAGE_PORTUGUESE = {
     "TRAIT_DESC_LUNAR": "",
     "TRAIT_DESC_MARTIAN": "",
 
-	"UNIT_NAME_UNKNOWN": "Local de construção",
+	"UNIT_NAME_CONSTRUCTION": "Local de construção",
 	"UNIT_NAME_LIGHT_INFANRY": "Infantaria leve",
 	"UNIT_NAME_INFANTRY": "Infantaria",
 	"UNIT_NAME_ASSAULT_INFANTRY": "Infantaria de assalto",
@@ -235,7 +235,7 @@ const LANGUAGE_PORTUGUESE = {
 	"UNIT_NAME_FORTRESS": "",
 	"UNIT_NAME_MEME_SPARTANS": "",
 
-	"UNIT_DESC_UNKNOWN": "Fortificações milicianas são erguidas aqui",
+	"UNIT_DESC_CONSTRUCTION": "Fortificações milicianas são erguidas aqui",
     "UNIT_DESC_LIGHT_INFANTRY": "Levemente equipados e quase sem treinamento, esses homens não são os melhores para o combate, mas são fáceis de bombear.",
     "UNIT_DESC_INFANTRY": "A espinha dorsal de todo exército. Confiável, duradouro e, o mais importante, barato.",
     "UNIT_DESC_ASSAULT_INFANTRY": "Bem treinados, bem equipados e prontos para as suas ordens",

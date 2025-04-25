@@ -1,3 +1,97 @@
+const CODEX = {
+	"Jokes": {
+		"DocName": "CODEX_JOKES_NAME",
+		"DocDesc": "CODEX_JOKES_DESC",
+		"DocText": "CODEX_JOKES_TEXT",
+		"DocSize": 2
+	},
+	"SpecialUnits": {
+		"DocName": "CODEX_SPECIAL_UNITS_NAME",
+		"DocDesc": "CODEX_SPECIAL_UNITS_DESC",
+		"DocText": "CODEX_SPECIAL_UNITS_TEXT",
+		"DocSize": 3
+	},
+	"SpecialArmor": {
+		"DocName": "CODEX_SPECIAL_ARMOR_NAME",
+		"DocDesc": "CODEX_SPECIAL_ARMOR_DESC",
+		"DocText": "CODEX_SPECIAL_ARMOR_TEXT",
+		"DocSize": 2
+	},
+	"SpecialAircraft": {
+		"DocName": "CODEX_SPECIAL_AIRCRAFT_NAME",
+		"DocDesc": "CODEX_SPECIAL_AIRCRAFT_DESC",
+		"DocText": "CODEX_SPECIAL_AIRCRAFT_TEXT",
+		"DocSize": 1
+	},
+	"SpecialShips": {
+		"DocName": "CODEX_SPECIAL_SHIPS_NAME",
+		"DocDesc": "CODEX_SPECIAL_SHIPS_DESC",
+		"DocText": "CODEX_SPECIAL_SHIPS_TEXT",
+		"DocSize": 2
+	},
+	"ThisWorld": {
+		"DocName": "CODEX_THIS_WORLD_NAME",
+		"DocDesc": "CODEX_THIS_WORLD_DESC",
+		"DocText": "CODEX_THIS_WORLD_TEXT",
+		"DocSize": 4
+	},
+	"ItHappened": {
+		"DocName": "CODEX_IT_HAPPENED_NAME",
+		"DocDesc": "CODEX_IT_HAPPENED_DESC",
+		"DocText": "CODEX_IT_HAPPENED_TEXT",
+		"DocSize": 4
+	},
+	"Operation_TZIMTZUM": {
+		//Unknown
+		"DocName": "CODEX_OPERATION_TZIMTZUM_NAME",
+		"DocDesc": "CODEX_OPERATION_TZIMTZUM_DESC",
+		"DocText": "CODEX_OPERATION_TZIMTZUM_TEXT",
+		"DocSize": 3
+	},
+	"Operation_GOLCHAB": {
+		//ACSF's plans to ensure Kargia never again has the practical means to pose a continental-scale threat.
+		"DocName": "CODEX_OPERATION_GOLCHAB_NAME",
+		"DocDesc": "CODEX_OPERATION_GOLCHAB_DESC",
+		"DocText": "CODEX_OPERATION_GOLCHAB_TEXT",
+		"DocSize": 3
+	},
+	"Operation_GHAAG_SHEBLAH": {
+		//Unknown
+		"DocName": "CODEX_OPERATION_GHAAG_SHEBLAH_NAME",
+		"DocDesc": "CODEX_OPERATION_GHAAG_SHEBLAH_DESC",
+		"DocText": "CODEX_OPERATION_GHAAG_SHEBLAH_TEXT",
+		"DocSize": 3
+	},
+	"Operation_OHR_EIN_ZOF": {
+		//White Tulip's plan to force a quick, bloodless capitulation of Polasie
+		"DocName": "CODEX_OPERATION_OHR_EIN_ZOF_NAME",
+		"DocDesc": "CODEX_OPERATION_OHR_EIN_ZOF_DESC",
+		"DocText": "CODEX_OPERATION_OHR_EIN_ZOF_TEXT",
+		"DocSize": 3
+	},
+	"Operation_SAMSON": {
+		//Calvary Institute's records regarding the top-secret PROIECT SAMSON
+		"DocName": "CODEX_OPERATION_SAMSON_NAME",
+		"DocDesc": "CODEX_OPERATION_SAMSON_DESC",
+		"DocText": "CODEX_OPERATION_SAMSON_TEXT",
+		"DocSize": 3
+	},
+	"Operation_THAUMIEL": {
+		//White Tulip's plans to cause structural and moral damage to Polasian society
+		"DocName": "CODEX_OPERATION_THAUMIEL_NAME",
+		"DocDesc": "CODEX_OPERATION_THAUMIEL_DESC",
+		"DocText": "CODEX_OPERATION_THAUMIEL_TEXT",
+		"DocSize": 3
+	},
+	"War_Plan_ARMAGEDDON": {
+		//DATA EXPUNGED
+		"DocName": "CODEX_OPERATION_THAUMIEL_NAME",
+		"DocDesc": "CODEX_WAR_PLAN_ARMAGEDDON_DESC",
+		"DocText": "CODEX_WAR_PLAN_ARMAGEDDON_TEXT",
+		"DocSize": 5
+	}
+}
+
 const APHORISMS = [
 	{ "narrator": "APHORISM_NARRATOR_1", "text": "APHORISM_TEXT_1", "image": "Assets/Aphorisms/Aphorism1.png" },
 	{ "narrator": "APHORISM_NARRATOR_2", "text": "APHORISM_TEXT_2", "image": "Assets/Aphorisms/Aphorism2.png" },
@@ -218,8 +312,164 @@ const BIOMES = [
 	{ "name": "Martian", "nominator": "Martian", "logisticIndex": 0.25, "icon": "Assets/Traits/Martian.png", "edgeA": "Assets/Tiles/EdgeAMartian.png", "edgeB": "Assets/Tiles/EdgeBMartian.png", "edgeC": "Assets/Tiles/EdgeCMartian.png", "edgeD": "Assets/Tiles/EdgeDMartian.png" },
 ];
 
+const UNIT = {
+	CONSTRUCTION: 0,
+	LIGHT_INFANRY: 1,
+	INFANTRY: 2,
+	ASSAULT_INFANTRY: 3,
+	SNIPER: 4,
+	MARINE: 5,
+	STORMTROOPER: 6,
+	SPEC_OPS: 7,
+	GUARDS: 8,
+	SUICIDE_BOMBERS: 9,
+	PALADIN: 10,
+	CAVALRY: 11,
+	MOTORIZED_INFANTRY: 12,
+	SUPPLY_TRUCK: 13,
+	FLAK_TANK: 14,
+	CRAB_TANK: 15,
+	SCADP: 16,
+	TROSKY_WARMACHINE: 17,
+	SISU_APC: 18,
+	BOING_SH11_MEGOCOCKTER: 19,
+	AYIN: 20,
+	COCKROACH_TANK: 21,
+	BOLT_TANK: 22,
+	ASEKARA_TANK: 23,
+	GORLITZ_TANK: 24,
+	TANK_HUNTER: 25,
+	AMPAC: 26,
+	KOSCHEI_TANK: 27,
+	IMPERRITERTUS_TANK: 28,
+	ENTWICKLUNG_PANTSER: 29,
+	GBC_ROLAND_MKIII: 30,
+	HOWITZER_BATTERY: 31,
+	AA_ARTILLERY: 32,
+	ANTI_TANK_ARTILLERY: 33,
+	MOLDAN_BATTERY: 34,
+	SPAB: 35,
+	ROCKET_TANK: 36,
+	BIG_BERTHA_BATTERY: 37,
+	PULA_SRBMDP: 38,
+	TUGARIN_ATMB: 39,
+	BRIMSTONE_BATTERY: 40,
+	STORK_TRANSPORT: 41,
+	PELICAN_TRANSPORT: 42,
+	RAPTOR_FIGHTER: 43,
+	EAGLE_STRIKER: 44,
+	CONDOR_BOMBER: 45,
+	AKONTIO_TORPEDOR: 46,
+	ZEUS_STORMLORD: 47,
+	SOLOVEY_SUPERBOMBER: 48,
+	AVN1_STIHIE: 49,
+	ALEPH: 50,
+	BARGE_CONVOY: 51,
+	INTREPID: 52,
+	SUBMERSIBLE: 53,
+	DESTROYER: 54,
+	LIGHT_CRUISER: 55,
+	HEAVY_CRUISER: 56,
+	CAPITAL_SHIP: 57,
+	AIRCRAFT_CARRIER: 58,
+	SUPERBATTLESHIP: 59,
+	SUPERCARRIER: 60,
+	BARRICADE: 61,
+	BUNKER: 62,
+	TURRET: 63,
+	FLAK_TOWER: 64,
+	COASTAL_BATTERY: 65,
+	WORKSHOP: 66,
+	MISSILE_SILO: 67,
+	BASTION: 68,
+	SUPPLY_DEPOT: 69,
+	FORTRESS: 70,
+	MEME_SPARTANS: 71,
+};
+
+const MORALE_SHIFT = {
+	"VERY_NEGATIVE": {
+		"shift": -2,
+		"costFactor": 0.8,
+		"icon": "Assets/Traits/Morale-2.PNG"
+	},
+	"NEGATIVE": {
+		"shift": -1,
+		"costFactor": 0.9,
+		"icon": "Assets/Traits/Morale-1.PNG"
+	},
+	"NEUTRAL": {
+		"shift": 0,
+		"costFactor": 1.0,
+		"icon": "Assets/Traits/Morale0.PNG"
+	},
+	"POSITIVE": {
+		"shift": 1,
+		"costFactor": 1.4,
+		"icon": "Assets/Traits/Morale1.PNG"
+	},
+	"VERY_POSITIVE": {
+		"shift": 2,
+		"costFactor": 2.0,
+		"icon": "Assets/Traits/Morale2.PNG"
+	}
+};
+
+const MORALE = {
+	"LOWEST": {
+		"name": "MORALE_NAME_LOWEST",
+		"desc": "MORALE_DESC_LOWEST",
+		"icon": "Assets/Traits/Morale-4.PNG"
+	},
+	"SUPER_LOW": {
+		"name": "MORALE_NAME_SUPER_LOW",
+		"desc": "MORALE_DESC_SUPER_LOW",
+		"icon": "Assets/Traits/Morale-3.PNG"
+	},
+	"VERY_LOW": {
+		"name": "MORALE_NAME_VERY_LOW",
+		"desc": "MORALE_DESC_VERY_LOW",
+		"icon": "Assets/Traits/Morale-2.PNG"
+	},
+	"LOW": {
+		"name": "MORALE_NAME_LOW",
+		"desc": "MORALE_DESC_LOW",
+		"icon": "Assets/Traits/Morale-1.PNG"
+	},
+	"NORMAL": {
+		"name": "MORALE_NAME_NORMAL",
+		"desc": "MORALE_DESC_NORMAL",
+		"icon": "Assets/Traits/Morale0.PNG"
+	},
+	"HIGH": {
+		"name": "MORALE_NAME_HIGH",
+		"desc": "MORALE_DESC_HIGH",
+		"icon": "Assets/Traits/Morale1.PNG"
+	},
+	"VERY_HIGH": {
+		"name": "MORALE_NAME_VERY_HIGH",
+		"desc": "MORALE_DESC_VERY_HIGH",
+		"icon": "Assets/Traits/Morale2.PNG"
+	},
+	"SUPER_HIGH": {
+		"name": "MORALE_NAME_SUPER_HIGH",
+		"desc": "MORALE_DESC_SUPER_HIGH",
+		"icon": "Assets/Traits/Morale3.PNG"
+	},
+	"ULTRA_HIGH": {
+		"name": "MORALE_NAME_ULTRA_HIGH",
+		"desc": "MORALE_DESC_ULTRA_HIGH",
+		"icon": "Assets/Traits/Morale4.PNG"
+	},
+	"HIGHEST": {
+		"name": "MORALE_NAME_HIGHEST",
+		"desc": "MORALE_DESC_HIGHEST",
+		"icon": "Assets/Traits/Morale5.PNG"
+	}
+};
+
 const UNITS = [
-	{name: "UNIT_NAME_UNKNOWN", desc: "UNIT_DESC_UNKNOWN", shortname:"Skele", HP:50, Armor: "Medium", Attack: 0, Weapon: "Medium", Speed:0, Movement: "Foot", MinRange:1, MaxRange:1, Cost:0 ,tag1:"Inertial", tag2:"", tag3:"", tag4:"",StaticOffsetX:[0,0,0,0,0],StaticOffsetY:[0,0,0,0,0],MovementBoxX:0,MovementBoxY:0,MovementOffsetX:[0,0,0,0,0],MovementOffsetY:[0,0,0,0,0],AttackOffsetX:[0,0,0,0,0],AttackOffsetY:[0,0,0,0,0],IdleOffsetX:[0,0,0,0,0],IdleOffsetY:[0,0,0,0,0]},
+	{name: "UNIT_NAME_CONSTRUCTION", desc: "UNIT_DESC_CONSTRUCTION", shortname:"Skele", HP:50, Armor: "Medium", Attack: 0, Weapon: "Medium", Speed:0, Movement: "Foot", MinRange:1, MaxRange:1, Cost:0 ,tag1:"Inertial", tag2:"", tag3:"", tag4:"",StaticOffsetX:[0,0,0,0,0],StaticOffsetY:[0,0,0,0,0],MovementBoxX:0,MovementBoxY:0,MovementOffsetX:[0,0,0,0,0],MovementOffsetY:[0,0,0,0,0],AttackOffsetX:[0,0,0,0,0],AttackOffsetY:[0,0,0,0,0],IdleOffsetX:[0,0,0,0,0],IdleOffsetY:[0,0,0,0,0]},
 
 	{name: "UNIT_NAME_LIGHT_INFANRY", desc: "UNIT_DESC_LIGHT_INFANTRY", HP:50, shortname: "LightInf", MLPR:false, Armor: "Light", Attack: 10, Weapon: "Light", Speed:4, Movement: "Foot", MinRange:1, MaxRange:1, Cost:100, TechLevel:1, Power:10, Role:"", tag1:"Conqueror", tag2:"Streamlined", tag3:"", tag4:"",AttackOffsetX:[0,-1,8,-1,-12]},
 	{name: "UNIT_NAME_INFANTRY", desc: "UNIT_DESC_INFANTRY", HP:70, shortname: "Infantry", MLPR:false, Armor: "Light", Attack: 20, Weapon: "Light", Speed:3, Movement: "Foot", MinRange:1, MaxRange:1, Cost:150, TechLevel:1, Power:15, Role:"", tag1:"Conqueror", tag2:"", tag3:"", tag4:"" ,AttackOffsetX:[0,0,9,0,-9]},

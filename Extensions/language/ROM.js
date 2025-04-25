@@ -272,7 +272,7 @@ const LANGUAGE_ROMANIAN = {
     "TRAIT_DESC_LUNAR": "",
     "TRAIT_DESC_MARTIAN": "",
 
-	"UNIT_NAME_UNKNOWN": "Șantier",
+	"UNIT_NAME_CONSTRUCTION": "Șantier",
 	"UNIT_NAME_LIGHT_INFANRY": "Infanterie Ușoară",
 	"UNIT_NAME_INFANTRY": "Infanterie",
 	"UNIT_NAME_ASSAULT_INFANTRY": "Infanterie de Asalt",
@@ -345,7 +345,7 @@ const LANGUAGE_ROMANIAN = {
 	"UNIT_NAME_FORTRESS": "Fortăreață",
 	"UNIT_NAME_MEME_SPARTANS": "",
 
-	"UNIT_DESC_UNKNOWN": "Aici se construiesc fortificații ad-hoc",
+	"UNIT_DESC_CONSTRUCTION": "Aici se construiesc fortificații ad-hoc",
     "UNIT_DESC_LIGHT_INFANTRY": "Echipați cu Mosin-Nagantu' lu' străbunicu' și rații expirate, băieții ăștia sunt ieftini rău.",
     "UNIT_DESC_INFANTRY": "Scheletul oricărei armate. Fiabili, versatili și cel mai important, ieftini.",
     "UNIT_DESC_ASSAULT_INFANTRY": "Bine echipați, bine antrenați, gata sa primească ordine",

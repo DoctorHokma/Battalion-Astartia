@@ -646,7 +646,7 @@ const LANGUAGE_ENGLISH = {
     "TRAIT_DESC_LUNAR": "Uninhabitable, troops stationed here deal -75% damage",
     "TRAIT_DESC_MARTIAN": "Uninhabitable, troops stationed here deal -75% damage",
 
-	"UNIT_NAME_UNKNOWN": "Construction Site",
+	"UNIT_NAME_CONSTRUCTION": "Construction Site",
 	"UNIT_NAME_LIGHT_INFANRY": "Light Infantry",
 	"UNIT_NAME_INFANTRY": "Infantry",
 	"UNIT_NAME_ASSAULT_INFANTRY": "Assault Infantry",
@@ -719,7 +719,7 @@ const LANGUAGE_ENGLISH = {
 	"UNIT_NAME_FORTRESS": "Fortress",
 	"UNIT_NAME_MEME_SPARTANS": "Spartans",
 
-	"UNIT_DESC_UNKNOWN": "Ad-hoc fortifications are being erected here",
+	"UNIT_DESC_CONSTRUCTION": "Ad-hoc fortifications are being erected here",
 	"UNIT_DESC_LIGHT_INFANTRY": "Lightly equipped and almost untrained, these men aren't the best for combat, but they're easy to pump out.",
 	"UNIT_DESC_INFANTRY": "The backbone of every army. Reliable, durable and most importantly, cheap.",
 	"UNIT_DESC_ASSAULT_INFANTRY": "Well trained, well equipped and ready for your command",
