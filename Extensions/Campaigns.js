@@ -1,4 +1,4 @@
-const CAMPAIGNS = [
+const _CAMPAIGNS = [
 	[	
         [{Map:Presus,Roster:PresusRoster,Constants:PresusConstants,Finished:true,Localization:PresusLocalization},{Map:RockyMountainsCentra,Roster:RockyMountainsCentraRoster,Constants:RockyMountainsCentraConstants,Finished:true},{Map:Moh,Roster:MohRoster,ControlMap:MohControl,Constants:MohConstants,Finished:true},{Map:Patna,Roster:PatnaRoster,ControlMap:PatnaControl,Constants:PatnaConstants,Finished:true,Funds:[0,500,500]},{Map:Kaula,Roster:KaulaRoster,ControlMap:KaulaControl,Constants:KaulaConstants,Finished:true}],
 		[{Map:Interriverana,Roster:InterriveranaRoster,Constants:InterriveranaConstants,ControlMap:InterriveranaControl,Finished:true},{Map:SouthMolda,Roster:SouthMoldaRoster,Constants:SouthMoldaConstants,Finished:true},{Map:HevanSea,Constants:HevanSeaConstants,Roster:HevanSeaRoster,Finished:true},{Map:WestMazowia,Roster:WestMazowiaRoster,Constants:WestMazowiaConstants,Finished:true},{Map:Patna,Roster:PatnaRoster2,ControlMap:PatnaControl2,Constants:PatnaConstants2,Finished:true}],

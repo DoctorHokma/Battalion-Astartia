@@ -45,7 +45,7 @@ Battalion.DIRECTION_FLIP = {
     [Battalion.DIRECTION.WEST]: Battalion.DIRECTION.EAST,
     [Battalion.DIRECTION.SOUTH]: Battalion.DIRECTION.NORTH,
     [Battalion.DIRECTION.EAST]: Battalion.DIRECTION.WEST
-}
+};
 
 /**
  * neyn 11.04.2025

@@ -1,6 +1,10 @@
 const OPENING_TRACK = "RiversOfSteel";
 const battalion = new Battalion();
 const moraleHandler = new MoraleHandler();
+const missionHandler = new MissionHandler();
+missionHandler.load();
+
+//TODO: factions & commanders need to be represented in a list.
 
 moraleHandler.addParticulator("MoraleParticulator0", "VERY_NEGATIVE");
 moraleHandler.addParticulator("MoraleParticulator1", "NEGATIVE");
@@ -71,7 +75,7 @@ Difficulty=2;
 Playlists=[];
 InterlogueBST=[[],[],[],[],[],[],[],[],[],[],[]];
 
-var Campaigns=CAMPAIGNS;
+var Campaigns=_CAMPAIGNS;
 var Units=UNITS;
 var Factions=CampaignFactions;
 var Terrain=TERRAIN;
@@ -1906,6 +1910,7 @@ function CastEntityMap(Map, Roster){
 	for(j=0;j<mapHeight;j++){rostermap[j]=line};
 		rostermap=JSON.parse(JSON.stringify(rostermap));
 
+	//NEYN TODO: WHY DOES IT START AT JUAN?!?
 	for(var k = 1; k < Roster.length; k++) {
 		const config = Roster[k];
 		const unit = new Entity(`Unit ${k}`);
