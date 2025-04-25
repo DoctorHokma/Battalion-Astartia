@@ -1,5 +1,12 @@
 const OPENING_TRACK = "RiversOfSteel";
 const battalion = new Battalion();
+const moraleShiftHandler = new MoraleShiftHandler();
+
+moraleShiftHandler.addParticulator("MoraleParticulator0", "VERY_NEGATIVE");
+moraleShiftHandler.addParticulator("MoraleParticulator1", "NEGATIVE");
+moraleShiftHandler.addParticulator("MoraleParticulator2", "NEUTRAL");
+moraleShiftHandler.addParticulator("MoraleParticulator3", "POSITIVE");
+moraleShiftHandler.addParticulator("MoraleParticulator4", "VERY_POSITIVE");
 
 battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
 
@@ -2474,12 +2481,10 @@ function DisplayRegions(){
 };
 //NEYN TODO!!!
 function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomName, SpecialName, CustomDesc, SpecialDesc) {
-	let CostFactor=1;
-	if(Speciation==-2){CostFactor=0.8};
-	if(Speciation==-1){CostFactor=0.9};
-	if(Speciation==1){CostFactor=1.4};
-	if(Speciation==2){CostFactor=2};
-	YourMoney-=Math.round(Units[Type].Cost*CostFactor);
+	const shift = moraleShiftHandler.getShift();
+	const costFactor = moraleShiftHandler.getCostFactor();
+
+	YourMoney-=Math.round(Units[Type].Cost*costFactor);
 	CustomName=document.getElementById("ParticularNameBox").value;
 	if(CustomName==""){CustomName=null};
 
@@ -2487,8 +2492,7 @@ function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomNam
 	//alert(DaoLedger[PlayerChoiceFaction/2]);
 	//MoraleIndex+=Math.min(5,Math.max(-4,DaoLedger[PlayerChoiceFaction]/2));
 
-
-	const buyMorale = 5 + Speciation;
+	const buyMorale = 5 + shift;
 	const unit = new Entity(`Unit ${MapRoster.length}`);
 
 	unit.init({
@@ -2949,58 +2953,8 @@ function EvaluateDynamicEvent(Comutator,LastUnit){
 
 
 		if(TriggerKey&&DynamicEvents[d].selfswitch){DynamicEvents[d].selfswitch=false; RunEvent(DynamicEvents[d].Event)};};
-	}else{}};
-
-/**
- * neyn 25.04.2025
- * 
- * @param {string} shiftID 
- * @param { string } particulatorID
- * @returns 
- */
-const executeSpeciation = function(shiftID, particulatorID) {
-	const moraleShift = MORALE_SHIFT[shiftID];
-	const moraleElement = document.getElementById(particulatorID);
-
-	if(!moraleShift || !moraleElement) {
-		return;
-	}
-
-	const { shift, costFactor, icon } = moraleShift;
-
-	for(let i = 0; i < 5; i++) {
-		const particulatorID = `MoraleParticulator${i}`;
-		const particulator = document.getElementById(particulatorID);
-
-		particulator.src = MORALE_SHIFT.NEUTRAL.icon;
-	}
-
-	Speciation = shift;
-	moraleElement.src = icon;
-
-	let industrialLimit = 40;
-
-	if(IndustrialBranchBrowsed !== 1) {
-		industrialLimit = 10;
-	}
-
-	for(let i = 1; i <= industrialLimit; i++) {
-		const priceTagID = `PriceTag${i}`;
-		const priceTag = document.getElementById(priceTagID);
-		const cost = Math.round(Units[MontreIndexBasis + i].Cost * costFactor);
-
-		priceTag.innerHTML = `₤${cost}`;
-
-		const unitFrameID = `UnitFrame${i}`;
-		const unitFrame = document.getElementById(unitFrameID);
-
-		if(YourMoney < cost) {
-			unitFrame.src = "Assets/Miscellaneous/UnitUnavailableFrame.PNG";
-		} else {
-			unitFrame.src = "Assets/Miscellaneous/UnitAvailableFrame.PNG";
-		}
-	}
-}
+	}else{}
+};
 
 function FactionInformations(Ordinal){
 
@@ -4419,12 +4373,8 @@ function LaunchRecruitmentPanel(IndustrialBranch){
 	document.getElementById("UnitMontre").style.filter=Factions[PlayerChoiceFaction].ChromaCode;;
 	MontreIndexBasis=IndustrialBranch*10+20;
 	if(IndustrialBranch==1){MontreIndexBasis-=30};
-	Speciation=0;
-	CostFactor=1;
 
-	for(let i = 0; i < 5; i++) {
-		document.getElementById("MoraleParticulator"+i).src = "Assets/Traits/Morale0.PNG";
-	}
+	moraleShiftHandler.reset();
 
 	let InfantrySelection=Factions[PlayerChoiceFaction].SpecialInfantry;
 	let VehicleSelection=Factions[PlayerChoiceFaction].SpecialVehicles;
@@ -5773,10 +5723,11 @@ function PostDialogueFrame(Portrait, Name, Text){
 	document.getElementById("DialogueBox").style.visibility="visible";};
 function RazeFaction(Faction){};
 function RecruitUnit(Class){
+	const costFactor = moraleShiftHandler.getCostFactor();
 	//alert(ActiveIndustrialNode.X+"X"+ActiveIndustrialNode.Y);
 	for(let x=1;x<Map.length;x++){for(let y=1;y<Map[0].length;y++){let crep=document.getElementById("Crep-"+x+"-"+y) ?? 0; if(crep!=0){crep.remove()};}};
 	let RecC=document.getElementById("CloseRecruiterX")??0;if(RecC!=0){RecC.remove()};
-	if(YourMoney>=Units[Class].Cost*CostFactor){
+	if(YourMoney>=Units[Class].Cost*costFactor){
 		document.getElementById("UnitRecruitmentPanel").style.visibility="hidden";
 		for(let i=1;i<41;i++){document.getElementById("Obturator"+i).style.visibility="hidden"};
 
@@ -5801,7 +5752,7 @@ function RecruitUnit(Class){
 				//Crep.style.left=j*56+"px";
 				Crep.style.zIndex=4;
 				Crep.addEventListener("click",function(){
-					if(YourMoney>=Units[Class].Cost*CostFactor){
+					if(YourMoney>=Units[Class].Cost*costFactor){
 					DeployUnit(i, j, Class, PlayerChoiceFaction);
 					let pos=document.getElementById("Crep-"+i+"-"+j);
 					pos.remove();
