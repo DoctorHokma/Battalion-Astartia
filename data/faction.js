@@ -1,0 +1,3 @@
+const FACTION_TYPE = {
+    
+};

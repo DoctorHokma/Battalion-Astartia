@@ -2,7 +2,6 @@ const Campaign = function(id) {
 	this.id = id;
 	this.type = null;
 	this.chapters = [];
-	this.nationID = null;
 }
 
 Campaign.prototype.getChapter = function(chapterIndex) {
@@ -23,7 +22,7 @@ Campaign.prototype.load = function(campaignID) {
 	this.id = campaignID;
 	this.type = config;
 
-	const { chapters, nation } = config;
+	const { chapters } = config;
 
 	if(chapters) {
 		for(let i = 0; i < chapters.length; i++) {
@@ -34,9 +33,5 @@ Campaign.prototype.load = function(campaignID) {
 			
 			this.chapters.push(chapter);
 		}
-	}
-
-	if(nation) {
-		this.nationID = nation;
 	}
 }

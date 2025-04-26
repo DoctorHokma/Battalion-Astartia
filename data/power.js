@@ -1,4 +1,4 @@
-const POWER_RANKING = {
+const POWER_TYPE = {
     "MAJOR": {
         "name": "POWER_RANKING_NAME_MAJOR",
         "desc": "POWER_RANKING_DESC_MAJOR"

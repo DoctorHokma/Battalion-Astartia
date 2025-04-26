@@ -486,6 +486,45 @@ const LANGUAGE_ENGLISH = {
 		"<span style='color:white'><br><br><br>Ʌ&nbspɅ&nbspɅ<br>|&nbsp V V &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>\\&nbsp &nbsp &nbsp &nbsp &nbsp/<br>\\&nbsp &nbsp &nbsp/<br></span><span style='color:#00ff00'>|&nbsp|<br>|&nbsp|<br>|&nbsp|<br>|&nbsp|</span>"
 	],
 
+	"NATION_NAME_SOMERTIN": "Synarchy of Somertin",
+	"NATION_NAME_KARGIT": "Kargit Gosudarstvo",
+	"NATION_NAME_TRANSKAL": "Commonwealth of Transkal",
+	"NATION_NAME_POLASIE": "Polasie Social Republic",
+	"NATION_NAME_ELAM": "Sublime Caliphate of Elam",
+
+	"NATION_DESC_SOMERTIN": [
+		"Prester John and his kingdom might have been a pipe dream, but on the faraway continent of Astartia the Christian Synarchy of Somertin actually exists. This oddity spits on ideology and on the common pillars of a state to forge a society that serves everybody. So well it worked that Somertin turned into the best place to be on the continent. Neither soul-crushing as Kargia, nor dysfunctional as Polasie, and lightyears ahead of Elam and Transkal in development.",
+		"Today the real and ultimate test of statecraft is upon them, as the vultures of the continent have united in war against Somertin. The satanists of the West, the hypocrites of the North and the heretics of the South surround the Synarchy and want to see it razed to the ground, their people carted off away in chains and their culture spat on.",
+		"Now the frontline is moving east by the second, and millions of men die on the battlefields as we speak. The Synarchy must stand strong and fight bitterly, for its existence, its culture and its freedom is at stake. It will be victory or oblivion!",
+		"<span style='color:white'> +With your back against the wall, fight with everything you've got against a despicable, abominable enemy</span><br><span style='color:white'> +Shatter the borders and the nations, unite the people of Astartia under one nation, one race, one Light</span><br><span style='color:black'> +No matter what happens, you will NEVER surrender</span><br><span style='color:purple'>?What has the White Tulip been up to? What's in the Secret Archives of Kaula? What are these Somertins concealing?</span>"
+	],
+	"NATION_DESC_KARGIT": [
+		"Very antagonistic were the Continentalists, the Socialists and the Darwinists until the Great Lord united them in spirit. After all, why argue whether to have a Kargia dominant on the continent, an egalitarian utopia or a reigning Kargit race? Why should Kargits not enjoy an egalitarian utopia funded on the backs of the continent's subhumans?",
+		"And even if we didn't desire it, the reality is that Kargia's soils are running dry and the mineshafts empty. If we are to merely keep up our conditions(not even to speak of prosperity), we need the grain and the minerals that lay out east.",
+		"So let the pantsers roll over the hills and mountains! Out we go into the biggest, most modern and dynamic war that has ever been, and we will come out as the strongest nation that has ever been! PANZER BRRRRRRRRR!!!",
+		"<span style='color:white'> +Fast, dynamic, exciting warfare with fast and powerful units.</span><br><span style='color:white'> +Epic OST to accompany your epic killstreak</span><br><span style='color:white'> +Destroy more and more, move faster and faster, conquer the entire world with your superpanzers!</span><br><span style='color:black'> -War crimes? You mean to-do list?[Warning: this route might not be for everyone]</span><br><span style='color:purple'> ?Seriously, something isn't quite right</span>"
+	],
+	"NATION_DESC_TRANSKAL": [
+		"The silent taiga sleeps. And sleeps. And sleeps some more. Until it gets a rude awakening, that it is a backward Buttfucknowheristan beset upon with war from two sides. So the Queen rushes to muster her hosts and save the nation.",
+		"But the real war is not with the measly battalions of Polasie or Elam. Even after those are driven out, there is Somertin on our doorstep and the nation will still be a backwards tundra parasited by leech warlords and a system that leaves the nation ungovernable",
+		"Now, the stars have aligned just right for the ambitious Queen to unhinge Transkal awhole. To pave the roads, fix the bridges, bring upon the gift of fire and steel. And to drain the politcal swamp",
+		"So come on, rifleman, there is much work to do",
+		"<span style='color:black'> -Use the little that Transkal has to fight a bitter war on two fronts.</span><br><span style='color:black'> -Bribe your way to the warlords hearts so that they stay loyal</span><br><span style='color:white'> +Purge the parasites and parvenus, the degenerate warlords who plunder Transkal's wealth</span><br><span style='color:white'>+Drag Transkal kicking and screaming into the modern age.</span><br><span style='color:red'>♥Snatch yourself a cute young prince and live happily ever after</span>"
+	],
+	"NATION_DESC_POLASIE": [
+		"Our ancestors gave us the privilege of freedom and free enterprise, and we used it to attain peace and prosperity. Their sons dreamed and aspired, and pushed the boulder up the rocky crag. For entire generations it seemed that life was easy and that the future was bright.",
+		"Now, the boulder has reached the top of the cliff, and it is pushing back. It has been decades since the news stations have consistently broadcasted good news. Too many have moved from the province to the metropolises to seek prosperity that would never come, bringing misery and high prices with them while they ditched timeless social structures in favour of wages that now are not keeping up",
+		"Rancour and division reigns, some look for fault in the government's ham-fisted approach and others in the oligocrats's opulence. Whichever it is, the government has played fireman for far too long. It has given the people all the rights and welfare improvements they demanded, but paradoxically the situation refused to improve.",
+		"President John Doe has upon him a sisyphean ordeal. The only thing that will unite Polasie now is to galvanize all of the people into hating another country, and invading them for cheap resources.",
+		"<span style='color:white'> +Liberate some oil and precious metals from nazis, fascists, communists, terrorists and the like</span><br><span style='color:black'>-Sail the stormy political seas of a late-stage democracy</span><br><span style='color:black'> -What is happening... is it real or have they lied to us?</span><br><span style='color:purple'> ?Operation THAUMIEL. Blackcock Inc. The Syndicate. How deep does this rabbit hole go?</span>"
+	],
+	"NATION_DESC_ELAM": [
+		"Everything one sees in Elam today has a story related to the great Sultan Faruk III. This slum has been renovated by Faruk, that desert was turned into an economic center by Faruk. This factory was built by Faruk's order, that battleship was built with Faruk's funding. The Akkadians were beaten by Faruk, the Araratis were aligned by Faruk. Faruk took a backwards Elam, a shithole of mudbrick, and left it a quasi-modern empire of marble.",
+		"But Faruk's ambition and dilligence was his downfall. Too involved in the state's affairs, too busy to check himself up with a doctor, he died of a banal urinary infection. Behind him the harem went berzerk. Mothers and sons alike would murder boys to ensure their own chance at the throne. Only the timid, pathetic Hashrazzat remained. Not due to his own merit, but due to him seeming to be the least likely to win(and due to his mother being a demon)",
+		"This timid boy will now sit on the thorny throne at the worst time possible. What comes from now on could hardly even be sailed by Faruk, let alone his incapable progeny. Hashrazzat is both literally and figuratively a child among giants, and neither of those take Elam seriously. Still, they will join Kargia in the hopes that it will land them in a good position to dictate negotiation terms with either of the titans",
+		"<span style='color:white'> +Battle the northern kaffirs to restore the old glory of the Caliphate</span><br><span style='color:black'> -Deal with the awful industry, weapon and munition shortages</span><br><span style='color:red'> ♥Assemble a harem of hot waifus</span><br><span style='color:black'> -Some of them are lolis</span><br><span style='color:purple'> ?Will Aizi'Dihar, that obscure collaborationist heresy, ever amount to anything?</span><br>"
+	],
+
 	"POWER_RANKING_NAME_MAJOR": "Major Power",
 	"POWER_RANKING_NAME_MINOR": "Minor Power",
 	"POWER_RANKING_NAME_REGIONAL": "Regional Power",

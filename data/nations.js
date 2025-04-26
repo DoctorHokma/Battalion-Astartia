@@ -4,6 +4,7 @@ const NATIONS = {
 		"desc": "NATION_DESC_SOMERTIN",
         "faction": null,
 		"color": "#FFFFFF",
+		"chroma": "",
         "power": "MAJOR"
 	},
 	"KARGIT": {
@@ -11,6 +12,7 @@ const NATIONS = {
 		"desc": "NATION_DESC_KARGIT",
         "faction": null,
 		"color": "#FFFFFF",
+		"chroma": "",
         "power": "MAJOR"
 	},
 	"TRANSKAL": {
@@ -18,6 +20,7 @@ const NATIONS = {
 		"desc": "NATION_DESC_TRANSKAL",
         "faction": null,
 		"color": "#FFFFFF",
+		"chroma": "",
         "power": "REGIONAL"
 	},
 	"POLASIE": {
@@ -25,6 +28,7 @@ const NATIONS = {
 		"desc": "NATION_DESC_POLASIE",
         "faction": null,
 		"color": "#FFFFFF",
+		"chroma": "",
         "power": "REGIONAL"
 	},
 	"ELAM": {
@@ -32,6 +36,7 @@ const NATIONS = {
 		"desc": "NATION_DESC_ELAM",
         "faction": null,
 		"color": "#FFFFFF",
+		"chroma": "",
         "power": "REGIONAL"
 	}
 };

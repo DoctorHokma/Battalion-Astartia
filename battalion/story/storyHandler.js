@@ -13,19 +13,6 @@ StoryHandler.TYPE = {
 	MISSION: 3
 };
 
-StoryHandler.prototype.selectScenario = function(scenarioID) {
-	const scenario = this.scenarios.get(scenarioID);
-
-	if(!scenario) {
-		return;
-	}
-
-	this.currentScenario = scenario;
-	this.currentCampaign = null;
-	this.currentChapter = null;
-	this.currentMission = null;
-}
-
 StoryHandler.prototype.getDataOf = function(type) {
 	switch(type) {
 		case StoryHandler.TYPE.SCENARIO: {
@@ -59,61 +46,82 @@ StoryHandler.prototype.getDataOf = function(type) {
 	}
 }
 
+StoryHandler.prototype.selectScenario = function(scenarioID) {
+	const scenario = this.scenarios.get(scenarioID);
+
+	if(!scenario) {
+		return null;
+	}
+
+	this.currentScenario = scenario;
+	this.currentCampaign = null;
+	this.currentChapter = null;
+	this.currentMission = null;
+
+	return scenario;
+}
+
 StoryHandler.prototype.selectCampaign = function(campaignID) {
 	if(!this.currentScenario) {
-		return;
+		return null;
 	}
 
 	const campaign = this.currentScenario.getCampaign(campaignID);
 
 	if(!campaign) {
-		return;
+		return null;
 	}
 
 	this.currentCampaign = campaign;
 	this.currentChapter = null;
 	this.currentMission = null;
+
+	return campaign;
 }
 
 StoryHandler.prototype.selectChapter = function(chapterIndex) {
 	if(!this.currentScenario) {
-		return;
+		return null;
 	}
 
 	if(!this.currentCampaign) {
-		return;
+		return null
 	}
 
 	const chapter = this.currentCampaign.getChapter(chapterIndex);
 
 	if(!chapter) {
-		return;
+		return null;
 	}
 
 	this.currentChapter = chapter;
 	this.currentMission = null;
+	
+	return chapter;
 }
 
 StoryHandler.prototype.selectMission = function(missionIndex) {
 	if(!this.currentScenario) {
-		return;
+		return null;
 	}
 
 	if(!this.currentCampaign) {
-		return;
+		return null;
 	}
 
 	if(!this.currentChapter) {
-		return;
+		return null;
 	}
 
 	const mission = this.currentChapter.getMission(missionIndex);
 
 	if(!mission) {
-		return;
+		return null;
 	}
 
 	this.currentMission = mission;
+
+	return mission;
 }
 
 StoryHandler.prototype.load = function() {
