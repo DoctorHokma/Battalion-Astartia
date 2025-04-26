@@ -1,3 +1,8 @@
+const DISPLAY_TYPE = {
+    NONE: "none",
+    BLOCK: "block"
+}
+
 const showNation = function(battalion, nationID) {
     const { language } = battalion;
     const nation = NATION[nationID];
@@ -6,10 +11,10 @@ const showNation = function(battalion, nationID) {
         return;
     }
 
-    const { power, color, name, desc, faction } = nation;
+    const { power, color, chroma, name, desc, faction } = nation;
 
     document.getElementById("NationDetails").style.visibility = "visible";
-	document.getElementById("NationColor").style.filter = color;
+    document.getElementById("NationColor").style.filter = chroma
 	document.getElementById("NationNameSpecific").innerHTML = language.get(name);
 
     const factionType = FACTION[faction];
@@ -51,7 +56,7 @@ const showNation = function(battalion, nationID) {
     }
 }
 
-const updateScenarioVisibility = function(scenario, visibility) {
+const updateScenarioVisibility = function(scenario, displayType) {
     if(!scenario) {
         return;
     }
@@ -69,7 +74,7 @@ const updateScenarioVisibility = function(scenario, visibility) {
         return;
     }
     
-    div.style.display = visibility;
+    div.style.display = displayType;
 }
 
 const selectScenario = function(scenarioID) {
@@ -80,16 +85,17 @@ const selectScenario = function(scenarioID) {
         return;
     }
 
-    story.scenarios.forEach(s => updateScenarioVisibility(s, "none"));
+    story.scenarios.forEach(s => updateScenarioVisibility(s, DISPLAY_TYPE.NONE));
 
-    updateScenarioVisibility(scenario, "block");
+    updateScenarioVisibility(scenario, DISPLAY_TYPE.BLOCK);
 }
 
-const selectCampaign = function(campaignID) {
+const selectCampaign = function(campaignID, Nation) {
 	const { story } = battalion;
 	const campaign = story.selectCampaign(campaignID);
 
     if(!campaign) {
+        console.warn(`Campaign ${campaignID} does not exist for scenario`, story.getObject(StoryHandler.TYPE.SCENARIO));
         return;
     }
 
@@ -100,6 +106,10 @@ const selectCampaign = function(campaignID) {
         alert("Halt! None may see the secret nations until they have unlocked them. Go back to playing the regular campaigns!");
         return;
     }
+
+    //Ugly Globals... AFUERA
+    ChosenNation = Nation;
+	ChosenChapter = 1;
 
     showNation(battalion, nation);
 }
@@ -120,38 +130,6 @@ const selectMission = function(missionIndex) {
     if(!mission) {
         return;
     }
-}
-
-//This just gives the nation details/campaign details. - replaced by showNation
-function NationDetails(Nation){
-    if(!Factions[Nation].Access) {
-        alert("Halt! None may see the secret nations until they have unlocked them. Go back to playing the regular campaigns!");
-        return;
-    }
-
-    //Ugly Globals... AFUERA
-	ChosenNation=Nation;
-	ChosenChapter=1;
-
-    document.getElementById("NationDetails").style.visibility="visible";
-	document.getElementById("NationColor").style.filter=Factions[Nation].ChromaCode;
-	document.getElementById("NationNameSpecific").innerHTML=Factions[Nation].name;
-	document.getElementById("FactionNameSpecific").innerHTML=Factions[Nation].faction;
-
-	let PR=0;
-	if(Factions[Nation].powerRanking=="Major Power"){PR=1};
-	if(Factions[Nation].powerRanking=="Regional Power"){PR=2};
-	if(Factions[Nation].powerRanking=="Minor Power"){PR=3};
-    
-	document.getElementById("NationStatus").innerHTML=Language.SystemTerms[40+PR];
-	document.getElementById("NationSynopsisSpecific").innerHTML="";
-
-	let ND=Language.NationDesc[Nation-1];
-
-	for(let I=0; I<ND.length; I++) {
-        document.getElementById("NationSynopsisSpecific").innerHTML+=ND[I]+"<br><br>";
-    }
-	//document.getElementById("CampaignSelectedText").innerHTML="Proceed";
 }
 
 function ChooseChapter(Chapter){

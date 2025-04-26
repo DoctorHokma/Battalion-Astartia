@@ -13,6 +13,16 @@ StoryHandler.TYPE = {
 	MISSION: 3
 };
 
+StoryHandler.prototype.getObject = function(type) {
+	switch(type) {
+		case StoryHandler.TYPE.SCENARIO: return this.currentScenario;
+		case StoryHandler.TYPE.CAMPAIGN: return this.currentCampaign;
+		case StoryHandler.TYPE.CHAPTER: return this.currentChapter;
+		case StoryHandler.TYPE.MISSION: return this.currentMission;
+		default: return null;
+	}
+}
+
 StoryHandler.prototype.deselect = function(type) {
 	switch(type) {
 		case StoryHandler.TYPE.SCENARIO: {
@@ -41,36 +51,13 @@ StoryHandler.prototype.deselect = function(type) {
 }
 
 StoryHandler.prototype.getDataOf = function(type) {
-	switch(type) {
-		case StoryHandler.TYPE.SCENARIO: {
-			if(!this.currentScenario) {
-				return null;
-			}
+	const dataObject = this.getObject(type);
 
-			return this.currentScenario.type;
-		}
-		case StoryHandler.TYPE.CAMPAIGN: {
-			if(!this.currentCampaign) {
-				return null;
-			}
-
-			return this.currentCampaign.type;
-		}
-		case StoryHandler.TYPE.CHAPTER: {
-			if(!this.currentChapter) {
-				return null;
-			}
-
-			return this.currentChapter.type;
-		}
-		case StoryHandler.TYPE.MISSION: {
-			if(!this.currentMission) {
-				return null;
-			}
-
-			return this.currentMission.type;
-		}
+	if(!dataObject) {
+		return null;
 	}
+
+	return dataObject.type;
 }
 
 StoryHandler.prototype.selectScenario = function(scenarioID) {
