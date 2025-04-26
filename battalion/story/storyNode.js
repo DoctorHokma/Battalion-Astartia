@@ -11,6 +11,28 @@ StoryNode.STATE = {
 	FINISHED: 1
 };
 
+StoryNode.prototype.determineState = function(progress) {
+    for(const childID of this.children) {
+        const state = progress[childID];
+
+        if(!state) {
+            this.state = StoryNode.STATE.UNFINISHED;
+            return;
+        }
+    }
+
+    this.state = StoryNode.STATE.FINISHED;
+    return;
+}
+
+StoryNode.prototype.loadState = function(state) {
+    if(state) {
+        this.state = StoryNode.STATE.FINISHED; 
+    } else {
+        this.state = StoryNode.STATE.UNFINISHED;
+    }
+}
+
 StoryNode.prototype.finish = function() {
     this.state = StoryNode.STATE.FINISHED;
 }

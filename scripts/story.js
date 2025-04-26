@@ -3,6 +3,20 @@ const DISPLAY_TYPE = {
     BLOCK: "block"
 }
 
+const saveStory = function() {
+    const { story } = battalion;
+    const saveData = story.save();
+    const file = new PrettyJSON(4).open();
+
+    for(const groupID in saveData) {
+        file.writeLine(groupID, saveData[groupID]);
+    }
+
+    file
+    .close()
+    .download("progress");
+}
+
 const showNation = function(battalion, nationID) {
     const { language } = battalion;
     const nation = NATION[nationID];
@@ -82,7 +96,6 @@ const selectScenario = function(scenarioID) {
 	const scenario = story.selectScenario(scenarioID);
 
     if(!scenario) {
-        console.warn(`Scenario ${scenarioID} does not exist!`);
         return;
     }
 
@@ -96,7 +109,6 @@ const selectCampaign = function(campaignID, Nation) {
 	const campaign = story.selectCampaign(campaignID);
 
     if(!campaign) {
-        console.warn(`Campaign ${campaignID} does not exist for scenario`, story.getNode(StoryHandler.TYPE.SCENARIO));
         return;
     }
 
@@ -120,7 +132,6 @@ const selectChapter = function(chapterIndex) {
     const chapter = story.selectChapter(chapterIndex);
 
     if(!chapter) {
-        console.warn(`Chapter ${chapterIndex} does not exist for campaign`, story.getNode(StoryHandler.TYPE.CAMPAIGN));
         return;
     }
 }
@@ -130,7 +141,6 @@ const selectMission = function(missionIndex) {
     const mission = story.selectMission(missionIndex);
 
     if(!mission) {
-        console.warn(`Mission ${missionIndex} does not exist for chapter`, story.getNode(StoryHandler.TYPE.CHAPTER));
         return;
     }
 }

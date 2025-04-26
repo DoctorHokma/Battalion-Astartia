@@ -58,6 +58,7 @@ StoryHandler.prototype.selectScenario = function(scenarioID) {
 	const scenario = this.scenarios.get(scenarioID);
 
 	if(!scenario) {
+		console.warn(`Scenario ${scenarioID} does not exist!`);
 		return null;
 	}
 
@@ -77,6 +78,7 @@ StoryHandler.prototype.selectCampaign = function(campaignID) {
 	const hasCampaign = this.currentScenario.hasChild(campaignID);
 
 	if(!hasCampaign) {
+		console.warn(`Campaign ${campaignID} does not exist for scenario`, this.currentScenario);
 		return null;
 	}
 
@@ -105,6 +107,7 @@ StoryHandler.prototype.selectChapter = function(chapterIndex) {
 	const chapterID = this.currentCampaign.getChildByIndex(chapterIndex);
 
 	if(!chapterID) {
+		console.warn(`Chapter ${chapterIndex} does not exist for campaign`, this.currentCampaign);
 		return null;
 	}
 
@@ -121,6 +124,7 @@ StoryHandler.prototype.selectChapter = function(chapterIndex) {
 	});
 
 	if(!isAvailable) {
+		console.warn(`Chapter ${chapterIndex} is not available for campaign`, this.currentCampaign);
 		return null;
 	}
 
@@ -146,6 +150,7 @@ StoryHandler.prototype.selectMission = function(missionIndex) {
 	const mission = this.currentChapter.getChildByIndex(missionIndex);
 
 	if(!mission) {
+		console.warn(`Mission ${missionIndex} does not exist for chapter`, this.currentChapter);
 		return null;
 	}
 
@@ -156,6 +161,7 @@ StoryHandler.prototype.selectMission = function(missionIndex) {
 	});
 
 	if(!isAvailable) {
+		console.warn(`Mission ${missionIndex} is not available for chapter`, this.currentChapter);
 		return null;
 	}
 
@@ -164,36 +170,50 @@ StoryHandler.prototype.selectMission = function(missionIndex) {
 	return mission;
 }
 
-//TODO: add a postloader that sets states.
-StoryHandler.prototype.load = function() {
+StoryHandler.prototype.load = function(progress = {}) {
+	const missionProgress = progress["MISSIONS"] ?? {};
+
 	for(const missionID in MISSIONS) {
 		const mission = new Mission(missionID);
+		const progress = missionProgress[missionID];
 
 		mission.load(missionID);
+		mission.loadState(progress);
 
 		this.missions.set(missionID, mission);
 	}
 
+	const chapterProgress = progress["CHAPTERS"] ?? {};
+
 	for(const chapterID in CHAPTERS) {
 		const chapter = new Chapter(chapterID);
+		const progress = chapterProgress[chapterID];
 
 		chapter.load(chapterID);
+		chapter.loadState(progress);
 
 		this.chapters.set(chapterID, chapter);
 	}
 
+	const campaignProgress = progress["CAMPAIGNS"] ?? {};
+
 	for(const campaignID in CAMPAIGNS) {
 		const campaign = new Campaign(campaignID);
+		const progress = campaignProgress[campaignID];
 
 		campaign.load(campaignID);
-
+		campaign.loadState(progress);
 		this.campaigns.set(campaignID, campaign);
 	}
 	
+	const scenarioProgress = progress["SCENARIOS"] ?? {};
+
 	for(const scenarioID in SCENARIOS) {
 		const scenario = new Scenario(scenarioID);
+		const progress = scenarioProgress[scenarioID];
 
 		scenario.load(scenarioID);
+		scenario.loadState(progress);
 
 		this.scenarios.set(scenarioID, scenario);
 	}

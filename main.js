@@ -18,10 +18,12 @@ battalion.language.addLanguage(Battalion.LANGUAGE.TURKISH, LANGUAGE_TURKISH);
 
 battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
 battalion.story.load();
-battalion.story.save();
+
 battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
 battalion.timer.start();
 battalion.setState(Battalion.STATE.MAIN_MENU);
+
+selectScenario("GREAT_WAR");
 
 var ActionRegister = {}; //used by ai
 var ActiveRoster = []; //used by ai
