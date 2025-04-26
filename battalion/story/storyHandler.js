@@ -1,5 +1,9 @@
 const StoryHandler = function() {
 	this.scenarios = new Map();
+	this.campaigns = new Map();
+	this.chapters = new Map();
+	this.missions = new Map();
+
 	this.currentScenario = null;
 	this.currentCampaign = null;
 	this.currentChapter = null;
@@ -13,7 +17,7 @@ StoryHandler.TYPE = {
 	MISSION: 3
 };
 
-StoryHandler.prototype.getObject = function(type) {
+StoryHandler.prototype.getNode = function(type) {
 	switch(type) {
 		case StoryHandler.TYPE.SCENARIO: return this.currentScenario;
 		case StoryHandler.TYPE.CAMPAIGN: return this.currentCampaign;
@@ -50,16 +54,6 @@ StoryHandler.prototype.deselect = function(type) {
 	}
 }
 
-StoryHandler.prototype.getDataOf = function(type) {
-	const dataObject = this.getObject(type);
-
-	if(!dataObject) {
-		return null;
-	}
-
-	return dataObject.type;
-}
-
 StoryHandler.prototype.selectScenario = function(scenarioID) {
 	const scenario = this.scenarios.get(scenarioID);
 
@@ -80,7 +74,13 @@ StoryHandler.prototype.selectCampaign = function(campaignID) {
 		return null;
 	}
 
-	const campaign = this.currentScenario.getCampaign(campaignID);
+	const hasCampaign = this.currentScenario.hasChild(campaignID);
+
+	if(!hasCampaign) {
+		return null;
+	}
+
+	const campaign = this.campaigns.get(campaignID);
 
 	if(!campaign) {
 		return null;
@@ -102,9 +102,25 @@ StoryHandler.prototype.selectChapter = function(chapterIndex) {
 		return null
 	}
 
-	const chapter = this.currentCampaign.getChapter(chapterIndex);
+	const chapterID = this.currentCampaign.getChildByIndex(chapterIndex);
+
+	if(!chapterID) {
+		return null;
+	}
+
+	const chapter = this.chapters.get(chapterID);
 
 	if(!chapter) {
+		return null;
+	}
+
+	const isAvailable = this.currentCampaign.isAvailableAsNext(chapterIndex, (childID) => {
+		const chapter = this.chapters.get(childID);
+
+		return chapter && chapter.isFinished(); 
+	});
+
+	if(!isAvailable) {
 		return null;
 	}
 
@@ -127,9 +143,19 @@ StoryHandler.prototype.selectMission = function(missionIndex) {
 		return null;
 	}
 
-	const mission = this.currentChapter.getMission(missionIndex);
+	const mission = this.currentChapter.getChildByIndex(missionIndex);
 
 	if(!mission) {
+		return null;
+	}
+
+	const isAvailable = this.currentChapter.isAvailableAsNext(missionIndex, (childID) => {
+		const mission = this.missions.get(childID);
+
+		return mission && mission.isFinished();
+	});
+
+	if(!isAvailable) {
 		return null;
 	}
 
@@ -138,7 +164,32 @@ StoryHandler.prototype.selectMission = function(missionIndex) {
 	return mission;
 }
 
+//TODO: add a postloader that sets states.
 StoryHandler.prototype.load = function() {
+	for(const missionID in MISSIONS) {
+		const mission = new Mission(missionID);
+
+		mission.load(missionID);
+
+		this.missions.set(missionID, mission);
+	}
+
+	for(const chapterID in CHAPTERS) {
+		const chapter = new Chapter(chapterID);
+
+		chapter.load(chapterID);
+
+		this.chapters.set(chapterID, chapter);
+	}
+
+	for(const campaignID in CAMPAIGNS) {
+		const campaign = new Campaign(campaignID);
+
+		campaign.load(campaignID);
+
+		this.campaigns.set(campaignID, campaign);
+	}
+	
 	for(const scenarioID in SCENARIOS) {
 		const scenario = new Scenario(scenarioID);
 
@@ -146,4 +197,20 @@ StoryHandler.prototype.load = function() {
 
 		this.scenarios.set(scenarioID, scenario);
 	}
+}
+
+StoryHandler.prototype.save = function() {
+	const progress = {
+		"MISSIONS": {},
+		"CHAPTERS": {},
+		"CAMPAIGNS": {},
+		"SCENARIOS": {}
+	};
+
+	this.missions.forEach(({id, state}) => progress.MISSIONS[id] = state);
+	this.chapters.forEach(({id, state}) => progress.CHAPTERS[id] = state);
+	this.campaigns.forEach(({id, state}) => progress.CAMPAIGNS[id] = state);
+	this.scenarios.forEach(({id, state}) => progress.SCENARIOS[id] = state);
+
+	return progress;
 }

@@ -1,18 +1,11 @@
 const Mission = function(id) {
-	this.id = id;
-	this.type = null;
+	StoryNode.call(this, id);
+
 	this.data = {};
-	this.state = Mission.STATE.UNFINISHED;
 }
 
-Mission.STATE = {
-	UNFINISHED: 0,
-	FINISHED: 1
-};
-
-Mission.prototype.finish = function() {
-	this.state = Mission.STATE.FINISHED;
-}
+Mission.prototype = Object.create(StoryNode.prototype);
+Mission.prototype.constructor = Mission;
 
 Mission.prototype.load = function(missionID) {
 	const config = MISSIONS[missionID];

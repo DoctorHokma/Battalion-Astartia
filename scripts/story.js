@@ -11,7 +11,7 @@ const showNation = function(battalion, nationID) {
         return;
     }
 
-    const { power, color, chroma, name, desc, faction } = nation;
+    const { power, chroma, name, desc, faction } = nation;
 
     document.getElementById("NationDetails").style.visibility = "visible";
     document.getElementById("NationColor").style.filter = chroma
@@ -96,7 +96,7 @@ const selectCampaign = function(campaignID, Nation) {
 	const campaign = story.selectCampaign(campaignID);
 
     if(!campaign) {
-        console.warn(`Campaign ${campaignID} does not exist for scenario`, story.getObject(StoryHandler.TYPE.SCENARIO));
+        console.warn(`Campaign ${campaignID} does not exist for scenario`, story.getNode(StoryHandler.TYPE.SCENARIO));
         return;
     }
 
@@ -120,7 +120,7 @@ const selectChapter = function(chapterIndex) {
     const chapter = story.selectChapter(chapterIndex);
 
     if(!chapter) {
-        console.warn(`Chapter ${chapterIndex} does not exist for campaign`, story.getObject(StoryHandler.TYPE.CAMPAIGN));
+        console.warn(`Chapter ${chapterIndex} does not exist for campaign`, story.getNode(StoryHandler.TYPE.CAMPAIGN));
         return;
     }
 }
@@ -130,31 +130,47 @@ const selectMission = function(missionIndex) {
     const mission = story.selectMission(missionIndex);
 
     if(!mission) {
-        console.warn(`Mission ${missionIndex} does not exist for chapter`, story.getObject(StoryHandler.TYPE.CHAPTER));
+        console.warn(`Mission ${missionIndex} does not exist for chapter`, story.getNode(StoryHandler.TYPE.CHAPTER));
         return;
     }
 }
 
-function ChooseChapter(Chapter){
-	
+const showMissionScreen = function(battalion) {
+    const { story, language } = battalion;
+    const campaign = story.getNode(StoryHandler.TYPE.CAMPAIGN);
 
+    if(!campaign) {
+        return;
+    }
+}
+
+//has to check if chapterIndex -1 is DONE.
+//to do so, add a helper function that checks if the chapter is completed!
+//it basically tries to check if all elements down a tree are done!
+function ChooseChapter(Chapter){
 	let checker=false;
-	if(Chapter==1){checker=true};
-	if(Chapter>1&&Campaigns[ChosenNation-1][Chapter-2][4].Finished==true){checker=true};
+
+	if(Chapter==1)checker=true;
+	if(Chapter > 1 && Campaigns[ChosenNation-1][Chapter-2][4].Finished) checker=true;
+
 	if(checker){
 		ChosenChapter=Chapter;
-	document.getElementById('CampaignName').innerHTML=Language.ChapterName[ChosenNation-1][Chapter-1];
-	document.getElementById('MissionName').innerHTML=Language.MissionName[ChosenNation-1][Chapter-1][0];
-	document.getElementById('MissionDescription').innerHTML=Language.MissionDesc[ChosenNation][Chapter-1][0];
-	document.getElementById("Emblem1").src="Assets/Emblems/Emblem"+Factions[ChosenNation].Preffix+".PNG";
-	document.getElementById('EmblemSlot').style.left='0px';
-	document.getElementById("ChapterIllustration").src="Assets/Paralogues/"+ChosenNation+"-"+ChosenChapter+".JPG";
-	ChooseMission(1);
-	document.getElementById("ChapterPanelPointer").style.top=(Chapter-1)*33-6+"px";
-	for(let i=0;i<=3;i++){
-	if(Campaigns[ChosenNation-1][ChosenChapter-1][i].Finished??false){document.getElementById('Emblem'+ (i+2)).src="Assets/Emblems/Emblem"+Factions[ChosenNation].Preffix+".PNG"}
-	else{document.getElementById('Emblem'+ (i+2)).src="Assets/Emblems/NONEmblem"+Factions[ChosenNation].Preffix+".PNG"};
-	};
+        document.getElementById('CampaignName').innerHTML=Language.ChapterName[ChosenNation-1][Chapter-1];
+        document.getElementById('MissionName').innerHTML=Language.MissionName[ChosenNation-1][Chapter-1][0];
+        document.getElementById('MissionDescription').innerHTML=Language.MissionDesc[ChosenNation][Chapter-1][0];
+        document.getElementById("Emblem1").src="Assets/Emblems/Emblem"+Factions[ChosenNation].Preffix+".PNG";
+        document.getElementById('EmblemSlot').style.left='0px';
+        document.getElementById("ChapterIllustration").src="Assets/Paralogues/"+ChosenNation+"-"+ChosenChapter+".JPG";
+        ChooseMission(1);
+        document.getElementById("ChapterPanelPointer").style.top=(Chapter-1)*33-6+"px";
+
+	    for(let i=0;i<=3;i++) {
+	        if(Campaigns[ChosenNation-1][ChosenChapter-1][i].Finished) {
+                document.getElementById('Emblem'+ (i+2)).src="Assets/Emblems/Emblem"+Factions[ChosenNation].Preffix+".PNG";
+            } else {
+                document.getElementById('Emblem'+ (i+2)).src="Assets/Emblems/NONEmblem"+Factions[ChosenNation].Preffix+".PNG";
+            }
+	    }   
 	}
 }
 
