@@ -486,6 +486,12 @@ const LANGUAGE_ENGLISH = {
 		"<span style='color:white'><br><br><br>Ʌ&nbspɅ&nbspɅ<br>|&nbsp V V &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>\\&nbsp &nbsp &nbsp &nbsp &nbsp/<br>\\&nbsp &nbsp &nbsp/<br></span><span style='color:#00ff00'>|&nbsp|<br>|&nbsp|<br>|&nbsp|<br>|&nbsp|</span>"
 	],
 
+	"CURRENCY_NAME_ZLOT": "Zlot",
+	"CURRENCY_NAME_KARGIL": "Kargil",
+	"CURRENCY_NAME_KRONE": "Krone",
+	"CURRENCY_NAME_PULA": "Pula",
+	"CURRENCY_NAME_RIAL": "Rial",
+	
 	"FACTION_NAME_CONTINENTAL_SECURITY_LEAGUE": "Continental Security League",
 	"FACTION_NAME_GLORIOUS_COALLITION": "Glorious Coallition",
 

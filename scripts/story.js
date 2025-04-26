@@ -82,6 +82,7 @@ const selectScenario = function(scenarioID) {
 	const scenario = story.selectScenario(scenarioID);
 
     if(!scenario) {
+        console.warn(`Scenario ${scenarioID} does not exist!`);
         return;
     }
 
@@ -119,6 +120,7 @@ const selectChapter = function(chapterIndex) {
     const chapter = story.selectChapter(chapterIndex);
 
     if(!chapter) {
+        console.warn(`Chapter ${chapterIndex} does not exist for campaign`, story.getObject(StoryHandler.TYPE.CAMPAIGN));
         return;
     }
 }
@@ -128,6 +130,7 @@ const selectMission = function(missionIndex) {
     const mission = story.selectMission(missionIndex);
 
     if(!mission) {
+        console.warn(`Mission ${missionIndex} does not exist for chapter`, story.getObject(StoryHandler.TYPE.CHAPTER));
         return;
     }
 }
