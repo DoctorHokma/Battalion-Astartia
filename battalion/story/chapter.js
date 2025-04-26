@@ -1,7 +1,15 @@
 const Chapter = function(id) {
 	this.id = id;
+	this.type = null;
 	this.missions = [];
-	this.currentMission = null;
+}
+
+Chapter.prototype.getMission = function(missionIndex) {
+	if(missionIndex < 0 || missionIndex >= this.missions.length) {
+		return null;
+	}
+
+	return this.missions[missionIndex];
 }
 
 Chapter.prototype.load = function(chapterID) {
@@ -10,6 +18,9 @@ Chapter.prototype.load = function(chapterID) {
 	if(!config) {
 		return;
 	}
+
+	this.id = chapterID;
+	this.type = config;
 
 	const { missions } = config;
 

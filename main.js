@@ -1,26 +1,24 @@
 const OPENING_TRACK = "RiversOfSteel";
 const battalion = new Battalion();
-const moraleHandler = new MoraleHandler();
-const missionHandler = new MissionHandler();
-missionHandler.load();
-
+//TODO: select chapter and mission must reduce their parameter by 1 to map to the indices!
 //TODO: factions & commanders need to be represented in a list.
+//TODO: turn characters into a proper "database".
 
-moraleHandler.addParticulator("MoraleParticulator0", "VERY_NEGATIVE");
-moraleHandler.addParticulator("MoraleParticulator1", "NEGATIVE");
-moraleHandler.addParticulator("MoraleParticulator2", "NEUTRAL");
-moraleHandler.addParticulator("MoraleParticulator3", "POSITIVE");
-moraleHandler.addParticulator("MoraleParticulator4", "VERY_POSITIVE");
-
-battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
+battalion.morale.addParticulator("MoraleParticulator0", "VERY_NEGATIVE");
+battalion.morale.addParticulator("MoraleParticulator1", "NEGATIVE");
+battalion.morale.addParticulator("MoraleParticulator2", "NEUTRAL");
+battalion.morale.addParticulator("MoraleParticulator3", "POSITIVE");
+battalion.morale.addParticulator("MoraleParticulator4", "VERY_POSITIVE");
 
 battalion.language.addLanguage(Battalion.LANGUAGE.ENGLISH, LANGUAGE_ENGLISH);
 battalion.language.addLanguage(Battalion.LANGUAGE.SPANISH, LANGUAGE_SPANISH);
 battalion.language.addLanguage(Battalion.LANGUAGE.PORTUGUESE, LANGUAGE_PORTUGUESE);
 battalion.language.addLanguage(Battalion.LANGUAGE.ROMANIAN, LANGUAGE_ROMANIAN);
 battalion.language.addLanguage(Battalion.LANGUAGE.TURKISH, LANGUAGE_TURKISH);
-battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
 
+battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
+battalion.story.load();
+battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
 battalion.timer.start();
 battalion.setState(Battalion.STATE.MAIN_MENU);
 
@@ -1286,7 +1284,6 @@ function Buttsecks() {
 }
 
 function CallCampaignScreen(){
-
 	Emblem="Assets/Emblems/Emblem"+Factions[ChosenNation].Preffix+".PNG";
 	NonEmblem="Assets/Emblems/NONEmblem"+Factions[ChosenNation].Preffix+".PNG";
 	ChosenMission=1;
@@ -2196,12 +2193,48 @@ function CBLARG(r,t){
 					if(dir==3){Xer+=1};
 					if(dir==4){Yer-=1};
 					document.getElementById('Ctep-'+Xer+"-"+Yer).src="Assets/BLARG/Ctep"+dir+".PNG"};*/
+};
 
+//TODO NEYN :HERE are the nations set!!!
+function NationDetails(Nation){
 
+	if(Factions[Nation].Access){
+	ChosenNation=Nation;
+	ChosenChapter=1;
+	document.getElementById("NationColor").style.filter=Factions[Nation].ChromaCode;
+	document.getElementById("NationDetails").style.visibility="visible";
+	document.getElementById("NationNameSpecific").innerHTML=Factions[Nation].name;
+	document.getElementById("FactionNameSpecific").innerHTML=Factions[Nation].faction;
+	let PR=0;
+	if(Factions[Nation].powerRanking=="Major Power"){PR=1};
+	if(Factions[Nation].powerRanking=="Regional Power"){PR=2};
+	if(Factions[Nation].powerRanking=="Minor Power"){PR=3};
+	document.getElementById("NationStatus").innerHTML=Language.SystemTerms[40+PR];
+	document.getElementById("NationSynopsisSpecific").innerHTML="";
+	let ND=Language.NationDesc[Nation-1];
+	for(let I=0; I<ND.length; I++){document.getElementById("NationSynopsisSpecific").innerHTML+=ND[I]+"<br><br>"};
+	//document.getElementById("CampaignSelectedText").innerHTML="Proceed";
+	}else{alert("Halt! None may see the secret nations until they have unlocked them. Go back to playing the regular campaigns!")};
+}
 
+const selectScenario = function(scenarioID) {
+	const { story } = battalion;
 
+	story.selectScenario(scenarioID);
 
-		};
+	const data = story.getDataOf(StoryHandler.TYPE.SCENARIO);
+
+	console.log(data);
+}
+
+selectScenario("GREAT_WAR");
+
+const selectCampaign = function(campaignID) {
+	const { story, language } = battalion;
+
+	story.selectCampaign(campaignID);
+}
+
 function ChooseChapter(Chapter){
 	
 
@@ -2485,8 +2518,9 @@ function DisplayRegions(){
 };
 //NEYN TODO!!!
 function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomName, SpecialName, CustomDesc, SpecialDesc) {
-	const shift = moraleHandler.getShift();
-	const costFactor = moraleHandler.getCostFactor();
+	const { morale } = battalion;
+	const shift = morale.getShift();
+	const costFactor = morale.getCostFactor();
 
 	YourMoney-=Math.round(Units[Type].Cost*costFactor);
 	CustomName=document.getElementById("ParticularNameBox").value;
@@ -4366,6 +4400,7 @@ function LaunchConstructorPanel(X,Y){
 	//alert("Not yet bro, we don't have enough assets")
 	};};
 function LaunchRecruitmentPanel(IndustrialBranch){
+	const { morale } = battalion;
 	IndustrialBranchBrowsed=IndustrialBranch;
 	document.getElementById("UnitRecruitmentPanel").style.visibility="visible";
 	let YourCurrency=(Factions[PlayerChoiceFaction].Currency??0);
@@ -4378,7 +4413,7 @@ function LaunchRecruitmentPanel(IndustrialBranch){
 	MontreIndexBasis=IndustrialBranch*10+20;
 	if(IndustrialBranch==1){MontreIndexBasis-=30};
 
-	moraleHandler.reset();
+	morale.reset();
 
 	let InfantrySelection=Factions[PlayerChoiceFaction].SpecialInfantry;
 	let VehicleSelection=Factions[PlayerChoiceFaction].SpecialVehicles;
@@ -4965,27 +5000,8 @@ function MontreUnit(Class){
 	//if(IndustrialBranchBrowsed==2){UMTI-=40};
 	//if(IndustrialBranchBrowsed==3){UMTI-=50};
 	//document.getElementById("UnitMontre"+UMTI).style.left=(Units[Class].MovementOffsetX??[0,0,0,0,0])[3]+"px";
+};
 
-	};
-function NationDetails(Nation){
-
-	if(Factions[Nation].Access){
-	ChosenNation=Nation;
-	ChosenChapter=1;
-	document.getElementById("NationColor").style.filter=Factions[Nation].ChromaCode;
-	document.getElementById("NationDetails").style.visibility="visible";
-	document.getElementById("NationNameSpecific").innerHTML=Factions[Nation].name;
-	document.getElementById("FactionNameSpecific").innerHTML=Factions[Nation].faction;
-	let PR=0;
-	if(Factions[Nation].powerRanking=="Major Power"){PR=1};
-	if(Factions[Nation].powerRanking=="Regional Power"){PR=2};
-	if(Factions[Nation].powerRanking=="Minor Power"){PR=3};
-	document.getElementById("NationStatus").innerHTML=Language.SystemTerms[40+PR];
-	document.getElementById("NationSynopsisSpecific").innerHTML="";
-	let ND=Language.NationDesc[Nation-1];
-	for(let I=0; I<ND.length; I++){document.getElementById("NationSynopsisSpecific").innerHTML+=ND[I]+"<br><br>"};
-	//document.getElementById("CampaignSelectedText").innerHTML="Proceed";
-	}else{alert("Halt! None may see the secret nations until they have unlocked them. Go back to playing the regular campaigns!")};};
 function NudgeMap(Direction){
 	//alert(MarkerMap[0]);
 	Map=ChosenMap;
@@ -5094,9 +5110,7 @@ function OpenSpecialBloc(Bloc){
 	//alert(Bloc[0].Name);
 	for(let B=0;B<9;B++){document.getElementById("Special Level "+(B+1)).src="Assets/SpecialLevels/"+(Bloc[B] ?? {Name:""}).Name+".PNG";
 
-	};};
-function PickNation(Index){
-
+	};
 };
 
 /**
@@ -5727,7 +5741,8 @@ function PostDialogueFrame(Portrait, Name, Text){
 	document.getElementById("DialogueBox").style.visibility="visible";};
 function RazeFaction(Faction){};
 function RecruitUnit(Class){
-	const costFactor = moraleHandler.getCostFactor();
+	const { morale } = battalion;
+	const costFactor = morale.getCostFactor();
 	//alert(ActiveIndustrialNode.X+"X"+ActiveIndustrialNode.Y);
 	for(let x=1;x<Map.length;x++){for(let y=1;y<Map[0].length;y++){let crep=document.getElementById("Crep-"+x+"-"+y) ?? 0; if(crep!=0){crep.remove()};}};
 	let RecC=document.getElementById("CloseRecruiterX")??0;if(RecC!=0){RecC.remove()};
@@ -7541,70 +7556,9 @@ function ToggleBattleflags(){
 
 	if(FlagsToggled){for(let i=StandardX;i<StandardX+10;i++){for(let j=StandardY;j<StandardY+10;j++){document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).style.visibility='hidden';}};};
 
-	if(FlagsToggled){FlagsToggled=false}else{FlagsToggled=true};};
-//This function is OBSOLETE
-function ToggleMoraleBadges(){
+	if(FlagsToggled){FlagsToggled=false}else{FlagsToggled=true};
+};
 
-				alert("ma-ta");
-	BadgeMap=[];
-	let BadgeCell=[];
-	for(let x=0;x<Map[0].length;x++){BadgeCell[BadgeCell.length]=0};
-	for(let y=0;y<Map.length;y++){BadgeMap[BadgeMap.length]=BadgeCell};
-	BadgeMap=JSON.parse(JSON.stringify(BadgeMap));
-
-	for(let a=StandardX;a<StandardX+10;a++){for(let b=StandardY;b<StandardY+10;b++){BadgeMap[a-StandardX][b-StandardY]=rostermap[a][b]}};
-
-
-	if(!BadgesToggled){for(let i=0;i<10;i++){for(let j=0;j<10;j++){
-			if(BadgeMap[i][j]!=0){
-				let isBewegungskrieg=false;
-				let isStealth=false;
-				let isCargo=false;
-				if(hasCertainTrait(BadgeMap[i][j].unitType,"Bewegungskrieg")){isBewegungskrieg=true};
-				if(hasCertainTrait(BadgeMap[i][j].unitType,"Stealth")){isStealth=true};
-				if(hasCertainTrait(BadgeMap[i][j].unitType,"Naval Transport") || hasCertainTrait(BadgeMap[i][j].unitType,"Air Transport")){isCargo=true};
-				
-			document.getElementById("Badge "+(i+1)+"X"+(j+1)).style.visibility="visible";
-			document.getElementById("Badge "+(i+1)+"X"+(j+1)).src="Assets/Traits/Morale"+rostermap[i+StandardX][j+StandardY].morale+".PNG";
-
-			if(isBewegungskrieg && !isStealth && !isCargo){
-				let Chuchu=document.createElement("img");
-				Chuchu.style.position="absolute";
-				Chuchu.style.top="21px";
-				Chuchu.style.left="21px";
-				Chuchu.style.zIndex=5;
-				Chuchu.style.width="35px";
-				Chuchu.style.height="35px";
-				Chuchu.src="Assets/Traits/Bewegungskrieg.PNG";
-				Chuchu.id="CargoChuchu "+i+"X"+j;
-				Chuchu.style.filter=Factions[0].ChromaCode;
-				document.getElementById("Slot "+(i+1)+"X"+(j+1)).appendChild(Chuchu);
-				
-			};
-
-			if(isStealth && !isCargo){};
-
-			if(isCargo){
-				let Chuchu=document.createElement("img");
-				Chuchu.style.position="absolute";
-				Chuchu.style.top="21px";
-				Chuchu.style.left="21px";
-				Chuchu.style.zIndex=5;
-				Chuchu.style.width="35px";
-				Chuchu.style.height="35px";
-				Chuchu.src="Assets/Units/Static/"+Units[BadgeMap[i][j].cargo].shortname+"2.PNG";
-				Chuchu.id="CargoChuchu "+i+"X"+j;
-				Chuchu.style.filter=Factions[PlayerChoiceFaction].ChromaCode;
-				document.getElementById("Slot "+(i+1)+"X"+(j+1)).appendChild(Chuchu);
-
-
-			};
-
-			}}}};
-
-	if(BadgesToggled){for(let i=StandardX;i<StandardX+10;i++){for(let j=StandardY;j<StandardY+10;j++){document.getElementById("Badge "+(i-StandardX+1)+"X"+(j-StandardY+1)).style.visibility='hidden';let cargo=document.getElementById("CargoChuchu "+(i-StandardX+1)+"X"+(j-StandardY+1)); if(cargo??false){cargo.remove()}}};};
-
-	if(BadgesToggled){BadgesToggled=false}else{BadgesToggled=true};};
 function ToggleHealthBars(){
 
 	BarMap=[];

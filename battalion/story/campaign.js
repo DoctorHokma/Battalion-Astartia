@@ -1,8 +1,16 @@
 const Campaign = function(id) {
 	this.id = id;
+	this.type = null;
 	this.chapters = [];
-	this.currentChapter = null;
 	this.nationID = null;
+}
+
+Campaign.prototype.getChapter = function(chapterIndex) {
+	if(chapterIndex < 0 || chapterIndex >= this.chapters.length) {
+		return null;
+	}
+
+	return this.chapters[chapterIndex];
 }
 
 Campaign.prototype.load = function(campaignID) {
@@ -11,6 +19,9 @@ Campaign.prototype.load = function(campaignID) {
 	if(!config) {
 		return;
 	}
+
+	this.id = campaignID;
+	this.type = config;
 
 	const { chapters, nation } = config;
 

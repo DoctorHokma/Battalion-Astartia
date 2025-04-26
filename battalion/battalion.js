@@ -3,6 +3,8 @@ const Battalion = function() {
     this.musicPlayer = new MusicPlayer(MUSIC, PLAYLIST);
     this.client = new Client();
     this.language = new LanguageHandler();
+    this.story = new StoryHandler();
+    this.morale = new MoraleHandler();
     this.timer = new Timer();
     this.state = Battalion.STATE.NONE;
 

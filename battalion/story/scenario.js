@@ -1,7 +1,17 @@
 const Scenario = function(id) {
     this.id = id;
+    this.type = null
     this.campaigns = new Map();
-    this.currentCampaign = null;
+}
+
+Scenario.prototype.getCampaign = function(campaignID) {
+    const campaign = this.campaigns.get(campaignID);
+
+    if(!campaign) {
+        return null;
+    }
+
+    return campaign;
 }
 
 Scenario.prototype.load = function(scenarioID) {
@@ -11,6 +21,9 @@ Scenario.prototype.load = function(scenarioID) {
 		return;
 	}
 
+    this.id = scenarioID;
+    this.type = config;
+    
     const { campaigns } = config;
 
     for(let i = 0; i < campaigns.length; i++) {

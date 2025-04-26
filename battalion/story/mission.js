@@ -1,5 +1,6 @@
 const Mission = function(id) {
 	this.id = id;
+	this.type = null;
 	this.data = {};
 	this.state = Mission.STATE.UNFINISHED;
 }
@@ -20,6 +21,9 @@ Mission.prototype.load = function(missionID) {
 		return;
 	}
 
+	this.id = missionID;
+	this.type = config;
+	
 	const { data } = config;
 	const missionData = MISSION_DATA[data];
 

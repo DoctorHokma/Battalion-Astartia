@@ -486,6 +486,14 @@ const LANGUAGE_ENGLISH = {
 		"<span style='color:white'><br><br><br>Ʌ&nbspɅ&nbspɅ<br>|&nbsp V V &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>\\&nbsp &nbsp &nbsp &nbsp &nbsp/<br>\\&nbsp &nbsp &nbsp/<br></span><span style='color:#00ff00'>|&nbsp|<br>|&nbsp|<br>|&nbsp|<br>|&nbsp|</span>"
 	],
 
+	"POWER_RANKING_NAME_MAJOR": "Major Power",
+	"POWER_RANKING_NAME_MINOR": "Minor Power",
+	"POWER_RANKING_NAME_REGIONAL": "Regional Power",
+
+	"POWER_RANKING_DESC_MAJOR": "",
+	"POWER_RANKING_DESC_MINOR": "",
+	"POWER_RANKING_DESC_REGIONAL": "",
+
 	"TRAIT_NAME_UNEVEN": "Uneven",
 	"TRAIT_NAME_RUGGED": "Rugged",
 	"TRAIT_NAME_PRECIPITOUS": "Precipitous",
