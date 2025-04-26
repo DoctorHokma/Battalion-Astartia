@@ -1,4 +1,4 @@
-const POWER_TYPE = {
+const POWER = {
     "MAJOR": {
         "name": "POWER_RANKING_NAME_MAJOR",
         "desc": "POWER_RANKING_DESC_MAJOR"
@@ -12,3 +12,9 @@ const POWER_TYPE = {
         "desc": "POWER_RANKING_DESC_REGIONAL"
     }
 }
+
+const POWER_TYPE = {
+    MAJOR: "MAJOR",
+    MINOR: "MINOR",
+    REGIONAL: "REGIONAL"
+};

@@ -1,6 +1,6 @@
 const showNation = function(battalion, nationID) {
     const { language } = battalion;
-    const nation = NATIONS[nationID];
+    const nation = NATION[nationID];
 
     if(!nation) {
         return;
@@ -12,7 +12,7 @@ const showNation = function(battalion, nationID) {
 	document.getElementById("NationColor").style.filter = color;
 	document.getElementById("NationNameSpecific").innerHTML = language.get(name);
 
-    const factionType = FACTION_TYPE[faction];
+    const factionType = FACTION[faction];
 
     if(factionType) {
         const { name } = factionType;
@@ -20,7 +20,7 @@ const showNation = function(battalion, nationID) {
         document.getElementById("FactionNameSpecific").innerHTML = language.get(name);
     }
 
-    const powerType = POWER_TYPE[power];
+    const powerType = POWER[power];
 
     if(powerType) {
         const { name } = powerType;

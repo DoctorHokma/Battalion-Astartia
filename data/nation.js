@@ -1,4 +1,4 @@
-const NATIONS = {
+const NATION = {
 	"SOMERTIN": {
 		"name": "NATION_NAME_SOMERTIN",
 		"desc": "NATION_DESC_SOMERTIN",
@@ -70,3 +70,11 @@ const NATIONS = {
 		"specialTechnology": [false,true,false,false,true]
 	}
 };
+
+const NATION_TYPE = {
+	SOMERTIN: "SOMERTIN",
+	KARGIT: "KARGIT",
+	TRANSKAL: "TRANSKAL",
+	POLASIE: "POLASIE",
+	ELAM: "ELAM"
+}
