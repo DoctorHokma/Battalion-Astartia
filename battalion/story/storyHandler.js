@@ -13,6 +13,33 @@ StoryHandler.TYPE = {
 	MISSION: 3
 };
 
+StoryHandler.prototype.deselect = function(type) {
+	switch(type) {
+		case StoryHandler.TYPE.SCENARIO: {
+			this.currentScenario = null;
+			this.currentCampaign = null;
+			this.currentChapter = null;
+			this.currentMission = null;
+			break;
+		}
+		case StoryHandler.TYPE.CAMPAIGN: {
+			this.currentCampaign = null;
+			this.currentChapter = null;
+			this.currentMission = null;
+			break;
+		}
+		case StoryHandler.TYPE.CHAPTER: {
+			this.currentChapter = null;
+			this.currentMission = null;
+			break;
+		}
+		case StoryHandler.TYPE.MISSION: {
+			this.currentMission = null;
+			break;
+		}
+	}
+}
+
 StoryHandler.prototype.getDataOf = function(type) {
 	switch(type) {
 		case StoryHandler.TYPE.SCENARIO: {

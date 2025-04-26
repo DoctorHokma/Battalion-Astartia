@@ -11,7 +11,14 @@ const showNation = function(battalion, nationID) {
     document.getElementById("NationDetails").style.visibility = "visible";
 	document.getElementById("NationColor").style.filter = color;
 	document.getElementById("NationNameSpecific").innerHTML = language.get(name);
-	document.getElementById("FactionNameSpecific").innerHTML = "GET_NAME_FROM_FACTION!";
+
+    const factionType = FACTION_TYPE[faction];
+
+    if(factionType) {
+        const { name } = factionType;
+
+        document.getElementById("FactionNameSpecific").innerHTML = language.get(name);
+    }
 
     const powerType = POWER_TYPE[power];
 
@@ -44,6 +51,27 @@ const showNation = function(battalion, nationID) {
     }
 }
 
+const updateScenarioVisibility = function(scenario, visibility) {
+    if(!scenario) {
+        return;
+    }
+
+    const { type } = scenario;
+
+    if(!type) {
+        return;
+    }
+
+    const { element } = type;
+    const div = document.getElementById(element);
+
+    if(!div) {
+        return;
+    }
+    
+    div.style.display = visibility;
+}
+
 const selectScenario = function(scenarioID) {
 	const { story } = battalion;
 	const scenario = story.selectScenario(scenarioID);
@@ -51,6 +79,10 @@ const selectScenario = function(scenarioID) {
     if(!scenario) {
         return;
     }
+
+    story.scenarios.forEach(s => updateScenarioVisibility(s, "none"));
+
+    updateScenarioVisibility(scenario, "block");
 }
 
 const selectCampaign = function(campaignID) {

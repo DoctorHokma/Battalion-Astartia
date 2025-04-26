@@ -486,6 +486,9 @@ const LANGUAGE_ENGLISH = {
 		"<span style='color:white'><br><br><br>Ʌ&nbspɅ&nbspɅ<br>|&nbsp V V &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>\\&nbsp &nbsp &nbsp &nbsp &nbsp/<br>\\&nbsp &nbsp &nbsp/<br></span><span style='color:#00ff00'>|&nbsp|<br>|&nbsp|<br>|&nbsp|<br>|&nbsp|</span>"
 	],
 
+	"FACTION_NAME_CONTINENTAL_SECURITY_LEAGUE": "Continental Security League",
+	"FACTION_NAME_GLORIOUS_COALLITION": "Glorious Coallition",
+
 	"NATION_NAME_SOMERTIN": "Synarchy of Somertin",
 	"NATION_NAME_KARGIT": "Kargit Gosudarstvo",
 	"NATION_NAME_TRANSKAL": "Commonwealth of Transkal",

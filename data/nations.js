@@ -2,41 +2,71 @@ const NATIONS = {
 	"SOMERTIN": {
 		"name": "NATION_NAME_SOMERTIN",
 		"desc": "NATION_DESC_SOMERTIN",
-        "faction": null,
+		"prefix": "SOM",
+        "faction": "CONTINENTAL_SECURITY_LEAGUE",
+		"power": "MAJOR",
 		"color": "#FFFFFF",
-		"chroma": "",
-        "power": "MAJOR"
+		"chroma": "hue-rotate(175deg) saturate(0%) brightness(250%)",
+		"currency": "Ɬ",
+		"exchangeRate": 0.8,
+		"specialInfantry": [true,false,false,false,false],
+		"specialVehicles": [true,false,false,false,false],
+		"specialTechnology": [true,false,false,false,false]
 	},
 	"KARGIT": {
 		"name": "NATION_NAME_KARGIT",
 		"desc": "NATION_DESC_KARGIT",
-        "faction": null,
-		"color": "#FFFFFF",
-		"chroma": "",
-        "power": "MAJOR"
+		"prefix": "KAR",
+        "faction": "GLORIOUS_COALLITION",
+		"power": "MAJOR",
+		"color": "#000000",
+		"chroma": "hue-rotate(0deg) saturate(0%) brightness(70%) contrast(125%)",
+		"currency": "Ꞣ",
+		"exchangeRate": 1,
+		"specialInfantry": [false,true,false,false,false],
+		"specialVehicles": [false,true,false,false,false],
+		"specialTechnology": [true,true,false,false,false]
 	},
 	"TRANSKAL": {
 		"name": "NATION_NAME_TRANSKAL",
 		"desc": "NATION_DESC_TRANSKAL",
-        "faction": null,
-		"color": "#FFFFFF",
-		"chroma": "",
-        "power": "REGIONAL"
+		"prefix": "TRK",
+        "faction": "CONTINENTAL_SECURITY_LEAGUE",
+		"power": "REGIONAL",
+		"color": "#808080",
+		"chroma": "hue-rotate(175deg) saturate(0%) brightness(125%)",
+		"currency": "₭",
+		"exchangeRate": 2,
+		"specialInfantry": [false,false,true,false,false],
+		"specialVehicles": [false,false,true,false,false],
+		"specialTechnology": [false,true,true,false,false]
 	},
 	"POLASIE": {
 		"name": "NATION_NAME_POLASIE",
 		"desc": "NATION_DESC_POLASIE",
-        "faction": null,
-		"color": "#FFFFFF",
-		"chroma": "",
-        "power": "REGIONAL"
+		"prefix": "POE",
+        "faction": "GLORIOUS_COALLITION",
+		"power": "REGIONAL",
+		"color": "#00008B",
+		"chroma": "hue-rotate(250deg) saturate(125%) brightness(70%)",
+		"currency": "₽",
+		"exchangeRate": 10,
+		"specialInfantry": [false,false,false,true,false],
+		"specialVehicles": [false,false,false,true,false],
+		"specialTechnology": [false,true,false,true,false]
 	},
 	"ELAM": {
 		"name": "NATION_NAME_ELAM",
 		"desc": "NATION_DESC_ELAM",
-        "faction": null,
-		"color": "#FFFFFF",
-		"chroma": "",
-        "power": "REGIONAL"
+		"prefix": "ELM",
+        "faction": "GLORIOUS_COALLITION",
+		"power": "REGIONAL",
+		"color": "#008000",
+		"chroma": "hue-rotate(150deg) saturate(100%) brightness(120%)",
+		"currency": "﷼",
+		"exchangeRate": 5,
+		"specialInfantry": [false,false,false,false,true],
+		"specialVehicles": [false,false,false,false,true],
+		"specialTechnology": [false,true,false,false,true]
 	}
 };

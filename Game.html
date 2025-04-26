@@ -1420,17 +1420,20 @@
 
 		<div id="CampaignSelectionScreen" style="position: absolute; visibility:hidden; width:1000px; height:640px; z-index:7; left: 182px; top: 0px; background-color:#404040">	
 			<img id="CampaignSelectorCloseButton" src="Assets/Miscellaneous/CloseButton.PNG" style="position: absolute ;top:84px; left:437px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('Main Menu').style.visibility='visible'; document.getElementById('CampaignSelectionScreen').style.visibility='hidden'" onmouseover="document.getElementById('CampaignSelectorCloseButton').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="document.getElementById('CampaignSelectorCloseButton').src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="document.getElementById('CampaignSelectorCloseButton').src='Assets/Miscellaneous/CloseButtonPressed.PNG'"/>
-			<img id="Somertin Flag" style="position: absolute; z-index:10; top:0px; left:0px; width:350px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(1)" src="Assets/Flags/FlagSOM.PNG"/>
-			<img id="Kargit Flag" style="position: absolute; z-index:10; top:0px; left:650px; width:350px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(2)" src="Assets/Flags/FlagKar.PNG"/>
-			<img id="Transkal Flag" style="position: absolute; z-index:10; top:250px; left:0px; width:300px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(3)" src="Assets/Flags/FlagTRK.PNG"/>
-			<img id="Polasie Flag" style="position: absolute; z-index:10; top:250px; left:350px; width:300px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(4)" src="Assets/Flags/FlagPOE.PNG"/>
-			<img id="Elam Flag" style="position: absolute; z-index:10; top:250px; left:700px; width:300px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(5)" src="Assets/Flags/FlagELM.PNG"/>
-			<img id="Cohort Flag" style="position: absolute; z-index:10; top:500px; left:0px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(6)" src="Assets/Flags/NoFlag.PNG"/>
-			<img id="Slave Flag" style="position: absolute; z-index:10; top:500px; left:200px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(7)" src="Assets/Flags/NoFlag.PNG"/>
-			<img id="Structuralist Flag" style="position: absolute; z-index:10; top:500px; left:400px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(8)" src="Assets/Flags/NoFlag.PNG"/>
-			<img id="Syndicalist Flag" style="position: absolute; z-index:10; top:500px; left:600px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(9)" src="Assets/Flags/NoFlag.PNG"/>
-			<img id="Mutasarif Flag" style="position: absolute; z-index:10; top:500px; left:800px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(10)" src="Assets/Flags/NoFlag.PNG"/>
-			<img id="Sample Flag" style="position: absolute; z-index:10; top:0px; left:400px; width:200px; height:200px; visibility: hidden;" onclick="NationDetails(0)" src="Assets/Flags/NoFlag.PNG"/>
+			
+			<div id="SCENARIO_GREAT_WAR" style="display: block;">
+				<img id="Somertin Flag" style="position: absolute; z-index:10; top:0px; left:0px; width:350px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(1)" src="Assets/Flags/FlagSOM.PNG"/>
+				<img id="Kargit Flag" style="position: absolute; z-index:10; top:0px; left:650px; width:350px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(2)" src="Assets/Flags/FlagKar.PNG"/>
+				<img id="Transkal Flag" style="position: absolute; z-index:10; top:250px; left:0px; width:300px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(3)" src="Assets/Flags/FlagTRK.PNG"/>
+				<img id="Polasie Flag" style="position: absolute; z-index:10; top:250px; left:350px; width:300px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(4)" src="Assets/Flags/FlagPOE.PNG"/>
+				<img id="Elam Flag" style="position: absolute; z-index:10; top:250px; left:700px; width:300px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(5)" src="Assets/Flags/FlagELM.PNG"/>
+				<img id="Cohort Flag" style="position: absolute; z-index:10; top:500px; left:0px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(6)" src="Assets/Flags/NoFlag.PNG"/>
+				<img id="Slave Flag" style="position: absolute; z-index:10; top:500px; left:200px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(7)" src="Assets/Flags/NoFlag.PNG"/>
+				<img id="Structuralist Flag" style="position: absolute; z-index:10; top:500px; left:400px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(8)" src="Assets/Flags/NoFlag.PNG"/>
+				<img id="Syndicalist Flag" style="position: absolute; z-index:10; top:500px; left:600px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(9)" src="Assets/Flags/NoFlag.PNG"/>
+				<img id="Mutasarif Flag" style="position: absolute; z-index:10; top:500px; left:800px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="NationDetails(10)" src="Assets/Flags/NoFlag.PNG"/>
+				<img id="Sample Flag" style="position: absolute; z-index:10; top:0px; left:400px; width:200px; height:200px; visibility: hidden;" onclick="NationDetails(0)" src="Assets/Flags/NoFlag.PNG"/>
+			</div>
 
 			<div id="NationDetails" style="visibility: hidden; position:absolute; left:150px; top:75px; z-index: 10; color:#ccff99">
 				<img style="position: absolute;" src="Assets/Miscellaneous/NationPanel.PNG"/>
@@ -1590,6 +1593,7 @@
 		<script src="Extensions/SpecialLevels.js"></script>
 		<script src="Extensions/Campaigns.js"></script>
 
+		<script src="data/currency.js"></script>
 		<script src="data/faction.js"></script>
 		<script src="data/input.js"></script>
 		<script src="data/languateTemplate.js"></script>

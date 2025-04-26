@@ -2,26 +2,31 @@ const SCENARIOS = {
 	"GREAT_WAR": {
 		"name": "SCENARIO_NAME_GREAT_WAR",
 		"desc": "SCENARIO_DESC_GREAT_WAR",
+		"element": "SCENARIO_GREAT_WAR",
 		"campaigns": ["SOMERTIN", "KARGIT", "TRANSKAL", "POLASIE", "ELAM"]
 	},
 	"TORMENTED_SOULS": {
 		"name": "SCENARIO_NAME_TORMENTED_SOULS",
 		"desc": "SCENARIO_DESC_TORMENTED_SOULS",
+		"element": "",
 		"campaigns": []
 	},
 	"INFLEXION_POINT": {
 		"name": "SCENARIO_NAME_INFLEXION_POINT",
 		"desc": "SCENARIO_DESC_INFLEXION_POINT",
+		"element": "",
 		"campaigns": []
 	},
 	"PEARLY_ORIENT": {
 		"name": "SCENARIO_NAME_PEARLY_ORIENT",
 		"desc": "SCENARIO_DESC_PEARLY_ORIENT",
+		"element": "",
 		"campaigns": []
 	},
 	"STARLESS_MIDNIGHT": {
 		"name": "SCENARIO_NAME_STARLESS_MIDNIGHT",
 		"desc": "SCENARIO_DESC_STARLESS_MIDNIGHT",
+		"element": "",
 		"campaigns": []
 	}
 }
