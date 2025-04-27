@@ -52,10 +52,10 @@ const showNationData = function(battalion, nationID) {
         return;
     }
 
-    const { name, power, chroma, faction } = nation;
+    const { name, power, startButton, chroma, faction } = nation;
 
-	document.getElementById("LevelStartButton").innerHTML = Language.StartButtonTexts[ChosenNation-1]; //TODO: to nation!
     document.getElementById("NationDetails").style.visibility = "visible";
+	document.getElementById("LevelStartButton").innerHTML = language.get(startButton);
     document.getElementById("NationNameSpecific").innerHTML = language.get(name);
     document.getElementById("NationColor").style.filter = chroma;
 

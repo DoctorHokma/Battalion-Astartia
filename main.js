@@ -4151,7 +4151,6 @@ function LanguageCorrecter(Language){
 	if(!Language.SystemTerms) Language.SystemTerms=ENG.SystemTerms;
 
 	if((Language.SystemTerms??[]).length==0){Language.SystemTerms=ENG.SystemTerms};
-	if((Language.StartButtonTexts??[]).length==0){Language.StartButtonTexts=ENG.StartButtonTexts};
 	if((Language.UnitSpecialNames??[]).length==0){Language.UnitSpecialNames=ENG.UnitSpecialNames};
 	if((Language.UnitSpecialDesc??[]).length==0){Language.UnitSpecialDesc=ENG.UnitSpecialDesc};
 	if((Language.VictoryQuotes??[]).length==0){Language.VictoryQuotes=ENG.VictoryQuotes};

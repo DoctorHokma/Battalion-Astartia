@@ -2,6 +2,21 @@ const LANGUAGE_ROMANIAN = {
 	"LANGUAGE_CREATOR_COMMENT": "Made by yours truly(Partial translation)",
     "LANGUAGE_DEFAULT_COMMENT": "Traducere partiala",
 
+	/*
+	"Al treilea cocoș cântă...",
+	"Lanțurile, sfărâmate. Biciul, incinerat.",
+	"Do you know da wae to da quen?",
+	"Proletari, rupeți lanțurile!",
+	"Uriașul se trezește",
+	"MAREA CRUCIADĂ NE AȘTEAPTĂ",
+	*/
+
+	"NATION_START_BUTTON_SOMERTIN": "Pentru patrie, credință și popor!",
+	"NATION_START_BUTTON_KARGIT": "Panzer Vorwarts!",
+	"NATION_START_BUTTON_TRANSKAL": "Pușcași transkaliți, pas de marș!",
+	"NATION_START_BUTTON_POLASIE": "Pentru libertate!",
+	"NATION_START_BUTTON_ELAM": "Shinji intră in EVA, băgamiaș pula-n curul tău!",
+
 	"APHORISM_NARRATOR_1": "Kafka, probably",
 	"APHORISM_NARRATOR_2": "Interviul diplomatului Francois Armand Dupuy pentru Gazeta Lutețiană",
 	"APHORISM_NARRATOR_3": "Interviul diplomatului Francis Woodenston-Willow pentru Londinian Gazette",
@@ -862,19 +877,6 @@ ROM={
 		"Unități Infanterie","Unități Motorizate","Unități Blindate","Unități de Artilerie","Unități Aviatice","Unități Navale","Unități Statice",
 		"Victorie","Înfrângere",
 		"Coaliție","Sine","Cordial","Ostil","Atacator","Apărător","Dao Ofensiv","Dao Defensiv","Finanțe:","Tehnică:","InfSpec","TancSpec","Apasă C pt controale","Comandant","Save Map","Conditions","Jethro","Vlad","Kirk"
-	],
-	StartButtonTexts: [
-		"Pentru patrie, credință și popor!",
-		"Panzer Vorwarts!",
-		"Pușcași transkaliți, pas de marș!",
-		"Pentru libertate!",
-		"Shinji intră in EVA, băgamiaș pula-n curul tău!",
-		"Al treilea cocoș cântă...",
-		"Lanțurile, sfărâmate. Biciul, incinerat.",
-		"Do you know da wae to da quen?",
-		"Proletari, rupeți lanțurile!",
-		"Uriașul se trezește",
-		"MAREA CRUCIADĂ NE AȘTEAPTĂ"
 	],
 	UnitSpecialNames:[null,
 

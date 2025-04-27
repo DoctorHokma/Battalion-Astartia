@@ -2,6 +2,21 @@ const LANGUAGE_PORTUGUESE = {
 	"LANGUAGE_CREATOR_COMMENT": "Special thanks to Relampago, Aurum and especially Vythus for their work",
     "LANGUAGE_DEFAULT_COMMENT": "Special thanks to Relampago, Aurum and especially Vythus for their work",
 
+	/*
+	"El tercer gallo está cacareando",
+	"Las esposas se rompen",
+	"Você sabe da wae to da quen?",
+	"Proletários, quebrem suas correntes!",
+	"O tempo está passando...",
+	"¡DESATEN LA GRAN CRUZADA!",
+	*/
+
+	"NATION_START_BUTTON_SOMERTIN": "Por Deus, pelo Povo e pela Pátria!",
+	"NATION_START_BUTTON_KARGIT": "Panzer Vorwarts!",
+	"NATION_START_BUTTON_TRANSKAL": "Marchem, Fuzileiros Transcalitas!",
+	"NATION_START_BUTTON_POLASIE": "Pela Liberdade!",
+	"NATION_START_BUTTON_ELAM": "Shinji, entre já na porra do EVA!",
+
 	"TRAIT_NAME_UNEVEN": "Desigual",
     "TRAIT_NAME_RUGGED": "Robusto",
     "TRAIT_NAME_PRECIPITOUS": "Precipitado",
@@ -721,17 +736,6 @@ POR={
         "Relação","Eu","Cordial","Hostil","Atacante","Defensor","Dao Ofensivo","Dao Defensivo","Fundos:","Tecnologia:","SpecInfo","SpecTank ","Pressione C para controles","Commandante"
 
 		],
-	StartButtonTexts:["Por Deus, pelo Povo e pela Pátria!",
-		"Panzer Vorwarts!",
-		"Marchem, Fuzileiros Transcalitas!",
-		"Pela Liberdade!",
-		"Shinji, entre já na porra do EVA!",
-		"El tercer gallo está cacareando",
-		"Las esposas se rompen",
-		"Você sabe da wae to da quen?",
-		"Proletários, quebrem suas correntes!",
-		"O tempo está passando...",
-		"¡DESATEN LA GRAN CRUZADA!"],
 	UnitSpecialNames:["null, lol",
 
 		//Somertin: 1-7: Guard Banners | 29-35: Armored Divisions | 36-42: Fighter Squadrons

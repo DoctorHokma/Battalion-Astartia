@@ -1,6 +1,5 @@
 TEM={
 	SystemTerms:[],
-	StartButtonTexts:[],
 	UnitSpecialNames:[],
 	UnitSpecialDesc:[],
 	TerrainName:[],

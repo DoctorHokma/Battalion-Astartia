@@ -501,6 +501,21 @@ const LANGUAGE_ENGLISH = {
 	"NATION_NAME_POLASIE": "Polasie Social Republic",
 	"NATION_NAME_ELAM": "Sublime Caliphate of Elam",
 
+	/*
+	"The third rooster is clucking",
+	"The manacles asunder",
+	"Do you know da wae to da quen?",
+	"Proletarians, break your chains!",
+	"A giant awakens",
+	"T̴̯̈́H̶̦̓Ȇ̶͚ ̵̳̑G̷̻̽R̵̬̉E̸̗͑Ȧ̸̰T̷̗̽ ̷̼̕V̴̘̀Ë̵͙́N̶̦̄Ġ̶̙Ḛ̷͊À̴̳N̷͙̈C̵̻̎E̶̅͜ ̸̦̅A̴̦̽W̴̳̚Ä̶̠́Ḯ̵̭T̶̻̄Ś̵͍",
+	*/
+
+	"NATION_START_BUTTON_SOMERTIN": "For God, People and the Motherland!",
+	"NATION_START_BUTTON_KARGIT": "Pantser Vorwarts!",
+	"NATION_START_BUTTON_TRANSKAL": "March on, Transkalite Riflemen!",
+	"NATION_START_BUTTON_POLASIE": 	"For Liberty!",
+	"NATION_START_BUTTON_ELAM": "Shinji, get in the fucking EVA already!",
+
 	"POWER_NAME_MAJOR": "Major Power",
 	"POWER_NAME_MINOR": "Minor Power",
 	"POWER_NAME_REGIONAL": "Regional Power",
@@ -1314,19 +1329,6 @@ ENG={
 		["Our spirits will persist, protecting our descendants and granting them wisdom","The final slumber, far away from home","Returning to the nature that birthed us","This wasn't our war to begin with","A worthy end for a warrior people"],
 		["This must be one of those unwinnable plot battles right? Right!?","We are freedom fighters, how can we lose!?","Our future seems to have been painted black","Our worst fear - consequences for our actions","The time for debauchery and excess has come to an end"],
 		["Inshallah!","(radio silence)","She said she was actually 400 years old, officer","Masaka! This cannot be!","The power of friendship ain't doing shit"]
-	],
-	//NOTE: This has to do with the nation { startButtonText } is a property of the nation blob.
-	StartButtonTexts:["For God, People and the Motherland!",
-		"Pantser Vorwarts!",
-		"March on, Transkalite Riflemen!",
-		"For Liberty!",
-		"Shinji, get in the fucking EVA already!",
-		"The third rooster is clucking",
-		"The manacles asunder",
-		"Do you know da wae to da quen?",
-		"Proletarians, break your chains!",
-		"A giant awakens",
-		"T̴̯̈́H̶̦̓Ȇ̶͚ ̵̳̑G̷̻̽R̵̬̉E̸̗͑Ȧ̸̰T̷̗̽ ̷̼̕V̴̘̀Ë̵͙́N̶̦̄Ġ̶̙Ḛ̷͊À̴̳N̷͙̈C̵̻̎E̶̅͜ ̸̦̅A̴̦̽W̴̳̚Ä̶̠́Ḯ̵̭T̶̻̄Ś̵͍"
 	],
 	UnitSpecialNames:[null,
 

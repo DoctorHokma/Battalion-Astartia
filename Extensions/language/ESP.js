@@ -1,6 +1,21 @@
 const LANGUAGE_SPANISH = {
 	"LANGUAGE_CREATOR_COMMENT": "Muchos gracias Silvestre",
-    "LANGUAGE_DEFAULT_COMMENT": "Muchos gracias Silvestre",
+	"LANGUAGE_DEFAULT_COMMENT": "Muchos gracias Silvestre",
+
+	/*
+	"El tercer gallo está cacareando",
+	"Las esposas se rompen",
+	"Do you know da wae to da quen?",
+	"¡Proletarios, rompan sus cadenas!",
+	"El gigante despierta",
+	"¡DESATEN LA GRAN CRUZADA!"
+	*/
+
+	"NATION_START_BUTTON_SOMERTIN": "¡Por Dios, el Pueblo y la Madre Patria!",
+	"NATION_START_BUTTON_KARGIT": "¡Panzer Vorwarts!",
+	"NATION_START_BUTTON_TRANSKAL": "¡Marchen, Fusileros de Transkalite!",
+	"NATION_START_BUTTON_POLASIE": "¡Por la Libertad!!",
+	"NATION_START_BUTTON_ELAM": "¡Shinji, métete en el puto EVA de una vez!",
 
 	"TRAIT_NAME_UNEVEN": "Desigual",
     "TRAIT_NAME_RUGGED": "Escabroso",
@@ -720,19 +735,6 @@ ESP={
         "Unidades de Infantería","Unidades Motorizadas","Unidades Blindadas","Unități de Artillería","Unidades de aviación","Unidades Navales","Unidades Estáticas",
 		"Victoria","Derrota",
 		"Coalición","Yo","Cordial","Hostil","Atacante","Defensor","Dao ofensivo","Dao defensivo","Fondos:","Tecnología:","SpecInf","SpecTank","Prensa C de controles","Comandante","Save Map","Conditions","Jethro","Vlad","Kirk",
-	],
-	StartButtonTexts:[
-		"¡Por Dios, el Pueblo y la Madre Patria!",
-		"¡Panzer Vorwarts!",
-		"¡Marchen, Fusileros de Transkalite!",
-		"¡Por la Libertad!!",
-		"¡Shinji, métete en el puto EVA de una vez!",
-        "El tercer gallo está cacareando",
-        "Las esposas se rompen",
-		"Do you know da wae to da quen?",
-		"¡Proletarios, rompan sus cadenas!",
-        "El gigante despierta",
-		"¡DESATEN LA GRAN CRUZADA!"
 	],
 	UnitSpecialNames:[null,
 
