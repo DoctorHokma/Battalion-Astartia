@@ -1,21 +1,15 @@
-const Campaign = function(id) {
-	StoryNode.call(this, id);
+const Campaign = function() {
+	StoryNode.call(this);
 }
 
 Campaign.prototype = Object.create(StoryNode.prototype);
 Campaign.prototype.constructor = Campaign;
 
-Campaign.prototype.load = function(campaignID) {
-	const config = CAMPAIGNS[campaignID];
-
-	if(!config) {
-		return;
-	}
-
+Campaign.prototype.init = function(campaignID, campaign) {
 	this.id = campaignID;
-	this.type = config;
+	this.type = campaign;
 
-	const { chapters } = config;
+	const { chapters } = campaign;
 
 	if(chapters) {
 		this.order = chapters;

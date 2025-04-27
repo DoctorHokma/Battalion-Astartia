@@ -17,7 +17,7 @@ battalion.language.addLanguage(Battalion.LANGUAGE.ROMANIAN, LANGUAGE_ROMANIAN);
 battalion.language.addLanguage(Battalion.LANGUAGE.TURKISH, LANGUAGE_TURKISH);
 
 battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
-battalion.story.load();
+battalion.story.init();
 
 battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
 battalion.timer.start();
@@ -4453,33 +4453,8 @@ function LaunchSpecialOptionPanel(x,y){
 
 	//Screw landmines, we ain't implementing them until RetrofitD has been done
 		document.getElementById("LayMinesMask").style.visibility="inherit";
+}
 
-	};
-function LevelLoader(){};
-function LoadData(){
-	 let decodedCookie = decodeURIComponent(document.cookie);
-	 let Data= decodedCookie.split('|');
-
-	 let LevelData=JSON.parse("["+Data[0]+"]");
-	 let SettingsData=JSON.parse("["+Data[1]+"]");
-	 for(let i=0;i<35;i++){Campaigns[0][Math.floor(i/5)][i%5].Finished=LevelData[i]};
-	 for(let i=35;i<70;i++){Campaigns[1][Math.floor(i/5)-7][i%5].Finished=LevelData[i]};
-	 for(let i=70;i<95;i++){Campaigns[2][Math.floor(i/5)-14][i%5].Finished=LevelData[i]};
-	 for(let i=95;i<120;i++){Campaigns[3][Math.floor(i/5)-19][i%5].Finished=LevelData[i]};
-	 for(let i=120;i<145;i++){Campaigns[4][Math.floor(i/5)-24][i%5].Finished=LevelData[i]};
-	 for(let i=145;i<155;i++){Campaigns[5][Math.floor(i/5)-29][i%5].Finished=LevelData[i]};
-	 for(let i=155;i<165;i++){Campaigns[6][Math.floor(i/5)-31][i%5].Finished=LevelData[i]};
-	 for(let i=165;i<175;i++){Campaigns[7][Math.floor(i/5)-33][i%5].Finished=LevelData[i]};
-	 for(let i=175;i<185;i++){Campaigns[8][Math.floor(i/5)-35][i%5].Finished=LevelData[i]};
-	 for(let i=185;i<195;i++){Campaigns[9][Math.floor(i/5)-37][i%5].Finished=LevelData[i]};
-	 for(let i=195;i<200;i++){Campaigns[10][0][i%5].Finished=LevelData[i]};
-
-
-	 SoundChoice=SettingsData[0];
-	 MusicChoice=SettingsData[1];
-	 DialogueChoice=SettingsData[2];
-	 IdleAnimChoice=SettingsData[3];
-	 MystSettChoice=SettingsData[4];};
 function moveOneTile(unit, direction){
 	//alert(unit);
 	let idem="Entity "+(MapRoster[unit].x-StandardX+1)+"X"+(MapRoster[unit].y-StandardY+1);
@@ -7048,7 +7023,8 @@ function RunEvent(Event){
 						battalion.musicPlayer.stop();
 						PlayBGM(Event.ChangeTune);
 					}
-				};
+}
+
 function SaveGame(){
 	//let expires="expires= 31 Dec 9999 23:59:59 UTC";
 
@@ -7074,7 +7050,35 @@ function SaveGame(){
   	d.setTime(d.getTime() + (1000*24*60*60*1000));
  	let expires = "expires="+ d.toUTCString();
 
-	document.cookie=Data+";"+expires+"; path:/; SameSite=Lax";};
+	document.cookie=Data+";"+expires+"; path:/; SameSite=Lax";
+}
+
+function LoadData(){
+	let decodedCookie = decodeURIComponent(document.cookie);
+	let Data= decodedCookie.split('|');
+
+	let LevelData=JSON.parse("["+Data[0]+"]");
+	let SettingsData=JSON.parse("["+Data[1]+"]");
+	for(let i=0;i<35;i++){Campaigns[0][Math.floor(i/5)][i%5].Finished=LevelData[i]};
+	for(let i=35;i<70;i++){Campaigns[1][Math.floor(i/5)-7][i%5].Finished=LevelData[i]};
+	for(let i=70;i<95;i++){Campaigns[2][Math.floor(i/5)-14][i%5].Finished=LevelData[i]};
+	for(let i=95;i<120;i++){Campaigns[3][Math.floor(i/5)-19][i%5].Finished=LevelData[i]};
+	for(let i=120;i<145;i++){Campaigns[4][Math.floor(i/5)-24][i%5].Finished=LevelData[i]};
+	for(let i=145;i<155;i++){Campaigns[5][Math.floor(i/5)-29][i%5].Finished=LevelData[i]};
+	for(let i=155;i<165;i++){Campaigns[6][Math.floor(i/5)-31][i%5].Finished=LevelData[i]};
+	for(let i=165;i<175;i++){Campaigns[7][Math.floor(i/5)-33][i%5].Finished=LevelData[i]};
+	for(let i=175;i<185;i++){Campaigns[8][Math.floor(i/5)-35][i%5].Finished=LevelData[i]};
+	for(let i=185;i<195;i++){Campaigns[9][Math.floor(i/5)-37][i%5].Finished=LevelData[i]};
+	for(let i=195;i<200;i++){Campaigns[10][0][i%5].Finished=LevelData[i]};
+
+
+	SoundChoice=SettingsData[0];
+	MusicChoice=SettingsData[1];
+	DialogueChoice=SettingsData[2];
+	IdleAnimChoice=SettingsData[3];
+	MystSettChoice=SettingsData[4];
+}
+
 function SBLARG(X,Y,pip){
 	//alert(X+" "+Y);
 

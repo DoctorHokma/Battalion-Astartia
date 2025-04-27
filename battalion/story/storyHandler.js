@@ -170,67 +170,94 @@ StoryHandler.prototype.selectMission = function(missionIndex) {
 	return mission;
 }
 
-StoryHandler.prototype.load = function(progress = {}) {
-	const missionProgress = progress["MISSIONS"] ?? {};
-
+StoryHandler.prototype.init = function() {
 	for(const missionID in MISSIONS) {
-		const mission = new Mission(missionID);
-		const progress = missionProgress[missionID];
+		const mission = new Mission();
+		const config = MISSIONS[missionID];
 
-		mission.load(missionID);
-		mission.loadState(progress);
+		mission.init(missionID, config);
 
 		this.missions.set(missionID, mission);
 	}
 
-	const chapterProgress = progress["CHAPTERS"] ?? {};
-
 	for(const chapterID in CHAPTERS) {
-		const chapter = new Chapter(chapterID);
-		const progress = chapterProgress[chapterID];
+		const chapter = new Chapter();
+		const config = CHAPTERS[chapterID];
 
-		chapter.load(chapterID);
-		chapter.loadState(progress);
+		chapter.init(chapterID, config);
 
 		this.chapters.set(chapterID, chapter);
 	}
 
-	const campaignProgress = progress["CAMPAIGNS"] ?? {};
 
 	for(const campaignID in CAMPAIGNS) {
-		const campaign = new Campaign(campaignID);
-		const progress = campaignProgress[campaignID];
+		const campaign = new Campaign();
+		const config = CAMPAIGNS[campaignID];
 
-		campaign.load(campaignID);
-		campaign.loadState(progress);
+		campaign.init(campaignID, config);
+
 		this.campaigns.set(campaignID, campaign);
 	}
 	
-	const scenarioProgress = progress["SCENARIOS"] ?? {};
 
 	for(const scenarioID in SCENARIOS) {
-		const scenario = new Scenario(scenarioID);
-		const progress = scenarioProgress[scenarioID];
+		const scenario = new Scenario();
+		const config = SCENARIOS[scenarioID];
 
-		scenario.load(scenarioID);
-		scenario.loadState(progress);
+		scenario.init(scenarioID, config);
 
 		this.scenarios.set(scenarioID, scenario);
 	}
 }
 
+StoryHandler.prototype.load = function(data) {
+	const { MISSIONS, CHAPTERS, CAMPAIGNS, SCENARIOS } = data;
+
+	for(const missionID in MISSIONS) {
+		const mission = this.missions.get(missionID);
+
+		if(mission) {
+			mission.loadState(MISSIONS[missionID]);
+		}
+	}
+
+	for(const chapterID in CHAPTERS) {
+		const chapter = this.chapters.get(chapterID);
+
+		if(chapter) {
+			chapter.loadState(CHAPTERS[chapterID]);
+		}
+	}
+
+	for(const campaignID in CAMPAIGNS) {
+		const campaign = this.campaigns.get(campaignID);
+
+		if(campaign) {
+			campaign.loadState(CAMPAIGNS[campaignID]);
+		}
+	}
+
+	for(const scenarioID in SCENARIOS) {
+		const scenario = this.scenarios.get(scenarioID);
+
+		if(scenario) {
+			scenario.loadState(SCENARIOS[scenarioID]);
+		}
+	}
+}
+
 StoryHandler.prototype.save = function() {
-	const progress = {
+	const data = {
 		"MISSIONS": {},
 		"CHAPTERS": {},
 		"CAMPAIGNS": {},
 		"SCENARIOS": {}
 	};
 
-	this.missions.forEach(({id, state}) => progress.MISSIONS[id] = state);
-	this.chapters.forEach(({id, state}) => progress.CHAPTERS[id] = state);
-	this.campaigns.forEach(({id, state}) => progress.CAMPAIGNS[id] = state);
-	this.scenarios.forEach(({id, state}) => progress.SCENARIOS[id] = state);
+	this.missions.forEach(({id, state}) => data.MISSIONS[id] = state);
+	this.chapters.forEach(({id, state}) => data.CHAPTERS[id] = state);
+	this.campaigns.forEach(({id, state}) => data.CAMPAIGNS[id] = state);
+	this.scenarios.forEach(({id, state}) => data.SCENARIOS[id] = state);
 
-	return progress;
+	return data;
 }

@@ -1,21 +1,15 @@
-const Scenario = function(id) {
-    StoryNode.call(this, id);
+const Scenario = function() {
+    StoryNode.call(this);
 }
 
 Scenario.prototype = Object.create(StoryNode.prototype);
 Scenario.prototype.constructor = Scenario;
 
-Scenario.prototype.load = function(scenarioID) {
-	const config = SCENARIOS[scenarioID];
-
-	if(!config) {
-		return;
-	}
-
+Scenario.prototype.init = function(scenarioID, scenario) {
     this.id = scenarioID;
-    this.type = config;
+    this.type = scenario;
     
-    const { campaigns } = config;
+    const { campaigns } = scenario;
 
     for(let i = 0; i < campaigns.length; i++) {
         const campaignID = campaigns[i];

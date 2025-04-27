@@ -1,5 +1,5 @@
-const StoryNode = function(id) {
-    this.id = id;
+const StoryNode = function() {
+    this.id = null;
     this.type = null;
     this.state = StoryNode.STATE.UNFINISHED;
     this.children = new Set();
@@ -11,25 +11,21 @@ StoryNode.STATE = {
 	FINISHED: 1
 };
 
-StoryNode.prototype.determineState = function(progress) {
-    for(const childID of this.children) {
-        const state = progress[childID];
-
-        if(!state) {
-            this.state = StoryNode.STATE.UNFINISHED;
-            return;
-        }
-    }
-
-    this.state = StoryNode.STATE.FINISHED;
-    return;
-}
-
 StoryNode.prototype.loadState = function(state) {
-    if(state) {
-        this.state = StoryNode.STATE.FINISHED; 
-    } else {
-        this.state = StoryNode.STATE.UNFINISHED;
+    switch(state) {
+        case StoryNode.STATE.FINISHED: {
+            this.state = StoryNode.STATE.FINISHED;
+            break;
+        }
+        case StoryNode.STATE.UNFINISHED: {
+            this.state = StoryNode.STATE.UNFINISHED;
+            break;
+        }
+        default: {
+            console.warn(`State ${state} is invalid for node ${this.id}!`);
+            this.state = StoryNode.STATE.UNFINISHED;
+            break;
+        }
     }
 }
 
@@ -88,6 +84,6 @@ StoryNode.prototype.isAvailableAsNext = function(orderIndex, onCheck) {
     return true;
 }
 
-StoryNode.prototype.load = function(configID) {
+StoryNode.prototype.init = function(configID, config) {
     console.warn("onLoad is not implemented!");
 }

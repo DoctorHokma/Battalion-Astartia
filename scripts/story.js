@@ -4,8 +4,9 @@ const DISPLAY_TYPE = {
 }
 
 const saveStory = function() {
-    const { story } = battalion;
-    const saveData = story.save();
+    const { saveHandler } = battalion;
+    const saveData = saveHandler.saveStoryProgress(battalion);
+
     const file = new PrettyJSON(4).open();
 
     for(const groupID in saveData) {

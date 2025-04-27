@@ -5,6 +5,7 @@ const Battalion = function() {
     this.language = new LanguageHandler();
     this.story = new StoryHandler();
     this.morale = new MoraleHandler();
+    this.saveHandler = new SaveHandler();
     this.timer = new Timer();
     this.state = Battalion.STATE.NONE;
 
