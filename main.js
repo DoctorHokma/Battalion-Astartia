@@ -2307,26 +2307,10 @@ const DisplayLore = function(documentID){
 	}
 
 	const text = language.get(DocText);
+	const processedText = Array.isArray(text) ? text.join("<br><br>") : text;
 
-	switch(typeof text) {
-		case "object": {
-			let processedText = "";
-
-			for(let i = 0; i < text.length; i++) {
-				const htmlText = text[i] + "<br><br>";
-		
-				processedText += htmlText;
-			}
-
-			lorePanel.innerHTML = processedText;
-			break;
-		}
-		default: {
-			lorePanel.innerHTML = text;
-			break;
-		}
-	}
-
+	lorePanel.innerHTML = processedText;
+	
 	DisplayLoreLength(DocSize);
 }
 
@@ -3634,8 +3618,16 @@ function initializeBattle(){
 		return;
 	}
 	
-	const { data } = mission;
+	const { data, type } = mission;
 	
+	battalion.setState(Battalion.STATE.BATTLE);
+
+	if(data.Constants?.OST) {
+		battalion.musicPlayer.playPlaylist(data.Constants.OST);
+	} else {
+		battalion.musicPlayer.playPlaylist(type.playlist);
+	}
+
 	console.log(mission);
 	//This block runs pre-functions characteristic to the specific level
 	wipeMap();
@@ -3643,7 +3635,6 @@ function initializeBattle(){
 	isAITurn=false;
 	BattleEnd=true;
 	Resolution=false;
-	battalion.setState(Battalion.STATE.BATTLE);
 	Chuchu=0;
 
 	Map = data.Map;
@@ -3727,35 +3718,6 @@ function initializeBattle(){
 	for(let a=0;a<Constants.Defeat.length;a++){FlagMap[MapRoster[Constants.Defeat[a]].x][MapRoster[Constants.Defeat[a]].y]=3};
 	for(let a=0;a<Constants.Protect.length;a++){FlagMap[MapRoster[Constants.Protect[a]].x][MapRoster[Constants.Protect[a]].y]=4};
 		*/
-
-	let OST=0;
-	if(ChosenMission==5){OST=1};
-	if(ChosenNation==1 && ChosenMission!=5){OST=4};
-	if(ChosenNation==1 && ChosenMission==5){OST=5};
-	if(ChosenNation==1 && ChosenChapter>2){OST=6};
-	if(ChosenNation==1 && ChosenChapter==3 && ChosenMission==5){OST=3};
-	if(ChosenNation==2 && ChosenMission!=5){OST=12};
-	if(ChosenNation==2 && ChosenMission==5){OST=13};
-	if(ChosenNation==3){OST=18};
-	if(ChosenNation==3 && ChosenChapter>1){OST=19};
-	if(ChosenNation==3 && ChosenMission==5){OST=20};
-
-
-	if(ChosenNation==4){OST=23};
-	if(ChosenNation==4 && ChosenChapter>1){OST=24};
-	if(ChosenNation==4 && ChosenChapter==3 && ChosenMission==5){OST=25};
-	if(ChosenNation==4 && ChosenChapter>3){OST=26};
-	if(ChosenNation==4 && ChosenChapter==4 && ChosenMission==5){OST=27};
-	if(ChosenNation==4 && ChosenChapter==5 && ChosenMission==5){OST=28};
-	if(ChosenNation==5){OST=29};
-	if(ChosenNation==5 && ChosenChapter>2){OST=30};
-	if(ChosenNation==5 && ChosenChapter>2 && ChosenMission==5){OST=31};
-	if(ChosenNation==5 && ChosenChapter==5){OST=32};
-	if(ChosenNation==5 && ChosenChapter==5 && ChosenMission==5){OST=33};
-
-	if((Constants.OST??0)!=0){OST=Constants.OST};
-
-	PlayBGM(OST);
 	
 	if(DialogueChoice){launchDialogueBloc(Language.Prelogues[ChosenNation][ChosenChapter-1][ChosenMission-1],0)};
 
@@ -3849,7 +3811,8 @@ function initializeSpecialBattle(Level){
 	YourMoney=Constants.Funds[1];
 	Resolution=false;
 	Victory=false;
-	PlayBGM(0);
+
+	battalion.musicPlayer.playPlaylist("GENERIC_BATTLE");
 	battalion.setState(Battalion.STATE.BATTLE);
 
 	BiomeMap=Level.BiomeMap;
@@ -8015,7 +7978,6 @@ CallPreloader();
 //document.getElementById("Main Menu").style.visibility="hidden";
 //document.getElementById("Main Menu").style.visibility="hidden";initializeSpecialBattle(TutorialLevel3);
 //document.getElementById("Main Menu").style.visibility="hidden";initializeSpecialBattle(Samara); 
-//MusicChoice=true;PlayBGM(33);
 
 //This protocol shall disable MapEditor paraphernalia and allow the pilfering of a giant(14000*5600) map, later to be shrunk to 1400*560.
 

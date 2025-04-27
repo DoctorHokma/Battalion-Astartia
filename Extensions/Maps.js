@@ -65,7 +65,7 @@ Palawan=[
 	[23,23,23,23,23,23,23,23,23,23,23]
 	];
 
-	PalawanConstants={YourFaction:1,defaultX:0,defaultY:0, OST:2,Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Commanders:{}};
+	PalawanConstants={YourFaction:1,defaultX:0,defaultY:0, OST:"GENERIC_NAVAL",Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Commanders:{}};
 
 	PalawanRoster=[
 	{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0,CustomName:null,SpecialName:null},
@@ -327,7 +327,7 @@ HevanSea=[[23,23,23,23,23,23,23,23,23,23,23,23,23,23,23],
 	[23,23,23,23,23,23,23,23,23,23,23,23,23,23,23],
 	[23,23,23,23,23,23,23,23,23,23,23,23,23,23,23],
 	[23,23,23,23,23,23,23,23,23,23,23,23,23,23,23]];
-HevanSeaConstants={YourFaction:1,defaultX:0,defaultY:0, OST:2,Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody,Orzel,Jensen]};
+HevanSeaConstants={YourFaction:1,defaultX:0,defaultY:0, OST:"GENERIC_NAVAL",Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody,Orzel,Jensen]};
 HevanSeaRoster=[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0},
 	{id:51 , faction:4 , direction:3, x:6, y:6, morale:0, hpModifier:0,cargo:2},
 	{id:51 , faction:4 , direction:1, x:7, y:7, morale:0, hpModifier:0,cargo:2},
@@ -346,7 +346,7 @@ HevanSeaRoster=[{index:0, id:"null", faction:"null", direction:"null", x:"null",
 	{id:53 , faction:1 , direction:4, x:13, y:13, morale:0, hpModifier:0},
 	{id:51 , faction:4 , direction:1, x:14, y:8, morale:0, hpModifier:0,cargo:2}];
 
-HevanSeaConstants2={YourFaction:4,defaultX:0,defaultY:0, OST:2,Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody,Jensen,Orzel]};
+HevanSeaConstants2={YourFaction:4,defaultX:0,defaultY:0, OST:"GENERIC_NAVAL",Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody,Jensen,Orzel]};
 HevanSeaRoster2=[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0},
 	{id:53 , faction:1 , direction:2, x:1, y:0, morale:0, hpModifier:0},
 	{id:54 , faction:4 , direction:2, x:1, y:6, morale:0, hpModifier:0},
@@ -1253,7 +1253,7 @@ KcirokasterRoster=[{index:0, id:"null", faction:"null", direction:"null", x:"nul
 	,{id:31 , faction:5 , direction:1, x:9, y:7, morale:0, hpModifier:0}];
 
 
-KielbasaConstants={YourFaction:1,defaultX:0,defaultY:0, OST:2,Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[5],Protect:[9],Funds:[0,0,0],Commanders:[Nobody,Kronegar,Polk]};
+KielbasaConstants={YourFaction:1,defaultX:0,defaultY:0, OST:"GENERIC_NAVAL",Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[5],Protect:[9],Funds:[0,0,0],Commanders:[Nobody,Kronegar,Polk]};
 KielbasaRoster=[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0}
 	,{id:57 , faction:4 , direction:3, x:1, y:4, morale:0, hpModifier:0, SpecialName:379, SpecialDescription:379}
 	,{id:57 , faction:4 , direction:3, x:2, y:4, morale:0, hpModifier:0, SpecialName:380, SpecialDescription:380}
@@ -3506,7 +3506,7 @@ SvelgianSea=[[23,23,23,23,23,23,23,23,23,23],
 	[23,23,23,23,23,23,23,23,23,28],
 	[28,25,25,23,23,23,25,25,28,28],
 	[28,28,25,25,25,25,25,28,28,28]];
-	SvelgianSeaConstants={YourFaction:4,defaultX:0,defaultY:0, OST:2,Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody,Doris,Gustav],StaticEvents:[About_Breg]};
+	SvelgianSeaConstants={YourFaction:4,defaultX:0,defaultY:0, OST:"GENERIC_NAVAL",Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody,Doris,Gustav],StaticEvents:[About_Breg]};
 	SvelgianSeaRoster=[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0}
 	,{id:58 , faction:4 , direction:2, x:0, y:0, morale:0, hpModifier:0, SpecialName:372, SpecialDescription:372}
 	,{id:56 , faction:4 , direction:3, x:0, y:1, morale:0, hpModifier:0, SpecialName:389, SpecialDescription:389}
@@ -3550,7 +3550,7 @@ ToraToraTora=
 	[23,23,1,23,23,23,23,23,29,1],
 	[29,23,20,23,23,23,20,29,1,1],
 	[1,1,1,1,1,1,1,1,1,1]];
-ToraToraToraConstants={YourFaction:4, defaultX:0,defaultY:0, OST:2, Survival:77777, TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody, Polk, Spruce]};
+ToraToraToraConstants={YourFaction:4, defaultX:0,defaultY:0, OST:"GENERIC_NAVAL", Survival:77777, TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody, Polk, Spruce]};
 ToraToraToraRoster=[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0,CustomName:null,SpecialName:null},
 	{id:58 , faction:4 , direction:2, x:0, y:0, morale:0, hpModifier:0,SpecialName:371,SpecialDescription:371},
 	{id:58 , faction:4 , direction:2, x:0, y:4, morale:0, hpModifier:0,SpecialName:374,SpecialDescription:374},
