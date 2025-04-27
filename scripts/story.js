@@ -128,6 +128,11 @@ const showProgressData = function(battalion) {
 
     const PLAQUE_IMAGES = ["Chp1plaque", "Chp2plaque", "Chp3plaque", "Chp4plaque", "Chp5plaque", "Chp6plaque", "Chp7plaque"];
     const PLAQUES = ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6", "Chapter 7"];
+    const nextChapters = campaign.getAllAvailableAsNext((chapterID) => {
+        const chapter = story.chapters.get(chapterID);
+
+        return chapter && chapter.isFinished();
+    });
 
     for(let i = 0; i < PLAQUES.length; i++) {
         const plaqueID = PLAQUES[i];
@@ -142,13 +147,9 @@ const showProgressData = function(battalion) {
 
         const plaqueImageID = PLAQUE_IMAGES[i];
         const plaqueImage = document.getElementById(plaqueImageID);
-        const isAvailable = campaign.isAvailableAsNext(i, (chapterID) => {
-            const chapter = story.chapters.get(chapterID);
+        const chapterID = campaign.order[i];
 
-            return chapter && chapter.isFinished();
-        });
-
-        if(isAvailable) {
+        if(nextChapters.has(chapterID)) {
             plaqueImage.src = "Assets/Miscellaneous/Plaque.PNG";
         } else {
             plaqueImage.src = "Assets/Miscellaneous/NonPlaque.PNG";
@@ -163,6 +164,11 @@ const showProgressData = function(battalion) {
 
     const { emblem, nonEmblem } = nationType;
     const EMBLEMS = ["Emblem1", "Emblem2", "Emblem3", "Emblem4", "Emblem5"];
+    const nextMissions = chapter.getAllAvailableAsNext((missionID) => {
+        const mission = story.missions.get(missionID);
+
+        return mission && mission.isFinished();
+    });
 
     for(let i = 0; i < EMBLEMS.length; i++) {
         const emblemID = EMBLEMS[i];
@@ -175,13 +181,9 @@ const showProgressData = function(battalion) {
 
         emblemElement.style.visibility = "inherit";
 
-        const isAvailable = chapter.isAvailableAsNext(i, (missionID) => {
-            const mission = story.missions.get(missionID);
+        const missionID = chapter.order[i];
 
-            return mission && mission.isFinished();
-        });
-
-        if(isAvailable) {
+        if(nextMissions.has(missionID)) {
             emblemElement.src = emblem;
         } else {
             emblemElement.src = nonEmblem;
