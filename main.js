@@ -2310,7 +2310,7 @@ const DisplayLore = function(documentID){
 	const processedText = Array.isArray(text) ? text.join("<br><br>") : text;
 
 	lorePanel.innerHTML = processedText;
-	
+
 	DisplayLoreLength(DocSize);
 }
 
@@ -2395,17 +2395,10 @@ function DisplayRegions(){
 
 			};
 
-		}
-
-
-		
-
-
-		else{
+		} else {
 			document.getElementById("RegionMap").style.visibility="hidden";
 			document.getElementById("regionMap").style.visibility="hidden";
-			
-		};
+		}
 	RegionsToggled=!RegionsToggled;
 };
 //NEYN TODO!!!

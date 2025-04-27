@@ -379,6 +379,7 @@ const LANGUAGE_SPANISH = {
     "MISSION_NAME_SOMERTIN_C7_M3": "",
     "MISSION_NAME_SOMERTIN_C7_M4": "",
     "MISSION_NAME_SOMERTIN_C7_M5": "Operation TWINSTEEL",
+	
     "MISSION_NAME_KARGIT_C1_M1": "Operación 'Salto'",
     "MISSION_NAME_KARGIT_C1_M2": "Operación 'Hacha'",
     "MISSION_NAME_KARGIT_C1_M3": "Operación 'Puño anal'",
@@ -414,6 +415,7 @@ const LANGUAGE_SPANISH = {
     "MISSION_NAME_KARGIT_C7_M3": "",
     "MISSION_NAME_KARGIT_C7_M4": "",
     "MISSION_NAME_KARGIT_C7_M5": "",
+
     "MISSION_NAME_TRANSKAL_C1_M1": "Nuestras espaldas expuestas",
     "MISSION_NAME_TRANSKAL_C1_M2": "Nuestros enemigos belicosos",
     "MISSION_NAME_TRANSKAL_C1_M3": "Nuestro nombre despreciado",
@@ -449,6 +451,7 @@ const LANGUAGE_SPANISH = {
     "MISSION_NAME_TRANSKAL_C7_M3": "",
     "MISSION_NAME_TRANSKAL_C7_M4": "",
     "MISSION_NAME_TRANSKAL_C7_M5": "",
+
     "MISSION_NAME_POLASIE_C1_M1": "Operación Traseros Sorpresa",
     "MISSION_NAME_POLASIE_C1_M2": "Landfall",
     "MISSION_NAME_POLASIE_C1_M3": "El Escudo de la Libertad",
@@ -484,6 +487,7 @@ const LANGUAGE_SPANISH = {
     "MISSION_NAME_POLASIE_C7_M3": "",
     "MISSION_NAME_POLASIE_C7_M4": "",
     "MISSION_NAME_POLASIE_C7_M5": "",
+
     "MISSION_NAME_ELAM_C1_M1": "Distracción",
     "MISSION_NAME_ELAM_C1_M2": "Asaltar los pases",
     "MISSION_NAME_ELAM_C1_M3": "La gran ofensiva de Ali",
@@ -518,7 +522,187 @@ const LANGUAGE_SPANISH = {
     "MISSION_NAME_ELAM_C7_M2": "",
     "MISSION_NAME_ELAM_C7_M3": "",
     "MISSION_NAME_ELAM_C7_M4": "",
-    "MISSION_NAME_ELAM_C7_M5": ""
+    "MISSION_NAME_ELAM_C7_M5": "",
+
+	"MISSION_DESC_SOMERTIN_C1_M1": "Aunque el aumento de fuerzas Kargit en las fronteras no había pasado desapercibido, las circunstancias nos impidieron reaccionar adecuadamente a ésto. Ahora que están tratando de cruzar el Río Presus, nos encontramos superados en número y en fuerza, con unidades desorganizadas. La llegada del experimentado general Vladov no nos salvará del desastre, pero nos conseguirá tiempo valioso para que podamos movilizarnos por completo.",
+    "MISSION_DESC_SOMERTIN_C1_M2": "El avance Kargit había tomado los pases rocosos antes de que el general Anders pudiera traer orden a las milicias locales y a las unidades de defensa. Una inmensa tragedia, ya que se perdieron posiciones muy fácilmente defendibles. Y con ellos aun poseyendo superioridad local, solamente podemos pedirle al general Anders que los retrase tanto tiempo cómo le sea posible.",
+    "MISSION_DESC_SOMERTIN_C1_M3": "Cómo se suele decir, 'las balas del enemigo duelen menos que el puñal de tu amigo'. Esperábamos que los Polasianos fueran pérfidos y no nos ayudaran, pero no previmos que nos invadieran en nuestro peor momento. Al anochecer vinieron cómo ladrones y destruyeron salvajemente parte de nuestra flota mientras seguía en el puerto, luego desplegaron marines y los pusieron en camino a los yacimientos petrolíferos de Moh. El general Stoyan debe tomar las riendas de la situación y mantenerlos al norte del Río Moh.",
+    "MISSION_DESC_SOMERTIN_C1_M4": "El octavo ejército de Lazlo fue rodeado y sitiado. Los ríos Presus, Przek y Posun han caído, cómo también lo han hecho las montañas rocosas y las zonas fronterizas del sur. Nuestras unidades están teniendo dificultades para aguantar la ofensiva Kargit. Con los bastardos fuera de la orgullosa ciudad de Patna y preparados para el asalto, el general Vladov ha decidido resistir en su tierra natal. Fortificaciones, trincheras y sectores inundados se asegurarán de que los bastardos paguen por cada metro del hogar de Vladov con sangre. Si ésta ciudad cayera, los Kargits tendrían una via libre hacia la capital. ¡Eso no lo podemos permitir!.",
+    "MISSION_DESC_SOMERTIN_C1_M5": "La valiente defensa de Patna por parte de Vladov, aunque se haya perdido la ciudad, no fue en vano. Nos dio tiempo suficiente para prepararnos para ésta batalla decisiva. Ahora los bastardos están en las puertas de nuestra capital forzando su entrada en la ciudad, matando e incendiando todo en su camino. Pero ésta vez no retrocederemos ni un solo paso. ¡Por Somertin, por Dios y por todo lo que es bueno, expulsemos a los criminales! ¡Kaula se mantendrá en pie!",
+    "MISSION_DESC_SOMERTIN_C2_M1": "La operación INVENCIBLE cambió el rumbo de la batalla y detuvo a la maquina de guerra kargit. Además, el espléndido contraataque causó que 100.000 hombres y los mejores 1000 tanques kargit, la punta proverbial de su lanza, se vieran rodeados y separados del ejército principal. El mariscal Hryniuk tendrá el honor de liquidar la bolsa de una vez por todas. Mientras tanto, en el frente sur, Dumitrescu quiere liberar la mayor parte de Interriverana que pueda. Si pudieran avanzar, no solo le quitarían presión al frende de Anders sino que también le permitirían a Laszlo tomar la batalla hacia Elam más adelante",
+    "MISSION_DESC_SOMERTIN_C2_M2": "Con Laszlo seguro y el avance Elamita diluyéndose, los Altos Mandos quieren estabilizar el frente sur de una vez por todas. Se duplicó el flujo de suministros hacia el mismo y hay expectativas de que el mariscal Laszlo lleve a cabo una contraofensiva. Ansioso por darles su merecido a los Elamitas, aprovecha la oportunidad para su venganza. Con algo de suerte Shmelev de los transkalitas compartirá al menos una pizca de su entusiasmo...",
+    "MISSION_DESC_SOMERTIN_C2_M3": "Aunque la flota de batalla de Somertin fue mayormente destruida y torpedeada, aún estaba en posesión de una fuerza submarina respetable. No se le puede permitir quedarse quieta. Apoyará al frente norte hundiendo barcos de suministros polasianos",
+    "MISSION_DESC_SOMERTIN_C2_M4": "Con la operación INVENCIBLE, los kargits perdieron la iniciativa estratégica y su única posibilidad de derrotar a Somertin. Los Altos Mandos quieren tomar la iniciativa lo más rápido posible y hacer retroceder a los kargits con una ofensiva sostenida a gran escala a lo largo de todo el frente al norte del Lago Cordum.<br>Pero este gran empuje en realidad está ocultando el verdadero objetivo de la Operación CELERIDAD...",
+    "MISSION_DESC_SOMERTIN_C2_M5": "El gran avance reclamó las vidas de más de 500.000 jóvenes hombres, pero puso la iniciativa operacional firmemente en las manos de Somertin y les permitió recuperar más de 100 kilómetros de territorio. El comando kargit, a pesar de su brillante preparación, tuvo que responder a múltiples ataques somertinos y gastó gran parte de sus reservas.<br>Aprovechando su ventaja, Anders pretende lanzar un asalto blindado y rodear la ciudad de Patna, asegurándola antes de que los kargits puedan fortificarla y usarla como bastión. Está decidido a ganar esta batalla no solo por el obvio valor estratégico, sino también en honor de Vladov quien luchó valientemente para retrasar el embate enemigo.",
+    "MISSION_DESC_SOMERTIN_C3_M1": "Al principio, los somertinos acosaron a los convoys de suministros de Polasia mediante ataques aislados de submarinos; luego los polasianos aprendieron a agrupar convoys por seguridad y a escoltarlos con otra naves. Somertin aprendió a agrupar sus propios submarinos también, y a enviar naves capitales para dispersar a los barcos antisubmarinos que protegían a los convoys. De éste modo, la guerra de submarinos escaló, casi hacia una confrontación directa que los polasianos quieren evitar y los somertinos acrecentar. La lucha herócia del pequeño SFN Piorun le dio suficiente tiempo a la fuerza de choque para llegar. Ahora el SFN KETER y el PSS Sol están Cara a cara, los acorazados más poderosos de Somertin y Polasia. Polasia fue forzada a entrar en ésta batalla naval.",
+    "MISSION_DESC_SOMERTIN_C3_M2": "Tomando ventaja de su superioridad naval y para resolver el problema de que su suministro de submarinos estaba disminuyendo, el Alto Mando Naval de Somertin decidió lanzar un asalto anfibio en la isla Valeria. Si lograban tomarla, los barcos antisubmarinos deberían apostarse el doble de lejos del área dónde operan los submarinos blancos. El mariscal Stoyan está eufórico de dejar al ejército polasiano aún más hambriento y accede a liderar la parte terrestre de ésta campaña.",
+    "MISSION_DESC_SOMERTIN_C3_M3": "El Frente Extranjero de Polasia se sentía más cómo una bolsa para el general Bernard. Al frente está el Ejército Blanco que sigue debilitándolos, y detrás hay una población que no está dispuesta a apoyar el esfuerzo militar. La situación se ha vuelto aún peor ya que los ataques de submarinos comenzaron al mismo tiempo que comenzaron a escasear las municiones. Ahora que la Isla Valeria se perdió y los ataques se intensificaron, a las tropas polasianas comenzó a faltarles incluso comida. Su moral está más baja que nunca y el Mariscal Stoyan se prepara para terminar con ellos de una vez por todas",
+    "MISSION_DESC_SOMERTIN_C3_M4": "Uno podría decir que la propaganda anti-somertina galvanizó a la gente de Polasia para que peleara contra el problema. Sin embargo terminó volviéndose en su contra ya que provocó que resurgieran viejos resentimientos. Milicias rojas y azules están destruyendo el país, viéndose entre ellas cómo enemigas y a Somertin cómo un simple problema secundario. Ésta estupidez los dejó expuestos, y el general Stoyan se está preparando para eutanizar a su patético ejército.",
+    "MISSION_DESC_SOMERTIN_C3_M5": "La mayor parte de la Polasia metropolitana se rindió ante nuestras fuerzas, quitándole a sus milicias materiales cruciales. Su única esperanza es que su armada superada en número logre una milagrosa victoria decisiva y luego hunda nuestro convoy de suministros tal y como nosotros hicimos con el suyo. Siendo su última esperanza de negar la realidad de que la guerra está perdida, debemos destruir a su armada aquí. Será la batalla naval más grande de la historia, pero tenemos confianza en que lo lograrás",
+    "MISSION_DESC_SOMERTIN_C4_M1": "",
+    "MISSION_DESC_SOMERTIN_C4_M2": "",
+    "MISSION_DESC_SOMERTIN_C4_M3": "",
+    "MISSION_DESC_SOMERTIN_C4_M4": "",
+    "MISSION_DESC_SOMERTIN_C4_M5": "",
+    "MISSION_DESC_SOMERTIN_C5_M1": "",
+    "MISSION_DESC_SOMERTIN_C5_M2": "",
+    "MISSION_DESC_SOMERTIN_C5_M3": "",
+    "MISSION_DESC_SOMERTIN_C5_M4": "",
+    "MISSION_DESC_SOMERTIN_C5_M5": "",
+    "MISSION_DESC_SOMERTIN_C6_M1": "",
+    "MISSION_DESC_SOMERTIN_C6_M2": "",
+    "MISSION_DESC_SOMERTIN_C6_M3": "",
+    "MISSION_DESC_SOMERTIN_C6_M4": "",
+    "MISSION_DESC_SOMERTIN_C6_M5": "",
+    "MISSION_DESC_SOMERTIN_C7_M1": "",
+    "MISSION_DESC_SOMERTIN_C7_M2": "",
+    "MISSION_DESC_SOMERTIN_C7_M3": "",
+    "MISSION_DESC_SOMERTIN_C7_M4": "",
+    "MISSION_DESC_SOMERTIN_C7_M5": "",
+
+    "MISSION_DESC_KARGIT_C1_M1": "De forma bastante predecible, los subhumanos no fueron capaces de crear un estado funcional debido a su falta de Kultur. Su pila de heno está temblando hasta los cimientos. Solo tomará una patada en la puerta al estilo del castillo de Wolfenstein y la federación entera colapsará. Y entonces estos reaccionarios serán civilizados, y redistribuiremos sus posesiones de forma justa entre todas las personas. (Que ellos no son porque son subhumanos). Para ésto, el primer paso lógico es aplastar los puestos de la montaña que tienen pocos hombres. Para éste paso esencial, necesitaremos al mejor general disponible.",
+    "MISSION_DESC_KARGIT_C1_M2": "Con Hans moviéndose rápidamente sobre los pasos y dentro del noroeste de Somertin, se estaban creando planes para que el doble de unidades atacaran los puentes sobre el río Presus. El Mariscal Bela y Kulik liderarán la carga, pero la ruptura inicial debe ser producida por Bela.",
+    "MISSION_DESC_KARGIT_C1_M3": "Los idiotas generales de los subhumanos han dejado un enorme agujero en su primera línea. Hans y Kulik cooperarán en una ofensiva de pinza para rodear y neutralizar a todo un ejército de 300.000 hombres. Hacerlo es de suma importancia, ya que nos otorgará locales superioridad en números",
+    "MISSION_DESC_KARGIT_C1_M4": "El avance sobre el Mica, en conjunto con el cruce de Esfahani sobre las montañas Kandahar dejó a Laszlo y su octavo ejército rodeados. Su fuerza es demasiado grande para ser ignorada, nuestro avance debe ser rápido pero no debe dejar nuestros flancos expuestos. Para ésto, les pediremos a los Elamites que liquiden la bolsa cómo los buenos perros que son, y les proveeremos apoyo aéreo.",
+    "MISSION_DESC_KARGIT_C1_M5": "El avance de Hans es el más crucial, ya que delante de él está la capital de Somertin, Kaula. Pero antes de que puedan soñar con tomar eso, tienen que pasar a través de la ciudad fuertemente fortificada de Patna. Superar a una fortaleza tan formidable no será una tarea fácil incluso para el invencible ejército de Kargit.",
+    "MISSION_DESC_KARGIT_C2_M1": "El tiempo es valioso para las fuerzas Kargit. Y lo es aún más para el Mariscal Hans quien tiene que conducir su punta de lanza para, con suerte, capturar Kaula, mientras que su retaguardia no está resguardada. Patna había sido rodeada, cierto, pero las vias de ferrocarril la atraviesan, y la ciudad tampoco había sido capturada del todo. Sabiendo que su punta de lanza debe seguir adentrándose más profundo, Khuzov quiere que Kulik refuerce la retaguardia de Hans y asegure sus lineas de suministros.",
+    "MISSION_DESC_KARGIT_C2_M2": "Nada es más complicado que cruzar un río bien defendido, y si el glorioso anfitrión suprahumano quiere capturar Interriverana (acertadamente llamada así por extenderse entre los valles del Przek, Konna y el Posun) tienen que cruzar tres ríos, cada uno más difícil que el anterior. Usualmente, tamaña operación solo se llevaría a cabo si fuera seguro, pero los kargits no pueden darse el lujo de elegir sus frentes. Tienen que mantener empujes constantes para no perder la iniciativa estratégica. Bela recivirá órdenes de tomar el mando de las fuerzas de Kulik y encargarse del frente del sur. Mientras avanza al mismo tiempo.",
+    "MISSION_DESC_KARGIT_C2_M3": "Si bien el frente del sur avanzó profundamente dentro de Interriverana, no avanzó mucho en general. El mariscal Khuzov lleva mucho tiempo sin poder dormir tranquilo, temiendo que mientras desvían la mayoría de los suministros hacia el norte para tratar de tomar Kaula, los Blancos puedan planear un contraataque contra el idiota de Bela. Aún peor, luego de que Kulik haya terminado con su prueba en Patna, sufrió un ataque de isquemia cardíaca, por lo que no hay forma de saber cuando volverá... o si va a volver. Con pocas opciones, Khuzov decidió ir y tomar el comando de las fuerzas de Kulik personalmente. ",
+    "MISSION_DESC_KARGIT_C2_M4": "El liderazgo del mariscal Khuzov había asegurado la integridad del control Kargit sobre Interriverana del oeste, y Kulik había logrado recuperarse exitosamente de su condición. Las cosas parecían verse estables, si no geniales, para el anfitrion Kargit. Ahora, el gran mariscal va a supervisar el avance de Hans, y ayudarlo en la gran batalla que se aproxima.",
+    "MISSION_DESC_KARGIT_C2_M5": "El ejército Kargit avanzó miles de kilómetros, y desde la última ofensiva del mariscal Hans la periferia del oeste de Kaula está a la vista. Tomar la ciudadela fortificada será una tarea hercúlea, ya que la ofensiva Kargit se está acercando rápidamente a su culminación de Clausewitz. Khuzov preparó cantidades masivas de blindados y materiales que se transportarán al frente de Hans, para la que será la ofensiva más dura y decisiva de la guerra. El imperio Kargit se levantará o caerá, y eso será decidido por el resultado de esta operación.",
+    "MISSION_DESC_KARGIT_C3_M1": "Está hecho, los somertinos pusieron sus reservas en la ciudadela de Kaula. Lo hicieron asumiendo que los flancos de los ríos son lo suficientemente seguros para no ser atravesados. Una suposición errónea que significará su derrota",
+    "MISSION_DESC_KARGIT_C3_M2": "Con el asalto implacable de Weber y Hoth; y con el apoyo de Khuzov y Felix; Hans logró atravesar los flancos del frente de Anders sobre Dambova, rodeando Kaula y a casi 300.000 hombres somertinos dentro. Es hora de un esfuerzo combinado para destruir esta bolsa completamente. Con la caída de su capital, la moral de las cucarachas del ejército blanco colapsará y aceptarán a sus amos.",
+    "MISSION_DESC_KARGIT_C3_M3": "Tras la caída de su capital, el frente noroeste de Somertin muestra signos de fragilidad. El Alto Mando Kargit cree que puede realizar un asalto que ocasione su colapso. Mientras tanto, noticias sobre los fracasos de Polasia llegan a los oidos del Alto Mando Kargit pero no impresionan especialmente a nadie.",
+    "MISSION_DESC_KARGIT_C3_M4": "Interriverana se ganó su nombre por todos los ríos problemáticos que estaban entre nosotros y su fortaleza. Ahora, sin embargo, comenzaremos las maniobras para terminar con esta farsa. Aunque idealmente nos apresuraríamos para llegar hasta Ias lo más rápido posible; eso ya no es necesario debido a la caída de Kaula. Fueron forzados a enviar fuerzas hacia el norte y vamos a aprovechar esto para agotarlos. Primero lo primero; golpear las fortificaciones somertinas del otro lado del Río Posun",
+    "MISSION_DESC_KARGIT_C3_M5": "Los subhumanos fueron derrotados sin embargo su terquedad no conoce límites. Organizados alrededor de las ciudades fortaleza Iaș y Omck, tomando fuerzas para luchar desde Iaș, la megalópolis de acero de Molda; y Burluk, el granero agricultural, incluso ahora aún pueden dar pelea ferozmente. No puede haber una victoria hasta que el sudeste de Somertin sea destruido, arruinado y arrasado hasta los cimientos. ¡Ha llegado el momento de aplastarlos de una vez por todas!",
+    "MISSION_DESC_KARGIT_C4_M1": "",
+    "MISSION_DESC_KARGIT_C4_M2": "",
+    "MISSION_DESC_KARGIT_C4_M3": "",
+    "MISSION_DESC_KARGIT_C4_M4": "",
+    "MISSION_DESC_KARGIT_C4_M5": "",
+    "MISSION_DESC_KARGIT_C5_M1": "",
+    "MISSION_DESC_KARGIT_C5_M2": "",
+    "MISSION_DESC_KARGIT_C5_M3": "",
+    "MISSION_DESC_KARGIT_C5_M4": "",
+    "MISSION_DESC_KARGIT_C5_M5": "",
+    "MISSION_DESC_KARGIT_C6_M1": "",
+    "MISSION_DESC_KARGIT_C6_M2": "",
+    "MISSION_DESC_KARGIT_C6_M3": "",
+    "MISSION_DESC_KARGIT_C6_M4": "",
+    "MISSION_DESC_KARGIT_C6_M5": "",
+    "MISSION_DESC_KARGIT_C7_M1": "",
+    "MISSION_DESC_KARGIT_C7_M2": "",
+    "MISSION_DESC_KARGIT_C7_M3": "",
+    "MISSION_DESC_KARGIT_C7_M4": "",
+    "MISSION_DESC_KARGIT_C7_M5": "",
+
+    "MISSION_DESC_TRANSKAL_C1_M1": "Un acto cobarde por parte de la República de Polasia, desplegaron docenas de batallones desde el norte y están tratando de robar nuestras minas de tungsteno. Lord Gustav es un comandante muy habilidoso pero no tiene tiempo para prepararse. Sus fuerzas dispares están luchando mientras se retiran, esperando retrasarlos lo suficiente.",
+    "MISSION_DESC_TRANSKAL_C1_M2": "El norte no es el único problema, aparentemente. Despliegues anfibios concomitantes the el imperio Elamita están teniendo lugar en el dominio del general Krystif. El podrá ser... leal... pero no es tan habilidoso cómo Gustav. Simplemente esperemos que pueda retrasarlos eficientemente.",
+    "MISSION_DESC_TRANSKAL_C1_M3": "Llegan buenas noticias desde Jarvi, dónde el general Vilho creó una división y la envió a ayudar a Gustav. Además, el ímpetu de los polasianos disminuyó enormemente. Es hora de que sean detenidos.",
+    "MISSION_DESC_TRANSKAL_C1_M4": "La reina logró convencer al general Shmelev para que fuera a ayudar a Krystof. Experimentado y formado en guerras pasadas, es probable que él pueda controlar la situación.",
+    "MISSION_DESC_TRANSKAL_C1_M5": "Es bastante impresionante cómo los Kargit lograron usar aeropuertos improvisados para soltar en paracaidas a un equipo de operaciones especiales justo en medio de nuestra nación, ¡junto a la Ciudadela Reginal ni más ni menos! Los cuatro generales deben dejar de lado sus diferencias para poder garantizar la seguridad de la reina.",
+    "MISSION_DESC_TRANSKAL_C2_M1": "Por mera coincidencia los generales transkalita y elamita más idiotas ya que el ejército de Krystof es enviado a reforzar el Frente Shahar contra Ali que había logrado empujarlo hacia atrás un poco. Ahora o nunca, ¡se probará cuál de los 2 es más incompetente!",
+    "MISSION_DESC_TRANSKAL_C2_M2": "Mientras Krysrof asegura su sector, se necesita de alguien más para el sector Sassafras. Y ya que los acuerdos en Transkal se hacen de forma algo ambigua, esto requiere que la reina dé ciertas concesiones...",
+    "MISSION_DESC_TRANSKAL_C2_M3": "Muy consciente de que sus ejércitos están lejos de casa, y que las (principalmente costeras) polis están expuestas a un segundo desembarque, la reina decide no perder más tiempo y asegurar la supremacía naval. Está dispuesta a arriesgar todo en una desesperada operación en la que la mitad de su flota primero debe navegar 4000km, pasando a través de un estrecho considerado imposible, y luego luchar de frente mientras son superados en fuerza y excedidos de combustible. Esta operación será la victoria más ambiciosa y gloriosa en la historia de la guerra naval, o el plan más estúpido jamás concebido.",
+    "MISSION_DESC_TRANSKAL_C2_M4": "Los hombres de la reina defendieron a Transkal de 2 invasiones, detuvieron a los elamitas frente a los ríos y los hicieron retroceder, aplastaron su apenas erigida flota de batalla, y ahora están marchando para ganarse sus laureles contra el más grande Balaur, el ejército de Kargi bajo el mando del mariscal Hans. Una batalla sangrienta por la capital de Somertin está ocurriendo, y llegamos justo a tiempo para ayudar a nuestros aliados. Fusileros Transkalitas, ¡marchen!",
+    "MISSION_DESC_TRANSKAL_C2_M5": "Kaula, con los esfuerzos concertados de Dumitrescy y Gustav, se mantuvo firmemente ante la marea kargit. Los kargits, temerosos de perder la iniciativa, utilizaron sus reservas para redoblar la ofensiva. Ahora, es tiempo de que Anders y Vilho hagan su parte. Dumitrescu y Gustav mantuvieron el yunque en su lugar, y ahora es tiempo de que caiga el martillo.",
+    "MISSION_DESC_TRANSKAL_C3_M1": "La marina de Elam fue humillada; el limitado suministro de mano de obra de Polasia agotado y las fuerzas especiales de Kargia diezmadas. Claramente Transkal está a salvo de la agresión de esas tres naciones. Una cisma se encuentra flotando en el aire; ¿deberían firmar un tratado de paz separada e irse a casa o pelearán por el bien de su aliado hasta el final?",
+    "MISSION_DESC_TRANSKAL_C3_M2": "Con los aeroplanos adquiridos de Somertin, el tamaño de la Fuerza Aérea de la Reina se multiplicó diez veces. Hay enormes dificultades logísticas que deben ser sobrepasadas antes de que puedan enorgulleserse de ello, un hecho que están trabajando para remediar. Lo primero es ver cómo trabajarán con las fuerzas terrestres mediante un ejercicio aéreo. El príncipe Michael, quien se supone debe realizar un ejercicio aéreo propio, se les une.",
+    "MISSION_DESC_TRANSKAL_C3_M3": "La reina teme que, por cómo van las cosas, Transkal se dirige hacia un precipicio. Ella se encargará de la situación, reclutará a tantos generales cómo pueda para su causa y se asegurará de que Somertin entienda la situación",
+    "MISSION_DESC_TRANSKAL_C3_M4": "Con la lealtad de los generales del norte asegurada, su majestad finalmente revelará sus verdaderas intenciones. Mientras Krystof y Shmelev están ocupados combatiendo contra los Elamitas, ella hará lo que debe para conseguir poder sin precedentes, la lealtad indivisa de los soldados y el derecho para remover generales a placer. Ésto no será absolutamente nada bueno para algunos de ellos, y a partir de éste punto en adelante no hay forma de hecharse atrás. Su majestad ha cruzado un punto de no retorno.",
+    "MISSION_DESC_TRANSKAL_C3_M5": "Shmelev se percató de las verdaderas intenciones de la Reina, y hacia dónde quiere llevar ella al país. Pero él no dejará que se salga con la suya. O Transkal permite que gente cómo Shmelev robe, o seguirá los sueños de la Reina y prosperará. En ésta batalla de voluntades, ya no puede haber un intermedio, y cada lado disparará con todo lo que tiene",
+    "MISSION_DESC_TRANSKAL_C4_M1": "",
+    "MISSION_DESC_TRANSKAL_C4_M2": "",
+    "MISSION_DESC_TRANSKAL_C4_M3": "",
+    "MISSION_DESC_TRANSKAL_C4_M4": "",
+    "MISSION_DESC_TRANSKAL_C4_M5": "",
+    "MISSION_DESC_TRANSKAL_C5_M1": "",
+    "MISSION_DESC_TRANSKAL_C5_M2": "",
+    "MISSION_DESC_TRANSKAL_C5_M3": "",
+    "MISSION_DESC_TRANSKAL_C5_M4": "",
+    "MISSION_DESC_TRANSKAL_C5_M5": "",
+    "MISSION_DESC_TRANSKAL_C6_M1": "",
+    "MISSION_DESC_TRANSKAL_C6_M2": "",
+    "MISSION_DESC_TRANSKAL_C6_M3": "",
+    "MISSION_DESC_TRANSKAL_C6_M4": "",
+    "MISSION_DESC_TRANSKAL_C6_M5": "",
+    "MISSION_DESC_TRANSKAL_C7_M1": "",
+    "MISSION_DESC_TRANSKAL_C7_M2": "",
+    "MISSION_DESC_TRANSKAL_C7_M3": "",
+    "MISSION_DESC_TRANSKAL_C7_M4": "",
+    "MISSION_DESC_TRANSKAL_C7_M5": "",
+
+    "MISSION_DESC_POLASIE_C1_M1": "Las fuerzas cangrejo tienen que tomar control de la costa norte de Somertin para asegurar los yacimientos petrolíferos de Moh, y luego traer la libertad al continente. Desafortunadamente, el imperio terrorista posee una flota competente, que ha usado repetidas veces para oprimirnos y sin duda lo hará otra vez para tratar de evitar la llegada de la libertad. ¡Tenemos que incapacitar a su flota rápidamente así que apresúrense! El tiempo es libertad.",
+    "MISSION_DESC_POLASIE_C1_M2": "Con la flota somertina aplastada no hay nada que nos impida hacer un desembarco anfibio, cosa que es absolutamente necesaria. Los arreglos para ésto se están realizando mientras hablamos. Una fuerza de desembarque está preparándose para hacer un peligroso viaje a través del mar.",
+    "MISSION_DESC_POLASIE_C1_M3": "Sobre el horizonte yace el río Moh y más allá de éste los yacimientos petrolíferos que tanto necesitamos. Tenemos que hacerlos retroceder y cruzar el río.",
+    "MISSION_DESC_POLASIE_C1_M4": "Hemos estado peleando por ese maldito río por tanto tiempo y seguimos siendo repelidos. Ya no más. Ahora que tenemos suficientes hombres y materiales para forzarlos a que nos dejen cruzar, pero también tenemos grandes objetivos. El Alto Mando nos ordenó tomar una cabeza de puente sobre el río, luego aprovechar el impulso para finalmente capturar los yacimientos petrolíferos de Moh y la vía ferroviaria Moh-Golubuju.",
+    "MISSION_DESC_POLASIE_C1_M5": "Desde el norte avanzaban los polasianos, y desde el oeste los Kargits. Ahora hay un número significante de somertinos atrapados alrededor de Golubuju, sin ninguna manera de obtener suministros. Llegó la hora de destruir a los veteranos de Stoyan que nos humillaron por tanto tiempo.",
+    "MISSION_DESC_POLASIE_C2_M1": "Aunque la armada transkalita es casi inútil, los altos mandos polasianos quieren que sea destruida, para que una futura invasión pueda proceder sin impedimentos. El almirante Doris Miller, tal vez el almirante polasiano más habilidoso, es prácticamente el único capaz de llevar a cabo esta tarea.",
+    "MISSION_DESC_POLASIE_C2_M2": "La operación especial en Moh había funcionado maravillosamente y los yacimientos petrolíferos habían sido ocupados por los valientes marines. Parte de los marines, sin embargo, se mantuvo en espera para esta ocasión. Es hora de desplegar a esos chicos y tomar las minas de tugsteno y cromo de Svelge.<br>Una vez el cromo y el tungsteno hayan sido asegurados; el pueblo será capaz de disfrutar consoladores de marca TermoChroma® (que son muy populares hoy en día). Así que vamos, ¡hagamos esto por los consoladores del pueblo!",
+    "MISSION_DESC_POLASIE_C2_M3": "Antes de que la fuerza de invasión svelgiana pueda adentrarse más en territorio enemigo, su flanco debe ser asegurado. Para esto, Pykot liderará una segunda fuerza de marines dentro del territoro jarviano. Comandante, ¡debe tener cuidado! Los jarvianos son guerreros valientes de puntería sin igual y fieramente devotos a su independencia. Aún con potencia de fuego superior, su victoria aún requerirá de trabajo duro.",
+    "MISSION_DESC_POLASIE_C2_M4": "Con potencia de fuego superior, el ejército de Pykot avanzó firmemente y está a distancia de reconocimiento de las tan deseadas minas de tungsteno. Una vez que sean capturadas, el pueblo de Polasia será capaz de regocijarse ya que estos recursos estratégicos se utilizarán para crear bienes estratégicos.",
+    "MISSION_DESC_POLASIE_C2_M5": "La falta de fuerzas transkalitas en la región había sido algo temporal. La parte mala es que provocó que nuestras fuerzas realizaran avances descuidados y salientes. Ahora que estamos sobrepasados, nos dimos cuenta de que el general Gustav probablemente lance un asalto de pinza devastador si no intervenimos rápidamente",
+    "MISSION_DESC_POLASIE_C3_M1": "Polasia ha tenido avances tenues en el continente, pero ahora el general Bernard está comenzando a tener presagios oscuros ya que el Ejército Blanco está trayendo más y más refuerzos gradualmente. La Fuerza Aérea Polasiana debe estar a la par cotra la Fuerza Aérea Blanca, que se está expandiendo rápidamente",
+    "MISSION_DESC_POLASIE_C3_M2": "Finalmente, el presidente logró aumentar el presupuesto militar, y comenzó a trtar el tema de la falta de soldados. Eso se logró mediante la promoción del reclutamiento de mujeres en el ejército, pero eso requiere de ciertos compromisos políticos...",
+    "MISSION_DESC_POLASIE_C3_M3": "Además de estar superado en número, en potencia de fuego y de estar en inferioridad aérea, Bernard tiene que lidiar con otro problema. Su logística depende mayormente de el envío de comida y suministros desde su país natal a través de puertos que tiene a su disposición. Ahora las barcazas que se supone deberían traer municiones, armas y comida para los soldados están siendo torpedeadas por submarinos. Y puede que haya algo aún peor por venir...",
+    "MISSION_DESC_POLASIE_C3_M4": "Esta misión sucedió casi un mes antero antes de la última. Exasperado de que había pasado un tiempo sin poder darles el golpe de gracia a lo Svelgerianos, la impaciencia del general Pykot crecía y crecía. Y el viejo perspicaz de Gustav sabía como usar eso a su favor. Pykot está por caer en una trampa. Va a morder el anzuelo, el hilo y la caña entera. ",
+    "MISSION_DESC_POLASIE_C3_M5": "Luego de la retirada de la segunda fuerza de Transkal, el golpeado y magullado ejército de Bernard es el último del continente. Los blancos ejecutan un asalto implacable pero Bernard sigue luchando con valentía incluso cuando todo está en su contra. ¿Qué tanto podrá aguantar así?",
+    "MISSION_DESC_POLASIE_C4_M1": "",
+    "MISSION_DESC_POLASIE_C4_M2": "",
+    "MISSION_DESC_POLASIE_C4_M3": "",
+    "MISSION_DESC_POLASIE_C4_M4": "",
+    "MISSION_DESC_POLASIE_C4_M5": "",
+    "MISSION_DESC_POLASIE_C5_M1": "",
+    "MISSION_DESC_POLASIE_C5_M2": "",
+    "MISSION_DESC_POLASIE_C5_M3": "",
+    "MISSION_DESC_POLASIE_C5_M4": "",
+    "MISSION_DESC_POLASIE_C5_M5": "",
+    "MISSION_DESC_POLASIE_C6_M1": "",
+    "MISSION_DESC_POLASIE_C6_M2": "",
+    "MISSION_DESC_POLASIE_C6_M3": "",
+    "MISSION_DESC_POLASIE_C6_M4": "",
+    "MISSION_DESC_POLASIE_C6_M5": "",
+    "MISSION_DESC_POLASIE_C7_M1": "",
+    "MISSION_DESC_POLASIE_C7_M2": "",
+    "MISSION_DESC_POLASIE_C7_M3": "",
+    "MISSION_DESC_POLASIE_C7_M4": "",
+    "MISSION_DESC_POLASIE_C7_M5": "",
+
+    "MISSION_DESC_ELAM_C1_M1": "El frente entre Elam y Somertin es largo y los hombres deben separarse mucho para cubrirlo. Aun peor, tendremos que cruzar sobre barreras defendibles cómo el gran Río Shahar or las Montañas Khandahar para avanzar. Si queremos que el ataque tenga éxito, la primera y más impactante ofensiva debe tener lugar sobre las Montañas Khandahar y debe ser dirigida por el general más experimentado, de otra forma el avance no será posible en lo absoluto. El grandioso Vizier Mutasarif debe liderar una distracción sobre el Río Mica, para desviar la atención del enemigo.",
+    "MISSION_DESC_ELAM_C1_M2": "El cruce del Mica de Mutasarif fue un truco para distraer al general Laszlo, y él mordío el anzuelo. Ahora que el yunque está listo, Esfahani será el martillo.",
+    "MISSION_DESC_ELAM_C1_M3": "Con el éxito del empujón de Ibrahim Esfahani, el enemigo tuvo que debilitar sus fuerzas del segmento Shahar. Perfecto para Ali, quien tiene que capturar al menos catorce cabezas de puente de éste largo segmento.",
+    "MISSION_DESC_ELAM_C1_M4": "Para cuando Ali se dispuso a cruzar el río, Hassan ya estaba comenzando una doble operación. Mientras cruzaba el río, enviaba marines por detrás al mismo tiempo. ",
+    "MISSION_DESC_ELAM_C1_M5": "Un golpe de Elam y uno de los Kargi han hecho tambalear a Laszlo y a su octavo ejército. Ahora están solos y rodeados. Todo va de acuerdo al keikaku. El sultán los quiere eliminados, para mostrar que el imperio es capaz de bewegungskrieg igual que los Kargi. Nota de traducción: 'keikaku' significa plan",
+    "MISSION_DESC_ELAM_C2_M1": "Laszlo había escapado y ya no estaba rodeado. Aunque podría ser demasiado tarde, Mutasarif quiere intentar capturarlo una vez más para evitar que sea una molestia más adelante",
+    "MISSION_DESC_ELAM_C2_M2": "Deseando, en el mejor de los casos, forzar a los transkalitas a rendirse, y en el peor de los casos retrasar su envío de refuerzos a Somertin, decidimos lanzar un asalto anfibio hacia Jylla. También para ganar algo de estima para Elam como un poder regional competente en lo naval.",
+    "MISSION_DESC_ELAM_C2_M3": "Con el sector Mica cerrado y Mutasarif moviéndose hacia el este, Esfahani lidera su propio asalto para crear un frente común con los kargits y acortar la atrozmente larga linea del frente",
+    "MISSION_DESC_ELAM_C2_M4": "Odenshagen está a la vista, y aunque Krystof ha perdido muchos hombres Shmelev pronto irá a ayudarlo. Con sus limitadas fuerzas, Hassan debe tomar la polis jylliana antes de que sea demasiado tarde. El tiempo apremia",
+    "MISSION_DESC_ELAM_C2_M5": "Krystof logró fortificar la polis para que Hassan tuviera una ciudad capaz de ser defendida, pero el camino entre esta y el puerto es un riachuelo congelado que no pudo ser asegurado completamente. Precisamente ahí es donde Shmelev y el reconsolidado Krystof quieren atacar, lo que dejaría a Hassan aislado, sin suministros y en grave peligro de perder sus tropas de buena calidad y su material",
+    "MISSION_DESC_ELAM_C3_M1": "En los últimos meses, los grupos del ejército de Marinovic y Argeseanu comenzaron un contraataque hacia el oeste, empujando al frente Kargit sur incluso 300 kilómetros en algunos lugares. Ahora están a 200 kilómetros del Río Mica y Esfahani tuvo que hacer retroceder a sus fuerzas hacia ahí para solidificar la defensa de la linea en la montaña. Desafortunadamente el destacamenteto que fue enviado para reconocimiento se encontró con la vanguardia de Somertin. Esfahani le ordena a las unidades de reconocimiento superadas en número que retrasen el avance enemigo para poder cavar trincheras y defender la linea en la montaña",
+    "MISSION_DESC_ELAM_C3_M2": "La decisión de Esfahani de fortificar los pases resultó ser sabia. En efecto, el enemigo ha llegado para atacar su posición. Ellos tienen superioridad en el aire y en cantidad de blindados pero Ibrahim cree que con la ayuda de milicias locales y unidades antitanques bien posicionadas, pueden mantenerlos a raya. Él está, sin embargo, preocupado por loq ue esto significa para el futuro.",
+    "MISSION_DESC_ELAM_C3_M3": "Golpeados, congelados y demoralizacos, el contingente de tropas que Hassan llevó a Jylla se encuentra en su límite. Con su objetivo ya cumplido hace tiempo, Hassan sintió que era hora de llevarlos de vuelta a casa.",
+    "MISSION_DESC_ELAM_C3_M4": "Se esperaba que las flotillas transkalitas del sur fueran barcos de agua verde; lo que quiere decir que tienen un rango de acción corto. Aún peor, nadie pensó que fuera posible que las flotillas del norte navegaran a través del Pase Kolguyev para llegar al teatro naval del sur. La armada de Hassan, estacionada en Makka para repostar y repararse, está por recibir una horrible sorpresa",
+    "MISSION_DESC_ELAM_C3_M5": "Con la ofensiva de Somertin contra los pases de Kandahar detenida heróicamente gracias a los esfuerzos de Esfahani, al sultán le pareció un buen momento para pasar a la diplomacia con el comandante del teatro de Somertin, el general Laszlo. Él no lo sabía, pero su posición era mucho más débil de lo que pensaba...",
+    "MISSION_DESC_ELAM_C4_M1": "",
+    "MISSION_DESC_ELAM_C4_M2": "",
+    "MISSION_DESC_ELAM_C4_M3": "",
+    "MISSION_DESC_ELAM_C4_M4": "",
+    "MISSION_DESC_ELAM_C4_M5": "",
+    "MISSION_DESC_ELAM_C5_M1": "",
+    "MISSION_DESC_ELAM_C5_M2": "",
+    "MISSION_DESC_ELAM_C5_M3": "",
+    "MISSION_DESC_ELAM_C5_M4": "",
+    "MISSION_DESC_ELAM_C5_M5": "",
+    "MISSION_DESC_ELAM_C6_M1": "",
+    "MISSION_DESC_ELAM_C6_M2": "",
+    "MISSION_DESC_ELAM_C6_M3": "",
+    "MISSION_DESC_ELAM_C6_M4": "",
+    "MISSION_DESC_ELAM_C6_M5": "",
+    "MISSION_DESC_ELAM_C7_M1": "",
+    "MISSION_DESC_ELAM_C7_M2": "",
+    "MISSION_DESC_ELAM_C7_M3": "",
+    "MISSION_DESC_ELAM_C7_M4": "",
+    "MISSION_DESC_ELAM_C7_M5": ""
 };
 
 ESP={
@@ -844,396 +1028,8 @@ ESP={
 		[],
 		[],
 		[],
-		["Protocol successfully executed"]],
-
-	MissionDesc:[[],
-		[//Campaign 1 - Somertin Synarchy
-			[[//Chapter 1, Mission 1			
-				"Aunque el aumento de fuerzas Kargit en las fronteras no había pasado desapercibido, las circunstancias nos impidieron reaccionar adecuadamente a ésto. Ahora que están tratando de cruzar el Río Presus, nos encontramos superados en número y en fuerza, con unidades desorganizadas. La llegada del experimentado general Vladov no nos salvará del desastre, pero nos conseguirá tiempo valioso para que podamos movilizarnos por completo."
-				],
-				[//Chapter 1, Mission 2
-				"El avance Kargit había tomado los pases rocosos antes de que el general Anders pudiera traer orden a las milicias locales y a las unidades de defensa. Una inmensa tragedia, ya que se perdieron posiciones muy fácilmente defendibles. Y con ellos aun poseyendo superioridad local, solamente podemos pedirle al general Anders que los retrase tanto tiempo cómo le sea posible."
-					],
-				[//Chapter 1, Mission 3
-				"Cómo se suele decir, 'las balas del enemigo duelen menos que el puñal de tu amigo'. Esperábamos que los Polasianos fueran pérfidos y no nos ayudaran, pero no previmos que nos invadieran en nuestro peor momento. Al anochecer vinieron cómo ladrones y destruyeron salvajemente parte de nuestra flota mientras seguía en el puerto, luego desplegaron marines y los pusieron en camino a los yacimientos petrolíferos de Moh. El general Stoyan debe tomar las riendas de la situación y mantenerlos al norte del Río Moh."
-					],
-				[//Chapter 1, Mission 4
-				"El octavo ejército de Lazlo fue rodeado y sitiado. Los ríos Presus, Przek y Posun han caído, cómo también lo han hecho las montañas rocosas y las zonas fronterizas del sur. Nuestras unidades están teniendo dificultades para aguantar la ofensiva Kargit. Con los bastardos fuera de la orgullosa ciudad de Patna y preparados para el asalto, el general Vladov ha decidido resistir en su tierra natal. Fortificaciones, trincheras y sectores inundados se asegurarán de que los bastardos paguen por cada metro del hogar de Vladov con sangre. Si ésta ciudad cayera, los Kargits tendrían una via libre hacia la capital. ¡Eso no lo podemos permitir!."
-					],
-				[//Chapter 1, Mission 5
-				"La valiente defensa de Patna por parte de Vladov, aunque se haya perdido la ciudad, no fue en vano. Nos dio tiempo suficiente para prepararnos para ésta batalla decisiva. Ahora los bastardos están en las puertas de nuestra capital forzando su entrada en la ciudad, matando e incendiando todo en su camino. Pero ésta vez no retrocederemos ni un solo paso. ¡Por Somertin, por Dios y por todo lo que es bueno, expulsemos a los criminales! ¡Kaula se mantendrá en pie!"
-					]],
-			[[//Chapter 2, Mission 1
-				"La operación INVENCIBLE cambió el rumbo de la batalla y detuvo a la maquina de guerra kargit. Además, el espléndido contraataque causó que 100.000 hombres y los mejores 1000 tanques kargit, la punta proverbial de su lanza, se vieran rodeados y separados del ejército principal. El mariscal Hryniuk tendrá el honor de liquidar la bolsa de una vez por todas. Mientras tanto, en el frente sur, Dumitrescu quiere liberar la mayor parte de Interriverana que pueda. Si pudieran avanzar, no solo le quitarían presión al frende de Anders sino que también le permitirían a Laszlo tomar la batalla hacia Elam más adelante"
-					],
-				[//Chapter 2, Mission 2
-					"Con Laszlo seguro y el avance Elamita diluyéndose, los Altos Mandos quieren estabilizar el frente sur de una vez por todas. Se duplicó el flujo de suministros hacia el mismo y hay expectativas de que el mariscal Laszlo lleve a cabo una contraofensiva. Ansioso por darles su merecido a los Elamitas, aprovecha la oportunidad para su venganza. Con algo de suerte Shmelev de los transkalitas compartirá al menos una pizca de su entusiasmo..."
-					],
-				[//Chapter 2, Mission 3
-					"Aunque la flota de batalla de Somertin fue mayormente destruida y torpedeada, aún estaba en posesión de una fuerza submarina respetable. No se le puede permitir quedarse quieta. Apoyará al frente norte hundiendo barcos de suministros polasianos"
-					],
-				[//Chapter 2, Mission 4
-					"Con la operación INVENCIBLE, los kargits perdieron la iniciativa estratégica y su única posibilidad de derrotar a Somertin. Los Altos Mandos quieren tomar la iniciativa lo más rápido posible y hacer retroceder a los kargits con una ofensiva sostenida a gran escala a lo largo de todo el frente al norte del Lago Cordum.<br>Pero este gran empuje en realidad está ocultando el verdadero objetivo de la Operación CELERIDAD..."
-					],
-				[//Chapter 2, Mission 5
-					"El gran avance reclamó las vidas de más de 500.000 jóvenes hombres, pero puso la iniciativa operacional firmemente en las manos de Somertin y les permitió recuperar más de 100 kilómetros de territorio. El comando kargit, a pesar de su brillante preparación, tuvo que responder a múltiples ataques somertinos y gastó gran parte de sus reservas.<br>Aprovechando su ventaja, Anders pretende lanzar un asalto blindado y rodear la ciudad de Patna, asegurándola antes de que los kargits puedan fortificarla y usarla como bastión. Está decidido a ganar esta batalla no solo por el obvio valor estratégico, sino también en honor de Vladov quien luchó valientemente para retrasar el embate enemigo."
-					]],
-			[[//Chapter 3, Mission 1
-				"Al principio, los somertinos acosaron a los convoys de suministros de Polasia mediante ataques aislados de submarinos; luego los polasianos aprendieron a agrupar convoys por seguridad y a escoltarlos con otra naves. Somertin aprendió a agrupar sus propios submarinos también, y a enviar naves capitales para dispersar a los barcos antisubmarinos que protegían a los convoys. De éste modo, la guerra de submarinos escaló, casi hacia una confrontación directa que los polasianos quieren evitar y los somertinos acrecentar. La lucha herócia del pequeño SFN Piorun le dio suficiente tiempo a la fuerza de choque para llegar. Ahora el SFN KETER y el PSS Sol están Cara a cara, los acorazados más poderosos de Somertin y Polasia. Polasia fue forzada a entrar en ésta batalla naval."
-				],
-				[//Chapter 3, Mission 2
-				"Tomando ventaja de su superioridad naval y para resolver el problema de que su suministro de submarinos estaba disminuyendo, el Alto Mando Naval de Somertin decidió lanzar un asalto anfibio en la isla Valeria. Si lograban tomarla, los barcos antisubmarinos deberían apostarse el doble de lejos del área dónde operan los submarinos blancos. El mariscal Stoyan está eufórico de dejar al ejército polasiano aún más hambriento y accede a liderar la parte terrestre de ésta campaña."
-					],
-				[//Chapter 3, Mission 3
-				"El Frente Extranjero de Polasia se sentía más cómo una bolsa para el general Bernard. Al frente está el Ejército Blanco que sigue debilitándolos, y detrás hay una población que no está dispuesta a apoyar el esfuerzo militar. La situación se ha vuelto aún peor ya que los ataques de submarinos comenzaron al mismo tiempo que comenzaron a escasear las municiones. Ahora que la Isla Valeria se perdió y los ataques se intensificaron, a las tropas polasianas comenzó a faltarles incluso comida. Su moral está más baja que nunca y el Mariscal Stoyan se prepara para terminar con ellos de una vez por todas"
-					],
-				[//Chapter 3, Mission 4
-				"Uno podría decir que la propaganda anti-somertina galvanizó a la gente de Polasia para que peleara contra el problema. Sin embargo terminó volviéndose en su contra ya que provocó que resurgieran viejos resentimientos. Milicias rojas y azules están destruyendo el país, viéndose entre ellas cómo enemigas y a Somertin cómo un simple problema secundario. Ésta estupidez los dejó expuestos, y el general Stoyan se está preparando para eutanizar a su patético ejército."
-					],
-				[//Chapter 3, Mission 5
-				"La mayor parte de la Polasia metropolitana se rindió ante nuestras fuerzas, quitándole a sus milicias materiales cruciales. Su única esperanza es que su armada superada en número logre una milagrosa victoria decisiva y luego hunda nuestro convoy de suministros tal y como nosotros hicimos con el suyo. Siendo su última esperanza de negar la realidad de que la guerra está perdida, debemos destruir a su armada aquí. Será la batalla naval más grande de la historia, pero tenemos confianza en que lo lograrás"
-					]],
-			[[//Chapter 4, Mission 1
-				],
-				[//Chapter 4, Mission 2
-					],
-				[//Chapter 4, Mission 3
-					],
-				[//Chapter 4, Mission 4
-					],
-				[//Chapter 4, Mission 5
-					]],
-			[[//Chapter 5, Mission 1
-				],
-				[//Chapter 5, Mission 2
-					],
-				[//Chapter 5, Mission 3
-					],
-				[//Chapter 5, Mission 4
-					],
-				[//Chapter 5, Mission 5
-					]],
-			[[//Chapter 6, Mission 1
-				],
-				[//Chapter 6, Mission 2
-					],
-				[//Chapter 6, Mission 3
-					],
-				[//Chapter 6, Mission 4
-					],
-				[//Chapter 6, Mission 5
-					]],
-			[[//Chapter 7, Mission 1
-				],
-				[//Chapter 7, Mission 2
-					],
-				[//Chapter 7, Mission 3
-					],
-				[//Chapter 7, Mission 4
-					],
-				[//Chapter 7, Mission 5
-					]]
-			],
-		[//Campaign 2 - Kargit Gosudarstvo
-			[[//Chapter 1, Mission 1
-			"De forma bastante predecible, los subhumanos no fueron capaces de crear un estado funcional debido a su falta de Kultur. Su pila de heno está temblando hasta los cimientos. Solo tomará una patada en la puerta al estilo del castillo de Wolfenstein y la federación entera colapsará. Y entonces estos reaccionarios serán civilizados, y redistribuiremos sus posesiones de forma justa entre todas las personas. (Que ellos no son porque son subhumanos). Para ésto, el primer paso lógico es aplastar los puestos de la montaña que tienen pocos hombres. Para éste paso esencial, necesitaremos al mejor general disponible."
-				],
-				[//Chapter 1, Mission 2
-			"Con Hans moviéndose rápidamente sobre los pasos y dentro del noroeste de Somertin, se estaban creando planes para que el doble de unidades atacaran los puentes sobre el río Presus. El Mariscal Bela y Kulik liderarán la carga, pero la ruptura inicial debe ser producida por Bela."
-					],
-				[//Chapter 1, Mission 3
-			"Los idiotas generales de los subhumanos han dejado un enorme agujero en su primera línea. Hans y Kulik cooperarán en una ofensiva de pinza para rodear y neutralizar a todo un ejército de 300.000 hombres. Hacerlo es de suma importancia, ya que nos otorgará locales superioridad en números"
-					],
-				[//Chapter 1, Mission 4
-			"El avance sobre el Mica, en conjunto con el cruce de Esfahani sobre las montañas Kandahar dejó a Laszlo y su octavo ejército rodeados. Su fuerza es demasiado grande para ser ignorada, nuestro avance debe ser rápido pero no debe dejar nuestros flancos expuestos. Para ésto, les pediremos a los Elamites que liquiden la bolsa cómo los buenos perros que son, y les proveeremos apoyo aéreo."
-					],
-				[//Chapter 1, Mission 5
-			"El avance de Hans es el más crucial, ya que delante de él está la capital de Somertin, Kaula. Pero antes de que puedan soñar con tomar eso, tienen que pasar a través de la ciudad fuertemente fortificada de Patna. Superar a una fortaleza tan formidable no será una tarea fácil incluso para el invencible ejército de Kargit."
-					]],
-			[[//Chapter 2, Mission 1
-				"El tiempo es valioso para las fuerzas Kargit. Y lo es aún más para el Mariscal Hans quien tiene que conducir su punta de lanza para, con suerte, capturar Kaula, mientras que su retaguardia no está resguardada. Patna había sido rodeada, cierto, pero las vias de ferrocarril la atraviesan, y la ciudad tampoco había sido capturada del todo. Sabiendo que su punta de lanza debe seguir adentrándose más profundo, Khuzov quiere que Kulik refuerce la retaguardia de Hans y asegure sus lineas de suministros."
-					],
-				[//Chapter 2, Mission 2
-					"Nada es más complicado que cruzar un río bien defendido, y si el glorioso anfitrión suprahumano quiere capturar Interriverana (acertadamente llamada así por extenderse entre los valles del Przek, Konna y el Posun) tienen que cruzar tres ríos, cada uno más difícil que el anterior. Usualmente, tamaña operación solo se llevaría a cabo si fuera seguro, pero los kargits no pueden darse el lujo de elegir sus frentes. Tienen que mantener empujes constantes para no perder la iniciativa estratégica. Bela recivirá órdenes de tomar el mando de las fuerzas de Kulik y encargarse del frente del sur. Mientras avanza al mismo tiempo."
-					],
-				[//Chapter 2, Mission 3
-					"Si bien el frente del sur avanzó profundamente dentro de Interriverana, no avanzó mucho en general. El mariscal Khuzov lleva mucho tiempo sin poder dormir tranquilo, temiendo que mientras desvían la mayoría de los suministros hacia el norte para tratar de tomar Kaula, los Blancos puedan planear un contraataque contra el idiota de Bela. Aún peor, luego de que Kulik haya terminado con su prueba en Patna, sufrió un ataque de isquemia cardíaca, por lo que no hay forma de saber cuando volverá... o si va a volver. Con pocas opciones, Khuzov decidió ir y tomar el comando de las fuerzas de Kulik personalmente. "
-					],
-				[//Chapter 2, Mission 4
-					"El liderazgo del mariscal Khuzov había asegurado la integridad del control Kargit sobre Interriverana del oeste, y Kulik había logrado recuperarse exitosamente de su condición. Las cosas parecían verse estables, si no geniales, para el anfitrion Kargit. Ahora, el gran mariscal va a supervisar el avance de Hans, y ayudarlo en la gran batalla que se aproxima."
-					],
-				[//Chapter 2, Mission 5
-					"El ejército Kargit avanzó miles de kilómetros, y desde la última ofensiva del mariscal Hans la periferia del oeste de Kaula está a la vista. Tomar la ciudadela fortificada será una tarea hercúlea, ya que la ofensiva Kargit se está acercando rápidamente a su culminación de Clausewitz. Khuzov preparó cantidades masivas de blindados y materiales que se transportarán al frente de Hans, para la que será la ofensiva más dura y decisiva de la guerra. El imperio Kargit se levantará o caerá, y eso será decidido por el resultado de esta operación."
-					]],
-			[[//Chapter 3, Mission 1
-					"Está hecho, los somertinos pusieron sus reservas en la ciudadela de Kaula. Lo hicieron asumiendo que los flancos de los ríos son lo suficientemente seguros para no ser atravesados. Una suposición errónea que significará su derrota"
-				],
-				[//Chapter 3, Mission 2
-					"Con el asalto implacable de Weber y Hoth; y con el apoyo de Khuzov y Felix; Hans logró atravesar los flancos del frente de Anders sobre Dambova, rodeando Kaula y a casi 300.000 hombres somertinos dentro. Es hora de un esfuerzo combinado para destruir esta bolsa completamente. Con la caída de su capital, la moral de las cucarachas del ejército blanco colapsará y aceptarán a sus amos."
-					],
-				[//Chapter 3, Mission 3
-					"Tras la caída de su capital, el frente noroeste de Somertin muestra signos de fragilidad. El Alto Mando Kargit cree que puede realizar un asalto que ocasione su colapso. Mientras tanto, noticias sobre los fracasos de Polasia llegan a los oidos del Alto Mando Kargit pero no impresionan especialmente a nadie."
-					],
-				[//Chapter 3, Mission 4
-					"Interriverana se ganó su nombre por todos los ríos problemáticos que estaban entre nosotros y su fortaleza. Ahora, sin embargo, comenzaremos las maniobras para terminar con esta farsa. Aunque idealmente nos apresuraríamos para llegar hasta Ias lo más rápido posible; eso ya no es necesario debido a la caída de Kaula. Fueron forzados a enviar fuerzas hacia el norte y vamos a aprovechar esto para agotarlos. Primero lo primero; golpear las fortificaciones somertinas del otro lado del Río Posun"
-					],
-				[//Chapter 3, Mission 5
-					"Los subhumanos fueron derrotados sin embargo su terquedad no conoce límites. Organizados alrededor de las ciudades fortaleza Iaș y Omck, tomando fuerzas para luchar desde Iaș, la megalópolis de acero de Molda; y Burluk, el granero agricultural, incluso ahora aún pueden dar pelea ferozmente. No puede haber una victoria hasta que el sudeste de Somertin sea destruido, arruinado y arrasado hasta los cimientos. ¡Ha llegado el momento de aplastarlos de una vez por todas!"
-					]],
-			[[//Chapter 4, Mission 1
-				],
-				[//Chapter 4, Mission 2
-					],
-				[//Chapter 4, Mission 3
-					],
-				[//Chapter 4, Mission 4
-					],
-				[//Chapter 4, Mission 5
-					]],
-			[[//Chapter 5, Mission 1
-				],
-				[//Chapter 5, Mission 2
-					],
-				[//Chapter 5, Mission 3
-					],
-				[//Chapter 5, Mission 4
-					],
-				[//Chapter 5, Mission 5
-					]],
-			[[//Chapter 6, Mission 1
-				],
-				[//Chapter 6, Mission 2
-					],
-				[//Chapter 6, Mission 3
-					],
-				[//Chapter 6, Mission 4
-					],
-				[//Chapter 6, Mission 5
-					]],
-			[[//Chapter 7, Mission 1
-				],
-				[//Chapter 7, Mission 2
-					],
-				[//Chapter 7, Mission 3
-					],
-				[//Chapter 7, Mission 4
-					],
-				[//Chapter 7, Mission 5
-					]]
-			],
-		[//Campaign 3 - Transkal Commonwealth
-			[[//Chapter 1, Mission 1
-			"Un acto cobarde por parte de la República de Polasia, desplegaron docenas de batallones desde el norte y están tratando de robar nuestras minas de tungsteno. Lord Gustav es un comandante muy habilidoso pero no tiene tiempo para prepararse. Sus fuerzas dispares están luchando mientras se retiran, esperando retrasarlos lo suficiente."
-				],
-				[//Chapter 1, Mission 2
-			"El norte no es el único problema, aparentemente. Despliegues anfibios concomitantes the el imperio Elamita están teniendo lugar en el dominio del general Krystif. El podrá ser... leal... pero no es tan habilidoso cómo Gustav. Simplemente esperemos que pueda retrasarlos eficientemente."
-					],
-				[//Chapter 1, Mission 3
-			"Llegan buenas noticias desde Jarvi, dónde el general Vilho creó una división y la envió a ayudar a Gustav. Además, el ímpetu de los polasianos disminuyó enormemente. Es hora de que sean detenidos."
-					],
-				[//Chapter 1, Mission 4
-			"La reina logró convencer al general Shmelev para que fuera a ayudar a Krystof. Experimentado y formado en guerras pasadas, es probable que él pueda controlar la situación."
-					],
-				[//Chapter 1, Mission 5
-			"Es bastante impresionante cómo los Kargit lograron usar aeropuertos improvisados para soltar en paracaidas a un equipo de operaciones especiales justo en medio de nuestra nación, ¡junto a la Ciudadela Reginal ni más ni menos! Los cuatro generales deben dejar de lado sus diferencias para poder garantizar la seguridad de la reina."
-					]],
-			[[//Chapter 2, Mission 1
-				"Por mera coincidencia los generales transkalita y elamita más idiotas ya que el ejército de Krystof es enviado a reforzar el Frente Shahar contra Ali que había logrado empujarlo hacia atrás un poco. Ahora o nunca, ¡se probará cuál de los 2 es más incompetente!"
-					],
-				[//Chapter 2, Mission 2
-				"Mientras Krysrof asegura su sector, se necesita de alguien más para el sector Sassafras. Y ya que los acuerdos en Transkal se hacen de forma algo ambigua, esto requiere que la reina dé ciertas concesiones..."
-					],
-				[//Chapter 2, Mission 3
-				"Muy consciente de que sus ejércitos están lejos de casa, y que las (principalmente costeras) polis están expuestas a un segundo desembarque, la reina decide no perder más tiempo y asegurar la supremacía naval. Está dispuesta a arriesgar todo en una desesperada operación en la que la mitad de su flota primero debe navegar 4000km, pasando a través de un estrecho considerado imposible, y luego luchar de frente mientras son superados en fuerza y excedidos de combustible. Esta operación será la victoria más ambiciosa y gloriosa en la historia de la guerra naval, o el plan más estúpido jamás concebido."
-					],
-				[//Chapter 2, Mission 4
-				"Los hombres de la reina defendieron a Transkal de 2 invasiones, detuvieron a los elamitas frente a los ríos y los hicieron retroceder, aplastaron su apenas erigida flota de batalla, y ahora están marchando para ganarse sus laureles contra el más grande Balaur, el ejército de Kargi bajo el mando del mariscal Hans. Una batalla sangrienta por la capital de Somertin está ocurriendo, y llegamos justo a tiempo para ayudar a nuestros aliados. Fusileros Transkalitas, ¡marchen!"
-					],
-				[//Chapter 2, Mission 5
-				"Kaula, con los esfuerzos concertados de Dumitrescy y Gustav, se mantuvo firmemente ante la marea kargit. Los kargits, temerosos de perder la iniciativa, utilizaron sus reservas para redoblar la ofensiva. Ahora, es tiempo de que Anders y Vilho hagan su parte. Dumitrescu y Gustav mantuvieron el yunque en su lugar, y ahora es tiempo de que caiga el martillo."
-					]],
-			[[//Chapter 3, Mission 1
-				"La marina de Elam fue humillada; el limitado suministro de mano de obra de Polasia agotado y las fuerzas especiales de Kargia diezmadas. Claramente Transkal está a salvo de la agresión de esas tres naciones. Una cisma se encuentra flotando en el aire; ¿deberían firmar un tratado de paz separada e irse a casa o pelearán por el bien de su aliado hasta el final?"
-				],
-				[//Chapter 3, Mission 2
-				"Con los aeroplanos adquiridos de Somertin, el tamaño de la Fuerza Aérea de la Reina se multiplicó diez veces. Hay enormes dificultades logísticas que deben ser sobrepasadas antes de que puedan enorgulleserse de ello, un hecho que están trabajando para remediar. Lo primero es ver cómo trabajarán con las fuerzas terrestres mediante un ejercicio aéreo. El príncipe Michael, quien se supone debe realizar un ejercicio aéreo propio, se les une."
-					],
-				[//Chapter 3, Mission 3
-				"La reina teme que, por cómo van las cosas, Transkal se dirige hacia un precipicio. Ella se encargará de la situación, reclutará a tantos generales cómo pueda para su causa y se asegurará de que Somertin entienda la situación"
-					],
-				[//Chapter 3, Mission 4
-				"Con la lealtad de los generales del norte asegurada, su majestad finalmente revelará sus verdaderas intenciones. Mientras Krystof y Shmelev están ocupados combatiendo contra los Elamitas, ella hará lo que debe para conseguir poder sin precedentes, la lealtad indivisa de los soldados y el derecho para remover generales a placer. Ésto no será absolutamente nada bueno para algunos de ellos, y a partir de éste punto en adelante no hay forma de hecharse atrás. Su majestad ha cruzado un punto de no retorno."
-					],
-				[//Chapter 3, Mission 5
-				"Shmelev se percató de las verdaderas intenciones de la Reina, y hacia dónde quiere llevar ella al país. Pero él no dejará que se salga con la suya. O Transkal permite que gente cómo Shmelev robe, o seguirá los sueños de la Reina y prosperará. En ésta batalla de voluntades, ya no puede haber un intermedio, y cada lado disparará con todo lo que tiene"
-					]],
-			[[//Chapter 4, Mission 1
-
-				],
-				[//Chapter 4, Mission 2
-					],
-				[//Chapter 4, Mission 3
-					],
-				[//Chapter 4, Mission 4
-					],
-				[//Chapter 4, Mission 5
-					]],
-			[[//Chapter 5, Mission 1
-				],
-				[//Chapter 5, Mission 2
-					],
-				[//Chapter 5, Mission 3
-					],
-				[//Chapter 5, Mission 4
-					],
-				[//Chapter 5, Mission 5
-					]]
-			],
-		[//Campaign 4 - Polasie Democratic Republic
-			[[//Chapter 1, Mission 1
-			"Las fuerzas cangrejo tienen que tomar control de la costa norte de Somertin para asegurar los yacimientos petrolíferos de Moh, y luego traer la libertad al continente. Desafortunadamente, el imperio terrorista posee una flota competente, que ha usado repetidas veces para oprimirnos y sin duda lo hará otra vez para tratar de evitar la llegada de la libertad. ¡Tenemos que incapacitar a su flota rápidamente así que apresúrense! El tiempo es libertad."
-				],
-				[//Chapter 1, Mission 2
-			"Con la flota somertina aplastada no hay nada que nos impida hacer un desembarco anfibio, cosa que es absolutamente necesaria. Los arreglos para ésto se están realizando mientras hablamos. Una fuerza de desembarque está preparándose para hacer un peligroso viaje a través del mar."
-					],
-				[//Chapter 1, Mission 3
-			"Sobre el horizonte yace el río Moh y más allá de éste los yacimientos petrolíferos que tanto necesitamos. Tenemos que hacerlos retroceder y cruzar el río."
-					],
-				[//Chapter 1, Mission 4
-			"Hemos estado peleando por ese maldito río por tanto tiempo y seguimos siendo repelidos. Ya no más. Ahora que tenemos suficientes hombres y materiales para forzarlos a que nos dejen cruzar, pero también tenemos grandes objetivos. El Alto Mando nos ordenó tomar una cabeza de puente sobre el río, luego aprovechar el impulso para finalmente capturar los yacimientos petrolíferos de Moh y la vía ferroviaria Moh-Golubuju."
-					],
-				[//Chapter 1, Mission 5
-			"Desde el norte avanzaban los polasianos, y desde el oeste los Kargits. Ahora hay un número significante de somertinos atrapados alrededor de Golubuju, sin ninguna manera de obtener suministros. Llegó la hora de destruir a los veteranos de Stoyan que nos humillaron por tanto tiempo."
-					]],
-			[[//Chapter 2, Mission 1
-				"Aunque la armada transkalita es casi inútil, los altos mandos polasianos quieren que sea destruida, para que una futura invasión pueda proceder sin impedimentos. El almirante Doris Miller, tal vez el almirante polasiano más habilidoso, es prácticamente el único capaz de llevar a cabo esta tarea."
-					],
-				[//Chapter 2, Mission 2
-				"La operación especial en Moh había funcionado maravillosamente y los yacimientos petrolíferos habían sido ocupados por los valientes marines. Parte de los marines, sin embargo, se mantuvo en espera para esta ocasión. Es hora de desplegar a esos chicos y tomar las minas de tugsteno y cromo de Svelge.<br>Una vez el cromo y el tungsteno hayan sido asegurados; el pueblo será capaz de disfrutar consoladores de marca TermoChroma® (que son muy populares hoy en día). Así que vamos, ¡hagamos esto por los consoladores del pueblo!"
-					],
-				[//Chapter 2, Mission 3
-				"Antes de que la fuerza de invasión svelgiana pueda adentrarse más en territorio enemigo, su flanco debe ser asegurado. Para esto, Pykot liderará una segunda fuerza de marines dentro del territoro jarviano. Comandante, ¡debe tener cuidado! Los jarvianos son guerreros valientes de puntería sin igual y fieramente devotos a su independencia. Aún con potencia de fuego superior, su victoria aún requerirá de trabajo duro."
-					],
-				[//Chapter 2, Mission 4
-				"Con potencia de fuego superior, el ejército de Pykot avanzó firmemente y está a distancia de reconocimiento de las tan deseadas minas de tungsteno. Una vez que sean capturadas, el pueblo de Polasia será capaz de regocijarse ya que estos recursos estratégicos se utilizarán para crear bienes estratégicos."
-					],
-				[//Chapter 2, Mission 5
-				"La falta de fuerzas transkalitas en la región había sido algo temporal. La parte mala es que provocó que nuestras fuerzas realizaran avances descuidados y salientes. Ahora que estamos sobrepasados, nos dimos cuenta de que el general Gustav probablemente lance un asalto de pinza devastador si no intervenimos rápidamente"
-					]],
-			[[//Chapter 3, Mission 1
-				"Polasia ha tenido avances tenues en el continente, pero ahora el general Bernard está comenzando a tener presagios oscuros ya que el Ejército Blanco está trayendo más y más refuerzos gradualmente. La Fuerza Aérea Polasiana debe estar a la par cotra la Fuerza Aérea Blanca, que se está expandiendo rápidamente"
-				],
-				[//Chapter 3, Mission 2
-				"Finalmente, el presidente logró aumentar el presupuesto militar, y comenzó a trtar el tema de la falta de soldados. Eso se logró mediante la promoción del reclutamiento de mujeres en el ejército, pero eso requiere de ciertos compromisos políticos..."
-					],
-				[//Chapter 3, Mission 3
-				"Además de estar superado en número, en potencia de fuego y de estar en inferioridad aérea, Bernard tiene que lidiar con otro problema. Su logística depende mayormente de el envío de comida y suministros desde su país natal a través de puertos que tiene a su disposición. Ahora las barcazas que se supone deberían traer municiones, armas y comida para los soldados están siendo torpedeadas por submarinos. Y puede que haya algo aún peor por venir..."
-					],
-				[//Chapter 3, Mission 4
-				"Esta misión sucedió casi un mes antero antes de la última. Exasperado de que había pasado un tiempo sin poder darles el golpe de gracia a lo Svelgerianos, la impaciencia del general Pykot crecía y crecía. Y el viejo perspicaz de Gustav sabía como usar eso a su favor. Pykot está por caer en una trampa. Va a morder el anzuelo, el hilo y la caña entera. "
-					],
-				[//Chapter 3, Mission 5
-				"Luego de la retirada de la segunda fuerza de Transkal, el golpeado y magullado ejército de Bernard es el último del continente. Los blancos ejecutan un asalto implacable pero Bernard sigue luchando con valentía incluso cuando todo está en su contra. ¿Qué tanto podrá aguantar así?"
-					]],
-			[[//Chapter 4, Mission 1
-				],
-				[//Chapter 4, Mission 2
-					],
-				[//Chapter 4, Mission 3
-					],
-				[//Chapter 4, Mission 4
-					],
-				[//Chapter 4, Mission 5
-					]],
-			[[//Chapter 5, Mission 1
-				],
-				[//Chapter 5, Mission 2
-					],
-				[//Chapter 5, Mission 3
-					],
-				[//Chapter 5, Mission 4
-					],
-				[//Chapter 5, Mission 5
-					]]
-			],
-		[//Campaign 5 - Caliphate of Elam
-			[[//Chapter 1, Mission 1
-			"El frente entre Elam y Somertin es largo y los hombres deben separarse mucho para cubrirlo. Aun peor, tendremos que cruzar sobre barreras defendibles cómo el gran Río Shahar or las Montañas Khandahar para avanzar. Si queremos que el ataque tenga éxito, la primera y más impactante ofensiva debe tener lugar sobre las Montañas Khandahar y debe ser dirigida por el general más experimentado, de otra forma el avance no será posible en lo absoluto. El grandioso Vizier Mutasarif debe liderar una distracción sobre el Río Mica, para desviar la atención del enemigo."
-				],
-				[//Chapter 1, Mission 2
-				"El cruce del Mica de Mutasarif fue un truco para distraer al general Laszlo, y él mordío el anzuelo. Ahora que el yunque está listo, Esfahani será el martillo."
-					],
-				[//Chapter 1, Mission 3
-				"Con el éxito del empujón de Ibrahim Esfahani, el enemigo tuvo que debilitar sus fuerzas del segmento Shahar. Perfecto para Ali, quien tiene que capturar al menos catorce cabezas de puente de éste largo segmento."
-					],
-				[//Chapter 1, Mission 4
-				"Para cuando Ali se dispuso a cruzar el río, Hassan ya estaba comenzando una doble operación. Mientras cruzaba el río, enviaba marines por detrás al mismo tiempo. "
-					],
-				[//Chapter 1, Mission 5
-				"Un golpe de Elam y uno de los Kargi han hecho tambalear a Laszlo y a su octavo ejército. Ahora están solos y rodeados. Todo va de acuerdo al keikaku. El sultán los quiere eliminados, para mostrar que el imperio es capaz de bewegungskrieg igual que los Kargi. Nota de traducción: 'keikaku' significa plan"
-					]],
-			[[//Chapter 2, Mission 1
-				"Laszlo había escapado y ya no estaba rodeado. Aunque podría ser demasiado tarde, Mutasarif quiere intentar capturarlo una vez más para evitar que sea una molestia más adelante"
-					],
-				[//Chapter 2, Mission 2
-				"Deseando, en el mejor de los casos, forzar a los transkalitas a rendirse, y en el peor de los casos retrasar su envío de refuerzos a Somertin, decidimos lanzar un asalto anfibio hacia Jylla. También para ganar algo de estima para Elam como un poder regional competente en lo naval."
-					],
-				[//Chapter 2, Mission 3
-				"Con el sector Mica cerrado y Mutasarif moviéndose hacia el este, Esfahani lidera su propio asalto para crear un frente común con los kargits y acortar la atrozmente larga linea del frente"
-					],
-				[//Chapter 2, Mission 4
-				"Odenshagen está a la vista, y aunque Krystof ha perdido muchos hombres Shmelev pronto irá a ayudarlo. Con sus limitadas fuerzas, Hassan debe tomar la polis jylliana antes de que sea demasiado tarde. El tiempo apremia"
-					],
-				[//Chapter 2, Mission 5
-				"Krystof logró fortificar la polis para que Hassan tuviera una ciudad capaz de ser defendida, pero el camino entre esta y el puerto es un riachuelo congelado que no pudo ser asegurado completamente. Precisamente ahí es donde Shmelev y el reconsolidado Krystof quieren atacar, lo que dejaría a Hassan aislado, sin suministros y en grave peligro de perder sus tropas de buena calidad y su material"
-					]],
-			[[//Chapter 3, Mission 1
-				"En los últimos meses, los grupos del ejército de Marinovic y Argeseanu comenzaron un contraataque hacia el oeste, empujando al frente Kargit sur incluso 300 kilómetros en algunos lugares. Ahora están a 200 kilómetros del Río Mica y Esfahani tuvo que hacer retroceder a sus fuerzas hacia ahí para solidificar la defensa de la linea en la montaña. Desafortunadamente el destacamenteto que fue enviado para reconocimiento se encontró con la vanguardia de Somertin. Esfahani le ordena a las unidades de reconocimiento superadas en número que retrasen el avance enemigo para poder cavar trincheras y defender la linea en la montaña"
-				],
-				[//Chapter 3, Mission 2
-				"La decisión de Esfahani de fortificar los pases resultó ser sabia. En efecto, el enemigo ha llegado para atacar su posición. Ellos tienen superioridad en el aire y en cantidad de blindados pero Ibrahim cree que con la ayuda de milicias locales y unidades antitanques bien posicionadas, pueden mantenerlos a raya. Él está, sin embargo, preocupado por loq ue esto significa para el futuro."
-					],
-				[//Chapter 3, Mission 3
-				"Golpeados, congelados y demoralizacos, el contingente de tropas que Hassan llevó a Jylla se encuentra en su límite. Con su objetivo ya cumplido hace tiempo, Hassan sintió que era hora de llevarlos de vuelta a casa."
-					],
-				[//Chapter 3, Mission 4
-				"Se esperaba que las flotillas transkalitas del sur fueran barcos de agua verde; lo que quiere decir que tienen un rango de acción corto. Aún peor, nadie pensó que fuera posible que las flotillas del norte navegaran a través del Pase Kolguyev para llegar al teatro naval del sur. La armada de Hassan, estacionada en Makka para repostar y repararse, está por recibir una horrible sorpresa"
-					],
-				[//Chapter 3, Mission 5
-				"Con la ofensiva de Somertin contra los pases de Kandahar detenida heróicamente gracias a los esfuerzos de Esfahani, al sultán le pareció un buen momento para pasar a la diplomacia con el comandante del teatro de Somertin, el general Laszlo. Él no lo sabía, pero su posición era mucho más débil de lo que pensaba..."
-					]],
-			[[//Chapter 4, Mission 1
-				],
-				[//Chapter 4, Mission 2
-					],
-				[//Chapter 4, Mission 3
-					],
-				[//Chapter 4, Mission 4
-					],
-				[//Chapter 4, Mission 5
-					]],
-			[[//Chapter 5, Mission 1
-				],
-				[//Chapter 5, Mission 2
-					],
-				[//Chapter 5, Mission 3
-					],
-				[//Chapter 5, Mission 4
-					],
-				[//Chapter 5, Mission 5
-					]]
-
-			],
-		[//Campaign 6 - HAHAHA you're not finding this secret nation out until the full release!
-			],
-		[//Campaign 7 - HAHAHA you're not finding this secret nation out until the full release!
-			],
-		[//Campaign 8 - HAHAHA you're not finding this secret nation out until the full release!
-			],
-		[//Campaign 9 - HAHAHA you're not finding this secret nation out until the full release!
-			],
-		[//Campaign 10 - HAHAHA you're not finding this secret nation out until the full release!
-			]],
+		["Protocol successfully executed"]
+	],
 	Prelogues:[[],
 		[//Campaign 1 - Somertin Synarchy
 			[[//Chapter 1, Mission 1

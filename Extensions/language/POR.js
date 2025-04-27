@@ -379,6 +379,7 @@ const LANGUAGE_PORTUGUESE = {
     "MISSION_NAME_SOMERTIN_C7_M3": "",
     "MISSION_NAME_SOMERTIN_C7_M4": "",
     "MISSION_NAME_SOMERTIN_C7_M5": "",
+	
     "MISSION_NAME_KARGIT_C1_M1": "Operación 'Salto'",
     "MISSION_NAME_KARGIT_C1_M2": "Operación 'Hacha'",
     "MISSION_NAME_KARGIT_C1_M3": "Operación 'Puño anal'",
@@ -414,6 +415,7 @@ const LANGUAGE_PORTUGUESE = {
     "MISSION_NAME_KARGIT_C7_M3": "",
     "MISSION_NAME_KARGIT_C7_M4": "",
     "MISSION_NAME_KARGIT_C7_M5": "",
+
     "MISSION_NAME_TRANSKAL_C1_M1": "Nuestras espaldas expuestas",
     "MISSION_NAME_TRANSKAL_C1_M2": "Nuestros enemigos belicosos",
     "MISSION_NAME_TRANSKAL_C1_M3": "Nuestro nombre despreciado",
@@ -449,6 +451,7 @@ const LANGUAGE_PORTUGUESE = {
     "MISSION_NAME_TRANSKAL_C7_M3": "",
     "MISSION_NAME_TRANSKAL_C7_M4": "",
     "MISSION_NAME_TRANSKAL_C7_M5": "",
+
     "MISSION_NAME_POLASIE_C1_M1": "Operación Traseros Sorpresa",
     "MISSION_NAME_POLASIE_C1_M2": "Landfall",
     "MISSION_NAME_POLASIE_C1_M3": "El Escudo de la Libertad",
@@ -484,6 +487,7 @@ const LANGUAGE_PORTUGUESE = {
     "MISSION_NAME_POLASIE_C7_M3": "",
     "MISSION_NAME_POLASIE_C7_M4": "",
     "MISSION_NAME_POLASIE_C7_M5": "",
+
     "MISSION_NAME_ELAM_C1_M1": "Distracción",
     "MISSION_NAME_ELAM_C1_M2": "Assaltar los pases",
     "MISSION_NAME_ELAM_C1_M3": "La gran ofensiva de Ali",
@@ -518,7 +522,187 @@ const LANGUAGE_PORTUGUESE = {
     "MISSION_NAME_ELAM_C7_M2": "",
     "MISSION_NAME_ELAM_C7_M3": "",
     "MISSION_NAME_ELAM_C7_M4": "",
-    "MISSION_NAME_ELAM_C7_M5": ""
+    "MISSION_NAME_ELAM_C7_M5": "",
+
+	"MISSION_DESC_SOMERTIN_C1_M1": "Aunque el aumento de fuerzas Kargit en las fronteras no había pasado desapercibido, las circunstancias nos impidieron reaccionar adecuadamente a ésto. Ahora que están tratando de cruzar el Río Presus, nos encontramos superados en número y en fuerza, con unidades desorganizadas. La llegada del experimentado general Vladov no nos salvará del desastre, pero nos conseguirá tiempo valioso para que podamos movilizarnos por completo.",
+    "MISSION_DESC_SOMERTIN_C1_M2": "El avance Kargit había tomado los pases rocosos antes de que el general Anders pudiera traer orden a las milicias locales y a las unidades de defensa. Una inmensa tragedia, ya que se perdieron posiciones muy fácilmente defendibles. Y con ellos aun poseyendo superioridad local, solamente podemos pedirle al general Anders que los retrase tanto tiempo cómo le sea posible.",
+    "MISSION_DESC_SOMERTIN_C1_M3": "Cómo se suele decir, 'las balas del enemigo duelen menos que el puñal de tu amigo'. Esperábamos que los Polasianos fueran pérfidos y no nos ayudaran, pero no previmos que nos invadieran en nuestro peor momento. Al anochecer vinieron cómo ladrones y destruyeron salvajemente parte de nuestra flota mientras seguía en el puerto, luego desplegaron marines y los pusieron en camino a los yacimientos petrolíferos de Moh. El general Stoyan debe tomar las riendas de la situación y mantenerlos al norte del Río Moh.",
+    "MISSION_DESC_SOMERTIN_C1_M4": "El octavo ejército de Lazlo fue rodeado y sitiado. Los ríos Presus, Przek y Posun han caído, cómo también lo han hecho las montañas rocosas y las zonas fronterizas del sur. Nuestras unidades están teniendo dificultades para aguantar la ofensiva Kargit. Con los bastardos fuera de la orgullosa ciudad de Patna y preparados para el asalto, el general Vladov ha decidido resistir en su tierra natal. Fortificaciones, trincheras y sectores inundados se asegurarán de que los bastardos paguen por cada metro del hogar de Vladov con sangre. Si ésta ciudad cayera, los Kargits tendrían una via libre hacia la capital. ¡Eso no lo podemos permitir!.",
+    "MISSION_DESC_SOMERTIN_C1_M5": "La valiente defensa de Patna por parte de Vladov, aunque se haya perdido la ciudad, no fue en vano. Nos dio tiempo suficiente para prepararnos para ésta batalla decisiva. Ahora los bastardos están en las puertas de nuestra capital forzando su entrada en la ciudad, matando e incendiando todo en su camino. Pero ésta vez no retrocederemos ni un solo paso. ¡Por Somertin, por Dios y por todo lo que es bueno, expulsemos a los criminales! ¡Kaula se mantendrá en pie!",
+    "MISSION_DESC_SOMERTIN_C2_M1": "",
+    "MISSION_DESC_SOMERTIN_C2_M2": "",
+    "MISSION_DESC_SOMERTIN_C2_M3": "",
+    "MISSION_DESC_SOMERTIN_C2_M4": "",
+    "MISSION_DESC_SOMERTIN_C2_M5": "",
+    "MISSION_DESC_SOMERTIN_C3_M1": "",
+    "MISSION_DESC_SOMERTIN_C3_M2": "",
+    "MISSION_DESC_SOMERTIN_C3_M3": "",
+    "MISSION_DESC_SOMERTIN_C3_M4": "",
+    "MISSION_DESC_SOMERTIN_C3_M5": "",
+    "MISSION_DESC_SOMERTIN_C4_M1": "",
+    "MISSION_DESC_SOMERTIN_C4_M2": "",
+    "MISSION_DESC_SOMERTIN_C4_M3": "",
+    "MISSION_DESC_SOMERTIN_C4_M4": "",
+    "MISSION_DESC_SOMERTIN_C4_M5": "",
+    "MISSION_DESC_SOMERTIN_C5_M1": "",
+    "MISSION_DESC_SOMERTIN_C5_M2": "",
+    "MISSION_DESC_SOMERTIN_C5_M3": "",
+    "MISSION_DESC_SOMERTIN_C5_M4": "",
+    "MISSION_DESC_SOMERTIN_C5_M5": "",
+    "MISSION_DESC_SOMERTIN_C6_M1": "",
+    "MISSION_DESC_SOMERTIN_C6_M2": "",
+    "MISSION_DESC_SOMERTIN_C6_M3": "",
+    "MISSION_DESC_SOMERTIN_C6_M4": "",
+    "MISSION_DESC_SOMERTIN_C6_M5": "",
+    "MISSION_DESC_SOMERTIN_C7_M1": "",
+    "MISSION_DESC_SOMERTIN_C7_M2": "",
+    "MISSION_DESC_SOMERTIN_C7_M3": "",
+    "MISSION_DESC_SOMERTIN_C7_M4": "",
+    "MISSION_DESC_SOMERTIN_C7_M5": "",
+
+    "MISSION_DESC_KARGIT_C1_M1": "Previsivelmente, os subumanos não foram capazes de criar um estado funcional devido à falta de Kultur. colapso. E então esses reacionários serão civilizados e redistribuiremos seus bens de forma justa para todas as pessoas. (O que eles não são porque são subumanos). Para isso, o primeiro passo lógico é subjugar os redutos montanhosos com poucos funcionários. Para isso, é essencial etapa, precisaremos do melhor general disponível.",
+    "MISSION_DESC_KARGIT_C1_M2": "Com Hans movendo-se rapidamente sobre as passagens e na parte noroeste de Somertin, planos foram elaborados para o dobro de unidades para invadir as pontes sobre o rio Presus. O marechal Bela e Kulik liderarão o ataque, mas o avanço inicial é para ser carregado por Bela.",
+    "MISSION_DESC_KARGIT_C1_M3": "Os generais idiotas dos subumanos deixaram um buraco em sua linha de frente. Hans e Kulik irão cooperar para uma ofensiva de pinça para cercar e neutralizar um exército inteiro no valor de 300.000 homens. superioridade em números",
+    "MISSION_DESC_KARGIT_C1_M4": "O avanço sobre o Mica, juntamente com a travessia de Esfahani das montanhas Kandahar, deixou Laszlo e seu Oitavo Exército cercados. Sua força é muito grande para ser simplesmente ignorada, nosso avanço deve ser rápido, mas não deve deixar os flancos expostos. Para isso, vamos pedir aos elamitas que liquidem o bolsão como bons cachorros que são, e vamos dar-lhes apoio aéreo.",
+    "MISSION_DESC_KARGIT_C1_M5": "O avanço de Hans é o mais crucial, já que à frente dele está a capital de Somertin, Kaula. Mas antes que eles possam sonhar em tomá-la, eles têm que passar pela cidade fortemente fortificada de Patna. Superar uma fortaleza tão formidável não será uma tarefa difícil. tarefa fácil até mesmo para o invencível Exército Kargit.",
+    "MISSION_DESC_KARGIT_C2_M1": "",
+    "MISSION_DESC_KARGIT_C2_M2": "",
+    "MISSION_DESC_KARGIT_C2_M3": "",
+    "MISSION_DESC_KARGIT_C2_M4": "",
+    "MISSION_DESC_KARGIT_C2_M5": "",
+    "MISSION_DESC_KARGIT_C3_M1": "",
+    "MISSION_DESC_KARGIT_C3_M2": "",
+    "MISSION_DESC_KARGIT_C3_M3": "",
+    "MISSION_DESC_KARGIT_C3_M4": "",
+    "MISSION_DESC_KARGIT_C3_M5": "",
+    "MISSION_DESC_KARGIT_C4_M1": "",
+    "MISSION_DESC_KARGIT_C4_M2": "",
+    "MISSION_DESC_KARGIT_C4_M3": "",
+    "MISSION_DESC_KARGIT_C4_M4": "",
+    "MISSION_DESC_KARGIT_C4_M5": "",
+    "MISSION_DESC_KARGIT_C5_M1": "",
+    "MISSION_DESC_KARGIT_C5_M2": "",
+    "MISSION_DESC_KARGIT_C5_M3": "",
+    "MISSION_DESC_KARGIT_C5_M4": "",
+    "MISSION_DESC_KARGIT_C5_M5": "",
+    "MISSION_DESC_KARGIT_C6_M1": "",
+    "MISSION_DESC_KARGIT_C6_M2": "",
+    "MISSION_DESC_KARGIT_C6_M3": "",
+    "MISSION_DESC_KARGIT_C6_M4": "",
+    "MISSION_DESC_KARGIT_C6_M5": "",
+    "MISSION_DESC_KARGIT_C7_M1": "",
+    "MISSION_DESC_KARGIT_C7_M2": "",
+    "MISSION_DESC_KARGIT_C7_M3": "",
+    "MISSION_DESC_KARGIT_C7_M4": "",
+    "MISSION_DESC_KARGIT_C7_M5": "",
+
+    "MISSION_DESC_TRANSKAL_C1_M1": "Um ato covarde feito pela Republica de Polasie, eles desembarcaram dezenas de batalhões vindos do norte e estão tentando roubar nossas minas de tungstênio. Lorde Gustav é um comandante muito habilidoso, mas não teve tempo para se preparar. Suas forças díspares estão fazendo uma retirada de combate, esperando detê-los por tempo suficiente.",
+    "MISSION_DESC_TRANSKAL_C1_M2": "O Norte não é o único problema, aparentemente. Desembarques anfíbios simultâneos do Império Elamita estão ocorrendo no domínio do General Krystof. Ele pode ser... leal... mas não é tão habilidoso quanto Gustav. O que resta é esperar que ele possa atrasá-los o suficiente.",
+    "MISSION_DESC_TRANSKAL_C1_M3": "Boas notícias chegam de Jarvi, onde o General Vilho preparou uma divisão e a enviou para socorrer Gustav. Além disso, a força dos polasianos diminuiu bastante. É hora de eles serem parados.",
+    "MISSION_DESC_TRANSKAL_C1_M4": "A Rainha conseguiu convencer o General Shmelev ir ajudar Krystof. Experiente e com experiência em guerras passadas, é provável que ele consiga controlar a situação.",
+    "MISSION_DESC_TRANSKAL_C1_M5": "É impressionante como o Kargi conseguiu usar aeródromos improvisados para lançar uma equipe de SpecOps direto para o meio de nossa nação, próximo à Cidadela Reginal! Os quatro generais devem deixar de lado suas desavenças para que possam garantir a segurança da Rainha.",
+    "MISSION_DESC_TRANSKAL_C2_M1": "",
+    "MISSION_DESC_TRANSKAL_C2_M2": "",
+    "MISSION_DESC_TRANSKAL_C2_M3": "",
+    "MISSION_DESC_TRANSKAL_C2_M4": "",
+    "MISSION_DESC_TRANSKAL_C2_M5": "",
+    "MISSION_DESC_TRANSKAL_C3_M1": "",
+    "MISSION_DESC_TRANSKAL_C3_M2": "",
+    "MISSION_DESC_TRANSKAL_C3_M3": "",
+    "MISSION_DESC_TRANSKAL_C3_M4": "",
+    "MISSION_DESC_TRANSKAL_C3_M5": "",
+    "MISSION_DESC_TRANSKAL_C4_M1": "",
+    "MISSION_DESC_TRANSKAL_C4_M2": "",
+    "MISSION_DESC_TRANSKAL_C4_M3": "",
+    "MISSION_DESC_TRANSKAL_C4_M4": "",
+    "MISSION_DESC_TRANSKAL_C4_M5": "",
+    "MISSION_DESC_TRANSKAL_C5_M1": "",
+    "MISSION_DESC_TRANSKAL_C5_M2": "",
+    "MISSION_DESC_TRANSKAL_C5_M3": "",
+    "MISSION_DESC_TRANSKAL_C5_M4": "",
+    "MISSION_DESC_TRANSKAL_C5_M5": "",
+    "MISSION_DESC_TRANSKAL_C6_M1": "",
+    "MISSION_DESC_TRANSKAL_C6_M2": "",
+    "MISSION_DESC_TRANSKAL_C6_M3": "",
+    "MISSION_DESC_TRANSKAL_C6_M4": "",
+    "MISSION_DESC_TRANSKAL_C6_M5": "",
+    "MISSION_DESC_TRANSKAL_C7_M1": "",
+    "MISSION_DESC_TRANSKAL_C7_M2": "",
+    "MISSION_DESC_TRANSKAL_C7_M3": "",
+    "MISSION_DESC_TRANSKAL_C7_M4": "",
+    "MISSION_DESC_TRANSKAL_C7_M5": "",
+
+    "MISSION_DESC_POLASIE_C1_M1": "As Tropas de Caranguejo têm de se estabelecer na costa norte de Somertin para proteger os campos de petróleo de Moh e, mais tarde, trazer liberdade ao continente. Infelizmente, no entanto, o império terrorista possui uma marinha competente, que eles usaram repetidamente para nos oprimir e que sem dúvida o farão novamente para tentar impedir a chegada da liberdade. Temos que desabilitar rapidamente a marinha deles, então apresse-se! Tempo é liberdade.",
+    "MISSION_DESC_POLASIE_C1_M2": "Com a marinha somertina esmagada, a costa está livre para um desembarque anfíbio, o que é absolutamente necessário. Arranjos para isso estão sendo feitos enquanto falamos. Uma força de desembarque prepára-se para fazer uma perigosa jornada pelo mar.",
+    "MISSION_DESC_POLASIE_C1_M3": "Além do horizonte está o rio Moh e além dele os campos de petróleo de que tanto precisamos. Precisamos empurrá-los para trás e atravessar o rio.",
+    "MISSION_DESC_POLASIE_C1_M4": "Lutámos por aquele maldito rio por tanto tempo e continuamos a ser repelidos. Mas isso acabou. Agora temos homens e material suficientes para finalmente forçar uma travessia, mas também temos grandes objetivos. O Alto Comando ordenou que tomássemos uma cabeça de ponte sobre o rio e depois usássemos o impulso para finalmente capturar os campos de petróleo de Moh e a ferrovia Moh-Golubuju.",
+    "MISSION_DESC_POLASIE_C1_M5": "Do norte avançaram os polasianos e do oeste os Kargitas. Agora há um número significativo de somertins presos em torno de Golubuju, sem nenhuma maneira de serem abastecidos. Chegou a hora de destruir os veteranos de Stoyan que nos humilharam por tanto tempo.",
+    "MISSION_DESC_POLASIE_C2_M1": "",
+    "MISSION_DESC_POLASIE_C2_M2": "",
+    "MISSION_DESC_POLASIE_C2_M3": "",
+    "MISSION_DESC_POLASIE_C2_M4": "",
+    "MISSION_DESC_POLASIE_C2_M5": "",
+    "MISSION_DESC_POLASIE_C3_M1": "",
+    "MISSION_DESC_POLASIE_C3_M2": "",
+    "MISSION_DESC_POLASIE_C3_M3": "",
+    "MISSION_DESC_POLASIE_C3_M4": "",
+    "MISSION_DESC_POLASIE_C3_M5": "",
+    "MISSION_DESC_POLASIE_C4_M1": "",
+    "MISSION_DESC_POLASIE_C4_M2": "",
+    "MISSION_DESC_POLASIE_C4_M3": "",
+    "MISSION_DESC_POLASIE_C4_M4": "",
+    "MISSION_DESC_POLASIE_C4_M5": "",
+    "MISSION_DESC_POLASIE_C5_M1": "",
+    "MISSION_DESC_POLASIE_C5_M2": "",
+    "MISSION_DESC_POLASIE_C5_M3": "",
+    "MISSION_DESC_POLASIE_C5_M4": "",
+    "MISSION_DESC_POLASIE_C5_M5": "",
+    "MISSION_DESC_POLASIE_C6_M1": "",
+    "MISSION_DESC_POLASIE_C6_M2": "",
+    "MISSION_DESC_POLASIE_C6_M3": "",
+    "MISSION_DESC_POLASIE_C6_M4": "",
+    "MISSION_DESC_POLASIE_C6_M5": "",
+    "MISSION_DESC_POLASIE_C7_M1": "",
+    "MISSION_DESC_POLASIE_C7_M2": "",
+    "MISSION_DESC_POLASIE_C7_M3": "",
+    "MISSION_DESC_POLASIE_C7_M4": "",
+    "MISSION_DESC_POLASIE_C7_M5": "",
+
+    "MISSION_DESC_ELAM_C1_M1": "A linha de frente entre Elam e Somertin é longa e os homens devem ser esticados para cobri-la. Pior ainda, teremos que cruzar barreiras de defesa, como o grande rio Shahar ou as montanhas Khandahar para avançar. Se o ataque for bem-sucedido , a primeira e mais chocante ofensiva deve ocorrer sobre as montanhas Khandahar pelo general mais experiente, caso contrário o avanço não será possível. O grão-vizir Mutasarif conduzirá um desvio sobre o rio Mica, para criar uma ilusão.",
+    "MISSION_DESC_ELAM_C1_M2": "A travessia do Mica por Mutasarif foi um truque para enganar o general Laszlo, sendo que ele mordeu o anzol, a linha e a chumbada. Agora que a bigorna está pronta, Esfahani será o martelo.",
+    "MISSION_DESC_ELAM_C1_M3": "Com o sucesso do ataque de Ibrahim Esfahani, o inimigo teve que enfraquecer suas forças do segmento de Shahar. Perfeito para Ali, que deve capturar pelo menos quatorze cabeças-de-ponte neste longo segmento.",
+    "MISSION_DESC_ELAM_C1_M4": "No momento em que Ali começou a cruzar o rio, Hassan já estava iniciando uma operação dupla. Ele atravessaria o rio, ao mesmo tempo em que mandava os fuzileiros navais por trás.",
+    "MISSION_DESC_ELAM_C1_M5": "Um soco de Elam e um de Kargi abalaram Laszlo e seu Oitavo Exército. Eles agora estão sozinhos e cercados. Tudo está indo de acordo com keikaku. O Sultão quer que eles sejam eliminados, para mostrar que o Império é capaz de guerrear assim como Kargi. Nota do tradutor: 'keikaku' significa plano",
+    "MISSION_DESC_ELAM_C2_M1": "",
+    "MISSION_DESC_ELAM_C2_M2": "",
+    "MISSION_DESC_ELAM_C2_M3": "",
+    "MISSION_DESC_ELAM_C2_M4": "",
+    "MISSION_DESC_ELAM_C2_M5": "",
+    "MISSION_DESC_ELAM_C3_M1": "",
+    "MISSION_DESC_ELAM_C3_M2": "",
+    "MISSION_DESC_ELAM_C3_M3": "",
+    "MISSION_DESC_ELAM_C3_M4": "",
+    "MISSION_DESC_ELAM_C3_M5": "",
+    "MISSION_DESC_ELAM_C4_M1": "",
+    "MISSION_DESC_ELAM_C4_M2": "",
+    "MISSION_DESC_ELAM_C4_M3": "",
+    "MISSION_DESC_ELAM_C4_M4": "",
+    "MISSION_DESC_ELAM_C4_M5": "",
+    "MISSION_DESC_ELAM_C5_M1": "",
+    "MISSION_DESC_ELAM_C5_M2": "",
+    "MISSION_DESC_ELAM_C5_M3": "",
+    "MISSION_DESC_ELAM_C5_M4": "",
+    "MISSION_DESC_ELAM_C5_M5": "",
+    "MISSION_DESC_ELAM_C6_M1": "",
+    "MISSION_DESC_ELAM_C6_M2": "",
+    "MISSION_DESC_ELAM_C6_M3": "",
+    "MISSION_DESC_ELAM_C6_M4": "",
+    "MISSION_DESC_ELAM_C6_M5": "",
+    "MISSION_DESC_ELAM_C7_M1": "",
+    "MISSION_DESC_ELAM_C7_M2": "",
+    "MISSION_DESC_ELAM_C7_M3": "",
+    "MISSION_DESC_ELAM_C7_M4": "",
+    "MISSION_DESC_ELAM_C7_M5": ""
 };
 
 POR={
@@ -754,343 +938,6 @@ POR={
 		"Recurso estratégico, controlando isso obtem recursos a cada turno. "
 	],
 	Intralogues:[],
-	MissionDesc:[[],
-		[//Campaign 1 - Somertin Federation
-			[[//Chapter 1, Mission 1			
-				"Aunque el aumento de fuerzas Kargit en las fronteras no había pasado desapercibido, las circunstancias nos impidieron reaccionar adecuadamente a ésto. Ahora que están tratando de cruzar el Río Presus, nos encontramos superados en número y en fuerza, con unidades desorganizadas. La llegada del experimentado general Vladov no nos salvará del desastre, pero nos conseguirá tiempo valioso para que podamos movilizarnos por completo."
-				],
-				[//Chapter 1, Mission 2
-				"El avance Kargit había tomado los pases rocosos antes de que el general Anders pudiera traer orden a las milicias locales y a las unidades de defensa. Una inmensa tragedia, ya que se perdieron posiciones muy fácilmente defendibles. Y con ellos aun poseyendo superioridad local, solamente podemos pedirle al general Anders que los retrase tanto tiempo cómo le sea posible."
-					],
-				[//Chapter 1, Mission 3
-				"Cómo se suele decir, 'las balas del enemigo duelen menos que el puñal de tu amigo'. Esperábamos que los Polasianos fueran pérfidos y no nos ayudaran, pero no previmos que nos invadieran en nuestro peor momento. Al anochecer vinieron cómo ladrones y destruyeron salvajemente parte de nuestra flota mientras seguía en el puerto, luego desplegaron marines y los pusieron en camino a los yacimientos petrolíferos de Moh. El general Stoyan debe tomar las riendas de la situación y mantenerlos al norte del Río Moh."
-					],
-				[//Chapter 1, Mission 4
-				"El octavo ejército de Lazlo fue rodeado y sitiado. Los ríos Presus, Przek y Posun han caído, cómo también lo han hecho las montañas rocosas y las zonas fronterizas del sur. Nuestras unidades están teniendo dificultades para aguantar la ofensiva Kargit. Con los bastardos fuera de la orgullosa ciudad de Patna y preparados para el asalto, el general Vladov ha decidido resistir en su tierra natal. Fortificaciones, trincheras y sectores inundados se asegurarán de que los bastardos paguen por cada metro del hogar de Vladov con sangre. Si ésta ciudad cayera, los Kargits tendrían una via libre hacia la capital. ¡Eso no lo podemos permitir!."
-					],
-				[//Chapter 1, Mission 5
-				"La valiente defensa de Patna por parte de Vladov, aunque se haya perdido la ciudad, no fue en vano. Nos dio tiempo suficiente para prepararnos para ésta batalla decisiva. Ahora los bastardos están en las puertas de nuestra capital forzando su entrada en la ciudad, matando e incendiando todo en su camino. Pero ésta vez no retrocederemos ni un solo paso. ¡Por Somertin, por Dios y por todo lo que es bueno, expulsemos a los criminales! ¡Kaula se mantendrá en pie!"
-					]],
-			[[//Chapter 2, Mission 1
-					],
-				[//Chapter 2, Mission 2
-					],
-				[//Chapter 2, Mission 3
-					],
-				[//Chapter 2, Mission 4
-					],
-				[//Chapter 2, Mission 5
-					]],
-			[[//Chapter 3, Mission 1
-				],
-				[//Chapter 3, Mission 2
-					],
-				[//Chapter 3, Mission 3
-					],
-				[//Chapter 3, Mission 4
-					],
-				[//Chapter 3, Mission 5
-					]],
-			[[//Chapter 4, Mission 1
-				],
-				[//Chapter 4, Mission 2
-					],
-				[//Chapter 4, Mission 3
-					],
-				[//Chapter 4, Mission 4
-					],
-				[//Chapter 4, Mission 5
-					]],
-			[[//Chapter 5, Mission 1
-				],
-				[//Chapter 5, Mission 2
-					],
-				[//Chapter 5, Mission 3
-					],
-				[//Chapter 5, Mission 4
-					],
-				[//Chapter 5, Mission 5
-					]],
-			[[//Chapter 6, Mission 1
-				],
-				[//Chapter 6, Mission 2
-					],
-				[//Chapter 6, Mission 3
-					],
-				[//Chapter 6, Mission 4
-					],
-				[//Chapter 6, Mission 5
-					]],
-			[[//Chapter 7, Mission 1
-				],
-				[//Chapter 7, Mission 2
-					],
-				[//Chapter 7, Mission 3
-					],
-				[//Chapter 7, Mission 4
-					],
-				[//Chapter 7, Mission 5
-					]]
-			],
-		[//Campaign 2 - Kargit Order State
-			[[//Chapter 1, Mission 1
-			"Previsivelmente, os subumanos não foram capazes de criar um estado funcional devido à falta de Kultur. colapso. E então esses reacionários serão civilizados e redistribuiremos seus bens de forma justa para todas as pessoas. (O que eles não são porque são subumanos). Para isso, o primeiro passo lógico é subjugar os redutos montanhosos com poucos funcionários. Para isso, é essencial etapa, precisaremos do melhor general disponível."
-				],
-				[//Chapter 1, Mission 2
-			"Com Hans movendo-se rapidamente sobre as passagens e na parte noroeste de Somertin, planos foram elaborados para o dobro de unidades para invadir as pontes sobre o rio Presus. O marechal Bela e Kulik liderarão o ataque, mas o avanço inicial é para ser carregado por Bela."
-					],
-				[//Chapter 1, Mission 3
-			"Os generais idiotas dos subumanos deixaram um buraco em sua linha de frente. Hans e Kulik irão cooperar para uma ofensiva de pinça para cercar e neutralizar um exército inteiro no valor de 300.000 homens. superioridade em números"
-					],
-				[//Chapter 1, Mission 4
-			"O avanço sobre o Mica, juntamente com a travessia de Esfahani das montanhas Kandahar, deixou Laszlo e seu Oitavo Exército cercados. Sua força é muito grande para ser simplesmente ignorada, nosso avanço deve ser rápido, mas não deve deixar os flancos expostos. Para isso, vamos pedir aos elamitas que liquidem o bolsão como bons cachorros que são, e vamos dar-lhes apoio aéreo."
-					],
-				[//Chapter 1, Mission 5
-			"O avanço de Hans é o mais crucial, já que à frente dele está a capital de Somertin, Kaula. Mas antes que eles possam sonhar em tomá-la, eles têm que passar pela cidade fortemente fortificada de Patna. Superar uma fortaleza tão formidável não será uma tarefa difícil. tarefa fácil até mesmo para o invencível Exército Kargit."
-					]],
-			[[//Chapter 2, Mission 1
-					],
-				[//Chapter 2, Mission 2
-					],
-				[//Chapter 2, Mission 3
-					],
-				[//Chapter 2, Mission 4
-					],
-				[//Chapter 2, Mission 5
-					]],
-			[[//Chapter 3, Mission 1
-				],
-				[//Chapter 3, Mission 2
-					],
-				[//Chapter 3, Mission 3
-					],
-				[//Chapter 3, Mission 4
-					],
-				[//Chapter 3, Mission 5
-					]],
-			[[//Chapter 4, Mission 1
-				],
-				[//Chapter 4, Mission 2
-					],
-				[//Chapter 4, Mission 3
-					],
-				[//Chapter 4, Mission 4
-					],
-				[//Chapter 4, Mission 5
-					]],
-			[[//Chapter 5, Mission 1
-				],
-				[//Chapter 5, Mission 2
-					],
-				[//Chapter 5, Mission 3
-					],
-				[//Chapter 5, Mission 4
-					],
-				[//Chapter 5, Mission 5
-					]],
-			[[//Chapter 6, Mission 1
-				],
-				[//Chapter 6, Mission 2
-					],
-				[//Chapter 6, Mission 3
-					],
-				[//Chapter 6, Mission 4
-					],
-				[//Chapter 6, Mission 5
-					]],
-			[[//Chapter 7, Mission 1
-				],
-				[//Chapter 7, Mission 2
-					],
-				[//Chapter 7, Mission 3
-					],
-				[//Chapter 7, Mission 4
-					],
-				[//Chapter 7, Mission 5
-					]]
-			],
-		[//Campaign 3 - Transkal Commonwealth
-			[[//Chapter 1, Mission 1
-			"Um ato covarde feito pela Republica de Polasie, eles desembarcaram dezenas de batalhões vindos do norte e estão tentando roubar nossas minas de tungstênio. Lorde Gustav é um comandante muito habilidoso, mas não teve tempo para se preparar. Suas forças díspares estão fazendo uma retirada de combate, esperando detê-los por tempo suficiente."
-				],
-				[//Chapter 1, Mission 2
-			"O Norte não é o único problema, aparentemente. Desembarques anfíbios simultâneos do Império Elamita estão ocorrendo no domínio do General Krystof. Ele pode ser... leal... mas não é tão habilidoso quanto Gustav. O que resta é esperar que ele possa atrasá-los o suficiente."
-					],
-				[//Chapter 1, Mission 3
-			"Boas notícias chegam de Jarvi, onde o General Vilho preparou uma divisão e a enviou para socorrer Gustav. Além disso, a força dos polasianos diminuiu bastante. É hora de eles serem parados."
-					],
-				[//Chapter 1, Mission 4
-			"A Rainha conseguiu convencer o General Shmelev ir ajudar Krystof. Experiente e com experiência em guerras passadas, é provável que ele consiga controlar a situação."
-					],
-				[//Chapter 1, Mission 5
-			"É impressionante como o Kargi conseguiu usar aeródromos improvisados para lançar uma equipe de SpecOps direto para o meio de nossa nação, próximo à Cidadela Reginal! Os quatro generais devem deixar de lado suas desavenças para que possam garantir a segurança da Rainha."
-					]],
-			[[//Chapter 2, Mission 1
-					],
-				[//Chapter 2, Mission 2
-					],
-				[//Chapter 2, Mission 3
-					],
-				[//Chapter 2, Mission 4
-					],
-				[//Chapter 2, Mission 5
-					]],
-			[[//Chapter 3, Mission 1
-				],
-				[//Chapter 3, Mission 2
-					],
-				[//Chapter 3, Mission 3
-					],
-				[//Chapter 3, Mission 4
-					],
-				[//Chapter 3, Mission 5
-					]],
-			[[//Chapter 4, Mission 1
-				],
-				[//Chapter 4, Mission 2
-					],
-				[//Chapter 4, Mission 3
-					],
-				[//Chapter 4, Mission 4
-					],
-				[//Chapter 4, Mission 5
-					]],
-			[[//Chapter 5, Mission 1
-				],
-				[//Chapter 5, Mission 2
-					],
-				[//Chapter 5, Mission 3
-					],
-				[//Chapter 5, Mission 4
-					],
-				[//Chapter 5, Mission 5
-					]]
-			],
-		[//Campaign 4 - Polasie Democratic Republic
-			[[//Chapter 1, Mission 1
-			"As Tropas de Caranguejo têm de se estabelecer na costa norte de Somertin para proteger os campos de petróleo de Moh e, mais tarde, trazer liberdade ao continente. Infelizmente, no entanto, o império terrorista possui uma marinha competente, que eles usaram repetidamente para nos oprimir e que sem dúvida o farão novamente para tentar impedir a chegada da liberdade. Temos que desabilitar rapidamente a marinha deles, então apresse-se! Tempo é liberdade."
-				],
-				[//Chapter 1, Mission 2
-			"Com a marinha somertina esmagada, a costa está livre para um desembarque anfíbio, o que é absolutamente necessário. Arranjos para isso estão sendo feitos enquanto falamos. Uma força de desembarque prepára-se para fazer uma perigosa jornada pelo mar."
-					],
-				[//Chapter 1, Mission 3
-			"Além do horizonte está o rio Moh e além dele os campos de petróleo de que tanto precisamos. Precisamos empurrá-los para trás e atravessar o rio."
-					],
-				[//Chapter 1, Mission 4
-			"Lutámos por aquele maldito rio por tanto tempo e continuamos a ser repelidos. Mas isso acabou. Agora temos homens e material suficientes para finalmente forçar uma travessia, mas também temos grandes objetivos. O Alto Comando ordenou que tomássemos uma cabeça de ponte sobre o rio e depois usássemos o impulso para finalmente capturar os campos de petróleo de Moh e a ferrovia Moh-Golubuju."
-					],
-				[//Chapter 1, Mission 5
-			"Do norte avançaram os polasianos e do oeste os Kargitas. Agora há um número significativo de somertins presos em torno de Golubuju, sem nenhuma maneira de serem abastecidos. Chegou a hora de destruir os veteranos de Stoyan que nos humilharam por tanto tempo."
-					]],
-			[[//Chapter 2, Mission 1
-					],
-				[//Chapter 2, Mission 2
-					],
-				[//Chapter 2, Mission 3
-					],
-				[//Chapter 2, Mission 4
-					],
-				[//Chapter 2, Mission 5
-					]],
-			[[//Chapter 3, Mission 1
-				],
-				[//Chapter 3, Mission 2
-					],
-				[//Chapter 3, Mission 3
-					],
-				[//Chapter 3, Mission 4
-					],
-				[//Chapter 3, Mission 5
-					]],
-			[[//Chapter 4, Mission 1
-				],
-				[//Chapter 4, Mission 2
-					],
-				[//Chapter 4, Mission 3
-					],
-				[//Chapter 4, Mission 4
-					],
-				[//Chapter 4, Mission 5
-					]],
-			[[//Chapter 5, Mission 1
-				],
-				[//Chapter 5, Mission 2
-					],
-				[//Chapter 5, Mission 3
-					],
-				[//Chapter 5, Mission 4
-					],
-				[//Chapter 5, Mission 5
-					]]
-			],
-		[//Campaign 5 - Elamite Empare
-			[[//Chapter 1, Mission 1
-			"A linha de frente entre Elam e Somertin é longa e os homens devem ser esticados para cobri-la. Pior ainda, teremos que cruzar barreiras de defesa, como o grande rio Shahar ou as montanhas Khandahar para avançar. Se o ataque for bem-sucedido , a primeira e mais chocante ofensiva deve ocorrer sobre as montanhas Khandahar pelo general mais experiente, caso contrário o avanço não será possível. O grão-vizir Mutasarif conduzirá um desvio sobre o rio Mica, para criar uma ilusão."
-				],
-				[//Chapter 1, Mission 2
-				"A travessia do Mica por Mutasarif foi um truque para enganar o general Laszlo, sendo que ele mordeu o anzol, a linha e a chumbada. Agora que a bigorna está pronta, Esfahani será o martelo."
-					],
-				[//Chapter 1, Mission 3
-				"Com o sucesso do ataque de Ibrahim Esfahani, o inimigo teve que enfraquecer suas forças do segmento de Shahar. Perfeito para Ali, que deve capturar pelo menos quatorze cabeças-de-ponte neste longo segmento."
-					],
-				[//Chapter 1, Mission 4
-				"No momento em que Ali começou a cruzar o rio, Hassan já estava iniciando uma operação dupla. Ele atravessaria o rio, ao mesmo tempo em que mandava os fuzileiros navais por trás."
-					],
-				[//Chapter 1, Mission 5
-				"Um soco de Elam e um de Kargi abalaram Laszlo e seu Oitavo Exército. Eles agora estão sozinhos e cercados. Tudo está indo de acordo com keikaku. O Sultão quer que eles sejam eliminados, para mostrar que o Império é capaz de guerrear assim como Kargi. Nota do tradutor: 'keikaku' significa plano"
-					]],
-			[[//Chapter 2, Mission 1
-					],
-				[//Chapter 2, Mission 2
-					],
-				[//Chapter 2, Mission 3
-					],
-				[//Chapter 2, Mission 4
-					],
-				[//Chapter 2, Mission 5
-					]],
-			[[//Chapter 3, Mission 1
-				],
-				[//Chapter 3, Mission 2
-					],
-				[//Chapter 3, Mission 3
-					],
-				[//Chapter 3, Mission 4
-					],
-				[//Chapter 3, Mission 5
-					]],
-			[[//Chapter 4, Mission 1
-				],
-				[//Chapter 4, Mission 2
-					],
-				[//Chapter 4, Mission 3
-					],
-				[//Chapter 4, Mission 4
-					],
-				[//Chapter 4, Mission 5
-					]],
-			[[//Chapter 5, Mission 1
-				],
-				[//Chapter 5, Mission 2
-					],
-				[//Chapter 5, Mission 3
-					],
-				[//Chapter 5, Mission 4
-					],
-				[//Chapter 5, Mission 5
-					]]
-
-			],
-		[//Campaign 6 - HAHAHA you're not finding this secret nation out until the full release!
-			],
-		[//Campaign 7 - HAHAHA you're not finding this secret nation out until the full release!
-			],
-		[//Campaign 8 - HAHAHA you're not finding this secret nation out until the full release!
-			],
-		[//Campaign 9 - HAHAHA you're not finding this secret nation out until the full release!
-			],
-		[//Campaign 10 - HAHAHA you're not finding this secret nation out until the full release!
-			]],
 	Prelogues:[[],
 		[//Campaign 1 - Somertin Federation
 			[[//Chapter 1, Mission 1
