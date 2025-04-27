@@ -3522,8 +3522,8 @@ function GeneralInitializer(){
 	document.getElementById("UnitType2").innerHTML=Language.SystemTerms[117];
 	document.getElementById("UnitType3").innerHTML=Language.SystemTerms[118];
 	document.getElementById("UnitType4").innerHTML=Language.SystemTerms[119];
+}
 
-	for(let k=1;k<=5;k++){CampaignFactions[k].name=Language.NationNames[k]};};
 function GenerateRevenue(Value,X,Y){
 	let moola=setInterval(flashcard,20);
 	let phase=0;
@@ -4181,20 +4181,13 @@ function LanguageCorrecter(Language){
 	if(!Language.SystemTerms) Language.SystemTerms=ENG.SystemTerms;
 
 	if((Language.SystemTerms??[]).length==0){Language.SystemTerms=ENG.SystemTerms};
-	if((Language.NationNames??[]).length==0){Language.NationNames=ENG.NationNames};
-	if((Language.NationDesc??[]).length==0){Language.NationDesc=ENG.NationDesc};
 	if((Language.StartButtonTexts??[]).length==0){Language.StartButtonTexts=ENG.StartButtonTexts};
 	if((Language.UnitSpecialNames??[]).length==0){Language.UnitSpecialNames=ENG.UnitSpecialNames};
 	if((Language.UnitSpecialDesc??[]).length==0){Language.UnitSpecialDesc=ENG.UnitSpecialDesc};
 	if((Language.VictoryQuotes??[]).length==0){Language.VictoryQuotes=ENG.VictoryQuotes};
 	if((Language.DefeatQuotes??[]).length==0){Language.DefeatQuotes=ENG.DefeatQuotes};
-
 	if((Language.TerrainName??[]).length==0){Language.TerrainName=ENG.TerrainName};
 	if((Language.TerrainDesc??[]).length==0){Language.TerrainDesc=ENG.TerrainDesc};
-
-	if((Language.ChapterName??[]).length==0){Language.ChapterName=ENG.ChapterName};
-	if((Language.MissionName??[]).length==0){Language.MissionName=ENG.MissionName};
-	if((Language.MissionDesc??[]).length==0){Language.MissionDesc=ENG.MissionDesc};
 	if((Language.IntraeventTranscripts??[]).length==0){Language.IntraeventTranscripts=ENG.IntraeventTranscripts};
 	if((Language.Interlogues??[]).length==0){Language.Interlogues=ENG.Interlogues};
 

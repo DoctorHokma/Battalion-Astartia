@@ -18,59 +18,6 @@ const saveStory = function() {
     .download("progress");
 }
 
-const showNationData = function(battalion, nationID) {
-    const { language } = battalion;
-    const nation = NATION[nationID];
-
-    if(!nation) {
-        return;
-    }
-
-    const { power, chroma, name, desc, faction } = nation;
-
-    document.getElementById("NationDetails").style.visibility = "visible";
-    document.getElementById("NationColor").style.filter = chroma
-	document.getElementById("NationNameSpecific").innerHTML = language.get(name);
-
-    const factionType = FACTION[faction];
-
-    if(factionType) {
-        const { name } = factionType;
-
-        document.getElementById("FactionNameSpecific").innerHTML = language.get(name);
-    }
-
-    const powerType = POWER[power];
-
-    if(powerType) {
-        const { name } = powerType;
-
-        document.getElementById("NationStatus").innerHTML = language.get(name);
-    }
-
-    const nationDesc = language.get(desc);
-    const nationSynopsis = document.getElementById("NationSynopsisSpecific");
-
-    switch(typeof nationDesc) {
-        case "string": {
-            nationSynopsis.innerHTML = nationDesc;
-            break;
-        }
-        case "object": {
-            let text = "";
-
-            for(let i = 0; i < nationDesc.length; i++) {
-                const line = nationDesc[i] + "<br><br>";
-
-                text += line;
-            }
-
-            nationSynopsis.innerHTML = text;
-            break;
-        }
-    }
-}
-
 const updateScenarioVisibility = function(scenario, displayType) {
     if(!scenario) {
         return;
@@ -90,6 +37,38 @@ const updateScenarioVisibility = function(scenario, displayType) {
     }
     
     div.style.display = displayType;
+}
+
+const showNationData = function(battalion, nationID) {
+    const { language } = battalion;
+    const nation = NATION[nationID];
+
+    if(!nation) {
+        return;
+    }
+
+    const { name, power, chroma, faction } = nation;
+
+	document.getElementById("LevelStartButton").innerHTML = Language.StartButtonTexts[ChosenNation-1]; //TODO: to nation!
+    document.getElementById("NationDetails").style.visibility = "visible";
+    document.getElementById("NationNameSpecific").innerHTML = language.get(name);
+    document.getElementById("NationColor").style.filter = chroma;
+
+    const factionType = FACTION[faction];
+
+    if(factionType) {
+        const { name } = factionType;
+
+        document.getElementById("FactionNameSpecific").innerHTML = language.get(name);
+    }
+
+    const powerType = POWER[power];
+
+    if(powerType) {
+        const { name } = powerType;
+
+        document.getElementById("NationStatus").innerHTML = language.get(name);
+    }
 }
 
 const showMissionData = function(battalion, mission, missionIndex) {
@@ -112,6 +91,18 @@ const showChapterData = function(battalion, chapter, chapterIndex) {
     document.getElementById("ChapterIllustration").src = image;
     document.getElementById('CampaignName').innerHTML = language.get(name);
     document.getElementById("ChapterPanelPointer").style.top = `${pointerPosition}px`;
+}
+
+const showCampaignData = function(battalion, campaign) {
+    const { language } = battalion;
+    const { type } = campaign;
+    const { desc } = type;
+    
+    const nationDesc = language.get(desc);
+    const nationSynopsis = document.getElementById("NationSynopsisSpecific");
+    const nationDescText = Array.isArray(nationDesc) ? nationDesc.join("<br><br>") : nationDesc;
+
+    nationSynopsis.innerHTML = nationDescText;
 }
 
 const showProgressData = function(battalion) {
@@ -220,6 +211,7 @@ const selectCampaign = function(campaignID, Nation) {
         return;
     }
 
+    showCampaignData(battalion, campaign);
     showNationData(battalion, nation);
 
     //Ugly Globals... AFUERA
@@ -317,6 +309,4 @@ function CallCampaignScreen() {
 	document.getElementById("CampaignSelectionScreen").style.visibility = "hidden";
 	document.getElementById("NationDetails").style.visibility = "hidden";
 	document.getElementById("CampaignScreen").style.visibility = "visible";
-
-	document.getElementById("LevelStartButton").innerHTML = Language.StartButtonTexts[ChosenNation-1]; //TODO: to nation!
 }

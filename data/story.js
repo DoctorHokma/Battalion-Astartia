@@ -109,7 +109,6 @@ const CHAPTERS = {
 	"ELAM_C5": { "name": "CHAPTER_NAME_ELAM_C5", "desc": "CHAPTER_DESC_ELAM_C5", "image": "Assets/Paralogues/5-1.jpg", "missions": ["ELAM_C5_M1", "ELAM_C5_M2", "ELAM_C5_M3", "ELAM_C5_M4", "ELAM_C5_M5"] },
 	"ELAM_C6": { "name": "CHAPTER_NAME_ELAM_C6", "desc": "CHAPTER_DESC_ELAM_C6", "image": "Assets/Paralogues/5-1.jpg", "missions": ["ELAM_C6_M1", "ELAM_C6_M2", "ELAM_C6_M3", "ELAM_C6_M4", "ELAM_C6_M5"] },
 	"ELAM_C7": { "name": "CHAPTER_NAME_ELAM_C7", "desc": "CHAPTER_DESC_ELAM_C7", "image": "Assets/Paralogues/5-1.jpg", "missions": ["ELAM_C7_M1", "ELAM_C7_M2", "ELAM_C7_M3", "ELAM_C7_M4", "ELAM_C7_M5"] },
-
 };
 
 const MISSIONS = {

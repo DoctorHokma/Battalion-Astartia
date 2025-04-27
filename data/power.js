@@ -1,15 +1,15 @@
 const POWER = {
     "MAJOR": {
-        "name": "POWER_RANKING_NAME_MAJOR",
-        "desc": "POWER_RANKING_DESC_MAJOR"
+        "name": "POWER_NAME_MAJOR",
+        "desc": "POWER_DESC_MAJOR"
     },
     "MINOR": {
-        "name": "POWER_RANKING_NAME_MINOR",
-        "desc": "POWER_RANKING_DESC_MINOR"
+        "name": "POWER_NAME_MINOR",
+        "desc": "POWER_DESC_MINOR"
     },
     "REGIONAL": {
-        "name": "POWER_RANKING_NAME_REGIONAL",
-        "desc": "POWER_RANKING_DESC_REGIONAL"
+        "name": "POWER_NAME_REGIONAL",
+        "desc": "POWER_DESC_REGIONAL"
     }
 }
 

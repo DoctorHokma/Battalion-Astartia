@@ -416,7 +416,75 @@ const LANGUAGE_ROMANIAN = {
     "UNIT_DESC_BASTION": "Fortificație statică capabilă să incaseze bombe și obuze și să persiste",
     "UNIT_DESC_SUPPLY_DEPOT": "Depozitează alimente, muniții, arme și toate proviziile de care unitățile tale ar avea nevoie",
     "UNIT_DESC_FORTRESS": "O citadelă formidabilă capabilă să oprească în loc o armată de una singură",
-    "UNIT_DESC_MEME_SPARTANS": ""
+    "UNIT_DESC_MEME_SPARTANS": "",
+
+	"CAMPAIGN_DESC_SOMERTIN": [
+		"Regatul lui Prester John a fost o fantezie dar în îndepărtatul continent numit Astartia, Sinarhia Creștină Somertină e un fapt real. Această ciudățenie scuipă conceptul de ideologie și stâlpii convenționali ai statalității pentru a crea un stat ce-i servește pe toți. Așa a funcționat încât Somertin a devenit cel mai decent loc de pe continent. Nici samavolnic precum Kargia, nici disfuncțional ca Polazia, și cu ani-lumină înaintea Elamului si Transkalului cele înapoiate.",
+		"Azi strădania supremă este asmuțită asupra lor, căci vulturii continentului și-au asmuțit hoardele asupra Sinarhiei. Sataniștii de la vest, ipocriții de la nord și ereticii de la sud înconjoară Sinarhia și râvnesc s-o vadă arsă până la pământ, oamenii lor cărați în lanțuri și cultura lor spurcată și pângărită.",
+		"Oră de oră frontul se mută tot mai departe la est, sute de mii și milioane de oameni mor cât vorbim. Sinarhia trebuie să lupte cu vitejie și sârguință căci libertatea, cultura și însăși existența sa este în pericol. Vom avea ori victorie ori pieire!",
+		"<span style='color:white'> +Cu spatele la zid, luptă cu tot ce poți împotriva unui dușman pe cât de puternic și redutabil, pe atât de abominabil și necruțător</span><br><span style='color:white'> +Zdrobește granițele și adu pace și bunăstare tuturor oamenilor din Astartia</span><br><span style='color:black'> +Indiferent ce se va întâmpla, nu vom capitula absolut NICIODATĂ</span><br><span style='color:purple'>?Ce face Laleaua Albă în tot acest timp? Ce e în Arhiva Secretă din Kaula?</span"
+	],
+	"CAMPAIGN_DESC_KARGIT": [
+		"Foarte antagonici erau Continentaliștii, Socialiștii și Darwiniștii până când Marele Lord i-a unit sub un stindard. La ce bun să te lupți dacă să ai o Kargia dominantă pe continent, o utopie egalitară sau o rasă kargită dominantă? De ce nu ar putea kargiții să se bucure de o utopie egalitară pe spinarea sub-oamenilor continentului?",
+		"Și chiar de nu ne-am dori, realitatea e că solul Kargiei se erodează iar minele seacă. Dacă vrem barem să ne păstrăm condițiile de viață(darămite să obținem prosperitate), avem nevoie de grâul și mineralele de la est.",
+		"Trimiteți pantserele peste munți și văi! Haide la cel mai mare, cel mai dinamic și mai modern război, și să ieșim cea mai puternică țară care a fost vreodată! PANZER BRRRRRRRRR!!!",
+		"<span style='color:white'> +Război rapid, dinamic cu unități puternice și rapide.</span><br><span style='color:white'> +Muzică energică care să-ți acompanieze killstreakul</span><br><span style='color:white'> +Distruge tot, avansează repede, cucerește lumea cu superpantserele!</span><br><span style='color:black'> -Crime de război? Vrei să spui listă de sarcini?[Avertisment: această rută nu e pentru toată lumea]</span><br><span style='color:purple'> ?Pe bune, ceva nu e în regulă</span>"
+	],
+	"CAMPAIGN_DESC_TRANSKAL": [
+		"Taiga taciturnă doarme. Și doarme. Și tot doarme. Până se trezește că e un Futîncuristan înapoiat invadat din două părți. Iar Regina se grăbește să-și strângă oștile ca să salveze nația.",
+		"Dar adevăratul război nu e împotriva batalioanelor sfrijite ale Polaziei și Elamului. Și după ce-i dăm afară, Somertin e la ușă iar nația noastră tot o tundră înapoiată parazitată de borfași corupți va fi.",
+		"Stelele s-au aliniat perfect ca ambițioasa regină să smulgă cu totul Transkalul din balamale. Să paveze drumurile, să repare podurile, să aducă darul focului și oțelului. Și în primul rând, să golească mlaștina de putori și borfași",
+		"Deci haide pușcașule, avem multă treabă de făcut.",
+		"<span style='color:black'> -Folosește puținul pe care îl are Transkal ca să lupți un război pe două fronturi.</span><br><span style='color:black'> -Șpăguiește diverși lorzi ca să-ți rămână loiali</span><br><span style='color:white'> +Epurează leprele și paraziții care ciordesc bogățiile Transkalului și le bagă în vile</span><br><span style='color:white'>+Trage Transkalul cu forța în epoca modernă.</span><br><span style='color:red'>♥Găsește-ți un prinț drăguț și trăiți împreună până la adânci bătrâneți</span>"
+	],
+	"CAMPAIGN_DESC_POLASIE": [
+		"Strămoșii noștri ne-au dat privilegiul libertății și liberei întreprinderi, și l-am folosit ca să creem prosperitate și speranță. Fiii lor au visat și au trudit, și au împins bolovanul pe pisc. Timp de generații întregi, părea că viața e ușoară și viitorul strălucit.",
+		"Acum bolovanul a ajuns pe pisc și se prăvale. De decenii buletinele de știri nu mai aduc vești bune. Prea mulți s-au mutat din provincie în metropole ca să caute prosperitate pe care n-o vor găsi, aducând cu ei prețuri mari și sărăcie deoarece au abandonat structuri sociale eterne în favorul unor lefe care nu fac fațâ inflației și taxelor",
+		"Ranchiuna și diviziunea domnesc, unii caută vină în metodele stângace ale guvernului iar alții în opulența oligocraților. Oricare ar fi, guvernul s-a jucat de-a pompierul prea mult timp. A dat oamenilor toate drepturile și ajutoarele sociale, dar situația refuză să se îmbunătățească.",
+		"Președintele John Doe are pe umerii săi o muncă de Sisif. Singurul lucru care va mai uni acum Polazia e să urască altă țară, și s-o invadeze pentru resurse ieftine.",
+		"<span style='color:white'> +Eliberează petrol și metale prețioase de la fasciști, comuniști, teroriști sau ce-ar mai fi</span><br><span style='color:black'>-Navighează mările politice ale unei democrații expirate</span><br><span style='color:black'> -Ce se întâmplă... e adevărat sau ne-au mințit?</span><br><span style='color:purple'> ?Operațiunea THAUMIEL. Blackcock Inc. Sindicatul. Cât de adânc merge vortexul misterelor?</span>"
+	],
+	"CAMPAIGN_DESC_ELAM": ["Tot ce e frumos azi în Elam are o poveste ce duce la Sultanul Faruk III. Mahalaua aia a fost renovată de Faruk, deșertul ăla a fost transformat într-un centru economic de Faruk. Fabrica aia a fost făcută din ordinul lui Faruk, cuirasatul ăla a fost făcut cu patronajul lui Faruk. Akkadienii au fost bătuți de Faruk, Ararații au fost puși pe vine de Faruk. Faruk a luat un Elam înapoiat, un căcat de cărămidă, și l-a lăsat un imperiu de marmură.",
+		"Dar hărnicia și ambiția lui Faruk i-au fost decădere. Prea implicat în treburile statului, prea ocupat să consulte medicii, a murit de o banală infecție urinară. După asta haremul lui a turbat. Mame și băieți omorau alți băieți în stânga și-n dreapta ca să aibă șanse mai mari la tron. Numai timidul, pateticul Hashrazzat a rămas viu. Nu pe meritul său, ci fiindcă mama sa, cadîna Melike, era un demon și pentru că părea cel mai irelevant pretendent.",
+		"Această beizadea timidă a luat tronul în cele bai tulburi vremuri. Ce vine acum abia ar fi putut fi navigat de Faruk, darămite de progenitura lui incompetentă. Hashrazzat e și la propriu și la figurat un copilandru între uriași, niciunul dintre care nu iau Elamul în serios. Totuși, se vor alătura Kargiei în speranța că-l va pune în poziția în care va negocia termeni avantajoși cu ambii titani...",
+		"<span style='color:white'> +Bate-te cu kaffirii de la nord și restaurează vechea glorie a Califatului</span><br><span style='color:black'> -Ocupă-te de industria proastă, lipsa de armamente și provizii</span><br><span style='color:red'> ♥Fă-ți un harem de waifu-uri superbe</span><br><span style='color:black'> -Unele sunt loliuțe</span><br><span style='color:purple'> ?Va însemna ceva Aizi'Diharul, acea erezie colaboraționistă?</span><br>"
+	],
+
+	"CHAPTER_NAME_SOMERTIN_C1": "Potopul",
+    "CHAPTER_NAME_SOMERTIN_C2": "Perseverență",
+    "CHAPTER_NAME_SOMERTIN_C3": "Junghi în Decadenți",
+    "CHAPTER_NAME_SOMERTIN_C4": "Pumnal în Mahomedani",
+    "CHAPTER_NAME_SOMERTIN_C5": "Mareea de Oțel",
+    "CHAPTER_NAME_SOMERTIN_C6": "Răzbunare",
+    "CHAPTER_NAME_SOMERTIN_C7": "Iertare",
+    "CHAPTER_NAME_KARGIT_C1": "Operatsiya Belaya",
+    "CHAPTER_NAME_KARGIT_C2": "Bijuteria Coroanei",
+    "CHAPTER_NAME_KARGIT_C3": "Sturm und Drang",
+    "CHAPTER_NAME_KARGIT_C4": "Sfârșitul Sinarhiei",
+    "CHAPTER_NAME_KARGIT_C5": "Treburi Neterminate",
+    "CHAPTER_NAME_KARGIT_C6": "Stăpânul Continentului",
+    "CHAPTER_NAME_KARGIT_C7": "Miazănoaptea Ororilor",
+    "CHAPTER_NAME_TRANSKAL_C1": "Tăcuta taiga, trează",
+    "CHAPTER_NAME_TRANSKAL_C2": "Marșul cel Lung",
+    "CHAPTER_NAME_TRANSKAL_C3": "Calea Înainte",
+    "CHAPTER_NAME_TRANSKAL_C4": "Trecutul și Viitorul",
+    "CHAPTER_NAME_TRANSKAL_C5": "Sfârșitul cântului",
+    "CHAPTER_NAME_TRANSKAL_C6": "",
+    "CHAPTER_NAME_TRANSKAL_C7": "",
+    "CHAPTER_NAME_POLASIE_C1": "Operațiunea Eliberare Incredibilă",
+    "CHAPTER_NAME_POLASIE_C2": "Operațiunea Eliberarea Transcalului",
+    "CHAPTER_NAME_POLASIE_C3": "Iluzia se frânge",
+    "CHAPTER_NAME_POLASIE_C4": "Cutremur în Xanadu",
+    "CHAPTER_NAME_POLASIE_C5": "Ultimul Ultimatum",
+    "CHAPTER_NAME_POLASIE_C6": "",
+    "CHAPTER_NAME_POLASIE_C7": "",
+    "CHAPTER_NAME_ELAM_C1": "Deshămați caii de război!",
+    "CHAPTER_NAME_ELAM_C2": "Șchiopătând Înainte",
+    "CHAPTER_NAME_ELAM_C3": "Piază Rea",
+    "CHAPTER_NAME_ELAM_C4": "Ruina Imperii",
+    "CHAPTER_NAME_ELAM_C5": "AL MALHAMA AL KUBRA",
+    "CHAPTER_NAME_ELAM_C6": "",
+    "CHAPTER_NAME_ELAM_C7": ""
 };
 
 ROM={
@@ -688,63 +756,7 @@ ROM={
 		"Transportă unități repede de-a lungul hărții"
 	],
 	NationNames:["null","Sinarhia Somertină","Gosudarstvul Kargit","Reginatul Transcalit","Uniunea Polaziei","Sublimul Califat Elamit","Legiunea lui Iuda","Pandurii din Potupagrat","Junta din Arhus","Internaționala Sindicalistă","Federația Vulturiei"],
-	NationDesc:[
-		/*
-		"Millions of square kilometers, inhabited by hundreds of millions of people all of different ethnicity, language or religion. Somertin is the largest and most powerful nation on the continent. And abounding in resources, culture and wealth, it's a beautiful nation. Everyone knows utopia can never exist, but decent societies surely can and Somertin is surprisingly functional considering its size and conditions; quite a decent place to be in. As long as one pays his dues and doesn't start trouble, they recieve the state's protection and benefits. Trying to describe the way it works is like trying to find the kernel of an onion; Somertin politics are a mystery wrapped inside an enigma, with a complex but surprisingly reliable way of doing things. It comes off as obvious that such a vast and rich nation would be envied by its neighbours. That they'd seek to devour it. And when a series of tragedies brought the giant to its knees, the vultures smelled blood. Their cursed hordes are, as we speak, thrusting deep into the Motherland's tender nether regions while comitting the most vile travesties on our people. We desired no war, but if war is imposed upon us we'll fight without fear and without mercy! March on brothers, shoulder to shoulder against the Devil himself! We will not rest, we will not stop until the foundries of Hell are closed, until peace reigns supreme, and justice for the innocents triumphs!",
-		"Ten thousand years ago, the Race of the Evening Star had an empire that stretched as wide as the entire world and their technology was incredibly advanced. Having laser obelisks that would communicate with the annunaki of Nibiru. Their civilisation was brought to an end by the reptilian barbarian hordes of various tribes who would not even know to wipe their ass if our ancestors didn't teach them. Their last surviving descendants are we, the Kargi. Once more, we are the world's capital of culture, art and industry. But we lack two things: resources and living space. The best ways to procure them is to dispose of the somertin and transkalite pests, and take what rightfully belongs to us. Sure, we are in a temporary alliance with the morons of Polasie and the barbarians of Elam, but they too will be made to serve us. Join us, comrade! Join us as we drive our superpanzers to the four corners of the world! Let's show these barbarians the meaning of power!",
-		"The vast lands of that which lies beyond the Kal mountains belong to us, the Transkal Commonwealth. I say 'lands' instead of 'country' because we never were a centralized queendom. Great taigas and mountains separate the various states which are ruled by local strongmen instead of answering to the Queen. The Queen is the symbolic ruler of the nation according to our religion and traditions, but rarely in history has a queen had authority. Many were put on the throne specifically for their lack of desire to get involved in actually running the nation. Not Queen Vanessa, however. Her mother had fought the lords for decades so that the nation could be pulled into the industrial age. And had the world been different, she'd have done the same. But not with the Kargits openly declaring they want to exterminate the people of Transkal and Somertin, and especially not when their Polasian and Elamite allies have already crossed the border and attacked us. The drums of war are thundering loudly from the west, and whether we want it or not war is upon the Commonwealth. We must preserve our culture and traditions against the storm of steel that is coming!",
-		"Freedom! Liberty! Emancipation! These are the core tenets of the Polasie Republic. A republic from the people, of the people, for the people. We shall fight for freedom against the fascist communist terrorist gypsies of Somerthing, and against the other communist nazi sympathizers of Transkal. Their oppression of our freedom-loving nation knows no bounds, as they refuse to let us use their resources in order to bring prosperity and happiness to our people. Thus, we must denazify these terror-states alongside the brave freedom fighters of Kargi and the noble jihadists of Elam. Come with us, friend. Let's fight for freedom!",
-		"No more than a year ago, the Elamite Empire celebrated both its greatest achievement and its greatest sorrow. Sultan Faruk III has valiantly defeated the Akkadian Tribe Confederation and unified the Elam Subcontinent under his sword. Unfortunately for the jubilant nation, he died to a severe renal infection less than two months later, unable to properly revel in his glory. Subsequently, a power struggle erupted between the minor Prince, merely 15 at the time, and Grand Vizier Mutasarif. The struggle was broken when an important general bid his loyalty to the Prince, and threatened the Grand Vizier to submit. Now this Vizier is totally and absolutely loyal to the young Prince. Without a doubt. The young Prince, now crowned and blessed as Sultan, is naive and idealistic about his position in the world. It doesn't help one bit that he grew up hearing heroic tales of his father's deeds, and that he is foolish enough to believe he can imitate him oh-so-easily. He believes that when he leads, others will follow. He believes that when he attacks, the enemy will retreat. And he believes that he will be obeyed on account of his divine heritage.But what better way to secure your position, earn glory and postpone internal tensions than to march against a weakened neighbour who is already at war with half the world? Golden opportunity, and a foolishness to pass up on. So, with the power of Allah and Anime on his side, the (very) young Sultan is ready to kick some ass!",
-		"Were you a hero, you'd fight until the last drop of blood. And you'd proudly die for your nation. For your family. For your honor as a man. The rest of us... are not heroes. We are nothing but human, subject to fear and failure. We who would rather live for the nation, are not anywhere close to you. We sold our dignity already. We who made ourselves worms, do not complain when we're trodden on. With shame we shall fight for those who are butchering our loved ones. We'll serve them and thus earn their trust. And when the time comes, we'll shank them where they are most vulnerable. We'll pay them back for everything they've done to us and avenge the loss of what we hold dear. Do not join us, for you deserve better.",
-		"Those they call 'subhumans' are those that plow their fields. Who labour for their warmachine so that they have bullets to shoot our own families. Of our fat they make soap, and from our skin they make lamps. All for a war so that more of our people can be subjected to this fate. What is left for us, brother? Nothing but suffering. Nothing but backbreaking labour under their whips. Brothers, why do we let ourselves be led like cattle to the slaughter? Rise up against the cogs of evil! Rise up against their cursed empire! They whip us now, tomorrow it will be us who whip them! Rise with us, brother! We'll march towards the dim and fading lights, and sooner welcome death than be slaves again!",
-		"For generations, the Commonwealth of Transkal has been ruled by a Queen who would preside over the affairs of the common people. It is this belief in a matriarch that defines our tradition, and the cornerstone to our religion. That Queen Vanessa wants to stomp over this sacred tradition and submit herself to a male ruler, is unacceptable. We'd be absorbed by our much bigger neighbour and cease to be independent and unique. General Shmelev has struck a deal with the Kargits. They will allow us to keep our ways if we rise up and oppose the rule of the fake queen. Now we know the way, and we'll fight for the dauphine Queen Isabella! For the matriarchy!",
-		"Is it fair that the rich capitalists get to have cars while the common man makes less than 15 dollars an hour!? Is this fair that the minorities, women and LBGTQ+ people have to bear microagressions while the majority gets to bask in their privilege? We need equality! We need freedom! We need communism! Together with you, comrade, we'll topple the white cis-normative racist patriarchy and bring true freedom and equality to everyone under communism!",
-		"What happens when a stupid, snot-nosed child with delusions of grandeur rules an entire empire? Disaster. That's what happens. All our gains from the initial phase were lost when the enemy counterattacked, and now the battle is going in our own lands. We can hardly keep them at bay when our industry is so limited, and the soldiers so tired. Luckily the Grand Vizier is pragmatic enough to see the way the wind is blowing. If we reach an agreement with the somertins, we can end this foolish war and avoid their retribution."*/
-		["Regatul lui Prester John a fost o fantezie dar în îndepărtatul continent numit Astartia, Sinarhia Creștină Somertină e un fapt real. Această ciudățenie scuipă conceptul de ideologie și stâlpii convenționali ai statalității pentru a crea un stat ce-i servește pe toți. Așa a funcționat încât Somertin a devenit cel mai decent loc de pe continent. Nici samavolnic precum Kargia, nici disfuncțional ca Polazia, și cu ani-lumină înaintea Elamului si Transkalului cele înapoiate.",
-
-			"Azi strădania supremă este asmuțită asupra lor, căci vulturii continentului și-au asmuțit hoardele asupra Sinarhiei. Sataniștii de la vest, ipocriții de la nord și ereticii de la sud înconjoară Sinarhia și râvnesc s-o vadă arsă până la pământ, oamenii lor cărați în lanțuri și cultura lor spurcată și pângărită.",
-
-			"Oră de oră frontul se mută tot mai departe la est, sute de mii și milioane de oameni mor cât vorbim. Sinarhia trebuie să lupte cu vitejie și sârguință căci libertatea, cultura și însăși existența sa este în pericol. Vom avea ori victorie ori pieire!",
-
-			"<span style='color:white'> +Cu spatele la zid, luptă cu tot ce poți împotriva unui dușman pe cât de puternic și redutabil, pe atât de abominabil și necruțător</span><br><span style='color:white'> +Zdrobește granițele și adu pace și bunăstare tuturor oamenilor din Astartia</span><br><span style='color:black'> +Indiferent ce se va întâmpla, nu vom capitula absolut NICIODATĂ</span><br><span style='color:purple'>?Ce face Laleaua Albă în tot acest timp? Ce e în Arhiva Secretă din Kaula?</span"],
-		["Foarte antagonici erau Continentaliștii, Socialiștii și Darwiniștii până când Marele Lord i-a unit sub un stindard. La ce bun să te lupți dacă să ai o Kargia dominantă pe continent, o utopie egalitară sau o rasă kargită dominantă? De ce nu ar putea kargiții să se bucure de o utopie egalitară pe spinarea sub-oamenilor continentului?",
-			"Și chiar de nu ne-am dori, realitatea e că solul Kargiei se erodează iar minele seacă. Dacă vrem barem să ne păstrăm condițiile de viață(darămite să obținem prosperitate), avem nevoie de grâul și mineralele de la est.",
-			"Trimiteți pantserele peste munți și văi! Haide la cel mai mare, cel mai dinamic și mai modern război, și să ieșim cea mai puternică țară care a fost vreodată! PANZER BRRRRRRRRR!!!",
-			"<span style='color:white'> +Război rapid, dinamic cu unități puternice și rapide.</span><br><span style='color:white'> +Muzică energică care să-ți acompanieze killstreakul</span><br><span style='color:white'> +Distruge tot, avansează repede, cucerește lumea cu superpantserele!</span><br><span style='color:black'> -Crime de război? Vrei să spui listă de sarcini?[Avertisment: această rută nu e pentru toată lumea]</span><br><span style='color:purple'> ?Pe bune, ceva nu e în regulă</span>"],
-		["Taiga taciturnă doarme. Și doarme. Și tot doarme. Până se trezește că e un Futîncuristan înapoiat invadat din două părți. Iar Regina se grăbește să-și strângă oștile ca să salveze nația.",
-			"Dar adevăratul război nu e împotriva batalioanelor sfrijite ale Polaziei și Elamului. Și după ce-i dăm afară, Somertin e la ușă iar nația noastră tot o tundră înapoiată parazitată de borfași corupți va fi.",
-			"Stelele s-au aliniat perfect ca ambițioasa regină să smulgă cu totul Transkalul din balamale. Să paveze drumurile, să repare podurile, să aducă darul focului și oțelului. Și în primul rând, să golească mlaștina de putori și borfași",
-			"Deci haide pușcașule, avem multă treabă de făcut.",
-			"<span style='color:black'> -Folosește puținul pe care îl are Transkal ca să lupți un război pe două fronturi.</span><br><span style='color:black'> -Șpăguiește diverși lorzi ca să-ți rămână loiali</span><br><span style='color:white'> +Epurează leprele și paraziții care ciordesc bogățiile Transkalului și le bagă în vile</span><br><span style='color:white'>+Trage Transkalul cu forța în epoca modernă.</span><br><span style='color:red'>♥Găsește-ți un prinț drăguț și trăiți împreună până la adânci bătrâneți</span>"],
-		["Strămoșii noștri ne-au dat privilegiul libertății și liberei întreprinderi, și l-am folosit ca să creem prosperitate și speranță. Fiii lor au visat și au trudit, și au împins bolovanul pe pisc. Timp de generații întregi, părea că viața e ușoară și viitorul strălucit.",
-			"Acum bolovanul a ajuns pe pisc și se prăvale. De decenii buletinele de știri nu mai aduc vești bune. Prea mulți s-au mutat din provincie în metropole ca să caute prosperitate pe care n-o vor găsi, aducând cu ei prețuri mari și sărăcie deoarece au abandonat structuri sociale eterne în favorul unor lefe care nu fac fațâ inflației și taxelor",
-			"Ranchiuna și diviziunea domnesc, unii caută vină în metodele stângace ale guvernului iar alții în opulența oligocraților. Oricare ar fi, guvernul s-a jucat de-a pompierul prea mult timp. A dat oamenilor toate drepturile și ajutoarele sociale, dar situația refuză să se îmbunătățească.",
-			"Președintele John Doe are pe umerii săi o muncă de Sisif. Singurul lucru care va mai uni acum Polazia e să urască altă țară, și s-o invadeze pentru resurse ieftine.",
-			"<span style='color:white'> +Eliberează petrol și metale prețioase de la fasciști, comuniști, teroriști sau ce-ar mai fi</span><br><span style='color:black'>-Navighează mările politice ale unei democrații expirate</span><br><span style='color:black'> -Ce se întâmplă... e adevărat sau ne-au mințit?</span><br><span style='color:purple'> ?Operațiunea THAUMIEL. Blackcock Inc. Sindicatul. Cât de adânc merge vortexul misterelor?</span>"],
-		["Tot ce e frumos azi în Elam are o poveste ce duce la Sultanul Faruk III. Mahalaua aia a fost renovată de Faruk, deșertul ăla a fost transformat într-un centru economic de Faruk. Fabrica aia a fost făcută din ordinul lui Faruk, cuirasatul ăla a fost făcut cu patronajul lui Faruk. Akkadienii au fost bătuți de Faruk, Ararații au fost puși pe vine de Faruk. Faruk a luat un Elam înapoiat, un căcat de cărămidă, și l-a lăsat un imperiu de marmură.",
-			"Dar hărnicia și ambiția lui Faruk i-au fost decădere. Prea implicat în treburile statului, prea ocupat să consulte medicii, a murit de o banală infecție urinară. După asta haremul lui a turbat. Mame și băieți omorau alți băieți în stânga și-n dreapta ca să aibă șanse mai mari la tron. Numai timidul, pateticul Hashrazzat a rămas viu. Nu pe meritul său, ci fiindcă mama sa, cadîna Melike, era un demon și pentru că părea cel mai irelevant pretendent.",
-			"Această beizadea timidă a luat tronul în cele bai tulburi vremuri. Ce vine acum abia ar fi putut fi navigat de Faruk, darămite de progenitura lui incompetentă. Hashrazzat e și la propriu și la figurat un copilandru între uriași, niciunul dintre care nu iau Elamul în serios. Totuși, se vor alătura Kargiei în speranța că-l va pune în poziția în care va negocia termeni avantajoși cu ambii titani...",
-			"<span style='color:white'> +Bate-te cu kaffirii de la nord și restaurează vechea glorie a Califatului</span><br><span style='color:black'> -Ocupă-te de industria proastă, lipsa de armamente și provizii</span><br><span style='color:red'> ♥Fă-ți un harem de waifu-uri superbe</span><br><span style='color:black'> -Unele sunt loliuțe</span><br><span style='color:purple'> ?Va însemna ceva Aizi'Diharul, acea erezie colaboraționistă?</span><br>"],
-		[],
-		[],
-		[],
-		[],
-		[],
-		[]
-
-		],
 	Intralogues:[],
-	ChapterName:[["Potopul","Perseverență","Junghi în Decadenți","Pumnal în Mahomedani","Mareea de Oțel","Răzbunare","Iertare"],
-				["Operatsiya Belaya","Bijuteria Coroanei","Sturm und Drang","Sfârșitul Sinarhiei","Treburi Neterminate","Stăpânul Continentului","Miazănoaptea Ororilor"],
-				["Tăcuta taiga, trează","Marșul cel Lung","Calea Înainte","Trecutul și Viitorul","Sfârșitul cântului"],
-				["Operațiunea Eliberare Incredibilă","Operațiunea Eliberarea Transcalului","Iluzia se frânge","Cutremur în Xanadu","Ultimul Ultimatum"],
-				["Deshămați caii de război!","Șchiopătând Înainte","Piază Rea","Ruina Imperii","AL MALHAMA AL KUBRA"],
-				["Kargit Dogs","Anima Ante Mortem"],
-				["Let us die","To make men free"],
-				["Ancestral Gangrene","A New Era"],
-				["Freedom, Equality, Tolerance","Elysium Shattered"],
-				["A taste of Warfare","A giant awakens"],
-				[]],
 	MissionName:[
 				[["Manevre de Întârziere","Apără Trecătorile","Plesnind Polazienii","Ultima Redută a lui Vladov","Operațiunea INVINCIBIL"],
 					["Operațiunea Harpon","Contraatacul lui Laszlo","Război Submarin Dezlănțuit","Marea Ofensivă","Operațiunea CELERITATE"],
