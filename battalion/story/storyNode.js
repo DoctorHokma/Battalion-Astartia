@@ -49,22 +49,22 @@ StoryNode.prototype.getChildByIndex = function(childIndex) {
     return this.order[childIndex];
 }
 
-StoryNode.prototype.getNextAvailable = function(onCheck) {
+StoryNode.prototype.getNextAvailableIndex = function(onCheck) {
 	if(this.order.length === 0 || typeof onCheck !== "function") {
         console.warn(`No order for ${this.id}`);
-		return null;
+		return -1;
 	}
 
     for(let i = 0; i < this.order.length; i++) {
         const childID = this.order[i];
-        const isValid = onCheck(childID);
+        const isCurrentFinished = onCheck(childID);
 
-        if(isValid) {
-            return childID;
+        if(!isCurrentFinished) {
+            return i;
         }
     }
 
-    return null;
+    return this.order.length - 1;
 }
 
 StoryNode.prototype.isAvailableAsNext = function(orderIndex, onCheck) {
@@ -74,9 +74,9 @@ StoryNode.prototype.isAvailableAsNext = function(orderIndex, onCheck) {
 
     for(let i = 0; i < orderIndex; i++) {
         const childID = this.order[i];
-        const isFinished = onCheck(childID);
+        const isPreviousFinished = onCheck(childID);
 
-        if(!isFinished) {
+        if(!isPreviousFinished) {
             return false;
         }
     }

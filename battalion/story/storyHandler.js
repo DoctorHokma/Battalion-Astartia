@@ -17,6 +17,87 @@ StoryHandler.TYPE = {
 	MISSION: 3
 };
 
+StoryHandler.prototype.onMissionWon = function(missionID) {
+	//Gets called in EndBattle, if the user was victorious.
+}
+
+StoryHandler.prototype.unlockAll = function() {
+	this.missions.forEach((e) => e.finish());
+	this.chapters.forEach((e) => e.finish());
+	this.campaigns.forEach((e) => e.finish());
+	this.scenarios.forEach((e) => e.finish());
+}
+
+StoryHandler.prototype.selectMissionIfAvailable = function(missionIndex) {
+	if(!this.currentChapter) {
+		return null;
+	}
+
+	const isAvailable = this.currentChapter.isAvailableAsNext(missionIndex, (childID) => {
+		const mission = this.missions.get(childID);
+
+		return mission && mission.isFinished(); 
+	});
+
+	if(!isAvailable) {
+		return null;
+	}
+
+	const missionID = this.currentChapter.getChildByIndex(missionIndex);
+	const mission = this.selectMission(missionID);
+
+	return mission;
+}
+
+StoryHandler.prototype.selectChapterIfAvailable = function(chapterIndex) {
+	if(!this.currentCampaign) {
+		return null;
+	}
+
+	const isAvailable = this.currentCampaign.isAvailableAsNext(chapterIndex, (childID) => {
+		const chapter = this.chapters.get(childID);
+
+		return chapter && chapter.isFinished(); 
+	});
+
+	if(!isAvailable) {
+		return null;
+	}
+
+	const chapterID = this.currentCampaign.getChildByIndex(chapterIndex);
+	const chapter = this.selectChapter(chapterID);
+
+	return chapter;
+}
+
+StoryHandler.prototype.getNextMissionIndex = function() {
+	if(!this.currentChapter) {
+		return -1;
+	}
+
+	const index = this.currentChapter.getNextAvailableIndex((missionID) => {
+		const mission = this.missions.get(missionID);
+
+		return mission && mission.isFinished();
+	});
+
+	return index;
+}
+
+StoryHandler.prototype.getNextChapterIndex = function() {
+	if(!this.currentCampaign) {
+		return -1;
+	}
+
+	const index = this.currentCampaign.getNextAvailableIndex((chapterID) => {
+		const chapter = this.chapters.get(chapterID);
+
+		return chapter && chapter.isFinished();
+	});
+
+	return index;
+}
+
 StoryHandler.prototype.getNode = function(type) {
 	switch(type) {
 		case StoryHandler.TYPE.SCENARIO: return this.currentScenario;
@@ -95,19 +176,15 @@ StoryHandler.prototype.selectCampaign = function(campaignID) {
 	return campaign;
 }
 
-StoryHandler.prototype.selectChapter = function(chapterIndex) {
-	if(!this.currentScenario) {
-		return null;
-	}
-
+StoryHandler.prototype.selectChapter = function(chapterID) {
 	if(!this.currentCampaign) {
 		return null
 	}
 
-	const chapterID = this.currentCampaign.getChildByIndex(chapterIndex);
+	const hasChapter = this.currentCampaign.hasChild(chapterID);
 
-	if(!chapterID) {
-		console.warn(`Chapter ${chapterIndex} does not exist for campaign`, this.currentCampaign);
+	if(!hasChapter) {
+		console.warn(`Chapter ${chapterID} does not exist for campaign`, this.currentCampaign);
 		return null;
 	}
 
@@ -117,51 +194,27 @@ StoryHandler.prototype.selectChapter = function(chapterIndex) {
 		return null;
 	}
 
-	const isAvailable = this.currentCampaign.isAvailableAsNext(chapterIndex, (childID) => {
-		const chapter = this.chapters.get(childID);
-
-		return chapter && chapter.isFinished(); 
-	});
-
-	if(!isAvailable) {
-		console.warn(`Chapter ${chapterIndex} is not available for campaign`, this.currentCampaign);
-		return null;
-	}
-
 	this.currentChapter = chapter;
 	this.currentMission = null;
 	
 	return chapter;
 }
 
-StoryHandler.prototype.selectMission = function(missionIndex) {
-	if(!this.currentScenario) {
-		return null;
-	}
-
-	if(!this.currentCampaign) {
-		return null;
-	}
-
+StoryHandler.prototype.selectMission = function(missionID) {
 	if(!this.currentChapter) {
 		return null;
 	}
 
-	const mission = this.currentChapter.getChildByIndex(missionIndex);
+	const hasMission = this.currentChapter.hasChild(missionID);
 
-	if(!mission) {
-		console.warn(`Mission ${missionIndex} does not exist for chapter`, this.currentChapter);
+	if(!hasMission) {
+		console.warn(`Mission ${missionID} does not exist for chapter`, this.currentChapter);
 		return null;
 	}
 
-	const isAvailable = this.currentChapter.isAvailableAsNext(missionIndex, (childID) => {
-		const mission = this.missions.get(childID);
+	const mission = this.missions.get(missionID);
 
-		return mission && mission.isFinished();
-	});
-
-	if(!isAvailable) {
-		console.warn(`Mission ${missionIndex} is not available for chapter`, this.currentChapter);
+	if(!mission) {
 		return null;
 	}
 

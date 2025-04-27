@@ -18,6 +18,20 @@ battalion.language.addLanguage(Battalion.LANGUAGE.TURKISH, LANGUAGE_TURKISH);
 
 battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
 battalion.story.init();
+battalion.saveHandler.loadStoryProgress(battalion, {
+	"MISSIONS": {
+		"SOMERTIN_C1_M1": 1,
+		"SOMERTIN_C1_M2": 1,
+		"SOMERTIN_C1_M3": 1,
+		"SOMERTIN_C1_M4": 1,
+		"SOMERTIN_C1_M5": 1
+	},
+	"CHAPTERS": {
+		"SOMERTIN_C1": 1
+	}
+});
+
+battalion.story.unlockAll();
 
 battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
 battalion.timer.start();
@@ -7025,60 +7039,6 @@ function RunEvent(Event){
 					}
 }
 
-function SaveGame(){
-	//let expires="expires= 31 Dec 9999 23:59:59 UTC";
-
-
-	let LevelData=[[],[],[],[],[],[],[],[],[],[],[]];
-	for (let i=0;i<35;i++){LevelData[0][LevelData[0].length]=Campaigns[0][Math.floor(i/5)][i%5].Finished};
-	for (let i=0;i<35;i++){LevelData[1][LevelData[1].length]=Campaigns[1][Math.floor(i/5)][i%5].Finished};	
-	for (let i=0;i<25;i++){LevelData[2][LevelData[2].length]=Campaigns[2][Math.floor(i/5)][i%5].Finished};
-	for (let i=0;i<25;i++){LevelData[3][LevelData[3].length]=Campaigns[3][Math.floor(i/5)][i%5].Finished};
-	for (let i=0;i<25;i++){LevelData[4][LevelData[4].length]=Campaigns[4][Math.floor(i/5)][i%5].Finished};
-	for (let i=0;i<10;i++){LevelData[5][LevelData[5].length]=Campaigns[5][Math.floor(i/5)][i%5].Finished};
-	for (let i=0;i<10;i++){LevelData[6][LevelData[6].length]=Campaigns[6][Math.floor(i/5)][i%5].Finished};
-	for (let i=0;i<10;i++){LevelData[7][LevelData[7].length]=Campaigns[7][Math.floor(i/5)][i%5].Finished};
-	for (let i=0;i<10;i++){LevelData[8][LevelData[8].length]=Campaigns[8][Math.floor(i/5)][i%5].Finished};
-	for (let i=0;i<10;i++){LevelData[9][LevelData[9].length]=Campaigns[9][Math.floor(i/5)][i%5].Finished};
-	for (let i=0;i<5;i++){LevelData[10][LevelData[10].length]=Campaigns[10][0][i].Finished};
-
-	let SettingsData=[SoundChoice,MusicChoice,DialogueChoice,IdleAnimChoice,MystSettChoice];
-
-	let Data=LevelData+"|"+SettingsData;
-
-	let d = new Date();
-  	d.setTime(d.getTime() + (1000*24*60*60*1000));
- 	let expires = "expires="+ d.toUTCString();
-
-	document.cookie=Data+";"+expires+"; path:/; SameSite=Lax";
-}
-
-function LoadData(){
-	let decodedCookie = decodeURIComponent(document.cookie);
-	let Data= decodedCookie.split('|');
-
-	let LevelData=JSON.parse("["+Data[0]+"]");
-	let SettingsData=JSON.parse("["+Data[1]+"]");
-	for(let i=0;i<35;i++){Campaigns[0][Math.floor(i/5)][i%5].Finished=LevelData[i]};
-	for(let i=35;i<70;i++){Campaigns[1][Math.floor(i/5)-7][i%5].Finished=LevelData[i]};
-	for(let i=70;i<95;i++){Campaigns[2][Math.floor(i/5)-14][i%5].Finished=LevelData[i]};
-	for(let i=95;i<120;i++){Campaigns[3][Math.floor(i/5)-19][i%5].Finished=LevelData[i]};
-	for(let i=120;i<145;i++){Campaigns[4][Math.floor(i/5)-24][i%5].Finished=LevelData[i]};
-	for(let i=145;i<155;i++){Campaigns[5][Math.floor(i/5)-29][i%5].Finished=LevelData[i]};
-	for(let i=155;i<165;i++){Campaigns[6][Math.floor(i/5)-31][i%5].Finished=LevelData[i]};
-	for(let i=165;i<175;i++){Campaigns[7][Math.floor(i/5)-33][i%5].Finished=LevelData[i]};
-	for(let i=175;i<185;i++){Campaigns[8][Math.floor(i/5)-35][i%5].Finished=LevelData[i]};
-	for(let i=185;i<195;i++){Campaigns[9][Math.floor(i/5)-37][i%5].Finished=LevelData[i]};
-	for(let i=195;i<200;i++){Campaigns[10][0][i%5].Finished=LevelData[i]};
-
-
-	SoundChoice=SettingsData[0];
-	MusicChoice=SettingsData[1];
-	DialogueChoice=SettingsData[2];
-	IdleAnimChoice=SettingsData[3];
-	MystSettChoice=SettingsData[4];
-}
-
 function SBLARG(X,Y,pip){
 	//alert(X+" "+Y);
 
@@ -8064,7 +8024,5 @@ if(Mainscreen==7){document.getElementById("Main Menu Picture").src="Assets/MainM
 if(Mainscreen==8){document.getElementById("Main Menu Picture").src="Assets/MainMenuScreens/Stulpikan Pandur.PNG"};
 if(Mainscreen==9){document.getElementById("Main Menu Picture").src="Assets/MainMenuScreens/Coloured Tanks.JPG"};*/
 document.getElementById("Main Menu Picture").src="Assets/MainMenuScreens/Coloured Tanks.JPG";
-
-//SaveGame();
 
 //Inspection(0,MohConstants,MohRoster);

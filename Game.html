@@ -1461,37 +1461,37 @@
 					<img style="position:absolute; left:0px" src="Assets/Miscellaneous/ChapterPanel.PNG"/>
 					<img id="ChapterPanelPointer" style="position: absolute; left:-40px; top:-6px" src="Assets/Miscellaneous/ArrowPointer.PNG"/>
 
-					<div id="Chapter 1" style="position:absolute; left:10px; top:10px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ChooseChapter(1)">
+					<div id="Chapter 1" style="visibility: hidden; position:absolute; left:10px; top:10px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectChapter(0)">
 						<img id="Chp1plaque" src="Assets/Miscellaneous/NonPlaque.PNG"/>
 						<p id="Chp1text" style="position: absolute; top:6px; width:80px; height:31px; text-align: center; z-index: 1; margin:0">Chapter 1</p>
 					</div>
 
-					<div id="Chapter 2" style="position:absolute; left:10px; top:44px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ChooseChapter(2)">
+					<div id="Chapter 2" style="visibility: hidden; position:absolute; left:10px; top:44px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectChapter(1)">
 						<img id="Chp2plaque" src="Assets/Miscellaneous/NonPlaque.PNG"/>
 						<p id="Chp2text" style="position: absolute; top:6px; width:80px; height:31px; text-align: center; z-index: 1; margin:0">Chapter 2</p>
 					</div>
 
-					<div id="Chapter 3" style="position:absolute; left:10px; top:77px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ChooseChapter(3)">
+					<div id="Chapter 3" style="visibility: hidden; position:absolute; left:10px; top:77px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectChapter(2)">
 						<img id="Chp3plaque" src="Assets/Miscellaneous/NonPlaque.PNG"/>
 						<p id="Chp3text" style="position: absolute; top:6px; width:80px; height:31px; text-align: center; z-index: 1; margin:0">Chapter 3</p>
 					</div>
 
-					<div id="Chapter 4" style="position:absolute; left:10px; top:110px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ChooseChapter(4)">
+					<div id="Chapter 4" style="visibility: hidden; position:absolute; left:10px; top:110px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectChapter(3)">
 						<img id="Chp4plaque" src="Assets/Miscellaneous/NonPlaque.PNG"/>
 						<p id="Chp4text" style="position: absolute; top:6px; width:80px; height:31px; text-align: center; z-index: 1; margin:0">Chapter 4</p>
 					</div>
 
-					<div id="Chapter 5" style="position:absolute; left:10px; top:143px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ChooseChapter(5)">
+					<div id="Chapter 5" style="visibility: hidden; position:absolute; left:10px; top:143px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectChapter(4)">
 						<img id="Chp5plaque" src="Assets/Miscellaneous/NonPlaque.PNG"/>
 						<p id="Chp5text" style="position: absolute; top:6px; width:80px; height:31px; text-align: center; z-index: 1; margin:0">Chapter 5</p>
 					</div>
 
-					<div id="Chapter 6" style="position:absolute; left:10px; top:176px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ChooseChapter(6)">
+					<div id="Chapter 6" style="visibility: hidden; position:absolute; left:10px; top:176px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectChapter(5)">
 						<img id="Chp6plaque" src="Assets/Miscellaneous/NonPlaque.PNG"/>
 						<p id="Chp6text" style="position: absolute; top:6px; width:80px; height:31px; text-align: center; z-index: 1; margin:0">Chapter 6</p>
 					</div>
 
-					<div id="Chapter 7" style="position:absolute; left:10px; top:210px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ChooseChapter(7)">
+					<div id="Chapter 7" style="visibility: hidden; position:absolute; left:10px; top:210px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectChapter(6)">
 						<img id="Chp7plaque" src="Assets/Miscellaneous/NonPlaque.PNG"/>
 						<p id="Chp7text" style="position: absolute; top:6px; width:80px; height:31px; text-align: center; z-index: 1; margin:0">Chapter 7</p>
 					</div>
@@ -1523,11 +1523,11 @@
 
 				<div style="position:absolute; left:280px; top: 100px; width:500px; height:70px" oncontextmenu="Tooltip('TOOLTIP_CHOOSE_MISSION');this.style.opacity=0.35" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.opacity=1">
 					<img id="EmblemSlot" style="position:absolute; top:-16px; left:0px; z-index:1" id="EmblemHighlighter" src="Assets/Miscellaneous/EmblemSlot.PNG"/>
-					<img id="Emblem1" style="position: absolute; left:15px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/EmblemSOM.PNG" onclick="ChooseMission(1)" />
-					<img id="Emblem2" style="position: absolute; left:100px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="ChooseMission(2)" />
-					<img id="Emblem3" style="position: absolute; left:185px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="ChooseMission(3)" />
-					<img id="Emblem4" style="position: absolute; left:270px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="ChooseMission(4)" />
-					<img id="Emblem5" style="position: absolute; left:355px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="ChooseMission(5)" />
+					<img id="Emblem1" style="position: absolute; left:15px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/EmblemSOM.PNG" onclick="selectMission(0)" />
+					<img id="Emblem2" style="position: absolute; left:100px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="selectMission(1)" />
+					<img id="Emblem3" style="position: absolute; left:185px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="selectMission(2)" />
+					<img id="Emblem4" style="position: absolute; left:270px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="selectMission(3)" />
+					<img id="Emblem5" style="position: absolute; left:355px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="selectMission(4)" />
 				</div>
 
 				<div style="position: absolute; left:800px; top:105px" oncontextmenu="Tooltip('TOOLTIP_MISSION_PROPERTIES');this.style.opacity=0.35" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.opacity=1">
