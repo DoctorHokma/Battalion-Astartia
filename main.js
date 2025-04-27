@@ -4948,19 +4948,6 @@ function OpenSpecialBloc(Bloc){
 };
 
 /**
- * neyn 07.04.2025
- * 
- * @param {int} playlistIndex 
- */
-const PlayBGM = function(playlistIndex) {
-	if(playlistIndex >= 0 && playlistIndex < PLAYLIST_MAP.length) {
-		const playlistID = PLAYLIST_MAP[playlistIndex];
-
-		battalion.musicPlayer.playPlaylist(playlistID);
-	}
-}
-
-/**
  * neyn 08.04.2025
  * 
  * @param {int[][]} gameMap 
@@ -6995,10 +6982,9 @@ function RunEvent(Event){
 
 					if(Event.Purge!=0){for(let g=0; g<MapRoster.length;g++){if(MapRoster[g].faction==Event.Purge){MapRoster[g].life=0;UnitLost(g)}}};
 
-					if(Event.ChangeTune != null) { 
-						battalion.musicPlayer.stop();
-						PlayBGM(Event.ChangeTune);
-					}
+	if(Event.ChangeTune != null) { 
+		battalion.musicPlayer.playPlaylist(Event.ChangeTune);
+	}
 }
 
 function SBLARG(X,Y,pip){

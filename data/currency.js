@@ -30,11 +30,3 @@ const CURRENCY = {
         "exchangeRate": 5
     }
 };
-
-const CURRENCY_TYPE = {
-    ZLOT: "ZLOT",
-    KARGIL: "KARGIL",
-    KRONE: "KRONE",
-    PULA: "PULA",
-    RIAL: "RIAL"
-}

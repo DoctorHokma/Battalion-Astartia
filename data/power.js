@@ -11,10 +11,4 @@ const POWER = {
         "name": "POWER_NAME_REGIONAL",
         "desc": "POWER_DESC_REGIONAL"
     }
-}
-
-const POWER_TYPE = {
-    MAJOR: "MAJOR",
-    MINOR: "MINOR",
-    REGIONAL: "REGIONAL"
 };

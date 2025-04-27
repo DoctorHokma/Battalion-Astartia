@@ -80,11 +80,3 @@ const NATION = {
 		"specialTechnology": [false,true,false,false,true]
 	}
 };
-
-const NATION_TYPE = {
-	SOMERTIN: "SOMERTIN",
-	KARGIT: "KARGIT",
-	TRANSKAL: "TRANSKAL",
-	POLASIE: "POLASIE",
-	ELAM: "ELAM"
-}
