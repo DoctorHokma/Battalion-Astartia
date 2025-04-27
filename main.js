@@ -2578,6 +2578,8 @@ function EndBattle(){
 
 			if(ChosenMission==5){CallInterlogue()};
 
+			battalion.story.onMissionWon();
+			
 			for(let i=1;i<=10;i++) {
 				for(let j=1;j<=10;j++) {
 					//alert(document.getElementById("Entity "+i+"X"+j).style.visibility);
@@ -2585,8 +2587,6 @@ function EndBattle(){
 					document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
 					document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
 					document.getElementById("Structure "+i+"X"+j).style.visibility="hidden";
-
-					battalion.story.onMissionWon();
 				}
 			}
 		}
