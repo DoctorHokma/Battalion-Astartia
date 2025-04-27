@@ -17,8 +17,16 @@ StoryHandler.TYPE = {
 	MISSION: 3
 };
 
-StoryHandler.prototype.onMissionWon = function(missionID) {
-	//Gets called in EndBattle, if the user was victorious.
+StoryHandler.prototype.onMissionWon = function() {
+	if(!this.currentMission) {
+		return;
+	}
+
+	this.currentMission.finish();
+
+	console.log("WON!", this.currentMission)
+	
+	this.currentMission = null;
 }
 
 StoryHandler.prototype.unlockAll = function() {

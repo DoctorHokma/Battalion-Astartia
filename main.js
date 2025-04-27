@@ -90,7 +90,6 @@ Difficulty=2;
 Playlists=[];
 InterlogueBST=[[],[],[],[],[],[],[],[],[],[],[]];
 
-var Campaigns=_CAMPAIGNS;
 var Units=UNITS;
 var Factions=CampaignFactions;
 var Terrain=TERRAIN;
@@ -869,7 +868,6 @@ function AI_Scouter(Unit,Map){
 }
 
 function AITurn(Roster,Map,Constants){
-	//Map=Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Map;
 	if(!Resolution){document.getElementById("AITurnIndicator").style.visibility="visible"};
 	isAITurn=true;
 	//alert(document.getElementById("AITurnIndicator").style.visibility);
@@ -1021,14 +1019,12 @@ function AITurn(Roster,Map,Constants){
 		//Aaaaand here is the block for AI building turrets. Or rather will be
 
 		if(Difficulty>2){};
-		//alert(Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Map);
 			//alert(InternalDelayerFactor);
 			//setTimeout(AI_Scouter,InternalDelayerFactor,ActiveRoster[i],Map);
 			//alert(ActiveRoster[i].index);
 			
 
 			//console.log(ActionRegister);
-			//AI_Scouter(Roster[x],Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Map)
 			//if(x==ActiveRoster.length-1){document.getElementById("AITurnIndicator").style.visibility="hidden";};
 
 
@@ -1144,10 +1140,25 @@ function AnalyseSquare(entityType, X, Y){
 }
 
 function AnalyzeSpecification(Index) {
+	const { story } = battalion;
+	const mission = story.getNode(StoryHandler.TYPE.MISSION);
+
+	if(!mission) {
+		return;
+	}
+
+	const { data } = mission;
+	const { Constants } = data;
+
+	if(!Constants) {
+		return;
+	}
+
 	document.getElementById("SpecificationText").innerHTML=Language.SystemTerms[83+Index];
-	if(Index==1){document.getElementById("SpecificationText").innerHTML+=((Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Constants.Funds??[0,0])[1]+" "+Language.SystemTerms[92])};
-	if(Index==2){document.getElementById("SpecificationText").innerHTML+=(Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Constants.Survival+" "+Language.SystemTerms[93])};
-	if(Index==3){document.getElementById("SpecificationText").innerHTML+=(Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Constants.TimeLimit+" "+Language.SystemTerms[93])}
+
+	if(Index==1){document.getElementById("SpecificationText").innerHTML+=((Constants.Funds??[0,0])[1]+" "+Language.SystemTerms[92])};
+	if(Index==2){document.getElementById("SpecificationText").innerHTML+=(Constants.Survival+" "+Language.SystemTerms[93])};
+	if(Index==3){document.getElementById("SpecificationText").innerHTML+=(Constants.TimeLimit+" "+Language.SystemTerms[93])}
 }
 
 /*
@@ -2597,7 +2608,8 @@ function EndBattle(){
 					document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
 					document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
 					document.getElementById("Structure "+i+"X"+j).style.visibility="hidden";
-					if(ChosenNation!=0){Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Finished=true};
+
+					battalion.story.onMissionWon();
 				}
 			}
 		}
@@ -2778,7 +2790,6 @@ function EndBattle(){
 	for(let eth=0; eth<MapRoster.length; eth++){MapRoster[eth].life=-1};};
 
 function EndTurn(SubRosters,Map,Constants,Roster){
-	//Map=Campaigns[ChosenNation-1][ChosenChapter-1][ChosenMission-1].Map;
 	//alert(Roster);
 	//alert(Constants);
 
@@ -3615,26 +3626,33 @@ function HoverBuilding(Phase,Building){
 	}
 }
 
-function initializeBattle(Faction,Chapter,Mission){
-	//This block runs pre-functions characteristic to the specific level
+function initializeBattle(){
+	const { story } = battalion;
+	const mission = story.getNode(StoryHandler.TYPE.MISSION);
 
+	if(!mission) {
+		return;
+	}
+	
+	const { data } = mission;
+	
+	console.log(mission);
+	//This block runs pre-functions characteristic to the specific level
 	wipeMap();
-	ChosenNation=Faction;
-	ChosenChapter=Chapter;
-	ChosenMission=Mission;
+
 	isAITurn=false;
 	BattleEnd=true;
 	Resolution=false;
 	battalion.setState(Battalion.STATE.BATTLE);
 	Chuchu=0;
 
-	Map=Campaigns[Faction-1][Chapter-1][Mission-1].Map;
-	Roster=Campaigns[Faction-1][Chapter-1][Mission-1].Roster;
-	Constants=Campaigns[Faction-1][Chapter-1][Mission-1].Constants;
-	ControlMap=Campaigns[Faction-1][Chapter-1][Mission-1].ControlMap ?? [0];
-	RegionMap=Campaigns[Faction-1][Chapter-1][Mission-1].RegionMap ?? [0];
-	NodeMap=Campaigns[Faction-1][Chapter-1][Mission-1].NodeMap ?? [0];
-	BiomeMap=Campaigns[Faction-1][Chapter-1][Mission-1].BiomeMap;
+	Map = data.Map;
+	Roster = data.Roster;
+	Constants = data.Constants;
+	ControlMap = data.ControlMap ?? [0];
+	RegionMap = data.RegionMap ?? [0];
+	NodeMap = data.NodeMap ?? [0];
+	BiomeMap = data.BiomeMap;
 
 	//if(Map.length*Map[0].length>500){document.getElementById("Disclaimer2").style.visibility="visible"};
 
@@ -3645,8 +3663,8 @@ function initializeBattle(Faction,Chapter,Mission){
 	DynamicEvents=[];
 	ChosenMap=Map;
 	Factions=CampaignFactions;
-	YourMoney=(Campaigns[Faction-1][Chapter-1][Mission-1].Constants.Funds??[0,0])[1];
-	//alert(Faction+" "+Chapter+" "+Mission);
+	YourMoney=(data.Constants.Funds ?? [0,0])[1];
+	//alert(ChosenNation+" "+ChosenChapter+" "+ChosenMission);
 	//alert(YourMoney);
 	Prelogue=Language.Prelogues[ChosenNation][ChosenChapter-1][ChosenMission-1];
 	Postlogue=Language.Postlogues[ChosenNation][ChosenChapter-1][ChosenMission-1];
@@ -3711,41 +3729,41 @@ function initializeBattle(Faction,Chapter,Mission){
 		*/
 
 	let OST=0;
-	if(Mission==5){OST=1};
-	if(Faction==1 && Mission!=5){OST=4};
-	if(Faction==1 && Mission==5){OST=5};
-	if(Faction==1 && Chapter>2){OST=6};
-	if(Faction==1 && Chapter==3 && Mission==5){OST=3};
-	if(Faction==2 && Mission!=5){OST=12};
-	if(Faction==2 && Mission==5){OST=13};
-	if(Faction==3){OST=18};
-	if(Faction==3 && Chapter>1){OST=19};
-	if(Faction==3 && Mission==5){OST=20};
+	if(ChosenMission==5){OST=1};
+	if(ChosenNation==1 && ChosenMission!=5){OST=4};
+	if(ChosenNation==1 && ChosenMission==5){OST=5};
+	if(ChosenNation==1 && ChosenChapter>2){OST=6};
+	if(ChosenNation==1 && ChosenChapter==3 && ChosenMission==5){OST=3};
+	if(ChosenNation==2 && ChosenMission!=5){OST=12};
+	if(ChosenNation==2 && ChosenMission==5){OST=13};
+	if(ChosenNation==3){OST=18};
+	if(ChosenNation==3 && ChosenChapter>1){OST=19};
+	if(ChosenNation==3 && ChosenMission==5){OST=20};
 
 
-	if(Faction==4){OST=23};
-	if(Faction==4 && Chapter>1){OST=24};
-	if(Faction==4 && Chapter==3 && Mission==5){OST=25};
-	if(Faction==4 && Chapter>3){OST=26};
-	if(Faction==4 && Chapter==4 && Mission==5){OST=27};
-	if(Faction==4 && Chapter==5 && Mission==5){OST=28};
-	if(Faction==5){OST=29};
-	if(Faction==5 && Chapter>2){OST=30};
-	if(Faction==5 && Chapter>2 && Mission==5){OST=31};
-	if(Faction==5 && Chapter==5){OST=32};
-	if(Faction==5 && Chapter==5 && Mission==5){OST=33};
+	if(ChosenNation==4){OST=23};
+	if(ChosenNation==4 && ChosenChapter>1){OST=24};
+	if(ChosenNation==4 && ChosenChapter==3 && ChosenMission==5){OST=25};
+	if(ChosenNation==4 && ChosenChapter>3){OST=26};
+	if(ChosenNation==4 && ChosenChapter==4 && ChosenMission==5){OST=27};
+	if(ChosenNation==4 && ChosenChapter==5 && ChosenMission==5){OST=28};
+	if(ChosenNation==5){OST=29};
+	if(ChosenNation==5 && ChosenChapter>2){OST=30};
+	if(ChosenNation==5 && ChosenChapter>2 && ChosenMission==5){OST=31};
+	if(ChosenNation==5 && ChosenChapter==5){OST=32};
+	if(ChosenNation==5 && ChosenChapter==5 && ChosenMission==5){OST=33};
 
 	if((Constants.OST??0)!=0){OST=Constants.OST};
 
 	PlayBGM(OST);
 	
-	if(DialogueChoice){launchDialogueBloc(Language.Prelogues[Faction][Chapter-1][Mission-1],0)};
+	if(DialogueChoice){launchDialogueBloc(Language.Prelogues[ChosenNation][ChosenChapter-1][ChosenMission-1],0)};
 
 	//This deals with the localization
 
 	LocalizationMap=[];
 	let LocLine=[];
-	Localization=Campaigns[Faction-1][Chapter-1][Mission-1].Localization??{};
+	Localization = data.Localization ?? {};
 	for(let x=0;x<Map[0].length;x++){LocLine[LocLine.length]=0};
 	for(let y=0;y<Map.length;y++){LocalizationMap[LocalizationMap.length]=JSON.parse(JSON.stringify(LocLine))};
 	for(let z=0;z<Localization.length;z++){LocalizationMap[Localization[z].X][Localization[z].Y]=Localization[z]};
@@ -3909,10 +3927,6 @@ function initializeSpecialBattle(Level){
 	for(let x=0;x<Map[0].length;x++){LocLine[LocLine.length]=0};
 	for(let y=0;y<Map.length;y++){LocalizationMap[LocalizationMap.length]=JSON.parse(JSON.stringify(LocLine))};
 	for(let z=0;z<Localization.length;z++){LocalizationMap[Localization[z].X][Localization[z].Y]=Localization[z]};
-
-
-
-	//if(DialogueChoice){launchDialogueBloc(Language.Prelogues[Faction][Chapter-1][Mission-1],0)};
 
 	if(NivelElectiv??false){PlayerChoiceFaction=Level.Constants.Commanders[NivelElectiv].Allegiance}else{PlayerChoiceFaction=Constants.YourFaction};
 
@@ -7998,7 +8012,7 @@ CallPreloader();
 
 
 //document.getElementById('EditorP1').oncontextmenu=function(){EditorMap=Kaula;RefreshMapEditor()};
-//document.getElementById("Main Menu").style.visibility="hidden";initializeBattle(1,1,1);
+//document.getElementById("Main Menu").style.visibility="hidden";
 //document.getElementById("Main Menu").style.visibility="hidden";initializeSpecialBattle(TutorialLevel3);
 //document.getElementById("Main Menu").style.visibility="hidden";initializeSpecialBattle(Samara); 
 //MusicChoice=true;PlayBGM(33);

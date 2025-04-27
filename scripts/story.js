@@ -3,6 +3,11 @@ const DISPLAY_TYPE = {
     BLOCK: "block"
 }
 
+/*
+let ElamFlagVariant=1; for(let j=1;j<5;j++){if(Campaigns[4][j-1][4].Finished??false){ElamFlagVariant=j+1}}; if(!MystSettChoice){ElamFlagVariant=1};
+document.getElementById('Elam Flag').src='Assets/Flags/FlagELM'+ElamFlagVariant+'.PNG'
+*/
+
 const saveStory = function() {
     const { saveHandler } = battalion;
     const saveData = saveHandler.saveStoryProgress(battalion);

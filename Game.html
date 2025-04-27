@@ -15,7 +15,7 @@
 				<img style="position:absolute; visibility: inherit; left:0px; top:0px" src="TEMP/AsekaraMeshOpaque.PNG"/>
 			</div>
 
-			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:280px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('Main Menu').style.visibility='hidden';document.getElementById('CampaignSelectionScreen').style.visibility='visible'; let ElamFlagVariant=1; for(let j=1;j<5;j++){if(Campaigns[4][j-1][4].Finished??false){ElamFlagVariant=j+1}}; if(!MystSettChoice){ElamFlagVariant=1};document.getElementById('Elam Flag').src='Assets/Flags/FlagELM'+ElamFlagVariant+'.PNG'" onmouseover="document.getElementById('CampaignButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('CampaignButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CampaignButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" oncontextmenu='Tooltip("TOOLTIP_CAMPAIGN")'>
+			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:280px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('Main Menu').style.visibility='hidden';document.getElementById('CampaignSelectionScreen').style.visibility='visible';" onmouseover="document.getElementById('CampaignButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('CampaignButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CampaignButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" oncontextmenu='Tooltip("TOOLTIP_CAMPAIGN")'>
 				<img id="CampaignButton" style="position:absolute;" src="Assets/Miscellaneous/GenericButton.PNG"/>
 				<p id='CampaignButtonP' style="position:relative; text-align: center; margin-top:19%">Campaign</p>
 			</div>
@@ -1426,7 +1426,7 @@
 				<img id="Kargit Flag" style="position: absolute; z-index:10; top:0px; left:650px; width:350px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('KARGIT', 2)" src="Assets/Flags/FlagKar.PNG"/>
 				<img id="Transkal Flag" style="position: absolute; z-index:10; top:250px; left:0px; width:300px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('TRANSKAL', 3)" src="Assets/Flags/FlagTRK.PNG"/>
 				<img id="Polasie Flag" style="position: absolute; z-index:10; top:250px; left:350px; width:300px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('POLASIE', 4)" src="Assets/Flags/FlagPOE.PNG"/>
-				<img id="Elam Flag" style="position: absolute; z-index:10; top:250px; left:700px; width:300px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('ELAM', 5)" src="Assets/Flags/FlagELM.PNG"/>
+				<img id="Elam Flag" style="position: absolute; z-index:10; top:250px; left:700px; width:300px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('ELAM', 5)" src="Assets/Flags/FlagELM1.PNG"/>
 				<img id="Cohort Flag" style="position: absolute; z-index:10; top:500px; left:0px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('?', 6)" src="Assets/Flags/NoFlag.PNG"/>
 				<img id="Slave Flag" style="position: absolute; z-index:10; top:500px; left:200px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('?', 7)" src="Assets/Flags/NoFlag.PNG"/>
 				<img id="Structuralist Flag" style="position: absolute; z-index:10; top:500px; left:400px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('?', 8)" src="Assets/Flags/NoFlag.PNG"/>
@@ -1548,7 +1548,7 @@
 					<p id="MissionDescription" style="position: relative;z-index: 12; top:-350px; left:5px"></p>
 				</div>
 			
-				<div style="position: absolute; width: 391px; height: 101px; text-align:center; left:305px; top:470px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('CampaignScreen').style.visibility='hidden';initializeBattle(ChosenNation,ChosenChapter,ChosenMission);" onmouseover="document.getElementById('LevelStartButon').src='Assets/Miscellaneous/StartButtonL.PNG'" onmouseout="document.getElementById('LevelStartButon').src='Assets/Miscellaneous/StartButton.PNG'">
+				<div style="position: absolute; width: 391px; height: 101px; text-align:center; left:305px; top:470px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('CampaignScreen').style.visibility='hidden';initializeBattle();" onmouseover="document.getElementById('LevelStartButon').src='Assets/Miscellaneous/StartButtonL.PNG'" onmouseout="document.getElementById('LevelStartButon').src='Assets/Miscellaneous/StartButton.PNG'">
 					<img id="LevelStartButon" src="Assets/Miscellaneous/StartButton.PNG"/>
 					<p id="LevelStartButton" style="position:relative; top: -80px">This thing is a thing</p>
 				</div>
@@ -1591,7 +1591,6 @@
 		<script src="Extensions/Maps.js"></script>
 		<script src="Extensions/GenericData.js"></script>
 		<script src="Extensions/SpecialLevels.js"></script>
-		<script src="Extensions/Campaigns.js"></script>
 
 		<script src="data/currency.js"></script>
 		<script src="data/faction.js"></script>
