@@ -205,7 +205,6 @@ Battalion.prototype.onEditorState = function() {
 }
 
 Battalion.prototype.onMainState = function() {
-	const { router } = this.client;
-
-	router.load(this, INPUT_DEFAULT);
+	this.client.router.load(this, INPUT_DEFAULT);
+    this.story.clear();
 }

@@ -67,6 +67,22 @@ StoryNode.prototype.getNextAvailableIndex = function(onCheck) {
     return this.order.length - 1;
 }
 
+StoryNode.prototype.isComplete = function(onCheck) {
+    if(typeof onCheck !== "function") {
+        return false;
+    }
+
+    for(const childID of this.children) {
+        const isComplete = onCheck(childID);
+
+        if(!isComplete) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 StoryNode.prototype.getAllAvailableAsNext = function(onCheck) {
     const available = new Set();
 

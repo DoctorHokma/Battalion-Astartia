@@ -8,7 +8,20 @@ const StoryHandler = function() {
 	this.currentCampaign = null;
 	this.currentChapter = null;
 	this.currentMission = null;
+
+	this.events = new EventEmitter();
+	this.events.listen(StoryHandler.EVENT.MISSION_WON);
+	this.events.listen(StoryHandler.EVENT.CHAPTER_WON);
+	this.events.listen(StoryHandler.EVENT.CAMPAIGN_WON);
+	this.events.listen(StoryHandler.EVENT.SCENARIO_WON);
 }
+
+StoryHandler.EVENT = {
+	MISSION_WON: "MISSION_WON",
+	CHAPTER_WON: "CHAPTER_WON",
+	CAMPAIGN_WON: "CAMPAIGN_WON",
+	SCENARIO_WON: "SCENARIO_WON"
+};
 
 StoryHandler.TYPE = {
 	SCENARIO: 0,
@@ -17,16 +30,74 @@ StoryHandler.TYPE = {
 	MISSION: 3
 };
 
+StoryHandler.prototype.onScenarionWon = function() {
+	if(!this.currentScenario) {
+		return;
+	}
+
+	this.events.emit(StoryHandler.EVENT.SCENARIO_WON, this.currentScenario, this.currentScenario.state === StoryNode.STATE.UNFINISHED);
+	this.currentScenario.finish();
+	this.currentScenario = null;
+}
+
+StoryHandler.prototype.onCampaignWon = function() {
+	if(!this.currentCampaign) {
+		return;
+	}
+
+	this.events.emit(StoryHandler.EVENT.CAMPAIGN_WON, this.currentCampaign, this.currentCampaign.state === StoryNode.STATE.UNFINISHED);
+	this.currentCampaign.finish();
+	this.currentCampaign = null;
+
+	const isComplete = this.currentScenario.isComplete((campaignID) => {
+		const campaign = this.campaigns.get(campaignID);
+
+		return campaign && campaign.isFinished();
+	});
+
+	if(isComplete) {
+		this.onScenarionWon();
+	}
+}
+
+StoryHandler.prototype.onChapterWon = function() {
+	if(!this.currentChapter) {
+		return;
+	}
+
+	this.events.emit(StoryHandler.EVENT.CHAPTER_WON, this.currentChapter, this.currentChapter.state === StoryNode.STATE.UNFINISHED);
+	this.currentChapter.finish();
+	this.currentChapter = null;
+
+	const isComplete = this.currentCampaign.isComplete((chapterID) => {
+		const chapter = this.chapters.get(chapterID);
+
+		return chapter && chapter.isFinished();
+	});
+
+	if(isComplete) {
+		this.onCampaignWon();
+	}
+}
+
 StoryHandler.prototype.onMissionWon = function() {
 	if(!this.currentMission) {
 		return;
 	}
 
+	this.events.emit(StoryHandler.EVENT.MISSION_WON, this.currentMission, this.currentMission.state === StoryNode.STATE.UNFINISHED);
 	this.currentMission.finish();
-
-	console.log("WON!", this.currentMission);
-	
 	this.currentMission = null;
+
+	const isComplete = this.currentChapter.isComplete((missionID) => {
+		const mission = this.missions.get(missionID);
+
+		return mission && mission.isFinished();
+	});
+	
+	if(isComplete) {
+		this.onChapterWon();
+	}
 }
 
 StoryHandler.prototype.unlockAll = function() {
@@ -114,6 +185,13 @@ StoryHandler.prototype.getNode = function(type) {
 		case StoryHandler.TYPE.MISSION: return this.currentMission;
 		default: return null;
 	}
+}
+
+StoryHandler.prototype.clear = function() {
+	this.currentScenario = null;
+	this.currentCampaign = null;
+	this.currentChapter = null;
+	this.currentMission = null;
 }
 
 StoryHandler.prototype.deselect = function(type) {

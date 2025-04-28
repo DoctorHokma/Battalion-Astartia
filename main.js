@@ -18,6 +18,10 @@ battalion.language.addLanguage(Battalion.LANGUAGE.TURKISH, LANGUAGE_TURKISH);
 
 battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
 battalion.story.init();
+
+battalion.story.unlockAll();
+
+/*
 battalion.saveHandler.loadStoryProgress(battalion, {
 	"MISSIONS": {
 		"SOMERTIN_C1_M1": 1,
@@ -27,16 +31,41 @@ battalion.saveHandler.loadStoryProgress(battalion, {
 		"SOMERTIN_C1_M5": 1
 	},
 	"CHAPTERS": {
-		"SOMERTIN_C1": 1
+		"SOMERTIN_C3": 0
 	}
 });
-
-battalion.story.unlockAll();
+*/
 
 battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
 battalion.timer.start();
 battalion.setState(Battalion.STATE.MAIN_MENU);
 
+battalion.story.events.on(StoryHandler.EVENT.SCENARIO_WON, (scenario, isFirst) =>  {
+	console.log(scenario, isFirst, "HAS BEEN WON");
+}, { permanent: true });
+
+battalion.story.events.on(StoryHandler.EVENT.CAMPAIGN_WON, (campaign, isFirst) =>  {
+	console.log(campaign, isFirst, "HAS BEEN WON");
+}, { permanent: true });
+
+battalion.story.events.on(StoryHandler.EVENT.CHAPTER_WON, (chapter, isFirst) =>  {
+	const { type } = chapter;
+	const { interlogueImage, interlogue } = type;
+
+	console.log(chapter, isFirst, "HAS BEEN WON");
+
+	if(isFirst) {
+		document.getElementById("InterlogueScreen").style.visibility = "visible";
+		document.getElementById("InterlogueImage").src = interlogueImage;
+		document.getElementById("InterlogueText").innerHTML = battalion.language.get(interlogue);
+	}
+}, { permanent: true });
+
+battalion.story.events.on(StoryHandler.EVENT.MISSION_WON, (mission, isFirst) =>  {
+	console.log(mission, isFirst, "HAS BEEN WON");
+}, { permanent: true });
+
+//TODO: This adds a "bug" because scenario selection is not added yet.
 selectScenario("GREAT_WAR");
 
 var ActionRegister = {}; //used by ai
@@ -144,13 +173,12 @@ document.getElementById("EndBattleCloseButton").onclick = () => {
 		elem.remove();
 	}
 	
-	Factions=CampaignFactions;
-	document.getElementById('EndBattleScreen').style.visibility='hidden';
+	Factions = CampaignFactions;
+	document.getElementById('EndBattleScreen').style.visibility = 'hidden';
 	
-	if(ChosenMission == 5 && Victory) {
-		CallInterlogue();
-	} else {
-		document.getElementById('Main Menu').style.visibility='visible';
+	//Victory gets set to false on endbattle
+	if(ChosenMission !== 5 || !Victory) {
+		document.getElementById('Main Menu').style.visibility = 'visible';
 	}
 }
 
@@ -1310,22 +1338,6 @@ const advanceBuilding = function(index) {
 function Buttsecks() {
 	document.getElementById('Disclaimer').style.visibility='hidden';
 }
-
-function CallInterlogue(battalion) {
-	const { story } = battalion;
-	const chapter = story.getNode(StoryHandler.TYPE.CHAPTER);
-
-	if(!chapter) {
-		return;
-	}
-
-	const { type } = chapter;
-	const { interlogueImage } = type;
-
-	document.getElementById("InterlogueScreen").style.visibility = "visible";
-	document.getElementById("InterlogueImage").src = interlogueImage;
-	document.getElementById("InterlogueText").innerHTML = Language.Interlogues[ChosenNation-1][ChosenChapter-1];
-};
 
 function castMap(Map){
 	for(let i=1;i<=Map.length;i++){
@@ -2517,7 +2529,6 @@ function EndBattle(){
 	
 	document.getElementById("AITurnIndicator").style.visibility="hidden";
 	RemoveKebabIMeanBlep();
-	
 
 	for(let i=1;i<=10;i++){
 		for(let j=1;j<=10;j++){
@@ -2561,57 +2572,24 @@ function EndBattle(){
 		document.getElementById("EndBattleQuote").innerHTML=Quote;
 		document.getElementById("EndBattleQuote").style.color=Factions[Constants.Commanders[1].Allegiance].color;
 
+		document.getElementById("Battlemap").style.visibility = "hidden";
 
 		if(!Victory && Resolution) {
 			//alert("It's ok bro, we're not all Chuck Norris");
 			Resolution=false;
-			document.getElementById("Battlemap").style.visibility="hidden";
-			document.getElementById("Main Menu").style.visibility="visible";
+			document.getElementById("Main Menu").style.visibility = "visible";
 			rostermap=0;
-
-			for(let i=1;i<=10;i++) {
-				for(let j=1;j<=10;j++) {
-					document.getElementById("Entity "+i+"X"+j).style.visibility="hidden";
-					document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
-					document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
-					document.getElementById("Structure "+i+"X"+j).style.visibility="hidden";
-				}
-			}
 		}
-
 
 		if(Victory && Resolution){
 			//alert("GG bro! You won the level!");
-			Victory=false;
-			Resolution=false;
-			document.getElementById("Battlemap").style.visibility="hidden";
-
-			if(ChosenMission == 5) {
-				CallInterlogue();
-			}
-
+			Victory = false;
+			Resolution = false;
 			battalion.story.onMissionWon();
-			
-			for(let i=1;i<=10;i++) {
-				for(let j=1;j<=10;j++) {
-					//alert(document.getElementById("Entity "+i+"X"+j).style.visibility);
-					document.getElementById("Entity "+i+"X"+j).style.visibility="hidden";
-					document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
-					document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
-					document.getElementById("Structure "+i+"X"+j).style.visibility="hidden";
-				}
-			}
 		}
 
 	//This bloc calls the endbattle screen
 
-	//wipeMap();
-	function endbattlescreen(){document.getElementById('EndBattleScreen').style.visibility='visible'
-	document.getElementById("Battlemap").style.visibility="hidden";
-
-
-
-	};
 	document.getElementById('EndBattleScreen').style.visibility='visible';
 	//setTimeout(endbattlescreen,1000);
 
@@ -2767,7 +2745,7 @@ function EndBattle(){
 			document.getElementById("UnitCounterP"+FactionsInvolved[j].Preffix).style.color=FactionsInvolved[j].color;
 			};
 
-			if(ChosenMission == 5){
+			if(ChosenMission == 5) {
 				if(ChosenChapter==5 && ChosenNation==1){alert("We have forgiven the traitorous Vladov, for he too has suffered greatly. Despite all, he eventually repented and earned his redemption through fire and steel. If you want to, you can put yourself in his shoes and play his campaign")};
 				if(ChosenChapter==5 && ChosenNation==2){alert("For so long, the subhuman slaves have refused to bow down and accept their fate. Every second they squirm around in mud trying to subvert our glorious empire in any way they can. If you wish, you can play their campaign now")};
 				if(ChosenChapter==3 && ChosenNation==3){alert("And so, Shmelev cast down his mask. He will fight to preserve matriarchy, and his own personal interests while at that. If you wish to observe his antics you may now play Shmelev's campaign")};
@@ -2775,7 +2753,8 @@ function EndBattle(){
 				if(ChosenChapter==5 && ChosenNation==5){alert("The curtain has fallen over Elam. The collaborators have established a sock puppet regime and Elam shall never again rise. There are, however, a few who refuse to give up the fight. If you want to witness their final struggle, you may now play their campaign.")};
 			}
 
-	for(let eth=0; eth<MapRoster.length; eth++){MapRoster[eth].life=-1};};
+	for(let eth=0; eth<MapRoster.length; eth++){MapRoster[eth].life=-1}
+}
 
 function EndTurn(SubRosters,Map,Constants,Roster){
 	//alert(Roster);
@@ -3703,14 +3682,16 @@ function initializeBattle(){
 
 	*/
 
-	for(let i=1;i<=10;i++){for(let j=1;j<=10;j++){
-	document.getElementById("Entity "+i+"X"+j).style.visibility="hidden";
-	document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
-	document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
-	document.getElementById("Structure "+i+"X"+j).style.visibility="hidden";
-	}};
+	for(let i=1;i<=10;i++){
+		for(let j=1;j<=10;j++){
+			document.getElementById("Entity "+i+"X"+j).style.visibility="hidden";
+			document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
+			document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
+			document.getElementById("Structure "+i+"X"+j).style.visibility="hidden";
+		}
+	}
 
-	document.getElementById("Battlemap").style.visibility="visible";
+	document.getElementById("Battlemap").style.visibility = "visible";
 	FillMap(Map);
 	//drawMap(Map);
 	CastEntityMap(Map,Roster);
@@ -4167,7 +4148,6 @@ function LanguageCorrecter(Language){
 	if((Language.TerrainName??[]).length==0){Language.TerrainName=ENG.TerrainName};
 	if((Language.TerrainDesc??[]).length==0){Language.TerrainDesc=ENG.TerrainDesc};
 	if((Language.IntraeventTranscripts??[]).length==0){Language.IntraeventTranscripts=ENG.IntraeventTranscripts};
-	if((Language.Interlogues??[]).length==0){Language.Interlogues=ENG.Interlogues};
 
 	for(let a=1;a<=2;a++){for (let b=0; b<7;b++){for(let c=0;c<5;c++){
 		if(Language.Prelogues[a][b][c].length==0){Language.Prelogues[a][b][c]=ENG.Prelogues[a][b][c]}
