@@ -147,7 +147,7 @@ document.getElementById("EndBattleCloseButton").onclick = () => {
 	Factions=CampaignFactions;
 	document.getElementById('EndBattleScreen').style.visibility='hidden';
 	
-	if(ChosenMission==5 && Victory) {
+	if(ChosenMission == 5 && Victory) {
 		CallInterlogue();
 	} else {
 		document.getElementById('Main Menu').style.visibility='visible';
@@ -1311,13 +1311,23 @@ function Buttsecks() {
 	document.getElementById('Disclaimer').style.visibility='hidden';
 }
 
-function CallInterlogue() {
-	document.getElementById("InterlogueScreen").style.visibility="visible";
-	document.getElementById("InterlogueText").innerHTML=Language.Interlogues[ChosenNation-1][ChosenChapter-1];
-	document.getElementById("InterlogueImage").src="Assets/Paralogues/"+ChosenNation+"X"+ChosenChapter+".JPG";
+function CallInterlogue(battalion) {
+	const { story } = battalion;
+	const chapter = story.getNode(StoryHandler.TYPE.CHAPTER);
+
+	if(!chapter) {
+		return;
+	}
+
+	const { type } = chapter;
+	const { interlogueImage } = type;
+
+	document.getElementById("InterlogueScreen").style.visibility = "visible";
+	document.getElementById("InterlogueImage").src = interlogueImage;
+	document.getElementById("InterlogueText").innerHTML = Language.Interlogues[ChosenNation-1][ChosenChapter-1];
 };
 
-function castMap(){
+function castMap(Map){
 	for(let i=1;i<=Map.length;i++){
 		for(let j=1;j<=Map[0].length;j++){
 			var Slot=document.createElement("div");
@@ -2576,7 +2586,9 @@ function EndBattle(){
 			Resolution=false;
 			document.getElementById("Battlemap").style.visibility="hidden";
 
-			if(ChosenMission==5){CallInterlogue()};
+			if(ChosenMission == 5) {
+				CallInterlogue();
+			}
 
 			battalion.story.onMissionWon();
 			
@@ -2755,14 +2767,13 @@ function EndBattle(){
 			document.getElementById("UnitCounterP"+FactionsInvolved[j].Preffix).style.color=FactionsInvolved[j].color;
 			};
 
-			if(ChosenMission==5){
+			if(ChosenMission == 5){
 				if(ChosenChapter==5 && ChosenNation==1){alert("We have forgiven the traitorous Vladov, for he too has suffered greatly. Despite all, he eventually repented and earned his redemption through fire and steel. If you want to, you can put yourself in his shoes and play his campaign")};
 				if(ChosenChapter==5 && ChosenNation==2){alert("For so long, the subhuman slaves have refused to bow down and accept their fate. Every second they squirm around in mud trying to subvert our glorious empire in any way they can. If you wish, you can play their campaign now")};
 				if(ChosenChapter==3 && ChosenNation==3){alert("And so, Shmelev cast down his mask. He will fight to preserve matriarchy, and his own personal interests while at that. If you wish to observe his antics you may now play Shmelev's campaign")};
 				if(ChosenChapter==5 && ChosenNation==4){alert("If you so wish, you can go fight for the Syndicalist cause. It will not change their fate, but might allow you to observe their workings and conflicts")};
 				if(ChosenChapter==5 && ChosenNation==5){alert("The curtain has fallen over Elam. The collaborators have established a sock puppet regime and Elam shall never again rise. There are, however, a few who refuse to give up the fight. If you want to witness their final struggle, you may now play their campaign.")};
-
-			};
+			}
 
 	for(let eth=0; eth<MapRoster.length; eth++){MapRoster[eth].life=-1};};
 
@@ -3648,14 +3659,12 @@ function initializeBattle(){
 	ChosenMap=Map;
 	Factions=CampaignFactions;
 	YourMoney=(data.Constants.Funds ?? [0,0])[1];
-	//alert(ChosenNation+" "+ChosenChapter+" "+ChosenMission);
-	//alert(YourMoney);
+
 	Prelogue=Language.Prelogues[ChosenNation][ChosenChapter-1][ChosenMission-1];
 	Postlogue=Language.Postlogues[ChosenNation][ChosenChapter-1][ChosenMission-1];
 	Interjection=Language.DefeatInterjections[ChosenNation][ChosenChapter-1][ChosenMission-1];
 
-
-	castMap();
+	castMap(ChosenMap);
 
 	KillingUnit=false;
 	GlassPanels=2;
@@ -3812,7 +3821,7 @@ function initializeSpecialBattle(Level){
 	if((BiomeMap??0)==0){BiomeMap=[]; let BiomeLine=[];for(let b=0; b<Map[0].length;b++){BiomeLine[BiomeLine.length]=1}; for(let a=0; a<Map.length;a++){BiomeMap[BiomeMap.length]=BiomeLine}};
 
 
-	castMap();
+	castMap(ChosenMap);
 
 	KillingUnit=false;
 	GlassPanels=2;
@@ -7720,40 +7729,47 @@ function UnitLost(index){
 	};};
 function UnitTarget(UnitType,X,Y){};
 function UnmontreUnit(Index){
-		document.getElementById('UnitMontre'+Index).src='Assets/Units/Static/'+Units[Index].shortname+'3.PNG'; 
-		if(!Units[Index].MLPR??false){document.getElementById('UnitMontre'+Index+'Mesh').src='Assets/Units/StaticMeshes/'+Units[Index].shortname+'Mesh3.PNG'}else{document.getElementById('UnitMontre'+Index+'Mesh').src='Assets/Miscellaneous/Nothing.PNG'};
+	document.getElementById('UnitMontre'+Index).src='Assets/Units/Static/'+Units[Index].shortname+'3.PNG'; 
 
-	};
+	if(!Units[Index].MLPR??false) {
+		document.getElementById('UnitMontre'+Index+'Mesh').src='Assets/Units/StaticMeshes/'+Units[Index].shortname+'Mesh3.PNG';
+	} else {
+		document.getElementById('UnitMontre'+Index+'Mesh').src='Assets/Miscellaneous/Nothing.PNG';
+	}
+}
 function WBLARG(X,Y){
-
 	//alert(X+" "+Y);
 	//alert(ChosenUnit.ics+" "+ChosenUnit.igrec);
-	if(BLARG.length>1){if(BLARG[BLARG.length-2].X==X+StandardX-1 && BLARG[BLARG.length-2].Y==Y+StandardY-1){
-		document.getElementById("BLARG "+(BLARG[BLARG.length-1].X-StandardX+1)+"X"+(BLARG[BLARG.length-1].Y-StandardY+1)).src="Assets/Miscellaneous/Nothing.PNG";
-		BLARG.pop();
-		let type="";
-		let axel=BLARG[BLARG.length-1];
-		let aXel=BLARG[BLARG.length-2]??null;
-		let axelX=axel.X-StandardX+1;
-		let axelY=axel.Y-StandardY+1;
-		let BLARGlet="";
+	if(BLARG.length>1) {
+		if(BLARG[BLARG.length-2].X==X+StandardX-1 && BLARG[BLARG.length-2].Y==Y+StandardY-1){
+			document.getElementById("BLARG "+(BLARG[BLARG.length-1].X-StandardX+1)+"X"+(BLARG[BLARG.length-1].Y-StandardY+1)).src="Assets/Miscellaneous/Nothing.PNG";
+			BLARG.pop();
+			let type="";
+			let axel=BLARG[BLARG.length-1];
+			let aXel=BLARG[BLARG.length-2]??null;
+			let axelX=axel.X-StandardX+1;
+			let axelY=axel.Y-StandardY+1;
+			let BLARGlet="";
 
-		//alert(BLARG.length);
-		if(BLARG.length>1){
-		if(aXel.X>axel.X){type=1};
-		if(aXel.Y<axel.Y){type=2};
-		if(aXel.X<axel.X){type=3};
-		if(aXel.Y>axel.Y){type=4};
+			//alert(BLARG.length);
+			if(BLARG.length > 1) {
+				if(aXel.X>axel.X) type = 1;
+				if(aXel.Y<axel.Y) type = 2;
+				if(aXel.X<axel.X) type = 3;
+				if(aXel.Y>axel.Y) type = 4;
 
-		BLARGlet="Target"+type;
-			}else{BLARGlet="Singularity"};
+				BLARGlet="Target"+type;
+			} else {
+				BLARGlet="Singularity";
+			}
 
 
-		//if(BLARG[BLARG.length-1].X-StandardX+1==ChosenUnit.X && BLARG[BLARG.length-1].Y-StandardY+1==ChosenUnit.Y){BLARGlet="Singularity"};
-		document.getElementById("BLARG "+axelX+"X"+axelY).src="Assets/BLARG/"+BLARGlet+".PNG";
+			//if(BLARG[BLARG.length-1].X-StandardX+1==ChosenUnit.X && BLARG[BLARG.length-1].Y-StandardY+1==ChosenUnit.Y){BLARGlet="Singularity"};
+			document.getElementById("BLARG "+axelX+"X"+axelY).src="Assets/BLARG/"+BLARGlet+".PNG";
+		}
+	}
+}
 
-	//console.log(BLARG.length);
-	}};};
 function wipeMap(){
 	for(let i=1;i<=Map.length;i++){
 		for(let j=1;j<=Map[0].length;j++){
@@ -7765,176 +7781,9 @@ function wipeMap(){
 		//document.getElementById("Entity"+i+"X"+j).src="Assets/Miscellaneous/Nothing.PNG";
 			let Voider=document.getElementById("Slot "+i+"X"+j);
 			if(Voider!=null){Voider.remove();};
-		}}};
-
-/*function drawMap(Map)
-	{
-
-	for(i=0;i<Map.length;i++){
-	for(j=0;j<Map.length;j++){
-
-	if(Map[i][j]==1){
-		var type= Math.ceil(Math.random()*8);
-		variant= "Assets/Tiles/Plains"+type+".png";
-		drawTile('Battlemap', variant, i*56, j*56, 1);};
-
-	if(Map[i][j]==2){
-		var type= Math.ceil(Math.random()*4);
-		var offset=0
-		if(type==2){offset = 4;};
-		if(type==3){offset = 3;};
-		if(type==4){offset = 12;};
-		variant= "Assets/Tiles/Forest"+type+".png";
-		drawTile('Battlemap', variant, i*56-offset, j*56, 2);}
-
-	if(Map[i][j]==3){
-		var type= Math.ceil(Math.random()*4);
-		var offset=0
-		if(type==3){offset = 4;};
-		if(type==4){offset = 5;};
-		variant= "Assets/Tiles/Hills"+type+".png";
-		drawTile('Battlemap', variant, i*56-offset, j*56, 3);}
-
-	if(Map[i][j]==4){
-		var type= Math.ceil(Math.random()*4);
-		var offset=0
-		if(type==2){offset = 4;};
-		if(type==3){offset = 9;};
-		if(type==4){offset = 10;};
-		variant= "Assets/Tiles/Mountains"+type+".png";
-		drawTile('Battlemap', variant, i*56-offset, j*56, 4);}
-
-	if(Map[i][j]==5){
-		var offset=8
-		drawTile('Battlemap', "Assets/Tiles/Volcano.png", i*56-offset, j*56, 5);}
-
-	if(Map[i][j]==6){};
-
-	if(Map[i][j]==7){
-		var index= 0;
-		if(Map[i-1][j]==7 || Map[i-1][j]==8 || Map[i-1][j]==9){index+=1};
-		if(Map[i][j+1]==7 || Map[i][j+1]==8 || Map[i][j+1]==9){index+=2};
-		if(Map[i+1][j]==7 || Map[i+1][j]==8 || Map[i+1][j]==9){index+=4};
-		if(Map[i][j-1]==7 || Map[i][j-1]==8 || Map[i][j-1]==9){index+=8};
-		var source = "Assets/Tiles/Road"+index+".png";
-		drawTile('Battlemap', source , i*56, j*56, 7);};
-
-	if(Map[i][j]==8){
-		var stature ="V";
-		if(Map[i-1][j]==10 || Map[i-1][j]==16) {if(Map[i+1][j]==10 || Map[i+1][j]==16){stature="H"};};
-		var standard=0;
-		if(stature=="V"){
-		if(Map[i][j-1]==10 || Map[i][j-1]==16){standard+=1};
-		if(Map[i][j-1]==10 || Map[i][j-1]==16){standard+=2};
-		}else{
-		if(Map[i-1][j]==10 || Map[i-1][j]==16){standard+=1};
-		if(Map[i+1][j]==10 || Map[i+1][j]==16){standard+=2};
-		};
-		var source = "Assets/Tiles/Bridge"+stature+standard+".png";
-		drawTile('Battlemap', source , i*56, j*56, 8);};
-
-	if(Map[i][j]==9){
-		var stature ="V";
-		if(Map[i-1][j]==10 || Map[i-1][j]==16) {if(Map[i+1][j]==10 || Map[i+1][j]==16){stature="H"};};
-		var standard=0;
-		if(stature=="V"){
-		if(Map[i][j-1]==10 || Map[i][j-1]==16){standard+=1};
-		if(Map[i][j-1]==10 || Map[i][j-1]==16){standard+=2};
-		}else{
-		if(Map[i-1][j]==10 || Map[i-1][j]==16){standard+=1};
-		if(Map[i+1][j]==10 || Map[i+1][j]==16){standard+=2};};
-
-		var source = "Assets/Tiles/HighBridge"+stature+standard+".png";
-		drawTile('Battlemap', source , i*56, j*56, 9);};
-
-	if(Map[i][j]==10){
-		var index= 0;
-		if(Map[i-1][j]>=8){index+=1};
-		if(Map[i][j+1]>=8){index+=2};
-		if(Map[i+1][j]>=8){index+=4};
-		if(Map[i][j-1]>=8){index+=8};
-		var source = "Assets/Tiles/River"+index+".png";
-		drawTile('Battlemap', source , i*56, j*56, 10);};
-
-	if(Map[i][j]==11){
-
-		minI=Math.max(i,1);
-		minJ=Math.max(j,1);
-		maxI=Math.min(Map.length-2,i);
-		maxJ=Math.min(Map[0].length-2,j);
-		var index= 0;
-
-
-		if(Map[minI-1][j]>=8){index+=1};
-		if(Map[i][maxJ+1]>=8){index+=2};
-		if(Map[maxI+1][j]>=8){index+=4};
-		if(Map[i][minJ-1]>=8){index+=8};
-
-		var source = "Assets/Tiles/Sea"+index+".png";
-		drawTile('Battlemap', source , i*56, j*56, 11);
-		if(index==3 && Map[minI-1][maxJ+1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeB.png" , i*56, j*56+39);};
-		if(index==6 && Map[maxI+1][maxJ+1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeD.png" , i*56+51, j*56+42);};
-		if(index==9 && Map[minI-1][minJ-1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeA.png" , i*56, j*56);};
-		if(index==12 && Map[maxI+1][minJ-1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeC.png" , i*56+49, j*56);};
-		if(index==7 && Map[minI-1][maxJ+1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeB.png" , i*56, j*56+39);};
-		if(index==7 && Map[maxI+1][maxJ+1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeD.png" , i*56+51, j*56+42);};
-		if(index==11 && Map[minI-1][maxJ+1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeB.png" , i*56, j*56+39);};
-		if(index==11 && Map[minI-1][minJ-1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeA.png" , i*56, j*56);};
-		if(index==13 && Map[minI-1][minJ-1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeA.png" , i*56, j*56);};
-		if(index==13 && Map[maxI+1][minJ-1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeC.png" , i*56+49, j*56);};
-		if(index==14 && Map[maxI+1][maxJ+1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeD.png" , i*56+51, j*56+42);};
-		if(index==14 && Map[maxI+1][minJ-1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeC.png" , i*56+49, j*56);};
-		if(index==15 && Map[minI-1][maxJ+1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeB.png" , i*56, j*56+39);};
-		if(index==15 && Map[maxI+1][maxJ+1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeD.png" , i*56+51, j*56+42);};
-		if(index==15 && Map[minI-1][minJ-1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeA.png" , i*56, j*56);};
-		if(index==15 && Map[maxI+1][minJ-1]<8){drawTile('Battlemap', "Assets/Tiles/EdgeC.png" , i*56+49, j*56);};
-
-
-
-
-		};
-
-	if(Map[i][j]==12){
-		var type= Math.ceil(Math.random()*4);
-		var offset=0
-		variant= "Assets/Tiles/Reef"+type+".png";
-		drawTile('Battlemap', variant, i*56-offset, j*56, 12);};
-
-	if(Map[i][j]==13){
-		var type= Math.ceil(Math.random()*4);
-		var offset=0
-		variant= "Assets/Tiles/Archipelago"+type+".png";
-		drawTile('Battlemap', variant, i*56-offset, j*56, 13);};
-
-	if(Map[i][j]==14){
-		var type= Math.ceil(Math.random()*4);
-		var offset=0
-		variant= "Assets/Tiles/Rocks"+type+".png";
-		drawTile('Battlemap', variant, i*56-offset, j*56, 14);};
-
-	if(Map[i][j]==15){
-		var index= 0;
-		if(Map[i-1][j]<8){index+=1};
-		if(Map[i][j+1]<8){index+=2};
-		if(Map[i+1][j]<8){index+=4};
-		if(Map[i][j-1]<8){index+=8};
-		var source = "Assets/Tiles/Shore"+index+".png";
-		drawTile('Battlemap', source , i*56, j*56, 15);};
-
-	if(Map[i][j]==16){
-		var index=0;
-
-		if(i==0 || i==Map.length-1){index=5;};
-		if(j==0 || j==Map.length-1){index=10;};
-		var source = "Assets/Tiles/River"+index+".png";
-		drawTile('Battlemap', source , i*56, j*56, 16);};
-
-	if(Map[i][j]==17){};
-
-
-
-	};
-	};};*/
+		}
+	}
+}
 
 function ClearEndScreen(){};
 function InterfaceFuck(){};
@@ -7948,9 +7797,6 @@ MystSettChoice=false;
 
 CallPreloader();
 //GeneralInitializer();
-
-//castMap();
-
 
 //document.getElementById('EditorP1').oncontextmenu=function(){EditorMap=Kaula;RefreshMapEditor()};
 //document.getElementById("Main Menu").style.visibility="hidden";

@@ -90,10 +90,10 @@ const showMissionData = function(battalion, mission, missionIndex) {
 const showChapterData = function(battalion, chapter, chapterIndex) {
     const { language } = battalion;
     const { type } = chapter;
-    const { name, image } = type;
+    const { name, illustration } = type;
     const pointerPosition = chapterIndex * 33 - 6;
 
-    document.getElementById("ChapterIllustration").src = image;
+    document.getElementById("ChapterIllustration").src = illustration;
     document.getElementById('CampaignName').innerHTML = language.get(name);
     document.getElementById("ChapterPanelPointer").style.top = `${pointerPosition}px`;
 }

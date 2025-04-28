@@ -24,7 +24,7 @@ StoryHandler.prototype.onMissionWon = function() {
 
 	this.currentMission.finish();
 
-	console.log("WON!", this.currentMission)
+	console.log("WON!", this.currentMission);
 	
 	this.currentMission = null;
 }
