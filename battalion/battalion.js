@@ -63,10 +63,8 @@ Battalion.prototype.createCamera = function() {
     const camera = new Camera();
     const context = this.renderer.createContext("BATTALION", camera);
 
-    context.initRenderer(560, 560);
-    context.setPositionMode(CameraContext.POSITION_MODE.FIXED);
+    context.createBuffer(560, 560);
     context.setDisplayMode(CameraContext.DISPLAY_MODE.RESOLUTION_FIXED);
-    context.setScaleMode(CameraContext.SCALE_MODE.NONE);
 
     return camera;
 }
