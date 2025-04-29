@@ -2,6 +2,7 @@ const Battalion = function() {
     this.soundPlayer = new SoundPlayer(SOUND);
     this.musicPlayer = new MusicPlayer(MUSIC, PLAYLIST);
     this.client = new Client();
+    this.renderer = new Renderer();
     this.language = new LanguageHandler();
     this.story = new StoryHandler();
     this.morale = new MoraleHandler();
@@ -16,7 +17,9 @@ const Battalion = function() {
 
     this.timer.update = () => {}
 
-    this.timer.render = () => {}
+    this.timer.render = () => {
+        this.renderer.update(this);
+    }
 }
 
 Battalion.LANGUAGE = {
