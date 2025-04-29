@@ -3,15 +3,12 @@ const MainMenuButton = function(mainID, textID) {
     this.textID = textID;
 
     this.image = document.createElement('img');
-    this.image.style.position = "absolute";
     this.image.src = 'Assets/Miscellaneous/GenericButton.PNG';
+    this.image.classList.add("main_menu_button_image");
 
     this.text = document.createElement('p');
-    this.text.style.position = "relative";
-    this.text.style.textAlign = "center";
-    this.text.style.marginTop = "19%";
-    this.text.style.color = "black";
     this.text.innerText = textID;
+    this.text.classList.add("main_menu_button_text");
 
     this.element.appendChild(this.image);
     this.element.appendChild(this.text);

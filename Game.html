@@ -16,16 +16,16 @@
 				<img style="position:absolute; visibility: inherit; left:0px; top:0px" src="TEMP/AsekaraMeshOpaque.PNG"/>
 			</div>
 
-			<div id="BUTTON_CAMPAIGN" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:280px;"></div>
-			<div id="BUTTON_CONTINUE" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:140px;"></div>
-			<div id="BUTTON_BOOT_CAMP" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:420px;"></div>
-			<div id="BUTTON_CREDITS" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:0px;"></div>
-			<div id="BUTTON_OPTIONS" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:560px;"></div>
-			<div id="BUTTON_BONUS" style="position:absolute; z-index:1; width:126px; height: 71px; top:0px; left:0px;"></div>
-			<div id="BUTTON_EDITOR" style="position:absolute; z-index:1; width:126px; height: 71px; top:0px; left:560px;"></div>
-			<div id="BUTTON_CONQUEST" style="position:absolute; z-index:1; width:126px; height: 71px; top:70px; left:0px;"></div>
-			<div id="BUTTON_CODEX" style="position:absolute; z-index:1; width:126px; height: 71px; top:70px; left:560px;"></div>
-			<div id="BUTTON_MUSIC" style="position:absolute; z-index:1; width:126px; height: 71px; top:140px; left:560px;"></div>
+			<div id="BUTTON_CAMPAIGN" class="main_menu_button" style="top:500px; left:280px;"></div>
+			<div id="BUTTON_CONTINUE" class="main_menu_button" style="top:500px; left:140px;"></div>
+			<div id="BUTTON_BOOT_CAMP" class="main_menu_button" style="top:500px; left:420px;"></div>
+			<div id="BUTTON_CREDITS" class="main_menu_button" style="top:500px; left:0px;"></div>
+			<div id="BUTTON_OPTIONS" class="main_menu_button" style="top:500px; left:560px;"></div>
+			<div id="BUTTON_BONUS" class="main_menu_button" style="top:0px; left:0px;"></div>
+			<div id="BUTTON_EDITOR" class="main_menu_button" style="top:0px; left:560px;"></div>
+			<div id="BUTTON_CONQUEST" class="main_menu_button" style="top:70px; left:0px;"></div>
+			<div id="BUTTON_CODEX" class="main_menu_button" style="top:70px; left:560px;"></div>
+			<div id="BUTTON_MUSIC" class="main_menu_button" style="top:140px; left:560px;"></div>
 		</div>
 
 		<div id="Battlemap" style='position:absolute; visibility:hidden; top:20px; left:400px; height:560px; width:560px; z-index: 0'>			
@@ -983,34 +983,34 @@
 			<img style="position: fixed; left:452px" src="Assets/Miscellaneous/CreditsPanel.PNG"/>
 			
 			<img id="CloseCreditsButton" style="position: fixed; z-index:8; left:602px; top:385px;" src="Assets/Miscellaneous/CloseButton.PNG" onclick="document.getElementById('Credits').style.visibility='hidden'" onmouseover="document.getElementById('CloseCreditsButton').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="document.getElementById('CloseCreditsButton').src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="document.getElementById('CloseCreditsButton').src='Assets/Miscellaneous/CloseButtonPressed.PNG'"/>
-			<p style="position: relative; text-align:center;margin-bottom:0px;">Made by Task Force Tucker</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px;">Coordination: Doctor Aircraft Carrier</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:0px;">Programming: Doctor Aircraft Carrier</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">Unit Art:</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:0px;">SpearDavid(Our MVP and first teammate), Nadivaz(thank you for all your help mate), Bomba(for making several high quality static assets) and Doctor Aircraft Carrier(if there's a unit with shitty graphics, it was certainly drawn by DAC; but if it's well-animated it's likely also DAC)</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">Portrait Art:</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:0px;">DAC, Machow8(who extracted some of the source material we used to derive a few sprites from)</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">Music:</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:0px;">AlanAztec, White Bat Audio, Kevin MacLeod and many others</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">Writing:</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:0px;">Doctor Aircraft Carrier</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">Testing:</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">RLG Mapper(Relampago), Inventorarus Rex, Csix66 and many, many more</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">ESP Translation:</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">Silvestre(our absolute MVP, thanks a lot bro!), Atamarado, Prometheus, Margygr</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">POR Translation:</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">RLG Mapper(Relampago), Vythus, Aurum, Gabiel br and I feel like I'm forgetting someone</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">TUR Translation:</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">Tiffozi(bravely fighting this difficult ordeal by himself)</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">Special Thanks</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">Albert Epstein, for creating Manstein and Womanstein</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">ThopTeam(Machow8 and WMAB) for mining the Battalion Arena avatar assets</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">Vikingen, for helping with art(improving city tiles and the megamountains)</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">John Titor, who helped us get this project finished much faster</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">...that certain someone who (at the very least) left us with a great disclaimer</p>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:5px;">And you, the player, who's been with us for so long. You're a real bro</p>
+			<p class="credits_text">Made by Task Force Tucker</p>
+			<p class="credits_text">Coordination: Doctor Aircraft Carrier</p>
+			<p class="credits_text" style="margin-top:0px;">Programming: Doctor Aircraft Carrier</p>
+			<p class="credits_text" style="margin-top:5px;">Unit Art:</p>
+			<p class="credits_text" style="margin-top:0px;">SpearDavid(Our MVP and first teammate), Nadivaz(thank you for all your help mate), Bomba(for making several high quality static assets) and Doctor Aircraft Carrier(if there's a unit with shitty graphics, it was certainly drawn by DAC; but if it's well-animated it's likely also DAC)</p>
+			<p class="credits_text" style="margin-top:5px;">Portrait Art:</p>
+			<p class="credits_text" style="margin-top:0px;">DAC, Machow8(who extracted some of the source material we used to derive a few sprites from)</p>
+			<p class="credits_text" style="margin-top:5px;">Music:</p>
+			<p class="credits_text" style="margin-top:0px;">AlanAztec, White Bat Audio, Kevin MacLeod and many others</p>
+			<p class="credits_text" style="margin-top:5px;">Writing:</p>
+			<p class="credits_text" style="margin-top:0px;">Doctor Aircraft Carrier</p>
+			<p class="credits_text" style="margin-top:5px;">Testing:</p>
+			<p class="credits_text" style="margin-top:5px;">RLG Mapper(Relampago), Inventorarus Rex, Csix66 and many, many more</p>
+			<p class="credits_text" style="margin-top:5px;">ESP Translation:</p>
+			<p class="credits_text" style="margin-top:5px;">Silvestre(our absolute MVP, thanks a lot bro!), Atamarado, Prometheus, Margygr</p>
+			<p class="credits_text" style="margin-top:5px;">POR Translation:</p>
+			<p class="credits_text" style="margin-top:5px;">RLG Mapper(Relampago), Vythus, Aurum, Gabiel br and I feel like I'm forgetting someone</p>
+			<p class="credits_text" style="margin-top:5px;">TUR Translation:</p>
+			<p class="credits_text" style="margin-top:5px;">Tiffozi(bravely fighting this difficult ordeal by himself)</p>
+			<p class="credits_text" style="margin-top:5px;">Special Thanks</p>
+			<p class="credits_text" style="margin-top:5px;">Albert Epstein, for creating Manstein and Womanstein</p>
+			<p class="credits_text" style="margin-top:5px;">ThopTeam(Machow8 and WMAB) for mining the Battalion Arena avatar assets</p>
+			<p class="credits_text" style="margin-top:5px;">Vikingen, for helping with art(improving city tiles and the megamountains)</p>
+			<p class="credits_text" style="margin-top:5px;">John Titor, who helped us get this project finished much faster</p>
+			<p class="credits_text" style="margin-top:5px;">...that certain someone who (at the very least) left us with a great disclaimer</p>
+			<p class="credits_text" style="margin-top:5px;">And you, the player, who's been with us for so long. You're a real bro</p>
 			<br/>
-			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:10px; color: red;">If you steal anything from this game, I am going to find your ass and fuck it as violently as if you were Jeffrey Epstein's corpse</p>
+			<p class="credits_text" style="margin-top:10px; color: red;">If you steal anything from this game, I am going to find your ass and fuck it as violently as if you were Jeffrey Epstein's corpse</p>
 			<br/>
 			<div style="position: fixed; top:140px; left:455px; width:415px; height: 35px" onmouseover="ScrollUp=setInterval(ScrollEndScreenUp,10); function ScrollEndScreenUp(){document.getElementById('Credits').scrollBy(0,-1)}" onmouseout="clearInterval(ScrollUp)"></div>
 			<div style="position: fixed; top:385px; left:455px; width:415px; height: 35px" onmouseover="ScrollDown=setInterval(ScrollEndScreenDown,10); function ScrollEndScreenDown(){document.getElementById('Credits').scrollBy(0,1)}" onmouseout="clearInterval(ScrollDown)"></div>
@@ -1133,138 +1133,138 @@
 			<div style="position: absolute; top:0px; left:0px; height: 665px; width:210px; overflow-y:scroll;">
 				<img style="position: fixed;" src="Assets/Miscellaneous/LoreSelectionPanel.PNG"/>
 
-				<div style="position: absolute; top:35px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('Jokes')">
+				<div class="codex_button" style="top:35px;" onclick="DisplayLore('Jokes')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">Jokes</p>
+					<p class="codex_button_text">Jokes</p>
 				</div>
 
-				<div style="position: absolute; top:70px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('SpecialUnits')">
+				<div class="codex_button" style="top:70px;" onclick="DisplayLore('SpecialUnits')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">Special Infantry</p>
+					<p class="codex_button_text">Special Infantry</p>
 				</div>
 
-				<div style="position: absolute; top:105px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('SpecialArmor')">
+				<div class="codex_button" style="top:105px;" onclick="DisplayLore('SpecialArmor')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">Special Tanks</p>
+					<p class="codex_button_text">Special Tanks</p>
 				</div>
 
-				<div style="position: absolute; top:140px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('SpecialAircraft')">
+				<div class="codex_button" style="top:140px;" onclick="DisplayLore('SpecialAircraft')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">Special Planes?</p>
+					<p class="codex_button_text">Special Planes?</p>
 				</div>
 
-				<div style="position: absolute; top:175px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('SpecialShips')">
+				<div class="codex_button" style="top:175px;" onclick="DisplayLore('SpecialShips')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">Special Ships?</p>
+					<p class="codex_button_text">Special Ships?</p>
 				</div>
 
-				<div style="position: absolute; top:210px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('ThisWorld')">
+				<div class="codex_button" style="top:210px;" onclick="DisplayLore('ThisWorld')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">This World</p>
+					<p class="codex_button_text">This World</p>
 				</div>
 
-				<div style="position: absolute; top:245px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('ItHappened')">
+				<div class="codex_button" style="top:245px;" onclick="DisplayLore('ItHappened')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">It Happened</p>
+					<p class="codex_button_text">It Happened</p>
 				</div>
 
-				<div style="position: absolute; top:280px; left:45px; z-index:7; text-align:center;" onclick="">
+				<div class="codex_button" style="top:280px;" onclick="">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; cursor:default;"></p>
+					<p class="codex_button_text">???</p>
 				</div>
 
-				<div style="position: absolute; top:315px; left:45px; z-index:7; text-align:center;" onclick="">
+				<div class="codex_button" style="top:315px;" onclick="">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; cursor:default;"></p>
+					<p class="codex_button_text">???</p>
 				</div>
 
-				<div style="position: absolute; top:350px; left:45px; z-index:7; text-align:center;" onclick="">
+				<div class="codex_button" style="top:350px;" onclick="">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; cursor:default;"></p>
+					<p class="codex_button_text">???</p>
 				</div>
 
-				<div style="position: absolute; top:385px; left:45px; z-index:7; text-align:center;" onclick="">
+				<div class="codex_button" style="top:385px;" onclick="">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; cursor:default;"></p>
+					<p class="codex_button_text">???</p>
 				</div>
 
-				<div style="position: absolute; top:420px; left:45px; z-index:7; text-align:center;" onclick="">
+				<div class="codex_button" style="top:420px;" onclick="">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; cursor:default;"></p>
+					<p class="codex_button_text">???</p>
 				</div>
 
-				<div style="position: absolute; top:455px; left:45px; z-index:7; text-align:center;" onclick="">
+				<div class="codex_button" style="top:455px;" onclick="">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; cursor:default;"></p>
+					<p class="codex_button_text">???</p>
 				</div>
 
-				<div style="position: absolute; top:490px; left:45px; z-index:7; text-align:center;" onclick="">
+				<div class="codex_button" style="top:490px;" onclick="">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; cursor:default;"></p>
+					<p class="codex_button_text">???</p>
 				</div>
 
-				<div style="position: absolute; top:525px; left:45px; z-index:7; text-align:center;" onclick="">
+				<div class="codex_button" style="top:525px;" onclick="">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; cursor:default;"></p>
+					<p class="codex_button_text">???</p>
 				</div>
-				<div style="position: absolute; top:560px; left:45px; z-index:7; text-align:center;" onclick="">
+				<div class="codex_button" style="top:560px;" onclick="">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; cursor:default;"></p>
-				</div>
-
-				<div style="position: absolute; top:595px; left:45px; z-index:7; text-align:center;" onclick="">
-					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; cursor:default;"></p>
+					<p class="codex_button_text">???</p>
 				</div>
 
-				<div style="position: absolute; top:630px; left:45px; z-index:7; text-align:center;" onclick="">
+				<div class="codex_button" style="top:595px;" onclick="">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; cursor:default;"></p>
+					<p class="codex_button_text">???</p>
 				</div>
 
-				<div style="position: absolute; top:665px; left:45px; z-index:7; text-align:center;" onclick="">
+				<div class="codex_button" style="top:630px;" onclick="">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; cursor:default;"></p>
+					<p class="codex_button_text">???</p>
 				</div>
 
-				<div style="position: absolute; top:700px; left:45px; z-index:7; text-align:center;" onclick="">
+				<div class="codex_button" style="top:665px;" onclick="">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; cursor:default;"></p>
+					<p class="codex_button_text">???</p>
 				</div>
 
-				<div style="position: absolute; top:735px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('Operation_TZIMTZUM')">
+				<div class="codex_button" style="top:700px;" onclick="">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation TZIMTZUM</p>
+					<p class="codex_button_text">???</p>
 				</div>
 
-				<div style="position: absolute; top:770px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('Operation_GOLCHAB')">
+				<div class="codex_button" style="top:735px;" onclick="DisplayLore('Operation_TZIMTZUM')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation GOLCHAB</p>
+					<p class="codex_button_text_small">Operation TZIMTZUM</p>
 				</div>
 
-				<div style="position: absolute; top:805px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('Operation_GHAAG_SHEBLAH')">
+				<div class="codex_button" style="top:770px;" onclick="DisplayLore('Operation_GOLCHAB')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation GHAAG SHEBLAH</p>
+					<p class="codex_button_text_small">Operation GOLCHAB</p>
 				</div>
 
-				<div style="position: absolute; top:840px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('Operation_OHR_EIN_ZOF')">
+				<div class="codex_button" style="top:805px;" onclick="DisplayLore('Operation_GHAAG_SHEBLAH')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation OHR EIN ZOF</p>
+					<p class="codex_button_text_small">Operation GHAAG SHEBLAH</p>
 				</div>
 
-				<div style="position: absolute; top:875px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('Operation_SAMSON')">
+				<div class="codex_button" style="top:840px;" onclick="DisplayLore('Operation_OHR_EIN_ZOF')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation SAMSON</p>
+					<p class="codex_button_text_small">Operation OHR EIN ZOF</p>
 				</div>
 
-				<div style="position: absolute; top:910px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('Operation_THAUMIEL')">
+				<div class="codex_button" style="top:875px;" onclick="DisplayLore('Operation_SAMSON')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation THAUMIEL</p>
+					<p class="codex_button_text_small">Operation SAMSON</p>
 				</div>
 
-				<div style="position: absolute; top:945px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('War_Plan_ARMAGEDDON')">
+				<div class="codex_button" style="top:910px;" onclick="DisplayLore('Operation_THAUMIEL')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 14px;">War Plan ARMAGEDDON</p>
+					<p class="codex_button_text_small">Operation THAUMIEL</p>
+				</div>
+
+				<div class="codex_button" style="top:945px;" onclick="DisplayLore('War_Plan_ARMAGEDDON')">
+					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
+					<p class="codex_button_text_small" style="line-height: 14px;">War Plan ARMAGEDDON</p>
 				</div>
 			</div>
 
