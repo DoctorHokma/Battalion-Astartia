@@ -60,9 +60,10 @@ Battalion.prototype.init = function() {
 }
 
 Battalion.prototype.createCamera = function() {
-    const camera = new Camera();
+    const camera = new Camera2D();
     const context = this.renderer.createContext("BATTALION", camera);
 
+    camera.setTileSize(56, 56);
     context.createBuffer(560, 560);
     context.setDisplayMode(CameraContext.DISPLAY_MODE.RESOLUTION_FIXED);
 

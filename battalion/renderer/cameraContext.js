@@ -34,10 +34,6 @@ CameraContext.prototype.getID = function() {
     return this.id;
 }
 
-CameraContext.prototype.getPosition = function() {
-    return this.position;
-}
-
 CameraContext.prototype.setWindow = function(windowWidth, windowHeight) {
     this.windowWidth = windowWidth;
     this.windowHeight = windowHeight;
@@ -210,7 +206,6 @@ CameraContext.prototype.getScale = function(width, height) {
     return minScale;
 }
 
-
 CameraContext.prototype.reloadScale = function() {
     if(this.displayMode === CameraContext.DISPLAY_MODE.RESOLUTION_DEPENDENT) {
         this.scale = CameraContext.BASE_SCALE;
@@ -221,7 +216,7 @@ CameraContext.prototype.reloadScale = function() {
     let height = this.windowHeight;
 
     if(this.positionMode === CameraContext.POSITION_MODE.FIXED) {
-        width -= this.positionY;
+        width -= this.positionX;
         height -= this.positionY;
     }
 
@@ -235,6 +230,11 @@ CameraContext.prototype.createBuffer = function(width, height) {
     }
 }
 
+CameraContext.prototype.destroyBuffer = function() {
+    this.display = null;
+    this.setDisplayMode(CameraContext.DISPLAY_MODE.RESOLUTION_DEPENDENT);
+}
+
 CameraContext.prototype.setResolution = function(width, height) {
     if(this.displayMode !== CameraContext.DISPLAY_MODE.RESOLUTION_FIXED) {
         return;
@@ -243,11 +243,6 @@ CameraContext.prototype.setResolution = function(width, height) {
     this.display.resize(width, height);
     this.camera.setViewportSize(width, height);
     this.reload();
-}
-
-CameraContext.prototype.destroyRenderer = function() {
-    this.display = null;
-    this.setDisplayMode(CameraContext.DISPLAY_MODE.RESOLUTION_DEPENDENT);
 }
 
 CameraContext.prototype.update = function(gameContext, mainContext) {

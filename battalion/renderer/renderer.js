@@ -133,15 +133,16 @@ Renderer.prototype.drawContextDebug = function() {
 }
 
 Renderer.prototype.resizeDisplay = function(width, height) {
-    for(let i = 0; i < this.contexts.length; i++) {
-        const context = this.contexts[i];
-
-        context.onWindowResize(width, height);
-    }
-    
     this.windowWidth = width;
     this.windowHeight = height;
     this.display.onWindowResize(width, height);
+
+    for(let i = 0; i < this.contexts.length; i++) {
+        const context = this.contexts[i];
+
+        context.onWindowResize(this.display.width, this.display.height);
+    }
+
     this.events.emit(Renderer.EVENT.SCREEN_RESIZE, width, height);
 }
 

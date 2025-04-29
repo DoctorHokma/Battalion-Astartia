@@ -24,14 +24,7 @@ Camera.VIEWPORT_MODE = {
     DRAG: 2
 };
 
-Camera.prototype.update = function(gameContext, renderContext) {
-    renderContext.fillStyle = "red";
-    renderContext.fillRect(0, 0, 300, 300);
-    renderContext.fillStyle = "yellow";
-    renderContext.fillRect(0, 0, 200, 200);
-    renderContext.fillStyle = "blue";
-    renderContext.fillRect(0, 0, 100, 100);
-}
+Camera.prototype.update = function(gameContext, context) {}
 
 Camera.prototype.setWorldSize = function(worldWidth, worldHeight) {
     this.worldWidth = worldWidth;
