@@ -512,21 +512,6 @@ const LANGUAGE_ENGLISH = {
 	"NATION_NAME_POLASIE": "Polasie Social Republic",
 	"NATION_NAME_ELAM": "Sublime Caliphate of Elam",
 
-	/*
-	"The third rooster is clucking",
-	"The manacles asunder",
-	"Do you know da wae to da quen?",
-	"Proletarians, break your chains!",
-	"A giant awakens",
-	"T̴̯̈́H̶̦̓Ȇ̶͚ ̵̳̑G̷̻̽R̵̬̉E̸̗͑Ȧ̸̰T̷̗̽ ̷̼̕V̴̘̀Ë̵͙́N̶̦̄Ġ̶̙Ḛ̷͊À̴̳N̷͙̈C̵̻̎E̶̅͜ ̸̦̅A̴̦̽W̴̳̚Ä̶̠́Ḯ̵̭T̶̻̄Ś̵͍",
-	*/
-
-	"NATION_START_BUTTON_SOMERTIN": "For God, People and the Motherland!",
-	"NATION_START_BUTTON_KARGIT": "Pantser Vorwarts!",
-	"NATION_START_BUTTON_TRANSKAL": "March on, Transkalite Riflemen!",
-	"NATION_START_BUTTON_POLASIE": 	"For Liberty!",
-	"NATION_START_BUTTON_ELAM": "Shinji, get in the fucking EVA already!",
-
 	"POWER_NAME_MAJOR": "Major Power",
 	"POWER_NAME_MINOR": "Minor Power",
 	"POWER_NAME_REGIONAL": "Regional Power",
@@ -873,6 +858,21 @@ const LANGUAGE_ENGLISH = {
 		"This timid boy will now sit on the thorny throne at the worst time possible. What comes from now on could hardly even be sailed by Faruk, let alone his incapable progeny. Hashrazzat is both literally and figuratively a child among giants, and neither of those take Elam seriously. Still, they will join Kargia in the hopes that it will land them in a good position to dictate negotiation terms with either of the titans",
 		"<span style='color:white'> +Battle the northern kaffirs to restore the old glory of the Caliphate</span><br><span style='color:black'> -Deal with the awful industry, weapon and munition shortages</span><br><span style='color:red'> ♥Assemble a harem of hot waifus</span><br><span style='color:black'> -Some of them are lolis</span><br><span style='color:purple'> ?Will Aizi'Dihar, that obscure collaborationist heresy, ever amount to anything?</span><br>"
 	],
+
+	/*
+	"The third rooster is clucking",
+	"The manacles asunder",
+	"Do you know da wae to da quen?",
+	"Proletarians, break your chains!",
+	"A giant awakens",
+	"T̴̯̈́H̶̦̓Ȇ̶͚ ̵̳̑G̷̻̽R̵̬̉E̸̗͑Ȧ̸̰T̷̗̽ ̷̼̕V̴̘̀Ë̵͙́N̶̦̄Ġ̶̙Ḛ̷͊À̴̳N̷͙̈C̵̻̎E̶̅͜ ̸̦̅A̴̦̽W̴̳̚Ä̶̠́Ḯ̵̭T̶̻̄Ś̵͍",
+	*/
+
+	"CAMPAIGN_START_BUTTON_SOMERTIN": "For God, People and the Motherland!",
+	"CAMPAIGN_START_BUTTON_KARGIT": "Pantser Vorwarts!",
+	"CAMPAIGN_START_BUTTON_TRANSKAL": "March on, Transkalite Riflemen!",
+	"CAMPAIGN_START_BUTTON_POLASIE": 	"For Liberty!",
+	"CAMPAIGN_START_BUTTON_ELAM": "Shinji, get in the fucking EVA already!",
 
     "CHAPTER_NAME_SOMERTIN_C1": "Deluge",
     "CHAPTER_NAME_SOMERTIN_C2": "Comeback",

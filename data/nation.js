@@ -2,7 +2,6 @@ const NATION = {
 	"SOMERTIN": {
 		"name": "NATION_NAME_SOMERTIN",
 		"desc": "NATION_DESC_SOMERTIN",
-		"startButton": "NATION_START_BUTTON_SOMERTIN",
 		"prefix": "SOM",
 		"emblem": "Assets/Emblems/EmblemSOM.png",
 		"nonEmblem": "Assets/Emblems/NONemblemSOM.png",
@@ -18,7 +17,6 @@ const NATION = {
 	"KARGIT": {
 		"name": "NATION_NAME_KARGIT",
 		"desc": "NATION_DESC_KARGIT",
-		"startButton": "NATION_START_BUTTON_KARGIT",
 		"prefix": "KAR",
 		"emblem": "Assets/Emblems/EmblemKAR.png",
 		"nonEmblem": "Assets/Emblems/NONemblemKAR.png",
@@ -34,7 +32,6 @@ const NATION = {
 	"TRANSKAL": {
 		"name": "NATION_NAME_TRANSKAL",
 		"desc": "NATION_DESC_TRANSKAL",
-		"startButton": "NATION_START_BUTTON_TRANSKAL",
 		"prefix": "TRK",
 		"emblem": "Assets/Emblems/EmblemTRK.png",
 		"nonEmblem": "Assets/Emblems/NONemblemTRK.png",
@@ -50,7 +47,6 @@ const NATION = {
 	"POLASIE": {
 		"name": "NATION_NAME_POLASIE",
 		"desc": "NATION_DESC_POLASIE",
-		"startButton": "NATION_START_BUTTON_POLASIE",
 		"prefix": "POE",
 		"emblem": "Assets/Emblems/EmblemPOE.png",
 		"nonEmblem": "Assets/Emblems/NONemblemPOE.png",
@@ -66,7 +62,6 @@ const NATION = {
 	"ELAM": {
 		"name": "NATION_NAME_ELAM",
 		"desc": "NATION_DESC_ELAM",
-		"startButton": "NATION_START_BUTTON_ELAM",
 		"prefix": "ELM",
 		"emblem": "Assets/Emblems/EmblemELM.png",
 		"nonEmblem": "Assets/Emblems/NONemblemELM.png",

@@ -2,21 +2,6 @@ const LANGUAGE_TURKISH = {
 	"LANGUAGE_CREATOR_COMMENT": "Thank you, Tiffozi(Partial translation)",
     "LANGUAGE_DEFAULT_COMMENT": "Traducere partiala",
 
-	/*
-	"Özgür Yaşa ya da Öl.",
-	"Zincirleri parçalayın!",
-	"Kraliçeye giden yolu biliyor musun?",
-	"Proleterler, zincirlerinizi kırın!",
-	"Faruk'u onurlandırmak için saldırın!",
-	"Ya istiklâl ya ölüm"
-	*/
-
-	"NATION_START_BUTTON_SOMERTIN": "Tanrı, Halk ve Vatan İçin!",
-	"NATION_START_BUTTON_KARGIT": "Panzer İleri!",
-	"NATION_START_BUTTON_TRANSKAL": "Ilerle, Transkalit Keskin Nişancılar!",
-	"NATION_START_BUTTON_POLASIE": "Hürriyet İçin!",
-	"NATION_START_BUTTON_ELAM": "Shinji, amına koyduğumun EVA'sına geç artık!",
-
 	"TRAIT_NAME_UNEVEN": "Düz olmayan",
     "TRAIT_NAME_RUGGED": "Engebeli",
     "TRAIT_NAME_PRECIPITOUS": "Dik",
@@ -321,7 +306,22 @@ const LANGUAGE_TURKISH = {
     "UNIT_DESC_BASTION": "Birliklerinizin savaşabilmesi için gıda, mühimmat ve tüm malzemelerin depolandığı bir depo.",
     "UNIT_DESC_SUPPLY_DEPOT": "",
     "UNIT_DESC_FORTRESS": "",
-    "UNIT_DESC_MEME_SPARTANS": ""
+    "UNIT_DESC_MEME_SPARTANS": "",
+
+	/*
+	"Özgür Yaşa ya da Öl.",
+	"Zincirleri parçalayın!",
+	"Kraliçeye giden yolu biliyor musun?",
+	"Proleterler, zincirlerinizi kırın!",
+	"Faruk'u onurlandırmak için saldırın!",
+	"Ya istiklâl ya ölüm"
+	*/
+
+	"CAMPAIGN_START_BUTTON_SOMERTIN": "Tanrı, Halk ve Vatan İçin!",
+	"CAMPAIGN_START_BUTTON_KARGIT": "Panzer İleri!",
+	"CAMPAIGN_START_BUTTON_TRANSKAL": "Ilerle, Transkalit Keskin Nişancılar!",
+	"CAMPAIGN_START_BUTTON_POLASIE": "Hürriyet İçin!",
+	"CAMPAIGN_START_BUTTON_ELAM": "Shinji, amına koyduğumun EVA'sına geç artık!",
 };
 
 TUR={

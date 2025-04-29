@@ -2,21 +2,6 @@ const LANGUAGE_SPANISH = {
 	"LANGUAGE_CREATOR_COMMENT": "Muchos gracias Silvestre",
 	"LANGUAGE_DEFAULT_COMMENT": "Muchos gracias Silvestre",
 
-	/*
-	"El tercer gallo está cacareando",
-	"Las esposas se rompen",
-	"Do you know da wae to da quen?",
-	"¡Proletarios, rompan sus cadenas!",
-	"El gigante despierta",
-	"¡DESATEN LA GRAN CRUZADA!"
-	*/
-
-	"NATION_START_BUTTON_SOMERTIN": "¡Por Dios, el Pueblo y la Madre Patria!",
-	"NATION_START_BUTTON_KARGIT": "¡Panzer Vorwarts!",
-	"NATION_START_BUTTON_TRANSKAL": "¡Marchen, Fusileros de Transkalite!",
-	"NATION_START_BUTTON_POLASIE": "¡Por la Libertad!!",
-	"NATION_START_BUTTON_ELAM": "¡Shinji, métete en el puto EVA de una vez!",
-
 	"TRAIT_NAME_UNEVEN": "Desigual",
     "TRAIT_NAME_RUGGED": "Escabroso",
     "TRAIT_NAME_PRECIPITOUS": "Precipitado",
@@ -322,6 +307,21 @@ const LANGUAGE_SPANISH = {
 	"UNIT_DESC_SUPPLY_DEPOT": "Almacén de alimentos, municiones y todos los suministros que sus tropas necesitan para funcionar",
 	"UNIT_DESC_FORTRESS": "Una ciudadela formidable capaz de mantener a raya a un ejército entero por su cuenta",
 	"UNIT_DESC_MEME_SPARTANS": "",
+
+	/*
+	"El tercer gallo está cacareando",
+	"Las esposas se rompen",
+	"Do you know da wae to da quen?",
+	"¡Proletarios, rompan sus cadenas!",
+	"El gigante despierta",
+	"¡DESATEN LA GRAN CRUZADA!"
+	*/
+
+	"CAMPAIGN_START_BUTTON_SOMERTIN": "¡Por Dios, el Pueblo y la Madre Patria!",
+	"CAMPAIGN_START_BUTTON_KARGIT": "¡Panzer Vorwarts!",
+	"CAMPAIGN_START_BUTTON_TRANSKAL": "¡Marchen, Fusileros de Transkalite!",
+	"CAMPAIGN_START_BUTTON_POLASIE": "¡Por la Libertad!!",
+	"CAMPAIGN_START_BUTTON_ELAM": "¡Shinji, métete en el puto EVA de una vez!",
 
 	"CHAPTER_NAME_SOMERTIN_C1": "El Diluvio",
     "CHAPTER_NAME_SOMERTIN_C2": "Perserverancia",

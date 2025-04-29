@@ -2,21 +2,6 @@ const LANGUAGE_PORTUGUESE = {
 	"LANGUAGE_CREATOR_COMMENT": "Special thanks to Relampago, Aurum and especially Vythus for their work",
     "LANGUAGE_DEFAULT_COMMENT": "Special thanks to Relampago, Aurum and especially Vythus for their work",
 
-	/*
-	"El tercer gallo está cacareando",
-	"Las esposas se rompen",
-	"Você sabe da wae to da quen?",
-	"Proletários, quebrem suas correntes!",
-	"O tempo está passando...",
-	"¡DESATEN LA GRAN CRUZADA!",
-	*/
-
-	"NATION_START_BUTTON_SOMERTIN": "Por Deus, pelo Povo e pela Pátria!",
-	"NATION_START_BUTTON_KARGIT": "Panzer Vorwarts!",
-	"NATION_START_BUTTON_TRANSKAL": "Marchem, Fuzileiros Transcalitas!",
-	"NATION_START_BUTTON_POLASIE": "Pela Liberdade!",
-	"NATION_START_BUTTON_ELAM": "Shinji, entre já na porra do EVA!",
-
 	"TRAIT_NAME_UNEVEN": "Desigual",
     "TRAIT_NAME_RUGGED": "Robusto",
     "TRAIT_NAME_PRECIPITOUS": "Precipitado",
@@ -323,6 +308,21 @@ const LANGUAGE_PORTUGUESE = {
     "UNIT_DESC_FORTRESS": "",
     "UNIT_DESC_MEME_SPARTANS": "",
 
+	/*
+	"El tercer gallo está cacareando",
+	"Las esposas se rompen",
+	"Você sabe da wae to da quen?",
+	"Proletários, quebrem suas correntes!",
+	"O tempo está passando...",
+	"¡DESATEN LA GRAN CRUZADA!",
+	*/
+
+	"CAMPAIGN_START_BUTTON_SOMERTIN": "Por Deus, pelo Povo e pela Pátria!",
+	"CAMPAIGN_START_BUTTON_KARGIT": "Panzer Vorwarts!",
+	"CAMPAIGN_START_BUTTON_TRANSKAL": "Marchem, Fuzileiros Transcalitas!",
+	"CAMPAIGN_START_BUTTON_POLASIE": "Pela Liberdade!",
+	"CAMPAIGN_START_BUTTON_ELAM": "Shinji, entre já na porra do EVA!",
+	
 	"CHAPTER_NAME_SOMERTIN_C1": "O dilúvio",
     "CHAPTER_NAME_SOMERTIN_C2": "Backslap",
     "CHAPTER_NAME_SOMERTIN_C3": "Skewering the Perfidious",

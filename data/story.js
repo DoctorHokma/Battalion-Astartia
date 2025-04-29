@@ -35,6 +35,7 @@ const CAMPAIGNS = {
 	"SOMERTIN": {
 		"name": "CAMPAIGN_NAME_SOMERTIN",
 		"desc": "CAMPAIGN_DESC_SOMERTIN",
+		"startButton": "CAMPAIGN_START_BUTTON_SOMERTIN",
 		"nation": "SOMERTIN",
 		"hidden": false,
 		"chapters": ["SOMERTIN_C1", "SOMERTIN_C2", "SOMERTIN_C3", "SOMERTIN_C4", "SOMERTIN_C5", "SOMERTIN_C6", "SOMERTIN_C7"]
@@ -42,6 +43,7 @@ const CAMPAIGNS = {
 	"KARGIT": {
 		"name": "CAMPAIGN_NAME_KARGIT",
 		"desc": "CAMPAIGN_DESC_KARGIT",
+		"startButton": "CAMPAIGN_START_BUTTON_KARGIT",
 		"nation": "KARGIT",
 		"hidden": false,
 		"chapters": ["KARGIT_C1", "KARGIT_C2", "KARGIT_C3", "KARGIT_C4", "KARGIT_C5", "KARGIT_C6", "KARGIT_C7"]
@@ -49,6 +51,7 @@ const CAMPAIGNS = {
 	"TRANSKAL": {
 		"name": "CAMPAIGN_NAME_TRANSKAL",
 		"desc": "CAMPAIGN_DESC_TRANSKAL",
+		"startButton": "CAMPAIGN_START_BUTTON_TRANSKAL",
 		"nation": "TRANSKAL",
 		"hidden": false,
 		"chapters": ["TRANSKAL_C1", "TRANSKAL_C2", "TRANSKAL_C3", "TRANSKAL_C4", "TRANSKAL_C5"]
@@ -56,6 +59,7 @@ const CAMPAIGNS = {
 	"POLASIE": {
 		"name": "CAMPAIGN_NAME_POLASIE",
 		"desc": "CAMPAIGN_DESC_POLASIE",
+		"startButton": "CAMPAIGN_START_BUTTON_POLASIE",
 		"nation": "POLASIE",
 		"hidden": false,
 		"chapters": ["POLASIE_C1", "POLASIE_C2", "POLASIE_C3", "POLASIE_C4", "POLASIE_C5"]
@@ -63,6 +67,7 @@ const CAMPAIGNS = {
 	"ELAM": {
 		"name": "CAMPAIGN_NAME_ELAM",
 		"desc": "CAMPAIGN_DESC_ELAM",
+		"startButton": "CAMPAIGN_START_BUTTON_ELAM",
 		"nation": "ELAM",
 		"hidden": false,
 		"chapters": ["ELAM_C1", "ELAM_C2", "ELAM_C3", "ELAM_C4", "ELAM_C5"]

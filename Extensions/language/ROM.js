@@ -2,21 +2,6 @@ const LANGUAGE_ROMANIAN = {
 	"LANGUAGE_CREATOR_COMMENT": "Made by yours truly(Partial translation)",
     "LANGUAGE_DEFAULT_COMMENT": "Traducere partiala",
 
-	/*
-	"Al treilea cocoș cântă...",
-	"Lanțurile, sfărâmate. Biciul, incinerat.",
-	"Do you know da wae to da quen?",
-	"Proletari, rupeți lanțurile!",
-	"Uriașul se trezește",
-	"MAREA CRUCIADĂ NE AȘTEAPTĂ",
-	*/
-
-	"NATION_START_BUTTON_SOMERTIN": "Pentru patrie, credință și popor!",
-	"NATION_START_BUTTON_KARGIT": "Panzer Vorwarts!",
-	"NATION_START_BUTTON_TRANSKAL": "Pușcași transkaliți, pas de marș!",
-	"NATION_START_BUTTON_POLASIE": "Pentru libertate!",
-	"NATION_START_BUTTON_ELAM": "Shinji intră in EVA, băgamiaș pula-n curul tău!",
-
 	"APHORISM_NARRATOR_1": "Kafka, probably",
 	"APHORISM_NARRATOR_2": "Interviul diplomatului Francois Armand Dupuy pentru Gazeta Lutețiană",
 	"APHORISM_NARRATOR_3": "Interviul diplomatului Francis Woodenston-Willow pentru Londinian Gazette",
@@ -464,6 +449,21 @@ const LANGUAGE_ROMANIAN = {
 		"Această beizadea timidă a luat tronul în cele bai tulburi vremuri. Ce vine acum abia ar fi putut fi navigat de Faruk, darămite de progenitura lui incompetentă. Hashrazzat e și la propriu și la figurat un copilandru între uriași, niciunul dintre care nu iau Elamul în serios. Totuși, se vor alătura Kargiei în speranța că-l va pune în poziția în care va negocia termeni avantajoși cu ambii titani...",
 		"<span style='color:white'> +Bate-te cu kaffirii de la nord și restaurează vechea glorie a Califatului</span><br><span style='color:black'> -Ocupă-te de industria proastă, lipsa de armamente și provizii</span><br><span style='color:red'> ♥Fă-ți un harem de waifu-uri superbe</span><br><span style='color:black'> -Unele sunt loliuțe</span><br><span style='color:purple'> ?Va însemna ceva Aizi'Diharul, acea erezie colaboraționistă?</span><br>"
 	],
+
+	/*
+	"Al treilea cocoș cântă...",
+	"Lanțurile, sfărâmate. Biciul, incinerat.",
+	"Do you know da wae to da quen?",
+	"Proletari, rupeți lanțurile!",
+	"Uriașul se trezește",
+	"MAREA CRUCIADĂ NE AȘTEAPTĂ",
+	*/
+
+	"CAMPAIGN_START_BUTTON_SOMERTIN": "Pentru patrie, credință și popor!",
+	"CAMPAIGN_START_BUTTON_KARGIT": "Panzer Vorwarts!",
+	"CAMPAIGN_START_BUTTON_TRANSKAL": "Pușcași transkaliți, pas de marș!",
+	"CAMPAIGN_START_BUTTON_POLASIE": "Pentru libertate!",
+	"CAMPAIGN_START_BUTTON_ELAM": "Shinji intră in EVA, băgamiaș pula-n curul tău!",
 
 	"CHAPTER_NAME_SOMERTIN_C1": "Potopul",
     "CHAPTER_NAME_SOMERTIN_C2": "Perseverență",

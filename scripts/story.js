@@ -80,10 +80,9 @@ const showNationData = function(battalion, nationID) {
         return;
     }
 
-    const { name, power, startButton, chroma, faction } = nation;
+    const { name, power, chroma, faction } = nation;
 
     document.getElementById("NationDetails").style.visibility = "visible";
-	document.getElementById("LevelStartButton").innerHTML = language.get(startButton);
     document.getElementById("NationNameSpecific").innerHTML = language.get(name);
     document.getElementById("NationColor").style.filter = chroma;
 
@@ -129,8 +128,10 @@ const showChapterData = function(battalion, chapter, chapterIndex) {
 const showCampaignData = function(battalion, campaign) {
     const { language } = battalion;
     const { type } = campaign;
-    const { desc } = type;
+    const { desc, startButton } = type;
     
+    document.getElementById("LevelStartButton").innerHTML = language.get(startButton);
+
     const nationDesc = language.get(desc);
     const nationSynopsis = document.getElementById("NationSynopsisSpecific");
     const nationDescText = Array.isArray(nationDesc) ? nationDesc.join("<br><br>") : nationDesc;
