@@ -3409,9 +3409,7 @@ function GeneralInitializer(){
 	//This does the scaling
 	let ScreenRatio=Math.round(window.innerHeight/7);
 	//alert(ScreenRatio);
-	//document.getElementById("BODY").style.scale=Math.round(ScreenRatio/25)/5;
-	//document.getElementById("BODY").style.scale=0.8;
-	document.getElementById("BODY").style.left=(window.innerHeight-700)/2+"px";
+	document.body.style.left=(window.innerHeight-700)/2+"px";
 
 	//if(Language!=ENG){LanguageCorrecter(Language)};
 

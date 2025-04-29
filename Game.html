@@ -3,32 +3,33 @@
 	<head>
 		<title> Battalion: Total War v0.77 HOPE</title>
 		<link rel="icon" href="Icon.ico">
+		<link rel="stylesheet" href="styles.css">
 	</head>
 
-	<body id="BODY" style="overflow:hidden; scale:80%; position:absolute; left:0px; cursor: url('Assets/Miscellaneous/DarkCursor.png') 0 0, auto" oncontextmenu="return false">
+	<body style="overflow:hidden; position:absolute; left:0px;" oncontextmenu="return false">
 		<div id="Main Menu" style='position:absolute; visibility:visible; top:10px; left:325px; height:70px; width:70px; z-index: 5; margin:auto'>
 			<img id="Main Menu Picture" style="position:absolute; width:700px; height:600px; left:-8px" src="Assets/Miscellaneous/Backdrop ETHA.JPG"/>
-			<img style="position:absolute; visibility: hidden; scale:80%; left:-100px; top:0px; filter:hue-rotate(250deg) saturate(100%) brightness(100%)" src="TEMP/AsekaraUnsplit.PNG"/>
+			<img style="position:absolute; visibility: hidden; left:-100px; top:0px; filter:hue-rotate(250deg) saturate(100%) brightness(100%)" src="TEMP/AsekaraUnsplit.PNG"/>
 			
-			<div style="position:absolute; visibility: hidden; scale:80%; left:-100px; top:100px">
+			<div style="position:absolute; visibility: hidden; left:-100px; top:100px">
 				<img style="position:absolute; visibility: inherit; left:0px; top:0px; filter:hue-rotate(250deg) saturate(100%) brightness(100%)" src="TEMP/AsekaraFilling.PNG"/>
 				<img style="position:absolute; visibility: inherit; left:0px; top:0px" src="TEMP/AsekaraMeshOpaque.PNG"/>
 			</div>
 
-			<div id="BUTTON_CAMPAIGN" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:280px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="BUTTON_CONTINUE" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="BUTTON_BOOT_CAMP" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:420px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="BUTTON_CREDITS" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:0px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="BUTTON_OPTIONS" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="BUTTON_BONUS" style="position:absolute; z-index:1; width:126px; height: 71px; top:0px; left:0px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="BUTTON_EDITOR" style="position:absolute; z-index:1; width:126px; height: 71px; top:0px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="BUTTON_CONQUEST" style="position:absolute; z-index:1; width:126px; height: 71px; top:70px; left:0px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="BUTTON_CODEX" style="position:absolute; z-index:1; width:126px; height: 71px; top:70px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="BUTTON_MUSIC" style="position:absolute; z-index:1; width:126px; height: 71px; top:140px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="BUTTON_CAMPAIGN" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:280px;"></div>
+			<div id="BUTTON_CONTINUE" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:140px;"></div>
+			<div id="BUTTON_BOOT_CAMP" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:420px;"></div>
+			<div id="BUTTON_CREDITS" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:0px;"></div>
+			<div id="BUTTON_OPTIONS" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:560px;"></div>
+			<div id="BUTTON_BONUS" style="position:absolute; z-index:1; width:126px; height: 71px; top:0px; left:0px;"></div>
+			<div id="BUTTON_EDITOR" style="position:absolute; z-index:1; width:126px; height: 71px; top:0px; left:560px;"></div>
+			<div id="BUTTON_CONQUEST" style="position:absolute; z-index:1; width:126px; height: 71px; top:70px; left:0px;"></div>
+			<div id="BUTTON_CODEX" style="position:absolute; z-index:1; width:126px; height: 71px; top:70px; left:560px;"></div>
+			<div id="BUTTON_MUSIC" style="position:absolute; z-index:1; width:126px; height: 71px; top:140px; left:560px;"></div>
 		</div>
 
 		<div id="Battlemap" style='position:absolute; visibility:hidden; top:20px; left:400px; height:560px; width:560px; z-index: 0'>			
-			<div id='DialogueBox' style='position:absolute; display:inline; top:410px; left:0px; height:140px; width:560px; visibility: hidden; z-index: 7; cursor: url("Assets/Miscellaneous/Cursor.png") 0 0, auto'>
+			<div id='DialogueBox' style='position:absolute; display:inline; top:410px; left:0px; height:140px; width:560px; visibility: hidden; z-index: 7;'>
 				<img id="Textbox" src="Assets/Miscellaneous/Textbox.PNG" style="position:absolute; display:inline; top:0px; left:0px; opacity:1"/>
 				<div style="position:absolute; left:-3px; top:19px; width:560px; height:0px; border:1px solid #7e3f32"></div>
 				<img id="Portrait" src="" style='position:absolute; display:inline; top:0px; left:0px'/>
@@ -40,10 +41,10 @@
 
 			<div id="Illustration" style="position:absolute; left:56px; top:56px; z-index: 10; visibility: hidden; "onclick="this.style.visibility='hidden'">
 				<img style="position: absolute; top:-8px; left:-6px; z-index:10" src="Assets/Miscellaneous/IllustrationFrame.PNG"/>
-				<img id="MidBattleIllustration" style="position: absolute; z-index:10; width: 448px; height:280px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Gallery/Bianca.PNG" />
+				<img id="MidBattleIllustration" style="position: absolute; z-index:10; width: 448px; height:280px;" src="Assets/Gallery/Bianca.PNG" />
 			</div>
 
-			<div id="DialogueSkip" style="position:absolute; top:410px; left:0px; visibility:hidden; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('DialogueBox').style.visibility='hidden'; this.style.visibility='hidden';if(Resolution){EndBattle()}">
+			<div id="DialogueSkip" style="position:absolute; top:410px; left:0px; visibility:hidden;" onclick="document.getElementById('DialogueBox').style.visibility='hidden'; this.style.visibility='hidden';if(Resolution){EndBattle()}">
 				<img style="position: absolute; left:414px; top:-37px; z-index:6" src="Assets/Miscellaneous/SkipButton.PNG"/>
 				<p id="DialogueSkipP" style="position: absolute; width: 100px; height:20px; text-align:center; top: -40px; left: 441px; z-index:6">Skip</p>
 			</div>
@@ -53,9 +54,9 @@
 			<div id="SidePanel" style="position:absolute; left:560px; z-index:6; text-align:center;">
 				<img src="Assets/Miscellaneous/SidePanel.PNG" onmouseover=""/>
 				<p id="BtnSuperscript" style="position: absolute; z-index:3; top:119px; width:140px; left:14px;">Press C for controls</p>
-				<img id="UndoBtn" style="position: absolute; left:35px; top: 168px; z-index:3; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('BtnSuperscript').innerHTML=Language.SystemTerms[49]; this.src='Assets/Miscellaneous/UndoBtnL.PNG' " onmouseout="document.getElementById('BtnSuperscript').innerHTML=''; this.src='Assets/Miscellaneous/UndoBtnS.PNG'" onmousedown="this.src='Assets/Miscellaneous/UndoBtnP.PNG'; UndoMove()" onmouseup="this.src='Assets/Miscellaneous/UndoBtnS.PNG'" src="Assets/Miscellaneous/UndoBtnS.PNG"/>
-				<img id="MenuBtn" style="position: absolute; left:70px; top: 168px; z-index:3; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('BtnSuperscript').innerHTML=Language.SystemTerms[50]; this.src='Assets/Miscellaneous/MenuBtnL.PNG' " onmouseout="document.getElementById('BtnSuperscript').innerHTML=''; this.src='Assets/Miscellaneous/MenuBtnS.PNG'" onmousedown="this.src='Assets/Miscellaneous/MenuBtnP.PNG'; document.getElementById('Options').style.visibility='visible'" onmouseup="this.src='Assets/Miscellaneous/MenuBtnS.PNG'" src="Assets/Miscellaneous/MenuBtnS.PNG"/>
-				<img id="QuitBtn" style="position: absolute; left:105px; top: 168px; z-index:3; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('BtnSuperscript').innerHTML=Language.SystemTerms[51]; this.src='Assets/Miscellaneous/QuitBtnL.PNG' " onmouseout="document.getElementById('BtnSuperscript').innerHTML=''; this.src='Assets/Miscellaneous/QuitBtnS.PNG'" onmousedown="this.src='Assets/Miscellaneous/QuitBtnP.PNG'; Battle_Lost()" onmouseup="this.src='Assets/Miscellaneous/QuitBtnS.PNG'" src="Assets/Miscellaneous/QuitBtnS.PNG"/>
+				<img id="UndoBtn" style="position: absolute; left:35px; top: 168px; z-index:3;" onmouseover="document.getElementById('BtnSuperscript').innerHTML=Language.SystemTerms[49]; this.src='Assets/Miscellaneous/UndoBtnL.PNG' " onmouseout="document.getElementById('BtnSuperscript').innerHTML=''; this.src='Assets/Miscellaneous/UndoBtnS.PNG'" onmousedown="this.src='Assets/Miscellaneous/UndoBtnP.PNG'; UndoMove()" onmouseup="this.src='Assets/Miscellaneous/UndoBtnS.PNG'" src="Assets/Miscellaneous/UndoBtnS.PNG"/>
+				<img id="MenuBtn" style="position: absolute; left:70px; top: 168px; z-index:3;" onmouseover="document.getElementById('BtnSuperscript').innerHTML=Language.SystemTerms[50]; this.src='Assets/Miscellaneous/MenuBtnL.PNG' " onmouseout="document.getElementById('BtnSuperscript').innerHTML=''; this.src='Assets/Miscellaneous/MenuBtnS.PNG'" onmousedown="this.src='Assets/Miscellaneous/MenuBtnP.PNG'; document.getElementById('Options').style.visibility='visible'" onmouseup="this.src='Assets/Miscellaneous/MenuBtnS.PNG'" src="Assets/Miscellaneous/MenuBtnS.PNG"/>
+				<img id="QuitBtn" style="position: absolute; left:105px; top: 168px; z-index:3;" onmouseover="document.getElementById('BtnSuperscript').innerHTML=Language.SystemTerms[51]; this.src='Assets/Miscellaneous/QuitBtnL.PNG' " onmouseout="document.getElementById('BtnSuperscript').innerHTML=''; this.src='Assets/Miscellaneous/QuitBtnS.PNG'" onmousedown="this.src='Assets/Miscellaneous/QuitBtnP.PNG'; Battle_Lost()" onmouseup="this.src='Assets/Miscellaneous/QuitBtnS.PNG'" src="Assets/Miscellaneous/QuitBtnS.PNG"/>
 
 				<img id="CommanderPortrait" style="position:absolute; top:239px; left:20px; z-index:-1" src="Assets/Portraits/AndersPortrait.PNG"/>
 				<div id="CommanderCollider" style="position:absolute; top:239px; left:20px; height:150px; width:130px; z-index:11" onmouseover="ShowCharacterBio()" onmouseout="document.getElementById('CommanderBio').style.visibility='hidden'"></div>
@@ -88,35 +89,35 @@
 
 				<div id="CharacterBio"></div>
 
-				<div id="Glassplate1" style="position: absolute; top: 389px; left: 3px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="FactionInformations(1)" onmouseout="document.getElementById('FactionDetails').style.visibility='hidden'">			
+				<div id="Glassplate1" style="position: absolute; top: 389px; left: 3px;" onclick="FactionInformations(1)" onmouseout="document.getElementById('FactionDetails').style.visibility='hidden'">			
 					<div id="Glassplatecolor1" style="position:absolute; background: red; width: 140px; height:25px; left:11px; top:0px"></div>
 					<img style="position: absolute; z-index:1" src="Assets/Miscellaneous/Glassplate.PNG"/>
 					<img id="GlassplateCrest1" style="position:absolute; top:0px; left:0px; z-index:2" src="Assets/Emblems/CrestNON.PNG"/>
 					<p id="Glassplatename1" style="position:absolute; top:-2px; width: 140px; left:28px; height:20px; text-align:left; font-size: 10px; z-index:2">Red</p>
 				</div>
 
-				<div id="Glassplate2" style="position: absolute; top: 419px; left: 3px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="FactionInformations(2)" onmouseout="document.getElementById('FactionDetails').style.visibility='hidden'">			
+				<div id="Glassplate2" style="position: absolute; top: 419px; left: 3px;" onclick="FactionInformations(2)" onmouseout="document.getElementById('FactionDetails').style.visibility='hidden'">			
 					<div id="Glassplatecolor2" style="position:absolute; background: blue; width: 140px; height:25px; left:11px; top:0px"></div>
 					<img style="position: absolute; z-index:1" src="Assets/Miscellaneous/Glassplate.PNG"/>
 					<img id="GlassplateCrest2" style="position:absolute; top:0px; left:0px; z-index:2" src="Assets/Emblems/CrestNON.PNG"/>
 					<p id="Glassplatename2" style="position:absolute; top:-2px; width: 140px; left:28px; height:20px; text-align:left; font-size: 10px; z-index:2">Blue</p>
 				</div>
 
-				<div id="Glassplate3" style="position: absolute; top: 449px; left: 3px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="FactionInformations(3)" onmouseout="document.getElementById('FactionDetails').style.visibility='hidden'">			
+				<div id="Glassplate3" style="position: absolute; top: 449px; left: 3px;" onclick="FactionInformations(3)" onmouseout="document.getElementById('FactionDetails').style.visibility='hidden'">			
 					<div id="Glassplatecolor3" style="position:absolute; background: green; width: 140px; height:25px; left:11px; top:0px"></div>
 					<img style="position: absolute; z-index:1" src="Assets/Miscellaneous/Glassplate.PNG"/>
 					<img id="GlassplateCrest3" style="position:absolute; top:0px; left:0px; z-index:2" src="Assets/Emblems/CrestNON.PNG"/>
 					<p id="Glassplatename3" style="position:absolute; top:-2px; width: 140px; left:28px; height:20px; text-align:left; font-size: 10px; z-index:2">Green</p>
 				</div>
 
-				<div id="Glassplate4" style="position: absolute; top: 479px; left: 3px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="FactionInformations(4)" onmouseout="document.getElementById('FactionDetails').style.visibility='hidden'">			
+				<div id="Glassplate4" style="position: absolute; top: 479px; left: 3px;" onclick="FactionInformations(4)" onmouseout="document.getElementById('FactionDetails').style.visibility='hidden'">			
 					<div id="Glassplatecolor4" style="position:absolute; background: yellow; width: 140px; height:25px; left:11px; top:0px"></div>
 					<img style="position: absolute; z-index:1" src="Assets/Miscellaneous/Glassplate.PNG"/>
 					<img id="GlassplateCrest4" style="position:absolute; top:0px; left:0px; z-index:2" src="Assets/Emblems/CrestNON.PNG"/>
 					<p id="Glassplatename4" style="position:absolute; top:-2px; width: 140px; left:28px; height:20px; text-align:left; font-size: 10px; z-index:2">Yellow</p>
 				</div>
 
-				<img id="EndTurnButton" src="Assets/Miscellaneous/EndTurnButton.PNG" onmouseover="document.getElementById('EndTurnButton').src='Assets/Miscellaneous/EndTurnButtonHovered.PNG'" onmouseout="document.getElementById('EndTurnButton').src='Assets/Miscellaneous/EndTurnButton.PNG'" onmousedown="document.getElementById('EndTurnButton').src='Assets/Miscellaneous/EndTurnButtonPressed.PNG'" onClick="if(!isAITurn){EndTurn(SubRosters,Map,Constants,Roster)}" style="position: absolute; left: 23px; top:512px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"/>	
+				<img id="EndTurnButton" src="Assets/Miscellaneous/EndTurnButton.PNG" onmouseover="document.getElementById('EndTurnButton').src='Assets/Miscellaneous/EndTurnButtonHovered.PNG'" onmouseout="document.getElementById('EndTurnButton').src='Assets/Miscellaneous/EndTurnButton.PNG'" onmousedown="document.getElementById('EndTurnButton').src='Assets/Miscellaneous/EndTurnButtonPressed.PNG'" onClick="if(!isAITurn){EndTurn(SubRosters,Map,Constants,Roster)}" style="position: absolute; left: 23px; top:512px;"/>	
 			</div>
 
 			<div id='DetailBar' style="position:absolute; top:560px; left:0px">
@@ -296,11 +297,11 @@
 				<div style="position: absolute; z-index:8; top: 2px; left:567px">
 					<img id="Particulator" style="position: absolute; top:0px; left:0px" src="Assets/Miscellaneous/UnitParticulatorBar.PNG"/>
 					<input id="ParticularNameBox" style="position: absolute; width:210px; height:20px; top:20px; text-align: center; left:30px; background-color:#3D4C48">
-					<img id="MoraleParticulator0" style="position: absolute; top: 50px; left:80px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"/>
-					<img id="MoraleParticulator1" style="position: absolute; top: 50px; left:105px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"/>
-					<img id="MoraleParticulator2" style="position: absolute; top: 50px; left:130px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"/>
-					<img id="MoraleParticulator3" style="position: absolute; top: 50px; left:155px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"/>
-					<img id="MoraleParticulator4" style="position: absolute; top: 50px; left:180px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"/>
+					<img id="MoraleParticulator0" style="position: absolute; top: 50px; left:80px;"/>
+					<img id="MoraleParticulator1" style="position: absolute; top: 50px; left:105px;"/>
+					<img id="MoraleParticulator2" style="position: absolute; top: 50px; left:130px;"/>
+					<img id="MoraleParticulator3" style="position: absolute; top: 50px; left:155px;"/>
+					<img id="MoraleParticulator4" style="position: absolute; top: 50px; left:180px;"/>
 				</div>
 					
 				<img id="UnitTypeBar1" style="position:absolute; z-index:9; top: 140px" src="Assets/Miscellaneous/UnitTypeBar.PNG"/>
@@ -669,9 +670,9 @@
 
 		<div id="EditorMap" style='position:absolute; visibility:hidden; top:10px; left:350px'>
 			<div id="TileContainer" style="position:absolute; top:0px; left:0px; overflow:hidden; scroll-behavior: smooth;"></div>
-			<img style="position: absolute; top: 595px; left: 588px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG'" onclick="document.getElementById('EditorMap').style.visibility='hidden'; document.getElementById('Main Menu').style.visibility='visible'; battalion.setState(Battalion.STATE.MAIN_MENU);" />
+			<img style="position: absolute; top: 595px; left: 588px; z-index:2;" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG'" onclick="document.getElementById('EditorMap').style.visibility='hidden'; document.getElementById('Main Menu').style.visibility='visible'; battalion.setState(Battalion.STATE.MAIN_MENU);" />
 
-			<div id="Tilelist" style="position: absolute; left: -91px; top: -10px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" oncontextmenu="Tooltip('TOOLTIP_CHOOSE_TILE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';">
+			<div id="Tilelist" style="position: absolute; left: -91px; top: -10px;" oncontextmenu="Tooltip('TOOLTIP_CHOOSE_TILE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';">
 				<img src="Assets/Miscellaneous/EditorPanel.PNG"/>
 				<img id="EditorTile1" style="position:absolute; top:10px; left:7px" src="Assets/Tiles/Plains.PNG" onclick="ChosenTerrain=TerrainLedger[0];EditationToggle='Tile'" oncontextmenu="FillMapEditor(TerrainLedger[0])" />
 				<img id="EditorTile2" style="position:absolute; top:10px; left:7px" src="Assets/Tiles/Forest.PNG" onclick="ChosenTerrain=TerrainLedger[1];EditationToggle='Tile'" oncontextmenu="FillMapEditor(TerrainLedger[1])"/>
@@ -684,13 +685,13 @@
 				<img id="EditorTile9" style="position:absolute; top:116px; left:7px" src="Assets/Tiles/Industrial District.PNG" onclick="ChosenTerrain=TerrainLedger[8];EditationToggle='Tile'" oncontextmenu="FillMapEditor(TerrainLedger[8])"/>
 				<img id="EditorTile10" style="position:absolute; top:118px; left:7px" src="Assets/Tiles/Military-Industrial Complex.PNG" onclick="ChosenTerrain=TerrainLedger[9];EditationToggle='Tile'" oncontextmenu="FillMapEditor(TerrainLedger[9])"/>
 
-				<img src="Assets/Miscellaneous/VertiPlaqueBIO.PNG" style="position: absolute; top: 2px; left:-31px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ToggleTileBlock(1)"/>
-				<img src="Assets/Miscellaneous/VertiPlaqueLFT.PNG" style="position: absolute; top: 92px; left:-31px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ToggleTileBlock(2)"/>
-				<img src="Assets/Miscellaneous/VertiPlaqueURB.PNG" style="position: absolute; top: 182px; left:-31px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ToggleTileBlock(3)"/>
-				<img src="Assets/Miscellaneous/VertiPlaqueWFT.PNG" style="position: absolute; top: 272px; left:-31px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ToggleTileBlock(4)"/>
-				<img src="Assets/Miscellaneous/VertiPlaqueCON.PNG" style="position: absolute; top: 362px; left:-31px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ToggleTileBlock(5)"/>
-				<img src="Assets/Miscellaneous/VertiPlaqueBUI.PNG" style="position: absolute; top: 452px; left:-31px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ToggleTileBlock(6)"/>
-				<img src="Assets/Miscellaneous/VertiPlaqueOTH.PNG" style="position: absolute; top: 542px; left:-31px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ToggleTileBlock(7)"/>
+				<img src="Assets/Miscellaneous/VertiPlaqueBIO.PNG" style="position: absolute; top: 2px; left:-31px;" onclick="ToggleTileBlock(1)"/>
+				<img src="Assets/Miscellaneous/VertiPlaqueLFT.PNG" style="position: absolute; top: 92px; left:-31px;" onclick="ToggleTileBlock(2)"/>
+				<img src="Assets/Miscellaneous/VertiPlaqueURB.PNG" style="position: absolute; top: 182px; left:-31px;" onclick="ToggleTileBlock(3)"/>
+				<img src="Assets/Miscellaneous/VertiPlaqueWFT.PNG" style="position: absolute; top: 272px; left:-31px;" onclick="ToggleTileBlock(4)"/>
+				<img src="Assets/Miscellaneous/VertiPlaqueCON.PNG" style="position: absolute; top: 362px; left:-31px;" onclick="ToggleTileBlock(5)"/>
+				<img src="Assets/Miscellaneous/VertiPlaqueBUI.PNG" style="position: absolute; top: 452px; left:-31px;" onclick="ToggleTileBlock(6)"/>
+				<img src="Assets/Miscellaneous/VertiPlaqueOTH.PNG" style="position: absolute; top: 542px; left:-31px;" onclick="ToggleTileBlock(7)"/>
 
 				<img style="position:absolute; visibility: hidden; top:112px; left:140px" src="Assets/Tiles/Aviation Industrial Facility.PNG" onclick="ChosenTerrain=11;EditationToggle='Tile'"/>
 				<img style="position:absolute; visibility: hidden; top:112px; left:203px" src="Assets/Tiles/Shipbuilding Facility.PNG" onclick="ChosenTerrain=12;EditationToggle='Tile'"/>
@@ -763,26 +764,26 @@
 			
 			<div id="Unitlist" style="position: absolute; left: 581px; top: -10px" oncontextmenu="Tooltip('TOOLTIP_CHOOSE_UNIT')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';">
 				<img src="Assets/Miscellaneous/EditorPanelAlter.PNG"/>
-				<img id="EditorUnitShowcase1" style="position:absolute; top:10px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Units/Static/LightInf2.PNG" onclick="ChosenUnit=1;EditationToggle='Unit'"/>
-				<img id="EditorUnitShowcase2" style="position:absolute; top:68px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Units/Static/Infantry2.PNG" onclick="ChosenUnit=2;EditationToggle='Unit'"/>
-				<img id="EditorUnitShowcase3" style="position:absolute; top:126px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Units/Static/AssaultInf2.PNG" onclick="ChosenUnit=3;EditationToggle='Unit'"/>
-				<img id="EditorUnitShowcase4" style="position:absolute; top:184px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Units/Static/Snipers2.PNG" onclick="ChosenUnit=4;EditationToggle='Unit'"/>
-				<img id="EditorUnitShowcase5" style="position:absolute; top:242px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Units/Static/Marines2.PNG" onclick="ChosenUnit=5;EditationToggle='Unit'"/>
-				<img id="EditorUnitShowcase6" style="position:absolute; top:300px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Units/Static/Stormtroopers2.PNG" onclick="ChosenUnit=6;EditationToggle='Unit'"/>
-				<img id="EditorUnitShowcase7" style="position:absolute; top:358px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Units/Static/SpecOps2.PNG" onclick="ChosenUnit=7;EditationToggle='Unit'"/>
-				<img id="EditorUnitShowcase8" style="position:absolute; top:416px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Units/Static/Guards2.PNG" onclick="ChosenUnit=8;EditationToggle='Unit'"/>
-				<img id="EditorUnitShowcase9" style="position:absolute; top:474px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Units/Static/Suicide2.PNG" onclick="ChosenUnit=9;EditationToggle='Unit'"/>
-				<img id="EditorUnitShowcase10" style="position:absolute; top:532px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Units/Static/Paladin2.PNG" onclick="ChosenUnit=10;EditationToggle='Unit'"/>
-				<img id="EditorUnitMesh1" style="position:absolute; top:10px; left:14px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=1;EditationToggle='Unit'"/>
-				<img id="EditorUnitMesh2" style="position:absolute; top:68px; left:14px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=2;EditationToggle='Unit'"/>
-				<img id="EditorUnitMesh3" style="position:absolute; top:126px; left:14px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=3;EditationToggle='Unit'"/>
-				<img id="EditorUnitMesh4" style="position:absolute; top:184px; left:14px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=4;EditationToggle='Unit'"/>
-				<img id="EditorUnitMesh5" style="position:absolute; top:242px; left:14px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=5;EditationToggle='Unit'"/>
-				<img id="EditorUnitMesh6" style="position:absolute; top:300px; left:14px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=6;EditationToggle='Unit'"/>
-				<img id="EditorUnitMesh7" style="position:absolute; top:358px; left:14px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=7;EditationToggle='Unit'"/>
-				<img id="EditorUnitMesh8" style="position:absolute; top:416px; left:14px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=8;EditationToggle='Unit'"/>
-				<img id="EditorUnitMesh9" style="position:absolute; top:474px; left:14px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=9;EditationToggle='Unit'"/>
-				<img id="EditorUnitMesh10" style="position:absolute; top:532px; left:14px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=10;EditationToggle='Unit'"/>
+				<img id="EditorUnitShowcase1" style="position:absolute; top:10px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%);" src="Assets/Units/Static/LightInf2.PNG" onclick="ChosenUnit=1;EditationToggle='Unit'"/>
+				<img id="EditorUnitShowcase2" style="position:absolute; top:68px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%);" src="Assets/Units/Static/Infantry2.PNG" onclick="ChosenUnit=2;EditationToggle='Unit'"/>
+				<img id="EditorUnitShowcase3" style="position:absolute; top:126px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%);" src="Assets/Units/Static/AssaultInf2.PNG" onclick="ChosenUnit=3;EditationToggle='Unit'"/>
+				<img id="EditorUnitShowcase4" style="position:absolute; top:184px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%);" src="Assets/Units/Static/Snipers2.PNG" onclick="ChosenUnit=4;EditationToggle='Unit'"/>
+				<img id="EditorUnitShowcase5" style="position:absolute; top:242px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%);" src="Assets/Units/Static/Marines2.PNG" onclick="ChosenUnit=5;EditationToggle='Unit'"/>
+				<img id="EditorUnitShowcase6" style="position:absolute; top:300px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%);" src="Assets/Units/Static/Stormtroopers2.PNG" onclick="ChosenUnit=6;EditationToggle='Unit'"/>
+				<img id="EditorUnitShowcase7" style="position:absolute; top:358px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%);" src="Assets/Units/Static/SpecOps2.PNG" onclick="ChosenUnit=7;EditationToggle='Unit'"/>
+				<img id="EditorUnitShowcase8" style="position:absolute; top:416px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%);" src="Assets/Units/Static/Guards2.PNG" onclick="ChosenUnit=8;EditationToggle='Unit'"/>
+				<img id="EditorUnitShowcase9" style="position:absolute; top:474px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%);" src="Assets/Units/Static/Suicide2.PNG" onclick="ChosenUnit=9;EditationToggle='Unit'"/>
+				<img id="EditorUnitShowcase10" style="position:absolute; top:532px; left:14px; filter:hue-rotate(175deg) saturate(0%) brightness(300%);" src="Assets/Units/Static/Paladin2.PNG" onclick="ChosenUnit=10;EditationToggle='Unit'"/>
+				<img id="EditorUnitMesh1" style="position:absolute; top:10px; left:14px;" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=1;EditationToggle='Unit'"/>
+				<img id="EditorUnitMesh2" style="position:absolute; top:68px; left:14px;" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=2;EditationToggle='Unit'"/>
+				<img id="EditorUnitMesh3" style="position:absolute; top:126px; left:14px;" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=3;EditationToggle='Unit'"/>
+				<img id="EditorUnitMesh4" style="position:absolute; top:184px; left:14px;" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=4;EditationToggle='Unit'"/>
+				<img id="EditorUnitMesh5" style="position:absolute; top:242px; left:14px;" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=5;EditationToggle='Unit'"/>
+				<img id="EditorUnitMesh6" style="position:absolute; top:300px; left:14px;" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=6;EditationToggle='Unit'"/>
+				<img id="EditorUnitMesh7" style="position:absolute; top:358px; left:14px;" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=7;EditationToggle='Unit'"/>
+				<img id="EditorUnitMesh8" style="position:absolute; top:416px; left:14px;" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=8;EditationToggle='Unit'"/>
+				<img id="EditorUnitMesh9" style="position:absolute; top:474px; left:14px;" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=9;EditationToggle='Unit'"/>
+				<img id="EditorUnitMesh10" style="position:absolute; top:532px; left:14px;" src="Assets/Miscellaneous/Nothing.PNG" onclick="ChosenUnit=10;EditationToggle='Unit'"/>
 				<!--
 				<img id="EditorUnitShowcase11" style="position:absolute; top:126px; left:140px; filter:hue-rotate(175deg) saturate(0%) brightness(300%)" src="Assets/Units/Static/Gorlitz2.PNG" onclick="ChosenUnit=11;EditationToggle='Unit'"/>
 				<img id="EditorUnitShowcase12" style="position:absolute; top:126px; left:203px; filter:hue-rotate(175deg) saturate(0%) brightness(300%)" src="Assets/Units/Static/Flak2.PNG" onclick="ChosenUnit=12;EditationToggle='Unit'"/>
@@ -817,13 +818,13 @@
 				-->					
 			</div>
 
-			<img src="Assets/Miscellaneous/VertiPlaqueINF.PNG" style="position: absolute; top: -7px; left:721px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ShowcaseUnitCategory(1)"/>
-			<img src="Assets/Miscellaneous/VertiPlaqueMOT.PNG" style="position: absolute; top: 83px; left:721px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ShowcaseUnitCategory(2)"/>
-			<img src="Assets/Miscellaneous/VertiPlaqueARM.PNG" style="position: absolute; top: 173px; left:721px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ShowcaseUnitCategory(3)"/>
-			<img src="Assets/Miscellaneous/VertiPlaqueART.PNG" style="position: absolute; top: 263px; left:721px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ShowcaseUnitCategory(4)"/>
-			<img src="Assets/Miscellaneous/VertiPlaqueAVI.PNG" style="position: absolute; top: 353px; left:721px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ShowcaseUnitCategory(5)"/>
-			<img src="Assets/Miscellaneous/VertiPlaqueNAV.PNG" style="position: absolute; top: 443px; left:721px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ShowcaseUnitCategory(6)"/>
-			<img src="Assets/Miscellaneous/VertiPlaqueSTR.PNG" style="position: absolute; top: 533px; left:721px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ShowcaseUnitCategory(7)"/>
+			<img src="Assets/Miscellaneous/VertiPlaqueINF.PNG" style="position: absolute; top: -7px; left:721px;" onclick="ShowcaseUnitCategory(1)"/>
+			<img src="Assets/Miscellaneous/VertiPlaqueMOT.PNG" style="position: absolute; top: 83px; left:721px;" onclick="ShowcaseUnitCategory(2)"/>
+			<img src="Assets/Miscellaneous/VertiPlaqueARM.PNG" style="position: absolute; top: 173px; left:721px;" onclick="ShowcaseUnitCategory(3)"/>
+			<img src="Assets/Miscellaneous/VertiPlaqueART.PNG" style="position: absolute; top: 263px; left:721px;" onclick="ShowcaseUnitCategory(4)"/>
+			<img src="Assets/Miscellaneous/VertiPlaqueAVI.PNG" style="position: absolute; top: 353px; left:721px;" onclick="ShowcaseUnitCategory(5)"/>
+			<img src="Assets/Miscellaneous/VertiPlaqueNAV.PNG" style="position: absolute; top: 443px; left:721px;" onclick="ShowcaseUnitCategory(6)"/>
+			<img src="Assets/Miscellaneous/VertiPlaqueSTR.PNG" style="position: absolute; top: 533px; left:721px;" onclick="ShowcaseUnitCategory(7)"/>
 
 			<div style="position: absolute; visibility: hidden; top:-610px; z-index: 2;">
 				<button id="EditorP1" style="position:absolute;top:560px;left:0px; width:140px; height:21px" onclick="RetrieveMapCode()" oncontextmenu="EditorMap=REPOZITORIUL1.Map;RefreshMapEditor()">Fetch Grid Data</button>
@@ -837,39 +838,39 @@
 			</div>
 
 			<div style="position:absolute; top:-40px">
-				<img id="EditorColorPicker1" style="position: absolute; top:602px;left: 0px; width:56px;height: 56px; filter:hue-rotate(175deg) saturate(0%) brightness(300%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+1; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='0px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
-				<img id="EditorColorPicker2" style="position: absolute; top:602px;left: 56px; width:56px;height: 56px; filter:hue-rotate(0deg) saturate(0%) brightness(70%) contrast(125%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+2; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='56px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
-				<img id="EditorColorPicker3" style="position: absolute; top:602px;left: 112px; width:56px;height: 56px; filter:hue-rotate(175deg) saturate(0%) brightness(100%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+3; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='112px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
-				<img id="EditorColorPicker4" style="position: absolute; top:602px;left: 168px; width:56px;height: 56px; filter:hue-rotate(250deg) saturate(150%) brightness(50%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+4; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='168px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
-				<img id="EditorColorPicker5" style="position: absolute; top:602px;left: 224px; width:56px;height: 56px; filter:hue-rotate(150deg) saturate(100%) brightness(100%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+5; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='224px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
-				<img id="EditorColorPicker6" style="position: absolute; top:602px;left: 280px; width:56px;height: 56px; filter:hue-rotate(175deg) saturate(0%) brightness(70%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+6; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='280px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
-				<img id="EditorColorPicker7" style="position: absolute; top:602px;left: 336px; width:56px;height: 56px; filter:hue-rotate(100deg) saturate(140%) brightness(250%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+7; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='336px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
-				<img id="EditorColorPicker8" style="position: absolute; top:602px;left: 392px; width:56px;height: 56px; filter:hue-rotate(50deg) saturate(100%) brightness(100%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+8; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='392px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
-				<img id="EditorColorPicker9" style="position: absolute; top:602px;left: 448px; width:56px;height: 56px; filter:hue-rotate(0deg) saturate(100%) brightness(100%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+9; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='448px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
-				<img id="EditorColorPicker10" style="position: absolute; top:602px;left: 504px; width:56px;height: 56px; filter:hue-rotate(250deg) saturate(100%) brightness(140%); cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+10; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='504px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
+				<img id="EditorColorPicker1" style="position: absolute; top:602px;left: 0px; width:56px;height: 56px; filter:hue-rotate(175deg) saturate(0%) brightness(300%);" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+1; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='0px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
+				<img id="EditorColorPicker2" style="position: absolute; top:602px;left: 56px; width:56px;height: 56px; filter:hue-rotate(0deg) saturate(0%) brightness(70%) contrast(125%);" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+2; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='56px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
+				<img id="EditorColorPicker3" style="position: absolute; top:602px;left: 112px; width:56px;height: 56px; filter:hue-rotate(175deg) saturate(0%) brightness(100%);" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+3; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='112px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
+				<img id="EditorColorPicker4" style="position: absolute; top:602px;left: 168px; width:56px;height: 56px; filter:hue-rotate(250deg) saturate(150%) brightness(50%);" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+4; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='168px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
+				<img id="EditorColorPicker5" style="position: absolute; top:602px;left: 224px; width:56px;height: 56px; filter:hue-rotate(150deg) saturate(100%) brightness(100%);" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+5; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='224px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
+				<img id="EditorColorPicker6" style="position: absolute; top:602px;left: 280px; width:56px;height: 56px; filter:hue-rotate(175deg) saturate(0%) brightness(70%);" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+6; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='280px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
+				<img id="EditorColorPicker7" style="position: absolute; top:602px;left: 336px; width:56px;height: 56px; filter:hue-rotate(100deg) saturate(140%) brightness(250%);" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+7; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='336px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
+				<img id="EditorColorPicker8" style="position: absolute; top:602px;left: 392px; width:56px;height: 56px; filter:hue-rotate(50deg) saturate(100%) brightness(100%);" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+8; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='392px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
+				<img id="EditorColorPicker9" style="position: absolute; top:602px;left: 448px; width:56px;height: 56px; filter:hue-rotate(0deg) saturate(100%) brightness(100%);" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+9; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='448px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
+				<img id="EditorColorPicker10" style="position: absolute; top:602px;left: 504px; width:56px;height: 56px; filter:hue-rotate(250deg) saturate(100%) brightness(140%);" onclick="document.getElementById('FactionChosenIndicator').style.visibility='inherit'; EditationColor=EditorNationBatch*10+10; for(let k=1;k<=10;k++){document.getElementById('EditorUnitShowcase'+k).style.filter=Factions[EditationColor].ChromaCode}; document.getElementById('FactionChosenIndicator').style.left='504px'" src="Assets/Miscellaneous/NationColor.PNG" oncontextmenu="document.getElementById('FactionChosenIndicator').style.visibility='hidden'; EditationColor=0"/>
 				<img id="FactionChosenIndicator" style="position: absolute; top:602px; left:0px" src="Assets/Miscellaneous/Marker.PNG"/>
 				<button style="position: absolute; visibility: hidden; z-index: 5; width:70px; top:658px; left:210px" onclick="if((EditorNationBatch+1)*10<=Factions.length){EditorNationBatch++; for(let a=1;a<=10;a++){document.getElementById('EditorColorPicker'+a).style.filter=Factions[EditorNationBatch*10+a].ChromaCode??'hue-rotate(175deg) saturate(0%) brightness(100%)'}}">></button>
 				<button style="position: absolute; visibility: hidden; z-index: 5; width:70px; top:658px; left:280px" onclick="if((EditorNationBatch+1)*10>=10){EditorNationBatch--; for(let a=1;a<=10;a++){document.getElementById('EditorColorPicker'+a).style.filter=Factions[EditorNationBatch*10+a].ChromaCode??'hue-rotate(175deg) saturate(0%) brightness(100%)'}}"></button>
 
 				<div onClick="TestMap()" style="position: absolute; width:126px; height:71px; left:0px; top:0px" onmouseover="document.getElementById('TestMapButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('TestMapButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('TestMapButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'">
 					<img id="TestMapButton" style="position:absolute; top:665px; left:0px" src="Assets/Miscellaneous/GenericButton.PNG"/>
-					<p id="TestMapP" style="position: absolute;top:673px; left:25px; width:100px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto">TEST MAP</p>
+					<p id="TestMapP" style="position: absolute;top:673px; left:25px; width:100px;">TEST MAP</p>
 				</div>
 
 				<div onClick="document.getElementById('ConditionsPanel').style.visibility='inherit'" style="position: absolute; width:126px; height:71px; left:217px; left:0px; top:0px" onmouseover="document.getElementById('ConditionsButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('ConditionsButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('ConditionsButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'">
 					<img id="ConditionsButton" style="position:absolute; top:665px; left:217px" src="Assets/Miscellaneous/GenericButton.PNG"/>
-					<p id="ConditionsP" style="position: absolute;top:673px; left:242px; width:100px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto">Conditions</p>
+					<p id="ConditionsP" style="position: absolute;top:673px; left:242px; width:100px;">Conditions</p>
 				</div>
 
 				<div onClick="document.getElementById('MapSavePanel').style.visibility='hidden'; alert('Work in progress')" style="position: absolute; width:126px; height:71px; left:434px; left:0px; top:0px" onmouseover="document.getElementById('SaveMapButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('SaveMapButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('SaveMapButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'">
 					<img id="SaveMapButton" style="position:absolute; top:665px; left:434px" src="Assets/Miscellaneous/GenericButton.PNG"/>
-					<p id="SaveMapP" style="position: absolute;top:673px; left:459px; width:100px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto">Save Map</p>
+					<p id="SaveMapP" style="position: absolute;top:673px; left:459px; width:100px;">Save Map</p>
 				</div>
 			</div>
 
 			<div id="MapSavePanel" style="position: absolute; top:140px; left:70px; z-index: 3; visibility: hidden;">
 				<img src="Assets/Miscellaneous/SavePanel.PNG"/>
-				<img style="position: absolute; top: 260px; left: 147px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG'" onclick="document.getElementById('MapSavePanel').style.visibility='hidden'"/>
+				<img style="position: absolute; top: 260px; left: 147px;" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG'" onclick="document.getElementById('MapSavePanel').style.visibility='hidden'"/>
 
 				<img id="SaveSlot1" style="position: absolute;top: 0px;left: 0px" src="Assets/Miscellaneous/SaveSlot.PNG">
 				<img id="SaveSlot2" style="position: absolute;top: 0px;left: 140px" src="Assets/Miscellaneous/SaveSlot.PNG">
@@ -896,20 +897,20 @@
 				<button id="InputProtectUnit" style="position: absolute; width:100px; height:20px; left: 345px; top: 35px" onclick="alert('Work in progress')">Protect Unit</button>
 			</div>
 
-			<img id="EditorScrollBarRight" style="position: absolute; width:25px; height:558px; top:1px; left:535px; z-index: 4; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('EditorScrollBarRight').src='Assets/Miscellaneous/ScrollBarRight.PNG'" onmouseout="document.getElementById('EditorScrollBarRight').src='Assets/Miscellaneous/Nothing.PNG'" src="Assets/Miscellaneous/Nothing.PNG" onclick="RollMapEditor(2)" />
-			<img id="EditorScrollBarLeft" style="position: absolute; width:25px; height:558px; top:1px; left:0px; z-index: 4; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('EditorScrollBarLeft').src='Assets/Miscellaneous/ScrollBarLeft.PNG'" onmouseout="document.getElementById('EditorScrollBarLeft').src='Assets/Miscellaneous/Nothing.PNG'" src="Assets/Miscellaneous/Nothing.PNG" onclick="RollMapEditor(4)"/>
-			<img id="EditorScrollBarTop" style="position: absolute; width:558px; height:25px; top:0px; left:1px; z-index: 4; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('EditorScrollBarTop').src='Assets/Miscellaneous/ScrollBarTop.PNG'" onmouseout="document.getElementById('EditorScrollBarTop').src='Assets/Miscellaneous/Nothing.PNG'" src="Assets/Miscellaneous/Nothing.PNG" onclick="RollMapEditor(1)"/>
-			<img id="EditorScrollBarBottom" style="position: absolute; width:558px; height:25px; top:535px; left:1px; z-index: 4; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('EditorScrollBarBottom').src='Assets/Miscellaneous/ScrollBarBottom.PNG'" onmouseout="document.getElementById('EditorScrollBarBottom').src='Assets/Miscellaneous/Nothing.PNG'" src="Assets/Miscellaneous/Nothing.PNG" onclick="RollMapEditor(3)"/>		
+			<img id="EditorScrollBarRight" style="position: absolute; width:25px; height:558px; top:1px; left:535px; z-index: 4;" onmouseover="document.getElementById('EditorScrollBarRight').src='Assets/Miscellaneous/ScrollBarRight.PNG'" onmouseout="document.getElementById('EditorScrollBarRight').src='Assets/Miscellaneous/Nothing.PNG'" src="Assets/Miscellaneous/Nothing.PNG" onclick="RollMapEditor(2)" />
+			<img id="EditorScrollBarLeft" style="position: absolute; width:25px; height:558px; top:1px; left:0px; z-index: 4;" onmouseover="document.getElementById('EditorScrollBarLeft').src='Assets/Miscellaneous/ScrollBarLeft.PNG'" onmouseout="document.getElementById('EditorScrollBarLeft').src='Assets/Miscellaneous/Nothing.PNG'" src="Assets/Miscellaneous/Nothing.PNG" onclick="RollMapEditor(4)"/>
+			<img id="EditorScrollBarTop" style="position: absolute; width:558px; height:25px; top:0px; left:1px; z-index: 4;" onmouseover="document.getElementById('EditorScrollBarTop').src='Assets/Miscellaneous/ScrollBarTop.PNG'" onmouseout="document.getElementById('EditorScrollBarTop').src='Assets/Miscellaneous/Nothing.PNG'" src="Assets/Miscellaneous/Nothing.PNG" onclick="RollMapEditor(1)"/>
+			<img id="EditorScrollBarBottom" style="position: absolute; width:558px; height:25px; top:535px; left:1px; z-index: 4;" onmouseover="document.getElementById('EditorScrollBarBottom').src='Assets/Miscellaneous/ScrollBarBottom.PNG'" onmouseout="document.getElementById('EditorScrollBarBottom').src='Assets/Miscellaneous/Nothing.PNG'" src="Assets/Miscellaneous/Nothing.PNG" onclick="RollMapEditor(3)"/>		
 		</div>
 
 		<div id="MapMold" style="position: absolute; visibility:hidden; width:420px; height: 280px; left: 455px; top: 140px; z-index:5">
 			<img src="Assets/Miscellaneous/MoldMap.PNG"/>
-			<img style="position: absolute; top: 0px; left: 147px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG'" onclick="document.getElementById('MapMold').style.visibility='hidden'" />
+			<img style="position: absolute; top: 0px; left: 147px;" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG'" onclick="document.getElementById('MapMold').style.visibility='hidden'" />
 			<p style="position: absolute; top:105px; left:112px">↔</p>
 			<p style="position: absolute; top:123px; left:116px">↕</p>
 			<input type="text" id="widthinput" name="testinput" value="10" style="position:absolute; top:119px; left:133px">
 			<input type="text" id="heigthinput" name="testinput" value="10" style="position:absolute; top:140px; left:133px">
-			<button id="GenerateEditorMap" style="position:absolute; top:161px; left:145px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto">Generate Blank Map</button>
+			<button id="GenerateEditorMap" style="position:absolute; top:161px; left:145px;">Generate Blank Map</button>
 		</div>
 
 		<div id="Options" style="position:relative; visibility:hidden; left:448px;top:140px;z-index:7">
@@ -981,7 +982,7 @@
 		<div id="Credits" style="position:absolute; visibility:hidden; width:420px;height:270px;z-index:7; left:455px; top:140px; overflow-y:hidden;">
 			<img style="position: fixed; left:452px" src="Assets/Miscellaneous/CreditsPanel.PNG"/>
 			
-			<img id="CloseCreditsButton" style="position: fixed; z-index:8; left:602px; top:385px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/CloseButton.PNG" onclick="document.getElementById('Credits').style.visibility='hidden'" onmouseover="document.getElementById('CloseCreditsButton').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="document.getElementById('CloseCreditsButton').src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="document.getElementById('CloseCreditsButton').src='Assets/Miscellaneous/CloseButtonPressed.PNG'"/>
+			<img id="CloseCreditsButton" style="position: fixed; z-index:8; left:602px; top:385px;" src="Assets/Miscellaneous/CloseButton.PNG" onclick="document.getElementById('Credits').style.visibility='hidden'" onmouseover="document.getElementById('CloseCreditsButton').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="document.getElementById('CloseCreditsButton').src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="document.getElementById('CloseCreditsButton').src='Assets/Miscellaneous/CloseButtonPressed.PNG'"/>
 			<p style="position: relative; text-align:center;margin-bottom:0px;">Made by Task Force Tucker</p>
 			<p style="position: relative; text-align:center;margin-bottom:0px;">Coordination: Doctor Aircraft Carrier</p>
 			<p style="position: relative; text-align:center;margin-bottom:0px; margin-top:0px;">Programming: Doctor Aircraft Carrier</p>
@@ -1021,42 +1022,42 @@
 			<div style="position: absolute;">
 				<img id="Special Bloc Panel" src="Assets/Miscellaneous/Special Bloc Panel.PNG"/>
 			
-				<img style="position: absolute; left:7.5px; top:10px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id="BonusP1" style="position: absolute; width:126px; height:31px; top:0px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="OpenSpecialBloc(PlotExpansion)" >Plot Expansion</p>
+				<img style="position: absolute; left:7.5px; top:10px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id="BonusP1" style="position: absolute; width:126px; height:31px; top:0px; left:7px; text-align:center;" onclick="OpenSpecialBloc(PlotExpansion)" >Plot Expansion</p>
 
-				<img style="position: absolute; left:7.5px; top:45px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id="BonusP2" style="position: absolute; width:126px; height:31px; top:35px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="OpenSpecialBloc(Skirmishes)">Skirmishes</p>
+				<img style="position: absolute; left:7.5px; top:45px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id="BonusP2" style="position: absolute; width:126px; height:31px; top:35px; left:7px; text-align:center;" onclick="OpenSpecialBloc(Skirmishes)">Skirmishes</p>
 
-				<img style="position: absolute; left:7.5px; top:80px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id="BonusP3" style="position: absolute; width:126px; height:31px; top:70px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="OpenSpecialBloc(CuteLevels)">Cute Levels</p>
+				<img style="position: absolute; left:7.5px; top:80px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id="BonusP3" style="position: absolute; width:126px; height:31px; top:70px; left:7px; text-align:center;" onclick="OpenSpecialBloc(CuteLevels)">Cute Levels</p>
 
-				<img style="position: absolute; left:7.5px; top:115px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id="BonusP4" style="position: absolute; width:126px; height:31px; top:105px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="OpenSpecialBloc(HistoricalBattles)">Historical Battles</p>
+				<img style="position: absolute; left:7.5px; top:115px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id="BonusP4" style="position: absolute; width:126px; height:31px; top:105px; left:7px; text-align:center;" onclick="OpenSpecialBloc(HistoricalBattles)">Historical Battles</p>
 
-				<img style="position: absolute; left:7.5px; top:150px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id="BonusP5" style="position: absolute; width:126px; height:31px; top:140px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="OpenSpecialBloc(InHonourOf)">Tribute Levels</p>
+				<img style="position: absolute; left:7.5px; top:150px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id="BonusP5" style="position: absolute; width:126px; height:31px; top:140px; left:7px; text-align:center;" onclick="OpenSpecialBloc(InHonourOf)">Tribute Levels</p>
 
-				<img style="position: absolute; left:7.5px; top:185px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id="BonusP6" style="position: absolute; width:126px; height:31px; top:175px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="OpenSpecialBloc(Challenges)">Challenges</p>
+				<img style="position: absolute; left:7.5px; top:185px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id="BonusP6" style="position: absolute; width:126px; height:31px; top:175px; left:7px; text-align:center;" onclick="OpenSpecialBloc(Challenges)">Challenges</p>
 
-				<img style="position: absolute; left:7.5px; top:220px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id="BonusP7" style="position: absolute; width:126px; height:31px; top:210px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="OpenSpecialBloc(MemeLevels)">Meme Levels</p>
+				<img style="position: absolute; left:7.5px; top:220px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id="BonusP7" style="position: absolute; width:126px; height:31px; top:210px; left:7px; text-align:center;" onclick="OpenSpecialBloc(MemeLevels)">Meme Levels</p>
 
-				<img style="position: absolute; left:7.5px; top:255px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id="BonusP8" style="position: absolute; width:126px; height:31px; top:245px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="OpenSpecialBloc(GrandMaps)">GIGAMAPS</p>
+				<img style="position: absolute; left:7.5px; top:255px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id="BonusP8" style="position: absolute; width:126px; height:31px; top:245px; left:7px; text-align:center;" onclick="OpenSpecialBloc(GrandMaps)">GIGAMAPS</p>
 			</div>
 
 			<div style="position: absolute; left:140px">
 				<img id="Special Level Panel" src="Assets/Miscellaneous/Special Level Panel.PNG"/>
-				<img id="Special Level 1" style="position: absolute; top: 35px; left: 35px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[0])" />
-				<img id="Special Level 2" style="position: absolute; top: 35px; left: 210px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[1])" />
-				<img id="Special Level 3" style="position: absolute; top: 35px; left: 385px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[2])" />
-				<img id="Special Level 4" style="position: absolute; top: 210px; left: 35px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[3])" />
-				<img id="Special Level 5" style="position: absolute; top: 210px; left: 210px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[4])" />
-				<img id="Special Level 6" style="position: absolute; top: 210px; left: 385px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[5])" />
-				<img id="Special Level 7" style="position: absolute; top: 385px; left: 35px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[6])" />
-				<img id="Special Level 8" style="position: absolute; top: 385px; left: 210px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[7])" />
-				<img id="Special Level 9" style="position: absolute; top: 385px; left: 385px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[8])" />
+				<img id="Special Level 1" style="position: absolute; top: 35px; left: 35px;" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[0])" />
+				<img id="Special Level 2" style="position: absolute; top: 35px; left: 210px;" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[1])" />
+				<img id="Special Level 3" style="position: absolute; top: 35px; left: 385px;" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[2])" />
+				<img id="Special Level 4" style="position: absolute; top: 210px; left: 35px;" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[3])" />
+				<img id="Special Level 5" style="position: absolute; top: 210px; left: 210px;" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[4])" />
+				<img id="Special Level 6" style="position: absolute; top: 210px; left: 385px;" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[5])" />
+				<img id="Special Level 7" style="position: absolute; top: 385px; left: 35px;" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[6])" />
+				<img id="Special Level 8" style="position: absolute; top: 385px; left: 210px;" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[7])" />
+				<img id="Special Level 9" style="position: absolute; top: 385px; left: 385px;" src="Assets/SpecialLevels/.PNG" onclick="SelectSpecialLevel(BlocVizat[8])" />
 
 				<p id="Special Level Name" style="position: absolute; top:546px; width:560px; height:10px; text-align: center;">Name</p>
 				<p id="Special Level Description" style="position: absolute; top:574px; width:560px; height:100px; text-align: center;">Long ago in a galaxy far away, jedi something lorem ipsum dolor sit amet</p>
@@ -1064,9 +1065,9 @@
 
 			<div style="position: absolute; left:700px">
 				<img id="Special Level Aux Panel" src="Assets/Miscellaneous/Special Aux Panel.PNG"/>
-				<img id="PlaySpecialLevel" style="position: absolute; top:50px; left:100px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/GenericButton.PNG" onmouseover="this.src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/GenericButton.PNG'" onclick="this.src='Assets/Miscellaneous/GenericButtonPressed.PNG' ;document.getElementById('Special Levels').style.visibility='hidden';initializeSpecialBattle(NivelVizat);" />
-				<p id="PlayBonusP" style="position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButton.PNG'" onclick="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonPressed.PNG' ;document.getElementById('Special Levels').style.visibility='hidden';initializeSpecialBattle(NivelVizat);" >Play</p>
-				<img style="position: absolute; top:140px; left:100px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onclick="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG' ;document.getElementById('Special Levels').style.visibility='hidden'; document.getElementById('Main Menu').style.visibility='visible';OpenSpecialBloc({})" />
+				<img id="PlaySpecialLevel" style="position: absolute; top:50px; left:100px;" src="Assets/Miscellaneous/GenericButton.PNG" onmouseover="this.src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/GenericButton.PNG'" onclick="this.src='Assets/Miscellaneous/GenericButtonPressed.PNG' ;document.getElementById('Special Levels').style.visibility='hidden';initializeSpecialBattle(NivelVizat);" />
+				<p id="PlayBonusP" style="position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;" onmouseover="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButton.PNG'" onclick="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonPressed.PNG' ;document.getElementById('Special Levels').style.visibility='hidden';initializeSpecialBattle(NivelVizat);" >Play</p>
+				<img style="position: absolute; top:140px; left:100px;" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onclick="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG' ;document.getElementById('Special Levels').style.visibility='hidden'; document.getElementById('Main Menu').style.visibility='visible';OpenSpecialBloc({})" />
 				<div style="position:absolute; top:350px; left:0px">
 					<p id="NatOpP" style="position: absolute; visibility: hidden; top:-35px; width:350px; left:0px; text-align:center;">Nation</p>
 					<img id="NatOp1" style="position: absolute; visibility: hidden; top:7px; left:8px; filter:hue-rotate(175deg) saturate(0%) brightness(300%)" src="Assets/Miscellaneous/NationOption.PNG" onclick="NivelElectiv=1;document.getElementById('NatOpP').innerHTML=NivelVizat.Factions[NivelVizat.Constants.Commanders[NivelElectiv].Allegiance].name" oncontextmenu="alert(NivelVizat.FactionCommentary[1])" />
@@ -1132,42 +1133,42 @@
 			<div style="position: absolute; top:0px; left:0px; height: 665px; width:210px; overflow-y:scroll;">
 				<img style="position: fixed;" src="Assets/Miscellaneous/LoreSelectionPanel.PNG"/>
 
-				<div style="position: absolute; top:35px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore('Jokes')">
+				<div style="position: absolute; top:35px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('Jokes')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">Jokes</p>
 				</div>
 
-				<div style="position: absolute; top:70px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore('SpecialUnits')">
+				<div style="position: absolute; top:70px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('SpecialUnits')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">Special Infantry</p>
 				</div>
 
-				<div style="position: absolute; top:105px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore('SpecialArmor')">
+				<div style="position: absolute; top:105px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('SpecialArmor')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">Special Tanks</p>
 				</div>
 
-				<div style="position: absolute; top:140px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore('SpecialAircraft')">
+				<div style="position: absolute; top:140px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('SpecialAircraft')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">Special Planes?</p>
 				</div>
 
-				<div style="position: absolute; top:175px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore('SpecialShips')">
+				<div style="position: absolute; top:175px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('SpecialShips')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">Special Ships?</p>
 				</div>
 
-				<div style="position: absolute; top:210px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore('ThisWorld')">
+				<div style="position: absolute; top:210px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('ThisWorld')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">This World</p>
 				</div>
 
-				<div style="position: absolute; top:245px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore('ItHappened')">
+				<div style="position: absolute; top:245px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('ItHappened')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8">It Happened</p>
 				</div>
 
-				<div style="position: absolute; top:280px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="">
+				<div style="position: absolute; top:280px; left:45px; z-index:7; text-align:center;" onclick="">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; cursor:default;"></p>
 				</div>
@@ -1231,37 +1232,37 @@
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; cursor:default;"></p>
 				</div>
 
-				<div style="position: absolute; top:735px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore('Operation_TZIMTZUM')">
+				<div style="position: absolute; top:735px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('Operation_TZIMTZUM')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation TZIMTZUM</p>
 				</div>
 
-				<div style="position: absolute; top:770px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore('Operation_GOLCHAB')">
+				<div style="position: absolute; top:770px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('Operation_GOLCHAB')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation GOLCHAB</p>
 				</div>
 
-				<div style="position: absolute; top:805px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore('Operation_GHAAG_SHEBLAH')">
+				<div style="position: absolute; top:805px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('Operation_GHAAG_SHEBLAH')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation GHAAG SHEBLAH</p>
 				</div>
 
-				<div style="position: absolute; top:840px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore('Operation_OHR_EIN_ZOF')">
+				<div style="position: absolute; top:840px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('Operation_OHR_EIN_ZOF')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation OHR EIN ZOF</p>
 				</div>
 
-				<div style="position: absolute; top:875px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore('Operation_SAMSON')">
+				<div style="position: absolute; top:875px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('Operation_SAMSON')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation SAMSON</p>
 				</div>
 
-				<div style="position: absolute; top:910px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore('Operation_THAUMIEL')">
+				<div style="position: absolute; top:910px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('Operation_THAUMIEL')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 28px;">Operation THAUMIEL</p>
 				</div>
 
-				<div style="position: absolute; top:945px; left:45px; z-index:7; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="DisplayLore('War_Plan_ARMAGEDDON')">
+				<div style="position: absolute; top:945px; left:45px; z-index:7; text-align:center;" onclick="DisplayLore('War_Plan_ARMAGEDDON')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p style="position:absolute; top: -10px; width:126px; height: 35px; z-index:8; font-size:12px; line-height: 14px;">War Plan ARMAGEDDON</p>
 				</div>
@@ -1276,7 +1277,7 @@
 					<p id="LoreDesc" style="position:absolute; top:574px; width:525px; height:210px; left:15px">Description</p>
 				</div>
 				
-				<div style="position:absolute; left: 385px; top: 35px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('CodexCloseButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('CodexCloseButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CodexCloseButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" onclick="document.getElementById('Codex').style.visibility='hidden'; document.getElementById('Main Menu').style.visibility='visible'">
+				<div style="position:absolute; left: 385px; top: 35px; text-align:center;" onmouseover="document.getElementById('CodexCloseButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('CodexCloseButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CodexCloseButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" onclick="document.getElementById('Codex').style.visibility='hidden'; document.getElementById('Main Menu').style.visibility='visible'">
 					<img id="CodexCloseButton" src="Assets/Miscellaneous/GenericButton.PNG"/>
 					<p style="position: absolute; width:80px; height:35px; top:7px; left:23px">Close</p>
 				</div>
@@ -1337,35 +1338,35 @@
 			<div style="position: absolute;">
 				<img id="Tutorial Bloc Panel" src="Assets/Miscellaneous/Special Bloc Panel.PNG"/>
 			
-				<img style="position: absolute; left:7.5px; top:10px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id='Tutorial1P' style="position: absolute; width:126px; height:31px; top:0px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="TutorialLevel=TutorialLevel1; document.getElementById('Tutorial').src='Assets/SpecialLevels/The Basics of Tactical Command.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel1.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel1.Desc" >Mission 1</p>
+				<img style="position: absolute; left:7.5px; top:10px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id='Tutorial1P' style="position: absolute; width:126px; height:31px; top:0px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel1; document.getElementById('Tutorial').src='Assets/SpecialLevels/The Basics of Tactical Command.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel1.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel1.Desc" >Mission 1</p>
 
-				<img style="position: absolute; left:7.5px; top:45px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id='Tutorial2P' style="position: absolute; width:126px; height:31px; top:35px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="TutorialLevel=TutorialLevel2; document.getElementById('Tutorial').src='Assets/SpecialLevels/Tactical Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel2.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel2.Desc">Mission 2</p>
+				<img style="position: absolute; left:7.5px; top:45px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id='Tutorial2P' style="position: absolute; width:126px; height:31px; top:35px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel2; document.getElementById('Tutorial').src='Assets/SpecialLevels/Tactical Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel2.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel2.Desc">Mission 2</p>
 
-				<img style="position: absolute; left:7.5px; top:80px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id='Tutorial3P' style="position: absolute; width:126px; height:31px; top:70px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="TutorialLevel=TutorialLevel3; document.getElementById('Tutorial').src='Assets/SpecialLevels/Terrain Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel3.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel3.Desc">Mission 3</p>
+				<img style="position: absolute; left:7.5px; top:80px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id='Tutorial3P' style="position: absolute; width:126px; height:31px; top:70px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel3; document.getElementById('Tutorial').src='Assets/SpecialLevels/Terrain Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel3.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel3.Desc">Mission 3</p>
 
-				<img style="position: absolute; left:7.5px; top:115px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id='Tutorial4P' style="position: absolute; width:126px; height:31px; top:105px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="TutorialLevel=TutorialLevel4; document.getElementById('Tutorial').src='Assets/SpecialLevels/Logistical Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel4.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel4.Desc">Mission 4</p>
+				<img style="position: absolute; left:7.5px; top:115px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id='Tutorial4P' style="position: absolute; width:126px; height:31px; top:105px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel4; document.getElementById('Tutorial').src='Assets/SpecialLevels/Logistical Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel4.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel4.Desc">Mission 4</p>
 
-				<img style="position: absolute; left:7.5px; top:150px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id='Tutorial5P' style="position: absolute; width:126px; height:31px; top:140px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="TutorialLevel=TutorialLevel5; document.getElementById('Tutorial').src='Assets/SpecialLevels/Industrial Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel5.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel5.Desc">Mission 5</p>
+				<img style="position: absolute; left:7.5px; top:150px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id='Tutorial5P' style="position: absolute; width:126px; height:31px; top:140px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel5; document.getElementById('Tutorial').src='Assets/SpecialLevels/Industrial Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel5.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel5.Desc">Mission 5</p>
 
-				<img style="position: absolute; left:7.5px; top:185px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id='Tutorial6P' style="position: absolute; width:126px; height:31px; top:175px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="TutorialLevel=TutorialLevel6; document.getElementById('Tutorial').src='Assets/SpecialLevels/Transport Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel6.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel6.Desc">Mission 6</p>
+				<img style="position: absolute; left:7.5px; top:185px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id='Tutorial6P' style="position: absolute; width:126px; height:31px; top:175px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel6; document.getElementById('Tutorial').src='Assets/SpecialLevels/Transport Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel6.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel6.Desc">Mission 6</p>
 
-				<img style="position: absolute; left:7.5px; top:220px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id='Tutorial7P' style="position: absolute; width:126px; height:31px; top:210px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="TutorialLevel=TutorialLevel7; document.getElementById('Tutorial').src='Assets/SpecialLevels/Mixed Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel7.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel7.Desc">Mission 7</p>
+				<img style="position: absolute; left:7.5px; top:220px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id='Tutorial7P' style="position: absolute; width:126px; height:31px; top:210px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel7; document.getElementById('Tutorial').src='Assets/SpecialLevels/Mixed Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel7.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel7.Desc">Mission 7</p>
 
-				<img style="position: absolute; left:7.5px; top:255px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id='Tutorial8P' style="position: absolute; width:126px; height:31px; top:245px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="TutorialLevel=TutorialLevel8; document.getElementById('Tutorial').src='Assets/SpecialLevels/Cooperation Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel8.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel8.Desc">Mission 8</p>
+				<img style="position: absolute; left:7.5px; top:255px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id='Tutorial8P' style="position: absolute; width:126px; height:31px; top:245px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel8; document.getElementById('Tutorial').src='Assets/SpecialLevels/Cooperation Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel8.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel8.Desc">Mission 8</p>
 
-				<img style="position: absolute; left:7.5px; top:290px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id='Tutorial9P' style="position: absolute; width:126px; height:31px; top:280px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="TutorialLevel=TutorialLevel9; document.getElementById('Tutorial').src='Assets/SpecialLevels/Combined Arms Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel9.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel9.Desc">Mission 9</p>
+				<img style="position: absolute; left:7.5px; top:290px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id='Tutorial9P' style="position: absolute; width:126px; height:31px; top:280px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel9; document.getElementById('Tutorial').src='Assets/SpecialLevels/Combined Arms Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel9.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel9.Desc">Mission 9</p>
 
-				<img style="position: absolute; left:7.5px; top:325px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/LongPlaque.PNG"/>
-				<p id='Tutorial10P' style="position: absolute; width:126px; height:31px; top:315px; left:7px; text-align:center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="TutorialLevel=TutorialLevel10; document.getElementById('Tutorial').src='Assets/SpecialLevels/Final Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel10.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel10.Desc">Mission 10</p>
+				<img style="position: absolute; left:7.5px; top:325px;" src="Assets/Miscellaneous/LongPlaque.PNG"/>
+				<p id='Tutorial10P' style="position: absolute; width:126px; height:31px; top:315px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel10; document.getElementById('Tutorial').src='Assets/SpecialLevels/Final Exercise.PNG'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel10.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel10.Desc">Mission 10</p>
 			</div>
 
 			<div style="position: absolute; left:140px">
@@ -1378,32 +1379,32 @@
 
 			<div style="position: absolute; left:700px">
 				<img id="Tutorial Level Aux Panel" src="Assets/Miscellaneous/Special Aux Panel.PNG"/>
-				<img id="PlaySpecialLevel" style="position: absolute; top:50px; left:100px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/GenericButton.PNG" onmouseover="this.src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/GenericButton.PNG'" onclick="this.src='Assets/Miscellaneous/GenericButtonPressed.PNG' ;if(TutorialLevel!=0){document.getElementById('Tutorial Levels').style.visibility='hidden';initializeSpecialBattle(TutorialLevel);TutorialLevel=0};" />
-				<p id='PlayTutorialP' style="position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButton.PNG'" onclick="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonPressed.PNG' ;if(TutorialLevel!=0){document.getElementById('Tutorial Levels').style.visibility='hidden';initializeSpecialBattle(TutorialLevel);TutorialLevel=0};" >Play</p>
-				<img style="position: absolute; top:140px; left:100px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onclick="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG' ;document.getElementById('Tutorial Levels').style.visibility='hidden'; document.getElementById('Main Menu').style.visibility='visible';document.getElementById('Tutorial').src='Assets/Miscellaneous/Nothing.PNG' " />
+				<img id="PlaySpecialLevel" style="position: absolute; top:50px; left:100px;" src="Assets/Miscellaneous/GenericButton.PNG" onmouseover="this.src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/GenericButton.PNG'" onclick="this.src='Assets/Miscellaneous/GenericButtonPressed.PNG' ;if(TutorialLevel!=0){document.getElementById('Tutorial Levels').style.visibility='hidden';initializeSpecialBattle(TutorialLevel);TutorialLevel=0};" />
+				<p id='PlayTutorialP' style="position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;" onmouseover="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButton.PNG'" onclick="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonPressed.PNG' ;if(TutorialLevel!=0){document.getElementById('Tutorial Levels').style.visibility='hidden';initializeSpecialBattle(TutorialLevel);TutorialLevel=0};" >Play</p>
+				<img style="position: absolute; top:140px; left:100px;" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onclick="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG' ;document.getElementById('Tutorial Levels').style.visibility='hidden'; document.getElementById('Main Menu').style.visibility='visible';document.getElementById('Tutorial').src='Assets/Miscellaneous/Nothing.PNG' " />
 			</div>
 		</div>
 
 		<div id="CampaignSelectionScreen" style="position: absolute; visibility:hidden; width:1000px; height:640px; z-index:7; left: 182px; top: 0px; background-color:#404040">	
-			<img id="CampaignSelectorCloseButton" src="Assets/Miscellaneous/CloseButton.PNG" style="position: absolute ;top:84px; left:437px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('Main Menu').style.visibility='visible'; document.getElementById('CampaignSelectionScreen').style.visibility='hidden'" onmouseover="document.getElementById('CampaignSelectorCloseButton').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="document.getElementById('CampaignSelectorCloseButton').src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="document.getElementById('CampaignSelectorCloseButton').src='Assets/Miscellaneous/CloseButtonPressed.PNG'"/>
+			<img id="CampaignSelectorCloseButton" src="Assets/Miscellaneous/CloseButton.PNG" style="position: absolute ;top:84px; left:437px;" onclick="document.getElementById('Main Menu').style.visibility='visible'; document.getElementById('CampaignSelectionScreen').style.visibility='hidden'" onmouseover="document.getElementById('CampaignSelectorCloseButton').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="document.getElementById('CampaignSelectorCloseButton').src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="document.getElementById('CampaignSelectorCloseButton').src='Assets/Miscellaneous/CloseButtonPressed.PNG'"/>
 			
 			<div id="SCENARIO_GREAT_WAR" style="display: block;">
-				<img id="Somertin Flag" style="position: absolute; z-index:10; top:0px; left:0px; width:350px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('SOMERTIN', 1)" src="Assets/Flags/FlagSOM.PNG"/>
-				<img id="Kargit Flag" style="position: absolute; z-index:10; top:0px; left:650px; width:350px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('KARGIT', 2)" src="Assets/Flags/FlagKar.PNG"/>
-				<img id="Transkal Flag" style="position: absolute; z-index:10; top:250px; left:0px; width:300px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('TRANSKAL', 3)" src="Assets/Flags/FlagTRK.PNG"/>
-				<img id="Polasie Flag" style="position: absolute; z-index:10; top:250px; left:350px; width:300px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('POLASIE', 4)" src="Assets/Flags/FlagPOE.PNG"/>
-				<img id="Elam Flag" style="position: absolute; z-index:10; top:250px; left:700px; width:300px; height:200px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('ELAM', 5)" src="Assets/Flags/FlagELM1.PNG"/>
-				<img id="Cohort Flag" style="position: absolute; z-index:10; top:500px; left:0px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('?', 6)" src="Assets/Flags/NoFlag.PNG"/>
-				<img id="Slave Flag" style="position: absolute; z-index:10; top:500px; left:200px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('?', 7)" src="Assets/Flags/NoFlag.PNG"/>
-				<img id="Structuralist Flag" style="position: absolute; z-index:10; top:500px; left:400px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('?', 8)" src="Assets/Flags/NoFlag.PNG"/>
-				<img id="Syndicalist Flag" style="position: absolute; z-index:10; top:500px; left:600px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('?', 9)" src="Assets/Flags/NoFlag.PNG"/>
-				<img id="Mutasarif Flag" style="position: absolute; z-index:10; top:500px; left:800px; width:200px; height:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectCampaign('?', 10)" src="Assets/Flags/NoFlag.PNG"/>
+				<img id="Somertin Flag" style="position: absolute; z-index:10; top:0px; left:0px; width:350px; height:200px;" onclick="selectCampaign('SOMERTIN', 1)" src="Assets/Flags/FlagSOM.PNG"/>
+				<img id="Kargit Flag" style="position: absolute; z-index:10; top:0px; left:650px; width:350px; height:200px;" onclick="selectCampaign('KARGIT', 2)" src="Assets/Flags/FlagKar.PNG"/>
+				<img id="Transkal Flag" style="position: absolute; z-index:10; top:250px; left:0px; width:300px; height:200px;" onclick="selectCampaign('TRANSKAL', 3)" src="Assets/Flags/FlagTRK.PNG"/>
+				<img id="Polasie Flag" style="position: absolute; z-index:10; top:250px; left:350px; width:300px; height:200px;" onclick="selectCampaign('POLASIE', 4)" src="Assets/Flags/FlagPOE.PNG"/>
+				<img id="Elam Flag" style="position: absolute; z-index:10; top:250px; left:700px; width:300px; height:200px;" onclick="selectCampaign('ELAM', 5)" src="Assets/Flags/FlagELM1.PNG"/>
+				<img id="Cohort Flag" style="position: absolute; z-index:10; top:500px; left:0px; width:200px; height:140px;" onclick="selectCampaign('?', 6)" src="Assets/Flags/NoFlag.PNG"/>
+				<img id="Slave Flag" style="position: absolute; z-index:10; top:500px; left:200px; width:200px; height:140px;" onclick="selectCampaign('?', 7)" src="Assets/Flags/NoFlag.PNG"/>
+				<img id="Structuralist Flag" style="position: absolute; z-index:10; top:500px; left:400px; width:200px; height:140px;" onclick="selectCampaign('?', 8)" src="Assets/Flags/NoFlag.PNG"/>
+				<img id="Syndicalist Flag" style="position: absolute; z-index:10; top:500px; left:600px; width:200px; height:140px;" onclick="selectCampaign('?', 9)" src="Assets/Flags/NoFlag.PNG"/>
+				<img id="Mutasarif Flag" style="position: absolute; z-index:10; top:500px; left:800px; width:200px; height:140px;" onclick="selectCampaign('?', 10)" src="Assets/Flags/NoFlag.PNG"/>
 				<img id="Sample Flag" style="position: absolute; z-index:10; top:0px; left:400px; width:200px; height:200px; visibility: hidden;" onclick="selectCampaign('?', 0)" src="Assets/Flags/NoFlag.PNG"/>
 			</div>
 
 			<div id="NationDetails" style="visibility: hidden; position:absolute; left:150px; top:75px; z-index: 10; color:#ccff99">
 				<img style="position: absolute;" src="Assets/Miscellaneous/NationPanel.PNG"/>
-				<img id="NationDetailsClose" onclick="document.getElementById('NationDetails').style.visibility='hidden'" style="position: absolute; left: 281px; top: -35px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="document.getElementById('NationDetailsClose').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="document.getElementById('NationDetailsClose').src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="document.getElementById('NationDetailsClose').src='Assets/Miscellaneous/CloseButtonPressed.PNG'"/>
+				<img id="NationDetailsClose" onclick="document.getElementById('NationDetails').style.visibility='hidden'" style="position: absolute; left: 281px; top: -35px;" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="document.getElementById('NationDetailsClose').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="document.getElementById('NationDetailsClose').src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="document.getElementById('NationDetailsClose').src='Assets/Miscellaneous/CloseButtonPressed.PNG'"/>
 				<p id="NationName" style="position:absolute; left: 10px; z-index:11">Nation:</p>
 				<p id="FactionName" style="position:absolute; z-index:11; left:10px; top:28px">Alliance:</p>
 				<p id="NationStatusName" style="position:absolute; z-index:11; left:10px; top:56px">Status:</p>
@@ -1415,8 +1416,8 @@
 				<img id="NationColor" style="position:absolute;z-index: 11; top:10px;left:620px" src="Assets/Miscellaneous/NationColor.PNG">
 				
 				<div style="position: absolute; text-align:center; top: 425px; left: 150px; width:391px; height:100px" onclick="CallCampaignScreen()">
-					<img id="CampaignSelectedButton" style="position: absolute; z-index:11; left: 135px; top: -10px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/GenericButton.PNG" onmouseover="document.getElementById('CampaignSelectedButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('CampaignSelectedButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CampaignSelectedButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'"/>
-					<p id="CampaignSelectedText" style="position: absolute; z-index:11; top: 0px; width:391px; color:black; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></p>
+					<img id="CampaignSelectedButton" style="position: absolute; z-index:11; left: 135px; top: -10px;" src="Assets/Miscellaneous/GenericButton.PNG" onmouseover="document.getElementById('CampaignSelectedButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('CampaignSelectedButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CampaignSelectedButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'"/>
+					<p id="CampaignSelectedText" style="position: absolute; z-index:11; top: 0px; width:391px; color:black;"></p>
 				</div>
 			</div>
 
@@ -1427,37 +1428,37 @@
 					<img style="position:absolute; left:0px" src="Assets/Miscellaneous/ChapterPanel.PNG"/>
 					<img id="ChapterPanelPointer" style="position: absolute; left:-40px; top:-6px" src="Assets/Miscellaneous/ArrowPointer.PNG"/>
 
-					<div id="Chapter 1" style="visibility: hidden; position:absolute; left:10px; top:10px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectChapter(0)">
+					<div id="Chapter 1" style="visibility: hidden; position:absolute; left:10px; top:10px;" onclick="selectChapter(0)">
 						<img id="Chp1plaque" src="Assets/Miscellaneous/NonPlaque.PNG"/>
 						<p id="Chp1text" style="position: absolute; top:6px; width:80px; height:31px; text-align: center; z-index: 1; margin:0">Chapter 1</p>
 					</div>
 
-					<div id="Chapter 2" style="visibility: hidden; position:absolute; left:10px; top:44px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectChapter(1)">
+					<div id="Chapter 2" style="visibility: hidden; position:absolute; left:10px; top:44px;" onclick="selectChapter(1)">
 						<img id="Chp2plaque" src="Assets/Miscellaneous/NonPlaque.PNG"/>
 						<p id="Chp2text" style="position: absolute; top:6px; width:80px; height:31px; text-align: center; z-index: 1; margin:0">Chapter 2</p>
 					</div>
 
-					<div id="Chapter 3" style="visibility: hidden; position:absolute; left:10px; top:77px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectChapter(2)">
+					<div id="Chapter 3" style="visibility: hidden; position:absolute; left:10px; top:77px;" onclick="selectChapter(2)">
 						<img id="Chp3plaque" src="Assets/Miscellaneous/NonPlaque.PNG"/>
 						<p id="Chp3text" style="position: absolute; top:6px; width:80px; height:31px; text-align: center; z-index: 1; margin:0">Chapter 3</p>
 					</div>
 
-					<div id="Chapter 4" style="visibility: hidden; position:absolute; left:10px; top:110px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectChapter(3)">
+					<div id="Chapter 4" style="visibility: hidden; position:absolute; left:10px; top:110px;" onclick="selectChapter(3)">
 						<img id="Chp4plaque" src="Assets/Miscellaneous/NonPlaque.PNG"/>
 						<p id="Chp4text" style="position: absolute; top:6px; width:80px; height:31px; text-align: center; z-index: 1; margin:0">Chapter 4</p>
 					</div>
 
-					<div id="Chapter 5" style="visibility: hidden; position:absolute; left:10px; top:143px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectChapter(4)">
+					<div id="Chapter 5" style="visibility: hidden; position:absolute; left:10px; top:143px;" onclick="selectChapter(4)">
 						<img id="Chp5plaque" src="Assets/Miscellaneous/NonPlaque.PNG"/>
 						<p id="Chp5text" style="position: absolute; top:6px; width:80px; height:31px; text-align: center; z-index: 1; margin:0">Chapter 5</p>
 					</div>
 
-					<div id="Chapter 6" style="visibility: hidden; position:absolute; left:10px; top:176px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectChapter(5)">
+					<div id="Chapter 6" style="visibility: hidden; position:absolute; left:10px; top:176px;" onclick="selectChapter(5)">
 						<img id="Chp6plaque" src="Assets/Miscellaneous/NonPlaque.PNG"/>
 						<p id="Chp6text" style="position: absolute; top:6px; width:80px; height:31px; text-align: center; z-index: 1; margin:0">Chapter 6</p>
 					</div>
 
-					<div id="Chapter 7" style="visibility: hidden; position:absolute; left:10px; top:210px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="selectChapter(6)">
+					<div id="Chapter 7" style="visibility: hidden; position:absolute; left:10px; top:210px;" onclick="selectChapter(6)">
 						<img id="Chp7plaque" src="Assets/Miscellaneous/NonPlaque.PNG"/>
 						<p id="Chp7text" style="position: absolute; top:6px; width:80px; height:31px; text-align: center; z-index: 1; margin:0">Chapter 7</p>
 					</div>
@@ -1471,12 +1472,12 @@
 
 				<div style="position: absolute; top: 490px; left: 95px" oncontextmenu="Tooltip('TOOLTIP_CHOOSE_DIFFICULTY');this.style.opacity=0.35" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.opacity=1">
 					<img src="Assets/Miscellaneous/DifficultyPanel.png"/>
-					<img style="position: absolute; top: 50px; left: 15px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/DifficultyBarEasy.PNG" onclick="Difficulty=1; document.getElementById('DifficultyPanelPointer').style.top='35px'"/>
-					<img style="position: absolute; top: 87px; left: 15px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/DifficultyBarMedium.PNG" onclick="Difficulty=2; document.getElementById('DifficultyPanelPointer').style.top='72px'"/>
-					<img style="position: absolute; top: 124px; left: 15px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/DifficultyBarHard.PNG" onclick="Difficulty=2; document.getElementById('DifficultyPanelPointer').style.top='72px'; alert('HALT! You are not ready to face such difficulty yet!(nor was it implemented)')"/>
-					<img style="position: absolute; top: 57px; left: 30px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Traits/Morale1.PNG" onclick="Difficulty=1; document.getElementById('DifficultyPanelPointer').style.top='35px'"/>
-					<img style="position: absolute; top: 93px; left: 30px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Traits/Morale2.PNG" onclick="Difficulty=2; document.getElementById('DifficultyPanelPointer').style.top='72px'"/>
-					<img style="position: absolute; top: 130px; left: 30px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Traits/Morale3.PNG" onclick="Difficulty=2; document.getElementById('DifficultyPanelPointer').style.top='72px'; alert('HALT! You are not ready to face such difficulty yet!(nor was it implemented)')"/>
+					<img style="position: absolute; top: 50px; left: 15px;" src="Assets/Miscellaneous/DifficultyBarEasy.PNG" onclick="Difficulty=1; document.getElementById('DifficultyPanelPointer').style.top='35px'"/>
+					<img style="position: absolute; top: 87px; left: 15px;" src="Assets/Miscellaneous/DifficultyBarMedium.PNG" onclick="Difficulty=2; document.getElementById('DifficultyPanelPointer').style.top='72px'"/>
+					<img style="position: absolute; top: 124px; left: 15px;" src="Assets/Miscellaneous/DifficultyBarHard.PNG" onclick="Difficulty=2; document.getElementById('DifficultyPanelPointer').style.top='72px'; alert('HALT! You are not ready to face such difficulty yet!(nor was it implemented)')"/>
+					<img style="position: absolute; top: 57px; left: 30px;" src="Assets/Traits/Morale1.PNG" onclick="Difficulty=1; document.getElementById('DifficultyPanelPointer').style.top='35px'"/>
+					<img style="position: absolute; top: 93px; left: 30px;" src="Assets/Traits/Morale2.PNG" onclick="Difficulty=2; document.getElementById('DifficultyPanelPointer').style.top='72px'"/>
+					<img style="position: absolute; top: 130px; left: 30px;" src="Assets/Traits/Morale3.PNG" onclick="Difficulty=2; document.getElementById('DifficultyPanelPointer').style.top='72px'; alert('HALT! You are not ready to face such difficulty yet!(nor was it implemented)')"/>
 					<img id="DifficultyPanelPointer" style="position:absolute; top: 35px; left: -40px" src="Assets/Miscellaneous/ArrowPointer.PNG"/>
 					<p id="CampaignDifficultyP" style="position: absolute; text-align:center; width: 96px; left: 8px; height: 20px; top: 5px">Difficulty</p>
 					<p id="Diff1Text" style="position: absolute; width:70px; left: 40px; top: 41px">Justin Bieber</p>
@@ -1489,11 +1490,11 @@
 
 				<div style="position:absolute; left:280px; top: 100px; width:500px; height:70px" oncontextmenu="Tooltip('TOOLTIP_CHOOSE_MISSION');this.style.opacity=0.35" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.opacity=1">
 					<img id="EmblemSlot" style="position:absolute; top:-16px; left:0px; z-index:1" id="EmblemHighlighter" src="Assets/Miscellaneous/EmblemSlot.PNG"/>
-					<img id="Emblem1" style="position: absolute; left:15px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/EmblemSOM.PNG" onclick="selectMission(0)" />
-					<img id="Emblem2" style="position: absolute; left:100px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="selectMission(1)" />
-					<img id="Emblem3" style="position: absolute; left:185px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="selectMission(2)" />
-					<img id="Emblem4" style="position: absolute; left:270px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="selectMission(3)" />
-					<img id="Emblem5" style="position: absolute; left:355px; z-index:2; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="selectMission(4)" />
+					<img id="Emblem1" style="position: absolute; left:15px; z-index:2;" src="Assets/Emblems/EmblemSOM.PNG" onclick="selectMission(0)" />
+					<img id="Emblem2" style="position: absolute; left:100px; z-index:2;" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="selectMission(1)" />
+					<img id="Emblem3" style="position: absolute; left:185px; z-index:2;" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="selectMission(2)" />
+					<img id="Emblem4" style="position: absolute; left:270px; z-index:2;" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="selectMission(3)" />
+					<img id="Emblem5" style="position: absolute; left:355px; z-index:2;" src="Assets/Emblems/NONEmblemSOM.PNG" onclick="selectMission(4)" />
 				</div>
 
 				<div style="position: absolute; left:800px; top:105px" oncontextmenu="Tooltip('TOOLTIP_MISSION_PROPERTIES');this.style.opacity=0.35" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.opacity=1">
@@ -1514,19 +1515,19 @@
 					<p id="MissionDescription" style="position: relative;z-index: 12; top:-350px; left:5px"></p>
 				</div>
 			
-				<div style="position: absolute; width: 391px; height: 101px; text-align:center; left:305px; top:470px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('CampaignScreen').style.visibility='hidden';initializeBattle();" onmouseover="document.getElementById('LevelStartButon').src='Assets/Miscellaneous/StartButtonL.PNG'" onmouseout="document.getElementById('LevelStartButon').src='Assets/Miscellaneous/StartButton.PNG'">
+				<div style="position: absolute; width: 391px; height: 101px; text-align:center; left:305px; top:470px;" onclick="document.getElementById('CampaignScreen').style.visibility='hidden';initializeBattle();" onmouseover="document.getElementById('LevelStartButon').src='Assets/Miscellaneous/StartButtonL.PNG'" onmouseout="document.getElementById('LevelStartButon').src='Assets/Miscellaneous/StartButton.PNG'">
 					<img id="LevelStartButon" src="Assets/Miscellaneous/StartButton.PNG"/>
 					<p id="LevelStartButton" style="position:relative; top: -80px">This thing is a thing</p>
 				</div>
 
-				<img id="CampaignCloseButton" src="Assets/Miscellaneous/CloseButton.PNG" style="position: absolute ;top:595px; left:820px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('Main Menu').style.visibility='visible'; document.getElementById('CampaignScreen').style.visibility='hidden'" onmouseover="document.getElementById('CampaignCloseButton').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="document.getElementById('CampaignCloseButton').src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="document.getElementById('CampaignCloseButton').src='Assets/Miscellaneous/CloseButtonPressed.PNG'"/>
+				<img id="CampaignCloseButton" src="Assets/Miscellaneous/CloseButton.PNG" style="position: absolute ;top:595px; left:820px;" onclick="document.getElementById('Main Menu').style.visibility='visible'; document.getElementById('CampaignScreen').style.visibility='hidden'" onmouseover="document.getElementById('CampaignCloseButton').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="document.getElementById('CampaignCloseButton').src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="document.getElementById('CampaignCloseButton').src='Assets/Miscellaneous/CloseButtonPressed.PNG'"/>
 			</div>
 
 			<div id="InterlogueScreen" style="position: absolute;visibility: hidden; left:-14px; top:0px">
 				<img style="width:1000px;height:700px" src="Assets/Paralogues/ParalogueBackScreen.PNG"/>
 				<img style="z-index:1; position:absolute; top:400px;left:0px; width:400px; height:300px" id="InterlogueImage" src="Assets/Paralogues/1X1.JPG"/>	
 				<p style="position: absolute;z-index:1;color: white; width: 500px; height:700px; left:500px; top:0px; font-size:12px" id="InterlogueText">Lorem Ipsum</p>
-				<img style="position: absolute; z-index: 1; left:650px; top:630px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('InterlogueScreen').style.visibility='hidden';document.getElementById('Main Menu').style.visibility='visible'" src="Assets/Miscellaneous/CloseButton.PNG"/>
+				<img style="position: absolute; z-index: 1; left:650px; top:630px;" onclick="document.getElementById('InterlogueScreen').style.visibility='hidden';document.getElementById('Main Menu').style.visibility='visible'" src="Assets/Miscellaneous/CloseButton.PNG"/>
 			</div>
 
 			<div id="EndBattleScreen" style="position:absolute; visibility: hidden; width:1000px; height:700px; top:0px; left:-15px; background-color:darkslategray; z-index: 2; overflow-y: hidden;">
@@ -1535,7 +1536,7 @@
 				<img id="EndBattleImage" style="position:fixed; background-attachment: local; top:0px; left:167px; width:1001px; height:700px" />
 				<div style="position:fixed; width:980px; height:70px; top:510px; left:282px; scroll-behavior:smooth;" onmouseover="ScrollDown=setInterval(ScrollEndScreenDown,5); function ScrollEndScreenDown(){document.getElementById('EndBattleScreen').scrollBy(0,1)}" onmouseout="clearInterval(ScrollDown)"></div>
 				<div style="position:fixed; width:980px; height:70px; top:20px; left:282px; scroll-behavior:smooth;" onmouseover="ScrollUp=setInterval(ScrollEndScreenUp,5); function ScrollEndScreenUp(){document.getElementById('EndBattleScreen').scrollBy(0,-1)}" onmouseout="clearInterval(ScrollUp)"></div>
-				<img id="EndBattleCloseButton" style="position:fixed; top: 630px; left: 617px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'"/>
+				<img id="EndBattleCloseButton" style="position:fixed; top: 630px; left: 617px;" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'"/>
 			</div>
 		</div>
 		
