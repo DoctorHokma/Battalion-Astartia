@@ -6,9 +6,9 @@
 		<link rel="stylesheet" href="styles.css">
 	</head>
 
-	<body style="overflow:hidden; position:absolute; left:0px;" oncontextmenu="return false">
-		<div id="Main Menu" style='position:absolute; visibility:visible; top:10px; left:325px; height:70px; width:70px; z-index: 5; margin:auto'>
-			<img id="Main Menu Picture" style="position:absolute; width:700px; height:600px; left:-8px" src="Assets/Miscellaneous/Backdrop ETHA.JPG"/>
+	<body oncontextmenu="return false">
+		<div id="Main Menu" class="main_menu">
+			<img id="Main Menu Picture" class="main_menu_image" src="Assets/Miscellaneous/Backdrop ETHA.JPG"/>
 			<img style="position:absolute; visibility: hidden; left:-100px; top:0px; filter:hue-rotate(250deg) saturate(100%) brightness(100%)" src="TEMP/AsekaraUnsplit.PNG"/>
 			
 			<div style="position:absolute; visibility: hidden; left:-100px; top:100px">
@@ -1133,37 +1133,37 @@
 			<div style="position: absolute; top:0px; left:0px; height: 665px; width:210px; overflow-y:scroll;">
 				<img style="position: fixed;" src="Assets/Miscellaneous/LoreSelectionPanel.PNG"/>
 
-				<div class="codex_button" style="top:35px;" onclick="DisplayLore('Jokes')">
+				<div class="codex_button" style="top:35px;" onclick="DisplayLore('JOKES')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">Jokes</p>
 				</div>
 
-				<div class="codex_button" style="top:70px;" onclick="DisplayLore('SpecialUnits')">
+				<div class="codex_button" style="top:70px;" onclick="DisplayLore('SPECIAL_UNITS')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">Special Infantry</p>
 				</div>
 
-				<div class="codex_button" style="top:105px;" onclick="DisplayLore('SpecialArmor')">
+				<div class="codex_button" style="top:105px;" onclick="DisplayLore('SPECIAL_ARMOR')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">Special Tanks</p>
 				</div>
 
-				<div class="codex_button" style="top:140px;" onclick="DisplayLore('SpecialAircraft')">
+				<div class="codex_button" style="top:140px;" onclick="DisplayLore('SPECIAL_AIRCRAFT')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p class="codex_button_text">Special Planes?</p>
+					<p class="codex_button_text">Special Planes</p>
 				</div>
 
-				<div class="codex_button" style="top:175px;" onclick="DisplayLore('SpecialShips')">
+				<div class="codex_button" style="top:175px;" onclick="DisplayLore('SPECIAL_SHIPS')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p class="codex_button_text">Special Ships?</p>
+					<p class="codex_button_text">Special Ships</p>
 				</div>
 
-				<div class="codex_button" style="top:210px;" onclick="DisplayLore('ThisWorld')">
+				<div class="codex_button" style="top:210px;" onclick="DisplayLore('THIS_WORLD')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">This World</p>
 				</div>
 
-				<div class="codex_button" style="top:245px;" onclick="DisplayLore('ItHappened')">
+				<div class="codex_button" style="top:245px;" onclick="DisplayLore('IT_HAPPENED')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">It Happened</p>
 				</div>
@@ -1232,37 +1232,37 @@
 					<p class="codex_button_text">???</p>
 				</div>
 
-				<div class="codex_button" style="top:735px;" onclick="DisplayLore('Operation_TZIMTZUM')">
+				<div class="codex_button" style="top:735px;" onclick="DisplayLore('OPERATION_TZIMTZUM')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text_small">Operation TZIMTZUM</p>
 				</div>
 
-				<div class="codex_button" style="top:770px;" onclick="DisplayLore('Operation_GOLCHAB')">
+				<div class="codex_button" style="top:770px;" onclick="DisplayLore('OPERATION_GOLCHAB')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text_small">Operation GOLCHAB</p>
 				</div>
 
-				<div class="codex_button" style="top:805px;" onclick="DisplayLore('Operation_GHAAG_SHEBLAH')">
+				<div class="codex_button" style="top:805px;" onclick="DisplayLore('OPERATION_GHAAG_SHEBLAH')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text_small">Operation GHAAG SHEBLAH</p>
 				</div>
 
-				<div class="codex_button" style="top:840px;" onclick="DisplayLore('Operation_OHR_EIN_ZOF')">
+				<div class="codex_button" style="top:840px;" onclick="DisplayLore('OPERATION_OHR_EIN_ZOF')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text_small">Operation OHR EIN ZOF</p>
 				</div>
 
-				<div class="codex_button" style="top:875px;" onclick="DisplayLore('Operation_SAMSON')">
+				<div class="codex_button" style="top:875px;" onclick="DisplayLore('OPERATION_SAMSON')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text_small">Operation SAMSON</p>
 				</div>
 
-				<div class="codex_button" style="top:910px;" onclick="DisplayLore('Operation_THAUMIEL')">
+				<div class="codex_button" style="top:910px;" onclick="DisplayLore('OPERATION_THAUMIEL')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text_small">Operation THAUMIEL</p>
 				</div>
 
-				<div class="codex_button" style="top:945px;" onclick="DisplayLore('War_Plan_ARMAGEDDON')">
+				<div class="codex_button" style="top:945px;" onclick="DisplayLore('WAR_PLAN_ARMAGEDDON')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text_small" style="line-height: 14px;">War Plan ARMAGEDDON</p>
 				</div>
