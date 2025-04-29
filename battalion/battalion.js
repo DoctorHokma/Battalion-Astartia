@@ -1,4 +1,6 @@
 const Battalion = function() {
+    this.state = Battalion.STATE.NONE;
+    
     this.soundPlayer = new SoundPlayer(SOUND);
     this.musicPlayer = new MusicPlayer(MUSIC, PLAYLIST);
     this.client = new Client();
@@ -8,18 +10,13 @@ const Battalion = function() {
     this.morale = new MoraleHandler();
     this.saveHandler = new SaveHandler();
     this.uiHandler = new UIHandler();
+
     this.timer = new Timer();
-    this.state = Battalion.STATE.NONE;
-
-    this.timer.input = () => {
-        this.client.update();
-    }
-
+    this.timer.input = () => this.client.update();
     this.timer.update = () => {}
-
-    this.timer.render = () => {
-        this.renderer.update(this);
-    }
+    this.timer.render = () => this.renderer.update(this);
+    
+    this.createCamera();
 }
 
 Battalion.LANGUAGE = {
@@ -60,6 +57,18 @@ Battalion.prototype.init = function() {
     this.uiHandler.updateLanguage(this);
     this.setState(Battalion.STATE.MAIN_MENU);
     this.timer.start();
+}
+
+Battalion.prototype.createCamera = function() {
+    const camera = new Camera();
+    const context = this.renderer.createContext("BATTALION", camera);
+
+    context.initRenderer(560, 560);
+    context.setPositionMode(CameraContext.POSITION_MODE.FIXED);
+    context.setDisplayMode(CameraContext.DISPLAY_MODE.RESOLUTION_FIXED);
+    context.setScaleMode(CameraContext.SCALE_MODE.NONE);
+
+    return camera;
 }
 
 /**

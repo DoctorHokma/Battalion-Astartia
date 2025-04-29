@@ -3,13 +3,15 @@ const Renderer = function() {
     this.windowWidth = window.innerWidth;
     this.windowHeight = window.innerHeight;
 
-	this.display = new RenderContext();
-    this.display.fromDocument("BATTLE_MAP");
+	this.display = new Display();
+    this.display.fromDocument("RENDERER");
 
     this.events = new EventEmitter();
     this.events.listen(Renderer.EVENT.SCREEN_RESIZE);
     this.events.listen(Renderer.EVENT.CONTEXT_CREATE);
     this.events.listen(Renderer.EVENT.CONTEXT_DESTROY);
+
+    window.addEventListener("resize", () => this.resizeDisplay(window.innerWidth, window.innerHeight));
 }
 
 Renderer.EVENT = {
@@ -19,9 +21,9 @@ Renderer.EVENT = {
 };
 
 Renderer.DEBUG = {
-    CONTEXT: false,
-    SPRITES: false,
-    MAP: false
+    CONTEXT: 1,
+    SPRITES: 1,
+    MAP: 1
 };
 
 Renderer.FPS_COLOR = {
@@ -29,14 +31,11 @@ Renderer.FPS_COLOR = {
     GOOD: "#00ff00"
 };
 
-Renderer.prototype.update = function(context) {
-    const { timer } = context; 
+Renderer.prototype.update = function(gameContext) {
+    const { timer } = gameContext; 
     const display = this.display.context;
 
     this.display.clear();
-    
-    display.fillStyle = "#ff0000";
-    display.fillRect(0, 0, 100, 100);
 
     for(let i = 0; i < this.contexts.length; i++) {
         const context = this.contexts[i];
@@ -66,7 +65,6 @@ Renderer.prototype.drawFPS = function(context, timer) {
     context.fillText(text, 0, 10);
 }
 
-/*
 Renderer.prototype.getContext = function(contextID) {
     for(let i = 0; i < this.contexts.length; i++) {
         const context = this.contexts[i];
@@ -143,7 +141,7 @@ Renderer.prototype.resizeDisplay = function(width, height) {
     
     this.windowWidth = width;
     this.windowHeight = height;
-    this.display.resize(width, height);
+    this.display.onWindowResize(width, height);
     this.events.emit(Renderer.EVENT.SCREEN_RESIZE, width, height);
 }
 
@@ -158,7 +156,7 @@ Renderer.prototype.getCollidedContext = function(mouseX, mouseY, mouseRange) {
     for(let i = this.contexts.length - 1; i >= 0; i--) {
         const context = this.contexts[i];
         const { x, y, w, h } = context.getBounds();
-        const isColliding = isRectangleRectangleIntersect(
+        const isColliding = MathHelper.isRectangleRectangleIntersect(
             x, y, w, h,
             mouseX, mouseY, mouseRange, mouseRange
         );
@@ -170,4 +168,3 @@ Renderer.prototype.getCollidedContext = function(mouseX, mouseY, mouseRange) {
 
     return null;
 }
-*/
