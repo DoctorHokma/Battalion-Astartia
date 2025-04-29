@@ -1,5 +1,6 @@
 const OPENING_TRACK = "RiversOfSteel";
 const battalion = new Battalion();
+
 //TODO: select chapter and mission must reduce their parameter by 1 to map to the indices!
 //TODO: factions & commanders need to be represented in a list.
 //TODO: turn characters into a proper "database".
@@ -64,6 +65,10 @@ battalion.story.events.on(StoryHandler.EVENT.CHAPTER_WON, (chapter, isFirst) => 
 battalion.story.events.on(StoryHandler.EVENT.MISSION_WON, (mission, isFirst) =>  {
 	console.log(mission, isFirst, "HAS BEEN WON");
 }, { permanent: true });
+
+const mainMenu = new MainMenu("Main Menu");
+
+mainMenu.init();
 
 //TODO: This adds a "bug" because scenario selection is not added yet.
 selectScenario("GREAT_WAR");
@@ -178,7 +183,7 @@ document.getElementById("EndBattleCloseButton").onclick = () => {
 	
 	//Victory gets set to false on endbattle
 	if(ChosenMission !== 5 || !Victory) {
-		document.getElementById('Main Menu').style.visibility = 'visible';
+		mainMenu.show();
 	}
 }
 
@@ -1666,7 +1671,9 @@ function castMapMaker() {
 	Factions=GenericFactions;
 	document.getElementById("EditorMap").style.visibility="visible";
 	document.getElementById("MapMold").style.visibility="hidden";
-	document.getElementById("Main Menu").style.visibility="hidden";
+
+	mainMenu.hide();
+
 	x=parseInt(document.getElementById("heigthinput").value);
 	if(x>100){x=100};
 	y=parseInt(document.getElementById("widthinput").value);
@@ -2577,7 +2584,7 @@ function EndBattle(){
 		if(!Victory && Resolution) {
 			//alert("It's ok bro, we're not all Chuck Norris");
 			Resolution=false;
-			document.getElementById("Main Menu").style.visibility = "visible";
+			mainMenu.show();
 			rostermap=0;
 		}
 
@@ -3445,15 +3452,15 @@ function GeneralInitializer(){
 	writeFlair(battalion, Flair);
 
  	//This pretranslates the strings
-	document.getElementById("CampaignButtonP").innerHTML=Language.SystemTerms[6];
-	document.getElementById("BootCampButtonP").innerHTML=Language.SystemTerms[7];
-	document.getElementById("ContinueButtonP").innerHTML=Language.SystemTerms[8];
-	document.getElementById("OptionsButtonP").innerHTML=Language.SystemTerms[9];
-	document.getElementById("CreditsButtonP").innerHTML=Language.SystemTerms[10];
-	document.getElementById("BonusLevelsButtonP").innerHTML=Language.SystemTerms[11];
-	document.getElementById("ConquestButtonP").innerHTML=Language.SystemTerms[12];
-	document.getElementById("LevelEditorButtonP").innerHTML=Language.SystemTerms[13];
-	document.getElementById("CodexButtonP").innerHTML=Language.SystemTerms[14];
+	//document.getElementById("CampaignButtonP").innerHTML=Language.SystemTerms[6];
+	//document.getElementById("BootCampButtonP").innerHTML=Language.SystemTerms[7];
+	//document.getElementById("ContinueButtonP").innerHTML=Language.SystemTerms[8];
+	//document.getElementById("OptionsButtonP").innerHTML=Language.SystemTerms[9];
+	//document.getElementById("CreditsButtonP").innerHTML=Language.SystemTerms[10];
+	//document.getElementById("BonusLevelsButtonP").innerHTML=Language.SystemTerms[11];
+	//document.getElementById("ConquestButtonP").innerHTML=Language.SystemTerms[12];
+	//document.getElementById("LevelEditorButtonP").innerHTML=Language.SystemTerms[13];
+	//document.getElementById("CodexButtonP").innerHTML=Language.SystemTerms[14];
 
 	for(let g=1; g<=10; g++){document.getElementById('Tutorial'+g+"P").innerHTML=Language.SystemTerms[53+g]};
 	document.getElementById("PlayTutorialP").innerHTML=Language.SystemTerms[17];
@@ -7524,35 +7531,6 @@ function ToggleTileBlock(Block){
 	for(let e=0; e<TerrainLedger.length; e++){document.getElementById("EditorTile"+(e+1)).src="Assets/Tiles/"+Terrain[TerrainLedger[e]].name+".PNG"; document.getElementById("EditorTile"+(e+1)).style.top=14+e*61+(Terrain[TerrainLedger[e]].StD??0)+"px"};
 
 
-	};
-function Tooltip(tooltipID){
-	const { language } = battalion;
-	const tooltipHTML = language.get(tooltipID);
-
-	let frame = 0;
-	let interval = null;
-
-	const tooltipDisplay = () => {
-		switch(frame) {
-			case 5: {
-				document.getElementById("GeneralTooltipText").innerHTML = tooltipHTML;
-				break;
-			}
-			case 10: {
-				document.getElementById("GeneralTooltip").style.visibility = "inherit";
-				break;
-			}
-			case 20: {
-				document.getElementById("GeneralTooltip").style.visibility = "hidden";
-				window.clearInterval(interval);
-				break;
-			}
-		}
-
-		frame++;
-	}
-
-	interval = window.setInterval(tooltipDisplay, 100);
 }
 
 function UndoMove(){
@@ -7779,9 +7757,9 @@ CallPreloader();
 //GeneralInitializer();
 
 //document.getElementById('EditorP1').oncontextmenu=function(){EditorMap=Kaula;RefreshMapEditor()};
-//document.getElementById("Main Menu").style.visibility="hidden";
-//document.getElementById("Main Menu").style.visibility="hidden";initializeSpecialBattle(TutorialLevel3);
-//document.getElementById("Main Menu").style.visibility="hidden";initializeSpecialBattle(Samara); 
+//
+//initializeSpecialBattle(TutorialLevel3);
+//initializeSpecialBattle(Samara); 
 
 //This protocol shall disable MapEditor paraphernalia and allow the pilfering of a giant(14000*5600) map, later to be shrunk to 1400*560.
 

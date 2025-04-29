@@ -15,50 +15,15 @@
 				<img style="position:absolute; visibility: inherit; left:0px; top:0px" src="TEMP/AsekaraMeshOpaque.PNG"/>
 			</div>
 
-			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:280px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('Main Menu').style.visibility='hidden';document.getElementById('CampaignSelectionScreen').style.visibility='visible';" onmouseover="document.getElementById('CampaignButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('CampaignButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CampaignButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" oncontextmenu='Tooltip("TOOLTIP_CAMPAIGN")'>
-				<img id="CampaignButton" style="position:absolute;" src="Assets/Miscellaneous/GenericButton.PNG"/>
-				<p id='CampaignButtonP' style="position:relative; text-align: center; margin-top:19%">Campaign</p>
-			</div>
-
-			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="alert('Work in progress')" onmouseover="" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'" oncontextmenu='Tooltip("TOOLTIP_CONTINUE")'>
-				<img id="ContinueButton" style="position:absolute;" src="Assets/Miscellaneous/NonButton.PNG"/>
-				<p id='ContinueButtonP' style="position:relative; text-align: center; margin-top:19%; color:black">Continue</p>
-			</div>
-
-			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:420px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="TutorialLevel=0;document.getElementById('Main Menu').style.visibility='hidden'; document.getElementById('Tutorial Levels').style.visibility='visible'" onmouseover="document.getElementById('BootCampButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('BootCampButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('BootCampButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" oncontextmenu='Tooltip("TOOLTIP_BOOTCAMP")'>
-				<img id="BootCampButton" style="position:absolute;" src="Assets/Miscellaneous/GenericButton.PNG" />
-				<p id='BootCampButtonP' style="position:relative; text-align: center; margin-top:19%; color:black">Boot Camp</p>
-			</div>
-
-			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:0px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('Credits').style.visibility='visible'" onclick="document.getElementById('Credits').style.visibility='visible'" onmouseover="document.getElementById('CreditsButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('CreditsButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CreditsButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" oncontextmenu='Tooltip("TOOLTIP_CREDITS")' >
-				<img id="CreditsButton" style="position:absolute;" src="Assets/Miscellaneous/GenericButton.PNG" onclick="document.getElementById('Credits').style.visibility='visible'"/>
-				<p id='CreditsButtonP' style="position:relative; text-align: center; margin-top:19%; color:black">Credits</p>
-			</div>
-
-			<div style="position:absolute; width:126px; height: 71px; z-index:1; top:500px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="document.getElementById('Options').style.visibility='visible'" onmouseover="document.getElementById('OptionsButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('OptionsButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('OptionsButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" oncontextmenu='Tooltip("TOOLTIP_OPTIONS")'>
-				<img id="OptionsButton" style="position:absolute;" src="Assets/Miscellaneous/GenericButton.PNG"/>
-				<p id='OptionsButtonP' style="position:relative; text-align: center; margin-top:19%; color:black" onclick="document.getElementById('Options').style.visibility='visible'">Options</p>
-			</div>
-
-			<div style="position:absolute; z-index:1; top:0px; left:0px; width:126px; height: 71px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('BonusLevelsButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('BonusLevelsButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('BonusLevelsButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" onclick="document.getElementById('Main Menu').style.visibility='hidden'; document.getElementById('Special Levels').style.visibility='visible'; NivelVizat=Samara" oncontextmenu='Tooltip("TOOLTIP_BONUS_LEVELS")'>
-				<img id="BonusLevelsButton" style="position: absolute;" src="Assets/Miscellaneous/GenericButton.PNG" />
-				<p id='BonusLevelsButtonP' style="position:relative; text-align: center; margin-top:19%; color:black">Bonus Maps</p>
-			</div>
-
-			<div style="position:absolute; z-index:1; top:0px; left:560px; width:126px; height: 71px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('LevelEditorButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('LevelEditorButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('LevelEditorButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" onclick="document.getElementById('MapMold').style.visibility='visible'" oncontextmenu='Tooltip("TOOLTIP_MAP_EDITOR")'>
-				<img id="LevelEditorButton"  style="position: absolute;" src="Assets/Miscellaneous/GenericButton.PNG"/>
-				<p id='LevelEditorButtonP' style="position:relative; text-align: center; margin-top:19%; color:black">Level Editor</p>
-			</div>
-
-			<div style="position: absolute; z-index:1;top:70px; left:0px; width:126px; height: 71px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('ConquestButton').src='Assets/Miscellaneous/NonButton.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('ConquestButton').src='Assets/Miscellaneous/NonButton.PNG'" onmousedown="document.getElementById('ConquestButton').src='Assets/Miscellaneous/NonButton.PNG'" onclick="alert('Work in progress')" oncontextmenu='Tooltip("TOOLTIP_CONQUEST")' >
-				<img id="ConquestButton" style="position: absolute;" src="Assets/Miscellaneous/NonButton.PNG"/>
-				<p id='ConquestButtonP' style="position:relative; text-align: center; margin-top:19%; color:black">Conquest</p>
-			</div>
-
-			<div style="position: absolute; z-index:1;top:70px; left:560px; width:126px; height: 71px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onmouseover="document.getElementById('CodexButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'; document.getElementById('CodexButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CodexButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" onclick="document.getElementById('Codex').style.visibility='visible';document.getElementById('Main Menu').style.visibility='hidden'" oncontextmenu='Tooltip("TOOLTIP_CODEX")' >
-				<img id="CodexButton" style="position: absolute;" src="Assets/Miscellaneous/GenericButton.PNG"/>
-				<p id='CodexButtonP' style="position:relative; text-align: center; margin-top:19%; color:black">Codex</p>
-			</div>
+			<div id="CAMPAIGN_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:280px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="CONTINUE_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="BOOT_CAMP_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:420px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="CREDITS_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:0px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="OPTIONS_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="BONUS_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:0px; left:0px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="EDITOR_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:0px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="CONQUEST_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:70px; left:0px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="CODEX_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:70px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
 		</div>
 
 		<div id="Battlemap" style='position:absolute; visibility:hidden; top:20px; left:400px; height:560px; width:560px; z-index: 0'>			
@@ -1648,6 +1613,9 @@
 		<script src="scripts/retrieve.js"></script>
 		<script src="scripts/attack.js"></script>
 		<script src="scripts/story.js"></script>
+		<script src="scripts/ui/mainMenuButton.js"></script>
+		<script src="scripts/ui/mainMenu.js"></script>
+		<script src="scripts/ui/uiScripts.js"></script>
 		<script src="entity.js"></script>
 		<script src="main.js"></script>
 	</body>
