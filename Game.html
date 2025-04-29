@@ -15,15 +15,16 @@
 				<img style="position:absolute; visibility: inherit; left:0px; top:0px" src="TEMP/AsekaraMeshOpaque.PNG"/>
 			</div>
 
-			<div id="CAMPAIGN_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:280px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="CONTINUE_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="BOOT_CAMP_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:420px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="CREDITS_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:0px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="OPTIONS_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="BONUS_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:0px; left:0px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="EDITOR_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:0px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="CONQUEST_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:70px; left:0px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
-			<div id="CODEX_BUTTON" style="position:absolute; z-index:1; width:126px; height: 71px; top:70px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="BUTTON_CAMPAIGN" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:280px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="BUTTON_CONTINUE" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:140px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="BUTTON_BOOT_CAMP" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:420px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="BUTTON_CREDITS" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:0px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="BUTTON_OPTIONS" style="position:absolute; z-index:1; width:126px; height: 71px; top:500px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="BUTTON_BONUS" style="position:absolute; z-index:1; width:126px; height: 71px; top:0px; left:0px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="BUTTON_EDITOR" style="position:absolute; z-index:1; width:126px; height: 71px; top:0px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="BUTTON_CONQUEST" style="position:absolute; z-index:1; width:126px; height: 71px; top:70px; left:0px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="BUTTON_CODEX" style="position:absolute; z-index:1; width:126px; height: 71px; top:70px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
+			<div id="BUTTON_MUSIC" style="position:absolute; z-index:1; width:126px; height: 71px; top:140px; left:560px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto"></div>
 		</div>
 
 		<div id="Battlemap" style='position:absolute; visibility:hidden; top:20px; left:400px; height:560px; width:560px; z-index: 0'>			
@@ -824,7 +825,7 @@
 			<img src="Assets/Miscellaneous/VertiPlaqueNAV.PNG" style="position: absolute; top: 443px; left:721px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ShowcaseUnitCategory(6)"/>
 			<img src="Assets/Miscellaneous/VertiPlaqueSTR.PNG" style="position: absolute; top: 533px; left:721px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" onclick="ShowcaseUnitCategory(7)"/>
 
-			<div style="position: absolute; visibility: visible; top:-610px; z-index: 2;">
+			<div style="position: absolute; visibility: hidden; top:-610px; z-index: 2;">
 				<button id="EditorP1" style="position:absolute;top:560px;left:0px; width:140px; height:21px" onclick="RetrieveMapCode()" oncontextmenu="EditorMap=REPOZITORIUL1.Map;RefreshMapEditor()">Fetch Grid Data</button>
 				<button id="EditorP2" style="position:absolute;top:560px;left:140px; width:140px; height:21px" onclick="RetrieveControlCode()" oncontextmenu="EditorControlMap=REPOZITORIUL1.ControlMap;RefreshMapEditor()">Fetch Building Data</button>
 				<button id="EditorP3" style="position:absolute;top:560px;left:280px; width:140px; height:21px" onclick="RetrieveRosterCode()" oncontextmenu="for(let a=0;a<EditorMap.length;a++){for(let b=0;b<EditorMap[0].length;b++){EditorEntityMap[a][b]=0}};for(let c=1;c<REPOZITORIUL1.Roster.length;c++){EditorEntityMap[REPOZITORIUL1.Roster[c].x][REPOZITORIUL1.Roster[c].y]=REPOZITORIUL1.Roster[c]};RefreshMapEditor()">Fetch Roster</button>
@@ -1572,6 +1573,7 @@
 		<script src="data/sound.js"></script>
 		<script src="data/story.js"></script>
 		<script src="data/traits.js"></script>
+		<script src="data/ui.js"></script>
 
 		<script src="battalion/helper.js"></script>
 
@@ -1601,6 +1603,7 @@
 		<script src="battalion/story/nodes/campaign.js"></script>
 		<script src="battalion/story/nodes/scenario.js"></script>
 
+		<script src="battalion/ui/genericButton.js"></script>
 		<script src="battalion/ui/mainMenuButton.js"></script>
 		<script src="battalion/ui/mainMenu.js"></script>
 		<script src="battalion/ui/uiHandler.js"></script>

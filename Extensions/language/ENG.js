@@ -2,6 +2,17 @@ const LANGUAGE_ENGLISH = {
 	"LANGUAGE_CREATOR_COMMENT": "Suck it, bri'ish people; USA is now the symbol of english language",
     "LANGUAGE_DEFAULT_COMMENT": "Suck it, bri'ish people; USA is now the symbol of english language",
 
+	"SYSTEM_BUTTON_CAMPAIGN": "Campaign",
+	"SYSTEM_BUTTON_BOOT_CAMP": "Tutorial",
+	"SYSTEM_BUTTON_CONTINUE": "Load",
+	"SYSTEM_BUTTON_OPTIONS": "Options",
+	"SYSTEM_BUTTON_CREDITS": "Credits",
+	"SYSTEM_BUTTON_BONUS_MAPS": "Bonus",
+	"SYSTEM_BUTTON_CONQUEST": "Conquest",
+	"SYSTEM_BUTTON_EDITOR": "Editor",
+	"SYSTEM_BUTTON_LORE": "Lore",
+	"SYSTEM_BUTTON_MUSIC": "Music",
+
 	"APHORISM_NARRATOR_1": "Kafka, probably",
 	"APHORISM_NARRATOR_2": "Diplomat Francois Armand Dupuy's interview for the Lutetian Gazette",
 	"APHORISM_NARRATOR_3": "Diplomat Francis Woodenston-Willow's interview for the Londinian Gazette",
@@ -116,7 +127,7 @@ const LANGUAGE_ENGLISH = {
     "CODEX_DOCUMENT_SIZE_EMPTY": "Empty Document",
     "CODEX_DOCUMENT_SIZE_VERY_SHORT": "Very Short Document",
     "CODEX_DOCUMENT_SIZE_SHORT": "Short Document",
-    "CODEX_DOCUMENT_SIZE_NORMAL": "Document",
+    "CODEX_DOCUMENT_SIZE_NORMAL": "Medium Document",
     "CODEX_DOCUMENT_SIZE_LONG": "Long Document",
     "CODEX_DOCUMENT_SIZE_VERY_LONG": "Very Long Document",
 
