@@ -154,12 +154,15 @@ Renderer.prototype.getWindow = function() {
 }
 
 Renderer.prototype.getCollidedContext = function(mouseX, mouseY, mouseRange) {
+    const collideX = mouseX - this.display.positionX;
+    const collideY = mouseY - this.display.positionY;
+
     for(let i = this.contexts.length - 1; i >= 0; i--) {
         const context = this.contexts[i];
         const { x, y, w, h } = context.getBounds();
         const isColliding = MathHelper.isRectangleRectangleIntersect(
             x, y, w, h,
-            mouseX, mouseY, mouseRange, mouseRange
+            collideX, collideY, mouseRange, mouseRange
         );
 
         if(isColliding) {

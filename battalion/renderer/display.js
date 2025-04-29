@@ -2,6 +2,8 @@ const Display = function() {
     this.canvas = null;
     this.context = null;
     this.imageData = null;
+    this.positionX = 0;
+    this.positionY = 0;
     this.width = 0;
     this.height = 0;
     this.centerX = 0;
@@ -33,7 +35,12 @@ Display.prototype.fromDocument = function(canvasID) {
         return;
     }
 
+    const bounds = canvas.getBoundingClientRect();
+    const { x, y } = bounds;
+     
     this.type = Display.TYPE.CUSTOM;
+    this.positionX = x;
+    this.positionY = y;
     this.canvas = canvas;
     this.context = canvas.getContext("2d");
     this.resize(canvas.width, canvas.height);

@@ -17,6 +17,12 @@ const Battalion = function() {
     this.timer.render = () => this.renderer.update(this);
     
     this.createCamera();
+
+    this.client.cursor.events.on(Cursor.EVENT.BUTTON_CLICK, () => {
+        const context = this.getContextAtMouse();
+        
+        console.log(context);
+    });
 }
 
 Battalion.LANGUAGE = {
@@ -68,6 +74,18 @@ Battalion.prototype.createCamera = function() {
     context.setDisplayMode(CameraContext.DISPLAY_MODE.RESOLUTION_FIXED);
 
     return camera;
+}
+
+Battalion.prototype.getContextAtMouse = function() {
+    const lookX = this.client.cursor.positionX;
+    const lookY = this.client.cursor.positionY; 
+    const context = this.renderer.getCollidedContext(lookX, lookY, this.client.cursor.radius);
+
+    if(!context) {
+        return null;
+    }
+
+    return context;
 }
 
 /**
