@@ -223,6 +223,8 @@ const selectLanguage = function(languageID) {
 			break;
 		}
 	}
+
+	mainMenu.updateLanguageTags();
 }
 
 //Useful note:
@@ -3450,17 +3452,6 @@ function GeneralInitializer(){
 
 	writeAphorism(battalion, Aphorism);
 	writeFlair(battalion, Flair);
-
- 	//This pretranslates the strings
-	//document.getElementById("CampaignButtonP").innerHTML=Language.SystemTerms[6];
-	//document.getElementById("BootCampButtonP").innerHTML=Language.SystemTerms[7];
-	//document.getElementById("ContinueButtonP").innerHTML=Language.SystemTerms[8];
-	//document.getElementById("OptionsButtonP").innerHTML=Language.SystemTerms[9];
-	//document.getElementById("CreditsButtonP").innerHTML=Language.SystemTerms[10];
-	//document.getElementById("BonusLevelsButtonP").innerHTML=Language.SystemTerms[11];
-	//document.getElementById("ConquestButtonP").innerHTML=Language.SystemTerms[12];
-	//document.getElementById("LevelEditorButtonP").innerHTML=Language.SystemTerms[13];
-	//document.getElementById("CodexButtonP").innerHTML=Language.SystemTerms[14];
 
 	for(let g=1; g<=10; g++){document.getElementById('Tutorial'+g+"P").innerHTML=Language.SystemTerms[53+g]};
 	document.getElementById("PlayTutorialP").innerHTML=Language.SystemTerms[17];

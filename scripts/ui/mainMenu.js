@@ -21,6 +21,18 @@ MainMenu.prototype.addButton = function(button) {
     this.buttons.set(id, button);
 }
 
+MainMenu.prototype.updateLanguageTags = function() {
+    this.buttons.get("CAMPAIGN_BUTTON").text.innerText = Language.SystemTerms[6];
+    this.buttons.get("BOOT_CAMP_BUTTON").text.innerText = Language.SystemTerms[7];
+    this.buttons.get("CONTINUE_BUTTON").text.innerText = Language.SystemTerms[8];
+    this.buttons.get("OPTIONS_BUTTON").text.innerText = Language.SystemTerms[9];
+    this.buttons.get("CREDITS_BUTTON").text.innerText = Language.SystemTerms[10];
+    this.buttons.get("BONUS_BUTTON").text.innerText = Language.SystemTerms[11];
+    this.buttons.get("CONQUEST_BUTTON").text.innerText = Language.SystemTerms[12];
+    this.buttons.get("EDITOR_BUTTON").text.innerText = Language.SystemTerms[13];
+    this.buttons.get("CODEX_BUTTON").text.innerText = Language.SystemTerms[14];
+}
+
 MainMenu.prototype.init = function() {
     const campaignButton = new MainMenuButton("CAMPAIGN_BUTTON", "Campaign")
     .init("TOOLTIP_CAMPAIGN")
