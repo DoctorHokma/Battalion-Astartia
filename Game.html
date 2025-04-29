@@ -7,11 +7,10 @@
 	</head>
 
 	<body oncontextmenu="return false">
-		<div id="Main Menu" class="main_menu">
-			<img id="Main Menu Picture" class="main_menu_image" src="Assets/Miscellaneous/Backdrop ETHA.JPG"/>
-			<img style="position:absolute; visibility: hidden; left:-100px; top:0px; filter:hue-rotate(250deg) saturate(100%) brightness(100%)" src="TEMP/AsekaraUnsplit.PNG"/>
+		<div id="MAIN_MENU" class="main_menu">
+			<img style="position:absolute; visibility: hidden; top:0px; filter:hue-rotate(250deg) saturate(100%) brightness(100%)" src="TEMP/AsekaraUnsplit.PNG"/>
 			
-			<div style="position:absolute; visibility: hidden; left:-100px; top:100px">
+			<div style="position:absolute; visibility: hidden; top:100px">
 				<img style="position:absolute; visibility: inherit; left:0px; top:0px; filter:hue-rotate(250deg) saturate(100%) brightness(100%)" src="TEMP/AsekaraFilling.PNG"/>
 				<img style="position:absolute; visibility: inherit; left:0px; top:0px" src="TEMP/AsekaraMeshOpaque.PNG"/>
 			</div>
@@ -670,7 +669,7 @@
 
 		<div id="EditorMap" style='position:absolute; visibility:hidden; top:10px; left:350px'>
 			<div id="TileContainer" style="position:absolute; top:0px; left:0px; overflow:hidden; scroll-behavior: smooth;"></div>
-			<img style="position: absolute; top: 595px; left: 588px; z-index:2;" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG'" onclick="document.getElementById('EditorMap').style.visibility='hidden'; document.getElementById('Main Menu').style.visibility='visible'; battalion.setState(Battalion.STATE.MAIN_MENU);" />
+			<img style="position: absolute; top: 595px; left: 588px; z-index:2;" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG'" onclick="document.getElementById('EditorMap').style.visibility='hidden'; document.getElementById('MAIN_MENU').style.visibility='visible'; battalion.setState(Battalion.STATE.MAIN_MENU);" />
 
 			<div id="Tilelist" style="position: absolute; left: -91px; top: -10px;" oncontextmenu="Tooltip('TOOLTIP_CHOOSE_TILE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';">
 				<img src="Assets/Miscellaneous/EditorPanel.PNG"/>
@@ -979,7 +978,7 @@
 			</div>
 		</div>
 
-		<div id="Credits" style="position:absolute; visibility:hidden; width:420px;height:270px;z-index:7; left:455px; top:140px; overflow-y:hidden;">
+		<div id="Credits" style="position:absolute; visibility:hidden; width:420px; height:270px; z-index:7; left:455px; top:140px; overflow-y:hidden;">
 			<img style="position: fixed; left:452px" src="Assets/Miscellaneous/CreditsPanel.PNG"/>
 			
 			<img id="CloseCreditsButton" style="position: fixed; z-index:8; left:602px; top:385px;" src="Assets/Miscellaneous/CloseButton.PNG" onclick="document.getElementById('Credits').style.visibility='hidden'" onmouseover="document.getElementById('CloseCreditsButton').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="document.getElementById('CloseCreditsButton').src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="document.getElementById('CloseCreditsButton').src='Assets/Miscellaneous/CloseButtonPressed.PNG'"/>
@@ -1067,7 +1066,7 @@
 				<img id="Special Level Aux Panel" src="Assets/Miscellaneous/Special Aux Panel.PNG"/>
 				<img id="PlaySpecialLevel" style="position: absolute; top:50px; left:100px;" src="Assets/Miscellaneous/GenericButton.PNG" onmouseover="this.src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/GenericButton.PNG'" onclick="this.src='Assets/Miscellaneous/GenericButtonPressed.PNG' ;document.getElementById('Special Levels').style.visibility='hidden';initializeSpecialBattle(NivelVizat);" />
 				<p id="PlayBonusP" style="position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;" onmouseover="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButton.PNG'" onclick="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonPressed.PNG' ;document.getElementById('Special Levels').style.visibility='hidden';initializeSpecialBattle(NivelVizat);" >Play</p>
-				<img style="position: absolute; top:140px; left:100px;" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onclick="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG' ;document.getElementById('Special Levels').style.visibility='hidden'; document.getElementById('Main Menu').style.visibility='visible';OpenSpecialBloc({})" />
+				<img style="position: absolute; top:140px; left:100px;" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onclick="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG' ;document.getElementById('Special Levels').style.visibility='hidden'; document.getElementById('MAIN_MENU').style.visibility='visible';OpenSpecialBloc({})" />
 				<div style="position:absolute; top:350px; left:0px">
 					<p id="NatOpP" style="position: absolute; visibility: hidden; top:-35px; width:350px; left:0px; text-align:center;">Nation</p>
 					<img id="NatOp1" style="position: absolute; visibility: hidden; top:7px; left:8px; filter:hue-rotate(175deg) saturate(0%) brightness(300%)" src="Assets/Miscellaneous/NationOption.PNG" onclick="NivelElectiv=1;document.getElementById('NatOpP').innerHTML=NivelVizat.Factions[NivelVizat.Constants.Commanders[NivelElectiv].Allegiance].name" oncontextmenu="alert(NivelVizat.FactionCommentary[1])" />
@@ -1168,66 +1167,66 @@
 					<p class="codex_button_text">It Happened</p>
 				</div>
 
-				<div class="codex_button" style="top:280px;" onclick="">
+				<div class="codex_button" style="top:280px;" onclick="DisplayLore('EMPTY')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">???</p>
 				</div>
 
-				<div class="codex_button" style="top:315px;" onclick="">
+				<div class="codex_button" style="top:315px;" onclick="DisplayLore('EMPTY')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">???</p>
 				</div>
 
-				<div class="codex_button" style="top:350px;" onclick="">
+				<div class="codex_button" style="top:350px;" onclick="DisplayLore('EMPTY')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">???</p>
 				</div>
 
-				<div class="codex_button" style="top:385px;" onclick="">
+				<div class="codex_button" style="top:385px;" onclick="DisplayLore('EMPTY')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">???</p>
 				</div>
 
-				<div class="codex_button" style="top:420px;" onclick="">
+				<div class="codex_button" style="top:420px;" onclick="DisplayLore('EMPTY')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">???</p>
 				</div>
 
-				<div class="codex_button" style="top:455px;" onclick="">
+				<div class="codex_button" style="top:455px;" onclick="DisplayLore('EMPTY')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">???</p>
 				</div>
 
-				<div class="codex_button" style="top:490px;" onclick="">
+				<div class="codex_button" style="top:490px;" onclick="DisplayLore('EMPTY')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">???</p>
 				</div>
 
-				<div class="codex_button" style="top:525px;" onclick="">
+				<div class="codex_button" style="top:525px;" onclick="DisplayLore('EMPTY')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">???</p>
 				</div>
-				<div class="codex_button" style="top:560px;" onclick="">
-					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
-					<p class="codex_button_text">???</p>
-				</div>
-
-				<div class="codex_button" style="top:595px;" onclick="">
+				<div class="codex_button" style="top:560px;" onclick="DisplayLore('EMPTY')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">???</p>
 				</div>
 
-				<div class="codex_button" style="top:630px;" onclick="">
+				<div class="codex_button" style="top:595px;" onclick="DisplayLore('EMPTY')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">???</p>
 				</div>
 
-				<div class="codex_button" style="top:665px;" onclick="">
+				<div class="codex_button" style="top:630px;" onclick="DisplayLore('EMPTY')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">???</p>
 				</div>
 
-				<div class="codex_button" style="top:700px;" onclick="">
+				<div class="codex_button" style="top:665px;" onclick="DisplayLore('EMPTY')">
+					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
+					<p class="codex_button_text">???</p>
+				</div>
+
+				<div class="codex_button" style="top:700px;" onclick="DisplayLore('EMPTY')">
 					<img src="Assets/Miscellaneous/LongPlaque.PNG" />
 					<p class="codex_button_text">???</p>
 				</div>
@@ -1277,7 +1276,7 @@
 					<p id="LoreDesc" style="position:absolute; top:574px; width:525px; height:210px; left:15px">Description</p>
 				</div>
 				
-				<div style="position:absolute; left: 385px; top: 35px; text-align:center;" onmouseover="document.getElementById('CodexCloseButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('CodexCloseButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CodexCloseButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" onclick="document.getElementById('Codex').style.visibility='hidden'; document.getElementById('Main Menu').style.visibility='visible'">
+				<div style="position:absolute; left: 385px; top: 35px; text-align:center;" onmouseover="document.getElementById('CodexCloseButton').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('CodexCloseButton').src='Assets/Miscellaneous/GenericButton.PNG'" onmousedown="document.getElementById('CodexCloseButton').src='Assets/Miscellaneous/GenericButtonPressed.PNG'" onclick="document.getElementById('Codex').style.visibility='hidden'; document.getElementById('MAIN_MENU').style.visibility='visible'">
 					<img id="CodexCloseButton" src="Assets/Miscellaneous/GenericButton.PNG"/>
 					<p style="position: absolute; width:80px; height:35px; top:7px; left:23px">Close</p>
 				</div>
@@ -1381,12 +1380,12 @@
 				<img id="Tutorial Level Aux Panel" src="Assets/Miscellaneous/Special Aux Panel.PNG"/>
 				<img id="PlaySpecialLevel" style="position: absolute; top:50px; left:100px;" src="Assets/Miscellaneous/GenericButton.PNG" onmouseover="this.src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/GenericButton.PNG'" onclick="this.src='Assets/Miscellaneous/GenericButtonPressed.PNG' ;if(TutorialLevel!=0){document.getElementById('Tutorial Levels').style.visibility='hidden';initializeSpecialBattle(TutorialLevel);TutorialLevel=0};" />
 				<p id='PlayTutorialP' style="position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;" onmouseover="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonHovered.PNG'" onmouseout="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButton.PNG'" onclick="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonPressed.PNG' ;if(TutorialLevel!=0){document.getElementById('Tutorial Levels').style.visibility='hidden';initializeSpecialBattle(TutorialLevel);TutorialLevel=0};" >Play</p>
-				<img style="position: absolute; top:140px; left:100px;" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onclick="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG' ;document.getElementById('Tutorial Levels').style.visibility='hidden'; document.getElementById('Main Menu').style.visibility='visible';document.getElementById('Tutorial').src='Assets/Miscellaneous/Nothing.PNG' " />
+				<img style="position: absolute; top:140px; left:100px;" src="Assets/Miscellaneous/CloseButton.PNG" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.PNG'" onclick="this.src='Assets/Miscellaneous/CloseButtonPressed.PNG' ;document.getElementById('Tutorial Levels').style.visibility='hidden'; document.getElementById('MAIN_MENU').style.visibility='visible';document.getElementById('Tutorial').src='Assets/Miscellaneous/Nothing.PNG' " />
 			</div>
 		</div>
 
 		<div id="CampaignSelectionScreen" style="position: absolute; visibility:hidden; width:1000px; height:640px; z-index:7; left: 182px; top: 0px; background-color:#404040">	
-			<img id="CampaignSelectorCloseButton" src="Assets/Miscellaneous/CloseButton.PNG" style="position: absolute ;top:84px; left:437px;" onclick="document.getElementById('Main Menu').style.visibility='visible'; document.getElementById('CampaignSelectionScreen').style.visibility='hidden'" onmouseover="document.getElementById('CampaignSelectorCloseButton').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="document.getElementById('CampaignSelectorCloseButton').src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="document.getElementById('CampaignSelectorCloseButton').src='Assets/Miscellaneous/CloseButtonPressed.PNG'"/>
+			<img id="CampaignSelectorCloseButton" src="Assets/Miscellaneous/CloseButton.PNG" style="position: absolute ;top:84px; left:437px;" onclick="document.getElementById('MAIN_MENU').style.visibility='visible'; document.getElementById('CampaignSelectionScreen').style.visibility='hidden'" onmouseover="document.getElementById('CampaignSelectorCloseButton').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="document.getElementById('CampaignSelectorCloseButton').src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="document.getElementById('CampaignSelectorCloseButton').src='Assets/Miscellaneous/CloseButtonPressed.PNG'"/>
 			
 			<div id="SCENARIO_GREAT_WAR" style="display: block;">
 				<img id="Somertin Flag" style="position: absolute; z-index:10; top:0px; left:0px; width:350px; height:200px;" onclick="selectCampaign('SOMERTIN', 1)" src="Assets/Flags/FlagSOM.PNG"/>
@@ -1520,14 +1519,14 @@
 					<p id="LevelStartButton" style="position:relative; top: -80px">This thing is a thing</p>
 				</div>
 
-				<img id="CampaignCloseButton" src="Assets/Miscellaneous/CloseButton.PNG" style="position: absolute ;top:595px; left:820px;" onclick="document.getElementById('Main Menu').style.visibility='visible'; document.getElementById('CampaignScreen').style.visibility='hidden'" onmouseover="document.getElementById('CampaignCloseButton').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="document.getElementById('CampaignCloseButton').src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="document.getElementById('CampaignCloseButton').src='Assets/Miscellaneous/CloseButtonPressed.PNG'"/>
+				<img id="CampaignCloseButton" src="Assets/Miscellaneous/CloseButton.PNG" style="position: absolute ;top:595px; left:820px;" onclick="document.getElementById('MAIN_MENU').style.visibility='visible'; document.getElementById('CampaignScreen').style.visibility='hidden'" onmouseover="document.getElementById('CampaignCloseButton').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onmouseout="document.getElementById('CampaignCloseButton').src='Assets/Miscellaneous/CloseButton.PNG'" onmousedown="document.getElementById('CampaignCloseButton').src='Assets/Miscellaneous/CloseButtonPressed.PNG'"/>
 			</div>
 
 			<div id="InterlogueScreen" style="position: absolute;visibility: hidden; left:-14px; top:0px">
 				<img style="width:1000px;height:700px" src="Assets/Paralogues/ParalogueBackScreen.PNG"/>
 				<img style="z-index:1; position:absolute; top:400px;left:0px; width:400px; height:300px" id="InterlogueImage" src="Assets/Paralogues/1X1.JPG"/>	
 				<p style="position: absolute;z-index:1;color: white; width: 500px; height:700px; left:500px; top:0px; font-size:12px" id="InterlogueText">Lorem Ipsum</p>
-				<img style="position: absolute; z-index: 1; left:650px; top:630px;" onclick="document.getElementById('InterlogueScreen').style.visibility='hidden';document.getElementById('Main Menu').style.visibility='visible'" src="Assets/Miscellaneous/CloseButton.PNG"/>
+				<img style="position: absolute; z-index: 1; left:650px; top:630px;" onclick="document.getElementById('InterlogueScreen').style.visibility='hidden';document.getElementById('MAIN_MENU').style.visibility='visible'" src="Assets/Miscellaneous/CloseButton.PNG"/>
 			</div>
 
 			<div id="EndBattleScreen" style="position:absolute; visibility: hidden; width:1000px; height:700px; top:0px; left:-15px; background-color:darkslategray; z-index: 2; overflow-y: hidden;">
@@ -1622,6 +1621,7 @@
 		<script src="scripts/attack.js"></script>
 		<script src="scripts/story.js"></script>
 		<script src="scripts/ui/tooltip.js"></script>
+		<script src="scripts/ui/lore.js"></script>
 		<script src="entity.js"></script>
 		<script src="main.js"></script>
 	</body>

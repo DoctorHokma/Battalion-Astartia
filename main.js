@@ -2251,63 +2251,7 @@ function CustomizeTile(){
 		if(document.getElementById('EditorDescDenominator').value!=""){EditorEntityMap[EditorCustoTileX][EditorCustoTileY].CustomDescription=document.getElementById('EditorDescDenominator').value};
 		if(document.getElementById('EditorLifeDenominator').value!=""){EditorEntityMap[EditorCustoTileX][EditorCustoTileY].HPI=JSON.parse(document.getElementById('EditorLifeDenominator').value); EditorEntityMap[EditorCustoTileX][EditorCustoTileY].hpModifier=JSON.parse(document.getElementById('EditorLifeDenominator').value)};
 		if(document.getElementById('EditorMoraleDenominator').value!=""){EditorEntityMap[EditorCustoTileX][EditorCustoTileY].morale=JSON.parse(document.getElementById('EditorMoraleDenominator').value)};
-	};};
-
-const DisplayLoreLength = function(DocSize) {
-	const FIRST_ICON_ID = 1;
-	const LAST_ICON_ID = 5;
-
-	for(let i = FIRST_ICON_ID; i <= LAST_ICON_ID; i++) {
-		const lengthIconID = "LoreLengthIcon" + i;
-		const lengthIcon = document.getElementById(lengthIconID);
-
-		if(DocSize < i) {
-			lengthIcon.src = "Assets/Miscellaneous/DocShadow.PNG";
-		} else {
-			lengthIcon.src = "Assets/Miscellaneous/DocIcon.PNG";
-		}
-	}
-}
-
-const DisplayLore = function(documentID){
-	const { language } = battalion;
-	const lore = CODEX[documentID];
-
-	if(!lore) {
-		return;
-	}
-
-	const { DocName = "", DocDesc = "", DocText = "", DocSize = 0 } = lore;
-	const documentSizes = [
-		"CODEX_DOCUMENT_SIZE_EMPTY",
-		"CODEX_DOCUMENT_SIZE_VERY_SHORT",
-		"CODEX_DOCUMENT_SIZE_SHORT",
-		"CODEX_DOCUMENT_SIZE_NORMAL",
-		"CODEX_DOCUMENT_SIZE_LONG",
-		"CODEX_DOCUMENT_SIZE_VERY_LONG"
-	];
-	const loreName = document.getElementById('LoreName');
-	const loreDesc = document.getElementById('LoreDesc');
-	const loreLength = document.getElementById('LoreLength');
-	const lorePanel = document.getElementById('LorePanel');
-
-	loreName.innerHTML = language.get(DocName);
-	loreDesc.innerHTML = language.get(DocDesc);
-	loreLength.innerHTML = "";
-	lorePanel.innerHTML = "";
-
-	if(DocSize >= 0 && DocSize < documentSizes.length) {
-		loreLength.innerHTML = language.get(documentSizes[DocSize]);
-	} else {
-		loreLength.innerHTML = language.get("CODEX_DOCUMENT_SIZE_EMPTY");
-	}
-
-	const text = language.get(DocText);
-	const processedText = Array.isArray(text) ? text.join("<br><br>") : text;
-
-	lorePanel.innerHTML = processedText;
-
-	DisplayLoreLength(DocSize);
+	};
 }
 
 function DisplayRegions(){
@@ -7719,15 +7663,13 @@ CallPreloader();
 
 /*
 Mainscreen=Math.ceil(Math.random()*9);
-if(Mainscreen==1){document.getElementById("Main Menu Picture").src="Assets/MainMenuScreens/Relampago.JPG"};
-if(Mainscreen==2){document.getElementById("Main Menu Picture").src="Assets/MainMenuScreens/Backdrop ETHA.JPG"};
-if(Mainscreen==3){document.getElementById("Main Menu Picture").src="Assets/MainMenuScreens/Vladov's Last Charge.PNG"};
-if(Mainscreen==4){document.getElementById("Main Menu Picture").src="Assets/MainMenuScreens/BackdropProvisory.PNG"};
-if(Mainscreen==5){document.getElementById("Main Menu Picture").src="Assets/MainMenuScreens/Continental Security League.PNG"};
-if(Mainscreen==6){document.getElementById("Main Menu Picture").src="Assets/MainMenuScreens/Battle of Vardar.JPG"};
-if(Mainscreen==7){document.getElementById("Main Menu Picture").src="Assets/MainMenuScreens/Battle of Burluk.JPG"};
-if(Mainscreen==8){document.getElementById("Main Menu Picture").src="Assets/MainMenuScreens/Stulpikan Pandur.PNG"};
-if(Mainscreen==9){document.getElementById("Main Menu Picture").src="Assets/MainMenuScreens/Coloured Tanks.JPG"};*/
-document.getElementById("Main Menu Picture").src="Assets/MainMenuScreens/Coloured Tanks.JPG";
-
+if(Mainscreen==1){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Relampago.JPG"};
+if(Mainscreen==2){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Backdrop ETHA.JPG"};
+if(Mainscreen==3){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Vladov's Last Charge.PNG"};
+if(Mainscreen==4){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/BackdropProvisory.PNG"};
+if(Mainscreen==5){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Continental Security League.PNG"};
+if(Mainscreen==6){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Battle of Vardar.JPG"};
+if(Mainscreen==7){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Battle of Burluk.JPG"};
+if(Mainscreen==8){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Stulpikan Pandur.PNG"};
+if(Mainscreen==9){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Coloured Tanks.JPG"};*/
 //Inspection(0,MohConstants,MohRoster);

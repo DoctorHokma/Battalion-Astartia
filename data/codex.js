@@ -1,4 +1,10 @@
 const CODEX = {
+	"EMPTY": {
+		"DocName": "CODEX_EMPTY_NAME",
+		"DocDesc": "CODEX_EMPTY_DESC",
+		"DocText": "CODEX_EMPTY_TEXT",
+		"DocSize": 0
+	},
 	"JOKES": {
 		"DocName": "CODEX_JOKES_NAME",
 		"DocDesc": "CODEX_JOKES_DESC",

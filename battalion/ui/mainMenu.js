@@ -1,6 +1,11 @@
 const MainMenu = function(elementID) {
+    this.image = document.createElement('img');
     this.element = document.getElementById(elementID);
     this.buttons = new Map();
+
+    this.image.classList.add("main_menu_image");
+    this.image.src="Assets/MainMenuScreens/Coloured Tanks.JPG";
+    this.element.appendChild(this.image);
 }
 
 MainMenu.prototype.hide = function() {
