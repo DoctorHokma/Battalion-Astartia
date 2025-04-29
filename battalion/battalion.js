@@ -6,6 +6,7 @@ const Battalion = function() {
     this.story = new StoryHandler();
     this.morale = new MoraleHandler();
     this.saveHandler = new SaveHandler();
+    this.uiHandler = new UIHandler();
     this.timer = new Timer();
     this.state = Battalion.STATE.NONE;
 
@@ -49,6 +50,14 @@ Battalion.DIRECTION_FLIP = {
     [Battalion.DIRECTION.SOUTH]: Battalion.DIRECTION.NORTH,
     [Battalion.DIRECTION.EAST]: Battalion.DIRECTION.WEST
 };
+
+Battalion.prototype.init = function() {
+    this.story.init();
+    this.uiHandler.mainMenu.init();
+    this.uiHandler.updateLanguage(this);
+    this.setState(Battalion.STATE.MAIN_MENU);
+    this.timer.start();
+}
 
 /**
  * neyn 11.04.2025

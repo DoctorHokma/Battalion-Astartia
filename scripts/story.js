@@ -7,6 +7,34 @@ const DISPLAY_TYPE = {
 let ElamFlagVariant=1; for(let j=1;j<5;j++){if(Campaigns[4][j-1][4].Finished??false){ElamFlagVariant=j+1}}; if(!MystSettChoice){ElamFlagVariant=1};
 document.getElementById('Elam Flag').src='Assets/Flags/FlagELM'+ElamFlagVariant+'.PNG'
 */
+const addStoryEvents = function(battalion) {
+    const { story, language } = battalion;
+
+    story.events.on(StoryHandler.EVENT.SCENARIO_WON, (scenario, isFirst) =>  {
+        console.log(scenario, isFirst, "HAS BEEN WON");
+    }, { permanent: true });
+    
+    story.events.on(StoryHandler.EVENT.CAMPAIGN_WON, (campaign, isFirst) =>  {
+        console.log(campaign, isFirst, "HAS BEEN WON");
+    }, { permanent: true });
+    
+    story.events.on(StoryHandler.EVENT.CHAPTER_WON, (chapter, isFirst) =>  {
+        const { type } = chapter;
+        const { interlogueImage, interlogue } = type;
+    
+        console.log(chapter, isFirst, "HAS BEEN WON");
+    
+        if(isFirst) {
+            document.getElementById("InterlogueScreen").style.visibility = "visible";
+            document.getElementById("InterlogueImage").src = interlogueImage;
+            document.getElementById("InterlogueText").innerHTML = language.get(interlogue);
+        }
+    }, { permanent: true });
+    
+    story.events.on(StoryHandler.EVENT.MISSION_WON, (mission, isFirst) =>  {
+        console.log(mission, isFirst, "HAS BEEN WON");
+    }, { permanent: true });
+}
 
 const saveStory = function() {
     const { saveHandler } = battalion;

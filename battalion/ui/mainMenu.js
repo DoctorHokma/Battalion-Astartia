@@ -21,7 +21,9 @@ MainMenu.prototype.addButton = function(button) {
     this.buttons.set(id, button);
 }
 
-MainMenu.prototype.updateLanguageTags = function() {
+MainMenu.prototype.updateLanguageTags = function(context) {
+    const { language } = context;
+
     this.buttons.get("CAMPAIGN_BUTTON").text.innerText = Language.SystemTerms[6];
     this.buttons.get("BOOT_CAMP_BUTTON").text.innerText = Language.SystemTerms[7];
     this.buttons.get("CONTINUE_BUTTON").text.innerText = Language.SystemTerms[8];

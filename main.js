@@ -1,10 +1,6 @@
 const OPENING_TRACK = "RiversOfSteel";
 const battalion = new Battalion();
 
-//TODO: select chapter and mission must reduce their parameter by 1 to map to the indices!
-//TODO: factions & commanders need to be represented in a list.
-//TODO: turn characters into a proper "database".
-
 battalion.morale.addParticulator("MoraleParticulator0", "VERY_NEGATIVE");
 battalion.morale.addParticulator("MoraleParticulator1", "NEGATIVE");
 battalion.morale.addParticulator("MoraleParticulator2", "NEUTRAL");
@@ -18,8 +14,9 @@ battalion.language.addLanguage(Battalion.LANGUAGE.ROMANIAN, LANGUAGE_ROMANIAN);
 battalion.language.addLanguage(Battalion.LANGUAGE.TURKISH, LANGUAGE_TURKISH);
 
 battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
-battalion.story.init();
+battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
 
+battalion.init();
 battalion.story.unlockAll();
 
 /*
@@ -37,40 +34,8 @@ battalion.saveHandler.loadStoryProgress(battalion, {
 });
 */
 
-battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
-battalion.timer.start();
-battalion.setState(Battalion.STATE.MAIN_MENU);
-
-battalion.story.events.on(StoryHandler.EVENT.SCENARIO_WON, (scenario, isFirst) =>  {
-	console.log(scenario, isFirst, "HAS BEEN WON");
-}, { permanent: true });
-
-battalion.story.events.on(StoryHandler.EVENT.CAMPAIGN_WON, (campaign, isFirst) =>  {
-	console.log(campaign, isFirst, "HAS BEEN WON");
-}, { permanent: true });
-
-battalion.story.events.on(StoryHandler.EVENT.CHAPTER_WON, (chapter, isFirst) =>  {
-	const { type } = chapter;
-	const { interlogueImage, interlogue } = type;
-
-	console.log(chapter, isFirst, "HAS BEEN WON");
-
-	if(isFirst) {
-		document.getElementById("InterlogueScreen").style.visibility = "visible";
-		document.getElementById("InterlogueImage").src = interlogueImage;
-		document.getElementById("InterlogueText").innerHTML = battalion.language.get(interlogue);
-	}
-}, { permanent: true });
-
-battalion.story.events.on(StoryHandler.EVENT.MISSION_WON, (mission, isFirst) =>  {
-	console.log(mission, isFirst, "HAS BEEN WON");
-}, { permanent: true });
-
-const mainMenu = new MainMenu("Main Menu");
-
-mainMenu.init();
-
 //TODO: This adds a "bug" because scenario selection is not added yet.
+addStoryEvents(battalion);
 selectScenario("GREAT_WAR");
 
 var ActionRegister = {}; //used by ai
@@ -183,7 +148,7 @@ document.getElementById("EndBattleCloseButton").onclick = () => {
 	
 	//Victory gets set to false on endbattle
 	if(ChosenMission !== 5 || !Victory) {
-		mainMenu.show();
+		battalion.uiHandler.mainMenu.show();
 	}
 }
 
@@ -224,7 +189,7 @@ const selectLanguage = function(languageID) {
 		}
 	}
 
-	mainMenu.updateLanguageTags();
+	battalion.uiHandler.updateLanguage(battalion);
 }
 
 //Useful note:
@@ -1674,7 +1639,7 @@ function castMapMaker() {
 	document.getElementById("EditorMap").style.visibility="visible";
 	document.getElementById("MapMold").style.visibility="hidden";
 
-	mainMenu.hide();
+	battalion.uiHandler.mainMenu.hide();
 
 	x=parseInt(document.getElementById("heigthinput").value);
 	if(x>100){x=100};
@@ -2586,7 +2551,7 @@ function EndBattle(){
 		if(!Victory && Resolution) {
 			//alert("It's ok bro, we're not all Chuck Norris");
 			Resolution=false;
-			mainMenu.show();
+			battalion.uiHandler.mainMenu.show();
 			rostermap=0;
 		}
 
