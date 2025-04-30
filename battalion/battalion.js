@@ -20,7 +20,7 @@ const Battalion = function() {
 
     this.client.cursor.events.on(Cursor.EVENT.BUTTON_CLICK, () => {
         const context = this.getContextAtMouse();
-        
+
         console.log(context);
     });
 }
@@ -66,7 +66,7 @@ Battalion.prototype.init = function() {
 }
 
 Battalion.prototype.createCamera = function() {
-    const camera = new Camera2D();
+    const camera = new BattalionCamera();
     const context = this.renderer.createContext("BATTALION", camera);
 
     camera.setTileSize(56, 56);
