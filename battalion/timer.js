@@ -26,6 +26,7 @@ Timer.prototype.nextFrame = function(timestamp) {
     this.accumulatedTime += this.deltaTime;
     this.rawFPS = 1 / this.deltaTime;
     this.smoothFPS = (1 - this.smoothFactor) * this.smoothFPS + this.smoothFactor * this.rawFPS;
+    this.smoothFPS = Math.max(this.smoothFPS, this.rawFPS);
 
     this.input();
 

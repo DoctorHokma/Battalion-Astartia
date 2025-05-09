@@ -42,6 +42,22 @@ BattalionSprite.prototype.autoCalcFrames = function(startX, startY, frameWidth, 
     }
 }
 
+BattalionSprite.prototype.drawFull = function(context, typeID, renderX, renderY) {
+    let bitmap = this.types.get(typeID);
+
+    if(bitmap) {
+        context.drawImage(bitmap, 0, 0, this.imageData.width, this.imageData.height, renderX, renderY, this.imageData.width, this.imageData.height);
+        return;
+    }
+
+    bitmap = this.types.get(BattalionSprite.DEFAULT.BITMAP_ID);
+
+    if(bitmap) {
+        context.drawImage(bitmap, 0, 0, this.imageData.width, this.imageData.height, renderX, renderY, this.imageData.width, this.imageData.height);
+        return;
+    }
+}
+
 BattalionSprite.prototype.drawFrame = function(context, frameID, typeID, renderX, renderY) {
     const frame = this.frames[frameID];
 
@@ -50,17 +66,17 @@ BattalionSprite.prototype.drawFrame = function(context, frameID, typeID, renderX
     }
 
     const { x, y, w, h } = frame;
-    const bitmap = this.types.get(typeID);
+    let bitmap = this.types.get(typeID);
 
     if(bitmap) {
         context.drawImage(bitmap, x, y, w, h, renderX, renderY, w, h);
         return;
     }
 
-    const defaultBitmap = this.types.get(BattalionSprite.DEFAULT.BITMAP_ID);
+    bitmap = this.types.get(BattalionSprite.DEFAULT.BITMAP_ID);
 
-    if(defaultBitmap) {
-        context.drawImage(defaultBitmap, x, y, w, h, renderX, renderY, w, h);
+    if(bitmap) {
+        context.drawImage(bitmap, x, y, w, h, renderX, renderY, w, h);
         return;
     }
 }

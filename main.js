@@ -1,11 +1,11 @@
 const OPENING_TRACK = "RiversOfSteel";
 const battalion = new Battalion();
 
-battalion.morale.addParticulator("MoraleParticulator0", "VERY_NEGATIVE");
-battalion.morale.addParticulator("MoraleParticulator1", "NEGATIVE");
-battalion.morale.addParticulator("MoraleParticulator2", "NEUTRAL");
-battalion.morale.addParticulator("MoraleParticulator3", "POSITIVE");
-battalion.morale.addParticulator("MoraleParticulator4", "VERY_POSITIVE");
+battalion.morale.addMoraleShift("MoraleParticulator0", MORALE_SHIFT.VERY_NEGATIVE);
+battalion.morale.addMoraleShift("MoraleParticulator1", MORALE_SHIFT.NEGATIVE);
+battalion.morale.addMoraleShift("MoraleParticulator2", MORALE_SHIFT.NEUTRAL);
+battalion.morale.addMoraleShift("MoraleParticulator3", MORALE_SHIFT.POSITIVE);
+battalion.morale.addMoraleShift("MoraleParticulator4", MORALE_SHIFT.VERY_POSITIVE);
 
 battalion.language.addLanguage(Battalion.LANGUAGE.ENGLISH, LANGUAGE_ENGLISH);
 battalion.language.addLanguage(Battalion.LANGUAGE.SPANISH, LANGUAGE_SPANISH);
@@ -17,9 +17,8 @@ battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
 battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
 
 battalion.init();
-battalion.story.unlockAll();
+//battalion.story.unlockAll();
 
-/*
 battalion.saveHandler.loadStoryProgress(battalion, {
 	"MISSIONS": {
 		"SOMERTIN_C1_M1": 1,
@@ -29,10 +28,9 @@ battalion.saveHandler.loadStoryProgress(battalion, {
 		"SOMERTIN_C1_M5": 1
 	},
 	"CHAPTERS": {
-		"SOMERTIN_C3": 0
+		"SOMERTIN_C1": 1
 	}
 });
-*/
 
 //TODO: This adds a "bug" because scenario selection is not added yet.
 addStoryEvents(battalion);

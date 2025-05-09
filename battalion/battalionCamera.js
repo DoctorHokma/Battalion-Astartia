@@ -21,4 +21,6 @@ BattalionCamera.prototype.update = function(gameContext, renderContext) {
     this.image.drawFrame(renderContext, "3", "GREEN", 0, 56 * 2);
     this.image.drawFrame(renderContext, "4", "YELLOW", 0, 56 * 3);
     this.image.drawFrame(renderContext, "5", "DARK_RED", 0, 56 * 4);
+
+    this.image.drawFull(renderContext, "DARK_RED", 0, 56 * 5);
 }
