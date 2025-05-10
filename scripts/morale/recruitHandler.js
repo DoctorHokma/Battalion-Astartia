@@ -77,9 +77,9 @@ const updatePriceTags = function(costFactor) {
 		const unitFrame = document.getElementById(unitFrameID);
 
 		if(YourMoney < cost) {
-			unitFrame.src = "Assets/Miscellaneous/UnitUnavailableFrame.PNG";
+			unitFrame.src = "Assets/Miscellaneous/UnitUnavailableFrame.png";
 		} else {
-			unitFrame.src = "Assets/Miscellaneous/UnitAvailableFrame.PNG";
+			unitFrame.src = "Assets/Miscellaneous/UnitAvailableFrame.png";
 		}
 	}
 }

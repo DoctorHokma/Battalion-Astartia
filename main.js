@@ -129,7 +129,7 @@ document.getElementById("EndBattleCloseButton").onclick = () => {
 	battalion.setState(Battalion.STATE.MAIN_MENU);
 	battalion.musicPlayer.playTrack(OPENING_TRACK);
 
-	document.getElementById("EndBattleCloseButton").src='Assets/Miscellaneous/CloseButtonPressed.PNG';
+	document.getElementById("EndBattleCloseButton").src='Assets/Miscellaneous/CloseButtonPressed.png';
 	
 	for(let a=1; a<Constants.Commanders.length; a++) {
 		let elem=document.getElementById('AnalysisBlock'+Factions[Constants.Commanders[a].Allegiance].Preffix);
@@ -1058,11 +1058,11 @@ function AnalyseSquare(entityType, X, Y){
 		LocalBiome=BiomeMap[X][Y];
 		if(LocalizationMap[X][Y]==0){document.getElementById("DetBarName").innerHTML=Language.TerrainName[index];document.getElementById("DetBarDescription").innerHTML=Language.TerrainDesc[index];}
 		else{document.getElementById("DetBarName").innerHTML=LocalizationMap[X][Y].name;document.getElementById("DetBarDescription").innerHTML=LocalizationMap[X][Y].description;};
-		document.getElementById("DetBar").src="Assets/Miscellaneous/TerrainDetailBar.PNG";
+		document.getElementById("DetBar").src="Assets/Miscellaneous/TerrainDetailBar.png";
 		document.getElementById("DetBarDescription").style.width="350px";
 		document.getElementById("Icon").style.visibility="inherit";
 		document.getElementById("IconMesh").style.visibility="hidden";
-		document.getElementById("Icon").src="Assets/Tiles/"+Terrain[index].name+".PNG";
+		document.getElementById("Icon").src="Assets/Tiles/"+Terrain[index].name+".png";
 		document.getElementById("Icon").style.filter="hue-rotate(0deg) saturate(100%) brightness(100%)";
 		if(Terrain[index].Urbanistics>=2){document.getElementById("Icon").style.filter=Factions[ControlMap[X][Y]].ChromaCode};
 		document.getElementById("Health").style.visibility="hidden";
@@ -1070,7 +1070,7 @@ function AnalyseSquare(entityType, X, Y){
 		document.getElementById("Movement").style.visibility="hidden";
 		document.getElementById("Biome").style.visibility="inherit";
 		document.getElementById("Biome").src=BIOMES[LocalBiome].icon;
-		if(LocalBiome==1){document.getElementById("Biome").src="Assets/Traits/Temperate.PNG"};
+		if(LocalBiome==1){document.getElementById("Biome").src="Assets/Traits/Temperate.png"};
 
 		document.getElementById("Trait1").src = getTraitIcon(Terrain[index].tag1);
 		document.getElementById("Trait2").src = getTraitIcon(Terrain[index].tag2);		
@@ -1093,9 +1093,9 @@ function AnalyseSquare(entityType, X, Y){
 		//alert(movementindex);
 		document.getElementById("Icon").style.visibility="inherit";
 		document.getElementById("IconMesh").style.visibility="inherit";
-		document.getElementById("Icon").src="Assets/Units/Static/"+Units[unit.unitType].shortname+"2.PNG";
+		document.getElementById("Icon").src="Assets/Units/Static/"+Units[unit.unitType].shortname+"2.png";
 		document.getElementById("Icon").style.filter=Factions[unit.faction].ChromaCode;
-		if(!Units[unit.unitType].MLPR??false){document.getElementById("IconMesh").src="Assets/Units/StaticMeshes/"+Units[unit.unitType].shortname+"Mesh2.PNG"}else{document.getElementById("IconMesh").src="Assets/Miscellaneous/Nothing.PNG"};
+		if(!Units[unit.unitType].MLPR??false){document.getElementById("IconMesh").src="Assets/Units/StaticMeshes/"+Units[unit.unitType].shortname+"Mesh2.png"}else{document.getElementById("IconMesh").src="Assets/Miscellaneous/Nothing.png"};
 
 		document.getElementById("HPHeader").innerHTML=Language.SystemTerms[44];
 		document.getElementById("DamageHeader").innerHTML=Language.SystemTerms[45];
@@ -1104,7 +1104,7 @@ function AnalyseSquare(entityType, X, Y){
 		document.getElementById("DetBarName").innerHTML=unit.getName(battalion);
 		document.getElementById("DetBarDescription").style.width="210px";
 		document.getElementById("DetBarDescription").innerHTML=unit.getDescription(battalion);
-		document.getElementById("DetBar").src="Assets/Miscellaneous/UnitDetailBar.PNG";
+		document.getElementById("DetBar").src="Assets/Miscellaneous/UnitDetailBar.png";
 
 		document.getElementById("Health").style.visibility="inherit";
 		document.getElementById("ArmorType").style.left=273-20*(armorindex-1)+"px";
@@ -1128,10 +1128,10 @@ function AnalyseSquare(entityType, X, Y){
 
 		document.getElementById("Biome").style.visibility="hidden";
 		
-		if(Units[unit.unitType].tag1==""){document.getElementById("Trait1").src=""}else{document.getElementById("Trait1").src="Assets/Traits/"+Units[unit.unitType].tag1+".PNG";};
-		if(Units[unit.unitType].tag2==""){document.getElementById("Trait2").src=""}else{document.getElementById("Trait2").src="Assets/Traits/"+Units[unit.unitType].tag2+".PNG";};		
-		if(Units[unit.unitType].tag3==""){document.getElementById("Trait3").src=""}else{document.getElementById("Trait3").src="Assets/Traits/"+Units[unit.unitType].tag3+".PNG";};
-		if(Units[unit.unitType].tag4==""){document.getElementById("Trait4").src=""}else{document.getElementById("Trait4").src="Assets/Traits/"+Units[unit.unitType].tag4+".PNG";};
+		if(Units[unit.unitType].tag1==""){document.getElementById("Trait1").src=""}else{document.getElementById("Trait1").src="Assets/Traits/"+Units[unit.unitType].tag1+".png";};
+		if(Units[unit.unitType].tag2==""){document.getElementById("Trait2").src=""}else{document.getElementById("Trait2").src="Assets/Traits/"+Units[unit.unitType].tag2+".png";};		
+		if(Units[unit.unitType].tag3==""){document.getElementById("Trait3").src=""}else{document.getElementById("Trait3").src="Assets/Traits/"+Units[unit.unitType].tag3+".png";};
+		if(Units[unit.unitType].tag4==""){document.getElementById("Trait4").src=""}else{document.getElementById("Trait4").src="Assets/Traits/"+Units[unit.unitType].tag4+".png";};
 	}
 
 	if(entityType=="Structure"){};
@@ -1171,7 +1171,7 @@ function AttackAnimation(Unit){
 	let cellY=Units[unit.unitType].AttackBoxY ?? 56;
 	let direction=unit.direction;
 
-	document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).src="Assets/Units/Static/"+Units[unit.unitType].shortname+direction+".PNG";
+	document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).src="Assets/Units/Static/"+Units[unit.unitType].shortname+direction+".png";
 	castTime=setInterval(Act,100);
 	frame=0;
 
@@ -1189,14 +1189,14 @@ function AttackAnimation(Unit){
 			coord="rect("+top+","+right+","+bottom+","+left+")";
 
 			//dynamic unit registry needed, else the function crashes
-			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).src="Assets/Units/Attack/"+Units[unit.unitType].shortname+"Attack.PNG";
+			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).src="Assets/Units/Attack/"+Units[unit.unitType].shortname+"Attack.png";
 			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).style.clip=coord;
 			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).style.top=offsetlat;
 			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).style.left=offsetlong;
 		}
 
 		if(frame==9){clearInterval(castTime);
-			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).src="Assets/Units/Static/"+Units[unit.unitType].shortname+direction+".PNG";
+			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).src="Assets/Units/Static/"+Units[unit.unitType].shortname+direction+".png";
 			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).style.top=0+"px";	
 			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).style.left=0+"px";
 			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).style.clip="auto";
@@ -1271,7 +1271,7 @@ function Build(Structure){
 	MapRoster[MapRoster.length] = unit;
 	rostermap[X][Y] = unit;
 	document.getElementById('Entity '+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.visibility="visible";
-	document.getElementById('EntityCore '+(X+1-StandardX)+"X"+(Y+1-StandardY)).src="Assets/Units/Static/Skele3.PNG";
+	document.getElementById('EntityCore '+(X+1-StandardX)+"X"+(Y+1-StandardY)).src="Assets/Units/Static/Skele3.png";
 }
 
 /**
@@ -1298,7 +1298,7 @@ const advanceBuilding = function(index) {
 	if(construction.x >= StandardX && construction.x < StandardX + 10 && construction.y >= StandardY && construction.y < StandardY + 10) {
 		const core = document.getElementById("EntityCore "+(construction.x+2-StandardX)+"X"+(construction.y+2-StandardY));
 
-		core.src="Assets/Units/Static/"+Units[construction.unitType].shortname+"3.PNG";
+		core.src="Assets/Units/Static/"+Units[construction.unitType].shortname+"3.png";
 		core.style.filter=Factions[PlayerChoiceFaction].ChromaCode;
 	}
 
@@ -1403,13 +1403,13 @@ function castMap(Map){
 			EdgeB.style.visibility="hidden";
 			EdgeC.style.visibility="hidden";
 			EdgeD.style.visibility="hidden";
-			Badge.src="Assets/Traits/Morale0.PNG";
+			Badge.src="Assets/Traits/Morale0.png";
 			HealthBar.src="Assets/Miscellaneous/HealthBarFiller.png";
 			HealthBarContainer.src="Assets/Miscellaneous/HealthBarFrame.png";
-			EdgeA.src="Assets/Tiles/EdgeA.PNG";
-			EdgeB.src="Assets/Tiles/EdgeB.PNG";
-			EdgeC.src="Assets/Tiles/EdgeC.PNG";
-			EdgeD.src="Assets/Tiles/EdgeD.PNG";
+			EdgeA.src="Assets/Tiles/EdgeA.png";
+			EdgeB.src="Assets/Tiles/EdgeB.png";
+			EdgeC.src="Assets/Tiles/EdgeC.png";
+			EdgeD.src="Assets/Tiles/EdgeD.png";
 			Entity.style.left="0px";
 			EntityCore.style.left="0px";
 			EntityMesh.style.left="0px";
@@ -1441,8 +1441,8 @@ function castMap(Map){
 			EdgeB.style.top="0px";
 			EdgeC.style.top="49px";
 			EdgeD.style.top="51px";
-			Marker.src="Assets/Miscellaneous/Marker.PNG";
-			Canceler.src="Assets/Miscellaneous/SelectionCanceller.PNG";
+			Marker.src="Assets/Miscellaneous/Marker.png";
+			Canceler.src="Assets/Miscellaneous/SelectionCanceller.png";
 
 			Slot.addEventListener("click", function(){
 				document.getElementById("SpecialActionPanel").style.visibility="hidden";
@@ -1575,7 +1575,7 @@ function castMap(Map){
 
 			RegionNexus.id="Regional Nexus "+j+" "+i;
 			RegionNexus.style.position="absolute";
-			RegionNexus.src="Assets/Miscellaneous/Region.PNG";
+			RegionNexus.src="Assets/Miscellaneous/Region.png";
 			RegionNexus.style.left="-4px";
 			RegionNexus.style.top="-7px";
 			RegionNexus.style.visibility="hidden";
@@ -1599,10 +1599,10 @@ function castMap(Map){
 			RegionCapital.innerHTML="Capital";
 			
 
-			BorderN.src="Assets/Miscellaneous/RegionBorderN.PNG";
-			BorderE.src="Assets/Miscellaneous/RegionBorderE.PNG";
-			BorderS.src="Assets/Miscellaneous/RegionBorderS.PNG";
-			BorderW.src="Assets/Miscellaneous/RegionBorderW.PNG";
+			BorderN.src="Assets/Miscellaneous/RegionBorderN.png";
+			BorderE.src="Assets/Miscellaneous/RegionBorderE.png";
+			BorderS.src="Assets/Miscellaneous/RegionBorderS.png";
+			BorderW.src="Assets/Miscellaneous/RegionBorderW.png";
 
 			BorderN.id="NBorder "+j+"X"+i;
 			BorderE.id="EBorder "+j+"X"+i;
@@ -1733,7 +1733,7 @@ function castMapMaker() {
 			Slot.style.top=i*56+"px";
 			Slot.style.left=j*56+"px";
 			//Slot.style.zIndex=1;
-			Tile.src="Assets/Tiles/Plains.PNG";
+			Tile.src="Assets/Tiles/Plains.png";
 			Tile.style.position="absolute";
 			Tile.style.zIndex=2;
 			//Tile.style.width="56px";
@@ -1748,10 +1748,10 @@ function castMapMaker() {
 			Slot.addEventListener("mouseover",function(){if(TrackFillSwitch){RefreshTile(i+1,j+1);FocalEditorRefresh(i+1,j+1)}});
 			Slot.addEventListener("click", function(){RefreshTile(i+1,j+1);FocalEditorRefresh(i+1,j+1)});
 			Slot.addEventListener("contextmenu", function(){document.getElementById('EditorDetailPanel').style.visibility='inherit'; EditorCustoTileX=i+EditorStandardX; EditorCustoTileY=j+EditorStandardY;});
-			A.src="Assets/Tiles/EdgeA.PNG";
-			B.src="Assets/Tiles/EdgeB.PNG";
-			C.src="Assets/Tiles/EdgeC.PNG";
-			D.src="Assets/Tiles/EdgeD.PNG";
+			A.src="Assets/Tiles/EdgeA.png";
+			B.src="Assets/Tiles/EdgeB.png";
+			C.src="Assets/Tiles/EdgeC.png";
+			D.src="Assets/Tiles/EdgeD.png";
 			A.style.zIndex=2;
 			B.style.zIndex=2;
 			C.style.zIndex=2;
@@ -1820,7 +1820,7 @@ function castMapMaker() {
 			regionNexus.style.visibility="hidden";
 			regionNexus.style.left="-3px";
 			regionNexus.style.top="-4px";
-			regionNexus.src="Assets/Miscellaneous/Region.PNG";
+			regionNexus.src="Assets/Miscellaneous/Region.png";
 
 			regionName.id="regional Name "+i+" "+j;
 			regionName.style.color="beige";
@@ -1844,10 +1844,10 @@ function castMapMaker() {
 			regionCapital.style.top="28px";
 			regionCapital.innerHTML="Center";
 
-			borderN.src="Assets/Miscellaneous/RegionBorderN.PNG";
-			borderE.src="Assets/Miscellaneous/RegionBorderE.PNG";
-			borderS.src="Assets/Miscellaneous/RegionBorderS.PNG";
-			borderW.src="Assets/Miscellaneous/RegionBorderW.PNG";
+			borderN.src="Assets/Miscellaneous/RegionBorderN.png";
+			borderE.src="Assets/Miscellaneous/RegionBorderE.png";
+			borderS.src="Assets/Miscellaneous/RegionBorderS.png";
+			borderW.src="Assets/Miscellaneous/RegionBorderW.png";
 			borderN.id="Nborder "+i+" "+j;
 			borderE.id="Eborder "+i+" "+j;
 			borderS.id="Sborder "+i+" "+j;
@@ -1903,11 +1903,11 @@ function CastEntityMap(Map, Roster){
 		document.getElementById("EntityCore "+(X)+"X"+(Y)).style.visibility="inherit";
 		document.getElementById("Entity "+(X)+"X"+(Y)).style.top=(Units[unit.unitType].StaticOffsetY ?? [0,0,0,0,0])[unit.direction] + "px";
 		document.getElementById("Entity "+(X)+"X"+(Y)).style.left=(Units[unit.unitType].StaticOffsetX ?? [0,0,0,0,0])[unit.direction] + "px";
-		document.getElementById("EntityCore "+(X)+"X"+(Y)).src="Assets/Units/Static/"+Units[unit.unitType].shortname+unit.direction+".PNG";
+		document.getElementById("EntityCore "+(X)+"X"+(Y)).src="Assets/Units/Static/"+Units[unit.unitType].shortname+unit.direction+".png";
 
 		if(!Units[unit.unitType].MLPR) {
 			document.getElementById("EntityMesh "+(X)+"X"+(Y)).style.visibility="inherit";
-			document.getElementById("EntityMesh "+(X)+"X"+(Y)).src="Assets/Units/StaticMeshes/"+Units[unit.unitType].shortname+"Mesh"+unit.direction+".PNG";
+			document.getElementById("EntityMesh "+(X)+"X"+(Y)).src="Assets/Units/StaticMeshes/"+Units[unit.unitType].shortname+"Mesh"+unit.direction+".png";
 		}
 
 		let Filter = Factions[unit.faction].ChromaCode;
@@ -2019,17 +2019,17 @@ function CBLARG(r,t){
 
 
 					
-					//if(dir+or==3){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/ElbowB.PNG"};
-					//if(dir+or==7){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/ElbowC.PNG"};
-					//if(dir+or==5 && (dir-or==1 || or-dir==1)){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/ElbowA.PNG"};
-					//if(dir+or==5 && (dir-or==3 || or-dir==3)){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/ElbowD.PNG"};
+					//if(dir+or==3){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/ElbowB.png"};
+					//if(dir+or==7){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/ElbowC.png"};
+					//if(dir+or==5 && (dir-or==1 || or-dir==1)){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/ElbowA.png"};
+					//if(dir+or==5 && (dir-or==3 || or-dir==3)){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/ElbowD.png"};
 
 
 					//Wipes the BLARG path and repaths the arrow
 					let BX=ChosenUnit.ics;
 					let BY=ChosenUnit.igrec;
 					let ParaPath=[{X:ChosenUnit.ics,Y:ChosenUnit.igrec}];
-					for(let B=1; B<BLARG.length; B++){document.getElementById("BLARG "+(BLARG[B].X+1)+"X"+(BLARG[B].Y+1)).src="Assets/Miscellaneous/Nothing.PNG"};
+					for(let B=1; B<BLARG.length; B++){document.getElementById("BLARG "+(BLARG[B].X+1)+"X"+(BLARG[B].Y+1)).src="Assets/Miscellaneous/Nothing.png"};
 
 					for(let BL=0; BL<NeoPath.length-1; BL++){
 
@@ -2040,11 +2040,11 @@ function CBLARG(r,t){
 
 
 
-						//document.getElementById("BLARG "+(ParaPath[BL].X)+"X"+(ParaPath[BL].Y)).src="Assets/Miscellaneous/Nothing.PNG";
+						//document.getElementById("BLARG "+(ParaPath[BL].X)+"X"+(ParaPath[BL].Y)).src="Assets/Miscellaneous/Nothing.png";
 
 
-						//if(Case==0){document.getElementById('BLARG '+(ParaPath[BL].X)+"X"+(ParaPath[BL].Y)).src="Assets/BLARG/StreakH.PNG";}
-						//else{document.getElementById('BLARG '+(ParaPath[BL].X)+"X"+(ParaPath[BL].Y)).src="Assets/BLARG/Elbow"+Case+".PNG"};
+						//if(Case==0){document.getElementById('BLARG '+(ParaPath[BL].X)+"X"+(ParaPath[BL].Y)).src="Assets/BLARG/StreakH.png";}
+						//else{document.getElementById('BLARG '+(ParaPath[BL].X)+"X"+(ParaPath[BL].Y)).src="Assets/BLARG/Elbow"+Case+".png"};
 
 
 							};
@@ -2066,7 +2066,7 @@ function CBLARG(r,t){
 						if(ParaPath[q].X>ParaPath[q-1].X){or=3};
 						if(ParaPath[q].Y>ParaPath[q-1].Y){or=2};};
 						//if(dir==0){BLARG.pop()};
-						//if(q==1){document.getElementById('BLARG '+(ChosenUnit.X+1)+"X"+(ChosenUnit.Y+1)).src="Assets/Emission/"+or+".PNG"};
+						//if(q==1){document.getElementById('BLARG '+(ChosenUnit.X+1)+"X"+(ChosenUnit.Y+1)).src="Assets/Emission/"+or+".png"};
 
 						if(q<ParaPath.length-1){
 						if(ParaPath[q+1].X>ParaPath[q].X){dir=3};
@@ -2095,12 +2095,12 @@ function CBLARG(r,t){
 
 
 						if(Case!=0){
-							document.getElementById('BLARG '+(ParaPath[q].X)+"X"+(ParaPath[q].Y)).src="Assets/BLARG/Elbow"+Case+".PNG";
+							document.getElementById('BLARG '+(ParaPath[q].X)+"X"+(ParaPath[q].Y)).src="Assets/BLARG/Elbow"+Case+".png";
 
 
 						};
-						if(Case==0 && or%2==1){document.getElementById('BLARG '+(ParaPath[q].X)+"X"+(ParaPath[q].Y)).src="Assets/BLARG/StreakV.PNG";};
-						if(Case==0 && or%2==0){document.getElementById('BLARG '+(ParaPath[q].X)+"X"+(ParaPath[q].Y)).src="Assets/BLARG/StreakH.PNG";};
+						if(Case==0 && or%2==1){document.getElementById('BLARG '+(ParaPath[q].X)+"X"+(ParaPath[q].Y)).src="Assets/BLARG/StreakV.png";};
+						if(Case==0 && or%2==0){document.getElementById('BLARG '+(ParaPath[q].X)+"X"+(ParaPath[q].Y)).src="Assets/BLARG/StreakH.png";};
 
 
 
@@ -2128,20 +2128,20 @@ function CBLARG(r,t){
 					let xdif=Math.abs(r-BLARG[BLARG.length-1].X);
 					let ydif=Math.abs(t-BLARG[BLARG.length-1].Y);
 					if(xdif+ydif==1){canBlarg=true};
-					if(canBlarg){document.getElementById("Ctep-"+r+"-"+t).src="Assets/BLARG/Ctep"+dir+".PNG"};
+					if(canBlarg){document.getElementById("Ctep-"+r+"-"+t).src="Assets/BLARG/Ctep"+dir+".png"};
 
 					//Builds the new arrow | tail section
 					//alert("Ctep-"+(ChosenUnit.ics)+"-"+(ChosenUnit.igrec));
 					if(BLARG.length>1){
-					if(ChosenUnit.ics-1>BLARG[1].X){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission1.PNG"};
-					if(ChosenUnit.igrec-1<BLARG[1].Y){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission2.PNG"};
-					if(ChosenUnit.ics-1<BLARG[1].X){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission3.PNG"};
-					if(ChosenUnit.igrec-1>BLARG[1].Y){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission4.PNG"}};
+					if(ChosenUnit.ics-1>BLARG[1].X){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission1.png"};
+					if(ChosenUnit.igrec-1<BLARG[1].Y){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission2.png"};
+					if(ChosenUnit.ics-1<BLARG[1].X){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission3.png"};
+					if(ChosenUnit.igrec-1>BLARG[1].Y){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission4.png"}};
 					if(BLARG.length==1){
-					if(ChosenUnit.ics-1>r){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission1.PNG"};
-					if(ChosenUnit.igrec-1<t){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission2.PNG"};
-					if(ChosenUnit.ics-1<r){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission3.PNG"};
-					if(ChosenUnit.igrec-1>t){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission4.PNG"}};
+					if(ChosenUnit.ics-1>r){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission1.png"};
+					if(ChosenUnit.igrec-1<t){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission2.png"};
+					if(ChosenUnit.ics-1<r){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission3.png"};
+					if(ChosenUnit.igrec-1>t){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission4.png"}};
 					
 
 
@@ -2160,19 +2160,19 @@ function CBLARG(r,t){
 					if(or==4&&dir==3){Case="B"};*/
 
 					//alert(dir+" "+or+"     "+dir%2+" "+or%2);
-					//if((dir%2==0)&&(or%2==0)){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/StreakH.PNG"}
-					//else if((dir%2==1)&&(or%2==1)){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/StreakV.PNG"}
-					//else{document.getElementById('BLARG '+(BLARG[BLARG.length-1].X)+"X"+(BLARG[BLARG.length-1].Y)).src="Assets/BLARG/Elbow"+Case+".PNG"};
+					//if((dir%2==0)&&(or%2==0)){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/StreakH.png"}
+					//else if((dir%2==1)&&(or%2==1)){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/StreakV.png"}
+					//else{document.getElementById('BLARG '+(BLARG[BLARG.length-1].X)+"X"+(BLARG[BLARG.length-1].Y)).src="Assets/BLARG/Elbow"+Case+".png"};
 
 
-					/*}else{document.getElementById('BLARG '+(BLARG[0].X+1)+"X"+(BLARG[0].Y+1)).src="Assets/BLARG/Emission"+dir+".PNG";
+					/*}else{document.getElementById('BLARG '+(BLARG[0].X+1)+"X"+(BLARG[0].Y+1)).src="Assets/BLARG/Emission"+dir+".png";
 					let Xer=BLARG[0].X;
 					let Yer=BLARG[0].Y;
 					if(dir==1){Xer-=1};
 					if(dir==2){Yer+=1};
 					if(dir==3){Xer+=1};
 					if(dir==4){Yer-=1};
-					document.getElementById('Ctep-'+Xer+"-"+Yer).src="Assets/BLARG/Ctep"+dir+".PNG"};*/
+					document.getElementById('Ctep-'+Xer+"-"+Yer).src="Assets/BLARG/Ctep"+dir+".png"};*/
 };
 
 function Cloak(X,Y,type,faction){
@@ -2214,7 +2214,7 @@ function ConvoyPickup(Unit){
 		rostermap[Unit.x][Unit.y].speed=Units[Cargo].Speed;
 		rostermap[Unit.x][Unit.y].movementType=Units[Cargo].Movement;
 
-		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).src="Assets/Units/Static/"+Units[Cargo].shortname+rostermap[Unit.x][Unit.y].direction+".PNG";
+		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).src="Assets/Units/Static/"+Units[Cargo].shortname+rostermap[Unit.x][Unit.y].direction+".png";
 		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).style.left=(Units[Cargo].StaticOffsetX??[0,0,0,0,0])[rostermap[Unit.x][Unit.y].direction]+"px";
 		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).style.top=(Units[Cargo].StaticOffsetY??[0,0,0,0,0])[rostermap[Unit.x][Unit.y].direction]+"px";
 
@@ -2237,7 +2237,7 @@ function ConvoyPickup(Unit){
 		rostermap[Unit.x][Unit.y].speed=5;
 		rostermap[Unit.x][Unit.y].movementType="Rudder";
 
-		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).src="Assets/Units/Static/Convoy"+rostermap[Unit.x][Unit.y].direction+".PNG";
+		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).src="Assets/Units/Static/Convoy"+rostermap[Unit.x][Unit.y].direction+".png";
 	}
 }
 
@@ -2388,7 +2388,7 @@ function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomNam
 
 	SubRosters[fAcTiOn][SubRosters[fAcTiOn].length] = unit;
 
-	document.getElementById("EntityCore "+X+"X"+Y).src="Assets/Units/Static/"+Units[Type].shortname+unit.direction+".PNG";
+	document.getElementById("EntityCore "+X+"X"+Y).src="Assets/Units/Static/"+Units[Type].shortname+unit.direction+".png";
 	document.getElementById("Entity "+X+"X"+Y).style.visibility="visible";
 	document.getElementById("Entity "+X+"X"+Y).style.left=(Units[Type].StaticOffsetX??[0,0,0,0,0])[1]+"px";
 	document.getElementById("Entity "+X+"X"+Y).style.top=(Units[Type].StaticOffsetY??[0,0,0,0,0])[1]+"px";
@@ -2422,7 +2422,7 @@ function drawEditorTile(){
 function drawUnit(Map, UnitType, direction, x, y, index, rostermap){
 	//drawUnit seems to be a residual function
 	var newPic=document.createElement("img");
-	adjective="Assets/Units/Static/"+Units[UnitType].shortname+direction+".PNG";
+	adjective="Assets/Units/Static/"+Units[UnitType].shortname+direction+".png";
 	newPic.src=adjective;
 	newPic.id=rostermap[x][y].ID;
 	newPic.style.position="absolute";
@@ -2457,7 +2457,7 @@ function EndBattle(){
 
 	for(let z = 1; z <= 4; z++) {
 		document.getElementById("Trait"+z).src=""};
-		document.getElementById("DetBar").src="Assets/Miscellaneous/PlainDetailBar.PNG";
+		document.getElementById("DetBar").src="Assets/Miscellaneous/PlainDetailBar.png";
 		document.getElementById("Icon").style.visibility="hidden";
 		document.getElementById("DetBarName").innerHTML="";
 		document.getElementById("DetBarDescription").innerHTML="";
@@ -2477,9 +2477,9 @@ function EndBattle(){
 			battalion.soundPlayer.playSound("Defeat");
 		}
 
-		if(Victory){document.getElementById("EndBattleImage").src="Assets/Paralogues/Victory"+Preffix+".PNG";
+		if(Victory){document.getElementById("EndBattleImage").src="Assets/Paralogues/Victory"+Preffix+".png";
 			Quote=Language.VictoryQuotes}else{
-			document.getElementById("EndBattleImage").src="Assets/Paralogues/Defeat"+Preffix+".PNG";
+			document.getElementById("EndBattleImage").src="Assets/Paralogues/Defeat"+Preffix+".png";
 			Quote=Language.DefeatQuotes;
 		};
 
@@ -2691,7 +2691,7 @@ function EndTurn(SubRosters,Map,Constants,Roster){
 		//alert(Turn);
 		//alert(dudeIndex);
 		document.getElementById("Glassplatecolor"+a).style.background=Factions[dudeIndex].color;
-		//if(Factions==CampaignFactions){document.getElementById("GlassplateCrest"+a).src="Assets/Emblems/Crest"+Factions[dudeIndex].Preffix+".PNG"}else{document.getElementById("GlassplateCrest"+a).src="Assets/Emblems/CrestNON.PNG"};
+		//if(Factions==CampaignFactions){document.getElementById("GlassplateCrest"+a).src="Assets/Emblems/Crest"+Factions[dudeIndex].Preffix+".png"}else{document.getElementById("GlassplateCrest"+a).src="Assets/Emblems/CrestNON.png"};
 		document.getElementById("Glassplatename"+a).innerHTML=Factions[dudeIndex].name;
 		if(document.getElementById("Glassplatecolor"+a).style.background!='black'){document.getElementById("Glassplatename"+a).style.color='black'}else{document.getElementById("Glassplatename"+a).style.color='indigo'};};
 
@@ -2808,8 +2808,8 @@ function FactionInformations(Ordinal){
 
 	for(let a=1; a<=5; a++){
 		//alert(Factions[index].SpecialInfantry);
-		if(!Factions[index].SpecialInfantry[a-1]){document.getElementById("SpecInf"+a).src="Assets/Traits/SpecInf0.PNG"}else{document.getElementById("SpecInf"+a).src="Assets/Traits/SpecInf"+a+".PNG"};
-		if(!Factions[index].SpecialVehicles[a-1]){document.getElementById("SpecTank"+a).src="Assets/Traits/SpecTank0.PNG"}else{document.getElementById("SpecTank"+a).src="Assets/Traits/SpecTank"+a+".PNG"};
+		if(!Factions[index].SpecialInfantry[a-1]){document.getElementById("SpecInf"+a).src="Assets/Traits/SpecInf0.png"}else{document.getElementById("SpecInf"+a).src="Assets/Traits/SpecInf"+a+".png"};
+		if(!Factions[index].SpecialVehicles[a-1]){document.getElementById("SpecTank"+a).src="Assets/Traits/SpecTank0.png"}else{document.getElementById("SpecTank"+a).src="Assets/Traits/SpecTank"+a+".png"};
 
 
 		};
@@ -2853,7 +2853,7 @@ function FillMap(Map){
 				case "LF":
 					var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
 					var offset=Terrain[Map[a][b]].Offsets[type-1];
-					var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+					var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 					document.getElementById(TileAdress).style.top=offset+"px";
 					document.getElementById(TileAdress).src=variant;
 					break;
@@ -2866,7 +2866,7 @@ function FillMap(Map){
 					if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S"){type+=4};
 					if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){type+=8};
 
-					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 					document.getElementById(TileAdress).style.top="0px";
 					document.getElementById(TileAdress).src=Var;
 					break;
@@ -2884,7 +2884,7 @@ function FillMap(Map){
 					if(a<Map.length-1 && b>=1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("C "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("C "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a+1][b-1]].edgeC}};
 					if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("D "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("D "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a+1][b+1]].edgeD}};
 
-					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 					document.getElementById(TileAdress).style.top="0px";
 					document.getElementById(TileAdress).src=Var;
 					break;
@@ -2897,7 +2897,7 @@ function FillMap(Map){
 					if(Terrain[D3].Class=="WA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="WF" || Terrain[D3].Class=="WE" || Terrain[D3].Class=="B"){type+=4};
 					if(Terrain[D4].Class=="WA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="WF" || Terrain[D4].Class=="WE" || Terrain[D4].Class=="B"){type+=8};
 
-					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 					document.getElementById(TileAdress).style.top="0px";
 					document.getElementById(TileAdress).src=Var;
 					break;
@@ -2905,7 +2905,7 @@ function FillMap(Map){
 				case "WF":
 					var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
 					var offset=Terrain[Map[a][b]].Offsets[type-1];
-					var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".PNG";
+					var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".png";
 					document.getElementById(TileAdress).style.top=offset+"px";
 					document.getElementById(TileAdress).src=variant;
 					break;
@@ -2925,8 +2925,8 @@ function FillMap(Map){
 
 					//EditorControlMap[a][b]=EditationColor;
 					var offset=Terrain[Map[a][b]].Offset;
-					var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".PNG";
-					var undervar="Assets/Tiles/Sea"+underType+".PNG";
+					var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".png";
+					var undervar="Assets/Tiles/Sea"+underType+".png";
 					document.getElementById(Strucdress).style.visibility="inherit";
 					document.getElementById(Strucdress).style.filter=Factions[ControlMap[a][b]].ChromaCode;
 					document.getElementById(Strucdress).style.top=offset+"px";
@@ -2986,7 +2986,7 @@ function FillMap(Map){
 
 					};
 
-					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+axis+type+".PNG";
+					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+axis+type+".png";
 					document.getElementById(TileAdress).style.top=Terrain[Map[a][b]].Offset+"px";
 					document.getElementById(TileAdress).src=Var;
 					break;
@@ -3009,7 +3009,7 @@ function FillMap(Map){
 					if(a<Map.length-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("C "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("C "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a+1][b-1]].edgeC}};
 					if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("D "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("D "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a+1][b+1]].edgeD}};
 
-					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 					document.getElementById(TileAdress).style.top="0px";
 					document.getElementById(TileAdress).src=Var;
 					break;
@@ -3025,8 +3025,8 @@ function FillMap(Map){
 
 
 					var offset=Terrain[Map[a][b]].Offset;
-					var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".PNG";
-					var undervar="Assets/Tiles/Road"+undertype+Biome+".PNG";
+					var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".png";
+					var undervar="Assets/Tiles/Road"+undertype+Biome+".png";
 					document.getElementById(Strucdress).style.visibility="visible";
 					document.getElementById(Strucdress).style.filter=Factions[ControlMap[a][b]].ChromaCode;
 					document.getElementById(Strucdress).style.top=offset+"px";
@@ -3077,8 +3077,8 @@ function FocalEditorRefresh(X,Y){
 		if(EditationDirection>4){EditationDirection-=4};
 		MemoryX=X;
 		MemoryY=Y;
-		document.getElementById("EntityCore "+X+" X "+Y).src="Assets/Units/Static/"+Units[Chosenunit].shortname+EditationDirection+".PNG";
-		if(Units[Chosenunit].MLPR??false){document.getElementById("EntityMesh "+X+" X "+Y).src="Assets/Miscellaneous/Nothing.PNG"}else{document.getElementById("EntityMesh "+X+" X "+Y).src="Assets/Units/StaticMeshes/"+Units[Chosenunit].shortname+"Mesh"+EditationDirection+".PNG";};
+		document.getElementById("EntityCore "+X+" X "+Y).src="Assets/Units/Static/"+Units[Chosenunit].shortname+EditationDirection+".png";
+		if(Units[Chosenunit].MLPR??false){document.getElementById("EntityMesh "+X+" X "+Y).src="Assets/Miscellaneous/Nothing.png"}else{document.getElementById("EntityMesh "+X+" X "+Y).src="Assets/Units/StaticMeshes/"+Units[Chosenunit].shortname+"Mesh"+EditationDirection+".png";};
 		document.getElementById("Entity "+X+" X "+Y).style.visibility="inherit";
 		document.getElementById("EntityCore "+X+" X "+Y).style.filter=Factions[EditationColor].ChromaCode;
 		document.getElementById("Entity "+X+" X "+Y).style.left=(Units[Chosenunit].StaticOffsetX ?? [0,0,0,0,0])[EditationDirection]+"px";
@@ -3124,7 +3124,7 @@ function FocalTileRefresh(X,Y){
 			document.getElementById(Altdress).style.top=(Units[unit.unitType].StaticOffsetY ?? [0,0,0,0,0])[unit.direction]+"px";
 			document.getElementById(Altdress).style.left=(Units[unit.unitType].StaticOffsetX ?? [0,0,0,0,0])[unit.direction]+"px";
 
-			document.getElementById(Altdress).src="Assets/Units/Static/"+Units[rostermap[ics-1][igrec-1].unitType].shortname+rostermap[ics-1][igrec-1].direction+".PNG";
+			document.getElementById(Altdress).src="Assets/Units/Static/"+Units[rostermap[ics-1][igrec-1].unitType].shortname+rostermap[ics-1][igrec-1].direction+".png";
 		}else{document.getElementById(Altdress).style.visibility="hidden";};
 
 
@@ -3149,7 +3149,7 @@ function FocalTileRefresh(X,Y){
 		case "LF":
 			var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
 			var offset=Terrain[Map[a][b]].Offsets[type-1];
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top=offset+"px";
 			document.getElementById(TileAdress).src=variant;
 			break;
@@ -3163,7 +3163,7 @@ function FocalTileRefresh(X,Y){
 			if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){type+=8};
 
 			//console.log(Terrain[EditorMap[ics-1][igrec-1]].BiomeIndex);
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top="0px";
 			document.getElementById(TileAdress).src=Var;
 			break;
@@ -3181,7 +3181,7 @@ function FocalTileRefresh(X,Y){
 			if(a<Map.length-1 && b>=1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("c "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b-1]].edgeC}};
 			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
 
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top="0px";
 			document.getElementById(TileAdress).src=Var;
 
@@ -3197,7 +3197,7 @@ function FocalTileRefresh(X,Y){
 			if(Terrain[D3].Class=="WA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="WF" || Terrain[D3].Class=="WE" || Terrain[D3].Class=="B"){type+=4};
 			if(Terrain[D4].Class=="WA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="WF" || Terrain[D4].Class=="WE" || Terrain[D4].Class=="B"){type+=8};
 
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top="0px";
 			document.getElementById(TileAdress).src=Var;
 
@@ -3206,7 +3206,7 @@ function FocalTileRefresh(X,Y){
 		case "WF":
 			var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
 			var offset=Terrain[Map[a][b]].Offsets[type-1];
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".PNG";
+			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".png";
 			document.getElementById(TileAdress).style.top=offset+"px";
 			document.getElementById(TileAdress).src=variant;
 
@@ -3227,8 +3227,8 @@ function FocalTileRefresh(X,Y){
 
 			//EditorControlMap[a][b]=EditationColor;
 			var offset=Terrain[Map[a][b]].Offset;
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".PNG";
-			var undervar="Assets/Tiles/Sea"+underType+".PNG";
+			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".png";
+			var undervar="Assets/Tiles/Sea"+underType+".png";
 			document.getElementById(Strucdress).style.visibility="inherit";
 			document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[a][b]].ChromaCode;
 			document.getElementById(Strucdress).style.top=offset+"px";
@@ -3290,7 +3290,7 @@ function FocalTileRefresh(X,Y){
 
 			};
 
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+axis+type+".PNG";
+			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+axis+type+".png";
 			document.getElementById(TileAdress).style.top=Terrain[Map[a][b]].Offset+"px";
 			document.getElementById(TileAdress).src=Var;
 
@@ -3314,7 +3314,7 @@ function FocalTileRefresh(X,Y){
 			if(a<Map.length-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("c "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b-1]].edgeC}};
 			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
 
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top="0px";
 			document.getElementById(TileAdress).src=Var;
 
@@ -3331,8 +3331,8 @@ function FocalTileRefresh(X,Y){
 
 			//EditorControlMap[a][b]=EditationColor;
 			var offset=Terrain[Map[a][b]].Offset;
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".PNG";
-			var undervar="Assets/Tiles/Road"+undertype+Biome+".PNG";
+			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".png";
+			var undervar="Assets/Tiles/Road"+undertype+Biome+".png";
 			document.getElementById(Strucdress).style.visibility="inherit";
 			//console.log(Factions[ControlMap[a][b]].ChromaCode);
 			document.getElementById(Strucdress).style.filter=Factions[ControlMap[a][b]].ChromaCode;
@@ -3491,7 +3491,7 @@ function HoverBuilding(Phase,Building){
 
 		document.getElementById(slot).style.top=7+(Units[Building].StaticOffsetY ?? [0,0,0,0,0])[3]+"px";
 		document.getElementById(slot).style.left=14+(Units[Building].StaticOffsetX ?? [0,0,0,0,0])[3]+"px";
-		document.getElementById(slot).src="Assets/Units/Static/"+Units[Building].shortname+"3.PNG";
+		document.getElementById(slot).src="Assets/Units/Static/"+Units[Building].shortname+"3.png";
 
 	}
 }
@@ -3561,18 +3561,18 @@ function initializeBattle(){
 		document.getElementById('TopScrollBar').style.zIndex="5";
 		document.getElementById('BottomScrollBar').style.zIndex="5";
 		}else{
-		document.getElementById('TopScrollBar').src="Assets/Miscellaneous/Nothing.PNG";
+		document.getElementById('TopScrollBar').src="Assets/Miscellaneous/Nothing.png";
 		document.getElementById('TopScrollBar').style.zIndex="0";
-		document.getElementById('BottomScrollBar').src="Assets/Miscellaneous/Nothing.PNG";
+		document.getElementById('BottomScrollBar').src="Assets/Miscellaneous/Nothing.png";
 		document.getElementById('BottomScrollBar').style.zIndex="0";
 		};
 	if(Map[0].length>10){
 		document.getElementById('LeftScrollBar').style.zIndex="5";
 		document.getElementById('RightScrollBar').style.zIndex="5";
 		}else{
-		document.getElementById('LeftScrollBar').src="Assets/Miscellaneous/Nothing.PNG";
+		document.getElementById('LeftScrollBar').src="Assets/Miscellaneous/Nothing.png";
 		document.getElementById('LeftScrollBar').style.zIndex="0";
-		document.getElementById('RightScrollBar').src="Assets/Miscellaneous/Nothing.PNG";
+		document.getElementById('RightScrollBar').src="Assets/Miscellaneous/Nothing.png";
 		document.getElementById('RightScrollBar').style.zIndex="0";
 	};
 	/*
@@ -3662,10 +3662,10 @@ function initializeBattle(){
 	for (let dick=0; dick<Map.length; dick++){for(let cunt=0; cunt<Map[0].length; cunt++){
 		if(TileFlagMap[dick][cunt]!=0){//alert("Chuchu");
 		document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).style.visibility='inherit';
-		if(TileFlagMap[dick][cunt]==1){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/CaptureFlag.PNG"};
-		if(TileFlagMap[dick][cunt]==2){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/DefendFlag.PNG"};
-		//if(UnitFlagMap[dick][cunt]==3){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/DestroyFlag.PNG"};
-		//if(UnitFlagMap[dick][cunt]==4){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/ProtectFlag.PNG"};
+		if(TileFlagMap[dick][cunt]==1){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/CaptureFlag.png"};
+		if(TileFlagMap[dick][cunt]==2){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/DefendFlag.png"};
+		//if(UnitFlagMap[dick][cunt]==3){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/DestroyFlag.png"};
+		//if(UnitFlagMap[dick][cunt]==4){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/ProtectFlag.png"};
 	}
 
 		}};
@@ -3735,18 +3735,18 @@ function initializeSpecialBattle(Level){
 		document.getElementById('TopScrollBar').style.zIndex="5";
 		document.getElementById('BottomScrollBar').style.zIndex="5";
 		}else{
-		document.getElementById('TopScrollBar').src="Assets/Miscellaneous/Nothing.PNG";
+		document.getElementById('TopScrollBar').src="Assets/Miscellaneous/Nothing.png";
 		document.getElementById('TopScrollBar').style.zIndex="0";
-		document.getElementById('BottomScrollBar').src="Assets/Miscellaneous/Nothing.PNG";
+		document.getElementById('BottomScrollBar').src="Assets/Miscellaneous/Nothing.png";
 		document.getElementById('BottomScrollBar').style.zIndex="0";
 		};
 	if(Map[0].length>10){
 		document.getElementById('LeftScrollBar').style.zIndex="5";
 		document.getElementById('RightScrollBar').style.zIndex="5";
 		}else{
-		document.getElementById('LeftScrollBar').src="Assets/Miscellaneous/Nothing.PNG";
+		document.getElementById('LeftScrollBar').src="Assets/Miscellaneous/Nothing.png";
 		document.getElementById('LeftScrollBar').style.zIndex="0";
-		document.getElementById('RightScrollBar').src="Assets/Miscellaneous/Nothing.PNG";
+		document.getElementById('RightScrollBar').src="Assets/Miscellaneous/Nothing.png";
 		document.getElementById('RightScrollBar').style.zIndex="0";
 	};
 
@@ -3823,10 +3823,10 @@ function initializeSpecialBattle(Level){
 	for (let dick=0; dick<Map.length; dick++){for(let cunt=0; cunt<Map[0].length; cunt++){
 		if(TileFlagMap[dick][cunt]!=0){//alert("Chuchu");
 		document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).style.visibility='inherit';
-		if(TileFlagMap[dick][cunt]==1){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/CaptureFlag.PNG"};
-		if(TileFlagMap[dick][cunt]==2){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/DefendFlag.PNG"};
-		//if(UnitFlagMap[dick][cunt]==3){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/DestroyFlag.PNG"};
-		//if(UnitFlagMap[dick][cunt]==4){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/ProtectFlag.PNG"};
+		if(TileFlagMap[dick][cunt]==1){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/CaptureFlag.png"};
+		if(TileFlagMap[dick][cunt]==2){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/DefendFlag.png"};
+		//if(UnitFlagMap[dick][cunt]==3){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/DestroyFlag.png"};
+		//if(UnitFlagMap[dick][cunt]==4){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/ProtectFlag.png"};
 	}
 
 		}};
@@ -3916,7 +3916,7 @@ function InterphaseBanner(Faction,Turn){
 	document.getElementById("InterphaseTurn").innerHTML="Turn:"+Turn;
 
 	//alert(Faction);
-	document.getElementById("CommanderPortrait").src="Assets/Portraits/"+Constants.Commanders[((Turn-1)%(Constants.Commanders.length-1))+1].Name+"Portrait.PNG";
+	document.getElementById("CommanderPortrait").src="Assets/Portraits/"+Constants.Commanders[((Turn-1)%(Constants.Commanders.length-1))+1].Name+"Portrait.png";
 
 	//FactionModuloIndex updating
 	let FMI=JSON.parse(JSON.stringify(AliveFactionList.length));
@@ -3978,7 +3978,7 @@ function InterphaseBanner(Faction,Turn){
 		//alert(dudeIndex);
 		document.getElementById("Glassplatecolor"+a).style.background=Factions[dudeIndex].color;
 		document.getElementById("Glassplatename"+a).innerHTML=Factions[dudeIndex].name;
-		if(Factions==CampaignFactions){document.getElementById("GlassplateCrest"+a).src="Assets/Emblems/Crest"+Factions[dudeIndex].Preffix+".PNG"}else{document.getElementById("GlassplateCrest"+a).src="Assets/Emblems/CrestNON.PNG"};
+		if(Factions==CampaignFactions){document.getElementById("GlassplateCrest"+a).src="Assets/Emblems/Crest"+Factions[dudeIndex].Preffix+".png"}else{document.getElementById("GlassplateCrest"+a).src="Assets/Emblems/CrestNON.png"};
 		if(document.getElementById("Glassplatecolor"+a).style.background!='black'){document.getElementById("Glassplatename"+a).style.color='black'}else{document.getElementById("Glassplatename"+a).style.color='indigo'};};
 
 		//alert(((Turn-1)%(Constants.Commanders.length-1))+1);
@@ -4075,7 +4075,7 @@ function launchDialogueBloc(Bloc, Frame){
 
 	document.getElementById("DialogueBox").style.visibility="visible";
 	document.getElementById("DialogueSkip").style.visibility="visible";
-	document.getElementById("Portrait").src=("Assets/Portraits/"+Bloc[Frame]+"Portrait.PNG")??("Assets/Portraits/DefaultPortrait.PNG");
+	document.getElementById("Portrait").src=("Assets/Portraits/"+Bloc[Frame]+"Portrait.png")??("Assets/Portraits/DefaultPortrait.png");
 	document.getElementById("CharacterName").innerHTML=Bloc[Frame];
 
 	//document.getElementById("DialogueInstance").innerHTML=Bloc[Frame+1];
@@ -4131,11 +4131,11 @@ function LaunchConstructorPanel(X,Y){
 	document.getElementById('BuildingConstructionPanel').style.top=Math.max(Math.min(document.getElementById("UnitMap").scrollTop+280, X*56-112),document.getElementById("UnitMap").scrollTop)+"px";
 
 	for(let c=1;c<=8;c++){
-		document.getElementById("BuildingMontre"+c).src="Assets/Units/Static/"+Units[60+c].shortname+"3.PNG";
+		document.getElementById("BuildingMontre"+c).src="Assets/Units/Static/"+Units[60+c].shortname+"3.png";
 		document.getElementById("BuildingMontre"+c).style.filter=Factions[PlayerChoiceFaction].ChromaCode;
 		document.getElementById("BuildingMontre"+c).style.top=7+(Units[60+c].StaticOffsetY ?? [0,0,0,0,0])[3]+"px";
 		document.getElementById("BuildingMontre"+c).style.left=14+(Units[60+c].StaticOffsetX ?? [0,0,0,0,0])[3]+"px";
-		if(!Units[60+c].MLPR??false){document.getElementById("BuildingMesh"+c).style.visibility='inherit';document.getElementById("BuildingMesh"+c).src="Assets/Units/StaticMeshes/"+Units[60+c].shortname+"Mesh3.PNG"}else{document.getElementById("BuildingMesh"+c).style.visibility='hidden'};
+		if(!Units[60+c].MLPR??false){document.getElementById("BuildingMesh"+c).style.visibility='inherit';document.getElementById("BuildingMesh"+c).src="Assets/Units/StaticMeshes/"+Units[60+c].shortname+"Mesh3.png"}else{document.getElementById("BuildingMesh"+c).style.visibility='hidden'};
 		document.getElementById("BuildingPrice"+c).innerHTML="₱"+Units[60+c].Cost;
 		CoastalCheck=true;
 		if(hasCertainTrait(60+c,"Seabound")){CoastalCheck=false;CanBuildCoastal=false
@@ -4145,8 +4145,8 @@ function LaunchConstructorPanel(X,Y){
 			if(X<Map[0].length-1){if(Terrain[Map[X][Y+1]].DeepSailThrough!=100){CoastalCheck=true;CanBuildCoastal=true}};
 
 		};
-		document.getElementById("BuildingFrame"+c).src="Assets/Miscellaneous/ConstructionUnavailableFrame.PNG";
-		if((YourMoney??0)>=Units[60+c].Cost && CoastalCheck){document.getElementById("BuildingFrame"+c).src="Assets/Miscellaneous/ConstructionAvailableFrame.PNG"};
+		document.getElementById("BuildingFrame"+c).src="Assets/Miscellaneous/ConstructionUnavailableFrame.png";
+		if((YourMoney??0)>=Units[60+c].Cost && CoastalCheck){document.getElementById("BuildingFrame"+c).src="Assets/Miscellaneous/ConstructionAvailableFrame.png"};
 
 	//alert("Not yet bro, we don't have enough assets")
 	};};
@@ -4158,8 +4158,8 @@ function LaunchRecruitmentPanel(IndustrialBranch){
 	document.getElementById("MoneyIndicator").innerHTML="₤"+YourMoney;
 	if((Factions[PlayerChoiceFaction].ExchangeRate??0)!=0){document.getElementById("MoneyIndicator").innerHTML+="("+YourCurrency+YourMoney*Factions[PlayerChoiceFaction].ExchangeRate+")"};
 
-	document.getElementById("UnitMontreBkg").src="Assets/Miscellaneous/UnitMontreBkg"+IndustrialBranch+".PNG";
-	document.getElementById("UnitMontre").src="Assets/Units/Static/Barricade1.PNG";
+	document.getElementById("UnitMontreBkg").src="Assets/Miscellaneous/UnitMontreBkg"+IndustrialBranch+".png";
+	document.getElementById("UnitMontre").src="Assets/Units/Static/Barricade1.png";
 	document.getElementById("UnitMontre").style.filter=Factions[PlayerChoiceFaction].ChromaCode;;
 	MontreIndexBasis=IndustrialBranch*10+20;
 	if(IndustrialBranch==1){MontreIndexBasis-=30};
@@ -4174,7 +4174,7 @@ function LaunchRecruitmentPanel(IndustrialBranch){
 		
 	document.getElementById("UnitMontre"+p).style.filter=Factions[PlayerChoiceFaction].ChromaCode;
 	if(p<=10 || IndustrialBranch==1){
-		if(!Units[MontreIndexBasis+p].MLPR??false){document.getElementById("UnitMontre"+p+"Mesh").style.visibility='inherit';document.getElementById("UnitMontre"+p+"Mesh").src="Assets/Units/StaticMeshes/"+Units[MontreIndexBasis+p].shortname+"Mesh3.PNG"}else{document.getElementById("UnitMontre"+p+"Mesh").style.visibility='hidden'}
+		if(!Units[MontreIndexBasis+p].MLPR??false){document.getElementById("UnitMontre"+p+"Mesh").style.visibility='inherit';document.getElementById("UnitMontre"+p+"Mesh").src="Assets/Units/StaticMeshes/"+Units[MontreIndexBasis+p].shortname+"Mesh3.png"}else{document.getElementById("UnitMontre"+p+"Mesh").style.visibility='hidden'}
 
 		};
 		
@@ -4192,10 +4192,10 @@ function LaunchRecruitmentPanel(IndustrialBranch){
 		document.getElementById('UnitUnderlayer'+p).style.visibility='inherit';
 
 		document.getElementById("PriceTag"+p).innerHTML="₤"+Units[MontreIndexBasis+p].Cost;
-		document.getElementById("UnitMontre"+p).src="Assets/Units/Static/"+Units[MontreIndexBasis+p].shortname+"3.PNG";
+		document.getElementById("UnitMontre"+p).src="Assets/Units/Static/"+Units[MontreIndexBasis+p].shortname+"3.png";
 		document.getElementById("UnitMontre"+p).style.left=(Units[MontreIndexBasis+p].StaticOffsetX ?? [0,0,0,0,0])[3]+23+(p-1)*100+"px";
 		document.getElementById("UnitMontre"+p).style.top=(Units[MontreIndexBasis+p].StaticOffsetY ?? [0,0,0,0,0])[3]+195+"px";
-		if(YourMoney<Units[p+MontreIndexBasis].Cost){document.getElementById("UnitFrame"+p).src="Assets/Miscellaneous/UnitUnavailableFrame.PNG"}else{document.getElementById("UnitFrame"+p).src="Assets/Miscellaneous/UnitAvailableFrame.PNG"}
+		if(YourMoney<Units[p+MontreIndexBasis].Cost){document.getElementById("UnitFrame"+p).src="Assets/Miscellaneous/UnitUnavailableFrame.png"}else{document.getElementById("UnitFrame"+p).src="Assets/Miscellaneous/UnitAvailableFrame.png"}
 
 
 		
@@ -4204,7 +4204,7 @@ function LaunchRecruitmentPanel(IndustrialBranch){
 	}else{
 
 		document.getElementById("PriceTag"+p).innerHTML="₱"+Units[p].Cost;
-		if(YourMoney<Units[p].Cost){document.getElementById("UnitFrame"+p).src="Assets/Miscellaneous/UnitUnavailableFrame.PNG"}else{document.getElementById("UnitFrame"+p).src="Assets/Miscellaneous/UnitAvailableFrame.PNG"};
+		if(YourMoney<Units[p].Cost){document.getElementById("UnitFrame"+p).src="Assets/Miscellaneous/UnitUnavailableFrame.png"}else{document.getElementById("UnitFrame"+p).src="Assets/Miscellaneous/UnitAvailableFrame.png"};
 
 		//document.getElementById("UnitMontre"+p).style.left="0px";
 		document.getElementById("UnitMontre"+p).style.top=(195+130*Math.floor((p-1)/10)+(Units[p].StaticOffsetY ?? [0,0,0,0,0])[3])+"px";
@@ -4221,7 +4221,7 @@ function LaunchRecruitmentPanel(IndustrialBranch){
 		document.getElementById("UnitUnderlayer"+p).style.visibility="inherit";
 		document.getElementById("UnitMontre"+p).style.visibility="inherit";
 		document.getElementById("PriceTag"+p).style.visibility="inherit";
-		document.getElementById("UnitMontre"+p).src="Assets/Units/Static/"+Units[MontreIndexBasis+p].shortname+"3.PNG";
+		document.getElementById("UnitMontre"+p).src="Assets/Units/Static/"+Units[MontreIndexBasis+p].shortname+"3.png";
 
 		}
 
@@ -4283,18 +4283,18 @@ function LaunchSpecialOptionPanel(x,y){
 
 	UnitIcs=X;
 	UnitIgrec=Y;
-	document.getElementById("AirTransportPickupMask").src="Assets/Miscellaneous/StorkPickupMask.PNG";
-	document.getElementById("NavalTransportPickupMask").src="Assets/Miscellaneous/ConvoyPickupMask.PNG";
+	document.getElementById("AirTransportPickupMask").src="Assets/Miscellaneous/StorkPickupMask.png";
+	document.getElementById("NavalTransportPickupMask").src="Assets/Miscellaneous/ConvoyPickupMask.png";
 	document.getElementById("SpecialActionPanel").style.visibility="visible";
 	document.getElementById("SpecialActionPanel").style.left=Math.max(Math.min(-28+y*56,Map[0].length*56-115),0)+"px";
 	document.getElementById("SpecialActionPanel").style.top=Math.max(Math.min(-15+x*56,Map.length*56-77),0)+"px";
 
 	if(rostermap[X][Y]!=0 && hasCertainTrait(rostermap[X][Y].unitType, "Air Transport")){ IsStork=true; IsConvoy=false;};
 	if(rostermap[X][Y]!=0 && hasCertainTrait(rostermap[X][Y].unitType, "Naval Transport")){ IsStork=false; IsConvoy=true;};
-	if(IsStork){document.getElementById("AirTransportPickupMask").src="Assets/Miscellaneous/UnitDisembarkMask.PNG";document.getElementById("AirTransportPickup").src="Assets/Miscellaneous/UnitDisembark.PNG"}
-	else{document.getElementById("AirTransportPickupMask").src="Assets/Miscellaneous/StorkPickupMask.PNG";document.getElementById("AirTransportPickup").src="Assets/Miscellaneous/StorkPickup.PNG"};
-	if(IsConvoy){document.getElementById("NavalTransportPickupMask").src="Assets/Miscellaneous/UnitDisembarkMask.PNG";document.getElementById("NavalTransportPickup").src="Assets/Miscellaneous/UnitDisembark.PNG"}
-	else{document.getElementById("NavalTransportPickupMask").src="Assets/Miscellaneous/ConvoyPickupMask.PNG";document.getElementById("NavalTransportPickup").src="Assets/Miscellaneous/ConvoyPickup.PNG"};
+	if(IsStork){document.getElementById("AirTransportPickupMask").src="Assets/Miscellaneous/UnitDisembarkMask.png";document.getElementById("AirTransportPickup").src="Assets/Miscellaneous/UnitDisembark.png"}
+	else{document.getElementById("AirTransportPickupMask").src="Assets/Miscellaneous/StorkPickupMask.png";document.getElementById("AirTransportPickup").src="Assets/Miscellaneous/StorkPickup.png"};
+	if(IsConvoy){document.getElementById("NavalTransportPickupMask").src="Assets/Miscellaneous/UnitDisembarkMask.png";document.getElementById("NavalTransportPickup").src="Assets/Miscellaneous/UnitDisembark.png"}
+	else{document.getElementById("NavalTransportPickupMask").src="Assets/Miscellaneous/ConvoyPickupMask.png";document.getElementById("NavalTransportPickup").src="Assets/Miscellaneous/ConvoyPickup.png"};
 
 	
 
@@ -4345,7 +4345,7 @@ function moveOneTile(unit, direction){
 		var coord="rect("+top+","+right+","+bottom+","+left+")";
 		//document.getElementById(idem).style.visibility="hidden";
 		document.getElementById(idem).style.clip=coord;
-		document.getElementById(idem).src="Assets/Units/Move/"+Units[MapRoster[unit].unitType].shortname+"Movement.PNG";	
+		document.getElementById(idem).src="Assets/Units/Move/"+Units[MapRoster[unit].unitType].shortname+"Movement.png";	
 		document.getElementById(idem).style.top= -frame*56 + x*frame*14 + "px";
 		document.getElementById(idem).style.left= 56-direction*56+y*frame*14 +"px";
 		//document.getElementById(idem).style.visibility="visible";
@@ -4369,11 +4369,11 @@ function moveOneTile(unit, direction){
 
 		//document.getElementById("Entity "+(newX+1-StandardX)+"X"+(newY+1-StandardY)).style.visibility="visible";
 		//document.getElementById("Entity "+(newX+1-StandardX)+"X"+(newY+1-StandardY)).style.filter=Factions[MapRoster[unit].faction].ChromaCode;
-		//document.getElementById("Entity "+(newX+1-StandardX)+"X"+(newY+1-StandardY)).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+direction+".PNG";
+		//document.getElementById("Entity "+(newX+1-StandardX)+"X"+(newY+1-StandardY)).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+direction+".png";
 		document.getElementById(idem).style.top=(Units[MapRoster[unit].unitType].StaticOffsetX ?? [0,0,0,0,0])[direction]+"px";
 		document.getElementById(idem).style.left=(Units[MapRoster[unit].unitType].StaticOffsetX ?? [0,0,0,0,0])[direction]+"px";	
 		document.getElementById(idem).style.clip="auto";
-		document.getElementById(idem).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+direction+".PNG";
+		document.getElementById(idem).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+direction+".png";
 		//document.getElementById(idem).style.visibility="visible";
 
 		//alert("hi!");
@@ -4415,7 +4415,7 @@ function moveUnit(unit, path){
 
 		//document.getElementById("Entity "+actualX+"X"+actualY).style.visibility="visible";
 		//document.getElementById("Entity "+actualX+"X"+actualY).style.filter=Factions[MapRoster[unit].faction].ChromaCode;
-		document.getElementById("Entity "+actualX+"X"+actualY).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+MapRoster[unit].direction+".PNG";};
+		document.getElementById("Entity "+actualX+"X"+actualY).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+MapRoster[unit].direction+".png";};
 function MoveUnit(unit, path){
 	//alert(unit+" "+path);
 	//if(MapRoster[unit].faction!=PlayerChoiceFaction){BLARG=0;};
@@ -4493,9 +4493,9 @@ function MoveUnit(unit, path){
 
 		document.getElementById("Cargo "+(origX+1)+"X"+(origY+1)).style.visibility="hidden";
 		document.getElementById("Flag "+(origX+1)+"X"+(origY+1)).style.visibility="inherit";
-		if(TileFlagMap[origX][origY]==0){document.getElementById("Flag "+(origX+1)+"X"+(origY+1)).style.visibility="hidden";}else if(TileFlagMap[origX][origY]==2){document.getElementById("Flag "+(origX+1)+"X"+(origY+1)).src='Assets/Miscellaneous/DefendFlag.PNG'}else if(TileFlagMap[origX][origY]==2){document.getElementById("Flag "+(origX+1)+"X"+(origY+1)).src='Assets/Miscellaneous/CaptureFlag.PNG'};
-		if(rostermap[destX][destY].Defeat??false){document.getElementById("Flag "+(destX+1)+"X"+(destY+1)).style.visibility='inherit';document.getElementById("Flag "+(destX+1)+"X"+(destY+1)).src='Assets/Miscellaneous/DestroyFlag.PNG'};
-		if(rostermap[destX][destY].Protect??false){document.getElementById("Flag "+(destX+1)+"X"+(destY+1)).style.visibility='inherit';document.getElementById("Flag "+(destX+1)+"X"+(destY+1)).src='Assets/Miscellaneous/ProtectFlag.PNG'};
+		if(TileFlagMap[origX][origY]==0){document.getElementById("Flag "+(origX+1)+"X"+(origY+1)).style.visibility="hidden";}else if(TileFlagMap[origX][origY]==2){document.getElementById("Flag "+(origX+1)+"X"+(origY+1)).src='Assets/Miscellaneous/DefendFlag.png'}else if(TileFlagMap[origX][origY]==2){document.getElementById("Flag "+(origX+1)+"X"+(origY+1)).src='Assets/Miscellaneous/CaptureFlag.png'};
+		if(rostermap[destX][destY].Defeat??false){document.getElementById("Flag "+(destX+1)+"X"+(destY+1)).style.visibility='inherit';document.getElementById("Flag "+(destX+1)+"X"+(destY+1)).src='Assets/Miscellaneous/DestroyFlag.png'};
+		if(rostermap[destX][destY].Protect??false){document.getElementById("Flag "+(destX+1)+"X"+(destY+1)).style.visibility='inherit';document.getElementById("Flag "+(destX+1)+"X"+(destY+1)).src='Assets/Miscellaneous/ProtectFlag.png'};
 
 		ExtranOrigin=false; ExtranDestination=false;
 
@@ -4539,7 +4539,7 @@ function MoveUnit(unit, path){
 				//document.getElementById("Entity "+(destX+1)+"X"+(destY+1)).style.visibility="hidden";
 					
 				document.getElementById("EntityCore "+(origX+1)+"X"+(origY+1)).src="Assets/Units/Move/"+Units[MapRoster[unit].unitType].shortname+"Movement"+dir+".GIF";
-				if(!Units[MapRoster[unit].unitType].MLPR??false){document.getElementById("EntityMesh "+(origX+1)+"X"+(origY+1)).src="Assets/Units/MoveMeshes/"+Units[MapRoster[unit].unitType].shortname+"MovementMesh"+dir+".GIF"}else{document.getElementById("EntityMesh "+(destX+1)+"X"+(destY+1)).src="Assets/Miscellaneous/Nothing.PNG"};
+				if(!Units[MapRoster[unit].unitType].MLPR??false){document.getElementById("EntityMesh "+(origX+1)+"X"+(origY+1)).src="Assets/Units/MoveMeshes/"+Units[MapRoster[unit].unitType].shortname+"MovementMesh"+dir+".GIF"}else{document.getElementById("EntityMesh "+(destX+1)+"X"+(destY+1)).src="Assets/Miscellaneous/Nothing.png"};
 
 				};
 				offsetX+=(ics*14)??0+(Units[MapRoster[unit].unitType].MovementOffsetY ?? [0,0,0,0,0])[path[path.length-1]];
@@ -4551,7 +4551,7 @@ function MoveUnit(unit, path){
 
 
 				if(frame>=4*path.length){
-					//document.getElementById("Entity "+(destX+1)+"X"+(destY+1)).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+path[path.length-1]+".PNG";
+					//document.getElementById("Entity "+(destX+1)+"X"+(destY+1)).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+path[path.length-1]+".png";
 					clearInterval(castTime);
 					MapRoster[unit].x=destX;
 					MapRoster[unit].y=destY;
@@ -4572,15 +4572,15 @@ function MoveUnit(unit, path){
 
 					//if(frame>4*path.length){alert(frame +" "+ path[frame/4-1])};
 					//if((path[frame/4-1]??0)==0){console.log(path[0])};
-					document.getElementById("EntityCore "+(origX+1)+"X"+(origY+1)).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+path[Math.max(frame/4-1,0)]+".PNG";
-					document.getElementById("EntityCore "+(destX+1)+"X"+(destY+1)).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+path[Math.max(frame/4-1,0)]+".PNG";
+					document.getElementById("EntityCore "+(origX+1)+"X"+(origY+1)).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+path[Math.max(frame/4-1,0)]+".png";
+					document.getElementById("EntityCore "+(destX+1)+"X"+(destY+1)).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+path[Math.max(frame/4-1,0)]+".png";
 					document.getElementById("EntityCore "+(destX+1)+"X"+(destY+1)).style.filter=Factions[MapRoster[unit].faction].ChromaCode;
 					let OpacString="opacity(0%)";
 					if(Factions[MapRoster[unit].faction].faction==Factions[PlayerChoiceFaction].faction){OpacString=" opacity(50%)"};
 					if(!Units[MapRoster[unit].unitType].MLPR??false){
-						document.getElementById("EntityMesh "+(destX+1)+"X"+(destY+1)).src="Assets/Units/StaticMeshes/"+Units[MapRoster[unit].unitType].shortname+"Mesh"+path[Math.max(frame/4-1,0)]+".PNG";
-						document.getElementById("EntityMesh "+(origX+1)+"X"+(origY+1)).src="Assets/Units/StaticMeshes/"+Units[MapRoster[unit].unitType].shortname+"Mesh"+path[Math.max(frame/4-1,0)]+".PNG";
-						}else{document.getElementById("EntityMesh "+(destX+1)+"X"+(destY+1)).src="Assets/Miscellaneous/Nothing.PNG";document.getElementById("EntityMesh "+(origX+1)+"X"+(origY+1)).src="Assets/Miscellaneous/Nothing.PNG"};
+						document.getElementById("EntityMesh "+(destX+1)+"X"+(destY+1)).src="Assets/Units/StaticMeshes/"+Units[MapRoster[unit].unitType].shortname+"Mesh"+path[Math.max(frame/4-1,0)]+".png";
+						document.getElementById("EntityMesh "+(origX+1)+"X"+(origY+1)).src="Assets/Units/StaticMeshes/"+Units[MapRoster[unit].unitType].shortname+"Mesh"+path[Math.max(frame/4-1,0)]+".png";
+						}else{document.getElementById("EntityMesh "+(destX+1)+"X"+(destY+1)).src="Assets/Miscellaneous/Nothing.png";document.getElementById("EntityMesh "+(origX+1)+"X"+(origY+1)).src="Assets/Miscellaneous/Nothing.png"};
 					//if(MapRoster[unit].isCloaked){document.getElementById("Entity "+(destX+1)+"X"+(destY+1)).style.filter=OpacString};
 				};
 
@@ -4611,7 +4611,7 @@ function MoveUnit(unit, path){
 
 		if(!ExtranDestination && ExtranOrigin){
 		//document.getElementById("Entity "+(destX+1)+"X"+(destY+1)).style.visibility="visible";
-		//document.getElementById("Entity "+(destX+1)+"X"+(destY+1)).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+MapRoster[unit].direction+".PNG";
+		//document.getElementById("Entity "+(destX+1)+"X"+(destY+1)).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+MapRoster[unit].direction+".png";
 		//document.getElementById("Entity "+(destX+1)+"X"+(destY+1)).style.filter=Factions[MapRoster[unit].faction].ChromaCode;
 		};
 
@@ -4703,18 +4703,18 @@ function MontreUnit(Class){
 	document.getElementById("UnitMontre").style.left=unitType.MovementOffsetX+"px";
 	document.getElementById("UnitMontre").style.top=unitType.MovementOffsetY+"px";
 
-	if(!unitType.MLPR??false){document.getElementById("UnitMontre"+Class+"Mesh").src="Assets/Units/MoveMeshes/"+unitType.shortname+"MovementMesh3.GIF"; document.getElementById("UnitMontreMesh").src="Assets/Units/MoveMeshes/"+unitType.shortname+"MovementMesh2.GIF"}else{document.getElementById("UnitMontre"+Class+"Mesh").src="Assets/Miscellaneous/Nothing.PNG";document.getElementById("UnitMontreMesh").src="Assets/Miscellaneous/Nothing.PNG"};
+	if(!unitType.MLPR??false){document.getElementById("UnitMontre"+Class+"Mesh").src="Assets/Units/MoveMeshes/"+unitType.shortname+"MovementMesh3.GIF"; document.getElementById("UnitMontreMesh").src="Assets/Units/MoveMeshes/"+unitType.shortname+"MovementMesh2.GIF"}else{document.getElementById("UnitMontre"+Class+"Mesh").src="Assets/Miscellaneous/Nothing.png";document.getElementById("UnitMontreMesh").src="Assets/Miscellaneous/Nothing.png"};
 	
-	document.getElementById("MontreArmor").src="Assets/Traits/"+unitType.Armor+"Armor.PNG";
-	document.getElementById("MontreAttack").src="Assets/Traits/"+unitType.Weapon+"Weapon.PNG";
-	document.getElementById("MontreLocomotion").src="Assets/Traits/"+unitType.Movement+".PNG";
+	document.getElementById("MontreArmor").src="Assets/Traits/"+unitType.Armor+"Armor.png";
+	document.getElementById("MontreAttack").src="Assets/Traits/"+unitType.Weapon+"Weapon.png";
+	document.getElementById("MontreLocomotion").src="Assets/Traits/"+unitType.Movement+".png";
 	document.getElementById("MontreArmorText").innerHTML=unitType.HP+"/"+unitType.HP;
 	document.getElementById("MontreAttackText").innerHTML=unitType.Attack+"("+unitType.MinRange+"-"+unitType.MaxRange+")";
 	document.getElementById("MontreLocomotionText").innerHTML=unitType.Speed;
-	document.getElementById("MontreTrait1").src="Assets/Traits/"+unitType.tag1+".PNG";
-	document.getElementById("MontreTrait2").src="Assets/Traits/"+unitType.tag2+".PNG";
-	document.getElementById("MontreTrait3").src="Assets/Traits/"+unitType.tag3+".PNG";
-	document.getElementById("MontreTrait4").src="Assets/Traits/"+unitType.tag4+".PNG";
+	document.getElementById("MontreTrait1").src="Assets/Traits/"+unitType.tag1+".png";
+	document.getElementById("MontreTrait2").src="Assets/Traits/"+unitType.tag2+".png";
+	document.getElementById("MontreTrait3").src="Assets/Traits/"+unitType.tag3+".png";
+	document.getElementById("MontreTrait4").src="Assets/Traits/"+unitType.tag4+".png";
 
 	document.getElementById("MontreName").innerHTML = language.get(unitType.name);
 	document.getElementById("MontreDescription").innerHTML = language.get(unitType.desc);
@@ -4755,7 +4755,7 @@ function NudgeMap(Direction){
 		//alert(rostermap[X][Y].faction);
 		document.getElementById("Entity "+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.top=(Units[rostermap[X][Y].unitType].StaticOffsetY ?? [0,0,0,0,0])[rostermap[X][Y].direction] + "px";
 		document.getElementById("Entity "+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.left=(Units[rostermap[X][Y].unitType].StaticOffsetX ?? [0,0,0,0,0])[rostermap[X][Y].direction] + "px";
-		document.getElementById("Entity "+(X+1-StandardX)+"X"+(Y+1-StandardY)).src="Assets/Units/Static/"+(Units[rostermap[X][Y].unitType].shortname)+rostermap[X][Y].direction+".PNG";
+		document.getElementById("Entity "+(X+1-StandardX)+"X"+(Y+1-StandardY)).src="Assets/Units/Static/"+(Units[rostermap[X][Y].unitType].shortname)+rostermap[X][Y].direction+".png";
 		let Filter=Factions[rostermap[X][Y].faction].ChromaCode;
 		//if(rostermap[X][Y].isCloaked){Filter+=" opacity(50%)"};
 		//document.getElementById("Entity "+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.filter=Filter;
@@ -4794,7 +4794,7 @@ function NudgeMap(Direction){
 	document.getElementById("Entity "+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.visibility="visible";
 	document.getElementById("Entity "+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.top=(Units[Entity.unitType].StaticOffsetY ?? [0,0,0,0,0])[Entity.direction] + "px";
 	document.getElementById("Entity "+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.left=(Units[Entity.unitType].StaticOffsetX ?? [0,0,0,0,0])[Entity.direction] + "px";
-	document.getElementById("Entity "+(X+1-StandardX)+"X"+(Y+1-StandardY)).src="Assets/Units/Static/"+Units[Entity.unitType].shortname+Entity.direction+".PNG";
+	document.getElementById("Entity "+(X+1-StandardX)+"X"+(Y+1-StandardY)).src="Assets/Units/Static/"+Units[Entity.unitType].shortname+Entity.direction+".png";
 	document.getElementById("Entity "+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.filter=Factions[Entity.faction].ChromaCode;};};
 	*/
 		};
@@ -4816,7 +4816,7 @@ function NudgeMapEditor(X,Y){
 	if(checker){
 		/*
 		for(let i=0;i<10;i++){for(let j=0;j<10;j++){
-			document.getElementById("Tile "+(i+1)+" X "+(j+1)).src="Assets/Tiles/"+Terrain[EditorMap[x+i][y+j]].name+".PNG";
+			document.getElementById("Tile "+(i+1)+" X "+(j+1)).src="Assets/Tiles/"+Terrain[EditorMap[x+i][y+j]].name+".png";
 
 		}};
 		*/
@@ -4834,7 +4834,7 @@ function NudgeMapEditor(X,Y){
 function OpenSpecialBloc(Bloc){
 	BlocVizat=Bloc;
 	//alert(Bloc[0].Name);
-	for(let B=0;B<9;B++){document.getElementById("Special Level "+(B+1)).src="Assets/SpecialLevels/"+(Bloc[B] ?? {Name:""}).Name+".PNG";
+	for(let B=0;B<9;B++){document.getElementById("Special Level "+(B+1)).src="Assets/SpecialLevels/"+(Bloc[B] ?? {Name:""}).Name+".png";
 
 	};
 };
@@ -5249,8 +5249,8 @@ function PI_Scouter(Unit, Map){
 
 
 
-					if(canBlarg){document.getElementById("Ctep-"+r+"-"+t).src="Assets/Miscellaneous/Ctep.PNG"};
-					if(BLARG.length<2){document.getElementById('BLARG '+(BLARG[0].X+1)+"X"+(BLARG[0].Y+1)).src="Assets/BLARG/Singularity.PNG"}else{
+					if(canBlarg){document.getElementById("Ctep-"+r+"-"+t).src="Assets/Miscellaneous/Ctep.png"};
+					if(BLARG.length<2){document.getElementById('BLARG '+(BLARG[0].X+1)+"X"+(BLARG[0].Y+1)).src="Assets/BLARG/Singularity.png"}else{
 						let or=0;
 
 
@@ -5261,7 +5261,7 @@ function PI_Scouter(Unit, Map){
 					if(BLARG[BLARG.length-2].X<BLARG[BLARG.length-1].X){or=3};
 					if(BLARG[BLARG.length-2].Y>BLARG[BLARG.length-1].Y){or=4};
 					if(or==0){BLARG.pop()};
-					document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/Target"+or+".PNG";
+					document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/Target"+or+".png";
 
 
 					};
@@ -5477,7 +5477,7 @@ function RecruitUnit(Class){
 				if(Terrain[Map[i-1+StandardX][j-1+StandardY]].SailThrough>=5 && IndustrialBranchBrowsed==3){CanDeploy=false};
 				if((ActiveIndustrialNode.X+1-i)*(ActiveIndustrialNode.X+1-i)+(ActiveIndustrialNode.Y+1-j)*(ActiveIndustrialNode.Y+1-j)<DeploymentIndex*DeploymentIndex && CanDeploy){
 				let Crep=document.createElement("img");
-				Crep.src="Assets/Miscellaneous/Crep.PNG";
+				Crep.src="Assets/Miscellaneous/Crep.png";
 				Crep.id="Crep-"+i+"-"+j;
 				Crep.style.position="absolute";
 				//Crep.style.top=i*56+"px";
@@ -5502,7 +5502,7 @@ function RecruitUnit(Class){
 		};
 
 				let Close=document.createElement("img");
-				Close.src="Assets/Miscellaneous/SelectionCanceller.PNG";
+				Close.src="Assets/Miscellaneous/SelectionCanceller.png";
 				Close.id="CloseRecruiterX";
 				Close.style.position="absolute";
 				Close.style.zIndex=5;
@@ -5529,7 +5529,7 @@ function refreshMap(){
 			let unit=rostermap[x-1][y-1];
 			if((rostermap[x-1][y-1]??0) !=0){
 			
-			document.getElementById('EntityCore '+x+'X'+y).src="Assets/Units/Static/"+Units[unit.unitType].shortname+unit.direction+".PNG";
+			document.getElementById('EntityCore '+x+'X'+y).src="Assets/Units/Static/"+Units[unit.unitType].shortname+unit.direction+".png";
 			document.getElementById('Entity '+x+'X'+y).style.visibility="visible";
 			if(unit.isCloaked??false){let isSameFaction=unit.coallition==Factions[PlayerChoiceFaction].faction;document.getElementById('EntityCore '+x+'X'+y).style.filter=Factions[unit.faction].ChromaCode;
 			document.getElementById('Entity '+x+'X'+y).style.filter=(isSameFaction?"opacity(50%)":"opacity(0%)");
@@ -5538,8 +5538,8 @@ function refreshMap(){
 			document.getElementById('Entity '+x+'X'+y).style.top=(Units[unit.unitType].StaticOffsetY ?? [0,0,0,0,0])[unit.direction]+"px";
 			document.getElementById('Entity '+x+'X'+y).style.left=(Units[unit.unitType].StaticOffsetX ?? [0,0,0,0,0])[unit.direction]+"px";
 
-			if((rostermap[x-1][y-1].Defeat??false)){document.getElementById('Flag '+x+'X'+y).src="Assets/Miscellaneous/DestroyFlag.PNG";document.getElementById('Flag '+x+'X'+y).style.visibility='inherit'}else{document.getElementById('Flag '+x+'X'+y).style.visibility='hidden'};
-			if((rostermap[x-1][y-1].Protect??false)){document.getElementById('Flag '+x+'X'+y).src="Assets/Miscellaneous/ProtectFlag.PNG";document.getElementById('Flag '+x+'X'+y).style.visibility='inherit'}else if(!(rostermap[x-1][y-1].Defeat??false)){document.getElementById('Flag '+x+'X'+y).style.visibility='hidden'};
+			if((rostermap[x-1][y-1].Defeat??false)){document.getElementById('Flag '+x+'X'+y).src="Assets/Miscellaneous/DestroyFlag.png";document.getElementById('Flag '+x+'X'+y).style.visibility='inherit'}else{document.getElementById('Flag '+x+'X'+y).style.visibility='hidden'};
+			if((rostermap[x-1][y-1].Protect??false)){document.getElementById('Flag '+x+'X'+y).src="Assets/Miscellaneous/ProtectFlag.png";document.getElementById('Flag '+x+'X'+y).style.visibility='inherit'}else if(!(rostermap[x-1][y-1].Defeat??false)){document.getElementById('Flag '+x+'X'+y).style.visibility='hidden'};
 
 			}else{
 	
@@ -5551,8 +5551,8 @@ function refreshMap(){
 
 
 			if(TileFlagMap[x-1][y-1]==0){document.getElementById('Flag '+x+'X'+y).style.visibility='hidden'}else{document.getElementById('Flag '+x+'X'+y).style.visibility='inherit'};
-			if(TileFlagMap[x-1][y-1]==1){document.getElementById('Flag '+x+'X'+y).src="Assets/Miscellaneous/CaptureFlag.PNG"};
-			if(TileFlagMap[x-1][y-1]==2){document.getElementById('Flag '+x+'X'+y).src="Assets/Miscellaneous/DefendFlag.PNG"};
+			if(TileFlagMap[x-1][y-1]==1){document.getElementById('Flag '+x+'X'+y).src="Assets/Miscellaneous/CaptureFlag.png"};
+			if(TileFlagMap[x-1][y-1]==2){document.getElementById('Flag '+x+'X'+y).src="Assets/Miscellaneous/DefendFlag.png"};
 
 
 			};
@@ -5577,7 +5577,7 @@ function refreshTile(X,Y){
 		case 1:
 			var type= Math.ceil(Math.random()*8);
 			var offset=0;
-			variant= "Assets/Tiles/Plains"+type+".PNG";
+			variant= "Assets/Tiles/Plains"+type+".png";
 			document.getElementById(Address).style.top=offset+"px";
 			//document.getElementById(Address).style.filter="hue-rotate(0deg) saturate(100%) brightness(100%)";
 			document.getElementById(Address).src=variant;
@@ -5589,7 +5589,7 @@ function refreshTile(X,Y){
 			if(type==2){offset=-4};
 			if(type==3){offset=-3};
 			if(type==4){offset=-12}
-			variant= "Assets/Tiles/Forest"+type+".PNG";
+			variant= "Assets/Tiles/Forest"+type+".png";
 			document.getElementById(Address).style.top=offset+"px";
 			document.getElementById(Address).src=variant;
 			break;
@@ -5599,7 +5599,7 @@ function refreshTile(X,Y){
 			var offset=0;
 			if(type==3){offset=-4};
 			if(type==4){offset=-5};
-			variant= "Assets/Tiles/Hills"+type+".PNG";
+			variant= "Assets/Tiles/Hills"+type+".png";
 			document.getElementById(Address).style.top=offset+"px";
 			document.getElementById(Address).src=variant;
 			break;
@@ -5610,7 +5610,7 @@ function refreshTile(X,Y){
 			if(type==2){offset=-4};
 			if(type==3){offset=-9};
 			if(type==4){offset=-10};
-			variant= "Assets/Tiles/Mountains"+type+".PNG";
+			variant= "Assets/Tiles/Mountains"+type+".png";
 			document.getElementById(Address).style.top=offset+"px";
 			document.getElementById(Address).src=variant;
 			break;
@@ -5618,7 +5618,7 @@ function refreshTile(X,Y){
 		case 5:
 			var offset=-8;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Volcano.PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Volcano.png";
 			break;
 
 		case 6:
@@ -5634,80 +5634,80 @@ function refreshTile(X,Y){
 			//if(X<Map.length){if((Map[X+1][Y]>5 && Map[X+1][Y]<15) || (Map[X+1][Y]>20 && (Map[X+1][Y]<23))){variant+=4}};
 			//if(Y>0){if((Map[X][Y-1]>5 && Map[X][Y-1]<15) || (Map[X][Y-1]>20 && (Map[X][Y-1]<23))){variant+=2}};
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src="Assets/Tiles/Road"+variant+".PNG";
+			document.getElementById(Address).src="Assets/Tiles/Road"+variant+".png";
 			break;
 
 		case 7:
 			var offset=-0;
 			var type= Math.ceil(Math.random()*2);
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Ruins"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Ruins"+type+".png";
 			break;
 
 		case 8:
 			var offset=-0;
 			var type= Math.ceil(Math.random()*3);
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Urban District"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Urban District"+type+".png";
 			break;
 
 		case 9:
 			var offset=-10;
 			EditorControlMap[X+EditorStandardX-1][Y+EditorStandardY-1]=EditationColor;
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
+			document.getElementById(Address).src="Assets/Tiles/Plains.png";
 			document.getElementById(Strucdress).style.visibility="visible";
 			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Industrial District.PNG";
+			document.getElementById(Strucdress).src= "Assets/Tiles/Industrial District.png";
 			document.getElementById(Strucdress).style.filter=Factions[EditationColor].ChromaCode;
 			break;
 
 		case 10:
 			var offset=-8;
 			EditorControlMap[X+EditorStandardX-1][Y+EditorStandardY-1]=EditationColor;
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
+			document.getElementById(Address).src="Assets/Tiles/Plains.png";
 			document.getElementById(Strucdress).style.visibility="visible";
 			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Military-Industrial Complex.PNG";
+			document.getElementById(Strucdress).src= "Assets/Tiles/Military-Industrial Complex.png";
 			document.getElementById(Strucdress).style.filter=Factions[EditationColor].ChromaCode;
 			break;
 
 		case 11:
 			var offset=-14;
 			EditorControlMap[X+EditorStandardX-1][Y+EditorStandardY-1]=EditationColor;
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
+			document.getElementById(Address).src="Assets/Tiles/Plains.png";
 			document.getElementById(Strucdress).style.visibility="visible";
 			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Aviation Industrial Facility.PNG";
+			document.getElementById(Strucdress).src= "Assets/Tiles/Aviation Industrial Facility.png";
 			document.getElementById(Strucdress).style.filter=Factions[EditationColor].ChromaCode;
 			break;
 
 		case 12:
 			var offset=-14;
 			EditorControlMap[X+EditorStandardX-1][Y+EditorStandardY-1]=EditationColor;
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
+			document.getElementById(Address).src="Assets/Tiles/Plains.png";
 			document.getElementById(Strucdress).style.visibility="visible";
 			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Shipbuilding Facility.PNG";
+			document.getElementById(Strucdress).src= "Assets/Tiles/Shipbuilding Facility.png";
 			document.getElementById(Strucdress).style.filter=Factions[EditationColor].ChromaCode;
 			break;
 
 		case 13:
 			var offset=0;
 			EditorControlMap[X+EditorStandardX-1][Y+EditorStandardY-1]=EditationColor;
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
+			document.getElementById(Address).src="Assets/Tiles/Plains.png";
 			document.getElementById(Strucdress).style.visibility="visible";
 			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Headquarters.PNG";
+			document.getElementById(Strucdress).src= "Assets/Tiles/Headquarters.png";
 			document.getElementById(Strucdress).style.filter=Factions[EditationColor].ChromaCode;
 			break;
 
 		case 14:
 			var offset=-18;
 			EditorControlMap[X+EditorStandardX-1][Y+EditorStandardY-1]=EditationColor;
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
+			document.getElementById(Address).src="Assets/Tiles/Plains.png";
 			document.getElementById(Strucdress).style.visibility="visible";
 			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Command Center.PNG";
+			document.getElementById(Strucdress).src= "Assets/Tiles/Command Center.png";
 			document.getElementById(Strucdress).style.filter=Factions[EditationColor].ChromaCode;
 			break;
 
@@ -5717,7 +5717,7 @@ function refreshTile(X,Y){
 			if(type==2){offset=-4};
 			if(type==3){offset=-3};
 			if(type==4){offset=-12}
-			variant= "Assets/Tiles/Taiga"+type+".PNG";
+			variant= "Assets/Tiles/Taiga"+type+".png";
 			document.getElementById(Address).style.top=offset+"px";
 			document.getElementById(Address).src=variant;
 			break;
@@ -5726,13 +5726,13 @@ function refreshTile(X,Y){
 			var type= Math.ceil(Math.random()*3);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Desert"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Desert"+type+".png";
 			break;
 
 		case 17:
 			var type= Math.ceil(Math.random()*4);
 			var offset=0;
-			variant= "Assets/Tiles/Tundra"+type+".PNG";
+			variant= "Assets/Tiles/Tundra"+type+".png";
 			document.getElementById(Address).style.top=offset+"px";
 			document.getElementById(Address).src=variant;
 			break;
@@ -5741,14 +5741,14 @@ function refreshTile(X,Y){
 			var type= Math.ceil(Math.random()*3);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Extreme Desert"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Extreme Desert"+type+".png";
 			break;
 
 		case 19:
 			var type= Math.ceil(Math.random()*4);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Arctic Hellhole"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Arctic Hellhole"+type+".png";
 			break;
 
 		case 20:
@@ -5771,7 +5771,7 @@ function refreshTile(X,Y){
 			if(Y<10){if(Terrain[EditorMap[X-1][Y]].WalkThrough<100){variant+=2;}};};
 
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Bridge"+axis+variant+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Bridge"+axis+variant+".png";
 			break;
 
 		case 21:
@@ -5794,7 +5794,7 @@ function refreshTile(X,Y){
 			if(Y<10){if(Terrain[EditorMap[X-1][Y]].WalkThrough<100){variant+=2;}};};
 
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/HighBridge"+axis+variant+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/HighBridge"+axis+variant+".png";
 			break;
 
 		case 22:
@@ -5807,7 +5807,7 @@ function refreshTile(X,Y){
 			if(Y>1){if(Terrain[EditorMap[X-1][Y-2]].SailThrough<100){variant+=8;}};
 
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/River"+variant+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/River"+variant+".png";
 			break;
 
 		case 23:
@@ -5829,42 +5829,42 @@ function refreshTile(X,Y){
 			if(X<10 && Y<10){if(Terrain[EditorMap[X][Y]].SailThrough==100 && variant==15){document.getElementById("D "+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.visibility="visible"}};
 
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Sea"+variant+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Sea"+variant+".png";
 			break;
 
 		case 24:
 			var type= Math.ceil(Math.random()*4);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Reef"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Reef"+type+".png";
 			break;
 
 		case 25:
 			var type= Math.ceil(Math.random()*4);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Floes"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Floes"+type+".png";
 			break;	
 
 		case 26:
 			var type= Math.ceil(Math.random()*4);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Archipelago"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Archipelago"+type+".png";
 			break;	
 
 		case 27:
 			var type= Math.ceil(Math.random()*4);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Rocks"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Rocks"+type+".png";
 			break;	
 
 		case 28:
 			var type= Math.ceil(Math.random()*4);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Icebergs"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Icebergs"+type+".png";
 			break;	
 
 		case 29:
@@ -5877,14 +5877,14 @@ function refreshTile(X,Y){
 			if(Y>1){if(Terrain[EditorMap[X-1][Y-2]].SailThrough==100){variant+=8;}};
 
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Shore"+variant+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Shore"+variant+".png";
 			break;
 
 		case 30:
 			//var offset=-9;
 			EditorControlMap[X+EditorStandardX-1][Y+EditorStandardY-1]=EditationColor;
 			//document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Oil Rig"+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Oil Rig"+".png";
 			break;
 
 		default:break;
@@ -5900,7 +5900,7 @@ function refreshTile(X,Y){
 		if(EditationDirection>4){EditationDirection-=4};
 		MemoryX=X;
 		MemoryY=Y;
-		document.getElementById("Entity "+X+" X "+Y).src="Assets/Units/Static/"+Units[Chosenunit].shortname+EditationDirection+".PNG";
+		document.getElementById("Entity "+X+" X "+Y).src="Assets/Units/Static/"+Units[Chosenunit].shortname+EditationDirection+".png";
 		//document.getElementById("Entity "+X+" X "+Y).style.filter=Factions[EditationColor].ChromaCode;
 		document.getElementById("Entity "+X+" X "+Y).style.left=(Units[Chosenunit].StaticOffsetX ?? [0,0,0,0,0])[EditationDirection]+"px";
 		document.getElementById("Entity "+X+" X "+Y).style.top=(Units[Chosenunit].StaticOffsetY ?? [0,0,0,0,0])[EditationDirection]+"px";
@@ -5941,7 +5941,7 @@ function RefreshTile(X,Y){
 			document.getElementById(Altdress).style.top=(Units[unit.id].StaticOffsetY ?? [0,0,0,0,0])[unit.direction]+"px";
 			document.getElementById(Altdress).style.left=(Units[unit.id].StaticOffsetX ?? [0,0,0,0,0])[unit.direction]+"px";
 
-			document.getElementById(Altdress).src="Assets/Units/Static/"+Units[EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1].id].shortname+EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1].direction+".PNG";
+			document.getElementById(Altdress).src="Assets/Units/Static/"+Units[EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1].id].shortname+EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1].direction+".png";
 		}else{document.getElementById(Altdress).style.visibility="hidden";};
 
 
@@ -5969,7 +5969,7 @@ function RefreshTile(X,Y){
 		case "LF":
 			var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
 			var offset=Terrain[Map[a][b]].Offsets[type-1];
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top=offset+"px";
 			document.getElementById(TileAdress).src=variant;
 			break;
@@ -5983,7 +5983,7 @@ function RefreshTile(X,Y){
 			if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){type+=8};
 
 			//console.log(Terrain[EditorMap[ics-1][igrec-1]].BiomeIndex);
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top="0px";
 			document.getElementById(TileAdress).src=Var;
 			break;
@@ -6001,7 +6001,7 @@ function RefreshTile(X,Y){
 			if(a<Map.length-1 && b>=1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("c "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b-1]].edgeC}};
 			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
 
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top="0px";
 			document.getElementById(TileAdress).src=Var;
 
@@ -6017,7 +6017,7 @@ function RefreshTile(X,Y){
 			if(Terrain[D3].Class=="WA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="WF" || Terrain[D3].Class=="WE" || Terrain[D3].Class=="B"){type+=4};
 			if(Terrain[D4].Class=="WA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="WF" || Terrain[D4].Class=="WE" || Terrain[D4].Class=="B"){type+=8};
 
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top="0px";
 			document.getElementById(TileAdress).src=Var;
 
@@ -6026,7 +6026,7 @@ function RefreshTile(X,Y){
 		case "WF":
 			var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
 			var offset=Terrain[Map[a][b]].Offsets[type-1];
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".PNG";
+			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".png";
 			document.getElementById(TileAdress).style.top=offset+"px";
 			document.getElementById(TileAdress).src=variant;
 
@@ -6047,8 +6047,8 @@ function RefreshTile(X,Y){
 
 			//EditorControlMap[a][b]=EditationColor;
 			var offset=Terrain[Map[a][b]].Offset;
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".PNG";
-			var undervar="Assets/Tiles/Sea"+underType+".PNG";
+			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".png";
+			var undervar="Assets/Tiles/Sea"+underType+".png";
 			document.getElementById(Strucdress).style.visibility="inherit";
 			document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[a][b]].ChromaCode;
 			document.getElementById(Strucdress).style.top=offset+"px";
@@ -6110,7 +6110,7 @@ function RefreshTile(X,Y){
 
 			};
 
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+axis+type+".PNG";
+			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+axis+type+".png";
 			document.getElementById(TileAdress).style.top=Terrain[Map[a][b]].Offset+"px";
 			document.getElementById(TileAdress).src=Var;
 
@@ -6134,7 +6134,7 @@ function RefreshTile(X,Y){
 			if(a<Map.length-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("c "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b-1]].edgeC}};
 			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
 
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top="0px";
 			document.getElementById(TileAdress).src=Var;
 
@@ -6151,8 +6151,8 @@ function RefreshTile(X,Y){
 
 			//EditorControlMap[a][b]=EditationColor;
 			var offset=Terrain[Map[a][b]].Offset;
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".PNG";
-			var undervar="Assets/Tiles/Road"+undertype+Biome+".PNG";
+			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".png";
+			var undervar="Assets/Tiles/Road"+undertype+Biome+".png";
 			document.getElementById(Strucdress).style.visibility="inherit";
 			document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[a][b]].ChromaCode;
 			document.getElementById(Strucdress).style.top=offset+"px";
@@ -6189,7 +6189,7 @@ function RefreshMapEditor(){
 			document.getElementById(Altdress).style.top=(Units[unit.id].StaticOffsetY ?? [0,0,0,0,0])[unit.direction]+"px";
 			document.getElementById(Altdress).style.left=(Units[unit.id].StaticOffsetX ?? [0,0,0,0,0])[unit.direction]+"px";
 
-			document.getElementById(Altdress).src="Assets/Units/Static/"+Units[EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1].id].shortname+EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1].direction+".PNG";
+			document.getElementById(Altdress).src="Assets/Units/Static/"+Units[EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1].id].shortname+EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1].direction+".png";
 		}else{document.getElementById(Altdress).style.visibility="hidden";};
 
 
@@ -6234,7 +6234,7 @@ function RefreshMapEditor(){
 		case "LF":
 			var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
 			var offset=Terrain[Map[a][b]].Offsets[type-1];
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top=offset+"px";
 			document.getElementById(TileAdress).src=variant;
 			break;
@@ -6248,7 +6248,7 @@ function RefreshMapEditor(){
 			if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){type+=8};
 
 			//console.log(Biome);
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top="0px";
 			document.getElementById(TileAdress).src=Var;
 			break;
@@ -6266,7 +6266,7 @@ function RefreshMapEditor(){
 			if(a<Map.length-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
 			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
 
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".PNG";
+			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".png";
 			document.getElementById(TileAdress).style.top="0px";
 			document.getElementById(TileAdress).src=Var;
 
@@ -6282,7 +6282,7 @@ function RefreshMapEditor(){
 			if(Terrain[D3].Class=="WA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="WF" || Terrain[D3].Class=="WE"){type+=4};
 			if(Terrain[D4].Class=="WA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="WF" || Terrain[D4].Class=="WE"){type+=8};
 
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".PNG";
+			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".png";
 			document.getElementById(TileAdress).style.top="0px";
 			document.getElementById(TileAdress).src=Var;
 
@@ -6291,7 +6291,7 @@ function RefreshMapEditor(){
 		case "WF":
 			var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
 			var offset=Terrain[Map[a][b]].Offsets[type-1];
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".PNG";
+			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".png";
 			document.getElementById(TileAdress).style.top=offset+"px";
 			document.getElementById(TileAdress).src=variant;
 
@@ -6300,8 +6300,8 @@ function RefreshMapEditor(){
 		case "WS":
 
 			var offset=Terrain[Map[a][b]].Offset;
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".PNG";
-			var undervar="Assets/Tiles/Sea15"+undertype+Biome+".PNG";
+			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".png";
+			var undervar="Assets/Tiles/Sea15"+undertype+Biome+".png";
 			document.getElementById(Strucdress).style.visibility="visible";
 			document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[a][b]].ChromaCode;
 			document.getElementById(Strucdress).style.top=offset+"px";
@@ -6357,7 +6357,7 @@ function RefreshMapEditor(){
 
 			};
 
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+axis+type+".PNG";
+			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+axis+type+".png";
 			document.getElementById(TileAdress).style.top=Terrain[Map[a][b]].Offset+"px";
 			document.getElementById(TileAdress).src=Var;
 
@@ -6376,7 +6376,7 @@ function RefreshMapEditor(){
 			if(a<Map.length-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
 			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
 
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".PNG";
+			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top="0px";
 			document.getElementById(TileAdress).src=Var;
 
@@ -6393,8 +6393,8 @@ function RefreshMapEditor(){
 
 
 			var offset=Terrain[Map[a][b]].Offset;
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".PNG";
-			var undervar="Assets/Tiles/Road"+undertype+Biome+".PNG";
+			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".png";
+			var undervar="Assets/Tiles/Road"+undertype+Biome+".png";
 			document.getElementById(Strucdress).style.visibility="visible";
 			document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[a][b]].ChromaCode;
 			document.getElementById(Strucdress).style.top=offset+"px";
@@ -6410,7 +6410,7 @@ function RefreshMapEditor(){
 		case 1:
 			var type= Math.ceil(Math.random()*8);
 			var offset=0;
-			variant= "Assets/Tiles/Plains"+type+".PNG";
+			variant= "Assets/Tiles/Plains"+type+".png";
 			document.getElementById(Address).style.top=offset+"px";
 			//document.getElementById(Address).style.filter="hue-rotate(0deg) saturate(100%) brightness(100%)";
 			document.getElementById(Address).src=variant;
@@ -6422,7 +6422,7 @@ function RefreshMapEditor(){
 			if(type==2){offset=-4};
 			if(type==3){offset=-3};
 			if(type==4){offset=-12}
-			variant= "Assets/Tiles/Forest"+type+".PNG";
+			variant= "Assets/Tiles/Forest"+type+".png";
 			document.getElementById(Address).style.top=offset+"px";
 			document.getElementById(Address).src=variant;
 			break;
@@ -6432,7 +6432,7 @@ function RefreshMapEditor(){
 			var offset=0;
 			if(type==3){offset=-4};
 			if(type==4){offset=-5};
-			variant= "Assets/Tiles/Hills"+type+".PNG";
+			variant= "Assets/Tiles/Hills"+type+".png";
 			document.getElementById(Address).style.top=offset+"px";
 			document.getElementById(Address).src=variant;
 			break;
@@ -6443,7 +6443,7 @@ function RefreshMapEditor(){
 			if(type==2){offset=-4};
 			if(type==3){offset=-9};
 			if(type==4){offset=-10};
-			variant= "Assets/Tiles/Mountains"+type+".PNG";
+			variant= "Assets/Tiles/Mountains"+type+".png";
 			document.getElementById(Address).style.top=offset+"px";
 			document.getElementById(Address).src=variant;
 			break;
@@ -6451,7 +6451,7 @@ function RefreshMapEditor(){
 		case 5:
 			var offset=-8;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Volcano.PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Volcano.png";
 			break;
 
 		case 6:
@@ -6467,70 +6467,70 @@ function RefreshMapEditor(){
 			//if(X<Map.length){if((Map[X+1][Y]>5 && Map[X+1][Y]<15) || (Map[X+1][Y]>20 && (Map[X+1][Y]<23))){variant+=4}};
 			//if(Y>0){if((Map[X][Y-1]>5 && Map[X][Y-1]<15) || (Map[X][Y-1]>20 && (Map[X][Y-1]<23))){variant+=2}};
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src="Assets/Tiles/Road"+variant+".PNG";
+			document.getElementById(Address).src="Assets/Tiles/Road"+variant+".png";
 			break;
 
 		case 7:
 			var offset=-14;
 			var type= Math.ceil(Math.random()*2);
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Ruins"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Ruins"+type+".png";
 			break;
 
 		case 8:
 			var offset=-14;
 			var type= Math.ceil(Math.random()*4);
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Urban District"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Urban District"+type+".png";
 			break;
 
 		case 9:
 			var offset=-10;
 			document.getElementById(Address).style.top="0px";
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
+			document.getElementById(Address).src="Assets/Tiles/Plains.png";
 			document.getElementById(Strucdress).style.visibility="inherit";
 			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Industrial District.PNG";
+			document.getElementById(Strucdress).src= "Assets/Tiles/Industrial District.png";
 			document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[ics+EditorStandardX-1][igrec+EditorStandardY-1]].ChromaCode;
 			break;
 
 		case 10:
 			var offset=-8;
 			document.getElementById(Address).style.top="0px";
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
+			document.getElementById(Address).src="Assets/Tiles/Plains.png";
 			document.getElementById(Strucdress).style.visibility="inherit";
 			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Military-Industrial Complex.PNG";
+			document.getElementById(Strucdress).src= "Assets/Tiles/Military-Industrial Complex.png";
 			document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[ics+EditorStandardX-1][igrec+EditorStandardY-1]].ChromaCode;
 			break;
 
 		case 11:
 			var offset=-14;
 			document.getElementById(Address).style.top="0px";
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
+			document.getElementById(Address).src="Assets/Tiles/Plains.png";
 			document.getElementById(Strucdress).style.visibility="inherit";
 			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Aviation Industrial Facility.PNG";
+			document.getElementById(Strucdress).src= "Assets/Tiles/Aviation Industrial Facility.png";
 			document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[ics+EditorStandardX-1][igrec+EditorStandardY-1]].ChromaCode;
 			break;
 
 		case 12:
 			var offset=-14;
 			document.getElementById(Address).style.top="0px";
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
+			document.getElementById(Address).src="Assets/Tiles/Plains.png";
 			document.getElementById(Strucdress).style.visibility="inherit";
 			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Shipbuilding Facility.PNG";
+			document.getElementById(Strucdress).src= "Assets/Tiles/Shipbuilding Facility.png";
 			document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[ics+EditorStandardX-1][igrec+EditorStandardY-1]].ChromaCode;
 			break;
 
 		case 13:
 			var offset=0;
 			document.getElementById(Address).style.top="0px";
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
+			document.getElementById(Address).src="Assets/Tiles/Plains.png";
 			document.getElementById(Strucdress).style.visibility="inherit";
 			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Headquarters.PNG";
+			document.getElementById(Strucdress).src= "Assets/Tiles/Headquarters.png";
 			//alert(EditorControlMap[ics+EditorStandardX-1][igrec+EditorStandardY-1]);
 			document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[ics+EditorStandardX-1][igrec+EditorStandardY-1]].ChromaCode;
 
@@ -6539,10 +6539,10 @@ function RefreshMapEditor(){
 		case 14:
 			var offset=-18;
 			document.getElementById(Address).style.top="0px";
-			document.getElementById(Address).src="Assets/Tiles/Plains.PNG";
+			document.getElementById(Address).src="Assets/Tiles/Plains.png";
 			document.getElementById(Strucdress).style.visibility="inherit";
 			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Command Center.PNG";
+			document.getElementById(Strucdress).src= "Assets/Tiles/Command Center.png";
 			document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[ics+EditorStandardX-1][igrec+EditorStandardY-1]].ChromaCode;
 			break;
 
@@ -6552,7 +6552,7 @@ function RefreshMapEditor(){
 			if(type==2){offset=-4};
 			if(type==3){offset=-3};
 			if(type==4){offset=-12}
-			variant= "Assets/Tiles/Taiga"+type+".PNG";
+			variant= "Assets/Tiles/Taiga"+type+".png";
 			document.getElementById(Address).style.top=offset+"px";
 			document.getElementById(Address).src=variant;
 			break;
@@ -6561,13 +6561,13 @@ function RefreshMapEditor(){
 			var type= Math.ceil(Math.random()*3);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Desert"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Desert"+type+".png";
 			break;
 
 		case 17:
 			var type= Math.ceil(Math.random()*4);
 			var offset=0;
-			variant= "Assets/Tiles/Tundra"+type+".PNG";
+			variant= "Assets/Tiles/Tundra"+type+".png";
 			document.getElementById(Address).style.top=offset+"px";
 			document.getElementById(Address).src=variant;
 			break;
@@ -6576,14 +6576,14 @@ function RefreshMapEditor(){
 			var type= Math.ceil(Math.random()*3);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Extreme Desert"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Extreme Desert"+type+".png";
 			break;
 
 		case 19:
 			var type= Math.ceil(Math.random()*4);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Arctic Hellhole"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Arctic Hellhole"+type+".png";
 			break;
 
 		case 20:
@@ -6606,7 +6606,7 @@ function RefreshMapEditor(){
 			if(Y<10){if(Terrain[EditorMap[X-1+EditorStandardX][Y+EditorStandardY]].WalkThrough<100&&EditorMap[X-1+EditorStandardX][Y+EditorStandardY]!=20&&EditorMap[X-1+EditorStandardX][Y+EditorStandardY]!=21){variant+=2;}};};
 
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Bridge"+axis+variant+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Bridge"+axis+variant+".png";
 			break;
 
 		case 21:
@@ -6629,7 +6629,7 @@ function RefreshMapEditor(){
 			if(Y<10){if(Terrain[EditorMap[X-1+EditorStandardX][Y+EditorStandardY]].WalkThrough<100&&EditorMap[X-1+EditorStandardX][Y+EditorStandardY]!=20&&EditorMap[X-1+EditorStandardX][Y+EditorStandardY]!=21){variant+=2;}};};
 
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/HighBridge"+axis+variant+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/HighBridge"+axis+variant+".png";
 			break;
 
 		case 22:
@@ -6642,7 +6642,7 @@ function RefreshMapEditor(){
 			if(Y>1){if(Terrain[EditorMap[X-1+EditorStandardX][Y-2+EditorStandardY]].SailThrough<100){variant+=8;}};
 
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/River"+variant+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/River"+variant+".png";
 			break;
 
 		case 23:
@@ -6664,42 +6664,42 @@ function RefreshMapEditor(){
 			if(X<10 && Y<10){if(Terrain[EditorMap[X+EditorStandardX][Y+EditorStandardY]].SailThrough==100 && (variant==15 || variant==6 || variant==7 || variant==15)){document.getElementById("d "+(X)+" X "+(Y)).style.visibility="inherit"}};
 
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Sea"+variant+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Sea"+variant+".png";
 			break;
 
 		case 24:
 			var type= Math.ceil(Math.random()*4);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Reef"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Reef"+type+".png";
 			break;
 
 		case 25:
 			var type= Math.ceil(Math.random()*4);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Floes"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Floes"+type+".png";
 			break;	
 
 		case 26:
 			var type= Math.ceil(Math.random()*4);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Archipelago"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Archipelago"+type+".png";
 			break;	
 
 		case 27:
 			var type= Math.ceil(Math.random()*4);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Rocks"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Rocks"+type+".png";
 			break;	
 
 		case 28:
 			var type= Math.ceil(Math.random()*4);
 			var offset=0;
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Icebergs"+type+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Icebergs"+type+".png";
 			break;	
 
 		case 29:
@@ -6712,16 +6712,16 @@ function RefreshMapEditor(){
 			if(Y+EditorStandardY>1){if(Terrain[EditorMap[X-1+EditorStandardX][Y-2+EditorStandardY]].SailThrough==100){variant+=8;}};
 
 			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Shore"+variant+".PNG";
+			document.getElementById(Address).src= "Assets/Tiles/Shore"+variant+".png";
 			break;
 
 		case 30:
 			var offset=-9;
-			document.getElementById(Address).src="Assets/Tiles/Sea.PNG";
+			document.getElementById(Address).src="Assets/Tiles/Sea.png";
 			//document.getElementById(Address).style.top=offset+"px";
 			document.getElementById(Strucdress).style.visibility="inherit";
 			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Oil Rig.PNG";
+			document.getElementById(Strucdress).src= "Assets/Tiles/Oil Rig.png";
 			document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[ics+EditorStandardX-1][igrec+EditorStandardY-1]].ChromaCode;
 			break;
 
@@ -6773,7 +6773,7 @@ function RemoveKebabIMeanBlep(){
 			fifth_thingy=document.getElementById("Crep-"+Me_Go+"-"+It_Be) ?? 0;
 			if(fifth_thingy!=0){fifth_thingy.remove();};
 			let blarg_thingy=document.getElementById("BLARG "+Me_Go+"X"+It_Be) ?? 0;
-			if(blarg_thingy!=0){blarg_thingy.src="Assets/Miscellaneous/Nothing.PNG";};
+			if(blarg_thingy!=0){blarg_thingy.src="Assets/Miscellaneous/Nothing.png";};
 		}
 	}
 }
@@ -6819,7 +6819,7 @@ function RunEvent(Event){
 						setTimeout(function(){document.getElementById("Entity "+newunit.x+"X"+newunit.y).style.visibility='visible';
 							document.getElementById("Entity "+newunit.x+"X"+newunit.y).style.top=(Units[newunit.id].StaticOffsetY??[0,0,0,0,0])[newunit.dir]+"px";
 							document.getElementById("Entity "+newunit.x+"X"+newunit.y).style.left=(Units[newunit.id].StaticOffsetX??[0,0,0,0,0])[newunit.dir]+"px";
-						document.getElementById("Entity "+newunit.x+"X"+newunit.y).src="Assets/Units/Static/"+Units[newunit.id].shortname+newunit.dir+".PNG";},1050)
+						document.getElementById("Entity "+newunit.x+"X"+newunit.y).src="Assets/Units/Static/"+Units[newunit.id].shortname+newunit.dir+".png";},1050)
 						if(Event.SummonUnits[c].all==PlayerChoiceFaction){document.getElementById("Marker "+newunit.x+"X"+newunit.y).style.visibility="inherit"}
 						//refreshMap(Map);
 						//document.getElementById;
@@ -6897,7 +6897,7 @@ function SBLARG(X,Y,pip){
 	//console.log(hor+""+ ver + DeviationFactor);
 	//console.log(DeviationFactor);
 	
-	document.getElementById("BLARG "+(X+1)+"X"+(Y+1)).src="Assets/BLARG/Singularity.PNG";
+	document.getElementById("BLARG "+(X+1)+"X"+(Y+1)).src="Assets/BLARG/Singularity.png";
 
 	if(X==BLARG[BLARG.length-1].X && Y==BLARG[BLARG.length-1].Y){if(BLARG.length>1){
 
@@ -6910,7 +6910,7 @@ function SBLARG(X,Y,pip){
 
 				}else{//Here is where we must forge the new appendage of the function
 					//Segment that empties the current arrow
-					for(let B=0; B<BLARG.length; B++){document.getElementById("BLARG "+(BLARG[B].X+1)+"X"+(BLARG[B].Y+1)).src="Assets/Miscellaneous/Nothing.PNG";};
+					for(let B=0; B<BLARG.length; B++){document.getElementById("BLARG "+(BLARG[B].X+1)+"X"+(BLARG[B].Y+1)).src="Assets/Miscellaneous/Nothing.png";};
 					
 					//Segment that resequences the new path
 						let DeviatedBLARG=[{X:ChosenUnit.ics-1,Y:ChosenUnit.igrec-1}];
@@ -6935,7 +6935,7 @@ function SBLARG(X,Y,pip){
 							console.log(BLARG);
 					//Segment that redraws arrow
 
-					document.getElementById("BLARG "+(X+1)+"X"+(Y+1)).src="Assets/Miscellaneous/Nothing.PNG";
+					document.getElementById("BLARG "+(X+1)+"X"+(Y+1)).src="Assets/Miscellaneous/Nothing.png";
 
 
 
@@ -6947,7 +6947,7 @@ function SBLARG(X,Y,pip){
 
 
 			};
-		//else{document.getElementById("BLARG "+(X+1-StandardX)+"X"+(Y+1-StandardY)).src="Assets/Miscellaneous/Nothing.PNG"};
+		//else{document.getElementById("BLARG "+(X+1-StandardX)+"X"+(Y+1-StandardY)).src="Assets/Miscellaneous/Nothing.png"};
 		//alert(BLARG.length);
 	//alert(BLARG.length);
 	for(let B=0; B<BLARG.length; B++){
@@ -6959,16 +6959,16 @@ function SBLARG(X,Y,pip){
 			if(BLARG[0].X<BLARG[1].X){Blavar=3};
 			if(BLARG[0].Y>BLARG[1].Y){Blavar=4};
 			//alert(BLARG[1].X+" "+BLARG[1].Y);
-			document.getElementById("BLARG "+(BLARG[0].X+1)+"X"+(BLARG[0].Y+1)).src="Assets/BLARG/Emission"+Blavar+".PNG";
+			document.getElementById("BLARG "+(BLARG[0].X+1)+"X"+(BLARG[0].Y+1)).src="Assets/BLARG/Emission"+Blavar+".png";
 		}else if(B==BLARG.length-1 && BLARG.length>1){
-		//(BLARG.length==1){document.getElementById("BLARG "+(BLARG[0].X+1-StandardX)+"X"+(BLARG[0].Y+1-StandardY)).src="Assets/BLARG/Singularity.PNG";};
+		//(BLARG.length==1){document.getElementById("BLARG "+(BLARG[0].X+1-StandardX)+"X"+(BLARG[0].Y+1-StandardY)).src="Assets/BLARG/Singularity.png";};
 			let Blavar=0;
 			if(BLARG[BLARG.length-2].X>BLARG[BLARG.length-1].X){Blavar=1};
 			if(BLARG[BLARG.length-2].Y<BLARG[BLARG.length-1].Y){Blavar=2};
 			if(BLARG[BLARG.length-2].X<BLARG[BLARG.length-1].X){Blavar=3};
 			if(BLARG[BLARG.length-2].Y>BLARG[BLARG.length-1].Y){Blavar=4};
 
-			document.getElementById("BLARG "+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/Target"+Blavar+".PNG";
+			document.getElementById("BLARG "+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/Target"+Blavar+".png";
 		//}else if(B==BLARG.length-1 && BLARG.length==2){
 
 
@@ -6978,7 +6978,7 @@ function SBLARG(X,Y,pip){
 			//if(BLARG[BLARG.length-1].X<X){Blavar=3};
 			//if(BLARG[BLARG.length-1].Y>Y){Blavar=4};
 
-			//document.getElementById("BLARG "+(BLARG[BLARG.length-1].X)+"X"+(BLARG[BLARG.length].Y+1)).src="Assets/BLARG/Target"+Blavar+".PNG";
+			//document.getElementById("BLARG "+(BLARG[BLARG.length-1].X)+"X"+(BLARG[BLARG.length].Y+1)).src="Assets/BLARG/Target"+Blavar+".png";
 
 
 		}else if(BLARG.length>2){
@@ -7003,7 +7003,7 @@ function SBLARG(X,Y,pip){
 				//if(BLARG[B+1].X<BLARG[B-1].X && BLARG[B+1].Y>BLARG[B-1].Y){Blavar="ElbowD"};
 			};
 			//alert(Standard);
-			document.getElementById("BLARG "+(BLARG[B].X+1)+"X"+(BLARG[B].Y+1)).src="Assets/BLARG/"+Blavar+".PNG";
+			document.getElementById("BLARG "+(BLARG[B].X+1)+"X"+(BLARG[B].Y+1)).src="Assets/BLARG/"+Blavar+".png";
 
 		};
 
@@ -7055,11 +7055,11 @@ function ShowcaseUnitCategory(Category){
 	EditorUnitClass = Category;
 
 	for(let a = 1; a <= 10; a++) {
-		document.getElementById('EditorUnitShowcase'+a).src='Assets/Units/Static/'+Units[Category*10-10+a].shortname+'2.PNG';
+		document.getElementById('EditorUnitShowcase'+a).src='Assets/Units/Static/'+Units[Category*10-10+a].shortname+'2.png';
 		if(!Units[Category*10-10+a].MLPR??false) {
-			document.getElementById("EditorUnitMesh"+a).src="Assets/Units/StaticMeshes/"+Units[Category*10-10+a].shortname+"Mesh2.PNG";
+			document.getElementById("EditorUnitMesh"+a).src="Assets/Units/StaticMeshes/"+Units[Category*10-10+a].shortname+"Mesh2.png";
 		} else {
-			document.getElementById("EditorUnitMesh"+a).src="Assets/Miscellaneous/Nothing.PNG";
+			document.getElementById("EditorUnitMesh"+a).src="Assets/Miscellaneous/Nothing.png";
 		}
 	}
 }
@@ -7095,7 +7095,7 @@ function StorkPickup(Unit){
 		rostermap[Unit.x][Unit.y].speed=Units[Cargo].Speed;
 		rostermap[Unit.x][Unit.y].movementType=Units[Cargo].Movement;
 
-		document.getElementById("Entity "+(Unit.x-StandardX+1)+"X"+(Unit.y-StandardY+1)).src="Assets/Units/Static/"+Units[Cargo].shortname+rostermap[Unit.x][Unit.y].direction+".PNG";
+		document.getElementById("Entity "+(Unit.x-StandardX+1)+"X"+(Unit.y-StandardY+1)).src="Assets/Units/Static/"+Units[Cargo].shortname+rostermap[Unit.x][Unit.y].direction+".png";
 
 	}else{
 		YourMoney-=150;
@@ -7116,7 +7116,7 @@ function StorkPickup(Unit){
 		rostermap[Unit.x][Unit.y].speed=7;
 		rostermap[Unit.x][Unit.y].movementType="Flight";
 
-		document.getElementById("Entity "+(Unit.x-StandardX+1)+"X"+(Unit.y-StandardY+1)).src="Assets/Units/Static/Stork"+rostermap[Unit.x][Unit.y].direction+".PNG";
+		document.getElementById("Entity "+(Unit.x-StandardX+1)+"X"+(Unit.y-StandardY+1)).src="Assets/Units/Static/Stork"+rostermap[Unit.x][Unit.y].direction+".png";
 	}
 }
 
@@ -7231,10 +7231,10 @@ function ToggleBattleflags(){
 	for(let i=StandardX;i<StandardX+10;i++){for(let j=StandardY;j<StandardY+10;j++){
 	if(FlagMap[i+StandardX][j+StandardY]!=0){//alert("Chuchu");
 	document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).style.visibility='visible';
-	if(FlagMap[i][j]==1){document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).src="Assets/Miscellaneous/CaptureFlag.PNG"};
-	if(FlagMap[i][j]==2){document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).src="Assets/Miscellaneous/DefendFlag.PNG"};
-	if(FlagMap[i][j]==3){document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).src="Assets/Miscellaneous/DestroyFlag.PNG"};
-	if(FlagMap[i][j]==4){document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).src="Assets/Miscellaneous/ProtectFlag.PNG"};
+	if(FlagMap[i][j]==1){document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).src="Assets/Miscellaneous/CaptureFlag.png"};
+	if(FlagMap[i][j]==2){document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).src="Assets/Miscellaneous/DefendFlag.png"};
+	if(FlagMap[i][j]==3){document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).src="Assets/Miscellaneous/DestroyFlag.png"};
+	if(FlagMap[i][j]==4){document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).src="Assets/Miscellaneous/ProtectFlag.png"};
 	}
 
 	}};
@@ -7304,23 +7304,23 @@ function ToggleMoraleBadge(X,Y){
 				if(hasCertainTrait(rostermap[i][j].unitType,"Stealth") && rostermap[i][j].isCloaked){isStealth=true};
 				if(hasCertainTrait(rostermap[i][j].unitType,"Naval Transport") || hasCertainTrait(rostermap[i][j].unitType,"Air Transport")){isCargo=true};
 			if(rostermap[i][j].morale!=0){document.getElementById("Badge "+(i+1)+"X"+(j+1)).style.visibility="visible"};
-			document.getElementById("Badge "+(i+1)+"X"+(j+1)).src="Assets/Traits/Morale"+rostermap[i][j].morale+".PNG";
+			document.getElementById("Badge "+(i+1)+"X"+(j+1)).src="Assets/Traits/Morale"+rostermap[i][j].morale+".png";
 
 			if(isBewegungskrieg){
 				document.getElementById("Cargo "+(i+1)+"X"+(j+1)).style.visibility='visible';
-				document.getElementById("Cargo "+(i+1)+"X"+(j+1)).src="Assets/Traits/Bewegungskrieg.PNG";
+				document.getElementById("Cargo "+(i+1)+"X"+(j+1)).src="Assets/Traits/Bewegungskrieg.png";
 				document.getElementById("Cargo "+(i+1)+"X"+(j+1)).style.filter="";
 			};
 
 			if(isStealth){
 				document.getElementById("Cargo "+(i+1)+"X"+(j+1)).style.visibility='visible';
-				document.getElementById("Cargo "+(i+1)+"X"+(j+1)).src="Assets/Traits/Stealth.PNG";
+				document.getElementById("Cargo "+(i+1)+"X"+(j+1)).src="Assets/Traits/Stealth.png";
 				document.getElementById("Cargo "+(i+1)+"X"+(j+1)).style.filter="";
 			};
 
 			if(isCargo){
 				document.getElementById("Cargo "+(i+1)+"X"+(j+1)).style.visibility='visible';
-				document.getElementById("Cargo "+(i+1)+"X"+(j+1)).src="Assets/Units/Static/"+Units[rostermap[i][j].cargo].shortname+"2.PNG";
+				document.getElementById("Cargo "+(i+1)+"X"+(j+1)).src="Assets/Units/Static/"+Units[rostermap[i][j].cargo].shortname+"2.png";
 				document.getElementById("Cargo "+(i+1)+"X"+(j+1)).style.filter=Factions[rostermap[i][j].faction].ChromaCode;
 
 				/*
@@ -7331,7 +7331,7 @@ function ToggleMoraleBadge(X,Y){
 				Chuchu.style.zIndex=5;
 				Chuchu.style.width="35px";
 				Chuchu.style.height="35px";
-				Chuchu.src="Assets/Units/Static/"+Units[rostermap[i][j].cargo].shortname+"2.PNG";
+				Chuchu.src="Assets/Units/Static/"+Units[rostermap[i][j].cargo].shortname+"2.png";
 				Chuchu.id="CargoChuchu "+i+"X"+j;
 				Chuchu.style.filter=Factions[PlayerChoiceFaction].ChromaCode;
 				document.getElementById("Slot "+(i+1)+"X"+(j+1)).appendChild(Chuchu);*/
@@ -7347,11 +7347,11 @@ function ToggleOption(Button){
 
 			switch(state) {
 				case SoundPlayer.STATE.NONE: {
-					document.getElementById("ToggleSound").src="Assets/Miscellaneous/SoundOn.PNG";
+					document.getElementById("ToggleSound").src="Assets/Miscellaneous/SoundOn.png";
 					break;
 				}
 				case SoundPlayer.STATE.MUTED: {
-					document.getElementById("ToggleSound").src="Assets/Miscellaneous/SoundOff.PNG";
+					document.getElementById("ToggleSound").src="Assets/Miscellaneous/SoundOff.png";
 					break;
 				}
 			}
@@ -7362,11 +7362,11 @@ function ToggleOption(Button){
 
 			switch(state) {
 				case MusicPlayer.STATE.NONE: {
-					document.getElementById("ToggleMusic").src="Assets/Miscellaneous/MusicOn.PNG";
+					document.getElementById("ToggleMusic").src="Assets/Miscellaneous/MusicOn.png";
 					break;
 				}
 				case MusicPlayer.STATE.MUTED: {
-					document.getElementById("ToggleMusic").src="Assets/Miscellaneous/MusicOff.PNG";
+					document.getElementById("ToggleMusic").src="Assets/Miscellaneous/MusicOff.png";
 					break;
 				}
 			}
@@ -7375,18 +7375,18 @@ function ToggleOption(Button){
 		}
 		case "Dialogue":
 			DialogueChoice= !DialogueChoice;
-			if(DialogueChoice){document.getElementById("ToggleDialogue").src="Assets/Miscellaneous/DialogueOn.PNG"}else{document.getElementById("ToggleDialogue").src="Assets/Miscellaneous/DialogueOff.PNG"
+			if(DialogueChoice){document.getElementById("ToggleDialogue").src="Assets/Miscellaneous/DialogueOn.png"}else{document.getElementById("ToggleDialogue").src="Assets/Miscellaneous/DialogueOff.png"
 			document.getElementById("DialogueBox").style.visibility="hidden";
 		};
 			break;
 		case "IdleAnim":
 			IdleAnimChoice= !IdleAnimChoice;
-			if(IdleAnimChoice){document.getElementById("ToggleIdleAnimations").src="Assets/Miscellaneous/IdleAnimOn.PNG"}else{document.getElementById("ToggleIdleAnimations").src="Assets/Miscellaneous/IdleAnimOff.PNG"};
+			if(IdleAnimChoice){document.getElementById("ToggleIdleAnimations").src="Assets/Miscellaneous/IdleAnimOn.png"}else{document.getElementById("ToggleIdleAnimations").src="Assets/Miscellaneous/IdleAnimOff.png"};
 			break;
 		case "MystSett":
 			MystSettChoice= !MystSettChoice;
 			let zappy=0;
-			if(MystSettChoice){zappy=5; for(let o=61;o<69;o++){Units[o].Speed=zappy};document.getElementById("ToggleMysteriousSetting").src="Assets/Miscellaneous/MysteriousSettingOn.PNG";
+			if(MystSettChoice){zappy=5; for(let o=61;o<69;o++){Units[o].Speed=zappy};document.getElementById("ToggleMysteriousSetting").src="Assets/Miscellaneous/MysteriousSettingOn.png";
 			document.getElementById("Diff1Text").style.top="30px";
 			document.getElementById("Diff2Text").style.top="67px";
 			document.getElementById("Diff3Text").style.top="104px";
@@ -7398,7 +7398,7 @@ function ToggleOption(Button){
 
 
 
-		}else{document.getElementById("ToggleMysteriousSetting").src="Assets/Miscellaneous/MysteriousSettingOff.PNG";
+		}else{document.getElementById("ToggleMysteriousSetting").src="Assets/Miscellaneous/MysteriousSettingOff.png";
 			document.getElementById("Diff1Text").style.top="41px";
 			document.getElementById("Diff2Text").style.top="78px";
 			document.getElementById("Diff3Text").style.top="115px";
@@ -7423,8 +7423,8 @@ function ToggleTileBlock(Block){
 	if(Block==6){TerrainLedger=TerrainLedger_Structures};
 	if(Block==7){TerrainLedger=TerrainLedger_Other};
 
-	for(let t=1; t<=10; t++){document.getElementById("EditorTile"+t).src="Assets/Miscellaneous/Nothing.PNG"};
-	for(let e=0; e<TerrainLedger.length; e++){document.getElementById("EditorTile"+(e+1)).src="Assets/Tiles/"+Terrain[TerrainLedger[e]].name+".PNG"; document.getElementById("EditorTile"+(e+1)).style.top=14+e*61+(Terrain[TerrainLedger[e]].StD??0)+"px"};
+	for(let t=1; t<=10; t++){document.getElementById("EditorTile"+t).src="Assets/Miscellaneous/Nothing.png"};
+	for(let e=0; e<TerrainLedger.length; e++){document.getElementById("EditorTile"+(e+1)).src="Assets/Tiles/"+Terrain[TerrainLedger[e]].name+".png"; document.getElementById("EditorTile"+(e+1)).style.top=14+e*61+(Terrain[TerrainLedger[e]].StD??0)+"px"};
 
 
 }
@@ -7459,13 +7459,13 @@ function UndoMove(){
 			if(AdjacentCloakers[a]==4){document.getElementById("Entity "+(exX+1)+"X"+(exY)).style.filter="opacity(0%)"; MapRoster[rostermap[exX][exY-1].index].isCloaked=true};
 
 		};
-		//document.getElementById(temp).src="Assets/Units/Static/"+Units[MapRoster[LastMove.ID].unitType].shortname+MapRoster[LastMove.ID].direction+".PNG";
+		//document.getElementById(temp).src="Assets/Units/Static/"+Units[MapRoster[LastMove.ID].unitType].shortname+MapRoster[LastMove.ID].direction+".png";
 		//document.getElementById(temp).style.top=(Units[MapRoster[LastMove.ID].unitType].StaticOffsetY ?? [0,0,0,0,0])[MapRoster[LastMove.ID].direction]+"px";
 		//document.getElementById(temp).style.left=(Units[MapRoster[LastMove.ID].unitType].StaticOffsetX ?? [0,0,0,0,0])[MapRoster[LastMove.ID].direction]+"px";
-		document.getElementById(temp).src="Assets/Units/Static/"+Units[MapRoster[LastMove.ID].unitType].shortname+LastMove.DIR+".PNG";
+		document.getElementById(temp).src="Assets/Units/Static/"+Units[MapRoster[LastMove.ID].unitType].shortname+LastMove.DIR+".png";
 		document.getElementById(temp).style.top=(Units[MapRoster[LastMove.ID].unitType].StaticOffsetY ?? [0,0,0,0,0])[LastMove.DIR]+"px";
 		document.getElementById(temp).style.left=(Units[MapRoster[LastMove.ID].unitType].StaticOffsetX ?? [0,0,0,0,0])[LastMove.DIR]+"px";
-		if(!Units[MapRoster[LastMove.ID].unitType].MLPR??false){document.getElementById(tempmesh).src="Assets/Units/StaticMeshes/"+Units[MapRoster[LastMove.ID].unitType].shortname+"Mesh"+LastMove.DIR+".PNG"}else{document.getElementById(tempmesh).style.visibility="hidden";};
+		if(!Units[MapRoster[LastMove.ID].unitType].MLPR??false){document.getElementById(tempmesh).src="Assets/Units/StaticMeshes/"+Units[MapRoster[LastMove.ID].unitType].shortname+"Mesh"+LastMove.DIR+".png"}else{document.getElementById(tempmesh).style.visibility="hidden";};
 		rostermap[LastMove.X][LastMove.Y]=MapRoster[LastMove.ID];
 		rostermap[LastMove.X][LastMove.Y].x=LastMove.X;
 		rostermap[LastMove.X][LastMove.Y].y=LastMove.Y;
@@ -7490,18 +7490,18 @@ function UndoMove(){
 		rostermap[LastMove.EX][LastMove.EY].y=LastMove.EY;
 		if(LastMove.E2ID??0!=0){rostermap[LastMove.E2X][LastMove.E2Y]=LastMove.GRV2;rostermap[LastMove.E2X][LastMove.E2Y].x=LastMove.E2X; rostermap[LastMove.E2X][LastMove.E2Y].y=LastMove.E2Y};
 		//alert(LastMove.E2ID);
-		document.getElementById("EntityCore "+(LastMove.EX+1)+"X"+(LastMove.EY+1)).src="Assets/Units/Static/"+Units[LastMove.GRV.unitType].shortname+LastMove.GRV.direction+".PNG";
+		document.getElementById("EntityCore "+(LastMove.EX+1)+"X"+(LastMove.EY+1)).src="Assets/Units/Static/"+Units[LastMove.GRV.unitType].shortname+LastMove.GRV.direction+".png";
 		document.getElementById("EntityCore "+(LastMove.EX+1)+"X"+(LastMove.EY+1)).style.visibility="inherit";
 		document.getElementById("EntityCore "+(LastMove.EX+1)+"X"+(LastMove.EY+1)).style.top="0px";
-		if(!Units[LastMove.GRV.unitType].MLPR??false){document.getElementById("EntityMesh "+(LastMove.EX+1)+"X"+(LastMove.EY+1)).src="Assets/Units/StaticMeshes/"+Units[LastMove.GRV.unitType].shortname+"Mesh"+LastMove.GRV.direction+".PNG"; document.getElementById("EntityMesh "+(LastMove.EX+1)+"X"+(LastMove.EY+1)).style.visibility='inherit'}else{document.getElementById("EntityMesh "+(LastMove.EX+1)+"X"+(LastMove.EY+1)).style.visibility="hidden";};
+		if(!Units[LastMove.GRV.unitType].MLPR??false){document.getElementById("EntityMesh "+(LastMove.EX+1)+"X"+(LastMove.EY+1)).src="Assets/Units/StaticMeshes/"+Units[LastMove.GRV.unitType].shortname+"Mesh"+LastMove.GRV.direction+".png"; document.getElementById("EntityMesh "+(LastMove.EX+1)+"X"+(LastMove.EY+1)).style.visibility='inherit'}else{document.getElementById("EntityMesh "+(LastMove.EX+1)+"X"+(LastMove.EY+1)).style.visibility="hidden";};
 		document.getElementById("Entity "+(LastMove.EX+1)+"X"+(LastMove.EY+1)).style.top=(Units[LastMove.GRV.unitType].StaticOffsetY ?? [0,0,0,0,0])[LastMove.GRV.direction]+"px";
 		document.getElementById("Entity "+(LastMove.EX+1)+"X"+(LastMove.EY+1)).style.left=(Units[LastMove.GRV.unitType].StaticOffsetX ?? [0,0,0,0,0])[LastMove.GRV.direction]+"px";
 		document.getElementById("Entity "+(LastMove.EX+1)+"X"+(LastMove.EY+1)).style.visibility="visible"
 
-		if(LastMove.E2ID??0!=0){document.getElementById("EntityCore "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).src="Assets/Units/Static/"+Units[LastMove.GRV2.unitType].shortname+LastMove.GRV2.direction+".PNG";
+		if(LastMove.E2ID??0!=0){document.getElementById("EntityCore "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).src="Assets/Units/Static/"+Units[LastMove.GRV2.unitType].shortname+LastMove.GRV2.direction+".png";
 		document.getElementById("EntityCore "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.visibility="inherit";
 		document.getElementById("EntityCore "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.top="0px";
-		if(!Units[LastMove.GRV2.unitType].MLPR??false){document.getElementById("EntityMesh "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).src="Assets/Units/StaticMeshes/"+Units[LastMove.GRV2.unitType].shortname+"Mesh"+LastMove.GRV2.direction+".PNG"; document.getElementById("EntityMesh "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.visibility='inherit'}else{document.getElementById("EntityMesh "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.visibility="hidden";};
+		if(!Units[LastMove.GRV2.unitType].MLPR??false){document.getElementById("EntityMesh "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).src="Assets/Units/StaticMeshes/"+Units[LastMove.GRV2.unitType].shortname+"Mesh"+LastMove.GRV2.direction+".png"; document.getElementById("EntityMesh "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.visibility='inherit'}else{document.getElementById("EntityMesh "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.visibility="hidden";};
 		document.getElementById("Entity "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.top=(Units[LastMove.GRV2.unitType].StaticOffsetY ?? [0,0,0,0,0])[LastMove.GRV2.direction]+"px";
 		document.getElementById("Entity "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.left=(Units[LastMove.GRV2.unitType].StaticOffsetX ?? [0,0,0,0,0])[LastMove.GRV2.direction]+"px";
 		document.getElementById("Entity "+(LastMove.E2X+1)+"X"+(LastMove.E2Y+1)).style.visibility="visible"
@@ -7574,8 +7574,8 @@ function UnitLost(index){
 	if(TileFlagMap[MapRoster[index].x][MapRoster[index].y]==1){localFlag=1};
 	if(TileFlagMap[MapRoster[index].x][MapRoster[index].y]==2){localFlag=2};
 	if(localFlag==0){document.getElementById(FlagID).style.visibility="hidden";};
-	if(localFlag==1){document.getElementById(FlagID).src="Assets/Miscellaneous/CaptureFlag.PNG"};
-	if(localFlag==2){document.getElementById(FlagID).src="Assets/Miscellaneous/DefendFlag.PNG"};
+	if(localFlag==1){document.getElementById(FlagID).src="Assets/Miscellaneous/CaptureFlag.png"};
+	if(localFlag==2){document.getElementById(FlagID).src="Assets/Miscellaneous/DefendFlag.png"};
 	//document.getElementById(UnitID).parentNode.removeChild(document.getElementById(UnitID));
 	
 	//MapRoster.splice(index,1);
@@ -7583,12 +7583,12 @@ function UnitLost(index){
 	};};
 function UnitTarget(UnitType,X,Y){};
 function UnmontreUnit(Index){
-	document.getElementById('UnitMontre'+Index).src='Assets/Units/Static/'+Units[Index].shortname+'3.PNG'; 
+	document.getElementById('UnitMontre'+Index).src='Assets/Units/Static/'+Units[Index].shortname+'3.png'; 
 
 	if(!Units[Index].MLPR??false) {
-		document.getElementById('UnitMontre'+Index+'Mesh').src='Assets/Units/StaticMeshes/'+Units[Index].shortname+'Mesh3.PNG';
+		document.getElementById('UnitMontre'+Index+'Mesh').src='Assets/Units/StaticMeshes/'+Units[Index].shortname+'Mesh3.png';
 	} else {
-		document.getElementById('UnitMontre'+Index+'Mesh').src='Assets/Miscellaneous/Nothing.PNG';
+		document.getElementById('UnitMontre'+Index+'Mesh').src='Assets/Miscellaneous/Nothing.png';
 	}
 }
 function WBLARG(X,Y){
@@ -7596,7 +7596,7 @@ function WBLARG(X,Y){
 	//alert(ChosenUnit.ics+" "+ChosenUnit.igrec);
 	if(BLARG.length>1) {
 		if(BLARG[BLARG.length-2].X==X+StandardX-1 && BLARG[BLARG.length-2].Y==Y+StandardY-1){
-			document.getElementById("BLARG "+(BLARG[BLARG.length-1].X-StandardX+1)+"X"+(BLARG[BLARG.length-1].Y-StandardY+1)).src="Assets/Miscellaneous/Nothing.PNG";
+			document.getElementById("BLARG "+(BLARG[BLARG.length-1].X-StandardX+1)+"X"+(BLARG[BLARG.length-1].Y-StandardY+1)).src="Assets/Miscellaneous/Nothing.png";
 			BLARG.pop();
 			let type="";
 			let axel=BLARG[BLARG.length-1];
@@ -7619,7 +7619,7 @@ function WBLARG(X,Y){
 
 
 			//if(BLARG[BLARG.length-1].X-StandardX+1==ChosenUnit.X && BLARG[BLARG.length-1].Y-StandardY+1==ChosenUnit.Y){BLARGlet="Singularity"};
-			document.getElementById("BLARG "+axelX+"X"+axelY).src="Assets/BLARG/"+BLARGlet+".PNG";
+			document.getElementById("BLARG "+axelX+"X"+axelY).src="Assets/BLARG/"+BLARGlet+".png";
 		}
 	}
 }
@@ -7631,8 +7631,8 @@ function wipeMap(){
 		//document.getElementById("B "+i+ " X " +j).remove();
 		//document.getElementById("C "+i+ " X " +j).remove();
 		//document.getElementById("D "+i+ " X " +j).remove();
-		//document.getElementById("Tile"+i+"X"+j).src="Assets/Miscellaneous/Nothing.PNG";
-		//document.getElementById("Entity"+i+"X"+j).src="Assets/Miscellaneous/Nothing.PNG";
+		//document.getElementById("Tile"+i+"X"+j).src="Assets/Miscellaneous/Nothing.png";
+		//document.getElementById("Entity"+i+"X"+j).src="Assets/Miscellaneous/Nothing.png";
 			let Voider=document.getElementById("Slot "+i+"X"+j);
 			if(Voider!=null){Voider.remove();};
 		}
@@ -7661,13 +7661,13 @@ CallPreloader();
 
 /*
 Mainscreen=Math.ceil(Math.random()*9);
-if(Mainscreen==1){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Relampago.JPG"};
-if(Mainscreen==2){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Backdrop ETHA.JPG"};
-if(Mainscreen==3){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Vladov's Last Charge.PNG"};
-if(Mainscreen==4){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/BackdropProvisory.PNG"};
-if(Mainscreen==5){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Continental Security League.PNG"};
-if(Mainscreen==6){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Battle of Vardar.JPG"};
-if(Mainscreen==7){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Battle of Burluk.JPG"};
-if(Mainscreen==8){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Stulpikan Pandur.PNG"};
-if(Mainscreen==9){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Coloured Tanks.JPG"};*/
+if(Mainscreen==1){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Relampago.jpg"};
+if(Mainscreen==2){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Backdrop ETHA.jpg"};
+if(Mainscreen==3){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Vladov's Last Charge.png"};
+if(Mainscreen==4){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/BackdropProvisory.png"};
+if(Mainscreen==5){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Continental Security League.png"};
+if(Mainscreen==6){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Battle of Vardar.jpg"};
+if(Mainscreen==7){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Battle of Burluk.jpg"};
+if(Mainscreen==8){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Stulpikan Pandur.png"};
+if(Mainscreen==9){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Coloured Tanks.jpg"};*/
 //Inspection(0,MohConstants,MohRoster);
