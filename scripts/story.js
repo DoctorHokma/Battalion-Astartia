@@ -5,40 +5,68 @@ const DISPLAY_TYPE = {
 
 /*
 let ElamFlagVariant=1; for(let j=1;j<5;j++){if(Campaigns[4][j-1][4].Finished??false){ElamFlagVariant=j+1}}; if(!MystSettChoice){ElamFlagVariant=1};
-document.getElementById('Elam Flag').src='Assets/Flags/FlagELM'+ElamFlagVariant+'.PNG'
+document.getElementById('Elam Flag').src='Assets/Flags/FlagELM'+ElamFlagVariant+'.png'
 */
+
+/*battalion.db.saveProfile(PROFILE_ID, {
+	"MISSIONS": {
+		"SOMERTIN_C1_M1": 1,
+		"SOMERTIN_C1_M2": 1,
+		"SOMERTIN_C1_M3": 1,
+		"SOMERTIN_C1_M4": 1,
+		"SOMERTIN_C1_M5": 1
+	},
+	"CHAPTERS": {
+		"SOMERTIN_C1": 1
+	}
+});*/
+
 const addStoryEvents = function(battalion) {
-    const { story, language } = battalion;
+    const { db, story, language } = battalion;
 
     story.events.on(StoryHandler.EVENT.SCENARIO_WON, (scenario, isFirst) =>  {
         console.log(scenario, isFirst, "HAS BEEN WON");
+
+        if(isFirst) {
+            db.saveProfile(PROFILE_ID, story.save());
+        }
     }, { permanent: true });
     
     story.events.on(StoryHandler.EVENT.CAMPAIGN_WON, (campaign, isFirst) =>  {
         console.log(campaign, isFirst, "HAS BEEN WON");
+
+        if(isFirst) {
+            db.saveProfile(PROFILE_ID, story.save());
+        }
     }, { permanent: true });
     
     story.events.on(StoryHandler.EVENT.CHAPTER_WON, (chapter, isFirst) =>  {
-        const { type } = chapter;
-        const { interlogueImage, interlogue } = type;
-    
         console.log(chapter, isFirst, "HAS BEEN WON");
     
         if(isFirst) {
+            const { type } = chapter;
+            const { interlogueImage, interlogue } = type;
+    
             document.getElementById("InterlogueScreen").style.visibility = "visible";
             document.getElementById("InterlogueImage").src = interlogueImage;
             document.getElementById("InterlogueText").innerHTML = language.get(interlogue);
+            
+            db.saveProfile(PROFILE_ID, story.save());
         }
     }, { permanent: true });
     
     story.events.on(StoryHandler.EVENT.MISSION_WON, (mission, isFirst) =>  {
         console.log(mission, isFirst, "HAS BEEN WON");
+
+        if(isFirst) {
+            db.saveProfile(PROFILE_ID, story.save());
+        }
     }, { permanent: true });
 }
 
 const saveStory = function() {
-    const { saveHandler } = battalion;
-    const saveData = saveHandler.saveStoryProgress(battalion);
+    const { story } = battalion;
+    const saveData = story.save();
 
     const file = new PrettyJSON(4).open();
 
@@ -175,9 +203,9 @@ const showProgressData = function(battalion) {
         const chapterID = campaign.order[i];
 
         if(nextChapters.has(chapterID)) {
-            plaqueImage.src = "Assets/Miscellaneous/Plaque.PNG";
+            plaqueImage.src = "Assets/Miscellaneous/Plaque.png";
         } else {
-            plaqueImage.src = "Assets/Miscellaneous/NonPlaque.PNG";
+            plaqueImage.src = "Assets/Miscellaneous/NonPlaque.png";
         }
     }
 

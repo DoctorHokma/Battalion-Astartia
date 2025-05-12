@@ -1,3 +1,4 @@
+const PROFILE_ID = "TEST_PROFILE";
 const OPENING_TRACK = "RiversOfSteel";
 const battalion = new Battalion();
 
@@ -17,20 +18,9 @@ battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
 battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
 
 battalion.init();
+battalion.db.createProfile(PROFILE_ID);
+battalion.db.getProfile((profile) => battalion.story.load(profile.story), PROFILE_ID);
 //battalion.story.unlockAll();
-
-battalion.saveHandler.loadStoryProgress(battalion, {
-	"MISSIONS": {
-		"SOMERTIN_C1_M1": 1,
-		"SOMERTIN_C1_M2": 1,
-		"SOMERTIN_C1_M3": 1,
-		"SOMERTIN_C1_M4": 1,
-		"SOMERTIN_C1_M5": 1
-	},
-	"CHAPTERS": {
-		"SOMERTIN_C1": 1
-	}
-});
 
 //TODO: This adds a "bug" because scenario selection is not added yet.
 addStoryEvents(battalion);
@@ -128,6 +118,8 @@ document.getElementById("GenerateEditorMap").onclick = () => {
 document.getElementById("EndBattleCloseButton").onclick = () => {
 	battalion.setState(Battalion.STATE.MAIN_MENU);
 	battalion.musicPlayer.playTrack(OPENING_TRACK);
+
+	selectScenario("GREAT_WAR");
 
 	document.getElementById("EndBattleCloseButton").src='Assets/Miscellaneous/CloseButtonPressed.png';
 	

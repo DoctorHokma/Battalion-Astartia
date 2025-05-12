@@ -3,7 +3,7 @@ const MainMenuButton = function(mainID, textID) {
     this.textID = textID;
 
     this.image = document.createElement('img');
-    this.image.src = 'Assets/Miscellaneous/GenericButton.PNG';
+    this.image.src = 'Assets/Miscellaneous/GenericButton.png';
     this.image.classList.add("main_menu_button_image");
 
     this.text = document.createElement('p');
@@ -24,17 +24,17 @@ MainMenuButton.prototype.updateText = function(context) {
 }
 
 MainMenuButton.prototype.onDisable = function() {
-    this.image.src = 'Assets/Miscellaneous/NonButton.PNG';
+    this.image.src = 'Assets/Miscellaneous/NonButton.png';
 }
 
 MainMenuButton.prototype.onEnable = function() {
-    this.image.src = 'Assets/Miscellaneous/GenericButton.PNG';
+    this.image.src = 'Assets/Miscellaneous/GenericButton.png';
 }
 
 MainMenuButton.prototype.init = function(tooltipID) {
     this.element.onmouseover = () => {
         if(this.state === GenericButton.STATE.ENABLED) {
-            this.image.src = 'Assets/Miscellaneous/GenericButtonHovered.PNG';
+            this.image.src = 'Assets/Miscellaneous/GenericButtonHovered.png';
         }
     }
 
@@ -44,13 +44,13 @@ MainMenuButton.prototype.init = function(tooltipID) {
         }
 
         if(this.state === GenericButton.STATE.ENABLED) {
-            this.image.src = 'Assets/Miscellaneous/GenericButton.PNG'; 
+            this.image.src = 'Assets/Miscellaneous/GenericButton.png'; 
         }
     }
 
     this.element.onmousedown = () => {
         if(this.state === GenericButton.STATE.ENABLED) {
-            this.image.src = 'Assets/Miscellaneous/GenericButtonPressed.PNG';
+            this.image.src = 'Assets/Miscellaneous/GenericButtonPressed.png';
         }
     }
 

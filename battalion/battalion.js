@@ -8,8 +8,8 @@ const Battalion = function() {
     this.language = new LanguageHandler();
     this.story = new StoryHandler();
     this.morale = new RecruitMoraleHandler();
-    this.saveHandler = new SaveHandler();
     this.uiHandler = new UIHandler();
+    this.db = new BattalionDB();
 
     this.timer = new Timer();
     this.timer.input = () => this.client.update();
@@ -59,7 +59,7 @@ Battalion.DIRECTION_FLIP = {
 
 Battalion.prototype.init = function() {
     this.story.init();
-    this.uiHandler.mainMenu.init();
+    this.uiHandler.mainMenu.init(this);
     this.uiHandler.updateLanguage(this);
     this.setState(Battalion.STATE.MAIN_MENU);
     this.timer.start();

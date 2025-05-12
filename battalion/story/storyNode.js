@@ -30,7 +30,11 @@ StoryNode.prototype.loadState = function(state) {
 }
 
 StoryNode.prototype.finish = function() {
+    const oldState = this.state;
+
     this.state = StoryNode.STATE.FINISHED;
+    
+    return oldState === StoryNode.STATE.UNFINISHED;
 }
 
 StoryNode.prototype.isFinished = function() {
