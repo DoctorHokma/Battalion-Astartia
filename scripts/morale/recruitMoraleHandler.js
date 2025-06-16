@@ -36,8 +36,8 @@ RecruitMoraleHandler.prototype.onClick = function(buttonID) {
     
     shiftButton.onClick();
 
-    const { type } = shiftButton;
-    const { costFactor, shift } = type;
+    const shift = shiftButton.getShift();
+    const costFactor = shiftButton.getCostFactor();
 
     this.shift = shift;
     this.costFactor = costFactor;
@@ -49,8 +49,8 @@ RecruitMoraleHandler.prototype.getShift = function() {
     return this.shift;
 }
 
-RecruitMoraleHandler.prototype.getCostFactor = function() {
-    return this.costFactor;
+RecruitMoraleHandler.prototype.applyCostFactor = function(value) {
+    return value * this.costFactor;
 }
 
 RecruitMoraleHandler.prototype.reset = function() {

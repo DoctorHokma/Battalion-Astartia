@@ -47,6 +47,37 @@ const exportTraits = function(fName){
     file.download(fName);
 }
 
+/**
+ * neyn 16.06.2025
+ * 
+ * Helper function to download units.
+ * 
+ * @param {string} fName 
+ */
+const exportUnits = function(fName) {
+	const file = new PrettyJSON(4);
+	
+	file.open(0, PrettyList.TYPE.ARRAY);
+
+	for(let i = 0; i < UNITS.length; i++) {
+		const config = UNITS[i];
+		
+		file.openListUnnamed(PrettyList.TYPE.OBJECT);
+		file.writeLine("id", i);
+
+		for(const key in config) {
+			file.writeLine(key, config[key]);
+		}
+
+		file.closeList();
+	}
+
+	file.close();
+	file.download(fName);
+}
+
+//exportUnits("units");
+
 /*
 [
 	["Kargit Dogs","Anima Ante Mortem"],

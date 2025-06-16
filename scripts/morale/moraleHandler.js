@@ -1,6 +1,4 @@
-const MoraleHandler = function() {
-    this.id = 0;
-}
+const MoraleHandler = function() {}
 
 MoraleHandler.MORALE_OFFSET = 4; //Morale goes from -4 to +5;
 

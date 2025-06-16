@@ -2334,10 +2334,10 @@ function DisplayRegions(){
 //NEYN TODO!!!
 function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomName, SpecialName, CustomDesc, SpecialDesc) {
 	const { morale } = battalion;
+	const factoredCost = morale.applyCostFactor(Units[Type].Cost);
 	const shift = morale.getShift();
-	const costFactor = morale.getCostFactor();
-
-	YourMoney-=Math.round(Units[Type].Cost*costFactor);
+	
+	YourMoney -= Math.round(factoredCost);
 	CustomName=document.getElementById("ParticularNameBox").value;
 	if(CustomName==""){CustomName=null};
 
@@ -2369,12 +2369,12 @@ function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomNam
 
 	//TODO: SFX per type, not in code!
 	let RecruitmentSFX=0;
-	if(Math.ceil(Type/10)==1){RecruitmentSFX="InfantryReady"};
-	if(Math.ceil(Type/10)==2){RecruitmentSFX="VehicleReady"};
-	if(Math.ceil(Type/10)==3){RecruitmentSFX="TankReady"};
-	if(Math.ceil(Type/10)==4){RecruitmentSFX="ArtilleryReady"};
-	if(Math.ceil(Type/10)==5){RecruitmentSFX="AircraftReady"};
-	if(Math.ceil(Type/10)==6){RecruitmentSFX="ShipReady"};
+	if(Math.ceil(Type/10)==1){RecruitmentSFX = "InfantryReady"};
+	if(Math.ceil(Type/10)==2){RecruitmentSFX = "VehicleReady"};
+	if(Math.ceil(Type/10)==3){RecruitmentSFX = "TankReady"};
+	if(Math.ceil(Type/10)==4){RecruitmentSFX = "ArtilleryReady"};
+	if(Math.ceil(Type/10)==5){RecruitmentSFX = "AircraftReady"};
+	if(Math.ceil(Type/10)==6){RecruitmentSFX = "ShipReady"};
 
 	battalion.soundPlayer.playSound(RecruitmentSFX);
 
@@ -3496,14 +3496,14 @@ function initializeBattle(){
 		return;
 	}
 	
-	const { data, type } = mission;
+	const { data, config } = mission;
 	
 	battalion.setState(Battalion.STATE.BATTLE);
 
 	if(data.Constants?.OST) {
 		battalion.musicPlayer.playPlaylist(data.Constants.OST);
 	} else {
-		battalion.musicPlayer.playPlaylist(type.playlist);
+		battalion.musicPlayer.playPlaylist(config.playlist);
 	}
 
 	console.log(mission);
@@ -5445,13 +5445,17 @@ function PostDialogueFrame(Portrait, Name, Text){
 	//function WriteText(){TextPhase++;if(TextPhase==TextTerminus){clearInterval(TextBlock)}};
 	document.getElementById("DialogueBox").style.visibility="visible";};
 function RazeFaction(Faction){};
-function RecruitUnit(Class){
+
+function RecruitUnit(Class) {
 	const { morale } = battalion;
-	const costFactor = morale.getCostFactor();
+	const factoredCost = morale.applyCostFactor(Units[Class].Cost);
+
 	//alert(ActiveIndustrialNode.X+"X"+ActiveIndustrialNode.Y);
 	for(let x=1;x<Map.length;x++){for(let y=1;y<Map[0].length;y++){let crep=document.getElementById("Crep-"+x+"-"+y) ?? 0; if(crep!=0){crep.remove()};}};
 	let RecC=document.getElementById("CloseRecruiterX")??0;if(RecC!=0){RecC.remove()};
-	if(YourMoney>=Units[Class].Cost*costFactor){
+
+
+	if(YourMoney >= factoredCost){
 		document.getElementById("UnitRecruitmentPanel").style.visibility="hidden";
 		for(let i=1;i<41;i++){document.getElementById("Obturator"+i).style.visibility="hidden"};
 
@@ -5476,7 +5480,7 @@ function RecruitUnit(Class){
 				//Crep.style.left=j*56+"px";
 				Crep.style.zIndex=4;
 				Crep.addEventListener("click",function(){
-					if(YourMoney>=Units[Class].Cost*costFactor){
+					if(YourMoney >= factoredCost){
 					DeployUnit(i, j, Class, PlayerChoiceFaction);
 					let pos=document.getElementById("Crep-"+i+"-"+j);
 					pos.remove();
