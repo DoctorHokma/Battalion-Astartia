@@ -1,5 +1,5 @@
-const Mission = function() {
-	StoryNode.call(this);
+const Mission = function(id) {
+	StoryNode.call(this, id);
 
 	this.data = {};
 }
@@ -7,11 +7,8 @@ const Mission = function() {
 Mission.prototype = Object.create(StoryNode.prototype);
 Mission.prototype.constructor = Mission;
 
-Mission.prototype.init = function(missionID, mission) {
-	this.id = missionID;
-	this.type = mission;
-	
-	const { data } = mission;
+Mission.prototype.init = function() {	
+	const { data } = this.config;
 	const missionData = MISSION_DATA[data];
 
 	if(missionData) {

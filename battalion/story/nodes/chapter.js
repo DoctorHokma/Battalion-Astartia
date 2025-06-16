@@ -1,23 +1,14 @@
-const Chapter = function() {
-	StoryNode.call(this);
+const Chapter = function(id) {
+	StoryNode.call(this, id);
 }
 
 Chapter.prototype = Object.create(StoryNode.prototype);
 Chapter.prototype.constructor = Chapter;
 
-Chapter.prototype.init = function(chapterID, chapter) {
-	this.id = chapterID;
-	this.type = chapter;
-
-	const { missions } = chapter;
+Chapter.prototype.init = function() {
+	const { missions } = this.config;
 
 	if(missions) {
 		this.order = missions;
-
-		for(let i = 0; i < missions.length; i++) {
-			const missionID = missions[i];
-
-			this.children.add(missionID);
-		}
 	}
 }

@@ -1131,7 +1131,7 @@ function AnalyseSquare(entityType, X, Y){
 
 function AnalyzeSpecification(Index) {
 	const { story } = battalion;
-	const mission = story.getNode(StoryHandler.TYPE.MISSION);
+	const mission = story.getCurrentNode(StoryHandler.TYPE.MISSION);
 
 	if(!mission) {
 		return;
@@ -3490,7 +3490,7 @@ function HoverBuilding(Phase,Building){
 
 function initializeBattle(){
 	const { story } = battalion;
-	const mission = story.getNode(StoryHandler.TYPE.MISSION);
+	const mission = story.getCurrentNode(StoryHandler.TYPE.MISSION);
 
 	if(!mission) {
 		return;

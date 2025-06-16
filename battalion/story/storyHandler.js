@@ -53,11 +53,7 @@ StoryHandler.prototype.onCampaignWon = function() {
 	this.events.emit(StoryHandler.EVENT.CAMPAIGN_WON, this.currentCampaign, isFirst);
 	this.currentCampaign = null;
 
-	const isComplete = this.currentScenario.isComplete((campaignID) => {
-		const campaign = this.campaigns.get(campaignID);
-
-		return campaign && campaign.isFinished();
-	});
+	const isComplete = this.currentScenario.isComplete((campaignID) => this.isNodeFinished(StoryHandler.TYPE.CAMPAIGN, campaignID));
 
 	if(isComplete) {
 		this.onScenarionWon();
@@ -74,11 +70,7 @@ StoryHandler.prototype.onChapterWon = function() {
 	this.events.emit(StoryHandler.EVENT.CHAPTER_WON, this.currentChapter, isFirst);
 	this.currentChapter = null;
 
-	const isComplete = this.currentCampaign.isComplete((chapterID) => {
-		const chapter = this.chapters.get(chapterID);
-
-		return chapter && chapter.isFinished();
-	});
+	const isComplete = this.currentCampaign.isComplete((chapterID) => this.isNodeFinished(StoryHandler.TYPE.CHAPTER, chapterID));
 
 	if(isComplete) {
 		this.onCampaignWon();
@@ -95,11 +87,7 @@ StoryHandler.prototype.onMissionWon = function() {
 	this.events.emit(StoryHandler.EVENT.MISSION_WON, this.currentMission, isFirst);
 	this.currentMission = null;
 
-	const isComplete = this.currentChapter.isComplete((missionID) => {
-		const mission = this.missions.get(missionID);
-
-		return mission && mission.isFinished();
-	});
+	const isComplete = this.currentChapter.isComplete((missionID) => this.isNodeFinished(StoryHandler.TYPE.MISSION, missionID));
 	
 	if(isComplete) {
 		this.onChapterWon();
@@ -119,11 +107,7 @@ StoryHandler.prototype.selectMissionIfAvailable = function(missionIndex) {
 		return null;
 	}
 
-	const isAvailable = this.currentChapter.isAvailableAsNext(missionIndex, (childID) => {
-		const mission = this.missions.get(childID);
-
-		return mission && mission.isFinished(); 
-	});
+	const isAvailable = this.currentChapter.isChildAvailableAsNext(missionIndex, (missionID) => this.isNodeFinished(StoryHandler.TYPE.MISSION, missionID));
 
 	if(!isAvailable) {
 		return null;
@@ -140,11 +124,7 @@ StoryHandler.prototype.selectChapterIfAvailable = function(chapterIndex) {
 		return null;
 	}
 
-	const isAvailable = this.currentCampaign.isAvailableAsNext(chapterIndex, (childID) => {
-		const chapter = this.chapters.get(childID);
-
-		return chapter && chapter.isFinished(); 
-	});
+	const isAvailable = this.currentCampaign.isChildAvailableAsNext(chapterIndex, (chapterID) => this.isNodeFinished(StoryHandler.TYPE.CHAPTER, chapterID));
 
 	if(!isAvailable) {
 		return null;
@@ -161,11 +141,7 @@ StoryHandler.prototype.getNextMissionIndex = function() {
 		return -1;
 	}
 
-	const index = this.currentChapter.getNextAvailableIndex((missionID) => {
-		const mission = this.missions.get(missionID);
-
-		return mission && mission.isFinished();
-	});
+	const index = this.currentChapter.getNextAvailableIndex((missionID) => this.isNodeFinished(StoryHandler.TYPE.MISSION, missionID));
 
 	return index;
 }
@@ -175,16 +151,38 @@ StoryHandler.prototype.getNextChapterIndex = function() {
 		return -1;
 	}
 
-	const index = this.currentCampaign.getNextAvailableIndex((chapterID) => {
-		const chapter = this.chapters.get(chapterID);
-
-		return chapter && chapter.isFinished();
-	});
+	const index = this.currentCampaign.getNextAvailableIndex((chapterID) => this.isNodeFinished(StoryHandler.TYPE.CHAPTER, chapterID));
 
 	return index;
 }
 
-StoryHandler.prototype.getNode = function(type) {
+StoryHandler.prototype.isNodeFinished = function(type, id) {
+	switch(type) {
+		case StoryHandler.TYPE.SCENARIO: {
+			const scenario = this.scenarios.get(id);
+
+			return scenario && scenario.isFinished();
+		}
+		case StoryHandler.TYPE.CAMPAIGN: {
+			const campaign = this.campaigns.get(id);
+
+			return campaign && campaign.isFinished();
+		}
+		case StoryHandler.TYPE.CHAPTER: {
+			const chapter = this.chapters.get(id);
+
+			return chapter && chapter.isFinished();
+		}
+		case StoryHandler.TYPE.MISSION: {
+			const mission = this.missions.get(id);
+
+			return mission && mission.isFinished();
+		}
+		default: return false;
+	}
+}
+
+StoryHandler.prototype.getCurrentNode = function(type) {
 	switch(type) {
 		case StoryHandler.TYPE.SCENARIO: return this.currentScenario;
 		case StoryHandler.TYPE.CAMPAIGN: return this.currentCampaign;
@@ -318,39 +316,43 @@ StoryHandler.prototype.selectMission = function(missionID) {
 
 StoryHandler.prototype.init = function() {
 	for(const missionID in MISSIONS) {
-		const mission = new Mission();
+		const mission = new Mission(missionID);
 		const config = MISSIONS[missionID];
 
-		mission.init(missionID, config);
+		mission.setConfig(config);
+		mission.init();
 
 		this.missions.set(missionID, mission);
 	}
 
 	for(const chapterID in CHAPTERS) {
-		const chapter = new Chapter();
+		const chapter = new Chapter(chapterID);
 		const config = CHAPTERS[chapterID];
-
-		chapter.init(chapterID, config);
+		
+		chapter.setConfig(config);
+		chapter.init();
 
 		this.chapters.set(chapterID, chapter);
 	}
 
 
 	for(const campaignID in CAMPAIGNS) {
-		const campaign = new Campaign();
+		const campaign = new Campaign(campaignID);
 		const config = CAMPAIGNS[campaignID];
-
-		campaign.init(campaignID, config);
+		
+		campaign.setConfig(config);
+		campaign.init();
 
 		this.campaigns.set(campaignID, campaign);
 	}
 	
 
 	for(const scenarioID in SCENARIOS) {
-		const scenario = new Scenario();
+		const scenario = new Scenario(scenarioID);
 		const config = SCENARIOS[scenarioID];
-
-		scenario.init(scenarioID, config);
+		
+		scenario.setConfig(config);
+		scenario.init();
 
 		this.scenarios.set(scenarioID, scenario);
 	}

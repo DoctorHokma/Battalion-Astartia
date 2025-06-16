@@ -63,19 +63,10 @@ const getInterceptorByTrait = function(attacker, map, roster, traitID) {
  * @returns {int}
  */
 const getAttackingDirection = function(attackerX, attackerY, defenderX, defenderY) {
-	if(attackerY === defenderY) {
-		if(attackerX > defenderX) {
-			return Battalion.DIRECTION.EAST;
-		}
-
-		if(defenderX < attackerX) {
-			return Battalion.DIRECTION.WEST;
-		}
-	} else if(attackerY < defenderY) {
-		return Battalion.DIRECTION.SOUTH;
-	} else {
-		return Battalion.DIRECTION.NORTH;
-	}
+	if(attackerY < defenderY) return Battalion.DIRECTION.SOUTH;
+	if(attackerY > defenderY) return Battalion.DIRECTION.NORTH;
+	if(attackerX < defenderX) return Battalion.DIRECTION.WEST;
+	if(attackerX > defenderX) return Battalion.DIRECTION.EAST;
 
 	return Battalion.DIRECTION.NONE;
 }
@@ -89,7 +80,7 @@ const getHitAnimStyle = function(attacker) {
 	const unitType = attacker.unitType;
 
 	if(hasCertainTrait(unitType, "Supply Distribution")) {
-		HIT_ANIM_STYLE.SUPPLY;
+		return HIT_ANIM_STYLE.SUPPLY;
 	}
 
 	if(hasCertainTrait(unitType, "Dispersion")) {

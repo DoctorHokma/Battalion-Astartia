@@ -1,6 +1,9 @@
-const MainMenuButton = function(mainID, textID) {
-    GenericButton.call(this, mainID);
+const MainMenuButton = function(id, textID) {
+    this.id = id;
     this.textID = textID;
+
+    this.element = document.getElementById(id);
+    this.state = MainMenuButton.STATE.ENABLED;
 
     this.image = document.createElement('img');
     this.image.src = 'Assets/Miscellaneous/GenericButton.png';
@@ -14,26 +17,32 @@ const MainMenuButton = function(mainID, textID) {
     this.element.appendChild(this.text);
 }
 
-MainMenuButton.prototype = Object.create(GenericButton.prototype);
-MainMenuButton.prototype.constructor = MainMenuButton;
+MainMenuButton.STATE = {
+    ENABLED: 0,
+    DISABLED: 1
+};
 
-MainMenuButton.prototype.updateText = function(context) {
-    const { language } = context;
-
-    this.text.innerText = language.get(this.textID);
+MainMenuButton.prototype.updateText = function(languageHandler) {
+    this.text.innerText = languageHandler.get(this.textID);
 }
 
-MainMenuButton.prototype.onDisable = function() {
+MainMenuButton.prototype.disable = function() {
+    this.state = MainMenuButton.STATE.DISABLED;
     this.image.src = 'Assets/Miscellaneous/NonButton.png';
 }
 
-MainMenuButton.prototype.onEnable = function() {
+MainMenuButton.prototype.enable = function() {
+    this.state = MainMenuButton.STATE.ENABLED;
     this.image.src = 'Assets/Miscellaneous/GenericButton.png';
+}
+
+MainMenuButton.prototype.setClick = function(onClick) {
+    this.element.onclick = () => onClick(this);
 }
 
 MainMenuButton.prototype.init = function(tooltipID) {
     this.element.onmouseover = () => {
-        if(this.state === GenericButton.STATE.ENABLED) {
+        if(this.state === MainMenuButton.STATE.ENABLED) {
             this.image.src = 'Assets/Miscellaneous/GenericButtonHovered.png';
         }
     }
@@ -43,13 +52,13 @@ MainMenuButton.prototype.init = function(tooltipID) {
             document.getElementById('GeneralTooltip').style.visibility = 'hidden';
         }
 
-        if(this.state === GenericButton.STATE.ENABLED) {
+        if(this.state === MainMenuButton.STATE.ENABLED) {
             this.image.src = 'Assets/Miscellaneous/GenericButton.png'; 
         }
     }
 
     this.element.onmousedown = () => {
-        if(this.state === GenericButton.STATE.ENABLED) {
+        if(this.state === MainMenuButton.STATE.ENABLED) {
             this.image.src = 'Assets/Miscellaneous/GenericButtonPressed.png';
         }
     }
@@ -57,6 +66,4 @@ MainMenuButton.prototype.init = function(tooltipID) {
     if(tooltipID) {
         this.element.oncontextmenu = () => Tooltip(tooltipID);
     }
-
-    return this;
 }

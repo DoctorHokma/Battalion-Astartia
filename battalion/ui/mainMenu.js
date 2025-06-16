@@ -16,8 +16,8 @@ MainMenu.prototype.show = function() {
     this.element.style.visibility = "visible";
 }
 
-MainMenu.prototype.updateLanguageTags = function(context) {
-    this.buttons.forEach(button => button.updateText(context));
+MainMenu.prototype.updateLanguageTags = function(languageHandler) {
+    this.buttons.forEach(button => button.updateText(languageHandler));
 }
 
 MainMenu.prototype.addClick = function(buttonID, onClick) {
@@ -27,7 +27,9 @@ MainMenu.prototype.addClick = function(buttonID, onClick) {
 
     const button = this.buttons.get(buttonID);
     
-    button.setClick(onClick);
+    if(button) {
+        button.setClick(onClick);
+    }
 }
 
 MainMenu.prototype.createButtons = function(buttonTypes) {

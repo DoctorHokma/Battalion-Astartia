@@ -3,5 +3,7 @@ const UIHandler = function() {
 }
 
 UIHandler.prototype.updateLanguage = function(context) {
-    this.mainMenu.updateLanguageTags(context);
+    const { language } = context;
+
+    this.mainMenu.updateLanguageTags(language);
 }

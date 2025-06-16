@@ -1,19 +1,14 @@
-const Scenario = function() {
-    StoryNode.call(this);
+const Scenario = function(id) {
+    StoryNode.call(this, id);
 }
 
 Scenario.prototype = Object.create(StoryNode.prototype);
 Scenario.prototype.constructor = Scenario;
 
-Scenario.prototype.init = function(scenarioID, scenario) {
-    this.id = scenarioID;
-    this.type = scenario;
-    
-    const { campaigns } = scenario;
+Scenario.prototype.init = function() {
+    const { campaigns } = this.config;
 
-    for(let i = 0; i < campaigns.length; i++) {
-        const campaignID = campaigns[i];
-
-        this.children.add(campaignID);
+    if(campaigns) {
+        this.order = campaigns;
     }
 }

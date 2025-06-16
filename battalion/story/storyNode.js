@@ -1,8 +1,7 @@
-const StoryNode = function() {
-    this.id = null;
-    this.type = null;
+const StoryNode = function(id) {
+    this.id = id;
+    this.config = null;
     this.state = StoryNode.STATE.UNFINISHED;
-    this.children = new Set();
     this.order = [];
 }
 
@@ -10,6 +9,10 @@ StoryNode.STATE = {
 	UNFINISHED: 0,
 	FINISHED: 1
 };
+
+StoryNode.prototype.setConfig = function(config) {
+    this.config = config;
+}
 
 StoryNode.prototype.loadState = function(state) {
     switch(state) {
@@ -30,11 +33,13 @@ StoryNode.prototype.loadState = function(state) {
 }
 
 StoryNode.prototype.finish = function() {
-    const oldState = this.state;
+    if(this.state === StoryNode.STATE.FINISHED) {
+        return false;
+    }
 
     this.state = StoryNode.STATE.FINISHED;
     
-    return oldState === StoryNode.STATE.UNFINISHED;
+    return true;
 }
 
 StoryNode.prototype.isFinished = function() {
@@ -42,7 +47,13 @@ StoryNode.prototype.isFinished = function() {
 }
 
 StoryNode.prototype.hasChild = function(childID) {
-    return this.children.has(childID);
+    for(let i = 0; i < this.order.length; i++) {
+        if(childID === this.order[i]) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 StoryNode.prototype.getChildByIndex = function(childIndex) {
@@ -76,8 +87,8 @@ StoryNode.prototype.isComplete = function(onCheck) {
         return false;
     }
 
-    for(const childID of this.children) {
-        const isComplete = onCheck(childID);
+    for(let i = 0; i < this.order.length; i++) {
+        const isComplete = onCheck(this.order[i]);
 
         if(!isComplete) {
             return false;
@@ -87,7 +98,7 @@ StoryNode.prototype.isComplete = function(onCheck) {
     return true;
 }
 
-StoryNode.prototype.getAllAvailableAsNext = function(onCheck) {
+StoryNode.prototype.getAllAvailableChildren = function(onCheck) {
     const available = new Set();
 
     for(let i = 0; i < this.order.length; i++) {
@@ -106,7 +117,7 @@ StoryNode.prototype.getAllAvailableAsNext = function(onCheck) {
     return available;
 }
 
-StoryNode.prototype.isAvailableAsNext = function(orderIndex, onCheck) {
+StoryNode.prototype.isChildAvailableAsNext = function(orderIndex, onCheck) {
 	if(orderIndex < 0 || orderIndex >= this.order.length || typeof onCheck !== "function") {
 		return false;
 	}

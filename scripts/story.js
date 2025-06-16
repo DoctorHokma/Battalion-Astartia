@@ -44,8 +44,8 @@ const addStoryEvents = function(battalion) {
         console.log(chapter, isFirst, "HAS BEEN WON");
     
         if(isFirst) {
-            const { type } = chapter;
-            const { interlogueImage, interlogue } = type;
+            const { config } = chapter;
+            const { interlogueImage, interlogue } = config;
     
             document.getElementById("InterlogueScreen").style.visibility = "visible";
             document.getElementById("InterlogueImage").src = interlogueImage;
@@ -84,13 +84,8 @@ const updateScenarioVisibility = function(scenario, displayType) {
         return;
     }
 
-    const { type } = scenario;
-
-    if(!type) {
-        return;
-    }
-
-    const { element } = type;
+    const { config } = scenario;
+    const { element } = config;
     const div = document.getElementById(element);
 
     if(!div) {
@@ -133,8 +128,8 @@ const showNationData = function(battalion, nationID) {
 
 const showMissionData = function(battalion, mission, missionIndex) {
     const { language } = battalion;
-    const { type } = mission;
-    const { name, desc } = type;
+    const { config } = mission;
+    const { name, desc } = config;
     const emblemPosition = missionIndex * 85;
 
     document.getElementById('MissionName').innerHTML = language.get(name);
@@ -144,8 +139,8 @@ const showMissionData = function(battalion, mission, missionIndex) {
 
 const showChapterData = function(battalion, chapter, chapterIndex) {
     const { language } = battalion;
-    const { type } = chapter;
-    const { name, illustration } = type;
+    const { config } = chapter;
+    const { name, illustration } = config;
     const pointerPosition = chapterIndex * 33 - 6;
 
     document.getElementById("ChapterIllustration").src = illustration;
@@ -155,8 +150,8 @@ const showChapterData = function(battalion, chapter, chapterIndex) {
 
 const showCampaignData = function(battalion, campaign) {
     const { language } = battalion;
-    const { type } = campaign;
-    const { desc, startButton } = type;
+    const { config } = campaign;
+    const { desc, startButton } = config;
     
     document.getElementById("LevelStartButton").innerHTML = language.get(startButton);
 
@@ -169,29 +164,22 @@ const showCampaignData = function(battalion, campaign) {
 
 const showProgressData = function(battalion) {
     const { story } = battalion;
-    const campaign = story.getNode(StoryHandler.TYPE.CAMPAIGN);
-    const chapter = story.getNode(StoryHandler.TYPE.CHAPTER);
+    const campaign = story.getCurrentNode(StoryHandler.TYPE.CAMPAIGN);
+    const chapter = story.getCurrentNode(StoryHandler.TYPE.CHAPTER);
 
     if(!campaign || !chapter) {
         return;
     }
 
-    const { type } = campaign;
-    const { nation } = type;
-
     const PLAQUE_IMAGES = ["Chp1plaque", "Chp2plaque", "Chp3plaque", "Chp4plaque", "Chp5plaque", "Chp6plaque", "Chp7plaque"];
     const PLAQUES = ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6", "Chapter 7"];
-    const nextChapters = campaign.getAllAvailableAsNext((chapterID) => {
-        const chapter = story.chapters.get(chapterID);
-
-        return chapter && chapter.isFinished();
-    });
+    const nextChapters = campaign.getAllAvailableChildren((chapterID) => story.isNodeFinished(StoryHandler.TYPE.CHAPTER, chapterID));
 
     for(let i = 0; i < PLAQUES.length; i++) {
-        const plaqueID = PLAQUES[i];
-        const plaque = document.getElementById(plaqueID);
+        const plaque = document.getElementById(PLAQUES[i]);
+        const chapterID = campaign.getChildByIndex(i);
 
-        if(i >= campaign.order.length) {
+        if(chapterID === null) {
             plaque.style.visibility = "hidden";
             continue;
         }
@@ -200,7 +188,6 @@ const showProgressData = function(battalion) {
 
         const plaqueImageID = PLAQUE_IMAGES[i];
         const plaqueImage = document.getElementById(plaqueImageID);
-        const chapterID = campaign.order[i];
 
         if(nextChapters.has(chapterID)) {
             plaqueImage.src = "Assets/Miscellaneous/Plaque.png";
@@ -209,6 +196,8 @@ const showProgressData = function(battalion) {
         }
     }
 
+    const { config } = campaign;
+    const { nation } = config;
     const nationType = NATION[nation];
 
     if(!nationType) {
@@ -217,24 +206,18 @@ const showProgressData = function(battalion) {
 
     const { emblem, nonEmblem } = nationType;
     const EMBLEMS = ["Emblem1", "Emblem2", "Emblem3", "Emblem4", "Emblem5"];
-    const nextMissions = chapter.getAllAvailableAsNext((missionID) => {
-        const mission = story.missions.get(missionID);
-
-        return mission && mission.isFinished();
-    });
-
+    const nextMissions = chapter.getAllAvailableChildren((missionID) => story.isNodeFinished(StoryHandler.TYPE.MISSION, missionID));
+    
     for(let i = 0; i < EMBLEMS.length; i++) {
-        const emblemID = EMBLEMS[i];
-        const emblemElement = document.getElementById(emblemID);
+        const emblemElement = document.getElementById(EMBLEMS[i]);
+        const missionID = chapter.getChildByIndex(i);
 
-        if(i >= chapter.order.length) {
+        if(missionID === null) {
             emblemElement.style.visibility = "hidden";
             continue;
         }
 
         emblemElement.style.visibility = "inherit";
-
-        const missionID = chapter.order[i];
 
         if(nextMissions.has(missionID)) {
             emblemElement.src = emblem;
@@ -265,8 +248,8 @@ const selectCampaign = function(campaignID, Nation) {
         return;
     }
 
-    const { type } = campaign;
-    const { nation, hidden } = type;
+    const { config } = campaign;
+    const { nation, hidden } = config;
 
     if(hidden) {
         alert("Halt! None may see the secret nations until they have unlocked them. Go back to playing the regular campaigns!");
