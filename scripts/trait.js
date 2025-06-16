@@ -5,7 +5,7 @@ const TRAIT_DESC_MAX_LENGTH = 65;
  * 
  * @param {int} typeID 
  * @param {string} traitID 
- * @returns 
+ * @returns {boolean}
  */
 const hasCertainTrait = function(typeID, traitID){
 	const unitType = UNITS[typeID];
@@ -43,20 +43,20 @@ const hideTraitDetail = function() {
  * neyn 07.04.2025
  * 
  * @param {int} tagID 
- * @returns 
+ * @returns {string}
  */
-const getTraitIDFromHighlighted = function(tagID) {
-	if(!HighlightedEntity) {
+const getTraitIDFromHighlighted = function(entityType, tagID) {
+	if(!entityType) {
 		console.warn("No highlighted entity!");
-		return null;
+		return "";
 	}
 
 	switch(tagID) {
-		case 1: return HighlightedEntity.tag1;
-		case 2: return HighlightedEntity.tag2;
-		case 3: return HighlightedEntity.tag3;
-		case 4: return HighlightedEntity.tag4;
-		default: return null;
+		case 1: return entityType.tag1;
+		case 2: return entityType.tag2;
+		case 3: return entityType.tag3;
+		case 4: return entityType.tag4;
+		default: return "";
 	}
 }
 
@@ -87,7 +87,6 @@ const getTraitIcon = function(traitID) {
  * @returns 
  */
 const showTraitDetail = function(context, traitID) {
-	const { language } = context;
 	const trait = TRAITS[traitID];
 
 	if(!trait) {
@@ -95,6 +94,7 @@ const showTraitDetail = function(context, traitID) {
 		return;
 	}
 
+	const { language } = context;
 	const { name, desc } = trait;
 	const traitName = language.get(name);
 	const traitDesc = language.get(desc);
@@ -118,12 +118,7 @@ const showTraitDetail = function(context, traitID) {
  */
 const traitDetail = function(tagID, useCase){
 	const traitTooltip = document.getElementById("TraitTooltip");
-	const traitID = getTraitIDFromHighlighted(tagID);
-
-	if(!traitID) {
-		console.log(`Trait ${traitID} does not exist!`);
-		return;
-	}
+	const traitID = getTraitIDFromHighlighted(HighlightedEntity, tagID);
 
 	switch(useCase) {
 		case "Details": {

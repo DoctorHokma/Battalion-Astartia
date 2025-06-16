@@ -301,7 +301,7 @@ function AI_Scouter(Unit,Map){
 	const unitIndex=Unit.index;
 	const mapWidth = Map[0].length;
 	const mapHeight = Map.length;
-	const Stepmap = getStepMap(Map, mapHeight, mapWidth, Type);
+	const Stepmap = createStepMap(Map, mapHeight, mapWidth, Type);
 
 	let SPD=Unit.speed;
 	let X=Lat;
@@ -342,7 +342,7 @@ function AI_Scouter(Unit,Map){
 			let y=(3-Path[Path.length-1])*(Path[Path.length-1]-1)%2;
 
 			//alert(Stepmap[X][Y]);
-			if(SPD>=Stepmap[X+x][Y+y] && CollisionCheck==false){
+			if(SPD>=Stepmap[X+x][Y+y] && !CollisionCheck){
 				X=X+x;
 				Y=Y+y;
 				//alert(Path);
@@ -1043,114 +1043,6 @@ function AITurn(Roster,Map,Constants){
 		if((Turn+1)%SubRosters.length==1){setTimeout(DeactivateAIMarker,1400*ActiveRoster.length);}
 }
 
-function AnalyseSquare(entityType, X, Y){
-	if(entityType === "Tile") {
-		index=Map[X][Y];
-		HighlightedEntity=Terrain[index];
-		LocalBiome=BiomeMap[X][Y];
-		if(LocalizationMap[X][Y]==0){document.getElementById("DetBarName").innerHTML=Language.TerrainName[index];document.getElementById("DetBarDescription").innerHTML=Language.TerrainDesc[index];}
-		else{document.getElementById("DetBarName").innerHTML=LocalizationMap[X][Y].name;document.getElementById("DetBarDescription").innerHTML=LocalizationMap[X][Y].description;};
-		document.getElementById("DetBar").src="Assets/Miscellaneous/TerrainDetailBar.png";
-		document.getElementById("DetBarDescription").style.width="350px";
-		document.getElementById("Icon").style.visibility="inherit";
-		document.getElementById("IconMesh").style.visibility="hidden";
-		document.getElementById("Icon").src="Assets/Tiles/"+Terrain[index].name+".png";
-		document.getElementById("Icon").style.filter="hue-rotate(0deg) saturate(100%) brightness(100%)";
-		if(Terrain[index].Urbanistics>=2){document.getElementById("Icon").style.filter=Factions[ControlMap[X][Y]].ChromaCode};
-		document.getElementById("Health").style.visibility="hidden";
-		document.getElementById("Damage").style.visibility="hidden";
-		document.getElementById("Movement").style.visibility="hidden";
-		document.getElementById("Biome").style.visibility="inherit";
-		document.getElementById("Biome").src=BIOMES[LocalBiome].icon;
-		if(LocalBiome==1){document.getElementById("Biome").src="Assets/Traits/Temperate.png"};
-
-		document.getElementById("Trait1").src = getTraitIcon(Terrain[index].tag1);
-		document.getElementById("Trait2").src = getTraitIcon(Terrain[index].tag2);		
-		document.getElementById("Trait3").src = getTraitIcon(Terrain[index].tag3);
-		document.getElementById("Trait4").src = getTraitIcon(Terrain[index].tag4);	
-	}
-
-	if(entityType=="Unit"){
-		//alert(X+" "+Y);
-		index=rostermap[X][Y];
-		var unit=index;
-		HighlightedEntity=Units[unit.unitType];
-		var armorindex=0;
-		if(unit.armor=="Light"){armorindex=1}else if(unit.armor=="Medium"){armorindex=2}else if(unit.armor=="Heavy"){armorindex=3};
-		var weaponindex=0;
-		if(unit.damageType=="Light"){weaponindex=1;}else if(unit.damageType=="Medium"){weaponindex=2;}else if(unit.damageType=="Heavy"){weaponindex=3;}else{weaponindex=4;};
-		var movementindex=0;
-		if(unit.movementType=="Stationary"){movementindex=1;}else if(unit.movementType=="Foot"){movementindex=2;}else if(unit.movementType=="Wheeled"){movementindex=3;}else if(unit.movementType=="Tracked"){movementindex=4;}else if(unit.movementType=="Flight"){movementindex=5;}else if(unit.movementType=="Rudder"){movementindex=6;}else if(unit.movementType=="Heavy Rudder"){movementindex=7;}else if(unit.movementType=="Amphibious"){movementindex=8;};
-		
-		//alert(movementindex);
-		document.getElementById("Icon").style.visibility="inherit";
-		document.getElementById("IconMesh").style.visibility="inherit";
-		document.getElementById("Icon").src="Assets/Units/Static/"+Units[unit.unitType].shortname+"2.png";
-		document.getElementById("Icon").style.filter=Factions[unit.faction].ChromaCode;
-		if(!Units[unit.unitType].MLPR??false){document.getElementById("IconMesh").src="Assets/Units/StaticMeshes/"+Units[unit.unitType].shortname+"Mesh2.png"}else{document.getElementById("IconMesh").src="Assets/Miscellaneous/Nothing.png"};
-
-		document.getElementById("HPHeader").innerHTML=Language.SystemTerms[44];
-		document.getElementById("DamageHeader").innerHTML=Language.SystemTerms[45];
-		document.getElementById("MovementHeader").innerHTML=Language.SystemTerms[46];
-
-		document.getElementById("DetBarName").innerHTML=unit.getName(battalion);
-		document.getElementById("DetBarDescription").style.width="210px";
-		document.getElementById("DetBarDescription").innerHTML=unit.getDescription(battalion);
-		document.getElementById("DetBar").src="Assets/Miscellaneous/UnitDetailBar.png";
-
-		document.getElementById("Health").style.visibility="inherit";
-		document.getElementById("ArmorType").style.left=273-20*(armorindex-1)+"px";
-		document.getElementById("ArmorType").style.clip="rect(0px,"+armorindex*20+"px,20px,"+(armorindex-1)*20+"px)";
-		document.getElementById("HP").innerHTML=unit.life+"/"+Units[unit.unitType].HP;
-		document.getElementById("HPbar").style.width=(40*unit.life/Units[unit.unitType].HP)+"px";
-		document.getElementById("HPbar").style.filter="brightness("+(unit.life/Units[unit.unitType].HP)+")";
-		ArmorShowcase=unit.armor;
-
-		document.getElementById("Damage").style.visibility="inherit";
-		document.getElementById("DamageType").style.left=350-20*(weaponindex-1)+"px";
-		document.getElementById("DamageType").style.clip="rect(0px,"+weaponindex*20+"px,20px,"+(weaponindex-1)*20+"px)";
-		document.getElementById("DamageValue").innerHTML=unit.damage+"("+Units[unit.unitType].MinRange+"-"+Units[unit.unitType].MaxRange+")";
-		WeaponShowcase=unit.damageType;
-
-		document.getElementById("Movement").style.visibility="inherit";
-		document.getElementById("MovementType").style.left=427-20*(movementindex-1)+"px";
-		document.getElementById("MovementType").style.clip="rect(0px,"+movementindex*20+"px,20px,"+(movementindex-1)*20+"px)";
-		document.getElementById("Speed").innerHTML=unit.speed+"";
-		MovementShowcase=unit.movementType;
-
-		document.getElementById("Biome").style.visibility="hidden";
-		
-		if(Units[unit.unitType].tag1==""){document.getElementById("Trait1").src=""}else{document.getElementById("Trait1").src="Assets/Traits/"+Units[unit.unitType].tag1+".png";};
-		if(Units[unit.unitType].tag2==""){document.getElementById("Trait2").src=""}else{document.getElementById("Trait2").src="Assets/Traits/"+Units[unit.unitType].tag2+".png";};		
-		if(Units[unit.unitType].tag3==""){document.getElementById("Trait3").src=""}else{document.getElementById("Trait3").src="Assets/Traits/"+Units[unit.unitType].tag3+".png";};
-		if(Units[unit.unitType].tag4==""){document.getElementById("Trait4").src=""}else{document.getElementById("Trait4").src="Assets/Traits/"+Units[unit.unitType].tag4+".png";};
-	}
-
-	if(entityType=="Structure"){};
-}
-
-function AnalyzeSpecification(Index) {
-	const { story } = battalion;
-	const mission = story.getCurrentNode(StoryHandler.TYPE.MISSION);
-
-	if(!mission) {
-		return;
-	}
-
-	const { data } = mission;
-	const { Constants } = data;
-
-	if(!Constants) {
-		return;
-	}
-
-	document.getElementById("SpecificationText").innerHTML=Language.SystemTerms[83+Index];
-
-	if(Index==1){document.getElementById("SpecificationText").innerHTML+=((Constants.Funds??[0,0])[1]+" "+Language.SystemTerms[92])};
-	if(Index==2){document.getElementById("SpecificationText").innerHTML+=(Constants.Survival+" "+Language.SystemTerms[93])};
-	if(Index==3){document.getElementById("SpecificationText").innerHTML+=(Constants.TimeLimit+" "+Language.SystemTerms[93])}
-}
-
 /*
 function AttackAnimation(Unit){
 	
@@ -1460,13 +1352,13 @@ function castMap(Map){
 
 			Tile.addEventListener("click", function() {
 				//alert("{id:2, faction:5, direction:1, x:"+(i-1) + ", y:" + (j-1)+", morale:0, hpModifier:0},");
-				AnalyseSquare('Tile', i-1, j-1);
+				AnalyzeSquare('Tile', i-1, j-1);
 			});
 
 			Entity.addEventListener("mouseover", function(){ToggleHealthBar(i,j); ToggleMoraleBadge(i,j)});
 			Entity.addEventListener("mouseout", function(){document.getElementById("HPContainer "+i+"X"+j).style.visibility="hidden";document.getElementById("HPBar "+i+"X"+j).style.visibility="hidden";document.getElementById("Badge "+i+"X"+j).style.visibility='hidden'; document.getElementById("Cargo "+i+"X"+j).style.visibility='hidden';});			
-			Entity.addEventListener("click", function(){AnalyseSquare('Unit',i-1,j-1)});
-			Structure.addEventListener("click", function(){AnalyseSquare('Tile',i-1,j-1)});
+			Entity.addEventListener("click", function(){AnalyzeSquare('Unit',i-1,j-1)});
+			Structure.addEventListener("click", function(){AnalyzeSquare('Tile',i-1,j-1)});
 			Marker.addEventListener("click", function(){if(!isAITurn){
 
 				if(ChosenUnit.definite){RemoveKebabIMeanBlep();
@@ -1474,7 +1366,7 @@ function castMap(Map){
 				document.getElementById("Canceler "+ChosenUnit.ics+"X"+ChosenUnit.igrec).style.visibility="hidden";
 				};
 				
-				AnalyseSquare('Unit',i-1,j-1);
+				AnalyzeSquare('Unit',i-1,j-1);
 				//alert((i+StandardX-1)+" "+(j+StandardY-1));
 				document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
 				document.getElementById("Canceler "+i+"X"+j).style.visibility="visible";
@@ -1491,7 +1383,7 @@ function castMap(Map){
 			});
 
 
-			Flag.addEventListener("click", function(){AnalyseSquare("Tile",i-1,j-1)});
+			Flag.addEventListener("click", function(){AnalyzeSquare("Tile",i-1,j-1)});
 
 
 			BLARG.addEventListener("mouseover",function(){
@@ -2394,7 +2286,7 @@ function drawTile(host,image,x,y,terrain){
 	newPic.style.top=x+"px";
 	newPic.style.left=y+"px";
 	newPic.style.zIndex=2;
-	newPic.addEventListener("click", function(){AnalyseSquare("Tile", terrain)});
+	newPic.addEventListener("click", function(){AnalyzeSquare("Tile", terrain)});
 	//if(image=="Blep.png"){newPic.style.zIndex=2;};
 	document.getElementById(host).appendChild(newPic);};
 function drawEditorTile(){
@@ -2428,7 +2320,7 @@ function drawUnit(Map, UnitType, direction, x, y, index, rostermap){
 	//newPic.style.opacity=0.5;
 	document.getElementById("UnitMap").appendChild(newPic);
 	//document.getElementById(rostermap[x][y].ID).addEventListener("click", function(){selectUnit(Map, unit, x, y);});
-	document.getElementById(rostermap[x][y].ID).addEventListener("click", function(){AnalyseSquare('Unit', index)});
+	document.getElementById(rostermap[x][y].ID).addEventListener("click", function(){AnalyzeSquare('Unit', index)});
 }
 
 function EndBattle(){
@@ -4834,13 +4726,15 @@ function OpenSpecialBloc(Bloc){
 /**
  * neyn 08.04.2025
  * 
+ * Updated: 16.06.2025
+ * 
  * @param {int[][]} gameMap 
  * @param {int} mapHeight 
  * @param {int} mapWidth 
  * @param {string} stepType 
- * @returns 
+ * @returns {number[][]}
  */
-const getStepMap = function(gameMap, mapHeight, mapWidth, stepType) {
+const createStepMap = function(gameMap, mapHeight, mapWidth, stepType) {
 	const STEP_TYPES = {
 		"Foot": "WalkThrough",
 		"Wheeled": "DriveThrough",
@@ -4851,27 +4745,38 @@ const getStepMap = function(gameMap, mapHeight, mapWidth, stepType) {
 		"HeavyRudder": "DeepSailThrough"
 	};
 
-	const selectedType = STEP_TYPES[stepType];
 	const stepMap = [];
+	const selectedType = STEP_TYPES[stepType];
 
-	for(let i = 0; i < mapHeight; i++) {
-		const row = gameMap[i];
-		const stepRow = [];
+	if(selectedType) {
+		for(let i = 0; i < mapHeight; ++i) {
+			const row = gameMap[i];
+			const stepRow = [];
 
-		for(let j = 0; j < mapWidth; j++) {
-			const terrainID = row[j];
-
-			if(!selectedType) {
-				stepRow[j] = terrainID;
-			} else {
-				stepRow[j] = Terrain[terrainID][selectedType];
+			for(let j = 0; j < mapWidth; ++j) {
+				stepRow[j] = Terrain[row[j]][selectedType];
 			}
-		}
 
-		stepMap[i] = stepRow;
+			stepMap[i] = stepRow;
+		}
+	} else {
+		for(let i = 0; i < mapHeight; ++i) {
+			const row = gameMap[i];
+			const stepRow = [];
+
+			for(let j = 0; j < mapWidth; ++j) {
+				stepRow[j] = row[j];
+			}
+
+			stepMap[i] = stepRow;
+		}
 	}
 
 	return stepMap;
+}
+
+const isOutOfBounds = function(tileX, tileY, mapWidth, mapHeight) {
+	return tileX < 0 || tileY < 0 || tileX >= mapWidth || tileY >= mapHeight;
 }
 
 function PI_Scouter(Unit, Map){
@@ -4890,7 +4795,7 @@ function PI_Scouter(Unit, Map){
 
 	const mapWidth = Map[0].length;
 	const mapHeight = Map.length;
-	const Stepmap = getStepMap(Map, mapHeight, mapWidth, Type);
+	const Stepmap = createStepMap(Map, mapHeight, mapWidth, Type);
 
 	BLARG=[{X:Lat,Y:Long}];
 	//SBLARG(X,Y);
@@ -4937,31 +4842,31 @@ function PI_Scouter(Unit, Map){
 	Thing=JSON.parse(JSON.stringify(AddressMap));
 
 	//Standard-Issue Pathing Loop
-	while(Path.length>0) {
-		CollisionCheck=false;
-		let x=(Path[Path.length-1]-2)*(Path[Path.length-1]) % 2;
-		let y=(3-Path[Path.length-1])*(Path[Path.length-1]-1) % 2;
+	while(Path.length > 0) {
+		let isCollided = false;
+		let x = (Path[Path.length - 1] - 2) * (Path[Path.length - 1]) % 2;
+		let y = (3 - Path[Path.length - 1]) * (Path[Path.length - 1] - 1) % 2;
+		
+		if(X+x<0 || Y+y<0) Path[Path.length - 1]+=1;
 
-		if(X+x<0 || Y+y<0) Path[Path.length-1]+=1;
-
-		if(X+x>=Map.length || Y+y>=Map[0].length)Path[Path.length-1]++;
+		if(X+x>=Map.length || Y+y>=Map[0].length)Path[Path.length - 1]++;
 
 		if(X+x<Map.length && X+x>=0 && Y+y<Map[0].length && Y+y>=0){
 			if(rostermap[X+x][Y+y]!=0){
 				if((rostermap[X+x][Y+y].coallition!=Coallition && !hasCertainTrait(Unit.unitType,"Supply Distribution")) || (rostermap[X+x][Y+y].coallition==Coallition && hasCertainTrait(Unit.unitType,"Supply Distribution"))){
-					CollisionCheck=true;
+					isCollided=true;
 					if(rostermap[X+x][Y+y]!=0 && rostermap[X+x][Y+y].coallition==Coallition) Thing[X+x][Y+y]=1000;
 				}
 			}
 		}
 
-		if(SPD>0 && Path[Path.length-1]<5 && X+x<Map.length && Y+y<Map[0].length) {
+		if(SPD>0 && Path[Path.length - 1]<5 && X+x<Map.length && Y+y<Map[0].length) {
 			//The block that checks whether advancing is possible and advances
-			let x=(Path[Path.length-1]-2)*(Path[Path.length-1])%2;
-			let y=(3-Path[Path.length-1])*(Path[Path.length-1]-1)%2;
+			let x=(Path[Path.length - 1]-2)*(Path[Path.length - 1])%2;
+			let y=(3-Path[Path.length - 1])*(Path[Path.length - 1]-1)%2;
 
 			//alert(Stepmap[X][Y]);
-			if(SPD>=Stepmap[X+x][Y+y] && CollisionCheck==false) {
+			if(SPD>=Stepmap[X+x][Y+y] && !isCollided) {
 				X=X+x;
 				Y=Y+y;
 				//alert(Path);
@@ -4970,27 +4875,26 @@ function PI_Scouter(Unit, Map){
 				for(let p=0;p<Path.length;p++) Pizdamatii[Pizdamatii.length-1].z[p]=Path[p];
 				//Pizdamatii[Pizdamatii.length-1].z=Path;
 				
-				SPD=SPD-Stepmap[X][Y];}else{Path[Path.length-1]+=1;
+				SPD=SPD-Stepmap[X][Y];}else{Path[Path.length - 1]+=1;
 			}
-		} else if(SPD==0 || Path[Path.length-1]>=5){
+		} else if(SPD==0 || Path[Path.length - 1]>=5){
 			//The block that checks if backtracking is needed and does so
-			//alert(Path[Path.length-1]);
-			if(Path.length>=2) {
-				reverse=Path[Path.length-2];
-			} else {
+			//alert(Path[Path.length - 1]);
+			if(Path.length < 2) {
 				break;
 			}
 
+			reverse=Path[Path.length-2];
 			SPD=SPD+Stepmap[X][Y];
 
 			X=X-(reverse-2)*(reverse%2);
 			Y=Y-(3-reverse)*(reverse-1)%2;
 
 			Path.length-=1;
-			Path[Path.length-1]+=1;
+			Path[Path.length - 1]+=1;
 
-			//else if(Path[Path.length-1]>=5){alert("Please don't fuck up the script")};
-			//alert("Path length: "+Path.length+ "; SPD= "+SPD+ "; X= "+X+"; Y= "+Y+"; direction: "+Path[Path.length-1]+" Path: "+Path+ "CollChek: "+ CollisionCheck);		
+			//else if(Path[Path.length - 1]>=5){alert("Please don't fuck up the script")};
+			//alert("Path length: "+Path.length+ "; SPD= "+SPD+ "; X= "+X+"; Y= "+Y+"; direction: "+Path[Path.length - 1]+" Path: "+Path+ "CollChek: "+ isCollided);		
 		}
 	}
 
@@ -5027,49 +4931,52 @@ function PI_Scouter(Unit, Map){
 
 		if((Thing[r][t]!=0 || rostermap[r][t].coallition==Coallition) && AddressMap[r][t]!=0){
 			//alert(AddressMap[r][t]);
-		//if(rostermap[r][t]!=0){alert("Check!")};
-	type="Assets/Miscellaneous/Blep.png";
-	let newPic=document.createElement("img");
-	newPic.src=type;
-	newPic.id="Blep-"+r+"-"+t;
-	newPic.style.position="absolute";
-	newPic.style.visibility="visible";
-	//newPic.style.top=Math.min(r,10)*56+"px";
-	//newPic.style.left=Math.min(t,10)*56+"px";
-	newPic.style.top=r*56+"px";
-	newPic.style.left=t*56+"px";
-	newPic.style.zIndex=4;
+			//if(rostermap[r][t]!=0){alert("Check!")};
+			type="Assets/Miscellaneous/Blep.png";
+			let newPic=document.createElement("img");
+			newPic.src=type;
+			newPic.id="Blep-"+r+"-"+t;
+			newPic.style.position="absolute";
+			newPic.style.visibility="visible";
+			//newPic.style.top=Math.min(r,10)*56+"px";
+			//newPic.style.left=Math.min(t,10)*56+"px";
+			newPic.style.top=r*56+"px";
+			newPic.style.left=t*56+"px";
+			newPic.style.zIndex=4;
 
-	let pip=AddressMap[r][t]??[0,0];
-	//pip.pop();
-	//alert(Pizdamatii[Pizdamatii.length-1].z);
+			let pip=AddressMap[r][t]??[0,0];
+			//pip.pop();
+			//alert(Pizdamatii[Pizdamatii.length-1].z);
 
-	//newPic.addEventListener("click", function(){alert(pip);});
-	newPic.addEventListener("mouseover",function(){
-		SBLARG(r,t,pip);
-		return 0});
-	newPic.addEventListener("click", function(){
-		if(rostermap[r][t]==0){
-			//alert((ChosenUnit.ics-StandardX) + " " + (ChosenUnit.igrec-StandardY));
+			//newPic.addEventListener("click", function(){alert(pip);});
+			newPic.addEventListener("mouseover", () => {
+				SBLARG(r,t,pip);
+				return 0
+			});
+
+			newPic.addEventListener("click", () => {
+				if(rostermap[r][t]==0){
+					//alert((ChosenUnit.ics-StandardX) + " " + (ChosenUnit.igrec-StandardY));	
+					//MarkerMap[ChosenUnit.ics][ChosenUnit.igrec]=0;
+					//alert(pip);
+					MoveUnit(unitIndex , pip);
+					//alert(ChosenUnit.ics+" "+ChosenUnit.igrec);
+					
+					document.getElementById("Canceler "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).style.visibility="hidden";
+					document.getElementById("Canceler "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).style.filter="";
+					
+					RemoveKebabIMeanBlep();
+					ChosenUnit.definite=false;
+					return 0;
+				}
+			});
 			
-		//MarkerMap[ChosenUnit.ics][ChosenUnit.igrec]=0;
-		//alert(pip);
-		MoveUnit(unitIndex , pip);
-		//alert(ChosenUnit.ics+" "+ChosenUnit.igrec);
-		
-		document.getElementById("Canceler "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).style.visibility="hidden";
-		document.getElementById("Canceler "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).style.filter="";
-		
-		RemoveKebabIMeanBlep();
-		ChosenUnit.definite=false;
-		return 0;};
-		});
-	document.getElementById("UnitMap").appendChild(newPic);
-	};
+			document.getElementById("UnitMap").appendChild(newPic);
+		};
 
 	//this is a bit of a hail-Mary solution
 	//WHAT DOES THIS PIECE OF CRAP EVEN DO!?
-	if(coincidenter==true && Thing[r][t]==0){
+	if(coincidenter && Thing[r][t]==0){
 		//alert(AddressMap[r][t]);
 		type="Assets/Miscellaneous/Blep.png";
 		var newPic=document.createElement("img");
@@ -5228,11 +5135,9 @@ function PI_Scouter(Unit, Map){
 				let churro=document.getElementById("Blep-"+r+"-"+t) ?? 0;
 				if(churro!=0){churro.style.visibility="hidden"};
 
-				newPic.addEventListener("mouseover",function(){
-					CBLARG(r,t);
-					});
+				newPic.addEventListener("mouseover", () => CBLARG(r,t));
 
-				newPic.addEventListener("mouseout",function(){
+				newPic.addEventListener("mouseout", () => {
 
 					let canBlarg=false;
 					let xdif=Math.abs(r-BLARG[BLARG.length-1].X);
@@ -5242,25 +5147,20 @@ function PI_Scouter(Unit, Map){
 
 
 					if(canBlarg){document.getElementById("Ctep-"+r+"-"+t).src="Assets/Miscellaneous/Ctep.png"};
-					if(BLARG.length<2){document.getElementById('BLARG '+(BLARG[0].X+1)+"X"+(BLARG[0].Y+1)).src="Assets/BLARG/Singularity.png"}else{
-						let or=0;
-
-
-
-						
-					if(BLARG[BLARG.length-2].X>BLARG[BLARG.length-1].X){or=1};
-					if(BLARG[BLARG.length-2].Y<BLARG[BLARG.length-1].Y){or=2};
-					if(BLARG[BLARG.length-2].X<BLARG[BLARG.length-1].X){or=3};
-					if(BLARG[BLARG.length-2].Y>BLARG[BLARG.length-1].Y){or=4};
-					if(or==0){BLARG.pop()};
-					document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/Target"+or+".png";
-
-
-					};
-
-
-			});
-				newPic.addEventListener("click", function(){//alert(r+" "+t);
+					if(BLARG.length<2) {
+						document.getElementById('BLARG '+(BLARG[0].X+1)+"X"+(BLARG[0].Y+1)).src="Assets/BLARG/Singularity.png"
+					} else {
+						let or = 0;
+						if(BLARG[BLARG.length-2].X>BLARG[BLARG.length-1].X){or=1};
+						if(BLARG[BLARG.length-2].Y<BLARG[BLARG.length-1].Y){or=2};
+						if(BLARG[BLARG.length-2].X<BLARG[BLARG.length-1].X){or=3};
+						if(BLARG[BLARG.length-2].Y>BLARG[BLARG.length-1].Y){or=4};
+						if(or==0){BLARG.pop()};
+						document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/Target"+or+".png";
+					}
+				});
+				newPic.addEventListener("click", () => {
+				//alert(r+" "+t);
 				canAttack=true;
 				let xdif=Math.abs(r-BLARG[BLARG.length-1].X);
 				let ydif=Math.abs(t-BLARG[BLARG.length-1].Y);
@@ -7036,7 +6936,7 @@ function SelectSpecialLevel(Level){
 	document.getElementById("Special Level Name").innerHTML=Level.Name;
 	document.getElementById("Special Level Description").innerHTML=Level.Desc??"Idk what to say about this one";
 	document.getElementById("NatOpP").style.visibility="hidden";
-	if(NivelVizat.Constants.ElectiveNation??false==true){
+	if(NivelVizat.Constants.ElectiveNation){
 		document.getElementById("NatOpP").style.visibility="inherit";
 		document.getElementById("NatOpP").innerHTML=Language.SystemTerms[30];
 		let MaxFactions=NivelVizat.Constants.Commanders.length-1;
