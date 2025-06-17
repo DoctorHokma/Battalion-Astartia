@@ -74,7 +74,6 @@ LevelMap=Palawan;
 LevelRoster=PalawanRoster;
 Panel=0;
 Difficulty=2;
-Playlists=[];
 InterlogueBST=[[],[],[],[],[],[],[],[],[],[],[]];
 
 var Units=UNITS;
@@ -1752,7 +1751,7 @@ function CastEntityMap(Map, Roster){
 
 function CaptureProperty(ControlMap,Faction){
 	for(let X = 0; X < ControlMap.length; X++) {
-		for(let Y= 0 ;Y < ControlMap[0].length; Y++) {
+		for(let Y= 0; Y < ControlMap[0].length; Y++) {
 			if(
 				rostermap[X][Y] != 0 &&
 				rostermap[X][Y].life > 0 &&
@@ -1760,7 +1759,7 @@ function CaptureProperty(ControlMap,Faction){
 				rostermap[X][Y].coallition != Factions[ControlMap[X][Y]].faction
 			) {
 				ControlMap[X][Y] = Faction;
-				FocalTileRefresh(X,Y);
+				FocalTileRefresh(X, Y);
 			}
 		}
 	}
@@ -1987,40 +1986,36 @@ function CBLARG(r, t) {
 	}
 }
 
-function Cloak(X, Y, type, faction){
-	let isStealth = false;
-
-	if(hasCertainTrait(type, "Stealth")) {
-		isStealth = true;
+function isCloaked(X, Y, type, faction){
+	if(!hasCertainTrait(type, "Stealth")) {
+		return false;
 	}
 
-	if(isStealth) {
-		if(X > 1) {
-			if(Factions[rostermap[Math.max(X - 1, 0)][Y].faction ?? 0].faction != faction && Factions[rostermap[Math.max(X-1, 0)][Y].faction ?? 0].faction != Factions[0].faction) {
-				isStealth = false;
-			}
-		}
-
-		if(X < Map.length - 1) {
-			if(Factions[rostermap[X + 1][Y].faction ?? 0].faction != faction && Factions[rostermap[X + 1][Y].faction ?? 0].faction != Factions[0].faction) {
-				isStealth = false;
-			}
-		}
-
-		if(Y > 1) {
-			if(Factions[rostermap[Math.max(X, 0)][Math.max(Y - 1, 0)].faction ?? 0].faction != faction && Factions[rostermap[Math.max(X, 0)][Math.max(Y - 1,0)].faction ?? 0].faction != Factions[0].faction) {
-				isStealth = false;
-			}
-		}
-
-		if(Y < Map[0].length - 1) {
-			if(Factions[rostermap[Math.max(X, 0)][Y + 1].faction ?? 0].faction != faction && Factions[rostermap[Math.max(X, 0)][Y + 1].faction ?? 0].faction != Factions[0].faction) {
-				isStealth = false;
-			}
+	if(X > 1) {
+		if(Factions[rostermap[Math.max(X - 1, 0)][Y].faction ?? 0].faction != faction && Factions[rostermap[Math.max(X-1, 0)][Y].faction ?? 0].faction != Factions[0].faction) {
+			return false;
 		}
 	}
 
-	return isStealth;
+	if(X < Map.length - 1) {
+		if(Factions[rostermap[X + 1][Y].faction ?? 0].faction != faction && Factions[rostermap[X + 1][Y].faction ?? 0].faction != Factions[0].faction) {
+			return false;
+		}
+	}
+
+	if(Y > 1) {
+		if(Factions[rostermap[Math.max(X, 0)][Math.max(Y - 1, 0)].faction ?? 0].faction != faction && Factions[rostermap[Math.max(X, 0)][Math.max(Y - 1,0)].faction ?? 0].faction != Factions[0].faction) {
+			return false;
+		}
+	}
+
+	if(Y < Map[0].length - 1) {
+		if(Factions[rostermap[Math.max(X, 0)][Y + 1].faction ?? 0].faction != faction && Factions[rostermap[Math.max(X, 0)][Y + 1].faction ?? 0].faction != Factions[0].faction) {
+			return false;
+		}
+	}
+
+	return true;
 }
 
 //neyn TODO!!!
@@ -2079,93 +2074,136 @@ function CustomizeTile(){
 	};
 }
 
-function DisplayRegions(){
-	if(battalion.state !== Battalion.STATE.MAP_EDITOR && RegionMap!=[0]&&NodeMap!=[0]){};
+function DisplayRegions() {
+	if(battalion.state !== Battalion.STATE.MAP_EDITOR && RegionMap != [0] && NodeMap != [0]) {
+
+	}
 	
+	if(battalion.state === Battalion.STATE.MAP_EDITOR) {
+		Map = EditorMap;
+		RegionMap = [];
+		let RegionCell = [];
+		NodeMap = [];
 
-	if(battalion.state === Battalion.STATE.MAP_EDITOR){
-		Map=EditorMap;
-		RegionMap=[];
-		let RegionCell=[];
-		NodeMap=[];
-		for(let x=0;x<Map[0].length;x++){RegionCell[RegionCell.length]=0};
-			for(let y=0;y<Map.length;y++){RegionMap[RegionMap.length]=RegionCell};
-			RegionMap=JSON.parse(JSON.stringify(RegionMap));	
-	};
-	
-	
-
-	if(!RegionsToggled){
-
-		if(battalion.state === Battalion.STATE.BATTLE){document.getElementById("RegionMap").style.visibility="visible"}else{document.getElementById("regionMap").style.visibility="visible"};
-
-		
-
-
-		if(battalion.state !== Battalion.STATE.MAP_EDITOR && RegionMap!=[0] && NodeMap!=[0]){
-
-			for(let i=1;i<Map[0].length;i++){for(let j=1;j<Map.length;j++){
-			document.getElementById("NBorder "+i+"X"+j).style.visibility="hidden";
-			document.getElementById("EBorder "+i+"X"+j).style.visibility="hidden";
-			document.getElementById("SBorder "+i+"X"+j).style.visibility="hidden";	
-			document.getElementById("WBorder "+i+"X"+j).style.visibility="hidden";
-			}};
-
-
-
-
-			for(let a=0; a<NodeMap.length; a++){
-				document.getElementById("Regional Nexus "+(NodeMap[a].CapitolX+1)+" "+(NodeMap[a].CapitolY+1)).style.visibility="inherit";
-				document.getElementById("Regional Name "+(NodeMap[a].CapitolX+1)+" "+(NodeMap[a].CapitolY+1)).style.visibility="inherit";
-				document.getElementById("Regional Capital "+(NodeMap[a].CapitolX+1)+" "+(NodeMap[a].CapitolY+1)).style.visibility="inherit";
-				document.getElementById("Regional Name "+(NodeMap[a].CapitolX+1)+" "+(NodeMap[a].CapitolY+1)).innerHTML=NodeMap[a].Name;
-				document.getElementById("Regional Capital "+(NodeMap[a].CapitolX+1)+" "+(NodeMap[a].CapitolY+1)).innerHTML=NodeMap[a].Capitol;
-
-				};
-
-
-			for(let i=1;i<=Map.length;i++){for(let j=1;j<=Map[0].length;j++){
-				X=0;
-				for(let k=0;k<NodeMap.length;k++){if(RegionMap[i-1][j-1]==NodeMap[k].Name){X=NodeMap[k].Owner}};
-					//alert(j+" "+i);
-				document.getElementById("Regional Color "+j+" "+i).style.background=Factions[X].color;
-				//document.getElementById("Regional Nexus "+(j-StandardY)+" "+(i-StandardX)).style.visibility="inherit";
-				if( RegionMap[Math.max(0,i-2)][j-1]!=RegionMap[i-1][j-1] ){document.getElementById("NBorder "+(j)+"X"+(i)).style.visibility="inherit"}else{document.getElementById("NBorder "+(j)+"X"+(i)).style.visibility="hidden"};
-				if( RegionMap[i-1][Math.min(Map.length-1,j)]!=RegionMap[i-1][j-1] ){document.getElementById("EBorder "+(j)+"X"+(i)).style.visibility="inherit"}else{document.getElementById("EBorder "+(j)+"X"+(i)).style.visibility="hidden"};
-				if( RegionMap[Math.min(Map[0].length-2,i)][j-1]!=RegionMap[i-1][j-1] ){document.getElementById("SBorder "+(j)+"X"+(i)).style.visibility="inherit"}else{document.getElementById("SBorder "+(j)+"X"+(i)).style.visibility="hidden"};
-				if( RegionMap[i-1][Math.max(0,j-2)]!=RegionMap[i-1][j-1] ){document.getElementById("WBorder "+(j)+"X"+(i)).style.visibility="inherit"}else{document.getElementById("WBorder "+(j)+"X"+(i)).style.visibility="hidden"};
-
-
-			};};
-
-
-
-		}else if(battalion.state === Battalion.STATE.MAP_EDITOR){
-			for(let i=1;i<=EditorMap.length;i++){for(let j=1;j<=EditorMap[0].length;j++){
-				X=0;
-				for(let k=1;k<=CapitolNodeRegistry.length;k++){for(let l=1;l<=CapitolNodeRegistry[0].length;l++){
-					if(EditorRegionMap[i-1][j-1]==CapitolNodeRegistry[k-1][l-1].Name){X=CapitolNodeRegistry[k-1][l-1].Owner};
-				}};
-				
-					//alert(X);
-					//document.getElementById("regional Tile "+(j-EditorStandardY-1)+" "+(i-EditorStandardX-1)).style.background=Factions[X].color;
-	
-				if( EditorRegionMap[Math.max(0,i-2)][j-1]!=EditorRegionMap[i-1][j-1] ){document.getElementById("Nborder "+(j-EditorStandardY-1)+" "+(i-EditorStandardX-1)).style.visibility="inherit"}else{document.getElementById("Nborder "+(j-EditorStandardY-1)+" "+(i-EditorStandardX-1)).style.visibility="hidden"};
-				if( EditorRegionMap[i-1][Math.min(9,j)]!=EditorRegionMap[i-1][j-1] ){document.getElementById("Eborder "+(j-EditorStandardY-1)+" "+(i-EditorStandardX-1)).style.visibility="inherit"}else{document.getElementById("Eborder "+(j-EditorStandardY-1)+" "+(i-EditorStandardX-1)).style.visibility="hidden"};
-				if( EditorRegionMap[Math.min(9,i)][j-1]!=EditorRegionMap[i-1][j-1] ){document.getElementById("Sborder "+(j-EditorStandardY-1)+" "+(i-EditorStandardX-1)).style.visibility="inherit"}else{document.getElementById("Sborder "+(j-EditorStandardY-1)+" "+(i-EditorStandardX-1)).style.visibility="hidden"};
-				if( EditorRegionMap[i-1][Math.max(0,j-2)]!=EditorRegionMap[i-1][j-1] ){document.getElementById("Wborder "+(j-EditorStandardY-1)+" "+(i-EditorStandardX-1)).style.visibility="inherit"}else{document.getElementById("Wborder "+(j-EditorStandardY-1)+" "+(i-EditorStandardX-1)).style.visibility="hidden"};
-			
-
-			}};
-
-			};
-
-		} else {
-			document.getElementById("RegionMap").style.visibility="hidden";
-			document.getElementById("regionMap").style.visibility="hidden";
+		for(let x = 0; x < Map[0].length; x++) {
+			RegionCell[RegionCell.length] = 0;
 		}
-	RegionsToggled=!RegionsToggled;
-};
+
+		for(let y = 0; y < Map.length; y++) {
+			RegionMap[RegionMap.length] = RegionCell;
+		}
+
+		RegionMap=JSON.parse(JSON.stringify(RegionMap));	
+	}
+	
+	if(!RegionsToggled){
+		if(battalion.state === Battalion.STATE.BATTLE) {
+			document.getElementById("RegionMap").style.visibility = "visible";
+		} else {
+			document.getElementById("regionMap").style.visibility = "visible";
+		}
+
+		if(battalion.state !== Battalion.STATE.MAP_EDITOR && RegionMap != [0] && NodeMap != [0]) {
+			for(let i = 1; i < Map[0].length; i++) {
+				for(let j = 1; j < Map.length; j++) {
+					document.getElementById("NBorder " + i + "X" + j).style.visibility = "hidden";
+					document.getElementById("EBorder " + i + "X" + j).style.visibility = "hidden";
+					document.getElementById("SBorder " + i + "X" + j).style.visibility = "hidden";	
+					document.getElementById("WBorder " + i + "X" + j).style.visibility = "hidden";
+				}
+			}
+
+			for(let a = 0; a < NodeMap.length; a++) {
+				document.getElementById("Regional Nexus " + (NodeMap[a].CapitolX + 1) + " " + (NodeMap[a].CapitolY + 1)).style.visibility = "inherit";
+				document.getElementById("Regional Name " + (NodeMap[a].CapitolX + 1) + " " + (NodeMap[a].CapitolY + 1)).style.visibility = "inherit";
+				document.getElementById("Regional Capital " + (NodeMap[a].CapitolX + 1) + " " + (NodeMap[a].CapitolY + 1)).style.visibility = "inherit";
+				document.getElementById("Regional Name " + (NodeMap[a].CapitolX + 1) + " " + (NodeMap[a].CapitolY + 1)).innerHTML = NodeMap[a].Name;
+				document.getElementById("Regional Capital " + (NodeMap[a].CapitolX + 1) + " " + (NodeMap[a].CapitolY + 1)).innerHTML = NodeMap[a].Capitol;
+			}
+			
+			for(let i = 1; i <= Map.length; i++) {
+				for(let j = 1; j <=Map[0].length; j++) {
+					let factionID = 0;
+
+					for(let k = 0; k < NodeMap.length; k++) {
+						if(RegionMap[i - 1][j - 1] == NodeMap[k].Name) {
+							factionID = NodeMap[k].Owner;
+						}
+					}
+
+					document.getElementById("Regional Color " + j + " " + i).style.background = Factions[factionID].color;
+
+					if(RegionMap[Math.max(0, i - 2)][j - 1] != RegionMap[i - 1][j - 1]) {
+						document.getElementById("NBorder " + j + "X" + i).style.visibility = "inherit";
+					} else {
+						document.getElementById("NBorder " + j + "X" + i).style.visibility = "hidden";
+					}
+
+					if(RegionMap[i - 1][Math.min(Map.length - 1, j)] != RegionMap[i - 1][j - 1]) {
+						document.getElementById("EBorder " + j + "X" + i).style.visibility = "inherit";
+					} else {
+						document.getElementById("EBorder " + j + "X" + i).style.visibility = "hidden";
+					}
+
+					if(RegionMap[Math.min(Map[0].length - 2, i)][j - 1] != RegionMap[i - 1][j - 1]) {
+						document.getElementById("SBorder " + j + "X" + i).style.visibility = "inherit";
+					} else {
+						document.getElementById("SBorder " + j + "X" + i).style.visibility = "hidden";
+					}
+
+					if(RegionMap[i - 1][Math.max(0, j - 2)] != RegionMap[i - 1][j - 1]) {
+						document.getElementById("WBorder " + j + "X" + i).style.visibility = "inherit";
+					} else {
+						document.getElementById("WBorder " + j + "X" + i).style.visibility = "hidden";
+					}
+				}
+			}
+		} else if(battalion.state === Battalion.STATE.MAP_EDITOR) {
+			for(let i = 1; i <= EditorMap.length; i++) {
+				for(let j = 1; j <= EditorMap[0].length; j++) {
+					//let X = 0;
+
+					for(let k = 1; k <= CapitolNodeRegistry.length; k++) {
+						for(let l = 1; l <= CapitolNodeRegistry[0].length; l++) {
+							if(EditorRegionMap[i - 1][j - 1] == CapitolNodeRegistry[k - 1][l - 1].Name) {
+								//X = CapitolNodeRegistry[k-1][l-1].Owner;
+							}
+						}
+					}
+		
+					if(EditorRegionMap[Math.max(0, i - 2)][j - 1] != EditorRegionMap[i - 1][j - 1]) {
+						document.getElementById("Nborder " + (j-EditorStandardY - 1) + " " + (i - EditorStandardX - 1)).style.visibility = "inherit";
+					} else {
+						document.getElementById("Nborder " + (j-EditorStandardY - 1) + " " + (i - EditorStandardX - 1)).style.visibility = "hidden";
+					}
+					
+					if(EditorRegionMap[i - 1][Math.min(9, j)] != EditorRegionMap[i - 1][j - 1]) {
+						document.getElementById("Eborder " + (j - EditorStandardY - 1) + " " + (i - EditorStandardX - 1)).style.visibility = "inherit";
+					} else {
+						document.getElementById("Eborder " + (j - EditorStandardY - 1) + " " + (i - EditorStandardX - 1)).style.visibility = "hidden";
+					}
+					
+					if(EditorRegionMap[Math.min(9, i)][j - 1] != EditorRegionMap[i - 1][j - 1]) {
+						document.getElementById("Sborder " + (j - EditorStandardY - 1) + " " + (i - EditorStandardX - 1)).style.visibility = "inherit";
+					} else {
+						document.getElementById("Sborder " + (j - EditorStandardY - 1) + " " + (i - EditorStandardX - 1)).style.visibility = "hidden";
+					}
+					
+					if(EditorRegionMap[i - 1][Math.max(0, j - 2)] != EditorRegionMap[i - 1][j - 1]) {
+						document.getElementById("Wborder " + (j - EditorStandardY - 1) + " " + (i - EditorStandardX - 1)).style.visibility = "inherit";
+					} else {
+						document.getElementById("Wborder " + (j - EditorStandardY - 1) + " " + (i - EditorStandardX - 1)).style.visibility = "hidden";
+					}
+				}
+			}
+		}
+	} else {
+		document.getElementById("RegionMap").style.visibility="hidden";
+		document.getElementById("regionMap").style.visibility="hidden";
+	}
+
+	RegionsToggled = !RegionsToggled;
+}
 //NEYN TODO!!!
 function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomName, SpecialName, CustomDesc, SpecialDesc) {
 	const { morale } = battalion;
@@ -4309,7 +4347,7 @@ function MoveUnit(unit, path){
 
 		//if(destX<StandardX || destX>StandardX+9 || destY<StandardY || destY>StandardY+9){ExtranDestination=true};
 
-		//if(!Cloak(destX, destY, MapRoster[unit].unitType, Factions[MapRoster[unit].faction].faction)){MapRoster[unit].isCloaked=false; rostermap[destX][destY].isCloaked=false};
+		//if(!isCloaked(destX, destY, MapRoster[unit].unitType, Factions[MapRoster[unit].faction].faction)){MapRoster[unit].isCloaked=false; rostermap[destX][destY].isCloaked=false};
 
 
 		//alert(MapRoster[unit].isCloaked);
@@ -5134,7 +5172,7 @@ function PI_Scouter(Unit, Map){
 					document.getElementById("Marker "+ChosenUnit.ics+"X"+ChosenUnit.igrec).style.visibility="visible";
 				}
 				//alert(finalX+" "+finalY);
-				//if(!Cloak(Math.max(finalX,0),Math.max(finalY,0),Unit.unitType,Coallition)){MapRoster[unitIndex].isCloaked=false; rostermap[finalX][finalY].isCloaked=false}else{MapRoster[unitIndex].isCloaked=true; rostermap[finalX][finalY].isCloaked=true};
+				//if(!isCloaked(Math.max(finalX,0),Math.max(finalY,0),Unit.unitType,Coallition)){MapRoster[unitIndex].isCloaked=false; rostermap[finalX][finalY].isCloaked=false}else{MapRoster[unitIndex].isCloaked=true; rostermap[finalX][finalY].isCloaked=true};
 				document.getElementById("Canceler "+ChosenUnit.ics+"X"+ChosenUnit.igrec).style.visibility="hidden";
 				RemoveKebabIMeanBlep();
 
@@ -5216,7 +5254,7 @@ function PITurn(Roster,Map,Constants){
 
 		//alert(Roster[i].faction);
 
-		if(Stealth){Stealth=Cloak(Roster[i].x,Roster[i].y,Roster[i].unitType,Factions[Roster[i].faction].faction);};
+		if(Stealth){Stealth=isCloaked(Roster[i].x,Roster[i].y,Roster[i].unitType,Factions[Roster[i].faction].faction);};
 		//alert(Stealth);
 		//document.getElementById("Entity "+(i+1-StandardX)+"X"+(j+1-StandardY)).style.filter="";
 		//if(Stealth){document.getElementById("Entity "+(Roster[i].x+1-StandardX)+"X"+(Roster[i].y+1-StandardY)).style.filter+=" opacity(50%)"};
