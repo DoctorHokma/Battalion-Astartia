@@ -76,6 +76,9 @@ Panel=0;
 Difficulty=2;
 InterlogueBST=[[],[],[],[],[],[],[],[],[],[],[]];
 
+var MapRoster = [0];
+var rostermap = [];
+
 var Units=UNITS;
 var Factions=CampaignFactions;
 var Terrain=TERRAIN;
@@ -1699,9 +1702,8 @@ function CastEntityMap(Map, Roster){
 	map=Map;
 	var mapWidth=map[0].length;
 	var mapHeight=map.length;
-	rostermap=[];
 	var line=[];
-	MapRoster=[0];
+
 	for(i=0;i<mapWidth;i++){line[i]=0;};
 		line=JSON.parse(JSON.stringify(line));
 	for(j=0;j<mapHeight;j++){rostermap[j]=line};
@@ -2041,6 +2043,7 @@ function ConvoyPickup(Unit){
 		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).style.top=(Units[Cargo].StaticOffsetY??[0,0,0,0,0])[rostermap[Unit.x][Unit.y].direction]+"px";
 
 	}else{
+		//picking up,
 		YourMoney-=100;
 		//alert(Unit.index);
 		//alert(rostermap[Unit.x][Unit.y].HP);
@@ -2061,6 +2064,8 @@ function ConvoyPickup(Unit){
 
 		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).src="Assets/Units/Static/Convoy"+rostermap[Unit.x][Unit.y].direction+".png";
 	}
+
+	console.log(YourMoney)
 }
 
 function CustomizeTile(){
@@ -2904,7 +2909,9 @@ function FillMapEditor(Tile){
 
 
 		}};
-	RefreshMapEditor();};
+	RefreshMapEditor();
+}
+
 function FocalEditorRefresh(X,Y){
 	if(EditationToggle=="Tile"){
 		document.getElementById("EntityCore "+X+" X "+Y).src="";

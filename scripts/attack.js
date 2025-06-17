@@ -77,15 +77,15 @@ const getAttackingDirection = function(attackerX, attackerY, defenderX, defender
  * @param {Entity} attacker 
  */
 const getHitAnimStyle = function(attacker) {
-	if(attacker.hasTrait("Supply Distribution")) {
+	if(attacker.hasTrait(Entity.TRAIT.SUPPLY_DISTRIBUTION)) {
 		return HIT_ANIM_STYLE.SUPPLY;
 	}
 
-	if(attacker.hasTrait("Dispersion")) {
+	if(attacker.hasTrait(Entity.TRAIT.DISPERSION)) {
 		return HIT_ANIM_STYLE.GASWAVE;
 	}
 
-	if(attacker.hasTrait("Streamblast")) {
+	if(attacker.hasTrait(Entity.TRAIT.STREAMBLAST)) {
 		return HIT_ANIM_STYLE.NEUTRON_WAVE;
 	}
 
