@@ -123,6 +123,23 @@ var ArmyNamesNoon = {};
 
 var ArmyNamesMidnight = {};
 
+var TNOFactions=[
+	{name:"Null", faction:"Idk, man. Neutrals maybe?", color:"ShitBrown"},
+	{name:"West Russian Revolutionary Front", faction:"SocIntern", color:"Red", ChromaCode:""},
+	{name:"Russian Liberation Army", faction:"Vlasovtsy", color:"Dark Grey", ChromaCode:""},
+	{name:"Principality of Vyatka", faction:"Kirilovtsy", color:"Yellow", ChromaCode:""},
+	{name:"Trans-Ural Confederation", faction:"Neutral", color:"Silver", ChromaCode:""},
+	{name:"Ural Military District", faction:"Democratic League", color:"Blue", ChromaCode:""},
+	{name:"Russian National Reclamation Front", faction:"Black League", color:"Black", ChromaCode:""},
+	{name:"Republic of Tomsk", faction:"Yuvachovtsy", color:"Purple", ChromaCode:""},
+	{name:"Republic of Novosibirsk", faction:"Democratic League", color:"Green", ChromaCode:""},
+	{name:"Siberian Black Army", faction:"Anarkhia Mama", color:"Brown", ChromaCode:""},
+	{name:"Sablin", faction:"SocIntern", color:"Orange", ChromaCode:""},
+	{name:"Russian Republic of Magadan", faction:"Matkovtsy", color:"Grey", ChromaCode:""},
+	{name:"Divine Mandate of Siberia", faction:"DEUS VULT!", color:"White", ChromaCode:""},
+	{name:"Kazembek's Secret Lair in Yurlinsky", faction:"HARDCORE", color:"Dark Blue", ChromaCode:""}
+];
+
 var GenericFactions = [
 	{name:"Null", faction:"Idk, man. Neutrals maybe?", color:"Gray", ChromaCode:"hue-rotate(175deg) saturate(0%) brightness(100%)"},
 	{name:"White", powerRanking:"Major Power", faction:"White", Access:true , Preffix:"SOM",color:"White",ChromaCode:"hue-rotate(175deg) saturate(0%) brightness(250%)",SpecialInfantry:[true,false,false,false,false],SpecialVehicles:[true,false,false,false,false]},

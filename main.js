@@ -80,24 +80,6 @@ InterlogueBST=[[],[],[],[],[],[],[],[],[],[],[]];
 var Units=UNITS;
 var Factions=CampaignFactions;
 var Terrain=TERRAIN;
-var TNOFactions=[
-	{name:"Null", faction:"Idk, man. Neutrals maybe?", color:"ShitBrown"},
-	{name:"West Russian Revolutionary Front", faction:"SocIntern", color:"Red", ChromaCode:""},
-	{name:"Russian Liberation Army", faction:"Vlasovtsy", color:"Dark Grey", ChromaCode:""},
-	{name:"Principality of Vyatka", faction:"Kirilovtsy", color:"Yellow", ChromaCode:""},
-	{name:"Trans-Ural Confederation", faction:"Neutral", color:"Silver", ChromaCode:""},
-	{name:"Ural Military District", faction:"Democratic League", color:"Blue", ChromaCode:""},
-	{name:"Russian National Reclamation Front", faction:"Black League", color:"Black", ChromaCode:""},
-	{name:"Republic of Tomsk", faction:"Yuvachovtsy", color:"Purple", ChromaCode:""},
-	{name:"Republic of Novosibirsk", faction:"Democratic League", color:"Green", ChromaCode:""},
-	{name:"Siberian Black Army", faction:"Anarkhia Mama", color:"Brown", ChromaCode:""},
-	{name:"Sablin", faction:"SocIntern", color:"Orange", ChromaCode:""},
-	{name:"Russian Republic of Magadan", faction:"Matkovtsy", color:"Grey", ChromaCode:""},
-	{name:"Divine Mandate of Siberia", faction:"DEUS VULT!", color:"White", ChromaCode:""},
-	{name:"Kazembek's Secret Lair in Yurlinsky", faction:"HARDCORE", color:"Dark Blue", ChromaCode:""}
-];
-
-MemeFactions=[];
 
 document.getElementById("GenerateEditorMap").onclick = () => {
 	battalion.setState(Battalion.STATE.MAP_EDITOR);
@@ -195,7 +177,8 @@ const selectLanguage = function(languageID) {
 //EDIT to EDIT: Fuck me, there was an annoying bug because I didn't follow it.
 //Note to self: Wine really helps write more code 8)
 
-function AddRegionalNode(){
+//I dont know what this does.
+function AddRegionalNode() {
 	let X=parseInt(document.getElementById("RegionNodeX").value);
 	let Y=parseInt(document.getElementById("RegionNodeY").value);
 	let Owner=document.getElementById("RegionNodeOwner").value;
@@ -1043,52 +1026,6 @@ function AITurn(Roster,Map,Constants){
 		if((Turn+1)%SubRosters.length==1){setTimeout(DeactivateAIMarker,1400*ActiveRoster.length);}
 }
 
-/*
-function AttackAnimation(Unit){
-	
-	let unit=MapRoster[Unit];
-	//alert(unit.unitType);
-	//alert(unit.direction);
-	battalion.soundPlayer.playSound(Units[unit.unitType].shortname + "Attack");
-
-	let cellX=Units[unit.unitType].AttackBoxX ?? 56;
-	let cellY=Units[unit.unitType].AttackBoxY ?? 56;
-	let direction=unit.direction;
-
-	document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).src="Assets/Units/Static/"+Units[unit.unitType].shortname+direction+".png";
-	castTime=setInterval(Act,100);
-	frame=0;
-
-	function Act(){
-		frame++;
-			
-		for(let candy = 1; candy <= 8; candy++){
-			let top=(frame-2)*cellY+"px";
-			let right=(direction)*cellX+"px";
-			let bottom=(frame-1)*cellY+"px";
-			let left=(direction-1)*cellX+"px";
-			let offsetlat=-cellY*(frame-2)+"px";
-			let offsetlong=(direction-1)*-cellX+(Units[unit.unitType].AttackOffsetX ?? [0,0,0,0,0])[direction]+"px";
-			//alert(Units[unit.unitType].AttackSpriteOffset[direction] ?? 0);
-			coord="rect("+top+","+right+","+bottom+","+left+")";
-
-			//dynamic unit registry needed, else the function crashes
-			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).src="Assets/Units/Attack/"+Units[unit.unitType].shortname+"Attack.png";
-			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).style.clip=coord;
-			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).style.top=offsetlat;
-			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).style.left=offsetlong;
-		}
-
-		if(frame==9){clearInterval(castTime);
-			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).src="Assets/Units/Static/"+Units[unit.unitType].shortname+direction+".png";
-			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).style.top=0+"px";	
-			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).style.left=0+"px";
-			document.getElementById("Entity "+(unit.x+1-StandardX)+"X"+(unit.y+1-StandardY)).style.clip="auto";
-		}
-	}
-}
-*/
-
 function Battle_Lost(){
 	//BattleEnd=true;
 	Resolution=true;
@@ -1190,7 +1127,7 @@ const advanceBuilding = function(index) {
 }
 
 function Buttsecks() {
-	document.getElementById('Disclaimer').style.visibility='hidden';
+	document.getElementById('Disclaimer').style.visibility = 'hidden';
 }
 
 function castMap(Map){
@@ -1814,250 +1751,241 @@ function CastEntityMap(Map, Roster){
 }
 
 function CaptureProperty(ControlMap,Faction){
-	for(let X=0;X<ControlMap.length;X++){for(let Y=0;Y<ControlMap[0].length;Y++){
-		if(rostermap[X][Y]!=0 && rostermap[X][Y].life>0 && hasCertainTrait(rostermap[X][Y].unitType,"Conqueror") && rostermap[X][Y].coallition!=Factions[ControlMap[X][Y]].faction){ControlMap[X][Y]=Faction;FocalTileRefresh(X,Y)};
+	for(let X = 0; X < ControlMap.length; X++) {
+		for(let Y= 0 ;Y < ControlMap[0].length; Y++) {
+			if(
+				rostermap[X][Y] != 0 &&
+				rostermap[X][Y].life > 0 &&
+				hasCertainTrait(rostermap[X][Y].unitType, "Conqueror") &&
+				rostermap[X][Y].coallition != Factions[ControlMap[X][Y]].faction
+			) {
+				ControlMap[X][Y] = Faction;
+				FocalTileRefresh(X,Y);
+			}
+		}
+	}
+}
 
-		//FocalTileRefresh(X,Y);
-		}};
-	};
-function CBLARG(r,t){
+function CBLARG(r, t) {
+	let NeoPath = [];
+	let Differential = Math.abs(BLARG[BLARG.length - 1].X - r) + Math.abs(BLARG[BLARG.length - 1].Y - t);
 
-					let CLARG=JSON.parse(JSON.stringify(BLARG));
-					let NeoPath=[];
-					let Differential=Math.abs(BLARG[BLARG.length-1].X-r)+Math.abs(BLARG[BLARG.length-1].Y-t);
-					//if(Differential>0){console.log(Differential)};
-					//This bloc fixes ctep-ctep disjunctions
-					if(Differential==1){NeoPath=AddressMap[BLARG[BLARG.length-1].X][BLARG[BLARG.length-1].Y]};
-					if(Differential>1){
-					let AdjacArray=[];
-					let Paradjac=[];
-					let N=document.getElementById("Blep-"+(r-1)+"-"+t)??0;
-					//console.log(rostermap[r-1][t]);
-					//console.log(AddressMap[r-1][t])
-					if((N!=0 && r>0 && rostermap[r-1][t]==0) || (r-1==ChosenUnit.ics-1 && t==ChosenUnit.igrec-1)){AdjacArray[AdjacArray.length]="N";Paradjac[Paradjac.length]=AddressMap[r-1][t].length??0};
-					let S=document.getElementById("Blep-"+(r+1)+"-"+t)??0;
-					if((S!=0 && r<Map.length-1 && rostermap[r+1][t]==0) || (r+1==ChosenUnit.ics-1 && t==ChosenUnit.igrec-1)){AdjacArray[AdjacArray.length]="S";Paradjac[Paradjac.length]=AddressMap[r+1][t].length??0};
-					let E=document.getElementById("Blep-"+r+"-"+(t+1))??0;
-					if((E!=0 && r<Map[0].length-1 && rostermap[r][t+1]==0) || (r==ChosenUnit.ics-1 && t+1==ChosenUnit.igrec-1)){AdjacArray[AdjacArray.length]="E";Paradjac[Paradjac.length]=AddressMap[r][t+1].length??0};
-					let W=document.getElementById("Blep-"+r+"-"+(t-1))??0;
-					if((W!=0 && t>0 && rostermap[r][t-1]==0) || (r==ChosenUnit.ics-1 && t-1==ChosenUnit.igrec-1)){AdjacArray[AdjacArray.length]="W";Paradjac[Paradjac.length]=AddressMap[r][t-1].length??0};
-					let BestPath=0;
-					let SelectedAdjac=0;
-					if(AdjacArray.length>0){
-					for(let j=0;j<Paradjac.length;j++){if(Paradjac[j]<Paradjac[BestPath]){BestPath=j}};
-					SelectedAdjac=AdjacArray[BestPath]};
-					//console.log(SelectedAdjac);
+	//This bloc fixes ctep-ctep disjunctions
+	if(Differential == 1) {
+		NeoPath = AddressMap[BLARG[BLARG.length-1].X][BLARG[BLARG.length-1].Y];
+	}
+	
+	if(Differential > 1) {
+		let AdjacArray = [];
+		let Paradjac = [];
+		let N = document.getElementById("Blep-" + (r - 1) + "-" + t) ?? 0;
+
+		if((N != 0 && r > 0 && rostermap[r-1][t] == 0) || (r - 1 == ChosenUnit.ics - 1 && t == ChosenUnit.igrec - 1)) {
+			AdjacArray[AdjacArray.length] = "N";
+			Paradjac[Paradjac.length] = AddressMap[r-1][t].length ?? 0;
+		}
+		
+		let S = document.getElementById("Blep-" + (r + 1) + "-" + t) ?? 0;
 					
-					let clac= new Event('mouseover');
-					//SelectedAdjac=0;
-					//let pip=AddressMap[r-1][t]??[0,0];
-					//console.log(r+" "+t+" "+BLARG);
+		if((S != 0 && r < Map.length - 1 && rostermap[r+1][t] == 0) || (r + 1 == ChosenUnit.ics - 1 && t == ChosenUnit.igrec - 1)) {
+			AdjacArray[AdjacArray.length] = "S";
+			Paradjac[Paradjac.length] = AddressMap[r + 1][t].length ?? 0;
+		}
 
-					if(SelectedAdjac=="N"){
-						//let container=document.getElementById("Blep-"+(r-1)+"-"+t);
-						//let altcontainer=document.getElementById("Ctep-"+r+"-"+t);
-						//let paracontainter=document.getElementById("BLARG "+(r-1)+"X"+t);
-						//container.dispatchEvent(clac);
-						//paracontainter.dispatchEvent(clac);
-						NeoPath=AddressMap[r-1][t];
-						};
-					if(SelectedAdjac=="S"){
-						//let container=document.getElementById("Blep-"+(r+1)+"-"+t);
-						//let altcontainer=document.getElementById("Ctep-"+r+"-"+t);
-						//let paracontainter=document.getElementById("BLARG "+(r+1)+"X"+t);
-						//container.dispatchEvent(clac);
-						//altcontainer.dispatchEvent(clac);
-						//paracontainter.dispatchEvent(clac);
-						//BLARG[BLARG.length]={X:r+1,Y:t};
-						//BLARG.pop();
-						NeoPath=AddressMap[r+1][t];
-						};
-					if(SelectedAdjac=="E"){
-						//let container=document.getElementById("Blep-"+r+"-"+(t+1));
-						//let altcontainer=document.getElementById("Ctep-"+r+"-"+t);
-						//let paracontainter=document.getElementById("BLARG "+r+"X"+(t+1));
-						//container.dispatchEvent(clac);
-						//paracontainter.dispatchEvent(clac);
-						NeoPath=AddressMap[r][t+1];
-						};
-						
-					if(SelectedAdjac=="W"){
-						//let container=document.getElementById("Blep-"+r+"-"+(t-1));
-						//let altcontainer=document.getElementById("Ctep-"+r+"-"+t);
-						//let paracontainter=document.getElementById("BLARG "+r+"X"+(t-1));
-						//container.dispatchEvent(clac);
-						//paracontainter.dispatchEvent(clac);
-						NeoPath=AddressMap[r][t-1];
-					};
-					//console.log(SelectedAdjac+" "+r+t);
-					//console.log(AdjacArray);
-					};
+		let E = document.getElementById("Blep-" + r + "-" + (t + 1)) ?? 0;
 
-					
+		if((E != 0 && r < Map[0].length - 1 && rostermap[r][t+1] ==0 ) || (r == ChosenUnit.ics - 1 && t + 1 == ChosenUnit.igrec - 1)) {
+			AdjacArray[AdjacArray.length] = "E";
+			Paradjac[Paradjac.length] = AddressMap[r][t + 1].length ?? 0;
+		}
 
-					//console.log(BLARG[BLARG.length-1].X+""+BLARG[BLARG.length-1].Y+" "+r+t+" "+dir);
+		let W = document.getElementById("Blep-" + r + "-" + (t - 1)) ?? 0;
 
+		if((W != 0 && t > 0 && rostermap[r][t - 1] == 0) || (r == ChosenUnit.ics - 1 && t - 1 == ChosenUnit.igrec - 1)) {
+			AdjacArray[AdjacArray.length] = "W";
+			Paradjac[Paradjac.length] = AddressMap[r][t - 1].length ?? 0;
+		}
 
-					
-					//alert(xdif+" "+ydif);
+		let BestPath = 0;
+		let SelectedAdjac = 0;
+		
+		if(AdjacArray.length > 0) {
+			for(let j = 0; j < Paradjac.length; j++) {
+				if(Paradjac[j] < Paradjac[BestPath]) {
+					BestPath = j;
+				}
+			}
 
+			SelectedAdjac = AdjacArray[BestPath]
+		}
 
-					
-					//if(dir+or==3){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/ElbowB.png"};
-					//if(dir+or==7){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/ElbowC.png"};
-					//if(dir+or==5 && (dir-or==1 || or-dir==1)){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/ElbowA.png"};
-					//if(dir+or==5 && (dir-or==3 || or-dir==3)){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/ElbowD.png"};
+		switch(SelectedAdjac) {
+			case "N": {
+				NeoPath = AddressMap[r - 1][t];
+				break;
+			}
+			case "S": {
+				NeoPath = AddressMap[r + 1][t];
+				break;
+			}
+			case "E": {
+				NeoPath = AddressMap[r][t + 1];
+				break;
+			}
+			case "W": {
+				NeoPath = AddressMap[r][t - 1];
+				break;
+			}
+		}
+	}
 
+	//Wipes the BLARG path and repaths the arrow
+	let BX = ChosenUnit.ics;
+	let BY = ChosenUnit.igrec;
+	let ParaPath = [{X: ChosenUnit.ics, Y: ChosenUnit.igrec}];
 
-					//Wipes the BLARG path and repaths the arrow
-					let BX=ChosenUnit.ics;
-					let BY=ChosenUnit.igrec;
-					let ParaPath=[{X:ChosenUnit.ics,Y:ChosenUnit.igrec}];
-					for(let B=1; B<BLARG.length; B++){document.getElementById("BLARG "+(BLARG[B].X+1)+"X"+(BLARG[B].Y+1)).src="Assets/Miscellaneous/Nothing.png"};
+	for(let B = 1; B < BLARG.length; B++) {
+		document.getElementById("BLARG " + (BLARG[B].X + 1) + "X" + (BLARG[B].Y + 1)).src="Assets/Miscellaneous/Nothing.png";
+	}
 
-					for(let BL=0; BL<NeoPath.length-1; BL++){
+	for(let BL = 0; BL < NeoPath.length - 1; BL++) {
+		switch(NeoPath[BL]) {
+			case 1: {
+				BX--;
+				ParaPath[ParaPath.length] = { X: JSON.parse(JSON.stringify(BX)), Y: JSON.parse(JSON.stringify(BY)) }
+				break;
+			}
+			case 2: {
+				BY++;
+				ParaPath[ParaPath.length] = { X: JSON.parse(JSON.stringify(BX)), Y: JSON.parse(JSON.stringify(BY)) }
+				break;
+			}
+			case 3: {
+				BX++;
+				ParaPath[ParaPath.length] = { X: JSON.parse(JSON.stringify(BX)), Y: JSON.parse(JSON.stringify(BY)) }
+				break;
+			}
+			case 4: {
+				BY--;
+				ParaPath[ParaPath.length] = { X: JSON.parse(JSON.stringify(BX)), Y: JSON.parse(JSON.stringify(BY)) }
+				break;
+			}
+		}
+	}
 
-						if(NeoPath[BL]==1){BX--;ParaPath[ParaPath.length]={X:JSON.parse(JSON.stringify(BX)),Y:JSON.parse(JSON.stringify(BY))}};
-						if(NeoPath[BL]==2){BY++;ParaPath[ParaPath.length]={X:JSON.parse(JSON.stringify(BX)),Y:JSON.parse(JSON.stringify(BY))}};
-						if(NeoPath[BL]==3){BX++;ParaPath[ParaPath.length]={X:JSON.parse(JSON.stringify(BX)),Y:JSON.parse(JSON.stringify(BY))}};
-						if(NeoPath[BL]==4){BY--;ParaPath[ParaPath.length]={X:JSON.parse(JSON.stringify(BX)),Y:JSON.parse(JSON.stringify(BY))}};
+	//Builds the new arrow | body section
+	for(let q = 1; q < ParaPath.length; q++){
+		let or = 0;
+		let dir = 0;
+		let Case = 0;
 
+		if(q > 0) {
+			if(ParaPath[q].X < ParaPath[q - 1].X) or = 1;
+			if(ParaPath[q].Y < ParaPath[q - 1].Y) or = 4;
+			if(ParaPath[q].X > ParaPath[q - 1].X) or = 3;
+			if(ParaPath[q].Y > ParaPath[q - 1].Y) or = 2;
+		}
 
+		if(q < ParaPath.length - 1) {
+			if(ParaPath[q + 1].X > ParaPath[q].X) dir = 3;
+			if(ParaPath[q + 1].Y < ParaPath[q].Y) dir = 4;
+			if(ParaPath[q + 1].X < ParaPath[q].X) dir = 1;
+			if(ParaPath[q + 1].Y > ParaPath[q].Y) dir = 2;
+		} else if(q == ParaPath.length - 1) {
+			if(r + 1 > ParaPath[q].X) dir = 3;
+			if(t + 1 < ParaPath[q].Y) dir = 4;
+			if(r + 1 < ParaPath[q].X) dir = 1;
+			if(t + 1 > ParaPath[q].Y) dir = 2;
+		}
 
-						//document.getElementById("BLARG "+(ParaPath[BL].X)+"X"+(ParaPath[BL].Y)).src="Assets/Miscellaneous/Nothing.png";
+		if(or == 1 && dir == 2) Case = "B";
+		if(or == 1 && dir == 4) Case = "C";
+		if(or == 2 && dir == 1) Case = "D";
+		if(or == 2 && dir == 3) Case = "C";
+		if(or == 3 && dir == 2) Case = "A";
+		if(or == 3 && dir == 4) Case = "D";
+		if(or == 4 && dir == 1) Case = "A";
+		if(or == 4 && dir == 3) Case = "B";
 
+		if(Case != 0) {
+			document.getElementById('BLARG ' + (ParaPath[q].X) + "X" + (ParaPath[q].Y)).src = "Assets/BLARG/Elbow" + Case + ".png";
+		} else {
+			if(or % 2 == 0) {
+				document.getElementById('BLARG ' + (ParaPath[q].X) + "X" + (ParaPath[q].Y)).src = "Assets/BLARG/StreakH.png";
+			} else {
+				document.getElementById('BLARG ' + (ParaPath[q].X) + "X" + (ParaPath[q].Y)).src = "Assets/BLARG/StreakV.png";
+			}
+		}
+	}
 
-						//if(Case==0){document.getElementById('BLARG '+(ParaPath[BL].X)+"X"+(ParaPath[BL].Y)).src="Assets/BLARG/StreakH.png";}
-						//else{document.getElementById('BLARG '+(ParaPath[BL].X)+"X"+(ParaPath[BL].Y)).src="Assets/BLARG/Elbow"+Case+".png"};
+	BLARG = [];
+	
+	for(let z = 0; z < ParaPath.length; z++) {
+		BLARG[BLARG.length] = { X: ParaPath[z].X - 1, Y: ParaPath[z].Y - 1 }
+	}
 
+	//Builds the new arrow | head section
+	let or = 0;
+	let dir = 0;
 
-							};
+	if(BLARG[BLARG.length - 1].X > r) dir = 1;
+	if(BLARG[BLARG.length - 1].Y < t) dir = 2;
+	if(BLARG[BLARG.length - 1].X < r) dir = 3;
+	if(BLARG[BLARG.length - 1].Y > t) dir = 4;
 
-						
-						
+	if(dir == 0) {
+		BLARG.pop();
+	}
 
-					
+	if(BLARG.length > 1){
+		if(BLARG[BLARG.length - 2].X > BLARG[BLARG.length - 1].X) or = 1;
+		if(BLARG[BLARG.length - 2].Y < BLARG[BLARG.length - 1].Y) or = 2;
+		if(BLARG[BLARG.length - 2].X < BLARG[BLARG.length - 1].X) or = 3;
+		if(BLARG[BLARG.length - 2].Y > BLARG[BLARG.length - 1].Y) or = 4;
+	}
+				
+	const xdif = Math.abs(r - BLARG[BLARG.length - 1].X);
+	const ydif = Math.abs(t - BLARG[BLARG.length - 1].Y);
 
-					//Builds the new arrow | body section
-					if(true){for(let q=1; q<ParaPath.length; q++){
+	if(xdif + ydif == 1) {
+		document.getElementById("Ctep-" + r + "-" + t).src = "Assets/BLARG/Ctep" + dir + ".png";
+	}
 
-						let or=0;
-						let dir=0;
-						let Case=0;
-						if(q>0){
-						if(ParaPath[q].X<ParaPath[q-1].X){or=1};
-						if(ParaPath[q].Y<ParaPath[q-1].Y){or=4};
-						if(ParaPath[q].X>ParaPath[q-1].X){or=3};
-						if(ParaPath[q].Y>ParaPath[q-1].Y){or=2};};
-						//if(dir==0){BLARG.pop()};
-						//if(q==1){document.getElementById('BLARG '+(ChosenUnit.X+1)+"X"+(ChosenUnit.Y+1)).src="Assets/Emission/"+or+".png"};
+	//Builds the new arrow | tail section
+	if(BLARG.length > 1){
+		if(ChosenUnit.ics - 1 > BLARG[1].X) {
+			document.getElementById("BLARG " + (ChosenUnit.ics) + "X" + (ChosenUnit.igrec)).src = "Assets/BLARG/Emission1.png";
+		}
 
-						if(q<ParaPath.length-1){
-						if(ParaPath[q+1].X>ParaPath[q].X){dir=3};
-						if(ParaPath[q+1].Y<ParaPath[q].Y){dir=4};
-						if(ParaPath[q+1].X<ParaPath[q].X){dir=1};
-						if(ParaPath[q+1].Y>ParaPath[q].Y){dir=2};};
+		if(ChosenUnit.igrec - 1 < BLARG[1].Y) {
+			document.getElementById("BLARG " + (ChosenUnit.ics) + "X" + (ChosenUnit.igrec)).src = "Assets/BLARG/Emission2.png";
+		}
 
-						if(q==ParaPath.length-1){
-						if(r+1>ParaPath[q].X){dir=3};
-						if(t+1<ParaPath[q].Y){dir=4};
-						if(r+1<ParaPath[q].X){dir=1};
-						if(t+1>ParaPath[q].Y){dir=2};};
+		if(ChosenUnit.ics - 1 < BLARG[1].X) {
+			document.getElementById("BLARG " + (ChosenUnit.ics) + "X" + (ChosenUnit.igrec)).src = "Assets/BLARG/Emission3.png";
+		}
 
-						if(or==1&&dir==2){Case="B"};
-						if(or==1&&dir==4){Case="C"};
-						if(or==2&&dir==1){Case="D"};
-						if(or==2&&dir==3){Case="C"};
-						if(or==3&&dir==2){Case="A"};
-						if(or==3&&dir==4){Case="D"};
-						if(or==4&&dir==1){Case="A"};
-						if(or==4&&dir==3){Case="B"};
+		if(ChosenUnit.igrec - 1 > BLARG[1].Y) {
+			document.getElementById("BLARG " + (ChosenUnit.ics) + "X" + (ChosenUnit.igrec)).src = "Assets/BLARG/Emission4.png";
+		}
+	} else if(BLARG.length == 1) {
+		if(ChosenUnit.ics - 1 > r) {
+			document.getElementById("BLARG " + (ChosenUnit.ics) + "X" + (ChosenUnit.igrec)).src = "Assets/BLARG/Emission1.png";
+		}
 
-						//let Message="";for(let i=0; i<ParaPath.length;i++){Message+=ParaPath[i].X; Message+="|";Message+=ParaPath[i].Y;Message+=" "};console.log(Message+" "+or+" "+dir+" "+Case);
-						//console.log();
-						//console.log(ParaPath[q].X+""+ParaPath[q].Y+" "+ParaPath[q-1].X+""+ParaPath[q-1].Y+" "+or);
+		if(ChosenUnit.igrec - 1 < t) {
+			document.getElementById("BLARG " + (ChosenUnit.ics) + "X" + (ChosenUnit.igrec)).src = "Assets/BLARG/Emission2.png";
+		}
 
+		if(ChosenUnit.ics - 1 < r) {
+			document.getElementById("BLARG " + (ChosenUnit.ics) + "X" + (ChosenUnit.igrec)).src = "Assets/BLARG/Emission3.png";
+		}
 
-						if(Case!=0){
-							document.getElementById('BLARG '+(ParaPath[q].X)+"X"+(ParaPath[q].Y)).src="Assets/BLARG/Elbow"+Case+".png";
-
-
-						};
-						if(Case==0 && or%2==1){document.getElementById('BLARG '+(ParaPath[q].X)+"X"+(ParaPath[q].Y)).src="Assets/BLARG/StreakV.png";};
-						if(Case==0 && or%2==0){document.getElementById('BLARG '+(ParaPath[q].X)+"X"+(ParaPath[q].Y)).src="Assets/BLARG/StreakH.png";};
-
-
-
-					}};
-
-					BLARG=[];for(let z=0;z<ParaPath.length;z++){BLARG[BLARG.length]={X:ParaPath[z].X-1,Y:ParaPath[z].Y-1}};
-
-					//Builds the new arrow | head section
-					let or=0;
-					let dir=0;
-					let Case=0;
-					if(BLARG[BLARG.length-1].X>r){dir=1};
-					if(BLARG[BLARG.length-1].Y<t){dir=2};
-					if(BLARG[BLARG.length-1].X<r){dir=3};
-					if(BLARG[BLARG.length-1].Y>t){dir=4};
-					if(dir==0){BLARG.pop()};
-
-					if(BLARG.length>1){
-					if(BLARG[BLARG.length-2].X>BLARG[BLARG.length-1].X){or=1};
-					if(BLARG[BLARG.length-2].Y<BLARG[BLARG.length-1].Y){or=2};
-					if(BLARG[BLARG.length-2].X<BLARG[BLARG.length-1].X){or=3};
-					if(BLARG[BLARG.length-2].Y>BLARG[BLARG.length-1].Y){or=4};};
-					
-					let canBlarg=false;
-					let xdif=Math.abs(r-BLARG[BLARG.length-1].X);
-					let ydif=Math.abs(t-BLARG[BLARG.length-1].Y);
-					if(xdif+ydif==1){canBlarg=true};
-					if(canBlarg){document.getElementById("Ctep-"+r+"-"+t).src="Assets/BLARG/Ctep"+dir+".png"};
-
-					//Builds the new arrow | tail section
-					//alert("Ctep-"+(ChosenUnit.ics)+"-"+(ChosenUnit.igrec));
-					if(BLARG.length>1){
-					if(ChosenUnit.ics-1>BLARG[1].X){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission1.png"};
-					if(ChosenUnit.igrec-1<BLARG[1].Y){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission2.png"};
-					if(ChosenUnit.ics-1<BLARG[1].X){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission3.png"};
-					if(ChosenUnit.igrec-1>BLARG[1].Y){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission4.png"}};
-					if(BLARG.length==1){
-					if(ChosenUnit.ics-1>r){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission1.png"};
-					if(ChosenUnit.igrec-1<t){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission2.png"};
-					if(ChosenUnit.ics-1<r){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission3.png"};
-					if(ChosenUnit.igrec-1>t){document.getElementById("BLARG "+(ChosenUnit.ics)+"X"+(ChosenUnit.igrec)).src="Assets/BLARG/Emission4.png"}};
-					
-
-
-
-					//console.log(ChosenUnit.ics+""+ChosenUnit.igrec+" "+BLARG[1].X+BLARG[1].Y);
-
-					//Handles the end-tile and second-last tile
-					/*
-					if(or==1&&dir==2){Case="B"};
-					if(or==1&&dir==4){Case="C"};
-					if(or==2&&dir==1){Case="D"};
-					if(or==2&&dir==3){Case="C"};
-					if(or==3&&dir==2){Case="A"};
-					if(or==3&&dir==4){Case="D"};
-					if(or==4&&dir==1){Case="A"};
-					if(or==4&&dir==3){Case="B"};*/
-
-					//alert(dir+" "+or+"     "+dir%2+" "+or%2);
-					//if((dir%2==0)&&(or%2==0)){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/StreakH.png"}
-					//else if((dir%2==1)&&(or%2==1)){document.getElementById('BLARG '+(BLARG[BLARG.length-1].X+1)+"X"+(BLARG[BLARG.length-1].Y+1)).src="Assets/BLARG/StreakV.png"}
-					//else{document.getElementById('BLARG '+(BLARG[BLARG.length-1].X)+"X"+(BLARG[BLARG.length-1].Y)).src="Assets/BLARG/Elbow"+Case+".png"};
-
-
-					/*}else{document.getElementById('BLARG '+(BLARG[0].X+1)+"X"+(BLARG[0].Y+1)).src="Assets/BLARG/Emission"+dir+".png";
-					let Xer=BLARG[0].X;
-					let Yer=BLARG[0].Y;
-					if(dir==1){Xer-=1};
-					if(dir==2){Yer+=1};
-					if(dir==3){Xer+=1};
-					if(dir==4){Yer-=1};
-					document.getElementById('Ctep-'+Xer+"-"+Yer).src="Assets/BLARG/Ctep"+dir+".png"};*/
-};
+		if(ChosenUnit.igrec - 1 > t) {
+			document.getElementById("BLARG " + (ChosenUnit.ics) + "X" + (ChosenUnit.igrec)).src = "Assets/BLARG/Emission4.png";
+		}
+	}
+}
 
 function Cloak(X,Y,type,faction){
 		let Stealth=false;
