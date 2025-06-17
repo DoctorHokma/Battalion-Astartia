@@ -1780,7 +1780,7 @@ function CBLARG(r, t) {
 		let Paradjac = [];
 		let N = document.getElementById("Blep-" + (r - 1) + "-" + t) ?? 0;
 
-		if((N != 0 && r > 0 && rostermap[r-1][t] == 0) || (r - 1 == ChosenUnit.ics - 1 && t == ChosenUnit.igrec - 1)) {
+		if((N != 0 && r > 0 && rostermap[r - 1][t] == 0) || (r - 1 == ChosenUnit.ics - 1 && t == ChosenUnit.igrec - 1)) {
 			AdjacArray[AdjacArray.length] = "N";
 			Paradjac[Paradjac.length] = AddressMap[r-1][t].length ?? 0;
 		}
@@ -1794,7 +1794,7 @@ function CBLARG(r, t) {
 
 		let E = document.getElementById("Blep-" + r + "-" + (t + 1)) ?? 0;
 
-		if((E != 0 && r < Map[0].length - 1 && rostermap[r][t+1] ==0 ) || (r == ChosenUnit.ics - 1 && t + 1 == ChosenUnit.igrec - 1)) {
+		if((E != 0 && r < Map[0].length - 1 && rostermap[r][t+1] == 0) || (r == ChosenUnit.ics - 1 && t + 1 == ChosenUnit.igrec - 1)) {
 			AdjacArray[AdjacArray.length] = "E";
 			Paradjac[Paradjac.length] = AddressMap[r][t + 1].length ?? 0;
 		}
@@ -1816,7 +1816,7 @@ function CBLARG(r, t) {
 				}
 			}
 
-			SelectedAdjac = AdjacArray[BestPath]
+			SelectedAdjac = AdjacArray[BestPath];
 		}
 
 		switch(SelectedAdjac) {
@@ -1987,25 +1987,40 @@ function CBLARG(r, t) {
 	}
 }
 
-function Cloak(X,Y,type,faction){
-		let Stealth=false;
-		if(hasCertainTrait(type,"Stealth")){Stealth=true};
+function Cloak(X, Y, type, faction){
+	let isStealth = false;
 
-		if(X>1){
-			if(Factions[rostermap[Math.max(X-1,0)][Y].faction??0].faction!=faction && Factions[rostermap[Math.max(X-1,0)][Y].faction??0].faction!=Factions[0].faction){Stealth=false};
-		};
-		if(X<Map.length-1){
- 			if(Factions[rostermap[X+1][Y].faction??0].faction!=faction && Factions[rostermap[X+1][Y].faction??0].faction!=Factions[0].faction){Stealth=false};
-		};
-		if(Y>1){
-			if(Factions[rostermap[Math.max(X,0)][Math.max(Y-1,0)].faction??0].faction!=faction && Factions[rostermap[Math.max(X,0)][Math.max(Y-1,0)].faction??0].faction!=Factions[0].faction){Stealth=false};
-		};
-		if(Y<Map[0].length-1){
-			if(Factions[rostermap[Math.max(X,0)][Y+1].faction??0].faction!=faction && Factions[rostermap[Math.max(X,0)][Y+1].faction??0].faction!=Factions[0].faction){Stealth=false};
-		};
+	if(hasCertainTrait(type, "Stealth")) {
+		isStealth = true;
+	}
 
-		//alert(Stealth);
-		return Stealth;
+	if(isStealth) {
+		if(X > 1) {
+			if(Factions[rostermap[Math.max(X - 1, 0)][Y].faction ?? 0].faction != faction && Factions[rostermap[Math.max(X-1, 0)][Y].faction ?? 0].faction != Factions[0].faction) {
+				isStealth = false;
+			}
+		}
+
+		if(X < Map.length - 1) {
+			if(Factions[rostermap[X + 1][Y].faction ?? 0].faction != faction && Factions[rostermap[X + 1][Y].faction ?? 0].faction != Factions[0].faction) {
+				isStealth = false;
+			}
+		}
+
+		if(Y > 1) {
+			if(Factions[rostermap[Math.max(X, 0)][Math.max(Y - 1, 0)].faction ?? 0].faction != faction && Factions[rostermap[Math.max(X, 0)][Math.max(Y - 1,0)].faction ?? 0].faction != Factions[0].faction) {
+				isStealth = false;
+			}
+		}
+
+		if(Y < Map[0].length - 1) {
+			if(Factions[rostermap[Math.max(X, 0)][Y + 1].faction ?? 0].faction != faction && Factions[rostermap[Math.max(X, 0)][Y + 1].faction ?? 0].faction != Factions[0].faction) {
+				isStealth = false;
+			}
+		}
+	}
+
+	return isStealth;
 }
 
 //neyn TODO!!!
