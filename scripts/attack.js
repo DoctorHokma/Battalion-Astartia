@@ -38,7 +38,7 @@ const getInterceptorByTrait = function(attacker, map, roster, traitID) {
     for(let i = startX; i < endX; i++) {
         for(let j = startY; j < endY; j++) {
             const entity = roster[i][j];
-            const canIntercept = entity && hasCertainTrait(entity.unitType, traitID);
+            const canIntercept = entity && entity.hasTrait(traitID);
 
             if(canIntercept) {
                 const range = (i - attacker.x) * (i - attacker.x) + (j - attacker.y) * (j - attacker.y);
@@ -63,12 +63,12 @@ const getInterceptorByTrait = function(attacker, map, roster, traitID) {
  * @returns {int}
  */
 const getAttackingDirection = function(attackerX, attackerY, defenderX, defenderY) {
-	if(attackerY < defenderY) return Battalion.DIRECTION.SOUTH;
-	if(attackerY > defenderY) return Battalion.DIRECTION.NORTH;
-	if(attackerX < defenderX) return Battalion.DIRECTION.WEST;
-	if(attackerX > defenderX) return Battalion.DIRECTION.EAST;
+	if(attackerY < defenderY) return Entity.DIRECTION.SOUTH;
+	if(attackerY > defenderY) return Entity.DIRECTION.NORTH;
+	if(attackerX < defenderX) return Entity.DIRECTION.WEST;
+	if(attackerX > defenderX) return Entity.DIRECTION.EAST;
 
-	return Battalion.DIRECTION.NONE;
+	return Entity.DIRECTION.NONE;
 }
 
 /**
@@ -77,17 +77,15 @@ const getAttackingDirection = function(attackerX, attackerY, defenderX, defender
  * @param {Entity} attacker 
  */
 const getHitAnimStyle = function(attacker) {
-	const unitType = attacker.unitType;
-
-	if(hasCertainTrait(unitType, "Supply Distribution")) {
+	if(attacker.hasTrait("Supply Distribution")) {
 		return HIT_ANIM_STYLE.SUPPLY;
 	}
 
-	if(hasCertainTrait(unitType, "Dispersion")) {
+	if(attacker.hasTrait("Dispersion")) {
 		return HIT_ANIM_STYLE.GASWAVE;
 	}
 
-	if(hasCertainTrait(unitType, "Streamblast")) {
+	if(attacker.hasTrait("Streamblast")) {
 		return HIT_ANIM_STYLE.NEUTRON_WAVE;
 	}
 
@@ -97,11 +95,13 @@ const getHitAnimStyle = function(attacker) {
 /**
  * neyn 12.04.2025
  * 
+ * Updated: 17.06.2025
+ * 
  * @param {Entity} attacker 
  * @param {Entity} defender 
  * @param {object} worldMap
  * @param {int} attackType 
- * @returns 
+ * @returns {float}
  */
 const getDamageModifier = function(attacker, defender, worldMap, attackType) {
 	const DefenderTile = Terrain[worldMap[defender.x][defender.y]];
@@ -111,7 +111,7 @@ const getDamageModifier = function(attacker, defender, worldMap, attackType) {
 
 	DamageModifier *= attacker.life / Units[attacker.unitType].HP;
 
-	if(hasCertainTrait(attacker.unitType, "Indomitable")) {
+	if(attacker.hasTrait(Entity.TRAIT.INDOMITABLE)) {
         DamageModifier = 1;
     }
 
@@ -131,44 +131,44 @@ const getDamageModifier = function(attacker, defender, worldMap, attackType) {
 
 	DamageModifier *= DefenderTile.protectionFactor;
 
-	if(hasCertainTrait(attacker.unitType, "Commando") && DefenderTile.protectionFactor < 1) {
+	if(attacker.hasTrait(Entity.TRAIT.COMMANDO) && DefenderTile.protectionFactor < 1) {
         DamageModifier *= 1.25;
     }
 
-	if(hasCertainTrait(defender.unitType, "Commando") && DefenderTile.protectionFactor < 1) {
+	if(defender.hasTrait(Entity.TRAIT.COMMANDO) && DefenderTile.protectionFactor < 1) {
         DamageModifier *= 0.8;
     }
 
 	DamageModifier *= MoraleHandler.getDamageModifier(attacker.morale);
 
-	if(defender.unitType.movementType == "Foot" && hasCertainTrait(attacker.unitType, "Anti-Infantry")) {
+	if(defender.unitType.movementType == "Foot" && attacker.hasTrait(Entity.TRAIT.ANTI_INFANTRY)) {
         DamageModifier *= 3;
     }
 
-	if(defender.movementType == "Flight" && hasCertainTrait(attacker.unitType, "Anti-Air")) {
+	if(defender.movementType == "Flight" && attacker.hasTrait(Entity.TRAIT.ANTI_AIR)) {
         DamageModifier *= 2;
     }
 
-	if((Units[defender.unitType].Movement == "Rudder" || Units[defender.unitType].Movement == "Heavy Rudder") && hasCertainTrait(attacker.unitType, "Anti-Ship")) {
+	if((Units[defender.unitType].Movement == "Rudder" || Units[defender.unitType].Movement == "Heavy Rudder") && attacker.hasTrait(Entity.TRAIT.ANTI_SHIP)) {
         DamageModifier *= 3;
     }
 
-	if(defender.movementType == "Stationary" && hasCertainTrait(attacker.unitType, "Anti-Structure")) {
+	if(defender.movementType == "Stationary" && attacker.hasTrait(Entity.TRAIT.ANTI_STRUCTURE)) {
         DamageModifier *= 2;
     }
 
-	if(hasCertainTrait(defender.unitType, "Steer") && (Units[defender.unitType].Movement == "Rudder" || Units[defender.unitType].Movement == "Heavy Rudder")) {
+	if((Units[defender.unitType].Movement == "Rudder" || Units[defender.unitType].Movement == "Heavy Rudder") && defender.hasTrait(Entity.TRAIT.STEER)) {
 		const speedMultiplier = (1 + (Math.max(Math.min(attacker.speed - defender.speed, 0), -4) * 0.15));
 
 		DamageModifier *= speedMultiplier;
 	}
 
 	if(attackType === ATTACK_TYPE.FIRST) {
-		if(hasCertainTrait(attacker.unitType, "Stealth") && attacker.willAmbush) {
+		if(attacker.hasTrait(Entity.TRAIT.STEALTH) && attacker.willAmbush) {
 			DamageModifier *= 2;
 		}
 
-		if(defender.unitType.movementType == "Foot" && hasCertainTrait(attacker.unitType, "Schwerpunkt")) {
+		if(attacker.hasTrait(Entity.TRAIT.SCHWERPUNKT) && defender.unitType.movementType == "Foot") {
 			DamageModifier *= 1.4;
 		}
 	}
@@ -179,6 +179,8 @@ const getDamageModifier = function(attacker, defender, worldMap, attackType) {
 /**
  * neyn 12.04.2025
  * 
+ * Updated: 17.06.2025
+ * 
  * @param {Entity} attacker 
  * @param {Entity} defender 
  * @param {object} worldMap
@@ -186,32 +188,36 @@ const getDamageModifier = function(attacker, defender, worldMap, attackType) {
  * @returns 
  */
 const getDamage = function(attacker, defender, worldMap, attackType) {	
-	const DamageModifier = getDamageModifier(attacker, defender, worldMap, attackType);
+	const damageModifier = getDamageModifier(attacker, defender, worldMap, attackType);
 
-	let Damage = Math.ceil(attacker.damage * DamageModifier);
+	let damage = Math.ceil(attacker.damage * damageModifier);
 
-	if(hasCertainTrait(defender.unitType, "Cemented Steel Armor") && !hasCertainTrait(attacker.unitType, "Supply Distribution") && !hasCertainTrait(attacker.unitType, "Cavitation Explosion")) {
-		Damage -= 20;
+	if(
+		defender.hasTrait(Entity.TRAIT.CEMENTED_STEEL_ARMOR) &&
+		!attacker.hasTrait(Entity.TRAIT.SUPPLY_DISTRIBUTION) &&
+		!attacker.hasTrait(Entity.TRAIT.CAVITATION_EXPLOSION)
+	) {
+		damage -= 20;
 	}
 
-	if(Damage < 0) {
-		Damage = 0;
+	if(damage < 0) {
+		damage = 0;
 	}
 
-	if(defender.movementType == "Flight" && !hasCertainTrait(attacker.unitType, "Anti-Air") && Damage > 25) {
-		Damage = 25;
+	if(damage > 25 && !attacker.hasTrait(Entity.TRAIT.ANTI_AIR) && defender.movementType == "Flight") {
+		damage = 25;
 	}
 
 	if(attackType === ATTACK_TYPE.FIRST) {
-		if(hasCertainTrait(attacker.unitType, "Supply Distribution")) {
-			Damage *= -1;
+		if(attacker.hasTrait(Entity.TRAIT.SUPPLY_DISTRIBUTION)) {
+			damage *= -1;
 		}
 	}
 
-	return Damage;
+	return damage;
 }
 
-function Attack(Attacker, Defender, Map){
+function Attack(Attacker, Defender, Map) {
 	const Atk = MapRoster[Attacker];
 	const Def = MapRoster[Defender];
 	const startingDirection = Atk.direction;
@@ -221,23 +227,23 @@ function Attack(Attacker, Defender, Map){
     const direction = getAttackingDirection(Atk.y, Atk.x, Def.y, Def.x);
 	const distance = ((Atk.x-Def.x) * (Atk.x-Def.x) + (Atk.y-Def.y) * (Atk.y-Def.y));
 
-    if(direction !== Battalion.DIRECTION.NONE) {
+    if(direction !== Entity.DIRECTION.NONE) {
         Atk.direction = direction;
     }
 
 	let canCounterattack = true;
 	let isIntercepted = false;
 
-	if(hasCertainTrait(Atk.unitType, "Stealth") && Atk.willAmbush) {
+	if(Atk.hasTrait(Entity.TRAIT.STEALTH) && Atk.willAmbush) {
 		Atk.willAmbush = false;
     }
 
-	if(hasCertainTrait(Atk.unitType, "Submerged") && hasCertainTrait(Def.unitType, "Sonar")) {
+	if(Atk.hasTrait(Entity.TRAIT.SUBMERGED) && Def.hasTrait(Entity.TRAIT.SONAR)) {
         isIntercepted = true;
     }
 
 	if(Atk.movementType === "Flight") {
-        const interceptor = getInterceptorByTrait(Atk, Map, rostermap, "Anti-Air");
+        const interceptor = getInterceptorByTrait(Atk, Map, rostermap, Entity.TRAIT.ANTI_AIR);
 
         if(interceptor) {
             isIntercepted = true;
@@ -245,8 +251,8 @@ function Attack(Attacker, Defender, Map){
         }
 	}
 
-	if(hasCertainTrait(Atk.unitType, "Submerged") && !isIntercepted) {
-        const interceptor = getInterceptorByTrait(Atk, Map, rostermap, "Sonar");
+	if(!isIntercepted && Atk.hasTrait(Entity.TRAIT.SUBMERGED)) {
+        const interceptor = getInterceptorByTrait(Atk, Map, rostermap, Entity.TRAIT.SONAR);
 
         if(interceptor) {
             isIntercepted = true;
@@ -255,20 +261,20 @@ function Attack(Attacker, Defender, Map){
 	}
 
 	if(Def.movementType == "Tracked") {
-        if(hasCertainTrait(Atk.unitType, "Anti-Tank") && !hasCertainTrait(Def.unitType, "Anti-Tank")) {
+        if(Atk.hasTrait(Entity.TRAIT.ANTI_TANK) && !Def.hasTrait(Entity.TRAIT.ANTI_TANK)) {
             canCounterattack = false;
         }
     }
 
-	if(hasCertainTrait(Def.unitType, "Tank-Hunter") && Atk.movementType == "Tracked") {
+	if(Def.hasTrait(Entity.TRAIT.TANK_HUNTER) && Atk.movementType == "Tracked") {
 		isIntercepted = true;
 	}
 
-	if(hasCertainTrait(Atk.unitType, "Tank-Hunter")) {
+	if(Atk.hasTrait(Entity.TRAIT.TANK_HUNTER)) {
 		isIntercepted = false;
 	}
 
-	if(hasCertainTrait(Def.unitType, "Self-Destruct")) {
+	if(Def.hasTrait(Entity.TRAIT.SUICIDE)) {
 		isIntercepted = false;
 	}
 	
@@ -277,15 +283,15 @@ function Attack(Attacker, Defender, Map){
 		isIntercepted = false;
 	}
 
-	if(Atk.movementType == "Flight" && !hasCertainTrait(Def.unitType, "Skysweeper")) {
+	if(Atk.movementType == "Flight" && !Def.hasTrait(Entity.TRAIT.SKYSWEEPER)) {
 		canCounterattack = false;
 	}
 
-	if(hasCertainTrait(Atk.unitType, "Submerged") && !hasCertainTrait(Def.unitType, "Depth Strike")) {
+	if(Atk.hasTrait(Entity.TRAIT.SUBMERGED) && !Def.hasTrait(Entity.TRAIT.DEPTH_STRIKE)) {
 		canCounterattack = false;
 	}
 
-	if(hasCertainTrait(Def.unitType, "Seabound") && Units[Atk.unitType].Movement != "Rudder" && Units[Atk.unitType].Movement != "Heavy Rudder") {
+	if(Def.hasTrait(Entity.TRAIT.SEABOUND) && Units[Atk.unitType].Movement != "Rudder" && Units[Atk.unitType].Movement != "Heavy Rudder") {
 		canCounterattack = false;
 	}	
 
@@ -294,11 +300,11 @@ function Attack(Attacker, Defender, Map){
 		GhostAttack(Attacker, 0, 0, 25, "Standard");
 	}
 
-	if(hasCertainTrait(Atk.unitType, "Supply Distribution")) {
+	if(Atk.hasTrait(Entity.TRAIT.SUPPLY_DISTRIBUTION)) {
 		canCounterattack = false;
 	}
 
-	if(hasCertainTrait(Atk.unitType, "Terrifying")) {
+	if(Atk.hasTrait(Entity.TRAIT.TERRIFYING)) {
 		const TERRIFYING_COST = 1000;
 
 		if(Units[Def.unitType].Cost < TERRIFYING_COST && Def.morale > ATTACK_TRAIT.TERRIFYING_MAX) {
@@ -306,7 +312,7 @@ function Attack(Attacker, Defender, Map){
 		}
 	}
 
-	if(hasCertainTrait(Atk.unitType, "Inflaming")) {
+	if(Atk.hasTrait(Entity.TRAIT.INFLAMING)) {
 		if(Def.morale < ATTACK_TRAIT.INFLAMING_MAX) {
 			Def.updateMorale(1);
 		}
@@ -338,8 +344,13 @@ function Attack(Attacker, Defender, Map){
 			}
 		}
 
-		if(!hasCertainTrait(Atk.unitType, "Dispersion") && !hasCertainTrait(Atk.unitType, "JUDGEMENT") && ((LastMove.ID ?? 0) == 0 || hasCertainTrait(Atk.unitType, "Bewegungskrieg") || (LastMove.hasEngaged ?? false))) {
-			LastMove.ID=Attacker;
+		if(
+			!Atk.hasTrait(Entity.TRAIT.DISPERSION) &&
+			!Atk.hasTrait(Entity.TRAIT.JUDGEMENT) &&
+			((LastMove.ID ?? 0) == 0 || Atk.hasTrait(Entity.TRAIT.BEWEGUNGSKRIEG)) ||
+			LastMove.hasEngaged
+		) {
+			LastMove.ID = Attacker;
 			if((LastMove.DIR ?? 0) == 0) LastMove.DIR=startingDirection;
 			//alert(LastMove.DIR);
 			if((LastMove.X ?? 0) == 0) LastMove.X=Atk.x;
@@ -372,7 +383,11 @@ function Attack(Attacker, Defender, Map){
 			LastMove.ID = 0
 		}
 
-		if(!hasCertainTrait(Atk.unitType, "Dispersion") && !hasCertainTrait(Atk.unitType,"JUDGEMENT") && Units[Atk.unitType].MaxRange > 1) {
+		if(
+			!Atk.hasTrait(Entity.TRAIT.DISPERSION) &&
+			!Atk.hasTrait(Entity.TRAIT.JUDGEMENT) &&
+			Units[Atk.unitType].MaxRange > 1
+		) {
 			LastMove.ID = Attacker;
 			LastMove.X = Atk.x;
 			LastMove.Y = Atk.y;
@@ -500,7 +515,7 @@ function Attack(Attacker, Defender, Map){
 			}
 		}
 
-		if(hasCertainTrait(Atk.unitType, "Absorber")) {
+		if(Atk.hasTrait(Entity.TRAIT.ABSORBER)) {
 			const absorbedDamage = Math.min(Damage, Math.abs(Def.life), Units[Atk.unitType].HP - Atk.life);
 
 			Atk.life += absorbedDamage;
@@ -511,7 +526,7 @@ function Attack(Attacker, Defender, Map){
 		}
 	}
 
-	if(hasCertainTrait(Atk.unitType, "Self-Destruct")) {
+	if(Atk.hasTrait(Entity.TRAIT.SUICIDE)) {
 		Atk.life = 0;
 		canCounterattack = false;
 	}
@@ -530,7 +545,7 @@ function Attack(Attacker, Defender, Map){
 			UnitLost(Defender);
 		}, 700);
 
-		if(hasCertainTrait(Atk.unitType, "Bewegungskrieg") && Atk.canEncore) {
+		if(Atk.canEncore && Atk.hasTrait(Entity.TRAIT.BEWEGUNGSKRIEG)) {
 			canEncore = true;
 			Atk.canEncore = false;
 		}
@@ -544,11 +559,11 @@ function Attack(Attacker, Defender, Map){
 	} else {
 		if(distance < Def.minR * Def.minR) canCounterattack = false;
 		if(distance > Def.maxR * Def.maxR) canCounterattack = false;
-		if(hasCertainTrait(Atk.unitType, "Mobile Battery") && Units[Atk.unitType].MaxRange > 1 && !hasCertainTrait(Def.unitType, "Mobile Battery")) canCounterattack = false;
-		if(hasCertainTrait(Def.unitType, "Self-Destruct")) canCounterattack = false;
-		if(hasCertainTrait(Def.unitType, "Dispersion")) canCounterattack = false;
-		if(hasCertainTrait(Def.unitType, "JUDGEMENT")) canCounterattack = false;
-		if(Def.damageType=="None") canCounterattack = false;
+		if(Units[Atk.unitType].MaxRange > 1 && Atk.hasTrait(Entity.TRAIT.MOBILE_BATTERY) && !Def.hasTrait(Entity.TRAIT.MOBILE_BATTERY)) canCounterattack = false;
+		if(Def.hasTrait(Entity.TRAIT.SUICIDE)) canCounterattack = false;
+		if(Def.hasTrait(Entity.TRAIT.DISPERSION)) canCounterattack = false;
+		if(Def.hasTrait(Entity.TRAIT.JUDGEMENT)) canCounterattack = false;
+		if(Def.damageType == "None") canCounterattack = false;
 		if(isIntercepted) canCounterattack = false;
 		if(canCounterattack){
 			setTimeout(() => {
@@ -629,7 +644,7 @@ function AttackingAnimation(unitID){
 	let frame = 0;
 	let interval = null;
 
-	const Act = () => {
+	interval = window.setInterval(() => {
 		frame++;
 
 		if(frame == 17) {
@@ -646,9 +661,7 @@ function AttackingAnimation(unitID){
 
 			window.clearInterval(interval);
 		}
-	}
-
-	interval = window.setInterval(Act, 35);
+	}, 35);
 }
 
 /**
@@ -700,7 +713,7 @@ function Counterattack(Attacker, Defender, Map){
 	const Atk = MapRoster[Attacker];
 	const Def = MapRoster[Defender];
 	
-	Atk.direction = Battalion.DIRECTION_FLIP[Def.direction];
+	Atk.direction = Entity.DIRECTION_FLIP[Def.direction];
 
 	AttackingAnimation(Attacker);
 
@@ -710,19 +723,19 @@ function Counterattack(Attacker, Defender, Map){
 
 	const Damage = getDamage(Atk, Def, Map, ATTACK_TYPE.COUNTER);
 
-	if(hasCertainTrait(Atk.unitType, "Terrifying")) {
+	if(Atk.hasTrait(Entity.TRAIT.TERRIFYING)) {
 		if(Units[Def.unitType].Cost < 1000 && Def.morale > ATTACK_TRAIT.TERRIFYING_MAX) {
 			Def.updateMorale(-1);
 		}
 	}
 
-	if(hasCertainTrait(Atk.unitType, "Inflaming")) {
+	if(Atk.hasTrait(Entity.TRAIT.INFLAMING)) {
 		if(Def.morale < ATTACK_TRAIT.INFLAMING_MAX) {
 			Def.updateMorale(1);
 		}
 	}
 
-	if(hasCertainTrait(Atk.unitType, "Absorber")) {
+	if(Atk.hasTrait(Entity.TRAIT.ABSORBER)) {
 		const HealIndex = Math.min(Damage, Math.abs(Def.life), Units[Atk.unitType].HP - Atk.life);
 
 		Atk.life += HealIndex;

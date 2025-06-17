@@ -1,5 +1,7 @@
 const Entity = function(id) {
     this.ID = id;
+    this.id = id;
+    this.config = null;
     this.type = Entity.TYPE.NONE;
     this.index = -1;
 
@@ -20,7 +22,7 @@ const Entity = function(id) {
     this.faction = -1;
     this.coallition = "";
     this.morale = 0;
-    this.direction = Battalion.DIRECTION.NONE;
+    this.direction = Entity.DIRECTION.NONE;
     this.cargo = 0;
     this.isCloaked = false;
     this.specialNameID = -1;
@@ -34,11 +36,57 @@ const Entity = function(id) {
     this.constructionTime = 0;
 }
 
+Entity.TRAIT = {
+    INDOMITABLE: "Indomitable",
+    COMMANDO: "Commando",
+    ANTI_INFANTRY: "Anti-Infantry",
+    ANTI_AIR: "Anti-Air",
+    ANTI_SHIP: "Anti-Ship",
+    ANTI_TANK: "Anti-Tank",
+    ANTI_STRUCTURE: "Anti-Structure",
+    STEER: "Steer",
+    STEALTH: "Stealth",
+    SCHWERPUNKT: "Schwerpunkt",
+    CEMENTED_STEEL_ARMOR: "Cemented Steel Armor",
+    SUPPLY_DISTRIBUTION: "Supply Distribution",
+    CAVITATION_EXPLOSION: "Cavitation Explosion",
+    SONAR: "Sonar",
+    SUBMERGED: "Submerged",
+    TANK_HUNTER: "Tank-Hunter",
+    SUICIDE: "Self-Destruct",
+    SKYSWEEPER: "Skysweeper",
+    DEPTH_STRIKE: "Depth Strike",
+    SEABOUND: "Seabound",
+    TERRIFYING: "Terrifying",
+    INFLAMING: "Inflaming",
+    ABSORBER: "Absorber",
+    DISPERSION: "Dispersion",
+    JUDGEMENT: "JUDGEMENT",
+    BEWEGUNGSKRIEG: "Bewegungskrieg",
+    MOBILE_BATTERY: "Mobile Battery"
+};
+
 Entity.TYPE = {
     NONE: 0,
     UNIT: 1,
     CONSTRUCTION: 2,
     BUILDING: 3
+};
+
+Entity.DIRECTION = {
+    NONE: 0,
+    NORTH: 1,
+    WEST: 2,
+    SOUTH: 3,
+    EAST: 4
+};
+
+Entity.DIRECTION_FLIP = {
+    [Entity.DIRECTION.NONE]: Entity.DIRECTION.NONE,
+    [Entity.DIRECTION.NORTH]: Entity.DIRECTION.SOUTH,
+    [Entity.DIRECTION.WEST]: Entity.DIRECTION.EAST,
+    [Entity.DIRECTION.SOUTH]: Entity.DIRECTION.NORTH,
+    [Entity.DIRECTION.EAST]: Entity.DIRECTION.WEST
 };
 
 Entity.prototype.updateMorale = function(value) {
@@ -61,6 +109,7 @@ Entity.prototype.initDefault = function(id) {
 
     const unitType = UNITS[id];
 
+    this.config = unitType;
     this.unitType = id;
     this.life = unitType.HP;
     this.maxLife = unitType.HP;
@@ -80,7 +129,7 @@ Entity.prototype.init = function(config, type, index) {
         x = -1, //int
         y = -1, //int
         morale = 0, //float
-        direction = Battalion.DIRECTION.NONE, //int
+        direction = Entity.DIRECTION.NONE, //int
         hpModifier = 0, //float
         cargo = 0, //int
         CustomName = "", //string
@@ -107,6 +156,8 @@ Entity.prototype.init = function(config, type, index) {
     this.customName = CustomName;
     this.customDesc = CustomDescription;
     this.updateMorale(morale);
+
+    console.log(this);
 }
 
 Entity.prototype.completeBuilding = function() {
@@ -118,7 +169,7 @@ Entity.prototype.completeBuilding = function() {
 
     this.building = -1;
     this.morale = 0;
-    this.direction = Battalion.DIRECTION.SOUTH;
+    this.direction = Entity.DIRECTION.SOUTH;
     this.type = Entity.TYPE.BUILDING;
 }
 
@@ -139,10 +190,7 @@ Entity.prototype.getDescription = function(battalion) {
         return desc;
     } 
 
-    const unitType = UNITS[this.unitType];
-    const desc = language.get(unitType.desc);
-
-    return desc;
+    return language.get(this.config.desc);
 }
 
 Entity.prototype.getName = function(battalion) {
@@ -162,8 +210,23 @@ Entity.prototype.getName = function(battalion) {
         return name;
     }
 
-    const unitType = UNITS[this.unitType];
-    const name = language.get(unitType.name);
+    return language.get(this.config.name);
+}
 
-    return name;
+Entity.prototype.hasTrait = function(traitID) {
+    const traitType = TRAITS[traitID];
+
+	if(!traitType) {
+		console.warn(`Trait ${traitID} does not exist!`);
+		return false;
+	}
+
+	const { tag1, tag2, tag3, tag4 } = this.config;
+
+	if(tag1 === traitID) return true;
+	if(tag2 === traitID) return true;
+	if(tag3 === traitID) return true;
+	if(tag4 === traitID) return true;
+
+	return false;
 }

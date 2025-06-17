@@ -1082,7 +1082,7 @@ function Build(Structure){
 		x: X,
 		y: Y,
 		faction: PlayerChoiceFaction,
-		direction: Battalion.DIRECTION.SOUTH
+		direction: Entity.DIRECTION.SOUTH
 	}, Entity.TYPE.CONSTRUCTION, MapRoster.length);
 
 	unit.building = Structure;
@@ -2227,7 +2227,7 @@ function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomNam
 		x: X - 1,
 		y: Y - 1,
 		morale: Morale ?? buyMorale,
-		direction: Direction ?? Battalion.DIRECTION.NORTH,
+		direction: Direction ?? Entity.DIRECTION.NORTH,
 		hpModifier: LifeIndex ?? 0
 	}, Entity.TYPE.UNIT, MapRoster.length);
 
@@ -2582,73 +2582,63 @@ function EndTurn(SubRosters,Map,Constants,Roster){
 	}
 }
 
-function EvaluateDynamicEvent(Comutator,LastUnit){
+function EvaluateDynamicEvent(Comutator, LastUnit){
 	let TriggerKey=false;
-	if(Comutator=='Locomotion'){
-		//for(let a=0; a<DynamicEvents.length; a++){if()};
-		for(let b=0; b<DynamicEvents.length; b++){
-			if(DynamicEvents[b].Turn!=0){if(Turn==DynamicEvents[b].Turn){TriggerKey=true}};
-			if(DynamicEvents[b].TilesCaptured.length>0){
-				let CaptureKey=true;
-				for(let c=0; c<DynamicEvents[b].TilesCaptured.length; c++){
-					let indexer=DynamicEvents[b].TilesCaptured[c];
-					if(rostermap[indexer.x][indexer.y]==0 || rostermap[indexer.x][indexer.y].coallition!=Factions[PlayerChoiceFaction].faction){CaptureKey=false};
-				};
-				//alert(CaptureKey);
-				if(CaptureKey){TriggerKey=true};
-			};
+	
+	switch(Comutator) {
+		case "Locomotion": {
+			for(let b = 0; b < DynamicEvents.length; b++) {
+				if(DynamicEvents[b].Turn!=0){if(Turn==DynamicEvents[b].Turn){TriggerKey=true}}
+				if(DynamicEvents[b].TilesCaptured.length>0){
+					let CaptureKey=true;
+					for(let c=0; c<DynamicEvents[b].TilesCaptured.length; c++){
+						let indexer=DynamicEvents[b].TilesCaptured[c];
+						if(rostermap[indexer.x][indexer.y]==0 || rostermap[indexer.x][indexer.y].coallition!=Factions[PlayerChoiceFaction].faction){CaptureKey=false};
+					};
+					//alert(CaptureKey);
+					if(CaptureKey){TriggerKey=true};
+				}
 
-			if(DynamicEvents[b].LineCrossed!=null){
-				let Line=DynamicEvents[b].LineCrossed;
+				if(DynamicEvents[b].LineCrossed!=null){
+					let Line=DynamicEvents[b].LineCrossed;
 
-				if(Line.gyro=='West'){if(LastUnit[1]<Line.Y){TriggerKey=true}};
-				if(Line.gyro=='East'){if(LastUnit[1]>Line.Y){TriggerKey=true}};
-				if(Line.gyro=='North'){if(LastUnit[0]<Line.X){TriggerKey=true}};
-				if(Line.gyro=='South'){if(LastUnit[0]>Line.X){TriggerKey=true}};
+					if(Line.gyro=='West'){if(LastUnit[1]<Line.Y){TriggerKey=true}};
+					if(Line.gyro=='East'){if(LastUnit[1]>Line.Y){TriggerKey=true}};
+					if(Line.gyro=='North'){if(LastUnit[0]<Line.X){TriggerKey=true}};
+					if(Line.gyro=='South'){if(LastUnit[0]>Line.X){TriggerKey=true}};
+				}
+					if(TriggerKey&&DynamicEvents[b].selfswitch){DynamicEvents[b].selfswitch=false; RunEvent(DynamicEvents[b].Event)}
+			}
+			break;
+		}
+		case "Action": {
+			TriggerKey=false;
 
+			for(let d=0; d<DynamicEvents.length;d++){
+				if(DynamicEvents[d].Turn!=0){if(Turn==DynamicEvents[d].Turn){TriggerKey=true}}
+				if(DynamicEvents[d].UnitsDead.length>0){
+					let UnitKey=true;
+					for(let e=0; e<DynamicEvents[d].UnitsDead.length;e++){
+						let unit=DynamicEvents[d].UnitsDead[e];
+						if(MapRoster[unit].life>0){UnitKey=false};
+					};
+					if(UnitKey){TriggerKey=true}
+				}
 
-
-
-
-				};
-
-
-
-
-
-
-				if(TriggerKey&&DynamicEvents[b].selfswitch){DynamicEvents[b].selfswitch=false; RunEvent(DynamicEvents[b].Event)};
-			};
-
-
-
-	}else if(Comutator=='Action'){
-		TriggerKey=false;
-
-		for(let d=0; d<DynamicEvents.length;d++){
-			if(DynamicEvents[d].Turn!=0){if(Turn==DynamicEvents[d].Turn){TriggerKey=true}};
-			if(DynamicEvents[d].UnitsDead.length>0){
-				let UnitKey=true;
-				for(let e=0; e<DynamicEvents[d].UnitsDead.length;e++){
-					let unit=DynamicEvents[d].UnitsDead[e];
-					if(MapRoster[unit].life>0){UnitKey=false};
-				}; 
-				if(UnitKey){TriggerKey=true};
-			};
-
-			if(DynamicEvents[d].FactionDead!=0){
-			let FactionKey=true;
-				for(let e=0; e<MapRoster.length; e++){if(MapRoster[e].faction==DynamicEvents[d].FactionDead && MapRoster[e].life>0){FactionKey=false}};
-				if(FactionKey){TriggerKey=true};
-
-			};
-
-
-
-
-		if(TriggerKey&&DynamicEvents[d].selfswitch){DynamicEvents[d].selfswitch=false; RunEvent(DynamicEvents[d].Event)};};
-	}else{}
-};
+				if(DynamicEvents[d].FactionDead!=0){
+					let FactionKey=true;
+					for(let e=0; e<MapRoster.length; e++){if(MapRoster[e].faction==DynamicEvents[d].FactionDead && MapRoster[e].life>0){FactionKey=false}}
+					if(FactionKey){TriggerKey=true};
+				}
+				if(TriggerKey&&DynamicEvents[d].selfswitch){DynamicEvents[d].selfswitch=false; RunEvent(DynamicEvents[d].Event)}
+			}
+			break;
+		}
+		default: {
+			break;
+		}
+	}
+}
 
 function FactionInformations(Ordinal){
 

@@ -41,22 +41,6 @@ Battalion.STATE = {
     BATTLE: 3
 };
 
-Battalion.DIRECTION = {
-    NONE: 0,
-    NORTH: 1,
-    WEST: 2,
-    SOUTH: 3,
-    EAST: 4
-};
-
-Battalion.DIRECTION_FLIP = {
-    [Battalion.DIRECTION.NONE]: Battalion.DIRECTION.NONE,
-    [Battalion.DIRECTION.NORTH]: Battalion.DIRECTION.SOUTH,
-    [Battalion.DIRECTION.WEST]: Battalion.DIRECTION.EAST,
-    [Battalion.DIRECTION.SOUTH]: Battalion.DIRECTION.NORTH,
-    [Battalion.DIRECTION.EAST]: Battalion.DIRECTION.WEST
-};
-
 Battalion.prototype.init = function() {
     this.story.init();
     this.uiHandler.mainMenu.init(this);
