@@ -39,14 +39,18 @@ BattalionDB.prototype.createProfile = function(profileID) {
     });
 }
 
-BattalionDB.prototype.getProfile = function(onRead, profileID) {
+BattalionDB.prototype.readAllProfiles = function(onRead) {
     if(typeof onRead !== "function") {
         return;
     }
 
-    if(profileID === undefined) {
-        this.database.read(BattalionDB.STORE.PROFILES).then(data => onRead(data));
-    } else {
-        this.database.read(BattalionDB.STORE.PROFILES, profileID).then(data => onRead(data));
+    this.database.read(BattalionDB.STORE.PROFILES, profileID).then(data => onRead(data));
+}
+
+BattalionDB.prototype.readProfile = function(profileID, onRead) {
+    if(typeof onRead !== "function") {
+        return;
     }
+
+    this.database.read(BattalionDB.STORE.PROFILES, profileID).then(data => onRead(data));
 }

@@ -94,7 +94,7 @@ ClientDatabase.prototype.delete = async function(storeID, nodeID) {
 }
 
 ClientDatabase.prototype.writeIfExists = async function(storeID, nodeID, data) {
-    const store = await this.getStore(storeID, ClientDatabase.TRANSACTION.READONLY);
+    const store = await this.getStore(storeID, ClientDatabase.TRANSACTION.READWRITE);
 
     if(!store) {
         return;
@@ -104,7 +104,8 @@ ClientDatabase.prototype.writeIfExists = async function(storeID, nodeID, data) {
 
     request.onsuccess = (event) => {
         if(request.result !== undefined) {
-            this.write(storeID, nodeID, data);
+            const writeResult = store.put(data, nodeID);
+            //TODO
         }
     }
 

@@ -19,7 +19,7 @@ battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musi
 
 battalion.init();
 battalion.db.createProfile(PROFILE_ID);
-battalion.db.getProfile((profile) => battalion.story.load(profile.story), PROFILE_ID);
+battalion.db.readProfile(PROFILE_ID, (profile) => battalion.story.load(profile.story));
 //battalion.story.unlockAll();
 
 //TODO: This adds a "bug" because scenario selection is not added yet.
@@ -37,51 +37,51 @@ var ChosenNation = 1;
 var ChosenChapter = 1;
 var ChosenMission = 1;
 
-ResolutionXFactor=1;
-ResolutionYFactor=1;
-BattleEnd=false;
+var ResolutionXFactor = 1;
+var ResolutionYFactor = 1;
+var BattleEnd = false;
 
-TutorialLevel=0;
-StandardX=0;
-StandardY=0;
-ChosenMap=0;
-GlobalDelayerConstant=0;
-LastMove={ID:0, X:0, Y:0, HP:0, MOR:0, EID:0, EX:0, EY:0, EHP:0, EMOR:0, GRV:0};
-FlagsToggled=false;
-BadgesToggled=false;
-BarsToggled=false;
-CargoToggled=false;
-RegionsToggled=false;
-//UnlockedLevels=[true,false,false,false,false];
+var TutorialLevel = 0;
+var StandardX = 0;
+var StandardY = 0;
+var ChosenMap = 0;
+var GlobalDelayerConstant = 0;
+var LastMove = {ID:0, X:0, Y:0, HP:0, MOR:0, EID:0, EX:0, EY:0, EHP:0, EMOR:0, GRV:0};
+var FlagsToggled = false;
+var BadgesToggled = false;
+var BarsToggled = false;
+var CargoToggled = false;
+var RegionsToggled = false;
 
-ChosenTerrain=1;
-EditorUnitClass=1;
-ChosenUnit={definite:false};
-EditationToggle='Tile';
-EditationColor=1;
-EditationDirection=1;
-SelectedNode=0;
-EditorStandardX=0;
-EditorStandardY=0;
-EditorNationBatch=0;
-RegionalToggle=false;
-NivelElectiv=0;
-MemoryX=1;
-MemoryY=1;
+var ChosenTerrain = 1;
+var EditorUnitClass = 1;
+var ChosenUnit = {definite:false};
+var EditationToggle = 'Tile';
+var EditationColor = 1;
+var EditationDirection = 1;
+var SelectedNode = 0;
+var EditorStandardX = 0;
+var EditorStandardY = 0;
+var EditorNationBatch = 0;
+var RegionalToggle = false;
+var NivelElectiv = 0;
+var MemoryX = 1;
+var MemoryY = 1;
 
-Language=ENG;
-LevelMap=Palawan;
-LevelRoster=PalawanRoster;
-Panel=0;
-Difficulty=2;
-InterlogueBST=[[],[],[],[],[],[],[],[],[],[],[]];
+var Language = ENG;
+var LevelMap = Palawan;
+var LevelRoster = PalawanRoster;
+var Panel = 0;
+var Difficulty = 2;
+var InterlogueBST = [[],[],[],[],[],[],[],[],[],[],[]];
 
 var MapRoster = [0];
 var rostermap = [];
 
-var Units=UNITS;
-var Factions=CampaignFactions;
-var Terrain=TERRAIN;
+var Units = UNITS;
+var Factions = CampaignFactions;
+var Terrain = TERRAIN;
+var AdjacentCloakers = [];
 
 document.getElementById("GenerateEditorMap").onclick = () => {
 	battalion.setState(Battalion.STATE.MAP_EDITOR);
@@ -4479,7 +4479,6 @@ function MoveUnit(unit, path){
 
 		//alert(rostermap[destX][destY-1]);
 		ScoutVicinity(destX,destY);
-		//AdjacentCloakers=[];
 		LastMove.Uncloaked=AdjacentCloakers;
 		let FadeFrame=0;
 		let FadeIn=setInterval(FadeStage,100);
@@ -6634,20 +6633,31 @@ function RegionalizeTile(X,Y){
 }
 
 function RemoveKebabIMeanBlep(){
-	for(let Me_Go=0;Me_Go<=Map.length;Me_Go++) {
-		for(let It_Be=0;It_Be<=Map[0].length;It_Be++) {
-			thingy=document.getElementById("Blep-"+Me_Go+"-"+It_Be) ?? 0;
-			if(thingy!=0){thingy.remove();};
-			second_thingy=document.getElementById("Ctep-"+Me_Go+"-"+It_Be) ?? 0;
-			if(second_thingy!=0){second_thingy.remove();};
-			third_thingy=document.getElementById("Spep-"+Me_Go+"-"+It_Be) ?? 0;
-			if(third_thingy!=0){third_thingy.remove();};
-			fourth_thingy=document.getElementById("Hlep-"+Me_Go+"-"+It_Be) ?? 0;
-			if(fourth_thingy!=0){fourth_thingy.remove();};
-			fifth_thingy=document.getElementById("Crep-"+Me_Go+"-"+It_Be) ?? 0;
-			if(fifth_thingy!=0){fifth_thingy.remove();};
-			let blarg_thingy=document.getElementById("BLARG "+Me_Go+"X"+It_Be) ?? 0;
-			if(blarg_thingy!=0){blarg_thingy.src="Assets/Miscellaneous/Nothing.png";};
+	const ELEMENTS_REMOVEABLE = [
+		"Blep-", "-",
+		"Ctep-", "-",
+		"Spep-", "-",
+		"Hlep-", "-",
+		"Crep-", "-"
+	];
+
+	for(let Me_Go = 0; Me_Go <= Map.length; Me_Go++) {
+		for(let It_Be = 0; It_Be <= Map[0].length; It_Be++) {
+			for(let k = 0; k < ELEMENTS_REMOVEABLE.length; k += 2) {
+				const elementID = ELEMENTS_REMOVEABLE[k];
+				const splitter = ELEMENTS_REMOVEABLE[k + 1];
+				const element = document.getElementById(elementID + Me_Go + splitter + It_Be);
+
+				if(element) {
+					element.remove();
+				}
+			}
+
+			const blargElement = document.getElementById("BLARG " + Me_Go + "X" + It_Be);
+
+			if(blargElement) {
+				blargElement.src = "Assets/Miscellaneous/Nothing.png";
+			}
 		}
 	}
 }
@@ -6891,21 +6901,73 @@ function scrapMap(){
 	//EDIT: no longer useless HAHAHA
 	for(let i=X;i<X+10;i++){
 		for(let j=Y;j<Y+10;j++){
-			document.getElementById("Slot "+(i+1)+" X "+(j+1)).remove();};};};
-function ScoutVicinity(X,Y){
-	AdjacentCloakers=[];
-	if(X>0){if(rostermap[X-1][Y]!=0 && rostermap[X-1][Y].coallition!=Factions[rostermap[X][Y].faction].faction){rostermap[X][Y].isCloaked=false; rostermap[X][Y].willAmbush=true; if(hasCertainTrait(rostermap[X-1][Y].unitType,"Stealth")){if(rostermap[X-1][Y].isCloaked??false){AdjacentCloakers[AdjacentCloakers.length]=1}}}};
-	if(X<Map.length-1){if(rostermap[X+1][Y]!=0 && rostermap[X+1][Y].coallition!=Factions[rostermap[X][Y].faction].faction){rostermap[X][Y].isCloaked=false; rostermap[X][Y].willAmbush=true; if(hasCertainTrait(rostermap[X+1][Y].unitType,"Stealth")){if(rostermap[X+1][Y].isCloaked??false){AdjacentCloakers[AdjacentCloakers.length]=3}}}};
-	if(Y>0){if(rostermap[X][Y-1]!=0 && rostermap[X][Y-1].coallition!=Factions[rostermap[X][Y].faction].faction){rostermap[X][Y].isCloaked=false; rostermap[X][Y].willAmbush=true; if( hasCertainTrait(rostermap[X][Y-1].unitType,"Stealth")){if(rostermap[X][Y-1].isCloaked){AdjacentCloakers[AdjacentCloakers.length]=4}}}};
-	if(Y<Map[0].length-1){if(rostermap[X][Y+1]!=0 && rostermap[X][Y+1].coallition!=Factions[rostermap[X][Y].faction].faction){rostermap[X][Y].isCloaked=false; rostermap[X][Y].willAmbush=true; if(hasCertainTrait(rostermap[X][Y+1].unitType,"Stealth")){if(rostermap[X][Y+1].isCloaked??false){AdjacentCloakers[AdjacentCloakers.length]=2}}}};
+			document.getElementById("Slot "+(i+1)+" X "+(j+1)).remove();
+		}
+	}
+}
 
-	if(AdjacentCloakers.length > 0) battalion.soundPlayer.playSound("Uncloak");
-	//console.log(AdjacentCloakers);
+function ScoutVicinity(X, Y) {
+	AdjacentCloakers.length = 0;
 
-	//alert(rostermap[X][Y].isCloaked);
+	if(X > 0) {
+		if(rostermap[X - 1][Y] != 0 && rostermap[X - 1][Y].coallition != Factions[rostermap[X][Y].faction].faction) {
+			rostermap[X][Y].isCloaked = false;
+			rostermap[X][Y].willAmbush = true;
+			
+			if(hasCertainTrait(rostermap[X - 1][Y].unitType, "Stealth")) {
+				if(rostermap[X - 1][Y].isCloaked ?? false) {
+					AdjacentCloakers[AdjacentCloakers.length] = 1;
+				}
+			}
+		}
+	}
+
+	if(X < Map.length - 1) {
+		if(rostermap[X + 1][Y] != 0 && rostermap[X + 1][Y].coallition != Factions[rostermap[X][Y].faction].faction) {
+			rostermap[X][Y].isCloaked = false;
+			rostermap[X][Y].willAmbush = true;
+			
+			if(hasCertainTrait(rostermap[X + 1][Y].unitType, "Stealth")) {
+				if(rostermap[X + 1][Y].isCloaked ?? false) {
+					AdjacentCloakers[AdjacentCloakers.length] = 3;
+				}
+			}
+		}
+	}
+
+	if(Y > 0) {
+		if(rostermap[X][Y - 1] != 0 && rostermap[X][Y - 1].coallition != Factions[rostermap[X][Y].faction].faction) {
+			rostermap[X][Y].isCloaked = false;
+			rostermap[X][Y].willAmbush = true; 
+
+			if(hasCertainTrait(rostermap[X][Y - 1].unitType, "Stealth")) {
+				if(rostermap[X][Y - 1].isCloaked) {
+					AdjacentCloakers[AdjacentCloakers.length] = 4;
+				}
+			}
+		}
+	}
+
+	if(Y < Map[0].length - 1) {
+		if(rostermap[X][Y + 1] !=0 && rostermap[X][Y + 1].coallition != Factions[rostermap[X][Y].faction].faction) {
+			rostermap[X][Y].isCloaked=false;
+			rostermap[X][Y].willAmbush=true;
+			
+			if(hasCertainTrait(rostermap[X][Y + 1].unitType, "Stealth")) {
+				if(rostermap[X][Y + 1].isCloaked ?? false) {
+					AdjacentCloakers[AdjacentCloakers.length] = 2;
+				}
+			}
+		}
+	}
+
+	if(AdjacentCloakers.length > 0) {
+		battalion.soundPlayer.playSound("Uncloak");
+	}
+
 	//document.getElementById("Entity "+(X+1)+"X"+(Y+1)).filter="opacity(100%)";
-	
-	};
+}
+
 function SelectSpecialLevel(Level){
 	//if(Level.typeOf!=undefined){Level={Name:"???????",Description:"This level doesn't exist, you know? Maybe you can give us an idea of what to add here tho"}};
 	NivelVizat=Level;
