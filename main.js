@@ -90,11 +90,11 @@ var Resolution = false;
 document.getElementById("GenerateEditorMap").onclick = () => {
 	battalion.setState(Battalion.STATE.MAP_EDITOR);
 
-	for(let i=1;i<=10;i++) {
-		for(let j=1;j<=10;j++) {
-			key=document.getElementById('Slot '+i+' X '+j)??0;
+	for(let i = 1; i <= 10; i++) {
+		for(let j = 1; j <= 10; j++) {
+			key = document.getElementById("Slot " + i + " X " + j);
 			
-			if(key!=0) {
+			if(key) {
 				key.remove();
 			}
 		}
@@ -109,20 +109,22 @@ document.getElementById("EndBattleCloseButton").onclick = () => {
 
 	selectScenario("GREAT_WAR");
 
-	document.getElementById("EndBattleCloseButton").src='Assets/Miscellaneous/CloseButtonPressed.png';
+	document.getElementById("EndBattleCloseButton").src="Assets/Miscellaneous/CloseButtonPressed.png";
 	
-	for(let a=1; a<Constants.Commanders.length; a++) {
-		let elem=document.getElementById('AnalysisBlock'+Factions[Constants.Commanders[a].Allegiance].Preffix);
+	for(let a = 1; a < Constants.Commanders.length; a++) {
+		let elem = document.getElementById("AnalysisBlock" + Factions[Constants.Commanders[a].Allegiance].Preffix);
+
 		elem.remove();
 	}
 	
-	for(let b=0; b<Coallitions.length; b++) {
-		let elem=document.getElementById('CoallitionTitle'+Coallitions[b]);
+	for(let b = 0; b < Coallitions.length; b++) {
+		let elem = document.getElementById("CoallitionTitle" + Coallitions[b]);
+
 		elem.remove();
 	}
 	
 	Factions = CampaignFactions;
-	document.getElementById('EndBattleScreen').style.visibility = 'hidden';
+	document.getElementById("EndBattleScreen").style.visibility = "hidden";
 	
 	//Victory gets set to false on endbattle
 	if(ChosenMission !== 5 || !Victory) {
@@ -130,10 +132,23 @@ document.getElementById("EndBattleCloseButton").onclick = () => {
 	}
 }
 
+document.getElementById("DialogueSkip").onclick = () => {
+	document.getElementById("DialogueBox").style.visibility = "hidden";
+	document.getElementById("DialogueSkip").style.visibility = "hidden";
+	
+	if(Resolution) {
+		EndBattle();
+	}
+}
+
+document.getElementById("Illustration").onclick = () => {
+	document.getElementById("Illustration").style.visibility = "hidden";
+}
+
 const selectLanguage = function(languageID) {
 	const { language } = battalion;
-	const languageComment = document.getElementById('LanguageCommentary');
-	const creatorComment = document.getElementById('LanguagePrecommentor');
+	const languageComment = document.getElementById("LanguageCommentary");
+	const creatorComment = document.getElementById("LanguagePrecommentor");
 
 	language.selectLanguage(languageID);
 
@@ -1702,18 +1717,19 @@ function castMapMaker() {
 	RefreshMapEditor();
 }
 
-function CastEntityMap(Map, Roster){
-	map=Map;
-	var mapWidth=map[0].length;
-	var mapHeight=map.length;
-	var line=[];
+function CastEntityMap(Map, Roster) {
+	const mapHeight = Map.length;
+	const mapWidth = Map[0].length;
 
-	rostermap = [];
-	
-	for(i=0;i<mapWidth;i++){line[i]=0;};
-		line=JSON.parse(JSON.stringify(line));
-	for(j=0;j<mapHeight;j++){rostermap[j]=line};
-		rostermap=JSON.parse(JSON.stringify(rostermap));
+	rostermap.length = 0;
+
+	for(let i = 0; i < mapHeight; i++) {
+		rostermap[i] = [];
+
+		for(let j = 0; j < mapWidth; j++) {
+			rostermap[i][j] = 0;
+		}
+	}
 
 	//NEYN TODO: WHY DOES IT START AT JUAN?!?
 	for(var k = 1; k < Roster.length; k++) {
@@ -1729,13 +1745,13 @@ function CastEntityMap(Map, Roster){
 		const Y = config.y + 1;
 
 		document.getElementById("EntityCore "+(X)+"X"+(Y)).style.visibility="inherit";
-		document.getElementById("Entity "+(X)+"X"+(Y)).style.top=(Units[unit.unitType].StaticOffsetY ?? [0,0,0,0,0])[unit.direction] + "px";
-		document.getElementById("Entity "+(X)+"X"+(Y)).style.left=(Units[unit.unitType].StaticOffsetX ?? [0,0,0,0,0])[unit.direction] + "px";
-		document.getElementById("EntityCore "+(X)+"X"+(Y)).src="Assets/Units/Static/"+Units[unit.unitType].shortname+unit.direction+".png";
+		document.getElementById("Entity "+(X)+"X"+(Y)).style.top=(unit.config.StaticOffsetY ?? [0,0,0,0,0])[unit.direction] + "px";
+		document.getElementById("Entity "+(X)+"X"+(Y)).style.left=(unit.config.StaticOffsetX ?? [0,0,0,0,0])[unit.direction] + "px";
+		document.getElementById("EntityCore "+(X)+"X"+(Y)).src="Assets/Units/Static/"+unit.config.shortname+unit.direction+".png";
 
-		if(!Units[unit.unitType].MLPR) {
+		if(!unit.config.MLPR) {
 			document.getElementById("EntityMesh "+(X)+"X"+(Y)).style.visibility="inherit";
-			document.getElementById("EntityMesh "+(X)+"X"+(Y)).src="Assets/Units/StaticMeshes/"+Units[unit.unitType].shortname+"Mesh"+unit.direction+".png";
+			document.getElementById("EntityMesh "+(X)+"X"+(Y)).src="Assets/Units/StaticMeshes/"+unit.config.shortname+"Mesh"+unit.direction+".png";
 		}
 
 		let Filter = Factions[unit.faction].ChromaCode;
@@ -2370,7 +2386,7 @@ function EndBattle(){
 			//alert("It's ok bro, we're not all Chuck Norris");
 			Resolution=false;
 			battalion.uiHandler.mainMenu.show();
-			rostermap=0;
+			rostermap.length = 0;
 		}
 
 		if(Victory && Resolution){
