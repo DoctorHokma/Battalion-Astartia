@@ -2,8 +2,6 @@ TEM={
 	SystemTerms:[],
 	UnitSpecialNames:[],
 	UnitSpecialDesc:[],
-	TerrainName:[],
-	TerrainDesc:[],
 	Intralogues:[],
 	Prologues:[],
 	Epilogues:[],

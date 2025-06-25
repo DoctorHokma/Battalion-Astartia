@@ -71,7 +71,7 @@ const getTraitIcon = function(traitID) {
 
 	if(!trait) {
 		console.warn(`Trait ${traitID} does not exist!`);
-		return "";
+		return null;
 	}
 
 	const { icon } = trait;

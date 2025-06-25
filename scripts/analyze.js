@@ -4,37 +4,81 @@ const ANALYSIS_TYPE = {
 	STRUCTURE: "Structure"
 };
 
-const analyzeTile = function(X, Y) {
-	index=Map[X][Y];
-	HighlightedEntity=Terrain[index];
-	LocalBiome=BiomeMap[X][Y];
-	if(LocalizationMap[X][Y]==0){document.getElementById("DetBarName").innerHTML=Language.TerrainName[index];document.getElementById("DetBarDescription").innerHTML=Language.TerrainDesc[index];}
-	else{document.getElementById("DetBarName").innerHTML=LocalizationMap[X][Y].name;document.getElementById("DetBarDescription").innerHTML=LocalizationMap[X][Y].description;};
+//Is a config object of type TerrainConfig or UnitConfig
+var HighlightedEntity = null;
+
+//Is the index in the BIOMES region.
+var LocalBiome = -1;
+
+const showTraits = function(config) {
+	const TRAIT_TO_TAG = [
+		"Trait1", "tag1",
+		"Trait2", "tag2",
+		"Trait3", "tag3",
+		"Trait4", "tag4"
+	];
+
+	for(let i = 0; i < TRAIT_TO_TAG.length; i += 2) {
+		const traitID = TRAIT_TO_TAG[i];
+		const tagID = TRAIT_TO_TAG[i + 1];
+		const iconSrc = getTraitIcon(config[tagID]);
+
+		if(iconSrc) {
+			document.getElementById(traitID).style.visibility = "visible";
+			document.getElementById(traitID).src = iconSrc;
+		} else {
+			document.getElementById(traitID).style.visibility = "hidden";
+		}
+	}
+}
+
+const getTerrainType = function(index) {
+	if(index < 0 || index >= TERRAIN.length) {
+		return null;
+	}
+
+	return TERRAIN[index];
+}
+
+const analyzeTile = function(index, X, Y) {
+	const { language } = battalion;
+	const terrainType = getTerrainType(index);
+
+	LocalBiome = BiomeMap[X][Y]; 
+
+	if(LocalizationMap[X][Y] == 0) {
+		document.getElementById("DetBarName").innerHTML = language.get(terrainType.$name);
+		document.getElementById("DetBarDescription").innerHTML = language.get(terrainType.desc);
+	} else {
+		document.getElementById("DetBarName").innerHTML = LocalizationMap[X][Y].name;
+		document.getElementById("DetBarDescription").innerHTML = LocalizationMap[X][Y].description;
+	}
+
 	document.getElementById("DetBar").src="Assets/Miscellaneous/TerrainDetailBar.png";
 	document.getElementById("DetBarDescription").style.width="350px";
 	document.getElementById("Icon").style.visibility="inherit";
 	document.getElementById("IconMesh").style.visibility="hidden";
 	document.getElementById("Icon").src="Assets/Tiles/"+Terrain[index].name+".png";
 	document.getElementById("Icon").style.filter="hue-rotate(0deg) saturate(100%) brightness(100%)";
-	if(Terrain[index].Urbanistics>=2){document.getElementById("Icon").style.filter=Factions[ControlMap[X][Y]].ChromaCode};
+
+	if(Terrain[index].Urbanistics >= 2) {
+		document.getElementById("Icon").style.filter=Factions[ControlMap[X][Y]].ChromaCode;
+	}
+
 	document.getElementById("Health").style.visibility="hidden";
 	document.getElementById("Damage").style.visibility="hidden";
 	document.getElementById("Movement").style.visibility="hidden";
 	document.getElementById("Biome").style.visibility="inherit";
 	document.getElementById("Biome").src=BIOMES[LocalBiome].icon;
-	if(LocalBiome==1){document.getElementById("Biome").src="Assets/Traits/Temperate.png"};
 
-	document.getElementById("Trait1").src = getTraitIcon(Terrain[index].tag1);
-	document.getElementById("Trait2").src = getTraitIcon(Terrain[index].tag2);		
-	document.getElementById("Trait3").src = getTraitIcon(Terrain[index].tag3);
-	document.getElementById("Trait4").src = getTraitIcon(Terrain[index].tag4);	
+	if(LocalBiome == 1) {
+		document.getElementById("Biome").src="Assets/Traits/Temperate.png"
+	}
+
+	showTraits(Terrain[index]);
 }
 
-const analyzeUnit = function(X, Y) {
-	//alert(X+" "+Y);
-	index=rostermap[X][Y];
-	var unit=index;
-	HighlightedEntity=Units[unit.unitType];
+const analyzeUnit = function(unit) {
 	var armorindex=0;
 	if(unit.armor=="Light"){armorindex=1}else if(unit.armor=="Medium"){armorindex=2}else if(unit.armor=="Heavy"){armorindex=3};
 	var weaponindex=0;
@@ -80,10 +124,7 @@ const analyzeUnit = function(X, Y) {
 
 	document.getElementById("Biome").style.visibility="hidden";
 	
-    document.getElementById("Trait1").src = getTraitIcon(Units[unit.unitType].tag1);
-    document.getElementById("Trait2").src = getTraitIcon(Units[unit.unitType].tag2);
-    document.getElementById("Trait3").src = getTraitIcon(Units[unit.unitType].tag3);
-    document.getElementById("Trait4").src = getTraitIcon(Units[unit.unitType].tag4);
+	showTraits(unit.config);
 }
 
 const analyzeStructure = function(X, Y) {
@@ -91,15 +132,21 @@ const analyzeStructure = function(X, Y) {
 }
 
 function AnalyzeSquare(analysisType, X, Y){
-    console.log(analysisType, X, Y);
-
 	switch(analysisType) {
 		case ANALYSIS_TYPE.TILE: {
-			analyzeTile(X, Y);
+			const tileID = Map[X][Y];
+
+			HighlightedEntity = Terrain[tileID];
+
+			analyzeTile(tileID, X, Y);
 			break;
 		}
 		case ANALYSIS_TYPE.UNIT: {
-			analyzeUnit(X, Y);
+			const unit = rostermap[X][Y];
+
+			HighlightedEntity = Units[unit.unitType];
+
+			analyzeUnit(unit);
 			break;
 		}
 		case ANALYSIS_TYPE.STRUCTURE: {

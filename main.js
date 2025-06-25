@@ -83,6 +83,10 @@ var Factions = CampaignFactions;
 var Terrain = TERRAIN;
 var AdjacentCloakers = [];
 
+//Post-Battle
+var Victory = false;
+var Resolution = false;
+
 document.getElementById("GenerateEditorMap").onclick = () => {
 	battalion.setState(Battalion.STATE.MAP_EDITOR);
 
@@ -1704,6 +1708,8 @@ function CastEntityMap(Map, Roster){
 	var mapHeight=map.length;
 	var line=[];
 
+	rostermap = [];
+	
 	for(i=0;i<mapWidth;i++){line[i]=0;};
 		line=JSON.parse(JSON.stringify(line));
 	for(j=0;j<mapHeight;j++){rostermap[j]=line};
@@ -3910,8 +3916,6 @@ function LanguageCorrecter(Language){
 	if((Language.UnitSpecialDesc??[]).length==0){Language.UnitSpecialDesc=ENG.UnitSpecialDesc};
 	if((Language.VictoryQuotes??[]).length==0){Language.VictoryQuotes=ENG.VictoryQuotes};
 	if((Language.DefeatQuotes??[]).length==0){Language.DefeatQuotes=ENG.DefeatQuotes};
-	if((Language.TerrainName??[]).length==0){Language.TerrainName=ENG.TerrainName};
-	if((Language.TerrainDesc??[]).length==0){Language.TerrainDesc=ENG.TerrainDesc};
 	if((Language.IntraeventTranscripts??[]).length==0){Language.IntraeventTranscripts=ENG.IntraeventTranscripts};
 
 	for(let a=1;a<=2;a++){for (let b=0; b<7;b++){for(let c=0;c<5;c++){
@@ -4014,6 +4018,9 @@ function LaunchConstructorPanel(X,Y){
 	};};
 function LaunchRecruitmentPanel(IndustrialBranch){
 	const { morale } = battalion;
+
+	morale.reset();
+	
 	IndustrialBranchBrowsed=IndustrialBranch;
 	document.getElementById("UnitRecruitmentPanel").style.visibility="visible";
 	let YourCurrency=(Factions[PlayerChoiceFaction].Currency??0);
@@ -4025,8 +4032,6 @@ function LaunchRecruitmentPanel(IndustrialBranch){
 	document.getElementById("UnitMontre").style.filter=Factions[PlayerChoiceFaction].ChromaCode;;
 	MontreIndexBasis=IndustrialBranch*10+20;
 	if(IndustrialBranch==1){MontreIndexBasis-=30};
-
-	morale.reset();
 
 	let InfantrySelection=Factions[PlayerChoiceFaction].SpecialInfantry;
 	let VehicleSelection=Factions[PlayerChoiceFaction].SpecialVehicles;
