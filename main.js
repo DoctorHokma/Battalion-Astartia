@@ -18,12 +18,12 @@ battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
 battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
 
 battalion.init();
-battalion.db.createProfile(PROFILE_ID);
-battalion.db.readProfile(PROFILE_ID, (profile) => battalion.story.load(profile.story));
-//battalion.story.unlockAll();
+//battalion.db.createProfile(PROFILE_ID);
+//battalion.db.readProfile(PROFILE_ID, (profile) => battalion.story.load(profile.story));
+battalion.story.unlockAll();
 
 //TODO: This adds a "bug" because scenario selection is not added yet.
-addStoryEvents(battalion);
+//addStoryEvents(battalion);
 selectScenario("GREAT_WAR");
 
 var ActionRegister = {}; //used by ai
@@ -145,6 +145,113 @@ document.getElementById("Illustration").onclick = () => {
 	document.getElementById("Illustration").style.visibility = "hidden";
 }
 
+{
+	const undoBtn = document.getElementById("UndoBtn");
+
+	undoBtn.onmouseover = () => {
+		document.getElementById("BtnSuperscript").innerHTML = Language.SystemTerms[49];
+		undoBtn.src= "Assets/Miscellaneous/UndoBtnL.png";
+	}
+
+	undoBtn.onmouseout = () => {
+		document.getElementById("BtnSuperscript").innerHTML = "";
+		undoBtn.src = "Assets/Miscellaneous/UndoBtnS.png";
+	}
+
+	undoBtn.onmousedown = () => {
+		undoBtn.src = "Assets/Miscellaneous/UndoBtnP.png";
+		UndoMove();
+	}
+
+	undoBtn.onmouseup = () => {
+		undoBtn.src = "Assets/Miscellaneous/UndoBtnS.png"; 
+	}
+}
+
+{
+	const quitBtn = document.getElementById("QuitBtn");
+
+	quitBtn.onmouseover = () => {
+		document.getElementById("BtnSuperscript").innerHTML = Language.SystemTerms[51];
+		quitBtn.src= "Assets/Miscellaneous/QuitBtnL.png";
+	}
+
+	quitBtn.onmouseout = () => {
+		document.getElementById("BtnSuperscript").innerHTML = "";
+		quitBtn.src = "Assets/Miscellaneous/QuitBtnS.png";
+	}
+
+	quitBtn.onmousedown = () => {
+		quitBtn.src = "Assets/Miscellaneous/QuitBtnP.png";
+		Battle_Lost();
+	}
+
+	quitBtn.onmouseup = () => {
+		quitBtn.src = "Assets/Miscellaneous/QuitBtnS.png"; 
+	}
+}
+
+{
+	const menuBtn = document.getElementById("MenuBtn");
+
+	menuBtn.onmouseover = () => {
+		document.getElementById("BtnSuperscript").innerHTML = Language.SystemTerms[50];
+		menuBtn.src= "Assets/Miscellaneous/MenuBtnL.png";
+	}
+
+	menuBtn.onmouseout = () => {
+		document.getElementById("BtnSuperscript").innerHTML = "";
+		menuBtn.src = "Assets/Miscellaneous/MenuBtnS.png";
+	}
+
+	menuBtn.onmousedown = () => {
+		menuBtn.src = "Assets/Miscellaneous/MenuBtnP.png";
+		document.getElementById("Options").style.visibility = "visible";
+	}
+
+	menuBtn.onmouseup = () => {
+		menuBtn.src = "Assets/Miscellaneous/MenuBtnS.png"; 
+	}
+}
+
+{
+	const glassplates = ["Glassplate1", "Glassplate2", "Glassplate3", "Glassplate4"];
+
+	for(let i = 0; i < glassplates.length; i++) {
+		const glassplate = document.getElementById(glassplates[i]);
+
+		glassplate.onclick = () => {
+			FactionInformations(i + 1);
+		}
+
+		glassplate.onmouseout = () => {
+			document.getElementById("FactionDetails").style.visibility = "hidden";
+		}
+	}
+}
+
+{
+	const endTurnButton = document.getElementById("EndTurnButton");
+
+	endTurnButton.onmouseover = () => {
+		endTurnButton.src = "Assets/Miscellaneous/EndTurnButtonHovered.png";
+	}
+
+	endTurnButton.onmouseout = () => {
+		endTurnButton.src = "Assets/Miscellaneous/EndTurnButton.png";
+	}
+
+	endTurnButton.onmousedown = () => {
+		endTurnButton.src = "Assets/Miscellaneous/EndTurnButtonPressed.png";
+	}
+
+	endTurnButton.onclick = () => {
+		if(!isAITurn) {
+			EndTurn(SubRosters, Map, Constants, Roster);
+		}
+	}
+}
+
 const selectLanguage = function(languageID) {
 	const { language } = battalion;
 	const languageComment = document.getElementById("LanguageCommentary");
@@ -183,6 +290,18 @@ const selectLanguage = function(languageID) {
 	}
 
 	battalion.uiHandler.updateLanguage(battalion);
+}
+
+{
+	const commanderCollider = document.getElementById("CommanderCollider");
+
+	commanderCollider.onmouseover = () => {
+		ShowCharacterBio();
+	}
+
+	commanderCollider.onmouseout = () => {
+		document.getElementById("CommanderBio").style.visibility = "hidden";
+	}
 }
 
 //Useful note:

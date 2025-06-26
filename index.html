@@ -15,16 +15,16 @@
 				<img style="position:absolute; visibility: inherit; left:0px; top:0px" src="TEMP/AsekaraMeshOpaque.png"/>
 			</div>
 
-			<div id="BUTTON_CAMPAIGN" class="main_menu_button" style="top:500px; left:280px;"></div>
-			<div id="BUTTON_CONTINUE" class="main_menu_button" style="top:500px; left:140px;"></div>
-			<div id="BUTTON_BOOT_CAMP" class="main_menu_button" style="top:500px; left:420px;"></div>
-			<div id="BUTTON_CREDITS" class="main_menu_button" style="top:500px; left:0px;"></div>
-			<div id="BUTTON_OPTIONS" class="main_menu_button" style="top:500px; left:560px;"></div>
-			<div id="BUTTON_BONUS" class="main_menu_button" style="top:0px; left:0px;"></div>
-			<div id="BUTTON_EDITOR" class="main_menu_button" style="top:0px; left:560px;"></div>
-			<div id="BUTTON_CONQUEST" class="main_menu_button" style="top:70px; left:0px;"></div>
-			<div id="BUTTON_CODEX" class="main_menu_button" style="top:70px; left:560px;"></div>
-			<div id="BUTTON_MUSIC" class="main_menu_button" style="top:140px; left:560px;"></div>
+			<div id="BUTTON_CAMPAIGN" style="top:500px; left:280px;"></div>
+			<div id="BUTTON_CONTINUE" style="top:500px; left:140px;"></div>
+			<div id="BUTTON_BOOT_CAMP" style="top:500px; left:420px;"></div>
+			<div id="BUTTON_CREDITS" style="top:500px; left:0px;"></div>
+			<div id="BUTTON_OPTIONS" style="top:500px; left:560px;"></div>
+			<div id="BUTTON_BONUS" style="top:0px; left:0px;"></div>
+			<div id="BUTTON_EDITOR" style="top:0px; left:560px;"></div>
+			<div id="BUTTON_CONQUEST" style="top:70px; left:0px;"></div>
+			<div id="BUTTON_CODEX" style="top:70px; left:560px;"></div>
+			<div id="BUTTON_MUSIC" style="top:140px; left:560px;"></div>
 		</div>
 
 		<div id="Battlemap" style='position:absolute; visibility:hidden; top:20px; left:400px; height:560px; width:560px; z-index: 0'>			
@@ -55,12 +55,12 @@
 			<div id="SidePanel" style="position:absolute; left:560px; z-index:6; text-align:center;">
 				<img src="Assets/Miscellaneous/SidePanel.png" onmouseover=""/>
 				<p id="BtnSuperscript" style="position: absolute; z-index:3; top:119px; width:140px; left:14px;">Press C for controls</p>
-				<img id="UndoBtn" style="position: absolute; left:35px; top: 168px; z-index:3;" onmouseover="document.getElementById('BtnSuperscript').innerHTML=Language.SystemTerms[49]; this.src='Assets/Miscellaneous/UndoBtnL.png' " onmouseout="document.getElementById('BtnSuperscript').innerHTML=''; this.src='Assets/Miscellaneous/UndoBtnS.png'" onmousedown="this.src='Assets/Miscellaneous/UndoBtnP.png'; UndoMove()" onmouseup="this.src='Assets/Miscellaneous/UndoBtnS.png'" src="Assets/Miscellaneous/UndoBtnS.png"/>
-				<img id="MenuBtn" style="position: absolute; left:70px; top: 168px; z-index:3;" onmouseover="document.getElementById('BtnSuperscript').innerHTML=Language.SystemTerms[50]; this.src='Assets/Miscellaneous/MenuBtnL.png' " onmouseout="document.getElementById('BtnSuperscript').innerHTML=''; this.src='Assets/Miscellaneous/MenuBtnS.png'" onmousedown="this.src='Assets/Miscellaneous/MenuBtnP.png'; document.getElementById('Options').style.visibility='visible'" onmouseup="this.src='Assets/Miscellaneous/MenuBtnS.png'" src="Assets/Miscellaneous/MenuBtnS.png"/>
-				<img id="QuitBtn" style="position: absolute; left:105px; top: 168px; z-index:3;" onmouseover="document.getElementById('BtnSuperscript').innerHTML=Language.SystemTerms[51]; this.src='Assets/Miscellaneous/QuitBtnL.png' " onmouseout="document.getElementById('BtnSuperscript').innerHTML=''; this.src='Assets/Miscellaneous/QuitBtnS.png'" onmousedown="this.src='Assets/Miscellaneous/QuitBtnP.png'; Battle_Lost()" onmouseup="this.src='Assets/Miscellaneous/QuitBtnS.png'" src="Assets/Miscellaneous/QuitBtnS.png"/>
+				<img id="UndoBtn" style="position: absolute; left:35px; top: 168px; z-index:3;" src="Assets/Miscellaneous/UndoBtnS.png"/>
+				<img id="MenuBtn" style="position: absolute; left:70px; top: 168px; z-index:3;" src="Assets/Miscellaneous/MenuBtnS.png"/>
+				<img id="QuitBtn" style="position: absolute; left:105px; top: 168px; z-index:3;" src="Assets/Miscellaneous/QuitBtnS.png"/>
 
 				<img id="CommanderPortrait" style="position:absolute; top:239px; left:20px; z-index:-1" src="Assets/Portraits/AndersPortrait.png"/>
-				<div id="CommanderCollider" style="position:absolute; top:239px; left:20px; height:150px; width:130px; z-index:11" onmouseover="ShowCharacterBio()" onmouseout="document.getElementById('CommanderBio').style.visibility='hidden'"></div>
+				<div id="CommanderCollider" style="position:absolute; top:239px; left:20px; height:150px; width:130px; z-index:11"></div>
 				<div id="CommanderBio" style="position:absolute; visibility:hidden; top:0px; left:-250px; width:280px; height:560px; z-index:10; background-color:gray; border:3px solid brown; text-align:center">
 					<p id="CommanderName" style="position:absolute; top:0px; width: 280px; height:10px; z-index:11">Nobody</p>
 					<p id="CommanderNickname" style="position:absolute; top:30px; width: 280px; height:10px; z-index:11">Nobody</p>
@@ -90,35 +90,35 @@
 
 				<div id="CharacterBio"></div>
 
-				<div id="Glassplate1" style="position: absolute; top: 389px; left: 3px;" onclick="FactionInformations(1)" onmouseout="document.getElementById('FactionDetails').style.visibility='hidden'">			
+				<div id="Glassplate1" style="position: absolute; top: 389px; left: 3px;">			
 					<div id="Glassplatecolor1" style="position:absolute; background: red; width: 140px; height:25px; left:11px; top:0px"></div>
 					<img style="position: absolute; z-index:1" src="Assets/Miscellaneous/Glassplate.png"/>
 					<img id="GlassplateCrest1" style="position:absolute; top:0px; left:0px; z-index:2" src="Assets/Emblems/CrestNON.png"/>
 					<p id="Glassplatename1" style="position:absolute; top:-2px; width: 140px; left:28px; height:20px; text-align:left; font-size: 10px; z-index:2">Red</p>
 				</div>
 
-				<div id="Glassplate2" style="position: absolute; top: 419px; left: 3px;" onclick="FactionInformations(2)" onmouseout="document.getElementById('FactionDetails').style.visibility='hidden'">			
+				<div id="Glassplate2" style="position: absolute; top: 419px; left: 3px;">			
 					<div id="Glassplatecolor2" style="position:absolute; background: blue; width: 140px; height:25px; left:11px; top:0px"></div>
 					<img style="position: absolute; z-index:1" src="Assets/Miscellaneous/Glassplate.png"/>
 					<img id="GlassplateCrest2" style="position:absolute; top:0px; left:0px; z-index:2" src="Assets/Emblems/CrestNON.png"/>
 					<p id="Glassplatename2" style="position:absolute; top:-2px; width: 140px; left:28px; height:20px; text-align:left; font-size: 10px; z-index:2">Blue</p>
 				</div>
 
-				<div id="Glassplate3" style="position: absolute; top: 449px; left: 3px;" onclick="FactionInformations(3)" onmouseout="document.getElementById('FactionDetails').style.visibility='hidden'">			
+				<div id="Glassplate3" style="position: absolute; top: 449px; left: 3px;">			
 					<div id="Glassplatecolor3" style="position:absolute; background: green; width: 140px; height:25px; left:11px; top:0px"></div>
 					<img style="position: absolute; z-index:1" src="Assets/Miscellaneous/Glassplate.png"/>
 					<img id="GlassplateCrest3" style="position:absolute; top:0px; left:0px; z-index:2" src="Assets/Emblems/CrestNON.png"/>
 					<p id="Glassplatename3" style="position:absolute; top:-2px; width: 140px; left:28px; height:20px; text-align:left; font-size: 10px; z-index:2">Green</p>
 				</div>
 
-				<div id="Glassplate4" style="position: absolute; top: 479px; left: 3px;" onclick="FactionInformations(4)" onmouseout="document.getElementById('FactionDetails').style.visibility='hidden'">			
+				<div id="Glassplate4" style="position: absolute; top: 479px; left: 3px;">			
 					<div id="Glassplatecolor4" style="position:absolute; background: yellow; width: 140px; height:25px; left:11px; top:0px"></div>
 					<img style="position: absolute; z-index:1" src="Assets/Miscellaneous/Glassplate.png"/>
 					<img id="GlassplateCrest4" style="position:absolute; top:0px; left:0px; z-index:2" src="Assets/Emblems/CrestNON.png"/>
 					<p id="Glassplatename4" style="position:absolute; top:-2px; width: 140px; left:28px; height:20px; text-align:left; font-size: 10px; z-index:2">Yellow</p>
 				</div>
 
-				<img id="EndTurnButton" src="Assets/Miscellaneous/EndTurnButton.png" onmouseover="document.getElementById('EndTurnButton').src='Assets/Miscellaneous/EndTurnButtonHovered.png'" onmouseout="document.getElementById('EndTurnButton').src='Assets/Miscellaneous/EndTurnButton.png'" onmousedown="document.getElementById('EndTurnButton').src='Assets/Miscellaneous/EndTurnButtonPressed.png'" onClick="if(!isAITurn){EndTurn(SubRosters,Map,Constants,Roster)}" style="position: absolute; left: 23px; top:512px;"/>	
+				<img id="EndTurnButton" src="Assets/Miscellaneous/EndTurnButton.png" style="position: absolute; left: 23px; top:512px;"/>	
 			</div>
 
 			<div id='DetailBar' style="position:absolute; top:560px; left:0px">
