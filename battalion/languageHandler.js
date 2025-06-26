@@ -33,6 +33,12 @@ LanguageHandler.prototype.addLanguage = function(languageID, language) {
     this.languages.set(languageID, language);
 }
 
+LanguageHandler.prototype.hook = function(key, onHook) {
+    onHook(this.get(key));
+
+    this.events.on(LanguageHandler.EVENT.LANGUAGE_SWITCH, () => onHook(this.get(key)));
+}
+
 LanguageHandler.prototype.get = function(key) {
     if(!this.currentLanguage || typeof key !== "string") {
         console.warn("Error!", key);
