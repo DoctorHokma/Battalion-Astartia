@@ -54,16 +54,12 @@ body {
     left: 45px; 
 }
 
-.codex_button_text,
-.codex_button_text_small {
+.codex_button_text {
     position: absolute;
     top: -10px;
     width: 126px;
     height: 35px;
     z-index: 8;
-}
-
-.codex_button_text_small {
     font-size: 12px;
     line-height: 28px;
 }

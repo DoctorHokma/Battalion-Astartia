@@ -7,6 +7,34 @@ const DOCUMENT_SIZES = [
     "CODEX_DOCUMENT_SIZE_VERY_LONG"
 ];
 
+const createCodexButton = function(battalion, buttonID, codexID) {
+	const { language } = battalion;
+	const element = document.getElementById(buttonID);
+	const lore = CODEX[codexID];
+
+	if(element && lore) {
+		const { DocInfo } = lore;
+		const image = document.createElement("img");
+		const text = document.createElement("p");
+
+		image.src = "Assets/Miscellaneous/LongPlaque.png";
+		element.classList.add("codex_button");
+		text.classList.add("codex_button_text");
+		text.textContent = language.get(DocInfo);
+
+		language.events.on(LanguageHandler.EVENT.LANGUAGE_SWITCH, () => {
+			text.textContent = language.get(DocInfo);
+		});
+
+		element.appendChild(image);
+		element.appendChild(text);
+
+		element.onclick = () => {
+			DisplayLore(battalion, lore);
+		}
+	}
+}
+
 const DisplayLoreLength = function(DocSize) {
 	const FIRST_ICON_ID = 1;
 	const LAST_ICON_ID = 5;
@@ -23,19 +51,13 @@ const DisplayLoreLength = function(DocSize) {
 	}
 }
 
-const DisplayLore = function(documentID){
+const DisplayLore = function(battalion, lore){
 	const { language } = battalion;
-	const lore = CODEX[documentID];
-
-	if(!lore) {
-		return;
-	}
-
 	const { DocName = "", DocDesc = "", DocText = "", DocSize = 0 } = lore;
-	const loreName = document.getElementById('LoreName');
-	const loreDesc = document.getElementById('LoreDesc');
-	const loreLength = document.getElementById('LoreLength');
-	const lorePanel = document.getElementById('LorePanel');
+	const loreName = document.getElementById("LoreName");
+	const loreDesc = document.getElementById("LoreDesc");
+	const loreLength = document.getElementById("LoreLength");
+	const lorePanel = document.getElementById("LorePanel");
 
 	loreName.innerHTML = language.get(DocName);
 	loreDesc.innerHTML = language.get(DocDesc);

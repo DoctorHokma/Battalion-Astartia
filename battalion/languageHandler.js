@@ -2,7 +2,14 @@ const LanguageHandler = function() {
     this.languages = new Map();
     this.currentLanguage = null;
     this.currentLanguageID = null;
+
+    this.events = new EventEmitter();
+    this.events.listen(LanguageHandler.EVENT.LANGUAGE_SWITCH);
 }
+
+LanguageHandler.EVENT = {
+    LANGUAGE_SWITCH: "LANGUAGE_SWITCH"
+};
 
 LanguageHandler.STRICT = true;
 
@@ -15,6 +22,7 @@ LanguageHandler.prototype.selectLanguage = function(languageID) {
 
     this.currentLanguage = language;
     this.currentLanguageID = languageID;
+    this.events.emit(LanguageHandler.EVENT.LANGUAGE_SWITCH);
 }
 
 LanguageHandler.prototype.addLanguage = function(languageID, language) {

@@ -131,9 +131,25 @@ const LANGUAGE_ENGLISH = {
     "CODEX_DOCUMENT_SIZE_LONG": "Long Document",
     "CODEX_DOCUMENT_SIZE_VERY_LONG": "Very Long Document",
 
-    "CODEX_JOKES_NAME": "An antholoy of jokes and anecdotes from the Astartian continent",
-    "CODEX_JOKES_DESC": "Collected and adapted by Petru Pitei from many cultures across Astartia. It has recently become didactic material in seminars, as a way of learning to understand culture through humour",
-    "CODEX_JOKES_TEXT": [
+	"CODEX_INFO_EMPTY": "???",
+	"CODEX_INFO_JOKES": "Jokes",
+	"CODEX_INFO_SPECIAL_UNITS": "Special Infantry",
+	"CODEX_INFO_SPECIAL_ARMOR": "Special Tanks",
+	"CODEX_INFO_SPECIAL_AIRCRAFT": "Special Planes",
+	"CODEX_INFO_SPECIAL_SHIPS": "Special Ships",
+	"CODEX_INFO_THIS_WORLD": "This World",
+	"CODEX_INFO_IT_HAPPENED": "It Happened",
+	"CODEX_INFO_OPERATION_TZIMTZUM": "Operation TZIMTZUM",
+	"CODEX_INFO_OPERATION_GOLCHAB": "Operation GOLCHAB",
+	"CODEX_INFO_OPERATION_GHAAG_SHEBLAH": "Operation GHAAG SHEBLAH",
+	"CODEX_INFO_OPERATION_OHR_EIN_ZOF": "Operation OHR EIN ZOF",
+	"CODEX_INFO_OPERATION_SAMSON": "Operation SAMSON",
+	"CODEX_INFO_OPERATION_THAUMIEL": "Operation THAUMIEL",
+	"CODEX_INFO_WAR_PLAN_ARMAGEDDON": "ARMAGEDDON",
+
+    "CODEX_NAME_JOKES": "An antholoy of jokes and anecdotes from the Astartian continent",
+    "CODEX_DESC_JOKES": "Collected and adapted by Petru Pitei from many cultures across Astartia. It has recently become didactic material in seminars, as a way of learning to understand culture through humour",
+    "CODEX_TEXT_JOKES": [
         "Two Somertins on the south front were chit-chatting <br>-You know Gjergy, Ishlam doesn't sound so bad. You get to marry four women and fuck all of them whenever you want. <br>-And four pairs of in-laws to peck at your head... <br>-Oh hell no! Praise Jesus!",
 		"You know what I say? The Cockroach Tank fears the Bolt; the Bolt fears the Asekara; the Asekara fears the Gorlitz; the Gorlitz fears the Koschei, the Koschei fears the Imperterritus, and the Imperterritus fears bridges",
 		"Why do many of the aircraft carriers bear the names of women? Because states compete to have the most splendid ones, in order to brag to the other states",
@@ -152,9 +168,9 @@ const LANGUAGE_ENGLISH = {
 		"How do you hide a Kroner in such a way that Shmelev won't find it? <br> You can't"
     ],
 
-	"CODEX_SPECIAL_UNITS_NAME": "Special Infantry: A detailed analysis",
-	"CODEX_SPECIAL_UNITS_DESC": "Written by General Gustav of Transkal; this booklet explains in detail what exactly determined each nation to develop their iconic infantry units, how they actually work and what is their lay culture",
-	"CODEX_SPECIAL_UNITS_TEXT": [
+	"CODEX_NAME_SPECIAL_UNITS": "Special Infantry: A detailed analysis",
+	"CODEX_DESC_SPECIAL_UNITS": "Written by General Gustav of Transkal; this booklet explains in detail what exactly determined each nation to develop their iconic infantry units, how they actually work and what is their lay culture",
+	"CODEX_TEXT_SPECIAL_UNITS": [
 		"<span style='color:white'>Somertin White Guards</span>",
 		"Originally called 'The Paladin Corps' and held to the utmost doctrinal standard, although that is being zig-zagged. The standards are lowered or raised based on whether Somertin needs more elite infantry or whether it needs better-quality elite infantry.",
 		"As of this war, the balance tilts overwhelmingly towards quantity than quality, such that the minimum requirements consist only of 'The capability of wielding the armament, and the willingness to die for their nation at any given moment.', telling of the impressive capabilities of the White Guards of before. Of note! The White Guard divisions are made of White Guards themselves and of 'Pages' who carry 40Kg of ammunition each, in addition to a Pușka Rifle. The ratio of Guards-to-Pages depends on time period and on battle, men may be taken from regular units to serve as Pages if there is a need for it.",
@@ -189,9 +205,9 @@ const LANGUAGE_ENGLISH = {
 		"In what regards doctrine of usage, the Stormtroopers are the culmination of min-maxing in the context of an insufficiently-industrialized nation and fittingly their model is being imitated world-wide by Maharlikan Juramentados, Chaco Republicans or such. The armament is designed to create a 'Death Zone' between 400 and 500 meters away from the Stormtroopers, and whomever tries to charge at them can be intercepted by a decent volume of gunfire. Perfecting an atypical squad system(Elam uses 5-man squads wheras the others use 9-12 man squads), they are also more versatile than normal units and can cover wider areas with fewer people. The most common method of engagement for Stormtroopers is launching devastating firepower from a distance, and withdrawing before enemies can counterattack them."
 	],
 
-	"CODEX_SPECIAL_ARMOR_NAME": "Special Armored Vehicles: A detailed analysis",
-	"CODEX_SPECIAL_ARMOR_DESC": "Panzer brr",
-	"CODEX_SPECIAL_ARMOR_TEXT": [
+	"CODEX_NAME_SPECIAL_ARMOR": "Special Armored Vehicles: A detailed analysis",
+	"CODEX_DESC_SPECIAL_ARMOR": "Panzer brr",
+	"CODEX_TEXT_SPECIAL_ARMOR": [
 		"<span style='color:white'>SHAAC Mark G 'Imperterritus'</span><br>",
 		"When it was deemed that the 41-ton Gorlitz was useless, Somertin thought of up-armoring it massively in the hopes that it would advance unimpeded and provide cover for the infantry that was supposed to accompany it. (The Tercio doctrine still dominated at that time, where Somertin High Command believed that land units should be deployed in 3 ranks. One of infantry that would harass the enemy line, one of armor that would repel enemy pushes and one of artillery that would harangue enemy lines from afar.)",
 		"Model A had 64 tons and could barely muster 14Km/h of top speed, so only 3 sample models were produced",
@@ -231,9 +247,9 @@ const LANGUAGE_ENGLISH = {
 		"After the war, it was studied by the Astartian authorities and used as a basis for the TWV's of the future"
 	],
 
-	"CODEX_SPECIAL_AIRCRAFT_NAME": "Special Aircraft: An abandoned idea",
-	"CODEX_SPECIAL_AIRCRAFT_DESC": "A testament to us having considered faction-exclusive planes and what ideas we had in mind for each",
-	"CODEX_SPECIAL_AIRCRAFT_TEXT": [
+	"CODEX_NAME_SPECIAL_AIRCRAFT": "Special Aircraft: An abandoned idea",
+	"CODEX_DESC_SPECIAL_AIRCRAFT": "A testament to us having considered faction-exclusive planes and what ideas we had in mind for each",
+	"CODEX_TEXT_SPECIAL_AIRCRAFT": [
 		"Back when special units were being decided on, we considered special planes and ships exclusive to each major nation. We will show here a list of which planes those were and why they failed",
 		"Heavy Bomber: Supposed to be a bigger version of the Condor, bigger, more expensive and with better stats. But then again the Kargits could use it as well so it would not be exclusive. Did not end up adding it, as it's merely an upsized Condor and back then we had to conform to a 40-unit roster. Only after the roster overhaul did we reconsider it.",
 		"Attack Helicopter: It was supposed to be Kargit-exclusive and to break the gap between the raptor and the condor. Then we thought of the Eagle and the attack heli would have been nothing more than a shittier Eagle, more expensive and with lower stats. And anachronistic as well",
@@ -243,9 +259,9 @@ const LANGUAGE_ENGLISH = {
 		"Maybe there will be a future survey to decide whether we could implement a new air unit? We'll see"
 	],
 
-	"CODEX_SPECIAL_SHIPS_NAME": "Special Naval Units?",
-	"CODEX_SPECIAL_SHIPS_DESC": "An anthology about the idea of implementing special naval units and how it could not be done in the end.",
-	"CODEX_SPECIAL_SHIPS_TEXT": [
+	"CODEX_NAME_SPECIAL_SHIPS": "Special Naval Units?",
+	"CODEX_DESC_SPECIAL_SHIPS": "An anthology about the idea of implementing special naval units and how it could not be done in the end.",
+	"CODEX_TEXT_SPECIAL_SHIPS": [
 		"Originally, there were hopes of following the pattern, as to how infantry and armor units have a few that are available to some nations and unavailable to others. Similarly I hoped there would be special ship units available to various nations.",
 		"The issue however, was that besides me wanting to preserve a notion of units being grounded in WW2-era technology, most of the nations did not even have a naval tradition. We'll go over what units were planned for whom, and you will understand what I mean",
 		"Aircraft Carrier: It wasn't supposed to be a common unit but much like the Imperterritus, the best and costliest unit only available to Somertin. In reality the era of the carrier is knocking and the great industrial powers already have theirs. That included Somertin, Polasie(which converted 4 battlecruisers into carriers as a response to Somertin building 5 carriers from the keel up) and Kargia(which converted one of its battleships into a carrier)",
@@ -262,9 +278,9 @@ const LANGUAGE_ENGLISH = {
 		"<br><br>As you see Kargia, Transkal and Elam had one special ship each that were merely variants of standard ships, while Somertin and Polasie had 3 special units each. There's like 20 ideas for ship types, but only 10 slots where they'd actually fit so... yeah. Lot of them had to be truncated."
 	],
 
-	"CODEX_THIS_WORLD_NAME": "Geography 101",
-	"CODEX_THIS_WORLD_DESC": "Edited by Petru Pitei, it explains the basic premises of this world's geographic pecularities and goes into detail about the Astartian continent's geography",
-	"CODEX_THIS_WORLD_TEXT": [
+	"CODEX_NAME_THIS_WORLD": "Geography 101",
+	"CODEX_DESC_THIS_WORLD": "Edited by Petru Pitei, it explains the basic premises of this world's geographic pecularities and goes into detail about the Astartian continent's geography",
+	"CODEX_TEXT_THIS_WORLD": [
 			"General geography",
 
 		"This world exists not on a north-south polar axis(like yours does) but west-east. This proximity to the Oriental Pole explains that the more you go east in Transkal, the colder it is(Jylla/Svelge being borderline livable, Norgel/Jarvi being frigid and hostile and Kolguyev Territory being utterly brutal, inhospitable even). Air currents also imprint a warm/dry effect on Astartia's southern coast, hence why Elam, Vedra and Sabrak are more of the arid/semidesert kind",
@@ -392,9 +408,9 @@ const LANGUAGE_ENGLISH = {
 		"Elam's economy is reeling out of feudalism much like Transkal's, but appears to follow Kargia's economic model rather than Somertin or Polasie's. The nation has vast numbers of people living in nomadic, seminomadic or feudal poverty but the urban core shows progress in industrialisation. Elam's industrialisation struggle has been bore by crown corporations where the state is the customer and production coordinator, and civilian goods production as well as common transactions are rather low. The Londinium Stock Exchange believes Elam's real GDP to be approximately 80 billion AP"
 	],
 
-	"CODEX_IT_HAPPENED_NAME": "A collection of stories during wartime",
-	"CODEX_IT_HAPPENED_DESC": "Five hundred million souls lived through the Astartian War, many of their lives forever changed by it. Some, for the better; many for the worse. These are their stories",
-	"CODEX_IT_HAPPENED_TEXT":  [
+	"CODEX_NAME_IT_HAPPENED": "A collection of stories during wartime",
+	"CODEX_DESC_IT_HAPPENED": "Five hundred million souls lived through the Astartian War, many of their lives forever changed by it. Some, for the better; many for the worse. These are their stories",
+	"CODEX_TEXT_IT_HAPPENED":  [
 		"A father's insanity",
 
 		"Vasily Vasilyev Slobodov was almost a normal kargit man. Almost.",
@@ -439,51 +455,51 @@ const LANGUAGE_ENGLISH = {
 		"|They both lived and saw the end of the war.|"
 	],
 
-	"CODEX_OPERATION_TZIMTZUM_NAME": "Operation TZIMTZUM",
-	"CODEX_OPERATION_TZIMTZUM_DESC": "You do not have the clearance necessary to access this document",
-	"CODEX_OPERATION_TZIMTZUM_TEXT": [
+	"CODEX_NAME_OPERATION_TZIMTZUM": "Operation TZIMTZUM",
+	"CODEX_DESC_OPERATION_TZIMTZUM": "You do not have the clearance necessary to access this document",
+	"CODEX_TEXT_OPERATION_TZIMTZUM": [
 		"<br><br><br><span style='color:red; border:3px solid red'>REDACTED</span>",
 		"<span style='color:white'><br><br><br>◆<br>║<br>◆==֎==◆<br>║<br>◆</span>"
 	],
 
-	"CODEX_OPERATION_GOLCHAB_NAME": "Operation GOLCHAB",
-	"CODEX_OPERATION_GOLCHAB_DESC": "You do not have the clearance necessary to access this document",
-	"CODEX_OPERATION_GOLCHAB_TEXT": [
+	"CODEX_NAME_OPERATION_GOLCHAB": "Operation GOLCHAB",
+	"CODEX_DESC_OPERATION_GOLCHAB": "You do not have the clearance necessary to access this document",
+	"CODEX_TEXT_OPERATION_GOLCHAB": [
 		"<br><br><br><span style='color:red; border:3px solid red'>REDACTED</span>",
 		"<span style='color:white'><br><br><br>◆<br>║<br>◆==֎==◆<br>║<br>◆</span>"
 	],
 
-	"CODEX_OPERATION_GHAAG_SHEBLAH_NAME": "Operation GHAAG SHEBLAH",
-	"CODEX_OPERATION_GHAAG_SHEBLAH_DESC": "You do not have the clearance necessary to access this document",
-	"CODEX_OPERATION_GHAAG_SHEBLAH_TEXT": [
+	"CODEX_NAME_OPERATION_GHAAG_SHEBLAH": "Operation GHAAG SHEBLAH",
+	"CODEX_DESC_OPERATION_GHAAG_SHEBLAH": "You do not have the clearance necessary to access this document",
+	"CODEX_TEXT_OPERATION_GHAAG_SHEBLAH": [
 		"<br><br><br><span style='color:red; border:3px solid red'>REDACTED</span>",
 		"<span style='color:white'><br><br><br>◆<br>║<br>◆==֎==◆<br>║<br>◆</span>"
 	],
 
-	"CODEX_OPERATION_OHR_EIN_ZOF_NAME": "Operation OHR EIN ZOF",
-	"CODEX_OPERATION_OHR_EIN_ZOF_DESC": "You do not have the clearance necessary to access this document",
-	"CODEX_OPERATION_OHR_EIN_ZOF_TEXT": [
+	"CODEX_NAME_OPERATION_OHR_EIN_ZOF": "Operation OHR EIN ZOF",
+	"CODEX_DESC_OPERATION_OHR_EIN_ZOF": "You do not have the clearance necessary to access this document",
+	"CODEX_TEXT_OPERATION_OHR_EIN_ZOF": [
 		"<br><br><br><span style='color:red; border:3px solid red'>REDACTED</span>",
 		"<span style='color:white'><br><br><br>Ʌ&nbspɅ&nbspɅ<br>|&nbsp V V &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>\\&nbsp &nbsp &nbsp &nbsp &nbsp/<br>\\&nbsp &nbsp &nbsp/<br></span><span style='color:#00ff00'>|&nbsp|<br>|&nbsp|<br>|&nbsp|<br>|&nbsp|</span>"
 	],
 
-	"CODEX_OPERATION_SAMSON_NAME": "Operation SAMSON",
-	"CODEX_OPERATION_SAMSON_DESC": "You do not have the clearance necessary to access this document",
-	"CODEX_OPERATION_SAMSON_TEXT": [
+	"CODEX_NAME_OPERATION_SAMSON": "Operation SAMSON",
+	"CODEX_DESC_OPERATION_SAMSON": "You do not have the clearance necessary to access this document",
+	"CODEX_TEXT_OPERATION_SAMSON": [
 		"<br><br><br><span style='color:red; border:3px solid red'>REDACTED</span>",
 		"<span style='color:white'><br><br><br>Ʌ&nbspɅ&nbspɅ<br>|&nbsp V V &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>\\&nbsp &nbsp &nbsp &nbsp &nbsp/<br>\\&nbsp &nbsp &nbsp/<br></span><span style='color:#00ff00'>|&nbsp|<br>|&nbsp|<br>|&nbsp|<br>|&nbsp|</span>"
 	],
 
-	"CODEX_OPERATION_THAUMIEL_NAME": "Operation THAUMIEL",
-	"CODEX_OPERATION_THAUMIEL_DESC": "You do not have the clearance necessary to access this document",
-	"CODEX_OPERATION_THAUMIEL_TEXT": [
+	"CODEX_NAME_OPERATION_THAUMIEL": "Operation THAUMIEL",
+	"CODEX_DESC_OPERATION_THAUMIEL": "You do not have the clearance necessary to access this document",
+	"CODEX_TEXT_OPERATION_THAUMIEL": [
 		"<br><br><br><span style='color:red; border:3px solid red'>REDACTED</span>",
 		"<span style='color:white'><br><br><br>Ʌ&nbspɅ&nbspɅ<br>|&nbsp V V &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>|&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp|<br>\\&nbsp &nbsp &nbsp &nbsp &nbsp/<br>\\&nbsp &nbsp &nbsp/<br></span><span style='color:#00ff00'>|&nbsp|<br>|&nbsp|<br>|&nbsp|<br>|&nbsp|</span>"
 	],
 
-	"CODEX_WAR_PLAN_ARMAGEDDON_NAME": "War Plan ARMAGEDDON",
-	"CODEX_WAR_PLAN_ARMAGEDDON_DESC": "This document has been removed from circulation, for reasons pertaining to its obsolescence. Seek the Kaula Secret Archives for the last preserved copy.",
-	"CODEX_WAR_PLAN_ARMAGEDDON_TEXT": [
+	"CODEX_NAME_WAR_PLAN_ARMAGEDDON": "War Plan ARMAGEDDON",
+	"CODEX_DESC_WAR_PLAN_ARMAGEDDON": "This document has been removed from circulation, for reasons pertaining to its obsolescence. Seek the Kaula Secret Archives for the last preserved copy.",
+	"CODEX_TEXT_WAR_PLAN_ARMAGEDDON": [
 		"<br><br><br><span style='color:red; border:3px solid red'>DATA EXPUNGED</span>",
 		"<span style='color:red'>It is hereby requested of the following state agents to destroy their copies of the document:</span>",
 		"<span style='color:red'>Paradygmist Aurelijan Rancane</span>",

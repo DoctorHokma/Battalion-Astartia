@@ -22,6 +22,34 @@ battalion.init();
 //battalion.db.readProfile(PROFILE_ID, (profile) => battalion.story.load(profile.story));
 battalion.story.unlockAll();
 
+createCodexButton(battalion, "CODEX_JOKES", "JOKES");
+createCodexButton(battalion, "CODEX_SPECIAL_UNITS", "SPECIAL_UNITS");
+createCodexButton(battalion, "CODEX_SPECIAL_ARMOR", "SPECIAL_ARMOR");
+createCodexButton(battalion, "CODEX_SPECIAL_AIRCRAFT", "SPECIAL_AIRCRAFT");
+createCodexButton(battalion, "CODEX_SPECIAL_SHIPS", "SPECIAL_SHIPS");
+createCodexButton(battalion, "CODEX_THIS_WORLD", "THIS_WORLD");
+createCodexButton(battalion, "CODEX_IT_HAPPENED", "IT_HAPPENED");
+createCodexButton(battalion, "CODEX_1", "EMPTY");
+createCodexButton(battalion, "CODEX_2", "EMPTY");
+createCodexButton(battalion, "CODEX_3", "EMPTY");
+createCodexButton(battalion, "CODEX_4", "EMPTY");
+createCodexButton(battalion, "CODEX_5", "EMPTY");
+createCodexButton(battalion, "CODEX_6", "EMPTY");
+createCodexButton(battalion, "CODEX_7", "EMPTY");
+createCodexButton(battalion, "CODEX_8", "EMPTY");
+createCodexButton(battalion, "CODEX_9", "EMPTY");
+createCodexButton(battalion, "CODEX_10", "EMPTY");
+createCodexButton(battalion, "CODEX_11", "EMPTY");
+createCodexButton(battalion, "CODEX_12", "EMPTY");
+createCodexButton(battalion, "CODEX_13", "EMPTY");
+createCodexButton(battalion, "CODEX_OPERATION_TZIMTZUM", "OPERATION_TZIMTZUM");
+createCodexButton(battalion, "CODEX_OPERATION_GOLCHAB", "OPERATION_GOLCHAB");
+createCodexButton(battalion, "CODEX_OPERATION_GHAAG_SHEBLAH", "OPERATION_GHAAG_SHEBLAH");
+createCodexButton(battalion, "CODEX_OPERATION_OHR_EIN_ZOF", "OPERATION_OHR_EIN_ZOF");
+createCodexButton(battalion, "CODEX_OPERATION_SAMSON", "OPERATION_SAMSON");
+createCodexButton(battalion, "CODEX_OPERATION_THAUMIEL", "OPERATION_THAUMIEL");
+createCodexButton(battalion, "CODEX_WAR_PLAN_ARMAGEDDON", "WAR_PLAN_ARMAGEDDON");
+
 //TODO: This adds a "bug" because scenario selection is not added yet.
 //addStoryEvents(battalion);
 selectScenario("GREAT_WAR");
