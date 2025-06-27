@@ -255,7 +255,7 @@ document.getElementById("Illustration").onclick = () => {
 }
 
 const selectLanguage = function(languageID) {
-	const { language } = battalion;
+	const { language, uiHandler } = battalion;
 	const languageComment = document.getElementById("LanguageCommentary");
 	const creatorComment = document.getElementById("LanguagePrecommentor");
 
@@ -263,6 +263,8 @@ const selectLanguage = function(languageID) {
 
 	languageComment.innerHTML = language.get("LANGUAGE_DEFAULT_COMMENT");
 	creatorComment.innerHTML = language.get("LANGUAGE_CREATOR_COMMENT");
+	
+	uiHandler.onLanguageSwitch(battalion);
 	
 	switch(languageID) {
 		case Battalion.LANGUAGE.ENGLISH: {
@@ -290,8 +292,6 @@ const selectLanguage = function(languageID) {
 			break;
 		}
 	}
-
-	battalion.uiHandler.updateLanguage(battalion);
 }
 
 {

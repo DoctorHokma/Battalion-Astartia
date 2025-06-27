@@ -1167,21 +1167,21 @@
 				<p id="LorePanel" style="position: absolute; top: 105px; left:7px; width:525px; height:420px; color:#ccff99; text-align:center; overflow-y:scroll;"></p>
 
 				<div style="position:absolute; text-align:center; width:560px; left:0px">
-					<p id="LoreName" style="position:absolute; top:546px; width:560px; height:21px">Name</p>
-					<p id="LoreDesc" style="position:absolute; top:574px; width:525px; height:210px; left:15px">Description</p>
+					<p id="LoreName" style="position:absolute; top:546px; width:560px; height:21px"></p>
+					<p id="LoreDesc" style="position:absolute; top:574px; width:525px; height:210px; left:15px"></p>
 				</div>
 				
-				<div style="position:absolute; left: 385px; top: 35px; text-align:center;" onmouseover="document.getElementById('CodexCloseButton').src='Assets/Miscellaneous/GenericButtonHovered.png'" onmouseout="document.getElementById('CodexCloseButton').src='Assets/Miscellaneous/GenericButton.png'" onmousedown="document.getElementById('CodexCloseButton').src='Assets/Miscellaneous/GenericButtonPressed.png'" onclick="document.getElementById('Codex').style.visibility='hidden'; document.getElementById('MAIN_MENU').style.visibility='visible'">
+				<div id="CODEX_CLOSE_BUTTON" style="position:absolute; left: 385px; top: 35px; text-align:center;">
 					<img id="CodexCloseButton" src="Assets/Miscellaneous/GenericButton.png"/>
-					<p style="position: absolute; width:80px; height:35px; top:7px; left:23px">Close</p>
+					<p id="LoreClose" style="position: absolute; width:80px; height:35px; top:7px; left:23px"></p>
 				</div>
 
-				<p id="LoreLength" style="position:absolute; top:-4px; left: 4px; width:350px; text-align:center;">Document</p>
-				<img id="LoreLengthIcon1" src="Assets/Miscellaneous/DocShadow.png" style="position:absolute; top:35px; left:14px" oncontextmenu="Tooltip('TOOLTIP_DOCUMENT_SIZE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'"/>
-				<img id="LoreLengthIcon2" src="Assets/Miscellaneous/DocShadow.png" style="position:absolute; top:35px; left:84px" oncontextmenu="Tooltip('TOOLTIP_DOCUMENT_SIZE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'"/>
-				<img id="LoreLengthIcon3" src="Assets/Miscellaneous/DocShadow.png" style="position:absolute; top:35px; left:154px" oncontextmenu="Tooltip('TOOLTIP_DOCUMENT_SIZE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'"/>
-				<img id="LoreLengthIcon4" src="Assets/Miscellaneous/DocShadow.png" style="position:absolute; top:35px; left:224px" oncontextmenu="Tooltip('TOOLTIP_DOCUMENT_SIZE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'"/>
-				<img id="LoreLengthIcon5" src="Assets/Miscellaneous/DocShadow.png" style="position:absolute; top:35px; left:294px" oncontextmenu="Tooltip('TOOLTIP_DOCUMENT_SIZE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden'"/>
+				<p id="LoreLength" style="position:absolute; top:-4px; left: 4px; width:350px; text-align:center;"></p>
+				<img id="LoreLengthIcon1" style="position:absolute; top:35px; left:14px"/>
+				<img id="LoreLengthIcon2" style="position:absolute; top:35px; left:84px"/>
+				<img id="LoreLengthIcon3" style="position:absolute; top:35px; left:154px"/>
+				<img id="LoreLengthIcon4" style="position:absolute; top:35px; left:224px"/>
+				<img id="LoreLengthIcon5" style="position:absolute; top:35px; left:294px"/>
 			</div>
 		</div>
 

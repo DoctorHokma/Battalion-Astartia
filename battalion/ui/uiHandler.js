@@ -2,8 +2,13 @@ const UIHandler = function() {
     this.mainMenu = new MainMenu("MAIN_MENU");
 }
 
-UIHandler.prototype.updateLanguage = function(context) {
-    const { language } = context;
+UIHandler.prototype.init = function(battalion) {
+    this.mainMenu.init();
+    this.onLanguageSwitch(battalion);
+}
 
-    this.mainMenu.updateLanguageTags(language);
+UIHandler.prototype.onLanguageSwitch = function(battalion) {
+    const { language } = battalion;
+
+    this.mainMenu.onLanguageSwitch(language);
 }

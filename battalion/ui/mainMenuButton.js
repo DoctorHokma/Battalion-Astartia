@@ -13,10 +13,9 @@ const MainMenuButton = function(id, textID) {
     this.text.innerText = textID;
     this.text.classList.add("main_menu_button_text");
 
+    this.element.classList.add("main_menu_button");
     this.element.appendChild(this.image);
     this.element.appendChild(this.text);
-
-    this.element.classList.add("main_menu_button");
 }
 
 MainMenuButton.STATE = {
@@ -24,8 +23,8 @@ MainMenuButton.STATE = {
     DISABLED: 1
 };
 
-MainMenuButton.prototype.updateText = function(languageHandler) {
-    this.text.innerText = languageHandler.get(this.textID);
+MainMenuButton.prototype.setText = function(text) {
+    this.text.innerText = text;
 }
 
 MainMenuButton.prototype.disable = function() {
@@ -39,10 +38,10 @@ MainMenuButton.prototype.enable = function() {
 }
 
 MainMenuButton.prototype.setClick = function(onClick) {
-    this.element.onclick = () => onClick(this);
+    this.element.onclick = (event) => onClick(this, event);
 }
 
-MainMenuButton.prototype.init = function(tooltipID) {
+MainMenuButton.prototype.initEvents = function(tooltipID) {
     this.element.onmouseover = () => {
         if(this.state === MainMenuButton.STATE.ENABLED) {
             this.image.src = "Assets/Miscellaneous/GenericButtonHovered.png";

@@ -1,11 +1,19 @@
 const MainMenu = function(elementID) {
-    this.image = document.createElement('img');
+    this.image = document.createElement("img");
     this.element = document.getElementById(elementID);
     this.buttons = new Map();
 
     this.image.classList.add("main_menu_image");
-    this.image.src="Assets/MainMenuScreens/Coloured Tanks.jpg";
+    this.image.src = "Assets/MainMenuScreens/Coloured Tanks.jpg";
     this.element.appendChild(this.image);
+}
+
+MainMenu.prototype.onLanguageSwitch = function(handler) {
+    this.buttons.forEach((button) => {
+        const text = handler.get(button.textID);
+
+        button.setText(text);
+    });
 }
 
 MainMenu.prototype.hide = function() {
@@ -14,10 +22,6 @@ MainMenu.prototype.hide = function() {
 
 MainMenu.prototype.show = function() {
     this.element.style.visibility = "visible";
-}
-
-MainMenu.prototype.updateLanguageTags = function(languageHandler) {
-    this.buttons.forEach(button => button.updateText(languageHandler));
 }
 
 MainMenu.prototype.addClick = function(buttonID, onClick) {
@@ -43,8 +47,8 @@ MainMenu.prototype.createButtons = function(buttonTypes) {
         const { tooltip, text, disabled } = config;
         const button = new MainMenuButton(buttonID, text);
         
-        button.init(tooltip);
-
+        button.initEvents(tooltip);
+    
         if(disabled) {
             button.disable();
         }
@@ -53,54 +57,54 @@ MainMenu.prototype.createButtons = function(buttonTypes) {
     }
 }
 
-MainMenu.prototype.init = function(battalion) {
+MainMenu.prototype.init = function() {
     this.createButtons(UI.MAIN_MENU);
 
-    this.addClick("BUTTON_CAMPAIGN", (button) => {
+    this.addClick("BUTTON_CAMPAIGN", (button, event) => {
         this.hide();
-        document.getElementById('CampaignSelectionScreen').style.visibility = 'visible';
+        document.getElementById("CampaignSelectionScreen").style.visibility = "visible";
     });
 
-    this.addClick("BUTTON_CONTINUE", (button) => {
+    this.addClick("BUTTON_CONTINUE", (button, event) => {
         //this.hide();
         alert("Work in progress!");
     });
 
-    this.addClick("BUTTON_BOOT_CAMP", (button) => {
+    this.addClick("BUTTON_BOOT_CAMP", (button, event) => {
         TutorialLevel = 0;
         this.hide();
-        document.getElementById('Tutorial Levels').style.visibility = 'visible';
+        document.getElementById("Tutorial Levels").style.visibility = "visible";
     });
 
-    this.addClick("BUTTON_CREDITS", (button) => {
-        document.getElementById('Credits').style.visibility = 'visible';
+    this.addClick("BUTTON_CREDITS", (button, event) => {
+        document.getElementById("Credits").style.visibility = "visible";
     });
 
-    this.addClick("BUTTON_OPTIONS", (button) => {
-        document.getElementById('Options').style.visibility = 'visible';
+    this.addClick("BUTTON_OPTIONS", (button, event) => {
+        document.getElementById("Options").style.visibility = "visible";
     });
 
-    this.addClick("BUTTON_BONUS", (button) => {
+    this.addClick("BUTTON_BONUS", (button, event) => {
         this.hide();
-        document.getElementById('Special Levels').style.visibility = 'visible';
+        document.getElementById("Special Levels").style.visibility = "visible";
         NivelVizat = Samara;
     });
 
-    this.addClick("BUTTON_EDITOR", (button) => {
-        document.getElementById('MapMold').style.visibility = 'visible';
+    this.addClick("BUTTON_EDITOR", (button, event) => {
+        document.getElementById("MapMold").style.visibility = "visible";
     });
 
-    this.addClick("BUTTON_CONQUEST", (button) => {
+    this.addClick("BUTTON_CONQUEST", (button, event) => {
         //this.hide();
         alert("Work in progress!");
     });
 
-    this.addClick("BUTTON_CODEX", (button) => {
+    this.addClick("BUTTON_CODEX", (button, event) => {
         this.hide();
-        document.getElementById('Codex').style.visibility = 'visible';
+        document.getElementById("Codex").style.visibility = "visible";
     });
 
-    this.addClick("BUTTON_MUSIC", (button) => {
+    this.addClick("BUTTON_MUSIC", (button, event) => {
         //this.hide();
         alert("Work in progress!");
     });

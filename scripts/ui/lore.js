@@ -7,10 +7,15 @@ const DOCUMENT_SIZES = [
     "CODEX_DOCUMENT_SIZE_VERY_LONG"
 ];
 
-const initCodex = function(battalion) {
-	const { language } = battalion;
-	//initializes the codex and adds hooks to the language handler
+const LORE_LENGTH_ICONS = [
+	"LoreLengthIcon1",
+	"LoreLengthIcon2",
+	"LoreLengthIcon3",
+	"LoreLengthIcon4",
+	"LoreLengthIcon5"
+];
 
+const initCodex = function(battalion) {
 	createCodexButton(battalion, "CODEX_JOKES", "JOKES");
 	createCodexButton(battalion, "CODEX_SPECIAL_UNITS", "SPECIAL_UNITS");
 	createCodexButton(battalion, "CODEX_SPECIAL_ARMOR", "SPECIAL_ARMOR");
@@ -38,10 +43,73 @@ const initCodex = function(battalion) {
 	createCodexButton(battalion, "CODEX_OPERATION_SAMSON", "OPERATION_SAMSON");
 	createCodexButton(battalion, "CODEX_OPERATION_THAUMIEL", "OPERATION_THAUMIEL");
 	createCodexButton(battalion, "CODEX_WAR_PLAN_ARMAGEDDON", "WAR_PLAN_ARMAGEDDON");
+
+	createLengthIcon("LoreLengthIcon1");
+	createLengthIcon("LoreLengthIcon2");
+	createLengthIcon("LoreLengthIcon3");
+	createLengthIcon("LoreLengthIcon4");
+	createLengthIcon("LoreLengthIcon5");
+
+	createCodexCloseButton(battalion);
+	resetCodex(battalion);
 }
 
-const resetCodex = function() {
-	//When closing the codex, it gets reset to its original state!
+const createCodexCloseButton = function(battalion) {
+	const element = document.getElementById("CODEX_CLOSE_BUTTON");
+	const icon = document.getElementById("CodexCloseButton");
+
+	element.onmouseover = () => {
+		icon.src = "Assets/Miscellaneous/GenericButtonHovered.png";
+	}
+
+	element.onmouseout = () => {
+		icon.src = "Assets/Miscellaneous/GenericButton.png";
+	}
+
+	element.onmousedown = () => {
+		icon.src = "Assets/Miscellaneous/GenericButtonPressed.png";
+	}
+
+	element.onclick = () => {
+		resetCodex(battalion);
+		document.getElementById("Codex").style.visibility = "hidden";
+		document.getElementById("MAIN_MENU").style.visibility = "visible";
+	}
+}
+
+const resetCodex = function(battalion) {
+	const { language } = battalion;
+	const loreName = document.getElementById("LoreName");
+	const loreDesc = document.getElementById("LoreDesc");
+	const loreLength = document.getElementById("LoreLength");
+	const lorePanel = document.getElementById("LorePanel");
+	const loreClose = document.getElementById("LoreClose");
+
+	loreName.innerHTML = "Name";
+	loreDesc.innerHTML = "Description";
+	loreLength.innerHTML = "Document";
+	lorePanel.innerHTML = "";
+	loreClose.innerHTML = "Close";
+
+	for(let i = 0; i < LORE_LENGTH_ICONS.length; i++) {
+		const icon = document.getElementById(LORE_LENGTH_ICONS[i]);
+
+		icon.src = "Assets/Miscellaneous/DocShadow.PNG";
+	}
+}
+
+const createLengthIcon = function(iconID) {
+	const element = document.getElementById(iconID);
+
+	if(element) {
+		element.oncontextmenu = () => {
+			Tooltip("TOOLTIP_DOCUMENT_SIZE");
+		}
+
+		element.onmouseout = () => {
+			document.getElementById("GeneralTooltip").style.visibility = "hidden";
+		}
+	}
 }
 
 const createCodexButton = function(battalion, buttonID, codexID) {
@@ -65,22 +133,6 @@ const createCodexButton = function(battalion, buttonID, codexID) {
 
 		element.onclick = () => {
 			DisplayLore(battalion, lore);
-		}
-	}
-}
-
-const DisplayLoreLength = function(DocSize) {
-	const FIRST_ICON_ID = 1;
-	const LAST_ICON_ID = 5;
-
-	for(let i = FIRST_ICON_ID; i <= LAST_ICON_ID; i++) {
-		const lengthIconID = "LoreLengthIcon" + i;
-		const lengthIcon = document.getElementById(lengthIconID);
-
-		if(DocSize < i) {
-			lengthIcon.src = "Assets/Miscellaneous/DocShadow.PNG";
-		} else {
-			lengthIcon.src = "Assets/Miscellaneous/DocIcon.PNG";
 		}
 	}
 }
@@ -109,5 +161,13 @@ const DisplayLore = function(battalion, lore){
 
 	lorePanel.innerHTML = processedText;
 
-	DisplayLoreLength(DocSize);
+	for(let i = 0; i < LORE_LENGTH_ICONS.length; i++) {
+		const icon = document.getElementById(LORE_LENGTH_ICONS[i]);
+
+		if(DocSize <= i) {
+			icon.src = "Assets/Miscellaneous/DocShadow.PNG";
+		} else {
+			icon.src = "Assets/Miscellaneous/DocIcon.PNG";
+		}
+	}
 }

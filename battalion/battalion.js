@@ -43,8 +43,7 @@ Battalion.STATE = {
 
 Battalion.prototype.init = function() {
     this.story.init();
-    this.uiHandler.mainMenu.init(this);
-    this.uiHandler.updateLanguage(this);
+    this.uiHandler.init(this);
     this.setState(Battalion.STATE.MAIN_MENU);
     this.timer.start();
 }
