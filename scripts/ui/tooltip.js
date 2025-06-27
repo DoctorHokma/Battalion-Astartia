@@ -1,3 +1,6 @@
+//TODO: End tooltip when out of button.
+//Function: AddTooltipHandler(elementID, tooltipID);
+
 const Tooltip = function(tooltipID) {
 	const { language } = battalion;
 	const tooltipHTML = language.get(tooltipID);

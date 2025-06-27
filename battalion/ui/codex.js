@@ -26,6 +26,8 @@ Codex.prototype.onLanguageSwitch = function(handler) {
 
         button.setText(text);
     }
+
+	this.resetInfo(handler);
 }
 
 Codex.prototype.displayLore = function(battalion, lore) {
@@ -64,6 +66,7 @@ Codex.prototype.displayLore = function(battalion, lore) {
 }
 
 Codex.prototype.createCloseButton = function(battalion) {
+	const { language } = battalion;
 	const element = document.getElementById("CODEX_CLOSE_BUTTON");
 	const icon = document.getElementById("CodexCloseButton");
 
@@ -80,32 +83,34 @@ Codex.prototype.createCloseButton = function(battalion) {
 	}
 
 	element.onclick = () => {
-		this.reset(battalion);
+		this.resetIcons();
+		this.resetInfo(language);
 		document.getElementById("Codex").style.visibility = "hidden";
 		document.getElementById("MAIN_MENU").style.visibility = "visible";
 	}
 }
 
-Codex.prototype.reset = function(battalion) {
-	const { language } = battalion;
-	const loreName = document.getElementById("LoreName");
-	const loreDesc = document.getElementById("LoreDesc");
-	const loreLength = document.getElementById("LoreLength");
-	const lorePanel = document.getElementById("LorePanel");
-	const loreClose = document.getElementById("LoreClose");
-
-	loreName.innerHTML = "Name";
-	loreDesc.innerHTML = "Description";
-	loreLength.innerHTML = "Document";
-	lorePanel.innerHTML = "";
-	loreClose.innerHTML = "Close";
-
+Codex.prototype.resetIcons = function() {
 	for(let i = 0; i < Codex.LORE_LENGTH_ICONS.length; i++) {
 		const icon = document.getElementById(Codex.LORE_LENGTH_ICONS[i]);
 
 		icon.src = "Assets/Miscellaneous/DocShadow.PNG";
 	}
-} 
+}
+
+Codex.prototype.resetInfo = function(handler) {
+	const loreName = document.getElementById("LoreName");
+	const loreDesc = document.getElementById("LoreDesc");
+	const loreLength = document.getElementById("LoreLength");
+	const loreClose = document.getElementById("LoreClose");
+	const lorePanel = document.getElementById("LorePanel");
+
+	loreName.innerHTML = handler.get("CODEX_INFO_NAME");
+	loreDesc.innerHTML = handler.get("CODEX_INFO_DESC");
+	loreLength.innerHTML = handler.get("CODEX_INFO_LENGTH");
+	loreClose.innerHTML = handler.get("CODEX_INFO_CLOSE");
+	lorePanel.innerHTML = "";
+}
 
 Codex.prototype.createLengthIcon = function(iconID) {
 	const element = document.getElementById(iconID);
@@ -136,6 +141,8 @@ Codex.prototype.createButton = function(battalion, buttonID, codexID) {
 }
 
 Codex.prototype.init = function(battalion) {
+	const { language } = battalion;
+
 	this.createButton(battalion, "CODEX_JOKES", "JOKES");
 	this.createButton(battalion, "CODEX_SPECIAL_UNITS", "SPECIAL_UNITS");
 	this.createButton(battalion, "CODEX_SPECIAL_ARMOR", "SPECIAL_ARMOR");
@@ -171,5 +178,6 @@ Codex.prototype.init = function(battalion) {
 	this.createLengthIcon("LoreLengthIcon5");
 
     this.createCloseButton(battalion);
-    this.reset(battalion);
+	this.resetIcons();
+	this.resetInfo(language);
 }
