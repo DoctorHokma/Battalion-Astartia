@@ -25,20 +25,28 @@ MainMenuButton.STATE = {
 
 MainMenuButton.prototype.setText = function(text) {
     this.text.innerText = text;
+
+    return this;
 }
 
 MainMenuButton.prototype.disable = function() {
     this.state = MainMenuButton.STATE.DISABLED;
     this.image.src = "Assets/Miscellaneous/NonButton.png";
+
+    return this;
 }
 
 MainMenuButton.prototype.enable = function() {
     this.state = MainMenuButton.STATE.ENABLED;
     this.image.src = "Assets/Miscellaneous/GenericButton.png";
+
+    return this;
 }
 
 MainMenuButton.prototype.setClick = function(onClick) {
     this.element.onclick = (event) => onClick(this, event);
+    
+    return this;
 }
 
 MainMenuButton.prototype.initEvents = function(tooltipID) {

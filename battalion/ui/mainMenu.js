@@ -1,7 +1,7 @@
 const MainMenu = function(elementID) {
     this.image = document.createElement("img");
     this.element = document.getElementById(elementID);
-    this.buttons = new Map();
+    this.buttons = [];
 
     this.image.classList.add("main_menu_image");
     this.image.src = "Assets/MainMenuScreens/Coloured Tanks.jpg";
@@ -9,11 +9,12 @@ const MainMenu = function(elementID) {
 }
 
 MainMenu.prototype.onLanguageSwitch = function(handler) {
-    this.buttons.forEach((button) => {
+    for(let i = 0; i < this.buttons.length; i++) {
+        const button = this.buttons[i];
         const text = handler.get(button.textID);
 
         button.setText(text);
-    });
+    }
 }
 
 MainMenu.prototype.hide = function() {
@@ -24,87 +25,75 @@ MainMenu.prototype.show = function() {
     this.element.style.visibility = "visible";
 }
 
-MainMenu.prototype.addClick = function(buttonID, onClick) {
-    if(typeof onClick !== "function") {
-        return;
-    }
+MainMenu.prototype.createButton = function(buttonID, textID, tooltipID) {
+    const button = new MainMenuButton(buttonID, textID);
 
-    const button = this.buttons.get(buttonID);
-    
-    if(button) {
-        button.setClick(onClick);
-    }
-}
+    button.initEvents(tooltipID);
 
-MainMenu.prototype.createButtons = function(buttonTypes) {
-    for(const buttonID in buttonTypes) {
-        const config = buttonTypes[buttonID];
+    this.buttons.push(button);
 
-        if(this.buttons.has(buttonID)) {
-            continue;
-        }
-
-        const { tooltip, text, disabled } = config;
-        const button = new MainMenuButton(buttonID, text);
-        
-        button.initEvents(tooltip);
-    
-        if(disabled) {
-            button.disable();
-        }
-
-        this.buttons.set(buttonID, button);
-    }
+    return button;
 }
 
 MainMenu.prototype.init = function() {
-    this.createButtons(UI.MAIN_MENU);
-
-    this.addClick("BUTTON_CAMPAIGN", (button, event) => {
+    this.createButton("BUTTON_CAMPAIGN", "SYSTEM_BUTTON_CAMPAIGN", "TOOLTIP_CAMPAIGN")
+    .setClick((button, event) => {
         this.hide();
         document.getElementById("CampaignSelectionScreen").style.visibility = "visible";
     });
-
-    this.addClick("BUTTON_CONTINUE", (button, event) => {
-        //this.hide();
-        alert("Work in progress!");
-    });
-
-    this.addClick("BUTTON_BOOT_CAMP", (button, event) => {
+    
+    this.createButton("BUTTON_BOOT_CAMP", "SYSTEM_BUTTON_BOOT_CAMP", "TOOLTIP_BOOTCAMP")
+    .setClick((button, event) => {
         TutorialLevel = 0;
         this.hide();
         document.getElementById("Tutorial Levels").style.visibility = "visible";
     });
 
-    this.addClick("BUTTON_CREDITS", (button, event) => {
+    this.createButton("BUTTON_CONTINUE", "SYSTEM_BUTTON_CONTINUE", "TOOLTIP_CONTINUE")
+    .disable()
+    .setClick((button, event) => {
+        //this.hide();
+        alert("Work in progress!");
+    })
+
+    this.createButton("BUTTON_OPTIONS", "SYSTEM_BUTTON_OPTIONS", "TOOLTIP_OPTIONS")
+    .setClick((button, event) => {
+        document.getElementById("Options").style.visibility = "visible";
+    })
+
+    this.createButton("BUTTON_CREDITS", "SYSTEM_BUTTON_CREDITS", "TOOLTIP_CREDITS")
+    .setClick((button, event) => {
         document.getElementById("Credits").style.visibility = "visible";
     });
 
-    this.addClick("BUTTON_OPTIONS", (button, event) => {
-        document.getElementById("Options").style.visibility = "visible";
-    });
-
-    this.addClick("BUTTON_BONUS", (button, event) => {
+    this.createButton("BUTTON_BONUS", "SYSTEM_BUTTON_BONUS_MAPS", "TOOLTIP_BONUS_LEVELS")
+    .setClick((button, event) => {
         this.hide();
         document.getElementById("Special Levels").style.visibility = "visible";
         NivelVizat = Samara;
     });
 
-    this.addClick("BUTTON_EDITOR", (button, event) => {
+    this.createButton("BUTTON_EDITOR", "SYSTEM_BUTTON_EDITOR", "TOOLTIP_MAP_EDITOR")
+    .setClick((button, event) => {
         document.getElementById("MapMold").style.visibility = "visible";
     });
 
-    this.addClick("BUTTON_CONQUEST", (button, event) => {
+    this.createButton("BUTTON_CONQUEST", "SYSTEM_BUTTON_CONQUEST", "TOOLTIP_CONQUEST")
+    .disable()
+    .setClick((button, event) => {
         //this.hide();
         alert("Work in progress!");
     });
 
-    this.addClick("BUTTON_CODEX", (button, event) => {
+    this.createButton("BUTTON_CODEX", "SYSTEM_BUTTON_LORE", "TOOLTIP_CODEX")
+    .setClick((button, event) => {
         this.hide();
         document.getElementById("Codex").style.visibility = "visible";
     });
 
-    this.addClick("BUTTON_MUSIC", (button, event) => {
+    this.createButton("BUTTON_MUSIC", "SYSTEM_BUTTON_MUSIC", null)
+    .disable()
+    .setClick((button, event) => {
         //this.hide();
         alert("Work in progress!");
     });

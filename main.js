@@ -265,7 +265,7 @@ const selectLanguage = function(languageID) {
 	creatorComment.innerHTML = language.get("LANGUAGE_CREATOR_COMMENT");
 	
 	uiHandler.onLanguageSwitch(battalion);
-	
+
 	switch(languageID) {
 		case Battalion.LANGUAGE.ENGLISH: {
 			Language = ENG;
@@ -2674,6 +2674,7 @@ function EndBattle(){
 			document.getElementById("UnitCounterP"+FactionsInvolved[j].Preffix).style.color=FactionsInvolved[j].color;
 			};
 
+			//if an entire campaign is done...
 			if(ChosenMission == 5) {
 				if(ChosenChapter==5 && ChosenNation==1){alert("We have forgiven the traitorous Vladov, for he too has suffered greatly. Despite all, he eventually repented and earned his redemption through fire and steel. If you want to, you can put yourself in his shoes and play his campaign")};
 				if(ChosenChapter==5 && ChosenNation==2){alert("For so long, the subhuman slaves have refused to bow down and accept their fate. Every second they squirm around in mud trying to subvert our glorious empire in any way they can. If you wish, you can play their campaign now")};
