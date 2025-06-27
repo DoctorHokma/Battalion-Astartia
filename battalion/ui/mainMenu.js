@@ -1,6 +1,6 @@
-const MainMenu = function(elementID) {
+const MainMenu = function() {
     this.image = document.createElement("img");
-    this.element = document.getElementById(elementID);
+    this.element = document.getElementById("MAIN_MENU");
     this.buttons = [];
 
     this.image.classList.add("main_menu_image");

@@ -2,9 +2,6 @@ const LanguageHandler = function() {
     this.languages = new Map();
     this.currentLanguage = null;
     this.currentLanguageID = null;
-
-    this.events = new EventEmitter();
-    this.events.listen(LanguageHandler.EVENT.LANGUAGE_SWITCH);
 }
 
 LanguageHandler.EVENT = {
@@ -22,7 +19,6 @@ LanguageHandler.prototype.selectLanguage = function(languageID) {
 
     this.currentLanguage = language;
     this.currentLanguageID = languageID;
-    this.events.emit(LanguageHandler.EVENT.LANGUAGE_SWITCH);
 }
 
 LanguageHandler.prototype.addLanguage = function(languageID, language) {
@@ -31,12 +27,6 @@ LanguageHandler.prototype.addLanguage = function(languageID, language) {
     }
 
     this.languages.set(languageID, language);
-}
-
-LanguageHandler.prototype.hook = function(key, onHook) {
-    onHook(this.get(key));
-
-    this.events.on(LanguageHandler.EVENT.LANGUAGE_SWITCH, () => onHook(this.get(key)));
 }
 
 LanguageHandler.prototype.get = function(key) {

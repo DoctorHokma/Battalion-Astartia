@@ -972,11 +972,11 @@
 				<p style="position: absolute; z-index:11; width:630px; top:-10px;left:auto;text-align:center" id="LanguageCommentary">None except English work for now</p>
 				<img style="position: absolute; z-index:10" src="Assets/Miscellaneous/LanguageSelectPanel.png"/>
 				<img src="Assets/Miscellaneous/CloseButton.png" onclick="document.getElementById('LanguageSelectionPanel').style.visibility='hidden'" style="position: absolute; z-index:11; top:210px;left:250px">
-				<img style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:7px" onclick="selectLanguage(Battalion.LANGUAGE.ENGLISH);" src="Assets/Languages/FlagENG.png"/>	
-				<img style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:162px" onclick="selectLanguage(Battalion.LANGUAGE.SPANISH);" src="Assets/Languages/FlagESP.png"/>	
-				<img style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:317px" onclick="selectLanguage(Battalion.LANGUAGE.PORTUGUESE);" src="Assets/Languages/FlagPOR.png"/>
-				<img style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:472px" onclick="selectLanguage(Battalion.LANGUAGE.ROMANIAN);" src="Assets/Languages/FlagROM.png"/>	
-				<img style="position: absolute; z-index: 11;width:150px; height:100px; top:130px; left:7px" onclick="selectLanguage(Battalion.LANGUAGE.TURKISH);" src="Assets/Languages/FlagTUR.png"/>
+				<img id="LANGUAGE_ENGLISH" style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:7px" src="Assets/Languages/FlagENG.png"/>	
+				<img id="LANGUAGE_SPANISH" style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:162px" src="Assets/Languages/FlagESP.png"/>	
+				<img id="LANGUAGE_PORTUGUESE" style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:317px" src="Assets/Languages/FlagPOR.png"/>
+				<img id="LANGUAGE_ROMANIAN" style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:472px" src="Assets/Languages/FlagROM.png"/>	
+				<img id="LANGUAGE_TURKISH" style="position: absolute; z-index: 11;width:150px; height:100px; top:130px; left:7px" src="Assets/Languages/FlagTUR.png"/>
 			</div>
 		</div>
 
@@ -1208,12 +1208,12 @@
 				<img src="Assets/Miscellaneous/LanguageMiniPanel.png"/>
 				<p id="LanguagePrecommentor" style="position:absolute; width:140px; height:140px; left:14px; text-align: center; top:0px; z-index:5; visibility:hidden;"></p>
 
-				<img style="position: absolute; top:3px; left:49px; width:28px; height:21px" src="Assets/Languages/FlagENG.png" onclick="selectLanguage(Battalion.LANGUAGE.ENGLISH); GeneralInitializer();"/>
-				<img style="position: absolute; top:3px; left:84px; width:28px; height:21px" src="Assets/Languages/FlagESP.png" onclick="selectLanguage(Battalion.LANGUAGE.SPANISH); GeneralInitializer();"/>
-				<img style="position: absolute; top:3px; left:119px; width:28px; height:21px" src="Assets/Languages/FlagPOR.png" onclick="selectLanguage(Battalion.LANGUAGE.PORTUGUESE); GeneralInitializer();"/>
-				<img style="position: absolute; top:3px; left:154px; width:28px; height:21px" src="Assets/Languages/FlagROM.png" onclick="selectLanguage(Battalion.LANGUAGE.ROMANIAN); GeneralInitializer();"/>
-				<img style="position: absolute; top:3px; left:189px; width:28px; height:21px" src="Assets/Languages/FlagTUR.png" onclick="selectLanguage(Battalion.LANGUAGE.TURKISH); GeneralInitializer();"/>
-				<img style="position: absolute; top:0px; left:14px; width:28px; height:21px; visibility:hidden" src="Assets/Languages/FlagFRA.png" onclick="selectLanguage(Battalion.LANGUAGE.FRENCH); GeneralInitializer();"/>
+				<img id="LANGUAGE_SHORT_ENGLISH" style="position: absolute; top:3px; left:49px; width:28px; height:21px" src="Assets/Languages/FlagENG.png"/>
+				<img id="LANGUAGE_SHORT_SPANISH" style="position: absolute; top:3px; left:84px; width:28px; height:21px" src="Assets/Languages/FlagESP.png"/>
+				<img id="LANGUAGE_SHORT_PORTUGUESE" style="position: absolute; top:3px; left:119px; width:28px; height:21px" src="Assets/Languages/FlagPOR.png"/>
+				<img id="LANGUAGE_SHORT_ROMANIAN" style="position: absolute; top:3px; left:154px; width:28px; height:21px" src="Assets/Languages/FlagROM.png"/>
+				<img id="LANGUAGE_SHORT_TURKISH" style="position: absolute; top:3px; left:189px; width:28px; height:21px" src="Assets/Languages/FlagTUR.png"/>
+				<img id="LANGUAGE_SHORT_FRENCH" style="position: absolute; top:0px; left:14px; width:28px; height:21px; visibility:hidden" src="Assets/Languages/FlagFRA.png"/>
 			</div>
 			
 			<p style="position:absolute; top:400px; color: yellow"></p>
@@ -1508,6 +1508,8 @@
 		<script src="battalion/story/nodes/campaign.js"></script>
 		<script src="battalion/story/nodes/scenario.js"></script>
 
+		<script src="battalion/ui/codexButton.js"></script>
+		<script src="battalion/ui/codex.js"></script>
 		<script src="battalion/ui/mainMenuButton.js"></script>
 		<script src="battalion/ui/mainMenu.js"></script>
 		<script src="battalion/ui/uiHandler.js"></script>
@@ -1529,7 +1531,6 @@
 		<script src="scripts/attack.js"></script>
 		<script src="scripts/story.js"></script>
 		<script src="scripts/ui/tooltip.js"></script>
-		<script src="scripts/ui/lore.js"></script>
 		<script src="entity.js"></script>
 		<script src="main.js"></script>
 	</body>

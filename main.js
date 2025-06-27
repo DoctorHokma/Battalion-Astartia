@@ -25,7 +25,6 @@ battalion.story.unlockAll();
 
 //TODO: This adds a "bug" because scenario selection is not added yet.
 //addStoryEvents(battalion);
-initCodex(battalion);
 selectScenario("GREAT_WAR");
 
 var ActionRegister = {}; //used by ai
@@ -254,6 +253,18 @@ document.getElementById("Illustration").onclick = () => {
 	}
 }
 
+{
+	const commanderCollider = document.getElementById("CommanderCollider");
+
+	commanderCollider.onmouseover = () => {
+		ShowCharacterBio();
+	}
+
+	commanderCollider.onmouseout = () => {
+		document.getElementById("CommanderBio").style.visibility = "hidden";
+	}
+}
+
 const selectLanguage = function(languageID) {
 	const { language, uiHandler } = battalion;
 	const languageComment = document.getElementById("LanguageCommentary");
@@ -292,19 +303,21 @@ const selectLanguage = function(languageID) {
 			break;
 		}
 	}
+
+	GeneralInitializer();
 }
 
-{
-	const commanderCollider = document.getElementById("CommanderCollider");
+document.getElementById("LANGUAGE_ENGLISH").onclick = () => selectLanguage(Battalion.LANGUAGE.ENGLISH);
+document.getElementById("LANGUAGE_SPANISH").onclick = () => selectLanguage(Battalion.LANGUAGE.SPANISH);
+document.getElementById("LANGUAGE_PORTUGUESE").onclick = () => selectLanguage(Battalion.LANGUAGE.PORTUGUESE);
+document.getElementById("LANGUAGE_ROMANIAN").onclick = () => selectLanguage(Battalion.LANGUAGE.ROMANIAN);
+document.getElementById("LANGUAGE_TURKISH").onclick = () => selectLanguage(Battalion.LANGUAGE.TURKISH);
 
-	commanderCollider.onmouseover = () => {
-		ShowCharacterBio();
-	}
-
-	commanderCollider.onmouseout = () => {
-		document.getElementById("CommanderBio").style.visibility = "hidden";
-	}
-}
+document.getElementById("LANGUAGE_SHORT_ENGLISH").onclick = () => selectLanguage(Battalion.LANGUAGE.ENGLISH);
+document.getElementById("LANGUAGE_SHORT_SPANISH").onclick = () => selectLanguage(Battalion.LANGUAGE.SPANISH);
+document.getElementById("LANGUAGE_SHORT_PORTUGUESE").onclick = () => selectLanguage(Battalion.LANGUAGE.PORTUGUESE);
+document.getElementById("LANGUAGE_SHORT_ROMANIAN").onclick = () => selectLanguage(Battalion.LANGUAGE.ROMANIAN);
+document.getElementById("LANGUAGE_SHORT_TURKISH").onclick = () => selectLanguage(Battalion.LANGUAGE.TURKISH);
 
 //Useful note:
 //Z-Index 0 is for divs with no specific priority
