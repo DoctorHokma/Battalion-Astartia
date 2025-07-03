@@ -9,6 +9,8 @@ const OptionsMenu = function() {
 OptionsMenu.prototype.createButton = function(buttonID) {
     const button = new OptionsButton(buttonID);
 
+    button.init();
+
     this.buttons.push(button);
 
     return button;
@@ -38,15 +40,15 @@ OptionsMenu.prototype.init = function(battalion) {
     const { soundPlayer, musicPlayer } = battalion;
 
     this.createCloseButton();
-    
+
     this.createButton("OPTION_LANGUAGE")
-    .setClick((button, event) => {
+    .setClick(() => {
         document.getElementById('LanguageSelectionPanel').style.visibility = "visible";
     });
     
     this.createButton("OPTION_SOUND")
     .setTooltip("TOOLTIP_OPTION_SOUND")
-    .setClick((button, event) => {
+    .setClick(() => {
         const state = soundPlayer.toggleMute();
 
         switch(state) {
@@ -63,7 +65,7 @@ OptionsMenu.prototype.init = function(battalion) {
 
     this.createButton("OPTION_MUSIC")
     .setTooltip("TOOLTIP_OPTION_MUSIC")
-    .setClick((button, event) => {
+    .setClick(() => {
         const state = musicPlayer.toggleMute();
 
         switch(state) {
@@ -80,7 +82,7 @@ OptionsMenu.prototype.init = function(battalion) {
 
     this.createButton("OPTION_DIALOGUE")
     .setTooltip("TOOLTIP_OPTION_DIALOGUE")
-    .setClick((button, event) => {
+    .setClick(() => {
 		DialogueChoice = !DialogueChoice;
 		
         if(DialogueChoice) {
@@ -93,7 +95,7 @@ OptionsMenu.prototype.init = function(battalion) {
 
     this.createButton("OPTION_IDLE")
     .setTooltip("TOOLTIP_OPTION_IDLE_ANIMATIONS")
-    .setClick((button, event) => {
+    .setClick(() => {
         IdleAnimChoice = !IdleAnimChoice;
 		
         if(IdleAnimChoice) {
@@ -105,7 +107,7 @@ OptionsMenu.prototype.init = function(battalion) {
 
     this.createButton("OPTION_MYSTERY")
     .setTooltip("TOOLTIP_OPTION_MYSTERY")
-    .setClick((button, event) => {
+    .setClick(() => {
 		MystSettChoice = !MystSettChoice;
 
         if(MystSettChoice) {

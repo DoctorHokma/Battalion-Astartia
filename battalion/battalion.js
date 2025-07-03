@@ -7,7 +7,6 @@ const Battalion = function() {
     this.renderer = new Renderer();
     this.language = new LanguageHandler();
     this.story = new StoryHandler();
-    this.morale = new MoraleHandler();
     this.uiHandler = new UIHandler();
     this.db = new BattalionDB();
 

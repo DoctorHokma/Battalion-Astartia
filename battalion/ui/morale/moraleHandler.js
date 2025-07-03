@@ -6,6 +6,32 @@ const MoraleHandler = function() {
 
 MoraleHandler.MORALE_OFFSET = 4; //Morale goes from -4 to +5;
 
+//TODO: Uses globals!
+MoraleHandler.updatePriceTags = function(costFactor) {
+    let industrialLimit = 40;
+
+	if(IndustrialBranchBrowsed !== 1) {
+		industrialLimit = 10;
+	}
+
+	for(let i = 1; i <= industrialLimit; i++) {
+		const priceTagID = `PriceTag${i}`;
+		const priceTag = document.getElementById(priceTagID);
+		const cost = Math.round(Units[MontreIndexBasis + i].Cost * costFactor);
+
+		priceTag.innerHTML = `₤${cost}`;
+
+		const unitFrameID = `UnitFrame${i}`;
+		const unitFrame = document.getElementById(unitFrameID);
+
+		if(YourMoney < cost) {
+			unitFrame.src = "Assets/Miscellaneous/UnitUnavailableFrame.png";
+		} else {
+			unitFrame.src = "Assets/Miscellaneous/UnitAvailableFrame.png";
+		}
+	}
+}
+
 MoraleHandler.clampMoraleValue = function(moraleIndex) {
     const shiftedIndex = moraleIndex + MoraleHandler.MORALE_OFFSET;
 
@@ -43,35 +69,25 @@ MoraleHandler.getMoraleTypeByIndex = function(index) {
     return moraleType;
 }
 
-MoraleHandler.prototype.addMoraleShift = function(elementID, shiftType) {
-    const shiftElement = document.getElementById(elementID);
-
-    if(!shiftElement || !shiftType) {
+MoraleHandler.prototype.createMoraleButton = function(elementID, shiftType) {
+    if(!elementID || !shiftType) {
         return;
     }
 
-    const moraleButton = new MoraleButton(shiftElement, shiftType);
+    const moraleButton = new MoraleButton(elementID, shiftType);
 
-    shiftElement.src = MORALE_SHIFT.NEUTRAL.icon;
-    shiftElement.onmouseout = () => moraleButton.onMouseOut();
-    shiftElement.onmouseover = () => moraleButton.onMouseIn();
-    shiftElement.onclick = () => this.onButtonClick(moraleButton);
+    moraleButton.init();
+    moraleButton.setClick((shift, costFactor) => this.updateMorale(shift, costFactor));
 
     this.buttons.push(moraleButton);
 }
 
-MoraleHandler.prototype.onButtonClick = function(moraleButton) {
+MoraleHandler.prototype.updateMorale = function(shift, costFactor) {
     this.reset();
-    
-    moraleButton.onClick();
-
-    const shift = moraleButton.getShift();
-    const costFactor = moraleButton.getCostFactor();
-
     this.shift = shift;
     this.costFactor = costFactor;
 
-    updatePriceTags(costFactor);
+    MoraleHandler.updatePriceTags(costFactor);
 } 
 
 MoraleHandler.prototype.getShift = function() {
@@ -91,27 +107,10 @@ MoraleHandler.prototype.reset = function() {
     }
 }
 
-const updatePriceTags = function(costFactor) {
-    let industrialLimit = 40;
-
-	if(IndustrialBranchBrowsed !== 1) {
-		industrialLimit = 10;
-	}
-
-	for(let i = 1; i <= industrialLimit; i++) {
-		const priceTagID = `PriceTag${i}`;
-		const priceTag = document.getElementById(priceTagID);
-		const cost = Math.round(Units[MontreIndexBasis + i].Cost * costFactor);
-
-		priceTag.innerHTML = `₤${cost}`;
-
-		const unitFrameID = `UnitFrame${i}`;
-		const unitFrame = document.getElementById(unitFrameID);
-
-		if(YourMoney < cost) {
-			unitFrame.src = "Assets/Miscellaneous/UnitUnavailableFrame.png";
-		} else {
-			unitFrame.src = "Assets/Miscellaneous/UnitAvailableFrame.png";
-		}
-	}
+MoraleHandler.prototype.init = function(battalion) {
+   this.createMoraleButton("MoraleParticulator0", MORALE_SHIFT.VERY_NEGATIVE);
+   this.createMoraleButton("MoraleParticulator1", MORALE_SHIFT.NEGATIVE);
+   this.createMoraleButton("MoraleParticulator2", MORALE_SHIFT.NEUTRAL);
+   this.createMoraleButton("MoraleParticulator3", MORALE_SHIFT.POSITIVE);
+   this.createMoraleButton("MoraleParticulator4", MORALE_SHIFT.VERY_POSITIVE);
 }

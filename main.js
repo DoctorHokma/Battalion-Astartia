@@ -2,12 +2,6 @@ const PROFILE_ID = "TEST_PROFILE";
 const OPENING_TRACK = "NavalEpic2";
 const battalion = new Battalion();
 
-battalion.morale.addMoraleShift("MoraleParticulator0", MORALE_SHIFT.VERY_NEGATIVE);
-battalion.morale.addMoraleShift("MoraleParticulator1", MORALE_SHIFT.NEGATIVE);
-battalion.morale.addMoraleShift("MoraleParticulator2", MORALE_SHIFT.NEUTRAL);
-battalion.morale.addMoraleShift("MoraleParticulator3", MORALE_SHIFT.POSITIVE);
-battalion.morale.addMoraleShift("MoraleParticulator4", MORALE_SHIFT.VERY_POSITIVE);
-
 battalion.language.addLanguage(Battalion.LANGUAGE.ENGLISH, LANGUAGE_ENGLISH);
 battalion.language.addLanguage(Battalion.LANGUAGE.SPANISH, LANGUAGE_SPANISH);
 battalion.language.addLanguage(Battalion.LANGUAGE.PORTUGUESE, LANGUAGE_PORTUGUESE);
@@ -2369,7 +2363,9 @@ function DisplayRegions() {
 }
 //NEYN TODO!!!
 function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomName, SpecialName, CustomDesc, SpecialDesc) {
-	const { morale } = battalion;
+	const { uiHandler } = battalion;
+	const { morale } = uiHandler;
+
 	const factoredCost = morale.applyCostFactor(Units[Type].Cost);
 	const shift = morale.getShift();
 	
@@ -4170,7 +4166,8 @@ function LaunchConstructorPanel(X,Y){
 	//alert("Not yet bro, we don't have enough assets")
 	};};
 function LaunchRecruitmentPanel(IndustrialBranch){
-	const { morale } = battalion;
+	const { uiHandler } = battalion;
+	const { morale } = uiHandler;
 
 	morale.reset();
 	
@@ -5482,7 +5479,8 @@ function PostDialogueFrame(Portrait, Name, Text){
 function RazeFaction(Faction){};
 
 function RecruitUnit(Class) {
-	const { morale } = battalion;
+	const { uiHandler } = battalion;
+	const { morale } = uiHandler;
 	const factoredCost = morale.applyCostFactor(Units[Class].Cost);
 
 	//alert(ActiveIndustrialNode.X+"X"+ActiveIndustrialNode.Y);

@@ -44,12 +44,12 @@ MainMenuButton.prototype.enable = function() {
 }
 
 MainMenuButton.prototype.setClick = function(onClick) {
-    this.element.onclick = (event) => onClick(this, event);
+    this.element.onclick = (event) => onClick();
     
     return this;
 }
 
-MainMenuButton.prototype.initEvents = function(tooltipID) {
+MainMenuButton.prototype.init = function(tooltipID) {
     this.element.onmouseover = () => {
         if(this.state === MainMenuButton.STATE.ENABLED) {
             this.image.src = "Assets/Miscellaneous/GenericButtonHovered.png";

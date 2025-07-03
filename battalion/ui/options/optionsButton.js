@@ -1,20 +1,12 @@
 const OptionsButton = function(id) {
     this.id = id;
     this.element = document.getElementById(id);
-
-    this.element.onmouseover = () => {
-        this.element.style.filter = "brightness(125%)";
-    }
-
-    this.element.onmouseout = () => {
-        this.element.style.filter = "brightness(100%)";
-    }
 }
 
 OptionsButton.prototype.setClick = function(onClick) {
     this.element.onclick = (event) => {
         this.element.style.filter = "brightness(75%)";
-        onClick(this, event);
+        onClick();
     }
 
     return this;
@@ -31,4 +23,14 @@ OptionsButton.prototype.setTooltip = function(tooltipID) {
     }
 
     return this;
+}
+
+OptionsButton.prototype.init = function() {
+    this.element.onmouseover = () => {
+        this.element.style.filter = "brightness(125%)";
+    }
+
+    this.element.onmouseout = () => {
+        this.element.style.filter = "brightness(100%)";
+    }
 }

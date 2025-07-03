@@ -18,8 +18,12 @@ const CodexButton = function(id, textID) {
 
 CodexButton.prototype.setText = function(text) {
     this.text.innerText = text;
+
+    return this;
 }
 
 CodexButton.prototype.setClick = function(onClick) {
-    this.element.onclick = (event) => onClick(this, event);
+    this.element.onclick = (event) => onClick();
+
+    return this;
 }
