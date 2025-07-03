@@ -916,7 +916,7 @@
 
 		<div id="Options" style="position:relative; visibility:hidden; left:448px;top:140px;z-index:7">
 			<img style="position:absolute" src="Assets/Miscellaneous/OptionsPanel.png"/>
-			<img id="CloseOptionsButton" style="position:absolute; left:158px; top:7px" src="Assets/Miscellaneous/CloseButton.png" onclick="document.getElementById('Options').style.visibility='hidden'" onmouseover="document.getElementById('CloseOptionsButton').src='Assets/Miscellaneous/CloseButtonHovered.png'" onmouseout="document.getElementById('CloseOptionsButton').src='Assets/Miscellaneous/CloseButton.png'" onmousedown="document.getElementById('CloseOptionsButton').src='Assets/Miscellaneous/CloseButtonPressed.png'"/>
+			<img id="CloseOptionsButton" style="position:absolute; left:158px; top:7px" src="Assets/Miscellaneous/CloseButton.png"/>
 			
 			<div id="OPTION_LANGUAGE" style="position:absolute; z-index:8; left:10px; top:10px; width:105px; height:58px; text-align:center">
 				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.png"/>
@@ -971,7 +971,7 @@
 			<div id="LanguageSelectionPanel" style="position:absolute; visibility:hidden; z-index:10;left:-95px; width:630px;height: 280px;">
 				<p style="position: absolute; z-index:11; width:630px; top:-10px;left:auto;text-align:center" id="LanguageCommentary">None except English work for now</p>
 				<img style="position: absolute; z-index:10" src="Assets/Miscellaneous/LanguageSelectPanel.png"/>
-				<img src="Assets/Miscellaneous/CloseButton.png" onclick="document.getElementById('LanguageSelectionPanel').style.visibility='hidden'" style="position: absolute; z-index:11; top:210px;left:250px">
+				<img id="LANGUAGE_CLOSE_BUTTON" src="Assets/Miscellaneous/CloseButton.png" style="position: absolute; z-index:11; top:210px;left:250px">
 				<img id="LANGUAGE_ENGLISH" style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:7px" src="Assets/Languages/FlagENG.png"/>	
 				<img id="LANGUAGE_SPANISH" style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:162px" src="Assets/Languages/FlagESP.png"/>	
 				<img id="LANGUAGE_PORTUGUESE" style="position: absolute; z-index: 11;width:150px; height:100px; top:25px; left:317px" src="Assets/Languages/FlagPOR.png"/>
@@ -1504,11 +1504,12 @@
 		<script src="battalion/story/nodes/campaign.js"></script>
 		<script src="battalion/story/nodes/scenario.js"></script>
 
-		<script src="battalion/ui/options.js"></script>
-		<script src="battalion/ui/codexButton.js"></script>
-		<script src="battalion/ui/codex.js"></script>
-		<script src="battalion/ui/mainMenuButton.js"></script>
-		<script src="battalion/ui/mainMenu.js"></script>
+		<script src="battalion/ui/options/optionsButton.js"></script>
+		<script src="battalion/ui/options/optionsMenu.js"></script>
+		<script src="battalion/ui/codex/codexButton.js"></script>
+		<script src="battalion/ui/codex/codex.js"></script>
+		<script src="battalion/ui/mainMenu/mainMenuButton.js"></script>
+		<script src="battalion/ui/mainMenu/mainMenu.js"></script>
 		<script src="battalion/ui/uiHandler.js"></script>
 
 		<script src="battalion/clientDatabase.js"></script>
@@ -1519,9 +1520,8 @@
 
 		<script src="scripts/analyze.js"></script>
 		<script src="scripts/export.js"></script>
+		<script src="scripts/morale/moraleButton.js"></script>
 		<script src="scripts/morale/moraleHandler.js"></script>
-		<script src="scripts/morale/shiftButton.js"></script>
-		<script src="scripts/morale/recruitMoraleHandler.js"></script>
 		<script src="scripts/preloader.js"></script>
 		<script src="scripts/trait.js"></script>
 		<script src="scripts/retrieve.js"></script>

@@ -1,5 +1,5 @@
 const PROFILE_ID = "TEST_PROFILE";
-const OPENING_TRACK = "RiversOfSteel";
+const OPENING_TRACK = "NavalEpic2";
 const battalion = new Battalion();
 
 battalion.morale.addMoraleShift("MoraleParticulator0", MORALE_SHIFT.VERY_NEGATIVE);
@@ -306,6 +306,8 @@ const selectLanguage = function(languageID) {
 
 	GeneralInitializer();
 }
+
+document.getElementById("LANGUAGE_CLOSE_BUTTON").onclick = () => document.getElementById("LanguageSelectionPanel").style.visibility = "hidden";
 
 document.getElementById("LANGUAGE_ENGLISH").onclick = () => selectLanguage(Battalion.LANGUAGE.ENGLISH);
 document.getElementById("LANGUAGE_SPANISH").onclick = () => selectLanguage(Battalion.LANGUAGE.SPANISH);

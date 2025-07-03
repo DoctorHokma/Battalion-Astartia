@@ -6,40 +6,47 @@ const OptionsMenu = function() {
     this.buttons = [];
 }
 
-OptionsMenu.prototype.createButton = function(buttonID, tooltipID, onClick) {
-    const button = document.getElementById(buttonID);
+OptionsMenu.prototype.createButton = function(buttonID) {
+    const button = new OptionsButton(buttonID);
 
-    if(tooltipID !== null) {
-        button.oncontextmenu = () => {
-            Tooltip(tooltipID);
-        }
+    this.buttons.push(button);
+
+    return button;
+}
+
+OptionsMenu.prototype.createCloseButton = function() {
+    const button = document.getElementById("CloseOptionsButton");
+
+    button.onclick = () => {
+        document.getElementById("Options").style.visibility = "hidden";
     }
 
     button.onmouseover = () => {
-        button.style.filter = "brightness(125%)";
+        button.src = "Assets/Miscellaneous/CloseButtonHovered.png";
     }
 
     button.onmouseout = () => {
-        document.getElementById('GeneralTooltip').style.visibility = "hidden";
-        button.style.filter = "brightness(100%)";
+        button.src = "Assets/Miscellaneous/CloseButton.png";
     }
 
-    button.onclick = () => {
-        button.style.filter = "brightness(75%)";
-        onClick(button);
+    button.onmousedown = () => {
+        button.src = "Assets/Miscellaneous/CloseButtonPressed.png";
     }
-
-    this.buttons.push(button);
 }
 
 OptionsMenu.prototype.init = function(battalion) {
     const { soundPlayer, musicPlayer } = battalion;
 
-    this.createButton("OPTION_LANGUAGE", null, (button) => {
-        document.getElementById('LanguageSelectionPanel').style.visibility = "visible";
-    })
+    this.createCloseButton();
     
-    this.createButton("OPTION_SOUND", "TOOLTIP_OPTION_SOUND", (button) => {
+    this.createButton("OPTION_LANGUAGE")
+    .setClick((button, event) => {
+        document.getElementById('LanguageSelectionPanel').style.visibility = "visible";
+    });
+    
+    this.createButton("OPTION_SOUND")
+    .setTooltip("TOOLTIP_OPTION_SOUND")
+    .setClick((button, event) => {
         const state = soundPlayer.toggleMute();
 
         switch(state) {
@@ -54,7 +61,9 @@ OptionsMenu.prototype.init = function(battalion) {
         }
     });
 
-    this.createButton("OPTION_MUSIC", "TOOLTIP_OPTION_MUSIC", (button) => {
+    this.createButton("OPTION_MUSIC")
+    .setTooltip("TOOLTIP_OPTION_MUSIC")
+    .setClick((button, event) => {
         const state = musicPlayer.toggleMute();
 
         switch(state) {
@@ -69,7 +78,9 @@ OptionsMenu.prototype.init = function(battalion) {
         }
     });
 
-    this.createButton("OPTION_DIALOGUE", "TOOLTIP_OPTION_DIALOGUE", (button) => {
+    this.createButton("OPTION_DIALOGUE")
+    .setTooltip("TOOLTIP_OPTION_DIALOGUE")
+    .setClick((button, event) => {
 		DialogueChoice = !DialogueChoice;
 		
         if(DialogueChoice) {
@@ -80,7 +91,9 @@ OptionsMenu.prototype.init = function(battalion) {
 		}
     });
 
-    this.createButton("OPTION_IDLE", "TOOLTIP_OPTION_IDLE_ANIMATIONS", (button) => {
+    this.createButton("OPTION_IDLE")
+    .setTooltip("TOOLTIP_OPTION_IDLE_ANIMATIONS")
+    .setClick((button, event) => {
         IdleAnimChoice = !IdleAnimChoice;
 		
         if(IdleAnimChoice) {
@@ -90,7 +103,9 @@ OptionsMenu.prototype.init = function(battalion) {
         }
     });
 
-    this.createButton("OPTION_MYSTERY", "TOOLTIP_OPTION_MYSTERY", (button) => {
+    this.createButton("OPTION_MYSTERY")
+    .setTooltip("TOOLTIP_OPTION_MYSTERY")
+    .setClick((button, event) => {
 		MystSettChoice = !MystSettChoice;
 
         if(MystSettChoice) {
