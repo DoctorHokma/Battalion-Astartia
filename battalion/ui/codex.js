@@ -40,8 +40,6 @@ Codex.prototype.displayLore = function(battalion, lore) {
 
 	loreName.innerHTML = language.get(DocName);
 	loreDesc.innerHTML = language.get(DocDesc);
-	loreLength.innerHTML = "";
-	lorePanel.innerHTML = "";
 
     if(DocSize < 0 || DocSize >= Codex.DOCUMENT_SIZES.length) {
 		loreLength.innerHTML = language.get("CODEX_DOCUMENT_SIZE_EMPTY");

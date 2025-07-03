@@ -918,32 +918,32 @@
 			<img style="position:absolute" src="Assets/Miscellaneous/OptionsPanel.png"/>
 			<img id="CloseOptionsButton" style="position:absolute; left:158px; top:7px" src="Assets/Miscellaneous/CloseButton.png" onclick="document.getElementById('Options').style.visibility='hidden'" onmouseover="document.getElementById('CloseOptionsButton').src='Assets/Miscellaneous/CloseButtonHovered.png'" onmouseout="document.getElementById('CloseOptionsButton').src='Assets/Miscellaneous/CloseButton.png'" onmousedown="document.getElementById('CloseOptionsButton').src='Assets/Miscellaneous/CloseButtonPressed.png'"/>
 			
-			<div style="position:absolute; z-index:8; left:10px; top:10px; width:105px; height:58px; text-align:center" onmouseover="this.style.filter='brightness(125%)'" onmouseout="this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; document.getElementById('LanguageSelectionPanel').style.visibility='visible'">
+			<div id="OPTION_LANGUAGE" style="position:absolute; z-index:8; left:10px; top:10px; width:105px; height:58px; text-align:center">
 				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.png"/>
 				<img style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/LanguageButton.png"/>
 			</div>
 
-			<div style="position:absolute; z-index:8; left:10px; top:70px; width:105px; height:58px; text-align:center" oncontextmenu="Tooltip('TOOLTIP_OPTION_SOUND');" onmouseover="this.style.filter='brightness(125%)'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; ToggleOption('Sound')">
+			<div id="OPTION_SOUND" style="position:absolute; z-index:8; left:10px; top:70px; width:105px; height:58px; text-align:center">
 				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.png"/>
 				<img id="ToggleSound" style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/SoundOn.png"/>
 			</div>
 
-			<div style="position:absolute; z-index:8; left:115px; top:70px; width:105px; height:58px; text-align:center" oncontextmenu="Tooltip('TOOLTIP_OPTION_MUSIC');" onmouseover="this.style.filter='brightness(125%)'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; ToggleOption('Music')">
+			<div id="OPTION_MUSIC" style="position:absolute; z-index:8; left:115px; top:70px; width:105px; height:58px; text-align:center">
 				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.png"/>
 				<img id="ToggleMusic" style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/MusicOn.png"/>
 			</div>
 
-			<div style="position:absolute; z-index:8; left:224px; top:70px; width:105px; height:58px; text-align:center" oncontextmenu="Tooltip('TOOLTIP_OPTION_DIALOGUE');" onmouseover="this.style.filter='brightness(125%)'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; ToggleOption('Dialogue')">
+			<div id="OPTION_DIALOGUE" style="position:absolute; z-index:8; left:224px; top:70px; width:105px; height:58px; text-align:center">
 				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.png"/>
 				<img id="ToggleDialogue" style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/DialogueOn.png"/>
 			</div>
 
-			<div style="position:absolute; z-index:8; left:329px; top:70px; width:105px; height:58px; text-align:center" oncontextmenu="Tooltip('TOOLTIP_OPTION_IDLE_ANIMATIONS');" onmouseover="this.style.filter='brightness(125%)'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; ToggleOption('IdleAnim')">
+			<div id="OPTION_IDLE" style="position:absolute; z-index:8; left:329px; top:70px; width:105px; height:58px; text-align:center">
 				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.png"/>
 				<img id="ToggleIdleAnimations" style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/IdleAnimOn.png"/>
 			</div>
 
-			<div style="position:absolute; z-index:8; left:329px; top:10px; width:105px; height:58px; text-align:center" oncontextmenu="Tooltip('TOOLTIP_OPTION_MYSTERY');" onmouseover="this.style.filter='brightness(125%)'" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';this.style.filter='brightness(100%)'" onclick="this.style.filter='brightness(75%)'; ToggleOption('MystSett')">
+			<div id="OPTION_MYSTERY" style="position:absolute; z-index:8; left:329px; top:10px; width:105px; height:58px; text-align:center">
 				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.png"/>
 				<img id="ToggleMysteriousSetting" style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/MysteriousSettingOff.png"/>
 			</div>
@@ -1024,7 +1024,7 @@
 				<img id="Special Bloc Panel" src="Assets/Miscellaneous/Special Bloc Panel.png"/>
 			
 				<img style="position: absolute; left:7.5px; top:10px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id="BonusP1" style="position: absolute; width:126px; height:31px; top:0px; left:7px; text-align:center;" onclick="OpenSpecialBloc(PlotExpansion)" >Plot Expansion</p>
+				<p id="BonusP1" style="position: absolute; width:126px; height:31px; top:0px; left:7px; text-align:center;" onclick="OpenSpecialBloc(PlotExpansion)">Plot Expansion</p>
 
 				<img style="position: absolute; left:7.5px; top:45px;" src="Assets/Miscellaneous/LongPlaque.png"/>
 				<p id="BonusP2" style="position: absolute; width:126px; height:31px; top:35px; left:7px; text-align:center;" onclick="OpenSpecialBloc(Skirmishes)">Skirmishes</p>
@@ -1165,23 +1165,19 @@
 			<div style="position: absolute; left:210px; width:560px; height: 700px">
 				<img style="position: absolute" src="Assets/Miscellaneous/LorePanel.png">
 				<p id="LorePanel" style="position: absolute; top: 105px; left:7px; width:525px; height:420px; color:#ccff99; text-align:center; overflow-y:scroll;"></p>
-
-				<div style="position:absolute; text-align:center; width:560px; left:0px">
-					<p id="LoreName" style="position:absolute; top:546px; width:560px; height:21px"></p>
-					<p id="LoreDesc" style="position:absolute; top:574px; width:525px; height:210px; left:15px"></p>
-				</div>
-				
-				<div id="CODEX_CLOSE_BUTTON" style="position:absolute; left: 385px; top: 35px; text-align:center;">
-					<img id="CodexCloseButton" src="Assets/Miscellaneous/GenericButton.png"/>
-					<p id="LoreClose" style="position: absolute; width:80px; height:35px; top:7px; left:23px"></p>
-				</div>
-
+				<p id="LoreName" style="position:absolute; top:546px; width:560px; height:21px; text-align: center;"></p>
+				<p id="LoreDesc" style="position:absolute; top:574px; width:525px; height:210px; left:15px; text-align: center;"></p>
 				<p id="LoreLength" style="position:absolute; top:-4px; left: 4px; width:350px; text-align:center;"></p>
 				<img id="LoreLengthIcon1" style="position:absolute; top:35px; left:14px"/>
 				<img id="LoreLengthIcon2" style="position:absolute; top:35px; left:84px"/>
 				<img id="LoreLengthIcon3" style="position:absolute; top:35px; left:154px"/>
 				<img id="LoreLengthIcon4" style="position:absolute; top:35px; left:224px"/>
 				<img id="LoreLengthIcon5" style="position:absolute; top:35px; left:294px"/>
+
+				<div id="CODEX_CLOSE_BUTTON" style="position:absolute; left: 385px; top: 35px; text-align:center;">
+					<img id="CodexCloseButton" src="Assets/Miscellaneous/GenericButton.png"/>
+					<p id="LoreClose" style="position: absolute; width:80px; height:35px; top:7px; left:23px"></p>
+				</div>
 			</div>
 		</div>
 
@@ -1508,6 +1504,7 @@
 		<script src="battalion/story/nodes/campaign.js"></script>
 		<script src="battalion/story/nodes/scenario.js"></script>
 
+		<script src="battalion/ui/options.js"></script>
 		<script src="battalion/ui/codexButton.js"></script>
 		<script src="battalion/ui/codex.js"></script>
 		<script src="battalion/ui/mainMenuButton.js"></script>

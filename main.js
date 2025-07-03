@@ -7429,82 +7429,9 @@ function ToggleMoraleBadge(X,Y){
 				document.getElementById("Slot "+(i+1)+"X"+(j+1)).appendChild(Chuchu);*/
 
 
-			};
-
-			}};
-function ToggleOption(Button){
-	switch(Button){
-		case "Sound": {
-			const state = battalion.soundPlayer.toggleMute();
-
-			switch(state) {
-				case SoundPlayer.STATE.NONE: {
-					document.getElementById("ToggleSound").src="Assets/Miscellaneous/SoundOn.png";
-					break;
-				}
-				case SoundPlayer.STATE.MUTED: {
-					document.getElementById("ToggleSound").src="Assets/Miscellaneous/SoundOff.png";
-					break;
-				}
-			}
-			break;
 		}
-		case "Music": {
-			const state = battalion.musicPlayer.toggleMute();
-
-			switch(state) {
-				case MusicPlayer.STATE.NONE: {
-					document.getElementById("ToggleMusic").src="Assets/Miscellaneous/MusicOn.png";
-					break;
-				}
-				case MusicPlayer.STATE.MUTED: {
-					document.getElementById("ToggleMusic").src="Assets/Miscellaneous/MusicOff.png";
-					break;
-				}
-			}
-
-			break;
-		}
-		case "Dialogue":
-			DialogueChoice= !DialogueChoice;
-			if(DialogueChoice){document.getElementById("ToggleDialogue").src="Assets/Miscellaneous/DialogueOn.png"}else{document.getElementById("ToggleDialogue").src="Assets/Miscellaneous/DialogueOff.png"
-			document.getElementById("DialogueBox").style.visibility="hidden";
-		};
-			break;
-		case "IdleAnim":
-			IdleAnimChoice= !IdleAnimChoice;
-			if(IdleAnimChoice){document.getElementById("ToggleIdleAnimations").src="Assets/Miscellaneous/IdleAnimOn.png"}else{document.getElementById("ToggleIdleAnimations").src="Assets/Miscellaneous/IdleAnimOff.png"};
-			break;
-		case "MystSett":
-			MystSettChoice= !MystSettChoice;
-			let zappy=0;
-			if(MystSettChoice){zappy=5; for(let o=61;o<69;o++){Units[o].Speed=zappy};document.getElementById("ToggleMysteriousSetting").src="Assets/Miscellaneous/MysteriousSettingOn.png";
-			document.getElementById("Diff1Text").style.top="30px";
-			document.getElementById("Diff2Text").style.top="67px";
-			document.getElementById("Diff3Text").style.top="104px";
-			document.getElementById("Diff1Text").innerHTML="Justin Bieber";
-			document.getElementById("Diff2Text").innerHTML="Keanu Reeves";
-			document.getElementById("Diff3Text").innerHTML="Chuck Norris";
-
-
-
-
-
-		}else{document.getElementById("ToggleMysteriousSetting").src="Assets/Miscellaneous/MysteriousSettingOff.png";
-			document.getElementById("Diff1Text").style.top="41px";
-			document.getElementById("Diff2Text").style.top="78px";
-			document.getElementById("Diff3Text").style.top="115px";
-			document.getElementById("Diff1Text").innerHTML=Language.SystemTerms[141];
-			document.getElementById("Diff2Text").innerHTML=Language.SystemTerms[142];
-			document.getElementById("Diff3Text").innerHTML=Language.SystemTerms[143];
-
-
-
-
-				};
-			break;
-
-		};};
+	}
+}
 function ToggleTileBlock(Block){
 
 	if(Block==1){TerrainLedger=TerrainLedger_Biomes};
@@ -7734,12 +7661,6 @@ function wipeMap(){
 function ClearEndScreen(){};
 function InterfaceFuck(){};
 function InterfaceUnfuck(){};
-
-SoundChoice=true;
-MusicChoice=true;
-DialogueChoice=true;
-IdleAnimChoice=true;
-MystSettChoice=false;
 
 CallPreloader();
 //GeneralInitializer();

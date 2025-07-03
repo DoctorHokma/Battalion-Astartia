@@ -1,11 +1,13 @@
 const UIHandler = function() {
     this.mainMenu = new MainMenu();
     this.codex = new Codex();
+    this.options = new OptionsMenu();
 }
 
 UIHandler.prototype.init = function(battalion) {
     this.mainMenu.init();
     this.codex.init(battalion);
+    this.options.init(battalion);
     this.onLanguageSwitch(battalion);
 }
 
