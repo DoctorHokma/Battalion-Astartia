@@ -4,7 +4,7 @@ const MoraleHandler = function() {
     this.costFactor = 1;
 }
 
-MoraleHandler.MORALE_OFFSET = 4; //Morale goes from -4 to +5;
+MoraleHandler.MORALE_OFFSET = 4; //Morale translates from -4 to 0!
 
 //TODO: Uses globals!
 MoraleHandler.updatePriceTags = function(costFactor) {
@@ -17,7 +17,7 @@ MoraleHandler.updatePriceTags = function(costFactor) {
 	for(let i = 1; i <= industrialLimit; i++) {
 		const priceTagID = `PriceTag${i}`;
 		const priceTag = document.getElementById(priceTagID);
-		const cost = Math.round(Units[MontreIndexBasis + i].Cost * costFactor);
+		const cost = Math.floor(Units[MontreIndexBasis + i].Cost * costFactor);
 
 		priceTag.innerHTML = `₤${cost}`;
 
@@ -44,18 +44,6 @@ MoraleHandler.clampMoraleValue = function(moraleIndex) {
     }
 }
 
-MoraleHandler.getDamageModifier = function(index) {
-    const type = MoraleHandler.getMoraleTypeByIndex(index);
-
-    if(!type) {
-        return 1;
-    }
-
-    const { damageModifier } = type;
-
-    return damageModifier;
-}
-
 MoraleHandler.getMoraleTypeByIndex = function(index) {
     const shiftedIndex = index + MoraleHandler.MORALE_OFFSET;
 
@@ -69,11 +57,19 @@ MoraleHandler.getMoraleTypeByIndex = function(index) {
     return moraleType;
 }
 
-MoraleHandler.prototype.createMoraleButton = function(elementID, shiftType) {
-    if(!elementID || !shiftType) {
-        return;
+MoraleHandler.getDamageModifier = function(index) {
+    const type = MoraleHandler.getMoraleTypeByIndex(index);
+
+    if(!type) {
+        return 1;
     }
 
+    const { damageModifier } = type;
+
+    return damageModifier;
+}
+
+MoraleHandler.prototype.createMoraleButton = function(elementID, shiftType) {
     const moraleButton = new MoraleButton(elementID, shiftType);
 
     moraleButton.init();
@@ -90,12 +86,12 @@ MoraleHandler.prototype.updateMorale = function(shift, costFactor) {
     MoraleHandler.updatePriceTags(costFactor);
 } 
 
-MoraleHandler.prototype.getShift = function() {
-    return this.shift;
+MoraleHandler.prototype.getBuyMorale = function() {
+    return this.shift + 5;
 }
 
 MoraleHandler.prototype.applyCostFactor = function(value) {
-    return value * this.costFactor;
+    return Math.floor(value * this.costFactor);
 }
 
 MoraleHandler.prototype.reset = function() {

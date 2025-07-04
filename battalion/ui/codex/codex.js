@@ -1,4 +1,5 @@
 const Codex = function() {
+	this.element = document.getElementById("Codex");
     this.buttons = [];
 }
 
@@ -64,7 +65,9 @@ Codex.prototype.displayLore = function(battalion, lore) {
 }
 
 Codex.prototype.createCloseButton = function(battalion) {
-	const { language } = battalion;
+	const { language, uiHandler } = battalion;
+	const { mainMenu } = uiHandler;
+
 	const element = document.getElementById("CODEX_CLOSE_BUTTON");
 	const icon = document.getElementById("CodexCloseButton");
 
@@ -83,9 +86,17 @@ Codex.prototype.createCloseButton = function(battalion) {
 	element.onclick = () => {
 		this.resetIcons();
 		this.resetInfo(language);
-		document.getElementById("Codex").style.visibility = "hidden";
-		document.getElementById("MAIN_MENU").style.visibility = "visible";
+		this.hide();
+		mainMenu.show();
 	}
+}
+
+Codex.prototype.show = function() {
+	this.element.style.visibility = "visible";
+}
+
+Codex.prototype.hide = function() {
+	this.element.style.visibility = "hidden";
 }
 
 Codex.prototype.resetIcons = function() {
@@ -119,7 +130,7 @@ Codex.prototype.createLengthIcon = function(iconID) {
 		}
 
 		element.onmouseout = () => {
-			document.getElementById("GeneralTooltip").style.visibility = "hidden";
+			GeneralTooltip.hide();
 		}
 	}
 }

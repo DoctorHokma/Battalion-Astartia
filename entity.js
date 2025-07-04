@@ -95,8 +95,6 @@ Entity.prototype.updateMorale = function(value) {
     const updatedMorale = MoraleHandler.clampMoraleValue(nextMorale);
 
     this.morale = updatedMorale;
-
-    return this.morale;
 }
 
 Entity.prototype.onTurnPassed = function() {

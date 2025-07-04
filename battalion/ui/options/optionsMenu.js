@@ -43,7 +43,7 @@ OptionsMenu.prototype.init = function(battalion) {
 
     this.createButton("OPTION_LANGUAGE")
     .setClick(() => {
-        document.getElementById('LanguageSelectionPanel').style.visibility = "visible";
+        document.getElementById("LanguageSelectionPanel").style.visibility = "visible";
     });
     
     this.createButton("OPTION_SOUND")

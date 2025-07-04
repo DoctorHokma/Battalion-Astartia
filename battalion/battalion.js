@@ -15,6 +15,7 @@ const Battalion = function() {
     this.timer.update = () => {}
     this.timer.render = () => this.renderer.update(this);
     
+    /*
     this.createCamera();
 
     this.client.cursor.events.on(Cursor.EVENT.BUTTON_CLICK, () => {
@@ -22,6 +23,7 @@ const Battalion = function() {
 
         console.log(context);
     });
+    */
 }
 
 Battalion.LANGUAGE = {

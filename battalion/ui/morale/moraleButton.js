@@ -12,10 +12,10 @@ MoraleButton.STATE = {
 
 MoraleButton.prototype.setClick = function(onClick) {
     this.element.onclick = (event) => {
+        onClick(this.config.shift, this.config.costFactor);
+
         this.element.src = this.config.icon;
         this.state = MoraleButton.STATE.CLICKED;
-
-        onClick(this.config.shift, this.config.costFactor);
     }
 }
 

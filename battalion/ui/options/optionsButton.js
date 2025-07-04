@@ -18,7 +18,7 @@ OptionsButton.prototype.setTooltip = function(tooltipID) {
     }
 
     this.element.onmouseout = () => {
-        document.getElementById("GeneralTooltip").style.visibility = "hidden";
+		GeneralTooltip.hide();
         this.element.style.filter = "brightness(100%)";
     }
 

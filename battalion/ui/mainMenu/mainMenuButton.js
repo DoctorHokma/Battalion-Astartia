@@ -29,6 +29,18 @@ MainMenuButton.prototype.setText = function(text) {
     return this;
 }
 
+MainMenuButton.prototype.hide = function() {
+    this.element.style.visibility = "hidden";
+
+    return this;
+}
+
+MainMenuButton.prototype.show = function() {
+    this.element.style.visibility = "visible";
+
+    return this;
+}
+
 MainMenuButton.prototype.disable = function() {
     this.state = MainMenuButton.STATE.DISABLED;
     this.image.src = "Assets/Miscellaneous/NonButton.png";
@@ -49,7 +61,21 @@ MainMenuButton.prototype.setClick = function(onClick) {
     return this;
 }
 
-MainMenuButton.prototype.init = function(tooltipID) {
+MainMenuButton.prototype.setTooltip = function(tooltipID) {
+    this.element.onmouseout = () => {
+		GeneralTooltip.hide();
+
+        if(this.state === MainMenuButton.STATE.ENABLED) {
+            this.image.src = "Assets/Miscellaneous/GenericButton.png"; 
+        }
+    }
+
+    this.element.oncontextmenu = () => Tooltip(tooltipID);
+
+    return this;
+}
+
+MainMenuButton.prototype.init = function() {
     this.element.onmouseover = () => {
         if(this.state === MainMenuButton.STATE.ENABLED) {
             this.image.src = "Assets/Miscellaneous/GenericButtonHovered.png";
@@ -57,10 +83,6 @@ MainMenuButton.prototype.init = function(tooltipID) {
     }
 
     this.element.onmouseout = () => {
-        if(tooltipID) {
-            document.getElementById("GeneralTooltip").style.visibility = "hidden";
-        }
-
         if(this.state === MainMenuButton.STATE.ENABLED) {
             this.image.src = "Assets/Miscellaneous/GenericButton.png"; 
         }
@@ -70,9 +92,5 @@ MainMenuButton.prototype.init = function(tooltipID) {
         if(this.state === MainMenuButton.STATE.ENABLED) {
             this.image.src = "Assets/Miscellaneous/GenericButtonPressed.png";
         }
-    }
-
-    if(tooltipID) {
-        this.element.oncontextmenu = () => Tooltip(tooltipID);
     }
 }

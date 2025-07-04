@@ -2365,11 +2365,10 @@ function DisplayRegions() {
 function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomName, SpecialName, CustomDesc, SpecialDesc) {
 	const { uiHandler } = battalion;
 	const { morale } = uiHandler;
-
 	const factoredCost = morale.applyCostFactor(Units[Type].Cost);
-	const shift = morale.getShift();
-	
-	YourMoney -= Math.round(factoredCost);
+	const buyMorale = morale.getBuyMorale();
+
+	YourMoney -= factoredCost;
 	CustomName=document.getElementById("ParticularNameBox").value;
 	if(CustomName==""){CustomName=null};
 
@@ -2377,7 +2376,6 @@ function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomNam
 	//alert(DaoLedger[PlayerChoiceFaction/2]);
 	//MoraleIndex+=Math.min(5,Math.max(-4,DaoLedger[PlayerChoiceFaction]/2));
 
-	const buyMorale = 5 + shift;
 	const unit = new Entity(`Unit ${MapRoster.length}`);
 
 	unit.init({
