@@ -90,18 +90,15 @@ Entity.DIRECTION_FLIP = {
     [Entity.DIRECTION.EAST]: Entity.DIRECTION.WEST
 };
 
+Entity.prototype.setMorale = function(value) {
+    this.morale = MoraleHandler.clampMoraleValue(value);
+}
+
 Entity.prototype.updateMorale = function(value) {
-    const nextMorale = this.morale + value;
-    const updatedMorale = MoraleHandler.clampMoraleValue(nextMorale);
-
-    this.morale = updatedMorale;
+    this.setMorale(this.morale + value);
 }
 
-Entity.prototype.onTurnPassed = function() {
-    
-}
-
-Entity.prototype.initDefault = function(id) {
+Entity.prototype.initType = function(id) {
     if(id < 0 || id >= UNITS.length) {
         return;
     }
@@ -121,50 +118,12 @@ Entity.prototype.initDefault = function(id) {
     this.movementType = unitType.Movement; 
 }
 
-Entity.prototype.init = function(config, type, index) {
-    const { 
-        id = -1, //int
-        faction = -1, //int
-        x = -1, //int
-        y = -1, //int
-        morale = 0, //float
-        direction = Entity.DIRECTION.NONE, //int
-        hpModifier = 0, //float
-        cargo = 0, //int
-        CustomName = "", //string
-        CustomDescription = "", //string
-        SpecialName = -1, //int
-        SpecialDescription = -1 //int
-    } = config;
-
-    this.initDefault(id);
-
-    this.type = type;
-    this.index = index;
-
-    this.x = x; 
-    this.y = y; 
-    this.faction = faction;
-    this.coallition = Factions[faction].faction; 
-    this.life *= (1 + hpModifier); 
-    this.direction = direction;
-    this.cargo = cargo;
-    this.isCloaked = isCloaked(x, y, id, Factions[faction].faction);
-    this.specialNameID = SpecialName;
-    this.specialDescID = SpecialDescription;
-    this.customName = CustomName;
-    this.customDesc = CustomDescription;
-    this.updateMorale(morale);
-
-    console.log(this);
-}
-
 Entity.prototype.completeBuilding = function() {
     if(this.type !== Entity.TYPE.CONSTRUCTION) {
         return;
     }
 
-    this.initDefault(this.building);
+    this.initType(this.building);
 
     this.building = -1;
     this.morale = 0;

@@ -4,10 +4,6 @@ const LanguageHandler = function() {
     this.currentLanguageID = null;
 }
 
-LanguageHandler.EVENT = {
-    LANGUAGE_SWITCH: "LANGUAGE_SWITCH"
-};
-
 LanguageHandler.STRICT = true;
 
 LanguageHandler.prototype.selectLanguage = function(languageID) {

@@ -1,21 +1,39 @@
 const PROFILE_ID = "TEST_PROFILE";
 const OPENING_TRACK = "NavalEpic2";
-const battalion = new Battalion();
 
-battalion.language.addLanguage(Battalion.LANGUAGE.ENGLISH, LANGUAGE_ENGLISH);
-battalion.language.addLanguage(Battalion.LANGUAGE.SPANISH, LANGUAGE_SPANISH);
-battalion.language.addLanguage(Battalion.LANGUAGE.PORTUGUESE, LANGUAGE_PORTUGUESE);
-battalion.language.addLanguage(Battalion.LANGUAGE.ROMANIAN, LANGUAGE_ROMANIAN);
-battalion.language.addLanguage(Battalion.LANGUAGE.TURKISH, LANGUAGE_TURKISH);
+const createContext = function() {
+	const context = new Battalion();
 
-battalion.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
-battalion.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => battalion.musicPlayer.playTrack(OPENING_TRACK), { once: true });
+	context.language.addLanguage(Battalion.LANGUAGE.ENGLISH, LANGUAGE_ENGLISH);
+	context.language.addLanguage(Battalion.LANGUAGE.SPANISH, LANGUAGE_SPANISH);
+	context.language.addLanguage(Battalion.LANGUAGE.PORTUGUESE, LANGUAGE_PORTUGUESE);
+	context.language.addLanguage(Battalion.LANGUAGE.ROMANIAN, LANGUAGE_ROMANIAN);
+	context.language.addLanguage(Battalion.LANGUAGE.TURKISH, LANGUAGE_TURKISH);
 
-battalion.init();
+	context.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
+	context.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => context.musicPlayer.playTrack(OPENING_TRACK), { once: true });
+
+	context.story.init();
+    context.uiHandler.init(context);
+    context.setState(Battalion.STATE.MAIN_MENU);
+    context.timer.start();
+
+	/*
+    context.createCamera();
+
+    context.client.cursor.events.on(Cursor.EVENT.BUTTON_CLICK, () => {
+        console.log(context.getContextAtMouse());
+    });
+    */
+
+	return context;
+}
+
+const battalion = createContext();
+
 //battalion.db.createProfile(PROFILE_ID);
 //battalion.db.readProfile(PROFILE_ID, (profile) => battalion.story.load(profile.story));
 battalion.story.unlockAll();
-
 
 //TODO: This adds a "bug" because scenario selection is not added yet.
 //addStoryEvents(battalion);
@@ -82,184 +100,7 @@ var AdjacentCloakers = [];
 var Victory = false;
 var Resolution = false;
 
-document.getElementById("GenerateEditorMap").onclick = () => {
-	battalion.setState(Battalion.STATE.MAP_EDITOR);
-
-	for(let i = 1; i <= 10; i++) {
-		for(let j = 1; j <= 10; j++) {
-			key = document.getElementById("Slot " + i + " X " + j);
-			
-			if(key) {
-				key.remove();
-			}
-		}
-	}
-	
-	castMapMaker();
-}
-
-document.getElementById("EndBattleCloseButton").onclick = () => {
-	battalion.setState(Battalion.STATE.MAIN_MENU);
-	battalion.musicPlayer.playTrack(OPENING_TRACK);
-
-	selectScenario("GREAT_WAR");
-
-	document.getElementById("EndBattleCloseButton").src="Assets/Miscellaneous/CloseButtonPressed.png";
-	
-	for(let a = 1; a < Constants.Commanders.length; a++) {
-		let elem = document.getElementById("AnalysisBlock" + Factions[Constants.Commanders[a].Allegiance].Preffix);
-
-		elem.remove();
-	}
-	
-	for(let b = 0; b < Coallitions.length; b++) {
-		let elem = document.getElementById("CoallitionTitle" + Coallitions[b]);
-
-		elem.remove();
-	}
-	
-	Factions = CampaignFactions;
-	document.getElementById("EndBattleScreen").style.visibility = "hidden";
-	
-	//Victory gets set to false on endbattle
-	if(ChosenMission !== 5 || !Victory) {
-		battalion.uiHandler.mainMenu.show();
-	}
-}
-
-document.getElementById("DialogueSkip").onclick = () => {
-	document.getElementById("DialogueBox").style.visibility = "hidden";
-	document.getElementById("DialogueSkip").style.visibility = "hidden";
-	
-	if(Resolution) {
-		EndBattle();
-	}
-}
-
-document.getElementById("Illustration").onclick = () => {
-	document.getElementById("Illustration").style.visibility = "hidden";
-}
-
-{
-	const undoBtn = document.getElementById("UndoBtn");
-
-	undoBtn.onmouseover = () => {
-		document.getElementById("BtnSuperscript").innerHTML = Language.SystemTerms[49];
-		undoBtn.src= "Assets/Miscellaneous/UndoBtnL.png";
-	}
-
-	undoBtn.onmouseout = () => {
-		document.getElementById("BtnSuperscript").innerHTML = "";
-		undoBtn.src = "Assets/Miscellaneous/UndoBtnS.png";
-	}
-
-	undoBtn.onmousedown = () => {
-		undoBtn.src = "Assets/Miscellaneous/UndoBtnP.png";
-		UndoMove();
-	}
-
-	undoBtn.onmouseup = () => {
-		undoBtn.src = "Assets/Miscellaneous/UndoBtnS.png"; 
-	}
-}
-
-{
-	const quitBtn = document.getElementById("QuitBtn");
-
-	quitBtn.onmouseover = () => {
-		document.getElementById("BtnSuperscript").innerHTML = Language.SystemTerms[51];
-		quitBtn.src= "Assets/Miscellaneous/QuitBtnL.png";
-	}
-
-	quitBtn.onmouseout = () => {
-		document.getElementById("BtnSuperscript").innerHTML = "";
-		quitBtn.src = "Assets/Miscellaneous/QuitBtnS.png";
-	}
-
-	quitBtn.onmousedown = () => {
-		quitBtn.src = "Assets/Miscellaneous/QuitBtnP.png";
-		Battle_Lost();
-	}
-
-	quitBtn.onmouseup = () => {
-		quitBtn.src = "Assets/Miscellaneous/QuitBtnS.png"; 
-	}
-}
-
-{
-	const menuBtn = document.getElementById("MenuBtn");
-
-	menuBtn.onmouseover = () => {
-		document.getElementById("BtnSuperscript").innerHTML = Language.SystemTerms[50];
-		menuBtn.src= "Assets/Miscellaneous/MenuBtnL.png";
-	}
-
-	menuBtn.onmouseout = () => {
-		document.getElementById("BtnSuperscript").innerHTML = "";
-		menuBtn.src = "Assets/Miscellaneous/MenuBtnS.png";
-	}
-
-	menuBtn.onmousedown = () => {
-		menuBtn.src = "Assets/Miscellaneous/MenuBtnP.png";
-		document.getElementById("Options").style.visibility = "visible";
-	}
-
-	menuBtn.onmouseup = () => {
-		menuBtn.src = "Assets/Miscellaneous/MenuBtnS.png"; 
-	}
-}
-
-{
-	const glassplates = ["Glassplate1", "Glassplate2", "Glassplate3", "Glassplate4"];
-
-	for(let i = 0; i < glassplates.length; i++) {
-		const glassplate = document.getElementById(glassplates[i]);
-
-		glassplate.onclick = () => {
-			FactionInformations(i + 1);
-		}
-
-		glassplate.onmouseout = () => {
-			document.getElementById("FactionDetails").style.visibility = "hidden";
-		}
-	}
-}
-
-{
-	const endTurnButton = document.getElementById("EndTurnButton");
-
-	endTurnButton.onmouseover = () => {
-		endTurnButton.src = "Assets/Miscellaneous/EndTurnButtonHovered.png";
-	}
-
-	endTurnButton.onmouseout = () => {
-		endTurnButton.src = "Assets/Miscellaneous/EndTurnButton.png";
-	}
-
-	endTurnButton.onmousedown = () => {
-		endTurnButton.src = "Assets/Miscellaneous/EndTurnButtonPressed.png";
-	}
-
-	endTurnButton.onclick = () => {
-		if(!isAITurn) {
-			EndTurn(SubRosters, Map, Constants, Roster);
-		}
-	}
-}
-
-{
-	const commanderCollider = document.getElementById("CommanderCollider");
-
-	commanderCollider.onmouseover = () => {
-		ShowCharacterBio();
-	}
-
-	commanderCollider.onmouseout = () => {
-		document.getElementById("CommanderBio").style.visibility = "hidden";
-	}
-}
-
-const selectLanguage = function(languageID) {
+const selectLanguage = function(battalion, languageID) {
 	const { language, uiHandler } = battalion;
 	const languageComment = document.getElementById("LanguageCommentary");
 	const creatorComment = document.getElementById("LanguagePrecommentor");
@@ -300,20 +141,6 @@ const selectLanguage = function(languageID) {
 
 	GeneralInitializer();
 }
-
-document.getElementById("LANGUAGE_CLOSE_BUTTON").onclick = () => document.getElementById("LanguageSelectionPanel").style.visibility = "hidden";
-
-document.getElementById("LANGUAGE_ENGLISH").onclick = () => selectLanguage(Battalion.LANGUAGE.ENGLISH);
-document.getElementById("LANGUAGE_SPANISH").onclick = () => selectLanguage(Battalion.LANGUAGE.SPANISH);
-document.getElementById("LANGUAGE_PORTUGUESE").onclick = () => selectLanguage(Battalion.LANGUAGE.PORTUGUESE);
-document.getElementById("LANGUAGE_ROMANIAN").onclick = () => selectLanguage(Battalion.LANGUAGE.ROMANIAN);
-document.getElementById("LANGUAGE_TURKISH").onclick = () => selectLanguage(Battalion.LANGUAGE.TURKISH);
-
-document.getElementById("LANGUAGE_SHORT_ENGLISH").onclick = () => selectLanguage(Battalion.LANGUAGE.ENGLISH);
-document.getElementById("LANGUAGE_SHORT_SPANISH").onclick = () => selectLanguage(Battalion.LANGUAGE.SPANISH);
-document.getElementById("LANGUAGE_SHORT_PORTUGUESE").onclick = () => selectLanguage(Battalion.LANGUAGE.PORTUGUESE);
-document.getElementById("LANGUAGE_SHORT_ROMANIAN").onclick = () => selectLanguage(Battalion.LANGUAGE.ROMANIAN);
-document.getElementById("LANGUAGE_SHORT_TURKISH").onclick = () => selectLanguage(Battalion.LANGUAGE.TURKISH);
 
 //Useful note:
 //Z-Index 0 is for divs with no specific priority
@@ -1227,9 +1054,7 @@ function Build(Structure){
 
 	const X = UnitIcs;
 	const Y = UnitIgrec;
-	const unit = new Entity(`Unit ${MapRoster.length}`);
-
-	unit.init({
+	const unit = createUnit({
 		id: 0,
 		x: X,
 		y: Y,
@@ -1847,6 +1672,45 @@ function castMapMaker() {
 	RefreshMapEditor();
 }
 
+const createUnit = function(config, type, index) {
+	const unit = new Entity(`Unit ${index}`);
+    const { 
+        id = -1, //int
+        faction = -1, //int
+        x = -1, //int
+        y = -1, //int
+        morale = 0, //float
+        direction = Entity.DIRECTION.NONE, //int
+        hpModifier = 0, //float
+        cargo = 0, //int
+        CustomName = "", //string
+        CustomDescription = "", //string
+        SpecialName = -1, //int
+        SpecialDescription = -1 //int
+    } = config;
+
+	unit.initType(id);
+
+    unit.type = type;
+    unit.index = index;
+
+    unit.x = x; 
+    unit.y = y; 
+    unit.faction = faction;
+    unit.coallition = Factions[faction].faction; 
+    unit.life *= (1 + hpModifier); 
+    unit.direction = direction;
+    unit.cargo = cargo;
+    unit.isCloaked = isCloaked(x, y, id, Factions[faction].faction);
+    unit.specialNameID = SpecialName;
+    unit.specialDescID = SpecialDescription;
+    unit.customName = CustomName;
+    unit.customDesc = CustomDescription;
+    unit.setMorale(morale);
+
+	return unit;
+}
+
 function CastEntityMap(Map, Roster) {
 	const mapHeight = Map.length;
 	const mapWidth = Map[0].length;
@@ -1864,9 +1728,7 @@ function CastEntityMap(Map, Roster) {
 	//NEYN TODO: WHY DOES IT START AT JUAN?!?
 	for(var k = 1; k < Roster.length; k++) {
 		const config = Roster[k];
-		const unit = new Entity(`Unit ${k}`);
-
-		unit.init(config, Entity.TYPE.UNIT, k);
+		const unit = createUnit(config, Entity.TYPE.UNIT, k);
 
 		MapRoster[k] = unit;
 		rostermap[config.x][config.y] = unit;	
@@ -2376,9 +2238,7 @@ function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomNam
 	//alert(DaoLedger[PlayerChoiceFaction/2]);
 	//MoraleIndex+=Math.min(5,Math.max(-4,DaoLedger[PlayerChoiceFaction]/2));
 
-	const unit = new Entity(`Unit ${MapRoster.length}`);
-
-	unit.init({
+	const unit = createUnit({
 		id: Type,
 		faction: Faction,
 		x: X - 1,

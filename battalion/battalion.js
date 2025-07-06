@@ -14,16 +14,6 @@ const Battalion = function() {
     this.timer.input = () => this.client.update();
     this.timer.update = () => {}
     this.timer.render = () => this.renderer.update(this);
-    
-    /*
-    this.createCamera();
-
-    this.client.cursor.events.on(Cursor.EVENT.BUTTON_CLICK, () => {
-        const context = this.getContextAtMouse();
-
-        console.log(context);
-    });
-    */
 }
 
 Battalion.LANGUAGE = {
@@ -42,13 +32,6 @@ Battalion.STATE = {
     BATTLE: 3
 };
 
-Battalion.prototype.init = function() {
-    this.story.init();
-    this.uiHandler.init(this);
-    this.setState(Battalion.STATE.MAIN_MENU);
-    this.timer.start();
-}
-
 Battalion.prototype.createCamera = function() {
     const camera = new BattalionCamera();
     const context = this.renderer.createContext("BATTALION", camera);
@@ -64,10 +47,6 @@ Battalion.prototype.getContextAtMouse = function() {
     const lookX = this.client.cursor.positionX;
     const lookY = this.client.cursor.positionY; 
     const context = this.renderer.getCollidedContext(lookX, lookY, this.client.cursor.radius);
-
-    if(!context) {
-        return null;
-    }
 
     return context;
 }
