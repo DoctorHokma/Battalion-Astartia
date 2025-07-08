@@ -1039,8 +1039,11 @@ function Battle_Won(){
 
 	document.getElementById("EndBattleTitle").innerHTML=Language.SystemTerms[123];
 }
+
 //NEYN TODO!!!
-function Build(Structure){
+function Build(Structure) {
+	const { uiHandler } = battalion;
+	const { specialOptions } = uiHandler;
 	const unitType = Units[Structure];
 
 	if(unitType.Cost > YourMoney || (!CanBuildCoastal && hasCertainTrait(Structure, "Seabound"))) {
@@ -1052,8 +1055,8 @@ function Build(Structure){
 	document.getElementById('BuildingConstructionPanel').style.visibility = "hidden";
 	YourMoney -= unitType.Cost;
 
-	const X = UnitIcs;
-	const Y = UnitIgrec;
+	const X = specialOptions.tileX;
+	const Y = specialOptions.tileY;
 	const unit = createUnit({
 		id: 0,
 		x: X,
@@ -1258,9 +1261,12 @@ function castMap(Map){
 				if(entity!=0){BizzareMoneyPointer=Math.round(Units[rostermap[i-1][j-1].unitType].Cost/2)};
 				if(entity.faction==PlayerChoiceFaction && hasCertainTrait(entity.unitType,"Tank Pooper")){isWarmachine=true;index=10};
 
-				if((index<10 || index>12 || owner!=PlayerChoiceFaction)&&!isWarmachine){LaunchSpecialOptionPanel(i-1,j-1)}else{ActiveIndustrialNode={X:i-1,Y:j-1};
-				LaunchRecruitmentPanel(index-9);};
-				
+				if((index<10 || index>12 || owner!=PlayerChoiceFaction)&&!isWarmachine) {
+					battalion.uiHandler.specialOptions.open(i-1, j-1);
+				} else {
+					ActiveIndustrialNode={X:i-1,Y:j-1};
+					LaunchRecruitmentPanel(index-9);
+				}
 			});
 
 			Tile.addEventListener("click", function() {
@@ -2035,7 +2041,9 @@ function isCloaked(X, Y, type, faction){
 }
 
 //neyn TODO!!!
-function ConvoyPickup(Unit){
+function ConvoyPickup(tileX, tileY){
+	const Unit = rostermap[tileX][tileY];
+
 	if(IsConvoy){
 		let HPIndex=rostermap[Unit.x][Unit.y].life/100;
 		let Cargo=rostermap[Unit.x][Unit.y].cargo;
@@ -4144,58 +4152,6 @@ function LaunchRecruitmentPanel(IndustrialBranch){
 		if(p%10==9 || p%10==0){document.getElementById("Obturator"+p).style.visibility="visible"}}};
 
 
-		};
-function LaunchSpecialOptionPanel(x,y){
-	//alert(YourMoney>=Units[rostermap[X][Y].unitType].Cost/2);
-	IsStork=false;
-	IsConvoy=false;
-	let isInFriendlyTerritory=false;
-	document.getElementById("BuildStructureMask").style.visibility="inherit";
-
-	let X=x;
-	let Y=y;
-	//alert(document.getElementById("UnitMap").scrollTop);
-
-	UnitIcs=X;
-	UnitIgrec=Y;
-	document.getElementById("AirTransportPickupMask").src="Assets/Miscellaneous/StorkPickupMask.png";
-	document.getElementById("NavalTransportPickupMask").src="Assets/Miscellaneous/ConvoyPickupMask.png";
-	document.getElementById("SpecialActionPanel").style.visibility="visible";
-	document.getElementById("SpecialActionPanel").style.left=Math.max(Math.min(-28+y*56,Map[0].length*56-115),0)+"px";
-	document.getElementById("SpecialActionPanel").style.top=Math.max(Math.min(-15+x*56,Map.length*56-77),0)+"px";
-
-	if(rostermap[X][Y]!=0 && hasCertainTrait(rostermap[X][Y].unitType, "Air Transport")){ IsStork=true; IsConvoy=false;};
-	if(rostermap[X][Y]!=0 && hasCertainTrait(rostermap[X][Y].unitType, "Naval Transport")){ IsStork=false; IsConvoy=true;};
-	if(IsStork){document.getElementById("AirTransportPickupMask").src="Assets/Miscellaneous/UnitDisembarkMask.png";document.getElementById("AirTransportPickup").src="Assets/Miscellaneous/UnitDisembark.png"}
-	else{document.getElementById("AirTransportPickupMask").src="Assets/Miscellaneous/StorkPickupMask.png";document.getElementById("AirTransportPickup").src="Assets/Miscellaneous/StorkPickup.png"};
-	if(IsConvoy){document.getElementById("NavalTransportPickupMask").src="Assets/Miscellaneous/UnitDisembarkMask.png";document.getElementById("NavalTransportPickup").src="Assets/Miscellaneous/UnitDisembark.png"}
-	else{document.getElementById("NavalTransportPickupMask").src="Assets/Miscellaneous/ConvoyPickupMask.png";document.getElementById("NavalTransportPickup").src="Assets/Miscellaneous/ConvoyPickup.png"};
-
-	
-
-	if(YourMoney>=150 && rostermap[X][Y]!=0 && hasCertainTrait(rostermap[X][Y].unitType,"Airborne") && rostermap[X][Y].faction==PlayerChoiceFaction && !IsConvoy){document.getElementById("AirTransportPickupMask").style.visibility="hidden"}else{document.getElementById("AirTransportPickupMask").style.visibility="inherit"};
-	if(YourMoney>=100 && rostermap[X][Y]!=0 && Terrain[Map[X][Y]].tag1=="Shallow" && rostermap[X][Y].faction==PlayerChoiceFaction && !IsStork){document.getElementById("NavalTransportPickupMask").style.visibility="hidden"}else{document.getElementById("NavalTransportPickupMask").style.visibility="inherit"};
-
-	if(IsStork && Terrain[Map[X][Y]].WalkThrough<4){document.getElementById("AirTransportPickupMask").style.visibility="hidden"}else{};
-	if(IsConvoy && (Terrain[Map[X][Y]].tag1=="Shallow" || Terrain[Map[X][Y]].tag2=="Shallow" || Terrain[Map[X][Y]].tag3=="Shallow" || Terrain[Map[X][Y]].tag4=="Shallow")){document.getElementById("NavalTransportPickupMask").style.visibility="hidden"}else{};
-
-	if(rostermap[X][Y]!=0 && rostermap[X][Y].life<Units[rostermap[X][Y].unitType].HP && Factions[rostermap[X][Y].faction].faction==Factions[PlayerChoiceFaction].faction && YourMoney>=Units[rostermap[X][Y].unitType].Cost/2){document.getElementById("RepairUnitMask").style.visibility="hidden";document.getElementById("SpecialOptionCost").innerHTML="£"+Math.round(Units[rostermap[X][Y].unitType].Cost/2)}else{document.getElementById("RepairUnitMask").style.visibility="inherit"};
-
-	if(rostermap[X][Y]==0 && Terrain[Map[X][Y]].Constructible){
-		if(X>0){if(rostermap[X-1][Y].faction==PlayerChoiceFaction && rostermap[X-1][Y].speed>0){isInFriendlyTerritory=true}};
-		if(X<Map.length-1){if(rostermap[X+1][Y].faction==PlayerChoiceFaction && rostermap[X+1][Y].speed>0){isInFriendlyTerritory=true}};
-		if(Y>0){if(rostermap[X][Y-1].faction==PlayerChoiceFaction && rostermap[X][Y-1].speed>0){isInFriendlyTerritory=true}};
-		if(Y<Map[0].length-1){if(rostermap[X][Y+1].faction==PlayerChoiceFaction && rostermap[X][Y+1].speed>0){isInFriendlyTerritory=true}};
-		if(!isInFriendlyTerritory && (ControlMap??0)!=0){
-			for(let i=Math.max(0,X-3);i<=Math.min(Map.length-1,X+3);i++){for(let j=Math.max(0,Y-3);j<=Math.min(Map[0].length-1,Y+3);j++){if(Terrain[Map[i][j]].Urbanistics>1 && ControlMap[i][j]==PlayerChoiceFaction){isInFriendlyTerritory=true}}}
-
-		};
-
-		if(isInFriendlyTerritory){
-		document.getElementById("BuildStructureMask").style.visibility="hidden"}}else{document.getElementById("BuildStructureMask").style.visibility="inherit"};
-
-	//Screw landmines, we ain't implementing them until RetrofitD has been done
-		document.getElementById("LayMinesMask").style.visibility="inherit";
 }
 
 function moveOneTile(unit, direction){
@@ -7029,7 +6985,9 @@ function ShowCharacterBio(){
 }
 
 //NEYN TODO!
-function StorkPickup(Unit){
+function StorkPickup(tileX, tileY){
+	const Unit = rostermap[tileX][tileY];
+
 	if(IsStork){
 		let HPIndex=rostermap[Unit.x][Unit.y].life/30;
 		let Cargo=rostermap[Unit.x][Unit.y].cargo;

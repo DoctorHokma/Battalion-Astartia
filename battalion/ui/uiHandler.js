@@ -3,6 +3,7 @@ const UIHandler = function() {
     this.codex = new Codex();
     this.options = new OptionsMenu();
     this.morale = new MoraleHandler();
+    this.specialOptions = new SpecialOptions();
 }
 
 UIHandler.prototype.init = function(battalion) {
@@ -10,6 +11,7 @@ UIHandler.prototype.init = function(battalion) {
     this.codex.init(battalion);
     this.options.init(battalion);
     this.morale.init(battalion);
+    this.specialOptions.init(battalion);
     this.onLanguageSwitch(battalion);
 }
 

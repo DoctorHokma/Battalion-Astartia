@@ -174,20 +174,18 @@
 
 			<div id="UnitMap" style='position: absolute; top:0px; left:0px; height:560px; width:560px; overflow:hidden; scroll-behavior: smooth;'>
 				<div id="SpecialActionPanel" style="position:absolute; visibility: hidden; top:0px; left:50px; width:112px; height:77px; border:2px solid black; border-radius: 5px; background-color: white; z-index:6">
-					<img id="AirTransportPickup" style="position: absolute; top:3px; left:2px" onmouseover="document.getElementById('SpecialOptionCost').innerHTML='£150';if(IsStork){this.src='Assets/Miscellaneous/UnitDisembarkHighlighted.png'}else{this.src='Assets/Miscellaneous/StorkPickupHighlighted.png'}" onmouseout="if(IsStork){this.src='Assets/Miscellaneous/UnitDisembark.png'}else{this.src='Assets/Miscellaneous/StorkPickup.png'}"  src="Assets/Miscellaneous/StorkPickup.png" onclick="document.getElementById('SpecialActionPanel').style.visibility='hidden'; StorkPickup(rostermap[UnitIcs][UnitIgrec])"/>
-					<img id="AirTransportPickupMask" style="position: absolute; top:3px; left:2px; z-index:6" onmouseover="document.getElementById('SpecialOptionCost').innerHTML='£150'"  src="Assets/Miscellaneous/StorkPickupMask.png"/>
-					<img id="NavalTransportPickup" style="position: absolute; top:3px; left:38px" onmouseover="document.getElementById('SpecialOptionCost').innerHTML='£100';if(IsConvoy){this.src='Assets/Miscellaneous/UnitDisembarkHighlighted.png'}else{this.src='Assets/Miscellaneous/ConvoyPickupHighlighted.png'}" onmouseout="if(IsConvoy){this.src='Assets/Miscellaneous/UnitDisembark.png'}else{this.src='Assets/Miscellaneous/ConvoyPickup.png'}" src="Assets/Miscellaneous/ConvoyPickup.png" onclick="document.getElementById('SpecialActionPanel').style.visibility='hidden'; ConvoyPickup(rostermap[UnitIcs][UnitIgrec])"/>
-					<img id="NavalTransportPickupMask" style="position: absolute; top:3px; left:38px; z-index:6" onmouseover="document.getElementById('SpecialOptionCost').innerHTML='£100'" src="Assets/Miscellaneous/ConvoyPickupMask.png"/>
-					<img id="RepairUnit" style="position: absolute; top:3px; left:74px" onmouseover="document.getElementById('SpecialOptionCost').innerHTML='£'+BizzareMoneyPointer;this.src='Assets/Miscellaneous/UnitRepairHighlighted.png'" onmouseout="this.src='Assets/Miscellaneous/UnitRepair.png'" src="Assets/Miscellaneous/UnitRepair.png" onclick="document.getElementById('SpecialActionPanel').style.visibility='hidden'; YourMoney-=Math.round(Units[rostermap[UnitIcs][UnitIgrec].unitType].Cost/2); rostermap[UnitIcs][UnitIgrec].life=Units[rostermap[UnitIcs][UnitIgrec].unitType].HP; document.getElementById('HPbar').style.filter=''; document.getElementById('HPbar').style.width='39px';document.getElementById('HP').innerHTML=Units[rostermap[UnitIcs][UnitIgrec].unitType].HP+'/'+Units[rostermap[UnitIcs][UnitIgrec].unitType].HP"/>
-					<img id="RepairUnitMask" style="position: absolute; top:3px; left:74px; z-index:6" onmouseover="document.getElementById('SpecialOptionCost').innerHTML=''" src="Assets/Miscellaneous/UnitRepairMask.png"/>
-					<img id="BuildStructure" style="position: absolute; top:32px; left:2px" onmouseover="document.getElementById('SpecialOptionCost').innerHTML='';this.src='Assets/Miscellaneous/StructureConstructionHighlighted.png'" onmouseout="this.src='Assets/Miscellaneous/StructureConstruction.png'" src="Assets/Miscellaneous/StructureConstruction.png" onclick="document.getElementById('SpecialActionPanel').style.visibility='hidden'; LaunchConstructorPanel(UnitIcs,UnitIgrec)"/>
-					<img id="BuildStructureMask" style="position: absolute; top:32px; left:2px; z-index:6" onmouseover="document.getElementById('SpecialOptionCost').innerHTML=''" src="Assets/Miscellaneous/StructureConstructionMask.png"/>
-
-					<img id="SupplyDepot" style="position: absolute; top:32px; left:38px" src="Assets/Miscellaneous/Depot.png" onmouseover="document.getElementById('SpecialOptionCost').innerHTML='£1300';this.src='Assets/Miscellaneous/DepotHighlighted.png'" onmouseout="this.src='Assets/Miscellaneous/Depot.png'" />
-					<img id="SupplyDepotMask" style="position: absolute; top:32px; left:38px; z-index: 6" onmouseover="document.getElementById('SpecialOptionCost').innerHTML='£1300'" src="Assets/Miscellaneous/DepotMask.png"/>
-					<img id="LayMines" style="position: absolute; top:32px; left:74px" src="Assets/Miscellaneous/Minefield.png" onmouseover="document.getElementById('SpecialOptionCost').innerHTML='£200';this.src='Assets/Miscellaneous/MinefieldHighlighted.png'" onmouseout="this.src='Assets/Miscellaneous/Minefield.png'" />
-					<img id="LayMinesMask" style="position: absolute; top:32px; left:74px; z-index: 6" onmouseover="document.getElementById('SpecialOptionCost').innerHTML='£200'" src="Assets/Miscellaneous/MinefieldMask.png"/>
-
+					<img id="AirTransportPickup" style="position: absolute; top:3px; left:2px" src="Assets/Miscellaneous/StorkPickup.png"/>
+					<img id="AirTransportPickupMask" style="position: absolute; top:3px; left:2px; z-index:6" src="Assets/Miscellaneous/StorkPickupMask.png"/>
+					<img id="NavalTransportPickup" style="position: absolute; top:3px; left:38px" src="Assets/Miscellaneous/ConvoyPickup.png"/>
+					<img id="NavalTransportPickupMask" style="position: absolute; top:3px; left:38px; z-index:6" src="Assets/Miscellaneous/ConvoyPickupMask.png"/>
+					<img id="RepairUnit" style="position: absolute; top:3px; left:74px" src="Assets/Miscellaneous/UnitRepair.png"/>
+					<img id="RepairUnitMask" style="position: absolute; top:3px; left:74px; z-index:6" src="Assets/Miscellaneous/UnitRepairMask.png"/>
+					<img id="BuildStructure" style="position: absolute; top:32px; left:2px" src="Assets/Miscellaneous/StructureConstruction.png"/>
+					<img id="BuildStructureMask" style="position: absolute; top:32px; left:2px; z-index:6" src="Assets/Miscellaneous/StructureConstructionMask.png"/>
+					<img id="SupplyDepot" style="position: absolute; top:32px; left:38px" src="Assets/Miscellaneous/Depot.png"/>
+					<img id="SupplyDepotMask" style="position: absolute; top:32px; left:38px; z-index: 6" src="Assets/Miscellaneous/DepotMask.png"/>
+					<img id="LayMines" style="position: absolute; top:32px; left:74px" src="Assets/Miscellaneous/Minefield.png"/>
+					<img id="LayMinesMask" style="position: absolute; top:32px; left:74px; z-index: 6" src="Assets/Miscellaneous/MinefieldMask.png"/>
 					<p id="SpecialOptionCost" style="position: absolute; top:53px; left:0px; width:112px; height:14px; font-size:10px; text-align:center;"></p>
 				</div>
 
@@ -1513,6 +1511,7 @@
 		<script src="battalion/ui/mainMenu/mainMenu.js"></script>
 		<script src="battalion/ui/morale/moraleButton.js"></script>
 		<script src="battalion/ui/morale/moraleHandler.js"></script>
+		<script src="battalion/ui/specialOptions/specialOptions.js"></script>
 		<script src="battalion/ui/uiHandler.js"></script>
 
 		<script src="battalion/clientDatabase.js"></script>
