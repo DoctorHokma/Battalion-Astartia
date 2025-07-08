@@ -2040,56 +2040,6 @@ function isCloaked(X, Y, type, faction){
 	return true;
 }
 
-//neyn TODO!!!
-function ConvoyPickup(tileX, tileY){
-	const Unit = rostermap[tileX][tileY];
-
-	if(IsConvoy){
-		let HPIndex=rostermap[Unit.x][Unit.y].life/100;
-		let Cargo=rostermap[Unit.x][Unit.y].cargo;
-
-		MapRoster[Unit.index].id=Cargo;
-		rostermap[Unit.x][Unit.y].cargo=0;
-		rostermap[Unit.x][Unit.y].unitType=Cargo;
-		rostermap[Unit.x][Unit.y].life=Math.round(Units[Cargo].HP*HPIndex);
-		rostermap[Unit.x][Unit.y].armor=Units[Cargo].Armor;
-		rostermap[Unit.x][Unit.y].damage=Units[Cargo].Attack;
-		rostermap[Unit.x][Unit.y].damageType=Units[Cargo].Weapon;
-		rostermap[Unit.x][Unit.y].minR=Units[Cargo].MinRange;
-		rostermap[Unit.x][Unit.y].maxR=Units[Cargo].MaxRange;
-		rostermap[Unit.x][Unit.y].speed=Units[Cargo].Speed;
-		rostermap[Unit.x][Unit.y].movementType=Units[Cargo].Movement;
-
-		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).src="Assets/Units/Static/"+Units[Cargo].shortname+rostermap[Unit.x][Unit.y].direction+".png";
-		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).style.left=(Units[Cargo].StaticOffsetX??[0,0,0,0,0])[rostermap[Unit.x][Unit.y].direction]+"px";
-		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).style.top=(Units[Cargo].StaticOffsetY??[0,0,0,0,0])[rostermap[Unit.x][Unit.y].direction]+"px";
-
-	}else{
-		//picking up,
-		YourMoney-=100;
-		//alert(Unit.index);
-		//alert(rostermap[Unit.x][Unit.y].HP);
-		//alert(HPIndex);
-		let HPIndex=rostermap[Unit.x][Unit.y].life/Units[rostermap[Unit.x][Unit.y].unitType].HP;
-		
-		MapRoster[Unit.index].id=51;
-		rostermap[Unit.x][Unit.y].cargo=rostermap[Unit.x][Unit.y].unitType;
-		rostermap[Unit.x][Unit.y].unitType=51;
-		rostermap[Unit.x][Unit.y].armor="Medium";
-		rostermap[Unit.x][Unit.y].life=Math.round(100*HPIndex);
-		rostermap[Unit.x][Unit.y].damage=0;
-		rostermap[Unit.x][Unit.y].damageType="None";
-		rostermap[Unit.x][Unit.y].minR=1;
-		rostermap[Unit.x][Unit.y].maxR=1;
-		rostermap[Unit.x][Unit.y].speed=5;
-		rostermap[Unit.x][Unit.y].movementType="Rudder";
-
-		document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).src="Assets/Units/Static/Convoy"+rostermap[Unit.x][Unit.y].direction+".png";
-	}
-
-	console.log(YourMoney)
-}
-
 function CustomizeTile(){
 	//alert(EditorCustoTileX+" "+EditorCustoTileY);
 	if(EditorEntityMap[EditorCustoTileX][EditorCustoTileY]==0){Localization[Localization.length]={X:EditorCustoTileX+1,Y:EditorCustoTileY+1, name:document.getElementById('EditorNameDenominator').value, description:document.getElementById('EditorDescDenominator').value}};
@@ -6984,48 +6934,94 @@ function ShowCharacterBio(){
 	document.getElementById("CommanderBiography").innerHTML=Biography+"<br><br>"+("<span style='color:orange'>"+Commander.NicknameCommentary[0]+"</span>");
 }
 
-//NEYN TODO!
-function StorkPickup(tileX, tileY){
+const ConvoyDrop = function(tileX, tileY) {
 	const Unit = rostermap[tileX][tileY];
 
-	if(IsStork){
-		let HPIndex=rostermap[Unit.x][Unit.y].life/30;
-		let Cargo=rostermap[Unit.x][Unit.y].cargo;
-		MapRoster[Unit.index].id=Cargo;
-		rostermap[Unit.x][Unit.y].cargo=0;
-		rostermap[Unit.x][Unit.y].unitType=Cargo;
-		rostermap[Unit.x][Unit.y].life=Math.round(Units[Cargo].HP*HPIndex);
-		rostermap[Unit.x][Unit.y].armor=Units[Cargo].Armor;
-		rostermap[Unit.x][Unit.y].damage=Units[Cargo].Attack;
-		rostermap[Unit.x][Unit.y].damageType=Units[Cargo].Weapon;
-		rostermap[Unit.x][Unit.y].minR=Units[Cargo].MinRange;
-		rostermap[Unit.x][Unit.y].maxR=Units[Cargo].MaxRange;
-		rostermap[Unit.x][Unit.y].speed=Units[Cargo].Speed;
-		rostermap[Unit.x][Unit.y].movementType=Units[Cargo].Movement;
+	let HPIndex=rostermap[Unit.x][Unit.y].life/100;
+	let Cargo=rostermap[Unit.x][Unit.y].cargo;
 
-		document.getElementById("Entity "+(Unit.x-StandardX+1)+"X"+(Unit.y-StandardY+1)).src="Assets/Units/Static/"+Units[Cargo].shortname+rostermap[Unit.x][Unit.y].direction+".png";
+	MapRoster[Unit.index].id=Cargo;
+	rostermap[Unit.x][Unit.y].cargo=0;
+	rostermap[Unit.x][Unit.y].unitType=Cargo;
+	rostermap[Unit.x][Unit.y].life=Math.round(Units[Cargo].HP*HPIndex);
+	rostermap[Unit.x][Unit.y].armor=Units[Cargo].Armor;
+	rostermap[Unit.x][Unit.y].damage=Units[Cargo].Attack;
+	rostermap[Unit.x][Unit.y].damageType=Units[Cargo].Weapon;
+	rostermap[Unit.x][Unit.y].minR=Units[Cargo].MinRange;
+	rostermap[Unit.x][Unit.y].maxR=Units[Cargo].MaxRange;
+	rostermap[Unit.x][Unit.y].speed=Units[Cargo].Speed;
+	rostermap[Unit.x][Unit.y].movementType=Units[Cargo].Movement;
 
-	}else{
-		YourMoney-=150;
-		//alert(Unit.index);
-		//alert(rostermap[Unit.x][Unit.y].HP);
-		//alert(HPIndex);
-		let HPIndex=rostermap[Unit.x][Unit.y].life/Units[rostermap[Unit.x][Unit.y].unitType].HP;
-		
-		MapRoster[Unit.index].id=41;
-		rostermap[Unit.x][Unit.y].cargo=rostermap[Unit.x][Unit.y].unitType;
-		rostermap[Unit.x][Unit.y].unitType=41;
-		rostermap[Unit.x][Unit.y].armor="Light";
-		rostermap[Unit.x][Unit.y].life=Math.round(30*HPIndex);
-		rostermap[Unit.x][Unit.y].damage=0;
-		rostermap[Unit.x][Unit.y].damageType="None";
-		rostermap[Unit.x][Unit.y].minR=1;
-		rostermap[Unit.x][Unit.y].maxR=1;
-		rostermap[Unit.x][Unit.y].speed=7;
-		rostermap[Unit.x][Unit.y].movementType="Flight";
+	document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).src="Assets/Units/Static/"+Units[Cargo].shortname+rostermap[Unit.x][Unit.y].direction+".png";
+	document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).style.left=(Units[Cargo].StaticOffsetX??[0,0,0,0,0])[rostermap[Unit.x][Unit.y].direction]+"px";
+	document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).style.top=(Units[Cargo].StaticOffsetY??[0,0,0,0,0])[rostermap[Unit.x][Unit.y].direction]+"px";
+}
 
-		document.getElementById("Entity "+(Unit.x-StandardX+1)+"X"+(Unit.y-StandardY+1)).src="Assets/Units/Static/Stork"+rostermap[Unit.x][Unit.y].direction+".png";
-	}
+const ConvoyPickup = function(tileX, tileY) {
+	const Unit = rostermap[tileX][tileY];
+
+	//picking up,
+	YourMoney-=100;
+	//alert(Unit.index);
+	//alert(rostermap[Unit.x][Unit.y].HP);
+	//alert(HPIndex);
+	let HPIndex=rostermap[Unit.x][Unit.y].life/Units[rostermap[Unit.x][Unit.y].unitType].HP;
+	
+	MapRoster[Unit.index].id=51;
+	rostermap[Unit.x][Unit.y].cargo=rostermap[Unit.x][Unit.y].unitType;
+	rostermap[Unit.x][Unit.y].unitType=51;
+	rostermap[Unit.x][Unit.y].armor="Medium";
+	rostermap[Unit.x][Unit.y].life=Math.round(100*HPIndex);
+	rostermap[Unit.x][Unit.y].damage=0;
+	rostermap[Unit.x][Unit.y].damageType="None";
+	rostermap[Unit.x][Unit.y].minR=1;
+	rostermap[Unit.x][Unit.y].maxR=1;
+	rostermap[Unit.x][Unit.y].speed=5;
+	rostermap[Unit.x][Unit.y].movementType="Rudder";
+
+	document.getElementById("Entity "+(Unit.x+1)+"X"+(Unit.y+1)).src="Assets/Units/Static/Convoy"+rostermap[Unit.x][Unit.y].direction+".png";
+}
+
+const StorkDrop = function(tileX, tileY) {
+	const Unit = rostermap[tileX][tileY];
+
+	let HPIndex=rostermap[Unit.x][Unit.y].life/30;
+	let Cargo=rostermap[Unit.x][Unit.y].cargo;
+	MapRoster[Unit.index].id=Cargo;
+	rostermap[Unit.x][Unit.y].cargo=0;
+	rostermap[Unit.x][Unit.y].unitType=Cargo;
+	rostermap[Unit.x][Unit.y].life=Math.round(Units[Cargo].HP*HPIndex);
+	rostermap[Unit.x][Unit.y].armor=Units[Cargo].Armor;
+	rostermap[Unit.x][Unit.y].damage=Units[Cargo].Attack;
+	rostermap[Unit.x][Unit.y].damageType=Units[Cargo].Weapon;
+	rostermap[Unit.x][Unit.y].minR=Units[Cargo].MinRange;
+	rostermap[Unit.x][Unit.y].maxR=Units[Cargo].MaxRange;
+	rostermap[Unit.x][Unit.y].speed=Units[Cargo].Speed;
+	rostermap[Unit.x][Unit.y].movementType=Units[Cargo].Movement;
+
+	document.getElementById("Entity "+(Unit.x-StandardX+1)+"X"+(Unit.y-StandardY+1)).src="Assets/Units/Static/"+Units[Cargo].shortname+rostermap[Unit.x][Unit.y].direction+".png";
+}
+
+const StorkPickup = function(tileX, tileY){
+	const Unit = rostermap[tileX][tileY];
+
+	YourMoney-=150;
+
+	let HPIndex=rostermap[Unit.x][Unit.y].life/Units[rostermap[Unit.x][Unit.y].unitType].HP;
+	
+	MapRoster[Unit.index].id=41;
+	rostermap[Unit.x][Unit.y].cargo=rostermap[Unit.x][Unit.y].unitType;
+	rostermap[Unit.x][Unit.y].unitType=41;
+	rostermap[Unit.x][Unit.y].armor="Light";
+	rostermap[Unit.x][Unit.y].life=Math.round(30*HPIndex);
+	rostermap[Unit.x][Unit.y].damage=0;
+	rostermap[Unit.x][Unit.y].damageType="None";
+	rostermap[Unit.x][Unit.y].minR=1;
+	rostermap[Unit.x][Unit.y].maxR=1;
+	rostermap[Unit.x][Unit.y].speed=7;
+	rostermap[Unit.x][Unit.y].movementType="Flight";
+
+	document.getElementById("Entity "+(Unit.x-StandardX+1)+"X"+(Unit.y-StandardY+1)).src="Assets/Units/Static/Stork"+rostermap[Unit.x][Unit.y].direction+".png";
 }
 
 function TestMap(){

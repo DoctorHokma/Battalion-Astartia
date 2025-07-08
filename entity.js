@@ -90,6 +90,10 @@ Entity.DIRECTION_FLIP = {
     [Entity.DIRECTION.EAST]: Entity.DIRECTION.WEST
 };
 
+Entity.prototype.toMaxHP = function() {
+    this.life = this.maxLife;
+}
+
 Entity.prototype.setMorale = function(value) {
     this.morale = MoraleHandler.clampMoraleValue(value);
 }

@@ -123,8 +123,12 @@ SpecialOptions.prototype.init = function(battalion) {
 
     AirTransportPickup.onclick = () => {
         this.close();
-        //this.x and this.y is meant!
-        StorkPickup(this.tileX, this.tileY);
+
+        if(IsStork) {
+            StorkDrop(this.tileX, this.tileY);
+        } else {
+            StorkPickup(this.tileX, this.tileY);
+        }
     }
 
     AirTransportPickupMask.onmouseover = () => {
@@ -152,7 +156,11 @@ SpecialOptions.prototype.init = function(battalion) {
     NavalTransportPickup.onclick = () => {
         this.close();
 
-        ConvoyPickup(this.tileX, this.tileY);
+        if(IsConvoy) {
+            ConvoyDrop(this.tileX, this.tileY);
+        } else {
+            ConvoyPickup(this.tileX, this.tileY);
+        }
     }
 
     NavalTransportPickupMask.onmouseover = () => {
