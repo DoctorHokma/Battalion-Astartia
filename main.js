@@ -6961,7 +6961,7 @@ const ConvoyPickup = function(tileX, tileY) {
 	const Unit = rostermap[tileX][tileY];
 
 	//picking up,
-	YourMoney-=100;
+	YourMoney -= SpecialOptions.COST.NAVAL;
 	//alert(Unit.index);
 	//alert(rostermap[Unit.x][Unit.y].HP);
 	//alert(HPIndex);
@@ -7005,7 +7005,7 @@ const StorkDrop = function(tileX, tileY) {
 const StorkPickup = function(tileX, tileY){
 	const Unit = rostermap[tileX][tileY];
 
-	YourMoney-=150;
+	YourMoney -= SpecialOptions.COST.AIR;
 
 	let HPIndex=rostermap[Unit.x][Unit.y].life/Units[rostermap[Unit.x][Unit.y].unitType].HP;
 	
