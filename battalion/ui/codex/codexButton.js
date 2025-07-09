@@ -1,29 +1,12 @@
 const CodexButton = function(id, textID) {
-    this.id = id;
+    GenericButton.call(this, id, null);
+
     this.textID = textID;
-
-    this.element = document.getElementById(id);
-    this.element.classList.add("codex_button");
-
-    this.image = document.createElement("img");
-    this.image.src = "Assets/Miscellaneous/LongPlaque.png";
-
-    this.text = document.createElement("p");
-    this.text.innerText = textID;
-    this.text.classList.add("codex_button_text");
-
-    this.element.appendChild(this.image);
-    this.element.appendChild(this.text);
+    this.setImage("Assets/Miscellaneous/LongPlaque.png");
+    this.setText(textID);
+    this.addMainClass("codex_button");
+    this.addTextClass("codex_button_text");
 }
 
-CodexButton.prototype.setText = function(text) {
-    this.text.innerText = text;
-
-    return this;
-}
-
-CodexButton.prototype.setClick = function(onClick) {
-    this.element.onclick = (event) => onClick();
-
-    return this;
-}
+CodexButton.prototype = Object.create(GenericButton.prototype);
+CodexButton.prototype.constructor = CodexButton;

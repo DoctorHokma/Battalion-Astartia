@@ -64,7 +64,9 @@ Entity.TRAIT = {
     JUDGEMENT: "JUDGEMENT",
     BEWEGUNGSKRIEG: "Bewegungskrieg",
     MOBILE_BATTERY: "Mobile Battery",
-    STREAMBLAST: "Streamblast"
+    STREAMBLAST: "Streamblast",
+    AIR_TRANSPORT: "Air Transport",
+    NAVAL_TRANSPORT: "Naval Transport"
 };
 
 Entity.TYPE = {

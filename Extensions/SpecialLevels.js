@@ -4451,22 +4451,4 @@ TutorialLevel10={
 	Interjection:["Dumitrescu","Repetitio est mater studiorum. Try again until you can take pride in your own achievements and stay on your own two feet."],
 
 	Factions:GenericFactions,
-
-	
-
-	
-
-	};
-
-//Here lies the special level registries
-
-PlotExpansion=[Albinia, Akkadian_War, Kielbasa];
-Skirmishes=[Chess, TankChess, NavalChess, Slaughter];
-CuteLevels=[WhatTheDuck,Catto,Fish,Hooman,Sealand,LakePanzer];
-HistoricalBattles=[Beersheba,Hostomel,Ebro,Bilbao,Mărășești,Romanian_Unification_War,Toyota,Easting73,CastleItter];
-InHonourOf=[ZombieHorde,Nemesis,Halo];
-Challenges=[Choleric, Sanguine, Phlegmatic, Melancholic, Supine, Backrooms, American, Golan];
-MemeLevels=[PulaGulf,ShreksSwamp,NineEleven,FuckingBureaucrats,Ohio];
-AnimeMemes=[];
-GrandMaps=[PoliticalCompass];
-
+}

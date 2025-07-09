@@ -1,6 +1,5 @@
 const Codex = function() {
-	this.element = document.getElementById("Codex");
-    this.buttons = [];
+	GenericMenu.call(this, "Codex");
 }
 
 Codex.DOCUMENT_SIZES = [
@@ -19,6 +18,9 @@ Codex.LORE_LENGTH_ICONS = [
 	"LoreLengthIcon4",
 	"LoreLengthIcon5"
 ];
+
+Codex.prototype = Object.create(GenericMenu.prototype);
+Codex.prototype.constructor = Codex;
 
 Codex.prototype.onLanguageSwitch = function(handler) {
     for(let i = 0; i < this.buttons.length; i++) {
@@ -91,14 +93,6 @@ Codex.prototype.createCloseButton = function(battalion) {
 	}
 }
 
-Codex.prototype.show = function() {
-	this.element.style.visibility = "visible";
-}
-
-Codex.prototype.hide = function() {
-	this.element.style.visibility = "hidden";
-}
-
 Codex.prototype.resetIcons = function() {
 	for(let i = 0; i < Codex.LORE_LENGTH_ICONS.length; i++) {
 		const icon = document.getElementById(Codex.LORE_LENGTH_ICONS[i]);
@@ -143,7 +137,7 @@ Codex.prototype.createButton = function(battalion, buttonID, codexID) {
 		const { DocInfo } = lore;
         const button = new CodexButton(buttonID, DocInfo);
 
-        button.setClick(() => this.displayLore(battalion, lore));
+        button.addClick(() => this.displayLore(battalion, lore));
 
         this.buttons.push(button);
 	}

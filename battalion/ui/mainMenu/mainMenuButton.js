@@ -1,21 +1,13 @@
 const MainMenuButton = function(id, textID) {
-    this.id = id;
+    GenericButton.call(this, id, null);
+
     this.textID = textID;
-
-    this.element = document.getElementById(id);
     this.state = MainMenuButton.STATE.ENABLED;
-
-    this.image = document.createElement("img");
-    this.image.src = "Assets/Miscellaneous/GenericButton.png";
-    this.image.classList.add("main_menu_button_image");
-
-    this.text = document.createElement("p");
-    this.text.innerText = textID;
-    this.text.classList.add("main_menu_button_text");
-
-    this.element.classList.add("main_menu_button");
-    this.element.appendChild(this.image);
-    this.element.appendChild(this.text);
+    this.setText(textID);
+    this.setImage("Assets/Miscellaneous/GenericButton.png");
+    this.addTextClass("main_menu_button_text");
+    this.addImageClass("main_menu_button_image");
+    this.addMainClass("main_menu_button");
 }
 
 MainMenuButton.STATE = {
@@ -23,23 +15,8 @@ MainMenuButton.STATE = {
     DISABLED: 1
 };
 
-MainMenuButton.prototype.setText = function(text) {
-    this.text.innerText = text;
-
-    return this;
-}
-
-MainMenuButton.prototype.hide = function() {
-    this.element.style.visibility = "hidden";
-
-    return this;
-}
-
-MainMenuButton.prototype.show = function() {
-    this.element.style.visibility = "visible";
-
-    return this;
-}
+MainMenuButton.prototype = Object.create(GenericButton.prototype);
+MainMenuButton.prototype.constructor = MainMenuButton;
 
 MainMenuButton.prototype.disable = function() {
     this.state = MainMenuButton.STATE.DISABLED;
@@ -52,12 +29,6 @@ MainMenuButton.prototype.enable = function() {
     this.state = MainMenuButton.STATE.ENABLED;
     this.image.src = "Assets/Miscellaneous/GenericButton.png";
 
-    return this;
-}
-
-MainMenuButton.prototype.setClick = function(onClick) {
-    this.element.onclick = (event) => onClick();
-    
     return this;
 }
 

@@ -1,7 +1,6 @@
 const MoraleButton = function(id, config) {
-    this.id = id;
-    this.element = document.getElementById(id);
-    this.config = config;
+    GenericButton.call(this, id, config);
+
     this.state = MoraleButton.STATE.NOT_CLICKED;
 }
 
@@ -10,13 +9,12 @@ MoraleButton.STATE = {
     CLICKED: 1
 };
 
-MoraleButton.prototype.setClick = function(onClick) {
-    this.element.onclick = (event) => {
-        onClick(this.config.shift, this.config.costFactor);
+MoraleButton.prototype = Object.create(GenericButton.prototype);
+MoraleButton.prototype.constructor = MoraleButton;
 
-        this.element.src = this.config.icon;
-        this.state = MoraleButton.STATE.CLICKED;
-    }
+MoraleButton.prototype.highlight = function() {
+    this.element.src = this.config.icon;
+    this.state = MoraleButton.STATE.CLICKED;
 }
 
 MoraleButton.prototype.reset = function() {

@@ -63,3 +63,22 @@ body {
     font-size: 12px;
     line-height: 28px;
 }
+
+.bonus_button {
+    position: absolute;
+    width: 126px;
+    height: 31px;
+    left: 7px;
+}
+
+.bonus_button_text {
+    position: relative;
+    width: 126px;
+    height: 31px;
+    top: -45px;
+    text-align: center;
+}
+
+.bonus_button_image {
+    position: relative;
+}

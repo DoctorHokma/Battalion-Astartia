@@ -1,16 +1,11 @@
 const OptionsButton = function(id) {
-    this.id = id;
-    this.element = document.getElementById(id);
+    GenericButton.call(this, id, null);
+
+    this.addClick(() => this.element.style.filter = "brightness(75%)");
 }
 
-OptionsButton.prototype.setClick = function(onClick) {
-    this.element.onclick = (event) => {
-        this.element.style.filter = "brightness(75%)";
-        onClick();
-    }
-
-    return this;
-}
+OptionsButton.prototype = Object.create(GenericButton.prototype);
+OptionsButton.prototype.constructor = OptionsButton;
 
 OptionsButton.prototype.setTooltip = function(tooltipID) {
     this.element.oncontextmenu = () => {

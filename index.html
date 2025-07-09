@@ -1020,30 +1020,15 @@
 		<div id="Special Levels" style="position:absolute; visibility:hidden; left:210px">
 			<div style="position: absolute;">
 				<img id="Special Bloc Panel" src="Assets/Miscellaneous/Special Bloc Panel.png"/>
-			
-				<img style="position: absolute; left:7.5px; top:10px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id="BonusP1" style="position: absolute; width:126px; height:31px; top:0px; left:7px; text-align:center;" onclick="OpenSpecialBloc(PlotExpansion)">Plot Expansion</p>
-
-				<img style="position: absolute; left:7.5px; top:45px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id="BonusP2" style="position: absolute; width:126px; height:31px; top:35px; left:7px; text-align:center;" onclick="OpenSpecialBloc(Skirmishes)">Skirmishes</p>
-
-				<img style="position: absolute; left:7.5px; top:80px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id="BonusP3" style="position: absolute; width:126px; height:31px; top:70px; left:7px; text-align:center;" onclick="OpenSpecialBloc(CuteLevels)">Cute Levels</p>
-
-				<img style="position: absolute; left:7.5px; top:115px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id="BonusP4" style="position: absolute; width:126px; height:31px; top:105px; left:7px; text-align:center;" onclick="OpenSpecialBloc(HistoricalBattles)">Historical Battles</p>
-
-				<img style="position: absolute; left:7.5px; top:150px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id="BonusP5" style="position: absolute; width:126px; height:31px; top:140px; left:7px; text-align:center;" onclick="OpenSpecialBloc(InHonourOf)">Tribute Levels</p>
-
-				<img style="position: absolute; left:7.5px; top:185px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id="BonusP6" style="position: absolute; width:126px; height:31px; top:175px; left:7px; text-align:center;" onclick="OpenSpecialBloc(Challenges)">Challenges</p>
-
-				<img style="position: absolute; left:7.5px; top:220px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id="BonusP7" style="position: absolute; width:126px; height:31px; top:210px; left:7px; text-align:center;" onclick="OpenSpecialBloc(MemeLevels)">Meme Levels</p>
-
-				<img style="position: absolute; left:7.5px; top:255px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id="BonusP8" style="position: absolute; width:126px; height:31px; top:245px; left:7px; text-align:center;" onclick="OpenSpecialBloc(GrandMaps)">GIGAMAPS</p>
+				<div id="BonusL1" style="top:10px"></div>
+				<div id="BonusL2" style="top:45px"></div>
+				<div id="BonusL3" style="top:80px"></div>
+				<div id="BonusL4" style="top:115px"></div>
+				<div id="BonusL5" style="top:150px"></div>
+				<div id="BonusL6" style="top:185px"></div>
+				<div id="BonusL7" style="top:220px"></div>
+				<div id="BonusL8" style="top:255px"></div>
+				<div id="BonusL9" style="top:290px"></div>
 			</div>
 
 			<div style="position: absolute; left:140px">
@@ -1064,9 +1049,11 @@
 
 			<div style="position: absolute; left:700px">
 				<img id="Special Level Aux Panel" src="Assets/Miscellaneous/Special Aux Panel.png"/>
-				<img id="PlaySpecialLevel" style="position: absolute; top:50px; left:100px;" src="Assets/Miscellaneous/GenericButton.png" onmouseover="this.src='Assets/Miscellaneous/GenericButtonHovered.png'" onmouseout="this.src='Assets/Miscellaneous/GenericButton.png'" onclick="this.src='Assets/Miscellaneous/GenericButtonPressed.png' ;document.getElementById('Special Levels').style.visibility='hidden';initializeSpecialBattle(NivelVizat);" />
-				<p id="PlayBonusP" style="position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;" onmouseover="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonHovered.png'" onmouseout="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButton.png'" onclick="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonPressed.png' ;document.getElementById('Special Levels').style.visibility='hidden';initializeSpecialBattle(NivelVizat);" >Play</p>
-				<img style="position: absolute; top:140px; left:100px;" src="Assets/Miscellaneous/CloseButton.png" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.png'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.png'" onclick="this.src='Assets/Miscellaneous/CloseButtonPressed.png' ;document.getElementById('Special Levels').style.visibility='hidden'; document.getElementById('MAIN_MENU').style.visibility='visible';OpenSpecialBloc({})" />
+
+				<img id="PlaySpecialLevel" style="position: absolute; top:50px; left:100px;" src="Assets/Miscellaneous/GenericButton.png" onmouseover="this.src='Assets/Miscellaneous/GenericButtonHovered.png'" onmouseout="this.src='Assets/Miscellaneous/GenericButton.png'" onclick="this.src='Assets/Miscellaneous/GenericButtonPressed.png'; battalion.uiHandler.specialLevels.close(); initializeSpecialBattle(NivelVizat);" />
+				<p id="PlayBonusP" style="position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;" onmouseover="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonHovered.png'" onmouseout="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButton.png'" onclick="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonPressed.png' ;battalion.uiHandler.specialLevels.close(); initializeSpecialBattle(NivelVizat);" >Play</p>
+
+				<img id="CLOSE_SPECIAL_LEVELS" style="position: absolute; top:140px; left:100px;"/>
 				<div style="position:absolute; top:350px; left:0px">
 					<p id="NatOpP" style="position: absolute; visibility: hidden; top:-35px; width:350px; left:0px; text-align:center;">Nation</p>
 					<img id="NatOp1" style="position: absolute; visibility: hidden; top:7px; left:8px; filter:hue-rotate(175deg) saturate(0%) brightness(300%)" src="Assets/Miscellaneous/NationOption.png" onclick="NivelElectiv=1;document.getElementById('NatOpP').innerHTML=NivelVizat.Factions[NivelVizat.Constants.Commanders[NivelElectiv].Allegiance].name" oncontextmenu="alert(NivelVizat.FactionCommentary[1])" />
@@ -1461,6 +1448,7 @@
 		<script src="data/power.js"></script>
 		<script src="data/schemas.js"></script>
 		<script src="data/sound.js"></script>
+		<script src="data/specialLevels.js"></script>
 		<script src="data/story.js"></script>
 		<script src="data/traits.js"></script>
 		<script src="data/units.js"></script>
@@ -1502,6 +1490,8 @@
 		<script src="battalion/story/nodes/campaign.js"></script>
 		<script src="battalion/story/nodes/scenario.js"></script>
 
+		<script src="battalion/ui/genericButton.js"></script>
+		<script src="battalion/ui/genericMenu.js"></script>
 		<script src="battalion/ui/tooltip.js"></script>
 		<script src="battalion/ui/options/optionsButton.js"></script>
 		<script src="battalion/ui/options/optionsMenu.js"></script>
@@ -1512,6 +1502,8 @@
 		<script src="battalion/ui/morale/moraleButton.js"></script>
 		<script src="battalion/ui/morale/moraleHandler.js"></script>
 		<script src="battalion/ui/specialOptions/specialOptions.js"></script>
+		<script src="battalion/ui/specialLevels/specialLevelsButton.js"></script>
+		<script src="battalion/ui/specialLevels/specialLevelsMenu.js"></script>
 		<script src="battalion/ui/uiHandler.js"></script>
 
 		<script src="battalion/clientDatabase.js"></script>

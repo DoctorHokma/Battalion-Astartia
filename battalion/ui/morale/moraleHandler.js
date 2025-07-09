@@ -73,15 +73,20 @@ MoraleHandler.prototype.createMoraleButton = function(elementID, shiftType) {
     const moraleButton = new MoraleButton(elementID, shiftType);
 
     moraleButton.init();
-    moraleButton.setClick((shift, costFactor) => this.updateMorale(shift, costFactor));
+    moraleButton.addClick(() => this.updateMorale(moraleButton));
 
     this.buttons.push(moraleButton);
 }
 
-MoraleHandler.prototype.updateMorale = function(shift, costFactor) {
+MoraleHandler.prototype.updateMorale = function(button) {
+    const shift = button.config.shift;
+    const costFactor = button.config.costFactor;
+
     this.reset();
     this.shift = shift;
     this.costFactor = costFactor;
+
+    button.highlight();
 
     MoraleHandler.updatePriceTags(costFactor);
 } 

@@ -958,6 +958,15 @@ const LANGUAGE_ENGLISH = {
 		"<span style='color:white'> +Battle the northern kaffirs to restore the old glory of the Caliphate</span><br><span style='color:black'> -Deal with the awful industry, weapon and munition shortages</span><br><span style='color:red'> ♥Assemble a harem of hot waifus</span><br><span style='color:black'> -Some of them are lolis</span><br><span style='color:purple'> ?Will Aizi'Dihar, that obscure collaborationist heresy, ever amount to anything?</span><br>"
 	],
 
+	"SPECIAL_LEVELS_EXPANSION": "Plot Expansion",
+	"SPECIAL_LEVELS_SKIRMISHES": "Skirmishes",
+	"SPECIAL_LEVELS_CUTE": "Cute Levels",
+	"SPECIAL_LEVELS_HISTORICAL": "Historical Battles",
+	"SPECIAL_LEVELS_HONOUR": "Tribute Levels",
+	"SPECIAL_LEVELS_CHALLENGES": "Challenges",
+	"SPECIAL_LEVELS_MEMES": "Meme Levels",
+	"SPECIAL_LEVELS_ANIME": "Anime Levels",
+	"SPECIAL_LEVELS_GRAND": "Gigamaps",
 	/*
 	"The third rooster is clucking",
 	"The manacles asunder",

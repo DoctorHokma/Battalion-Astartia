@@ -3,10 +3,11 @@ var IsConvoy = false;
 var BizzareMoneyPointer = 0;
 
 const SpecialOptions = function() {
+    GenericMenu.call(this, "SpecialActionPanel");
+
     this.tileX = -1;
     this.tileY = -1;
     this.transportType = SpecialOptions.TRANSPORT_TYPE.NONE;
-    this.element = document.getElementById("SpecialActionPanel");
 }
 
 SpecialOptions.COST = {
@@ -21,6 +22,9 @@ SpecialOptions.TRANSPORT_TYPE = {
     NAVAL: 1,
     AIR: 2
 };
+
+SpecialOptions.prototype = Object.create(GenericMenu.prototype);
+SpecialOptions.prototype.constructor = SpecialOptions;
 
 SpecialOptions.prototype.open = function(x, y) {
     this.tileX = x;
@@ -37,19 +41,23 @@ SpecialOptions.prototype.open = function(x, y) {
 	let Y = y;
 
     this.show();
-	document.getElementById("SpecialActionPanel").style.left=Math.max(Math.min(-28+y*56,Map[0].length*56-115),0)+"px";
-	document.getElementById("SpecialActionPanel").style.top=Math.max(Math.min(-15+x*56,Map.length*56-77),0)+"px";
+	this.element.style.left=Math.max(Math.min(-28+y*56,Map[0].length*56-115),0)+"px";
+	this.element.style.top=Math.max(Math.min(-15+x*56,Map.length*56-77),0)+"px";
 	document.getElementById("AirTransportPickupMask").src="Assets/Miscellaneous/StorkPickupMask.png";
 	document.getElementById("NavalTransportPickupMask").src="Assets/Miscellaneous/ConvoyPickupMask.png";
 
-	if(rostermap[X][Y] !=0 && hasCertainTrait(rostermap[X][Y].unitType, "Air Transport")) {
-        IsStork = true;
-        IsConvoy = false;
-    }
+    const unit = rostermap[x][y];
 
-	if(rostermap[X][Y] != 0 && hasCertainTrait(rostermap[X][Y].unitType, "Naval Transport")) {
-        IsStork = false;
-        IsConvoy = true;
+    if(unit) {
+        if(unit.hasTrait(Entity.TRAIT.AIR_TRANSPORT)) {
+            IsStork = true;
+            IsConvoy = false;
+        }
+
+        if(unit.hasTrait(Entity.TRAIT.NAVAL_TRANSPORT)) {
+            IsStork = false;
+            IsConvoy = true;
+        }
     }
 
 	if(IsStork) {
@@ -146,14 +154,6 @@ SpecialOptions.prototype.open = function(x, y) {
 	//Screw landmines, we ain"t implementing them until RetrofitD has been done
 	document.getElementById("LayMinesMask").style.visibility = "inherit";
 } 
-
-SpecialOptions.prototype.show = function() {
-    this.element.style.visibility = "visible";
-}
-
-SpecialOptions.prototype.close = function() {
-    this.element.style.visibility = "hidden";
-}
 
 SpecialOptions.prototype.setCost = function(value) {
     document.getElementById("SpecialOptionCost").innerHTML = `£${value}`;

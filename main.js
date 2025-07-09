@@ -3193,7 +3193,7 @@ function GeneralInitializer(){
 
 	for(let g=1; g<=10; g++){document.getElementById('Tutorial'+g+"P").innerHTML=Language.SystemTerms[53+g]};
 	document.getElementById("PlayTutorialP").innerHTML=Language.SystemTerms[17];
-	for(let h=1;h<=7;h++){document.getElementById("BonusP"+h).innerHTML=Language.SystemTerms[93+h]};
+	//for(let h=1;h<=7;h++){document.getElementById("BonusP"+h).innerHTML=Language.SystemTerms[93+h]};
 	document.getElementById("PlayBonusP").innerHTML=Language.SystemTerms[17];	
 	document.getElementById("Special Level Name").innerHTML=Language.SystemTerms[75];
 	document.getElementById("Special Level Description").innerHTML=Language.SystemTerms[76];
@@ -4607,17 +4607,10 @@ function NudgeMapEditor(X,Y){
 		//alert(EditorStandardY);
 
 		RefreshMapEditor();
-		} else {
-			battalion.soundPlayer.playSound("Clank");
-		}
+	} else {
+		battalion.soundPlayer.playSound("Clank");
 	}
-function OpenSpecialBloc(Bloc){
-	BlocVizat=Bloc;
-	//alert(Bloc[0].Name);
-	for(let B=0;B<9;B++){document.getElementById("Special Level "+(B+1)).src="Assets/SpecialLevels/"+(Bloc[B] ?? {Name:""}).Name+".png";
-
-	};
-};
+}
 
 /**
  * neyn 08.04.2025

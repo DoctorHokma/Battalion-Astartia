@@ -3,8 +3,11 @@ var IdleAnimChoice = true;
 var MystSettChoice = false;
 
 const OptionsMenu = function() {
-    this.buttons = [];
+    GenericMenu.call(this, "Options");
 }
+
+OptionsMenu.prototype = Object.create(GenericMenu.prototype);
+OptionsMenu.prototype.constructor = OptionsMenu;
 
 OptionsMenu.prototype.createButton = function(buttonID) {
     const button = new OptionsButton(buttonID);
@@ -20,7 +23,7 @@ OptionsMenu.prototype.createCloseButton = function() {
     const button = document.getElementById("CloseOptionsButton");
 
     button.onclick = () => {
-        document.getElementById("Options").style.visibility = "hidden";
+        this.hide();
     }
 
     button.onmouseover = () => {
@@ -42,13 +45,13 @@ OptionsMenu.prototype.init = function(battalion) {
     this.createCloseButton();
 
     this.createButton("OPTION_LANGUAGE")
-    .setClick(() => {
+    .addClick(() => {
         document.getElementById("LanguageSelectionPanel").style.visibility = "visible";
     });
     
     this.createButton("OPTION_SOUND")
     .setTooltip("TOOLTIP_OPTION_SOUND")
-    .setClick(() => {
+    .addClick(() => {
         const state = soundPlayer.toggleMute();
 
         switch(state) {
@@ -65,7 +68,7 @@ OptionsMenu.prototype.init = function(battalion) {
 
     this.createButton("OPTION_MUSIC")
     .setTooltip("TOOLTIP_OPTION_MUSIC")
-    .setClick(() => {
+    .addClick(() => {
         const state = musicPlayer.toggleMute();
 
         switch(state) {
@@ -82,7 +85,7 @@ OptionsMenu.prototype.init = function(battalion) {
 
     this.createButton("OPTION_DIALOGUE")
     .setTooltip("TOOLTIP_OPTION_DIALOGUE")
-    .setClick(() => {
+    .addClick(() => {
 		DialogueChoice = !DialogueChoice;
 		
         if(DialogueChoice) {
@@ -95,7 +98,7 @@ OptionsMenu.prototype.init = function(battalion) {
 
     this.createButton("OPTION_IDLE")
     .setTooltip("TOOLTIP_OPTION_IDLE_ANIMATIONS")
-    .setClick(() => {
+    .addClick(() => {
         IdleAnimChoice = !IdleAnimChoice;
 		
         if(IdleAnimChoice) {
@@ -107,7 +110,7 @@ OptionsMenu.prototype.init = function(battalion) {
 
     this.createButton("OPTION_MYSTERY")
     .setTooltip("TOOLTIP_OPTION_MYSTERY")
-    .setClick(() => {
+    .addClick(() => {
 		MystSettChoice = !MystSettChoice;
 
         if(MystSettChoice) {
