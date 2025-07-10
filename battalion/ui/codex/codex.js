@@ -66,33 +66,6 @@ Codex.prototype.displayLore = function(battalion, lore) {
 	}
 }
 
-Codex.prototype.createCloseButton = function(battalion) {
-	const { language, uiHandler } = battalion;
-	const { mainMenu } = uiHandler;
-
-	const element = document.getElementById("CODEX_CLOSE_BUTTON");
-	const icon = document.getElementById("CodexCloseButton");
-
-	element.onmouseover = () => {
-		icon.src = "Assets/Miscellaneous/GenericButtonHovered.png";
-	}
-
-	element.onmouseout = () => {
-		icon.src = "Assets/Miscellaneous/GenericButton.png";
-	}
-
-	element.onmousedown = () => {
-		icon.src = "Assets/Miscellaneous/GenericButtonPressed.png";
-	}
-
-	element.onclick = () => {
-		this.resetIcons();
-		this.resetInfo(language);
-		this.hide();
-		mainMenu.show();
-	}
-}
-
 Codex.prototype.resetIcons = function() {
 	for(let i = 0; i < Codex.LORE_LENGTH_ICONS.length; i++) {
 		const icon = document.getElementById(Codex.LORE_LENGTH_ICONS[i]);
@@ -144,7 +117,8 @@ Codex.prototype.createButton = function(battalion, buttonID, codexID) {
 }
 
 Codex.prototype.init = function(battalion) {
-	const { language } = battalion;
+	const { language, uiHandler } = battalion;
+	const { mainMenu } = uiHandler;
 
 	this.createButton(battalion, "CODEX_JOKES", "JOKES");
 	this.createButton(battalion, "CODEX_SPECIAL_UNITS", "SPECIAL_UNITS");
@@ -180,7 +154,13 @@ Codex.prototype.init = function(battalion) {
 	this.createLengthIcon("LoreLengthIcon4");
 	this.createLengthIcon("LoreLengthIcon5");
 
-    this.createCloseButton(battalion);
 	this.resetIcons();
 	this.resetInfo(language);
+
+	UIHelpers.createGenericButton("CodexCloseButton", () => {
+		this.resetIcons();
+		this.resetInfo(language);
+		this.hide();
+		mainMenu.show();
+	});
 }
