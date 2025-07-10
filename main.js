@@ -3195,8 +3195,8 @@ function GeneralInitializer(){
 	document.getElementById("PlayTutorialP").innerHTML=Language.SystemTerms[17];
 	//for(let h=1;h<=7;h++){document.getElementById("BonusP"+h).innerHTML=Language.SystemTerms[93+h]};
 	document.getElementById("PlayBonusP").innerHTML=Language.SystemTerms[17];	
-	document.getElementById("Special Level Name").innerHTML=Language.SystemTerms[75];
-	document.getElementById("Special Level Description").innerHTML=Language.SystemTerms[76];
+	//document.getElementById("Special Level Name").innerHTML=Language.SystemTerms[75];
+	//document.getElementById("Special Level Description").innerHTML=Language.SystemTerms[76];
 
 	document.getElementById("GenerateEditorMap").innerHTML=Language.SystemTerms[64];
 	document.getElementById("TestMapP").innerHTML=Language.SystemTerms[73];

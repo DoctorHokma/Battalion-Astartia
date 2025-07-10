@@ -12,6 +12,8 @@ const LANGUAGE_ENGLISH = {
 	"SYSTEM_BUTTON_EDITOR": "Editor",
 	"SYSTEM_BUTTON_LORE": "Lore",
 	"SYSTEM_BUTTON_MUSIC": "Music",
+	"SYSTEM_SPECIAL_LEVELS_NAME": "Name",
+	"SYSTEM_SPECIAL_LEVELS_DESC": "Description",
 
 	"APHORISM_NARRATOR_1": "Kafka, probably",
 	"APHORISM_NARRATOR_2": "Diplomat Francois Armand Dupuy's interview for the Lutetian Gazette",
@@ -925,6 +927,16 @@ const LANGUAGE_ENGLISH = {
 	"UNIT_DESC_FORTRESS": "A formidable citadel capable of holding back an army all by itself",
 	"UNIT_DESC_MEME_SPARTANS": "Spartans like to kick ass",
 
+	"SPECIAL_LEVELS_EXPANSION": "Plot Expansion",
+	"SPECIAL_LEVELS_SKIRMISHES": "Skirmishes",
+	"SPECIAL_LEVELS_CUTE": "Cute Levels",
+	"SPECIAL_LEVELS_HISTORICAL": "Historical Battles",
+	"SPECIAL_LEVELS_HONOUR": "Tribute Levels",
+	"SPECIAL_LEVELS_CHALLENGES": "Challenges",
+	"SPECIAL_LEVELS_MEMES": "Meme Levels",
+	"SPECIAL_LEVELS_ANIME": "Anime Levels",
+	"SPECIAL_LEVELS_GRAND": "Gigamaps",
+
 	"CAMPAIGN_DESC_SOMERTIN": [
 		"Prester John and his kingdom might have been a pipe dream, but on the faraway continent of Astartia the Christian Synarchy of Somertin actually exists. This oddity spits on ideology and on the common pillars of a state to forge a society that serves everybody. So well it worked that Somertin turned into the best place to be on the continent. Neither soul-crushing as Kargia, nor dysfunctional as Polasie, and lightyears ahead of Elam and Transkal in development.",
 		"Today the real and ultimate test of statecraft is upon them, as the vultures of the continent have united in war against Somertin. The satanists of the West, the hypocrites of the North and the heretics of the South surround the Synarchy and want to see it razed to the ground, their people carted off away in chains and their culture spat on.",
@@ -958,15 +970,6 @@ const LANGUAGE_ENGLISH = {
 		"<span style='color:white'> +Battle the northern kaffirs to restore the old glory of the Caliphate</span><br><span style='color:black'> -Deal with the awful industry, weapon and munition shortages</span><br><span style='color:red'> ♥Assemble a harem of hot waifus</span><br><span style='color:black'> -Some of them are lolis</span><br><span style='color:purple'> ?Will Aizi'Dihar, that obscure collaborationist heresy, ever amount to anything?</span><br>"
 	],
 
-	"SPECIAL_LEVELS_EXPANSION": "Plot Expansion",
-	"SPECIAL_LEVELS_SKIRMISHES": "Skirmishes",
-	"SPECIAL_LEVELS_CUTE": "Cute Levels",
-	"SPECIAL_LEVELS_HISTORICAL": "Historical Battles",
-	"SPECIAL_LEVELS_HONOUR": "Tribute Levels",
-	"SPECIAL_LEVELS_CHALLENGES": "Challenges",
-	"SPECIAL_LEVELS_MEMES": "Meme Levels",
-	"SPECIAL_LEVELS_ANIME": "Anime Levels",
-	"SPECIAL_LEVELS_GRAND": "Gigamaps",
 	/*
 	"The third rooster is clucking",
 	"The manacles asunder",
