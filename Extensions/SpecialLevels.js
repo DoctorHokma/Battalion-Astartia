@@ -3880,12 +3880,6 @@ Factions:GenericFactions,
 
 };
 
-
-
-
-
-
-
 TutorialLevel1={
 
 	Name:"The Basics of Tactical Command",

@@ -16,8 +16,7 @@ SpecialLevelsMenu.prototype.constructor = SpecialLevelsMenu;
 SpecialLevelsMenu.prototype.onLanguageSwitch = function(handler) {
     for(let i = 0; i < this.buttons.length; i++) {
         const button = this.buttons[i];
-        const textID = button.getInfo();
-        const text = handler.get(textID);
+        const text = handler.get(button.config.info);
 
         button.setText(text);
     }
@@ -47,11 +46,11 @@ SpecialLevelsMenu.prototype.hideLevels = function() {
 
 SpecialLevelsMenu.prototype.clickButton = function(battalion, button) {
     const { language } = battalion;
+    const { config } = button;
+    const { levels, name, desc } = config;
+    const size = levels.length > SpecialLevelsMenu.MAX_LEVELS_PER_PAGE ? SpecialLevelsMenu.MAX_LEVELS_PER_PAGE : levels.length;
 
     this.hideLevels();
-
-    const levels = button.getLevels();
-    const size = levels.length > SpecialLevelsMenu.MAX_LEVELS_PER_PAGE ? SpecialLevelsMenu.MAX_LEVELS_PER_PAGE : levels.length;
 
     for(let i = 0; i < size; i++) {
         const elementID = `Special Level ${i + 1}`;
@@ -61,11 +60,9 @@ SpecialLevelsMenu.prototype.clickButton = function(battalion, button) {
         element.src = "Assets/SpecialLevels/" + levels[i].Name + ".png";
     }
 
-    const name = language.get(button.getName());
-    const desc = language.get(button.getDesc());
-
-    this.setText(name, desc);
+    this.setText(language.get(name), language.get(desc));
     this.currentCategory = levels;
+
     //??? Secret Level :)
     NivelVizat = Samara;
 }
@@ -110,32 +107,10 @@ SpecialLevelsMenu.prototype.createLevelSelectButtons = function() {
     }
 }
 
-SpecialLevelsMenu.prototype.createCloseButton = function(battalion) {
+SpecialLevelsMenu.prototype.init = function(battalion) {
 	const { uiHandler } = battalion;
     const { mainMenu } = uiHandler;
-    const element = document.getElementById("CLOSE_SPECIAL_LEVELS");
 
-    element.src = "Assets/Miscellaneous/CloseButton.png";
-
-    element.onmouseover = () => {
-        element.src = "Assets/Miscellaneous/CloseButtonHovered.png";
-    }
-
-    element.onmouseout = () => {
-        element.src = "Assets/Miscellaneous/CloseButton.png";
-    }
-
-    element.onclick = () => {
-        element.src = "Assets/Miscellaneous/CloseButtonPressed.png";
-        
-        mainMenu.show();
-
-        this.close();
-    }
-
-}
-
-SpecialLevelsMenu.prototype.init = function(battalion) {
     this.createButton("BonusL1", SPECIAL_LEVELS.PLOT_EXPANSION);
     this.createButton("BonusL2", SPECIAL_LEVELS.SKIRMISHES);
     this.createButton("BonusL3", SPECIAL_LEVELS.CUTE);
@@ -152,6 +127,10 @@ SpecialLevelsMenu.prototype.init = function(battalion) {
         button.addClick(() => this.clickButton(battalion, button));
     }
 
-    this.createCloseButton(battalion);
     this.createLevelSelectButtons();
+
+    UIHelpers.createCloseButton("CLOSE_SPECIAL_LEVELS", () => {
+        mainMenu.show();
+        this.close();
+    })
 }

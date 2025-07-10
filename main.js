@@ -54,7 +54,6 @@ var ResolutionXFactor = 1;
 var ResolutionYFactor = 1;
 var BattleEnd = false;
 
-var TutorialLevel = 0;
 var StandardX = 0;
 var StandardY = 0;
 var ChosenMap = 0;
@@ -3191,7 +3190,7 @@ function GeneralInitializer(){
 	writeAphorism(battalion, Aphorism);
 	writeFlair(battalion, Flair);
 
-	for(let g=1; g<=10; g++){document.getElementById('Tutorial'+g+"P").innerHTML=Language.SystemTerms[53+g]};
+	//for(let g=1; g<=10; g++){document.getElementById('Tutorial'+g+"P").innerHTML=Language.SystemTerms[53+g]};
 	document.getElementById("PlayTutorialP").innerHTML=Language.SystemTerms[17];
 	//for(let h=1;h<=7;h++){document.getElementById("BonusP"+h).innerHTML=Language.SystemTerms[93+h]};
 	document.getElementById("PlayBonusP").innerHTML=Language.SystemTerms[17];	

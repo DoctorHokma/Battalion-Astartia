@@ -5,6 +5,7 @@ const UIHandler = function() {
     this.morale = new MoraleHandler();
     this.specialOptions = new SpecialOptions();
     this.specialLevels = new SpecialLevelsMenu();
+    this.tutorial = new TutorialMenu();
 }
 
 UIHandler.prototype.init = function(battalion) {
@@ -14,6 +15,7 @@ UIHandler.prototype.init = function(battalion) {
     this.morale.init(battalion);
     this.specialOptions.init(battalion);
     this.specialLevels.init(battalion);
+    this.tutorial.init(battalion);
 
     this.onLanguageSwitch(battalion);
 }
@@ -24,4 +26,5 @@ UIHandler.prototype.onLanguageSwitch = function(battalion) {
     this.mainMenu.onLanguageSwitch(language);
     this.codex.onLanguageSwitch(language);
     this.specialLevels.onLanguageSwitch(language);
+    this.tutorial.onLanguageSwitch(language);
 }

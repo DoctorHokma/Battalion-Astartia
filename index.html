@@ -914,7 +914,7 @@
 
 		<div id="Options" style="position:relative; visibility:hidden; left:448px;top:140px;z-index:7">
 			<img style="position:absolute" src="Assets/Miscellaneous/OptionsPanel.png"/>
-			<img id="CloseOptionsButton" style="position:absolute; left:158px; top:7px" src="Assets/Miscellaneous/CloseButton.png"/>
+			<img id="CloseOptionsButton" style="position:absolute; left:158px; top:7px"/>
 			
 			<div id="OPTION_LANGUAGE" style="position:absolute; z-index:8; left:10px; top:10px; width:105px; height:58px; text-align:center">
 				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.png"/>
@@ -1048,11 +1048,10 @@
 
 			<div style="position: absolute; left:700px">
 				<img id="Special Level Aux Panel" src="Assets/Miscellaneous/Special Aux Panel.png"/>
-
 				<img id="PlaySpecialLevel" style="position: absolute; top:50px; left:100px;" src="Assets/Miscellaneous/GenericButton.png" onmouseover="this.src='Assets/Miscellaneous/GenericButtonHovered.png'" onmouseout="this.src='Assets/Miscellaneous/GenericButton.png'" onclick="this.src='Assets/Miscellaneous/GenericButtonPressed.png'; battalion.uiHandler.specialLevels.close(); initializeSpecialBattle(NivelVizat);" />
 				<p id="PlayBonusP" style="position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;" onmouseover="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonHovered.png'" onmouseout="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButton.png'" onclick="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonPressed.png' ;battalion.uiHandler.specialLevels.close(); initializeSpecialBattle(NivelVizat);" >Play</p>
-
 				<img id="CLOSE_SPECIAL_LEVELS" style="position: absolute; top:140px; left:100px;"/>
+				
 				<div style="position:absolute; top:350px; left:0px">
 					<p id="NatOpP" style="position: absolute; visibility: hidden; top:-35px; width:350px; left:0px; text-align:center;">Nation</p>
 					<img id="NatOp1" style="position: absolute; visibility: hidden; top:7px; left:8px; filter:hue-rotate(175deg) saturate(0%) brightness(300%)" src="Assets/Miscellaneous/NationOption.png" onclick="NivelElectiv=1;document.getElementById('NatOpP').innerHTML=NivelVizat.Factions[NivelVizat.Constants.Commanders[NivelElectiv].Allegiance].name" oncontextmenu="alert(NivelVizat.FactionCommentary[1])" />
@@ -1211,51 +1210,30 @@
 		<div id="Tutorial Levels" style="position:absolute; visibility:hidden; left:210px">
 			<div style="position: absolute;">
 				<img id="Tutorial Bloc Panel" src="Assets/Miscellaneous/Special Bloc Panel.png"/>
-			
-				<img style="position: absolute; left:7.5px; top:10px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id='Tutorial1P' style="position: absolute; width:126px; height:31px; top:0px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel1; document.getElementById('Tutorial').src='Assets/SpecialLevels/The Basics of Tactical Command.png'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel1.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel1.Desc" >Mission 1</p>
-
-				<img style="position: absolute; left:7.5px; top:45px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id='Tutorial2P' style="position: absolute; width:126px; height:31px; top:35px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel2; document.getElementById('Tutorial').src='Assets/SpecialLevels/Tactical Exercise.png'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel2.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel2.Desc">Mission 2</p>
-
-				<img style="position: absolute; left:7.5px; top:80px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id='Tutorial3P' style="position: absolute; width:126px; height:31px; top:70px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel3; document.getElementById('Tutorial').src='Assets/SpecialLevels/Terrain Exercise.png'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel3.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel3.Desc">Mission 3</p>
-
-				<img style="position: absolute; left:7.5px; top:115px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id='Tutorial4P' style="position: absolute; width:126px; height:31px; top:105px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel4; document.getElementById('Tutorial').src='Assets/SpecialLevels/Logistical Exercise.png'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel4.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel4.Desc">Mission 4</p>
-
-				<img style="position: absolute; left:7.5px; top:150px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id='Tutorial5P' style="position: absolute; width:126px; height:31px; top:140px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel5; document.getElementById('Tutorial').src='Assets/SpecialLevels/Industrial Exercise.png'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel5.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel5.Desc">Mission 5</p>
-
-				<img style="position: absolute; left:7.5px; top:185px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id='Tutorial6P' style="position: absolute; width:126px; height:31px; top:175px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel6; document.getElementById('Tutorial').src='Assets/SpecialLevels/Transport Exercise.png'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel6.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel6.Desc">Mission 6</p>
-
-				<img style="position: absolute; left:7.5px; top:220px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id='Tutorial7P' style="position: absolute; width:126px; height:31px; top:210px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel7; document.getElementById('Tutorial').src='Assets/SpecialLevels/Mixed Exercise.png'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel7.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel7.Desc">Mission 7</p>
-
-				<img style="position: absolute; left:7.5px; top:255px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id='Tutorial8P' style="position: absolute; width:126px; height:31px; top:245px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel8; document.getElementById('Tutorial').src='Assets/SpecialLevels/Cooperation Exercise.png'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel8.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel8.Desc">Mission 8</p>
-
-				<img style="position: absolute; left:7.5px; top:290px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id='Tutorial9P' style="position: absolute; width:126px; height:31px; top:280px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel9; document.getElementById('Tutorial').src='Assets/SpecialLevels/Combined Arms Exercise.png'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel9.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel9.Desc">Mission 9</p>
-
-				<img style="position: absolute; left:7.5px; top:325px;" src="Assets/Miscellaneous/LongPlaque.png"/>
-				<p id='Tutorial10P' style="position: absolute; width:126px; height:31px; top:315px; left:7px; text-align:center;" onclick="TutorialLevel=TutorialLevel10; document.getElementById('Tutorial').src='Assets/SpecialLevels/Final Exercise.png'; document.getElementById('Tutorial Level Name').innerHTML=TutorialLevel10.Name; document.getElementById('Tutorial Level Description').innerHTML=TutorialLevel10.Desc">Mission 10</p>
+				<div id="Tutorial1" style="top: 10px;"></div>
+				<div id="Tutorial2" style="top: 45px;"></div>
+				<div id="Tutorial3" style="top: 80px;"></div>
+				<div id="Tutorial4" style="top: 115px;"></div>
+				<div id="Tutorial5" style="top: 150px;"></div>
+				<div id="Tutorial6" style="top: 185px;"></div>
+				<div id="Tutorial7" style="top: 220px;"></div>
+				<div id="Tutorial8" style="top: 255px;"></div>
+				<div id="Tutorial9" style="top: 290px;"></div>
+				<div id="Tutorial10" style="top: 325px;"></div>
 			</div>
 
 			<div style="position: absolute; left:140px">
 				<img id="Tutorial Level Panel" src="Assets/Miscellaneous/Special Level Panel.png"/>
-				<img id="Tutorial" style="position: absolute; top: 14px; left: 14px; width:532px; height:532px" src="Assets/SpecialLevels/.png" onclick=""/>
-
-				<p id="Tutorial Level Name" style="position: absolute; top:546px; width:560px; height:10px; text-align: center;">Name</p>
-				<p id="Tutorial Level Description" style="position: absolute; top:574px; width:560px; height:100px; text-align: center;">Long ago in a galaxy far away, jedi something lorem ipsum dolor sit amet</p>
+				<img id="Tutorial" style="position: absolute; top: 14px; left: 14px; width:532px; height:532px"/>
+				<p id="Tutorial Level Name" style="position: absolute; top:546px; width:560px; height:10px; text-align: center;"></p>
+				<p id="Tutorial Level Description" style="position: absolute; top:574px; width:560px; height:100px; text-align: center;"></p>
 			</div>
 
 			<div style="position: absolute; left:700px">
 				<img id="Tutorial Level Aux Panel" src="Assets/Miscellaneous/Special Aux Panel.png"/>
-				<img id="PlaySpecialLevel" style="position: absolute; top:50px; left:100px;" src="Assets/Miscellaneous/GenericButton.png" onmouseover="this.src='Assets/Miscellaneous/GenericButtonHovered.png'" onmouseout="this.src='Assets/Miscellaneous/GenericButton.png'" onclick="this.src='Assets/Miscellaneous/GenericButtonPressed.png' ;if(TutorialLevel!=0){document.getElementById('Tutorial Levels').style.visibility='hidden';initializeSpecialBattle(TutorialLevel);TutorialLevel=0};" />
-				<p id='PlayTutorialP' style="position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;" onmouseover="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonHovered.png'" onmouseout="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButton.png'" onclick="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonPressed.png' ;if(TutorialLevel!=0){document.getElementById('Tutorial Levels').style.visibility='hidden';initializeSpecialBattle(TutorialLevel);TutorialLevel=0};" >Play</p>
-				<img style="position: absolute; top:140px; left:100px;" src="Assets/Miscellaneous/CloseButton.png" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.png'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.png'" onclick="this.src='Assets/Miscellaneous/CloseButtonPressed.png' ;document.getElementById('Tutorial Levels').style.visibility='hidden'; document.getElementById('MAIN_MENU').style.visibility='visible';document.getElementById('Tutorial').src='Assets/Miscellaneous/Nothing.png' " />
+				<img id="PlaySpecialLevel" style="position: absolute; top:50px; left:100px;" src="Assets/Miscellaneous/GenericButton.png" onmouseover="this.src='Assets/Miscellaneous/GenericButtonHovered.png'" onmouseout="this.src='Assets/Miscellaneous/GenericButton.png'" onclick="this.src='Assets/Miscellaneous/GenericButtonPressed.png' ;if(TutorialLevel!=0){initializeSpecialBattle(TutorialLevel); battalion.uiHandler.tutorial.close();};" />
+				<p id='PlayTutorialP' style="position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;" onmouseover="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonHovered.png'" onmouseout="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButton.png'" onclick="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonPressed.png' ;if(TutorialLevel!=0){initializeSpecialBattle(TutorialLevel); battalion.uiHandler.tutorial.close();};" >Play</p>
+				<img id="CLOSE_TUTORIAL" style="position: absolute; top:140px; left:100px;"/>
 			</div>
 		</div>
 
@@ -1450,6 +1428,7 @@
 		<script src="data/specialLevels.js"></script>
 		<script src="data/story.js"></script>
 		<script src="data/traits.js"></script>
+		<script src="data/tutorialLevels.js"></script>
 		<script src="data/units.js"></script>
 
 		<script src="battalion/helper.js"></script>
@@ -1489,9 +1468,12 @@
 		<script src="battalion/story/nodes/campaign.js"></script>
 		<script src="battalion/story/nodes/scenario.js"></script>
 
+		<script src="battalion/ui/helpers.js"></script>
 		<script src="battalion/ui/genericButton.js"></script>
 		<script src="battalion/ui/genericMenu.js"></script>
 		<script src="battalion/ui/tooltip.js"></script>
+		<script src="battalion/ui/tutorial/tutorialButton.js"></script>
+		<script src="battalion/ui/tutorial/tutorialMenu.js"></script>
 		<script src="battalion/ui/options/optionsButton.js"></script>
 		<script src="battalion/ui/options/optionsMenu.js"></script>
 		<script src="battalion/ui/codex/codexButton.js"></script>

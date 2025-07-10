@@ -1,4 +1,4 @@
-const SpecialLevelsButton = function(id, config) {
+const TutorialButton = function(id, config) {
     GenericButton.call(this, id, config);
 
     this.setText(config.info);
@@ -8,5 +8,5 @@ const SpecialLevelsButton = function(id, config) {
     this.addMainClass("bonus_button");
 }
 
-SpecialLevelsButton.prototype = Object.create(GenericButton.prototype);
-SpecialLevelsButton.prototype.constructor = SpecialLevelsButton;
+TutorialButton.prototype = Object.create(GenericButton.prototype);
+TutorialButton.prototype.constructor = TutorialButton;

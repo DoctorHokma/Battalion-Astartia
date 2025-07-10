@@ -196,7 +196,7 @@ SpecialOptions.prototype.init = function(battalion) {
     }
 
     AirTransportPickup.onclick = () => {
-        this.close();
+        this.hide();
 
         if(IsStork) {
             StorkDrop(this.tileX, this.tileY);
@@ -228,7 +228,7 @@ SpecialOptions.prototype.init = function(battalion) {
     }
 
     NavalTransportPickup.onclick = () => {
-        this.close();
+        this.hide();
 
         if(IsConvoy) {
             ConvoyDrop(this.tileX, this.tileY);
@@ -252,7 +252,7 @@ SpecialOptions.prototype.init = function(battalion) {
     }
 
     RepairUnit.onclick = () => {
-        this.close();
+        this.hide();
 
         YourMoney -= Math.round(Units[rostermap[this.tileX][this.tileY].unitType].Cost/2);
         rostermap[this.tileX][this.tileY].life = Units[rostermap[this.tileX][this.tileY].unitType].HP;
@@ -277,7 +277,7 @@ SpecialOptions.prototype.init = function(battalion) {
     }
 
     BuildStructure.onclick = () => {
-        this.close();
+        this.hide();
 
         LaunchConstructorPanel(this.tileX, this.tileY);
     }

@@ -19,30 +19,12 @@ OptionsMenu.prototype.createButton = function(buttonID) {
     return button;
 }
 
-OptionsMenu.prototype.createCloseButton = function() {
-    const button = document.getElementById("CloseOptionsButton");
-
-    button.onclick = () => {
-        this.hide();
-    }
-
-    button.onmouseover = () => {
-        button.src = "Assets/Miscellaneous/CloseButtonHovered.png";
-    }
-
-    button.onmouseout = () => {
-        button.src = "Assets/Miscellaneous/CloseButton.png";
-    }
-
-    button.onmousedown = () => {
-        button.src = "Assets/Miscellaneous/CloseButtonPressed.png";
-    }
-}
-
 OptionsMenu.prototype.init = function(battalion) {
     const { soundPlayer, musicPlayer } = battalion;
 
-    this.createCloseButton();
+    UIHelpers.createCloseButton("CloseOptionsButton", () => {
+        this.hide();
+    });
 
     this.createButton("OPTION_LANGUAGE")
     .addClick(() => {

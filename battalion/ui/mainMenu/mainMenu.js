@@ -31,7 +31,7 @@ MainMenu.prototype.createButton = function(buttonID, textID) {
 
 MainMenu.prototype.init = function(battalion) {
     const { uiHandler } = battalion;
-    const { codex, options, specialLevels } = uiHandler;
+    const { codex, options, specialLevels, tutorial } = uiHandler;
 
     this.createButton("BUTTON_CAMPAIGN", "SYSTEM_BUTTON_CAMPAIGN")
     .setTooltip("TOOLTIP_CAMPAIGN")
@@ -43,9 +43,8 @@ MainMenu.prototype.init = function(battalion) {
     this.createButton("BUTTON_BOOT_CAMP", "SYSTEM_BUTTON_BOOT_CAMP")
     .setTooltip("TOOLTIP_BOOTCAMP")
     .addClick(() => {
-        TutorialLevel = 0;
         this.hide();
-        document.getElementById("Tutorial Levels").style.visibility = "visible";
+        tutorial.open();
     });
 
     this.createButton("BUTTON_CONTINUE", "SYSTEM_BUTTON_CONTINUE")
