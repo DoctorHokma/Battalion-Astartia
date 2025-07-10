@@ -1,5 +1,5 @@
 const MusicPlayer = function(trackList, playlists) {
-    this.volume = 1;
+    this.volumeScale = 1;
     this.trackList = trackList;
     this.playlists = playlists;
     this.loadedTracks = new Map();
@@ -11,6 +11,8 @@ const MusicPlayer = function(trackList, playlists) {
     this.mode = MusicPlayer.MODE.SINGLE;
 }
 
+MusicPlayer.DEFAULT_VOLUME = 0.5;
+
 MusicPlayer.MODE = {
     SINGLE: 0,
     PLAYLIST: 1
@@ -20,6 +22,24 @@ MusicPlayer.STATE = {
     NONE: 0,
     MUTED: 1
 };
+
+MusicPlayer.getShuffledPlaylist = function(playlist) {
+    const shuffledPlaylist = [];
+
+    for(let i = 0; i < playlist.length; i++) {
+        shuffledPlaylist.push(playlist[i]);
+    }
+
+    for(let i = shuffledPlaylist.length - 1; i >= 0; i--) {
+        const target = Math.floor(Math.random() * (i + 1));
+        const temp = shuffledPlaylist[i];
+
+        shuffledPlaylist[i] = shuffledPlaylist[target];
+        shuffledPlaylist[target] = temp;
+    }
+
+    return shuffledPlaylist;
+}
 
 MusicPlayer.prototype.resolvePath = function(directory, source) {
     let path = "";
@@ -38,17 +58,17 @@ MusicPlayer.prototype.resolvePath = function(directory, source) {
 
 MusicPlayer.prototype.loadTrack = function(trackID) {
     if(this.loadedTracks.has(trackID)) {
-        return this.loadedTracks.get(trackID);
+        return;
     }
 
     const meta = this.trackList[trackID];
 
     if(!meta) {
         console.warn(`Track ${trackID} does not exist!`);
-        return null;
+        return;
     }
 
-    const { directory, source, volume = this.volume, isLooping = false } = meta;
+    const { directory, source, volume, isLooping } = meta;
     const path = resolvePath(directory, source);
     const audio = new Audio(path);
     const track = new MusicTrack(audio, volume, isLooping);
@@ -59,7 +79,26 @@ MusicPlayer.prototype.loadTrack = function(trackID) {
     }
 
     this.loadedTracks.set(trackID, track);
-    
+}
+
+MusicPlayer.prototype.setVolumeScale = function(scale) {
+    const clampedScale = clampValue(scale, 0, 2);
+    const track = this.getTrack(this.currentTrack);
+
+    this.volumeScale = clampedScale;
+
+    if(track) {
+        track.unmute(clampedScale);
+    }
+}
+
+MusicPlayer.prototype.getTrack = function(trackID) {
+    const track = this.loadedTracks.get(trackID);
+
+    if(!track) {
+        return null;
+    }
+
     return track;
 }
 
@@ -69,8 +108,9 @@ MusicPlayer.prototype.play = function(trackID) {
     }
 
     this.forceStopCurrentTrack();
+    this.loadTrack(trackID);
 
-    const track = this.loadTrack(trackID);
+    const track = this.getTrack(trackID);
 
     if(!track) {
         return;
@@ -78,7 +118,7 @@ MusicPlayer.prototype.play = function(trackID) {
 
     switch(this.state) {
         case MusicPlayer.STATE.NONE: {
-            track.play();
+            track.play(this.volumeScale);
             break;
         }
         case MusicPlayer.STATE.MUTED: {
@@ -92,27 +132,9 @@ MusicPlayer.prototype.play = function(trackID) {
     console.log(`Now playing: ${trackID}`);
 }
 
-MusicPlayer.prototype.getShuffledPlaylist = function(playlist) {
-    const shuffledPlaylist = [];
-
-    for(let i = 0; i < playlist.length; i++) {
-        shuffledPlaylist.push(playlist[i]);
-    }
-
-    for(let i = shuffledPlaylist.length - 1; i >= 0; i--) {
-        const target = Math.floor(Math.random() * (i + 1));
-        const temp = shuffledPlaylist[i];
-
-        shuffledPlaylist[i] = shuffledPlaylist[target];
-        shuffledPlaylist[target] = temp;
-    }
-
-    return shuffledPlaylist;
-}
-
 MusicPlayer.prototype.forceStopCurrentTrack = function() {
     if(this.currentTrack) {
-        const track = this.loadedTracks.get(this.currentTrack);
+        const track = this.getTrack(this.currentTrack);
 
         this.previousTrack = this.currentTrack;
         this.currentTrack = null;
@@ -140,11 +162,11 @@ MusicPlayer.prototype.runPlaylist = function() {
 
     this.mode = MusicPlayer.MODE.PLAYLIST;
 
+    //While loop to prevent unloaded tracks from clogging up the pipeline.
     while(this.playlistIndex < this.currentPlaylist.length) {
         const trackID = this.currentPlaylist[this.playlistIndex];
 
         this.playlistIndex++;
-
         this.play(trackID);
 
         if(this.loadedTracks.has(trackID)) {
@@ -159,7 +181,7 @@ MusicPlayer.prototype.onTrackFinish = function(trackID) {
 
     switch(this.mode) {
         case MusicPlayer.MODE.SINGLE: {
-            const track = this.loadedTracks.get(trackID);
+            const track = this.getTrack(trackID);
 
             if(track.isLooping) {
                 this.play(trackID);
@@ -171,11 +193,9 @@ MusicPlayer.prototype.onTrackFinish = function(trackID) {
             const isCurrentPlaylistTrack = this.isCurrentPlaylistTrack(trackID);
 
             if(isCurrentPlaylistTrack) {
-                if(this.currentPlaylist.length !== 0 && this.playlistIndex === this.currentPlaylist.length) {
-                    const shuffledPlaylist = this.getShuffledPlaylist(this.currentPlaylist);
-        
+                if(this.playlistIndex === this.currentPlaylist.length) {
                     this.playlistIndex = 0;
-                    this.currentPlaylist = shuffledPlaylist;
+                    this.currentPlaylist = MusicPlayer.getShuffledPlaylist(this.currentPlaylist);
                 }
         
                 setTimeout(() => this.runPlaylist(), 0);
@@ -212,11 +232,9 @@ MusicPlayer.prototype.playPlaylist = function(playlistID) {
         return;
     }
 
-    const shuffledPlaylist = this.getShuffledPlaylist(playlist);
-
     this.stop();
     this.playlistIndex = 0;
-    this.currentPlaylist = shuffledPlaylist;
+    this.currentPlaylist = MusicPlayer.getShuffledPlaylist(playlist);
     this.runPlaylist();
 }
 
@@ -243,9 +261,9 @@ MusicPlayer.prototype.toggleMute = function() {
 
 MusicPlayer.prototype.unmute = function() {
     if(this.currentTrack) {
-        const track = this.loadedTracks.get(this.currentTrack);
+        const track = this.getTrack(this.currentTrack);
 
-        track.unmute();
+        track.unmute(this.volumeScale);
     }
 
     this.state = MusicPlayer.STATE.NONE;
@@ -253,7 +271,7 @@ MusicPlayer.prototype.unmute = function() {
 
 MusicPlayer.prototype.mute = function() {
     if(this.currentTrack) {
-        const track = this.loadedTracks.get(this.currentTrack);
+        const track = this.getTrack(this.currentTrack);
 
         track.mute();
     }
@@ -263,7 +281,7 @@ MusicPlayer.prototype.mute = function() {
 
 MusicPlayer.prototype.forward = function(seconds) {
     if(this.currentTrack) {
-        const track = this.loadedTracks.get(this.currentTrack);
+        const track = this.getTrack(this.currentTrack);
 
         track.audio.currentTime += seconds;
     }
@@ -271,7 +289,7 @@ MusicPlayer.prototype.forward = function(seconds) {
 
 MusicPlayer.prototype.backward = function(seconds) {
     if(this.currentTrack) {
-        const track = this.loadedTracks.get(this.currentTrack);
+        const track = this.getTrack(this.currentTrack);
         const time = track.audio.currentTime - seconds;
 
         if(time < 0) {
@@ -284,7 +302,7 @@ MusicPlayer.prototype.backward = function(seconds) {
 
 MusicPlayer.prototype.skip = function() {
     if(this.currentTrack) {
-        const track = this.loadedTracks.get(this.currentTrack);
+        const track = this.getTrack(this.currentTrack);
 
         track.reset();
         this.onTrackFinish(this.currentTrack);
@@ -293,7 +311,7 @@ MusicPlayer.prototype.skip = function() {
 
 MusicPlayer.prototype.restart = function() {
     if(this.currentTrack) {
-        const track = this.loadedTracks.get(this.currentTrack);
+        const track = this.getTrack(this.currentTrack);
 
         track.audio.currentTime = 0;
     }
@@ -301,7 +319,7 @@ MusicPlayer.prototype.restart = function() {
 
 MusicPlayer.prototype.pause = function() {
     if(this.currentTrack) {
-        const track = this.loadedTracks.get(this.currentTrack);
+        const track = this.getTrack(this.currentTrack);
 
         track.pause();
     }
@@ -309,7 +327,7 @@ MusicPlayer.prototype.pause = function() {
 
 MusicPlayer.prototype.resume = function() {
     if(this.currentTrack) {
-        const track = this.loadedTracks.get(this.currentTrack);
+        const track = this.getTrack(this.currentTrack);
 
         track.play();
     }
