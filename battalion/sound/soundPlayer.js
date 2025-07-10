@@ -1,8 +1,9 @@
 const SoundPlayer = function(soundList) {
-    this.volume = 1;
+    this.volumeScale = 1;
     this.soundList = soundList;
-    this.activeSounds = [];
+    this.loadedSounds = new Map();
     this.state = SoundPlayer.STATE.NONE;
+    this.createSounds(soundList);
 }
 
 SoundPlayer.STATE = {
@@ -10,10 +11,35 @@ SoundPlayer.STATE = {
     MUTED: 1
 };
 
-SoundPlayer.SOUND_ID = 0;
+SoundPlayer.prototype.createSounds = function(soundList) {
+    for(const soundID in soundList) {
+        const meta = soundList[soundID];
+        const { directory, source, volume } = meta;
+        const path = resolvePath(directory, source);
+        const sound = new SoundElement(path, volume);
+
+        this.loadedSounds.set(soundID, sound);
+    }
+}
+
+SoundPlayer.prototype.getSound = function(audioID) {
+    const sound = this.loadedSounds.get(audioID);
+
+    if(!sound) {
+        return null;
+    }
+
+    return sound;
+}
+
+SoundPlayer.prototype.setVolumeScale = function(scale) {
+    const clampedScale = clampValue(scale, 0, 2);
+
+    this.volumeScale = clampedScale;
+}
 
 SoundPlayer.prototype.playSound = function(audioID) {
-    const sound = this.loadAudio(audioID);
+    const sound = this.getSound(audioID);
 
     if(!sound) {
         return;
@@ -21,50 +47,16 @@ SoundPlayer.prototype.playSound = function(audioID) {
 
     switch(this.state) {
         case SoundPlayer.STATE.NONE: {
-            this.activeSounds.push(sound);
-            sound.play();
+            sound.play(this.volumeScale);
             break;
         }
         case SoundPlayer.STATE.MUTED: {
-            this.activeSounds.push(sound);
             sound.playSilent();
             break;
         }
     }
 
     console.log(`Playing ${audioID}`);
-}
-
-SoundPlayer.prototype.removeActiveAudio = function(audioID) {
-    for(let i = 0; i < this.activeSounds.length; i++) {
-        const { id, audio } = this.activeSounds[i];
-
-        if(audioID === id) {
-            audio.src = null;
-            this.activeSounds[i] = this.activeSounds[this.activeSounds.length - 1];
-            this.activeSounds.pop();
-            break;
-        }
-    }
-}
-
-SoundPlayer.prototype.loadAudio = function(audioID) {
-    const meta = this.soundList[audioID];
-
-    if(!meta) {
-        console.warn(`Sound ${audioID} does not exist!`);
-        return null;
-    }
-
-    const { directory, source, volume = this.volume } = meta;
-    const path = resolvePath(directory, source);
-    const audio = new Audio(path);
-    const soundID = SoundPlayer.SOUND_ID++;
-    const sound = new SoundElement(soundID, audio, volume, audioID);
-
-    audio.onended = () => this.removeActiveAudio(soundID);
-
-    return sound;
 }
 
 SoundPlayer.prototype.toggleMute = function() {
@@ -83,21 +75,11 @@ SoundPlayer.prototype.toggleMute = function() {
 }
 
 SoundPlayer.prototype.unmute = function() {
-    for(let i = 0; i < this.activeSounds.length; i++) {
-        const sound = this.activeSounds[i];
-
-        sound.unmute();
-    }
-
+    this.loadedSounds.forEach((sound) => sound.unmute(this.volumeScale));
     this.state = SoundPlayer.STATE.NONE;
 }
 
 SoundPlayer.prototype.mute = function() {
-    for(let i = 0; i < this.activeSounds.length; i++) {
-        const sound = this.activeSounds[i];
-
-        sound.mute();
-    }
-
+    this.loadedSounds.forEach((sound) => sound.mute());
     this.state = SoundPlayer.STATE.MUTED;
 }
