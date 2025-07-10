@@ -16,23 +16,24 @@ SpecialLevelsMenu.prototype.constructor = SpecialLevelsMenu;
 SpecialLevelsMenu.prototype.onLanguageSwitch = function(handler) {
     for(let i = 0; i < this.buttons.length; i++) {
         const button = this.buttons[i];
-        const textID = button.getTextID();
+        const textID = button.getInfo();
         const text = handler.get(textID);
 
         button.setText(text);
     }
 
-    this.updateDefaultText();
+    this.updateDefaultText(handler);
 }
 
-SpecialLevelsMenu.prototype.resetText = function() {
-    document.getElementById("Special Level Name").innerText = this.defaultLevelName;
-    document.getElementById("Special Level Description").innerText = this.defaultLevelDescription;
+SpecialLevelsMenu.prototype.setText = function(name, desc) {
+    document.getElementById("Special Level Name").innerText = name;
+    document.getElementById("Special Level Description").innerText = desc;
 }
 
 SpecialLevelsMenu.prototype.updateDefaultText = function(handler) {
     this.defaultLevelName = handler.get("SYSTEM_SPECIAL_LEVELS_NAME");
     this.defaultLevelDescription = handler.get("SYSTEM_SPECIAL_LEVELS_DESC");
+    this.setText(this.defaultLevelName, this.defaultLevelDescription);
 }
 
 SpecialLevelsMenu.prototype.hideLevels = function() {
@@ -44,8 +45,9 @@ SpecialLevelsMenu.prototype.hideLevels = function() {
     }
 }
 
-SpecialLevelsMenu.prototype.clickButton = function(button) {
-    this.resetText();
+SpecialLevelsMenu.prototype.clickButton = function(battalion, button) {
+    const { language } = battalion;
+
     this.hideLevels();
 
     const levels = button.getLevels();
@@ -59,7 +61,13 @@ SpecialLevelsMenu.prototype.clickButton = function(button) {
         element.src = "Assets/SpecialLevels/" + levels[i].Name + ".png";
     }
 
+    const name = language.get(button.getName());
+    const desc = language.get(button.getDesc());
+
+    this.setText(name, desc);
     this.currentCategory = levels;
+    //??? Secret Level :)
+    NivelVizat = Samara;
 }
 
 SpecialLevelsMenu.prototype.open = function() {
@@ -70,7 +78,7 @@ SpecialLevelsMenu.prototype.open = function() {
 }
 
 SpecialLevelsMenu.prototype.close = function() {
-    this.resetText();
+    this.setText(this.defaultLevelName, this.defaultLevelDescription);
     this.hideLevels();
     this.hide();
     this.currentCategory = [];
@@ -88,8 +96,6 @@ SpecialLevelsMenu.prototype.createButton = function(buttonID, config) {
     const button = new SpecialLevelsButton(buttonID, config);
 
     this.buttons.push(button);
-
-    button.addClick(() => this.clickButton(button));
 
     return button;
 }
@@ -130,8 +136,6 @@ SpecialLevelsMenu.prototype.createCloseButton = function(battalion) {
 }
 
 SpecialLevelsMenu.prototype.init = function(battalion) {
-    const { language } = battalion;
-
     this.createButton("BonusL1", SPECIAL_LEVELS.PLOT_EXPANSION);
     this.createButton("BonusL2", SPECIAL_LEVELS.SKIRMISHES);
     this.createButton("BonusL3", SPECIAL_LEVELS.CUTE);
@@ -142,8 +146,12 @@ SpecialLevelsMenu.prototype.init = function(battalion) {
     this.createButton("BonusL8", SPECIAL_LEVELS.ANIME);
     this.createButton("BonusL9", SPECIAL_LEVELS.GRAND);
 
+    for(let i = 0; i < this.buttons.length; i++) {
+        const button = this.buttons[i];
+
+        button.addClick(() => this.clickButton(battalion, button));
+    }
+
     this.createCloseButton(battalion);
     this.createLevelSelectButtons();
-    this.updateDefaultText(language);
-    this.resetText();
 }

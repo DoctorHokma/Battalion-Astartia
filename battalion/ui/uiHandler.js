@@ -14,6 +14,7 @@ UIHandler.prototype.init = function(battalion) {
     this.morale.init(battalion);
     this.specialOptions.init(battalion);
     this.specialLevels.init(battalion);
+
     this.onLanguageSwitch(battalion);
 }
 
