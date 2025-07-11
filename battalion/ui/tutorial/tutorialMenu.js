@@ -100,7 +100,7 @@ TutorialMenu.prototype.init = function(battalion) {
         this.close();
     });
 
-    UIHelpers.createGenericButton("PlayTutorialLevel", () => {
+    UIHelpers.makeGenericButton("PlayTutorialLevel", () => {
         if(this.selectedLevel) {
             initializeSpecialBattle(this.selectedLevel);
 

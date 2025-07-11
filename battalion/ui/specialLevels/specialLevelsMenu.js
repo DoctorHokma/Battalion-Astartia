@@ -134,7 +134,7 @@ SpecialLevelsMenu.prototype.init = function(battalion) {
         this.close();
     })
 
-    UIHelpers.createGenericButton("PlaySpecialLevel", () => {
+    UIHelpers.makeGenericButton("PlaySpecialLevel", () => {
         this.close();
 
         initializeSpecialBattle(NivelVizat);

@@ -1,5 +1,7 @@
 const Codex = function() {
 	GenericMenu.call(this, "Codex");
+
+	this.closeButton = UIHelpers.createGenericButton("CLOSE_CODEX_BUTTON");
 }
 
 Codex.DOCUMENT_SIZES = [
@@ -78,14 +80,14 @@ Codex.prototype.resetInfo = function(handler) {
 	const loreName = document.getElementById("LoreName");
 	const loreDesc = document.getElementById("LoreDesc");
 	const loreLength = document.getElementById("LoreLength");
-	const loreClose = document.getElementById("LoreClose");
 	const lorePanel = document.getElementById("LorePanel");
 
 	loreName.innerHTML = handler.get("CODEX_INFO_NAME");
 	loreDesc.innerHTML = handler.get("CODEX_INFO_DESC");
 	loreLength.innerHTML = handler.get("CODEX_INFO_LENGTH");
-	loreClose.innerHTML = handler.get("CODEX_INFO_CLOSE");
 	lorePanel.innerHTML = "";
+
+	this.closeButton.setText(handler.get("CODEX_INFO_CLOSE"))
 }
 
 Codex.prototype.createLengthIcon = function(iconID) {
@@ -157,7 +159,7 @@ Codex.prototype.init = function(battalion) {
 	this.resetIcons();
 	this.resetInfo(language);
 
-	UIHelpers.createGenericButton("CodexCloseButton", () => {
+	this.closeButton.addClick(() => {
 		this.resetIcons();
 		this.resetInfo(language);
 		this.hide();

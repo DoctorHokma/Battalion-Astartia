@@ -1019,16 +1019,16 @@
 
 		<div id="Special Levels" style="position:absolute; visibility:hidden; left:210px">
 			<div style="position: absolute;">
-				<img id="Special Bloc Panel" src="Assets/Miscellaneous/Special Bloc Panel.png"/>
-				<div id="BonusL1" style="top:10px"></div>
-				<div id="BonusL2" style="top:45px"></div>
-				<div id="BonusL3" style="top:80px"></div>
-				<div id="BonusL4" style="top:115px"></div>
-				<div id="BonusL5" style="top:150px"></div>
-				<div id="BonusL6" style="top:185px"></div>
-				<div id="BonusL7" style="top:220px"></div>
-				<div id="BonusL8" style="top:255px"></div>
-				<div id="BonusL9" style="top:290px"></div>
+				<img id="Special Bloc Panel" style="position: absolute;" src="Assets/Miscellaneous/Special Bloc Panel.png"/>
+				<div id="BonusL1" style="margin-top: 10px;"></div>
+				<div id="BonusL2"></div>
+				<div id="BonusL3"></div>
+				<div id="BonusL4"></div>
+				<div id="BonusL5"></div>
+				<div id="BonusL6"></div>
+				<div id="BonusL7"></div>
+				<div id="BonusL8"></div>
+				<div id="BonusL9"></div>
 			</div>
 
 			<div style="position: absolute; left:140px">
@@ -1113,41 +1113,72 @@
 			</div>
 		</div>
 
-		<div id="Codex" style="position:absolute; visibility:hidden; z-index:6; width:700px; height:560px; left:280px; top:10px">
-			<div style="position: absolute; top:0px; left:0px; height: 665px; width:210px; overflow-y:scroll;">
-				<img style="position: fixed;" src="Assets/Miscellaneous/LoreSelectionPanel.png"/>
-				<div id="CODEX_JOKES" style="top:35px;"></div>
-				<div id="CODEX_SPECIAL_UNITS" style="top:70px;"></div>
-				<div id="CODEX_SPECIAL_ARMOR" style="top:105px;"></div>
-				<div id="CODEX_SPECIAL_AIRCRAFT" style="top:140px;"></div>
-				<div id="CODEX_SPECIAL_SHIPS" style="top:175px;"></div>
-				<div id="CODEX_THIS_WORLD" style="top:210px;"></div>
-				<div id="CODEX_IT_HAPPENED" style="top:245px;"></div>
-				<div id="CODEX_1" style="top:280px;"></div>
-				<div id="CODEX_2" style="top:315px;"></div>
-				<div id="CODEX_3" style="top:350px;"></div>
-				<div id="CODEX_4" style="top:385px;"></div>
-				<div id="CODEX_5" style="top:420px;"></div>
-				<div id="CODEX_6" style="top:455px;"></div>
-				<div id="CODEX_7" style="top:490px;"></div>
-				<div id="CODEX_8" style="top:525px;"></div>
-				<div id="CODEX_9" style="top:560px;"></div>
-				<div id="CODEX_10" style="top:595px;"></div>
-				<div id="CODEX_11" style="top:630px;"></div>
-				<div id="CODEX_12" style="top:665px;"></div>
-				<div id="CODEX_13" style="top:700px;"></div>
-				<div id="CODEX_OPERATION_TZIMTZUM" style="top:735px;"></div>
-				<div id="CODEX_OPERATION_GOLCHAB" style="top:770px;"></div>
-				<div id="CODEX_OPERATION_GHAAG_SHEBLAH" style="top:805px;"></div>
-				<div id="CODEX_OPERATION_OHR_EIN_ZOF" style="top:840px;"></div>
-				<div id="CODEX_OPERATION_SAMSON" style="top:875px;"></div>
-				<div id="CODEX_OPERATION_THAUMIEL" style="top:910px;"></div>
-				<div id="CODEX_WAR_PLAN_ARMAGEDDON" style="top:945px;"></div>
+		<div id="Tutorial Levels" style="position:absolute; visibility:hidden; left:210px">
+			<div style="position: absolute;">
+				<img id="Tutorial Bloc Panel" style="position: absolute;" src="Assets/Miscellaneous/Special Bloc Panel.png"/>
+				<div id="Tutorial1" style="margin-top: 10px;"></div>
+				<div id="Tutorial2"></div>
+				<div id="Tutorial3"></div>
+				<div id="Tutorial4"></div>
+				<div id="Tutorial5"></div>
+				<div id="Tutorial6"></div>
+				<div id="Tutorial7"></div>
+				<div id="Tutorial8"></div>
+				<div id="Tutorial9"></div>
+				<div id="Tutorial10"></div>
+			</div>
+
+			<div style="position: absolute; left:140px">
+				<img src="Assets/Miscellaneous/Special Level Panel.png"/>
+				<img id="Tutorial" style="position: absolute; top: 14px; left: 14px; width:532px; height:532px"/>
+				<p id="Tutorial Level Name" style="position: absolute; top:546px; width:560px; height:10px; text-align: center;"></p>
+				<p id="Tutorial Level Description" style="position: absolute; top:574px; width:560px; height:100px; text-align: center;"></p>
+			</div>
+
+			<div style="position: absolute; left:700px">
+				<img src="Assets/Miscellaneous/Special Aux Panel.png"/>
+				<img id="PlayTutorialLevel" style="position: absolute; top:50px; left:100px;"/>
+				<p id="PlayTutorialP" style="pointer-events: none; position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;"></p>
+				<img id="CLOSE_TUTORIAL" style="position: absolute; top:140px; left:100px;"/>
+			</div>
+		</div>
+
+		<div id="Codex" class="codex">
+			<img style="position:absolute;" src="Assets/Miscellaneous/LoreSelectionPanel.png"/>
+
+			<div class="codex_scroll_container">
+				<div id="CODEX_JOKES" style="margin-top: 0px;"></div>
+				<div id="CODEX_SPECIAL_UNITS"></div>
+				<div id="CODEX_SPECIAL_ARMOR"></div>
+				<div id="CODEX_SPECIAL_AIRCRAFT"></div>
+				<div id="CODEX_SPECIAL_SHIPS"></div>
+				<div id="CODEX_THIS_WORLD"></div>
+				<div id="CODEX_IT_HAPPENED"></div>
+				<div id="CODEX_1"></div>
+				<div id="CODEX_2"></div>
+				<div id="CODEX_3"></div>
+				<div id="CODEX_4"></div>
+				<div id="CODEX_5"></div>
+				<div id="CODEX_6"></div>
+				<div id="CODEX_7"></div>
+				<div id="CODEX_8"></div>
+				<div id="CODEX_9"></div>
+				<div id="CODEX_10"></div>
+				<div id="CODEX_11"></div>
+				<div id="CODEX_12"></div>
+				<div id="CODEX_13"></div>
+				<div id="CODEX_OPERATION_TZIMTZUM"></div>
+				<div id="CODEX_OPERATION_GOLCHAB"></div>
+				<div id="CODEX_OPERATION_GHAAG_SHEBLAH"></div>
+				<div id="CODEX_OPERATION_OHR_EIN_ZOF"></div>
+				<div id="CODEX_OPERATION_SAMSON"></div>
+				<div id="CODEX_OPERATION_THAUMIEL"></div>
+				<div id="CODEX_WAR_PLAN_ARMAGEDDON"></div>
 			</div>
 
 			<div style="position: absolute; left:210px; width:560px; height: 700px">
 				<img style="position: absolute" src="Assets/Miscellaneous/LorePanel.png">
-				<p id="LorePanel" style="position: absolute; top: 105px; left:7px; width:525px; height:420px; color:#ccff99; text-align:center; overflow-y:scroll;"></p>
+				<p id="LorePanel" style="position:absolute; top: 105px; left:7px; width:525px; height:420px; color:#ccff99; text-align:center; overflow-y:scroll;"></p>
 				<p id="LoreName" style="position:absolute; top:546px; width:560px; height:21px; text-align: center;"></p>
 				<p id="LoreDesc" style="position:absolute; top:574px; width:525px; height:210px; left:15px; text-align: center;"></p>
 				<p id="LoreLength" style="position:absolute; top:-4px; left: 4px; width:350px; text-align:center;"></p>
@@ -1156,11 +1187,7 @@
 				<img id="LoreLengthIcon3" style="position:absolute; top:35px; left:154px"/>
 				<img id="LoreLengthIcon4" style="position:absolute; top:35px; left:224px"/>
 				<img id="LoreLengthIcon5" style="position:absolute; top:35px; left:294px"/>
-
-				<div style="position:absolute; left: 385px; top: 35px; text-align:center;">
-					<img id="CodexCloseButton" src="Assets/Miscellaneous/GenericButton.png"/>
-					<p id="LoreClose" style="pointer-events: none; position: absolute; width:80px; height:35px; top:7px; left:23px"></p>
-				</div>
+				<div id="CLOSE_CODEX_BUTTON" style="left: 385px; top: 35px;"></div>
 			</div>
 		</div>
 
@@ -1205,36 +1232,6 @@
 			<p style="position:relative; top:100px">But seriously, this game gets pretty hardcore. If you're a bitch, don't play it</p>
 			<p style="position:absolute; top:400px; color: yellow"> Any attempt to sell this game is idiotic, this game is free. 0$. Nada. Niente. Only Task Force Tucker and those authorized are allowed to share this game, the others will be hunted. Do not test my patience if you don't want your ass to be fucked.</p>
 			<button style="position:absolute; left:140px; top:500px" onclick="Disclaimer.pause(); document.getElementById('Disclaimer').style.visibility='hidden'; CallPreloader()">I promise not to steal, otherwise my butt is ready for surprise sex</button>
-		</div>
-
-		<div id="Tutorial Levels" style="position:absolute; visibility:hidden; left:210px">
-			<div style="position: absolute;">
-				<img id="Tutorial Bloc Panel" src="Assets/Miscellaneous/Special Bloc Panel.png"/>
-				<div id="Tutorial1" style="top: 10px;"></div>
-				<div id="Tutorial2" style="top: 45px;"></div>
-				<div id="Tutorial3" style="top: 80px;"></div>
-				<div id="Tutorial4" style="top: 115px;"></div>
-				<div id="Tutorial5" style="top: 150px;"></div>
-				<div id="Tutorial6" style="top: 185px;"></div>
-				<div id="Tutorial7" style="top: 220px;"></div>
-				<div id="Tutorial8" style="top: 255px;"></div>
-				<div id="Tutorial9" style="top: 290px;"></div>
-				<div id="Tutorial10" style="top: 325px;"></div>
-			</div>
-
-			<div style="position: absolute; left:140px">
-				<img id="Tutorial Level Panel" src="Assets/Miscellaneous/Special Level Panel.png"/>
-				<img id="Tutorial" style="position: absolute; top: 14px; left: 14px; width:532px; height:532px"/>
-				<p id="Tutorial Level Name" style="position: absolute; top:546px; width:560px; height:10px; text-align: center;"></p>
-				<p id="Tutorial Level Description" style="position: absolute; top:574px; width:560px; height:100px; text-align: center;"></p>
-			</div>
-
-			<div style="position: absolute; left:700px">
-				<img id="Tutorial Level Aux Panel" src="Assets/Miscellaneous/Special Aux Panel.png"/>
-				<img id="PlayTutorialLevel" style="position: absolute; top:50px; left:100px;"/>
-				<p id='PlayTutorialP' style="pointer-events: none; position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;"></p>
-				<img id="CLOSE_TUTORIAL" style="position: absolute; top:140px; left:100px;"/>
-			</div>
 		</div>
 
 		<div id="CampaignSelectionScreen" style="position: absolute; visibility:hidden; width:1000px; height:640px; z-index:7; left: 182px; top: 0px; background-color:#404040">	

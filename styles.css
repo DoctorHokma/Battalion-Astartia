@@ -7,12 +7,12 @@ body {
 .main_menu {
     position: absolute;
     visibility: visible;
+    margin: auto;
+    width: 70px;
+    height: 70px;
     top: 10px;
     left: 325px;
-    height: 70px;
-    width: 70px;
     z-index: 5;
-    margin: auto;
 }
 
 .main_menu_image {
@@ -35,9 +35,11 @@ body {
 
 .main_menu_button_text {
     position: relative;
+    pointer-events: none;
     text-align: center;
-    margin-top: 19%;
     color: black;
+    margin: 0px;
+    top: 23px;
 }
 
 .credits_text {
@@ -47,38 +49,77 @@ body {
     color: black;
 }
 
-.codex_button {
-    text-align: center;
-    z-index: 7;
+.codex {
     position: absolute;
-    left: 45px; 
+    visibility: hidden;
+    width: 700px;
+    height: 560px;
+    top: 10px;
+    left: 280px;
+}
+
+.codex_scroll_container {
+    position: absolute;
+    overflow-y: auto;
+    width: 126px;
+    height: 605px;
+    top: 45px;
+    left: 45px;
+}
+
+.codex_button {
+    position: relative;
+    margin-top: 10px;
+    width: 126px;
+    height: 31px;
+}
+
+.codex_button_image {
+    position: absolute;
 }
 
 .codex_button_text {
-    position: absolute;
-    top: -10px;
-    width: 126px;
-    height: 35px;
-    z-index: 8;
+    position: relative;
+    text-align: center;
     font-size: 12px;
-    line-height: 28px;
+    margin: 0px;
+    top: 8px;
 }
 
-.bonus_button {
-    position: absolute;
+.block_button {
+    position: relative;
+    margin-top: 2px;
     width: 126px;
     height: 31px;
     left: 7px;
 }
 
-.bonus_button_text {
-    position: relative;
-    width: 126px;
-    height: 31px;
-    top: -45px;
-    text-align: center;
+.block_button_image {
+    position: absolute;
 }
 
-.bonus_button_image {
+.block_button_text {
     position: relative;
+    text-align: center;
+    pointer-events: none;
+    margin: 0px;
+    top: 5px;
+}
+
+.generic_button {
+    position: absolute;
+    width: 126px;
+    height: 71px;
+}
+
+.generic_button_image {
+    position: absolute;
+}
+
+.generic_button_text {
+    position: relative;
+    text-align: center;
+    pointer-events: none;
+    margin: 0px;
+    top: 23px;
 }

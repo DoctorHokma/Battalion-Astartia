@@ -5,6 +5,7 @@ const CodexButton = function(id, textID) {
     this.setImage("Assets/Miscellaneous/LongPlaque.png");
     this.setText(textID);
     this.addMainClass("codex_button");
+    this.addImageClass("codex_button_image");
     this.addTextClass("codex_button_text");
 }
 
