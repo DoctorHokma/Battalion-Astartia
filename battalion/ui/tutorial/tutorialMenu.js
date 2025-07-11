@@ -1,10 +1,9 @@
-var TutorialLevel = 0;
-
 const TutorialMenu = function() {
     GenericMenu.call(this, "Tutorial Levels");
 
     this.defaultLevelName = "";
     this.defaultLevelDescription = "";
+    this.selectedLevel = null;
 }
 
 TutorialMenu.prototype = Object.create(GenericMenu.prototype);
@@ -34,16 +33,14 @@ TutorialMenu.prototype.updateDefaultText = function(handler) {
 
 TutorialMenu.prototype.open = function() {
     this.show();
-
-    TutorialLevel = 0;
+    this.selectedLevel = null;
 }
 
 TutorialMenu.prototype.close = function() {
     this.setText(this.defaultLevelName, this.defaultLevelDescription);
     this.hideImage();
     this.hide();
-
-    TutorialLevel = 0;
+    this.selectedLevel = null;
 }
 
 TutorialMenu.prototype.createButton = function(buttonID, config) {
@@ -74,8 +71,7 @@ TutorialMenu.prototype.clickButton = function(battalion, button) {
     this.setText(language.get(name), language.get(desc));
     this.setImage(image);
     this.showImage();
-
-    TutorialLevel = level;
+    this.selectedLevel = level;
 }
 
 TutorialMenu.prototype.init = function(battalion) {
@@ -102,5 +98,13 @@ TutorialMenu.prototype.init = function(battalion) {
     UIHelpers.createCloseButton("CLOSE_TUTORIAL", () => {
         mainMenu.show();
         this.close();
+    });
+
+    UIHelpers.createGenericButton("PlayTutorialLevel", () => {
+        if(this.selectedLevel) {
+            initializeSpecialBattle(this.selectedLevel);
+
+            this.close();
+        }
     });
 }

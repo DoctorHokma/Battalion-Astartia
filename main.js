@@ -7470,8 +7470,6 @@ CallPreloader();
 //GeneralInitializer();
 
 //document.getElementById('EditorP1').oncontextmenu=function(){EditorMap=Kaula;RefreshMapEditor()};
-//
-//initializeSpecialBattle(TutorialLevel3);
 //initializeSpecialBattle(Samara); 
 
 //This protocol shall disable MapEditor paraphernalia and allow the pilfering of a giant(14000*5600) map, later to be shrunk to 1400*560.

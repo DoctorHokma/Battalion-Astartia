@@ -1048,8 +1048,8 @@
 
 			<div style="position: absolute; left:700px">
 				<img id="Special Level Aux Panel" src="Assets/Miscellaneous/Special Aux Panel.png"/>
-				<img id="PlaySpecialLevel" style="position: absolute; top:50px; left:100px;" src="Assets/Miscellaneous/GenericButton.png" onmouseover="this.src='Assets/Miscellaneous/GenericButtonHovered.png'" onmouseout="this.src='Assets/Miscellaneous/GenericButton.png'" onclick="this.src='Assets/Miscellaneous/GenericButtonPressed.png'; battalion.uiHandler.specialLevels.close(); initializeSpecialBattle(NivelVizat);" />
-				<p id="PlayBonusP" style="position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;" onmouseover="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonHovered.png'" onmouseout="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButton.png'" onclick="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonPressed.png' ;battalion.uiHandler.specialLevels.close(); initializeSpecialBattle(NivelVizat);" >Play</p>
+				<img id="PlaySpecialLevel" style="position: absolute; top:50px; left:100px;"/>
+				<p id="PlayBonusP" style="pointer-events: none; position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;"></p>
 				<img id="CLOSE_SPECIAL_LEVELS" style="position: absolute; top:140px; left:100px;"/>
 				
 				<div style="position:absolute; top:350px; left:0px">
@@ -1231,8 +1231,8 @@
 
 			<div style="position: absolute; left:700px">
 				<img id="Tutorial Level Aux Panel" src="Assets/Miscellaneous/Special Aux Panel.png"/>
-				<img id="PlaySpecialLevel" style="position: absolute; top:50px; left:100px;" src="Assets/Miscellaneous/GenericButton.png" onmouseover="this.src='Assets/Miscellaneous/GenericButtonHovered.png'" onmouseout="this.src='Assets/Miscellaneous/GenericButton.png'" onclick="this.src='Assets/Miscellaneous/GenericButtonPressed.png' ;if(TutorialLevel!=0){initializeSpecialBattle(TutorialLevel); battalion.uiHandler.tutorial.close();};" />
-				<p id='PlayTutorialP' style="position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;" onmouseover="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonHovered.png'" onmouseout="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButton.png'" onclick="document.getElementById('PlaySpecialLevel').src='Assets/Miscellaneous/GenericButtonPressed.png' ;if(TutorialLevel!=0){initializeSpecialBattle(TutorialLevel); battalion.uiHandler.tutorial.close();};" >Play</p>
+				<img id="PlayTutorialLevel" style="position: absolute; top:50px; left:100px;"/>
+				<p id='PlayTutorialP' style="pointer-events: none; position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;"></p>
 				<img id="CLOSE_TUTORIAL" style="position: absolute; top:140px; left:100px;"/>
 			</div>
 		</div>

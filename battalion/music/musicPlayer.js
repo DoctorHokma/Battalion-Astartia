@@ -1,5 +1,5 @@
 const MusicPlayer = function(trackList, playlists) {
-    this.volumeScale = 1;
+    this.volumeScale = 0.2;
     this.trackList = trackList;
     this.playlists = playlists;
     this.loadedTracks = new Map();
