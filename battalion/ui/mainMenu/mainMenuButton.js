@@ -5,9 +5,14 @@ const MainMenuButton = function(id, textID) {
     this.state = MainMenuButton.STATE.ENABLED;
     this.setText(textID);
     this.setImage("Assets/Miscellaneous/GenericButton.png");
-    this.addTextClass("main_menu_button_text");
-    this.addImageClass("main_menu_button_image");
+
+    this.addMainClass("generic_button");
+    this.addImageClass("generic_button_image");
+    this.addTextClass("generic_button_text");
+
     this.addMainClass("main_menu_button");
+    this.addImageClass("main_menu_button_image");
+    this.addTextClass("main_menu_button_text");
 }
 
 MainMenuButton.STATE = {

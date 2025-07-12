@@ -4,6 +4,13 @@ body {
     overflow: hidden;
 }
 
+.credits_text {
+    position: relative;
+    text-align: center;
+    margin-bottom: 0px;
+    color: black;
+}
+
 .main_menu {
     position: absolute;
     visibility: visible;
@@ -22,24 +29,14 @@ body {
     left: -8px;
 }
 
-.main_menu_button {
-    position: absolute;
+.generic_button.main_menu_button {
     z-index: 1;
-    width: 126px;
-    height: 71px;
 }
 
-.main_menu_button_image {
-    position: absolute;
-}
+.generic_button_image.main_menu_button_image {}
 
-.main_menu_button_text {
-    position: relative;
-    pointer-events: none;
-    text-align: center;
-    color: black;
-    margin: 0px;
-    top: 23px;
+.generic_button_text.main_menu_button_text {
+    color: #222;
 }
 
 .options_button {
@@ -53,13 +50,6 @@ body {
     position: absolute;
     top: 7px;
     left: 28px;
-}
-
-.credits_text {
-    position: relative;
-    text-align: center;
-    margin-bottom: 0px;
-    color: black;
 }
 
 .codex {
@@ -80,41 +70,40 @@ body {
     left: 45px;
 }
 
-.codex_button {
-    position: relative;
+.block_button.codex_button {
     margin-top: 10px;
-    width: 126px;
-    height: 31px;
 }
 
-.codex_button_image {
-    position: absolute;
-}
+.block_button_image.codex_button_image {}
 
-.codex_button_text {
-    position: relative;
-    text-align: center;
+.block_button_text.codex_button_text {
     font-size: 12px;
-    margin: 0px;
     top: 8px;
 }
 
-.tutorial_button,
-.bonus_button {
-    position: relative;
+.block_button.tutorial_button,
+.block_button.bonus_button {
     margin-top: 2px;
-    width: 126px;
-    height: 31px;
     left: 7px;
 }
 
-.tutorial_button_image,
-.bonus_button_image {
+.block_button_image.tutorial_button_image,
+.block_button_image.bonus_button_image {}
+
+.block_button_text.tutorial_button_text,
+.block_button_text.bonus_button_text {}
+
+.block_button {
+    position: relative;
+    width: 126px;
+    height: 31px;
+}
+
+.block_button_image {
     position: absolute;
 }
 
-.tutorial_button_text,
-.bonus_button_text {
+.block_button_text {
     position: relative;
     text-align: center;
     pointer-events: none;
