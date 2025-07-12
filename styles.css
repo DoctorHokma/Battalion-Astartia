@@ -42,6 +42,19 @@ body {
     top: 23px;
 }
 
+.options_button {
+    position: absolute;
+    width: 105px;
+    height: 58px;
+    text-align: center;
+}
+
+.options_button_image_inner {
+    position: absolute;
+    top: 7px;
+    left: 28px;
+}
+
 .credits_text {
     position: relative;
     text-align: center;
@@ -86,7 +99,8 @@ body {
     top: 8px;
 }
 
-.block_button {
+.tutorial_button,
+.bonus_button {
     position: relative;
     margin-top: 2px;
     width: 126px;
@@ -94,11 +108,13 @@ body {
     left: 7px;
 }
 
-.block_button_image {
+.tutorial_button_image,
+.bonus_button_image {
     position: absolute;
 }
 
-.block_button_text {
+.tutorial_button_text,
+.bonus_button_text {
     position: relative;
     text-align: center;
     pointer-events: none;

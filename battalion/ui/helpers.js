@@ -1,6 +1,6 @@
 const UIHelpers = {};
 
-UIHelpers.createCloseButton = function(buttonID, onClick) {
+UIHelpers.makeCloseButton = function(buttonID, onClick) {
     const element = document.getElementById(buttonID);
 
     element.src = "Assets/Miscellaneous/CloseButton.png";

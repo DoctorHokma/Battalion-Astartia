@@ -2,6 +2,7 @@ const LANGUAGE_ENGLISH = {
 	"LANGUAGE_CREATOR_COMMENT": "Suck it, bri'ish people; USA is now the symbol of english language",
     "LANGUAGE_DEFAULT_COMMENT": "Suck it, bri'ish people; USA is now the symbol of english language",
 
+	"SYSTEM_BUTTON_CLOSE": "Close",
 	"SYSTEM_BUTTON_CAMPAIGN": "Campaign",
 	"SYSTEM_BUTTON_BOOT_CAMP": "Tutorial",
 	"SYSTEM_BUTTON_CONTINUE": "Load",
@@ -138,7 +139,6 @@ const LANGUAGE_ENGLISH = {
 	"CODEX_INFO_NAME": "Name",
 	"CODEX_INFO_DESC": "Description",
 	"CODEX_INFO_LENGTH": "Document",
-	"CODEX_INFO_CLOSE": "Close",
 	
 	"CODEX_BUTTON_EMPTY": "???",
 	"CODEX_BUTTON_JOKES": "Jokes",

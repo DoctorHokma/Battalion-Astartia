@@ -4,15 +4,19 @@ var MystSettChoice = false;
 
 const OptionsMenu = function() {
     GenericMenu.call(this, "Options");
+
+    this.closeButton = UIHelpers.createGenericButton("CloseOptionsButton");
 }
 
 OptionsMenu.prototype = Object.create(GenericMenu.prototype);
 OptionsMenu.prototype.constructor = OptionsMenu;
 
+OptionsMenu.prototype.onLanguageSwitch = function(handler) {
+    this.closeButton.setText(handler.get("SYSTEM_BUTTON_CLOSE"));
+}
+
 OptionsMenu.prototype.createButton = function(buttonID) {
     const button = new OptionsButton(buttonID);
-
-    button.init();
 
     this.buttons.push(button);
 
@@ -22,27 +26,25 @@ OptionsMenu.prototype.createButton = function(buttonID) {
 OptionsMenu.prototype.init = function(battalion) {
     const { soundPlayer, musicPlayer } = battalion;
 
-    UIHelpers.createCloseButton("CloseOptionsButton", () => {
-        this.hide();
-    });
-
     this.createButton("OPTION_LANGUAGE")
+    .setSources("Assets/Miscellaneous/LanguageButton.png", null)
     .addClick(() => {
         document.getElementById("LanguageSelectionPanel").style.visibility = "visible";
     });
     
     this.createButton("OPTION_SOUND")
     .setTooltip("TOOLTIP_OPTION_SOUND")
-    .addClick(() => {
+    .setSources("Assets/Miscellaneous/SoundOn.png", "Assets/Miscellaneous/SoundOff.png")
+    .addClick((button) => {
         const state = soundPlayer.toggleMute();
 
         switch(state) {
             case SoundPlayer.STATE.NONE: {
-                document.getElementById("ToggleSound").src = "Assets/Miscellaneous/SoundOn.png";
+                button.enable();
                 break;
             }
             case SoundPlayer.STATE.MUTED: {
-                document.getElementById("ToggleSound").src = "Assets/Miscellaneous/SoundOff.png";
+                button.disable();
                 break;
             }
         }
@@ -50,16 +52,17 @@ OptionsMenu.prototype.init = function(battalion) {
 
     this.createButton("OPTION_MUSIC")
     .setTooltip("TOOLTIP_OPTION_MUSIC")
-    .addClick(() => {
+    .setSources("Assets/Miscellaneous/MusicOn.png", "Assets/Miscellaneous/MusicOff.png")
+    .addClick((button) => {
         const state = musicPlayer.toggleMute();
 
         switch(state) {
             case MusicPlayer.STATE.NONE: {
-                document.getElementById("ToggleMusic").src = "Assets/Miscellaneous/MusicOn.png";
+                button.enable();
                 break;
             }
             case MusicPlayer.STATE.MUTED: {
-                document.getElementById("ToggleMusic").src = "Assets/Miscellaneous/MusicOff.png";
+                button.disable();
                 break;
             }
         }
@@ -67,32 +70,36 @@ OptionsMenu.prototype.init = function(battalion) {
 
     this.createButton("OPTION_DIALOGUE")
     .setTooltip("TOOLTIP_OPTION_DIALOGUE")
-    .addClick(() => {
+    .setSources("Assets/Miscellaneous/DialogueOn.png", "Assets/Miscellaneous/DialogueOff.png")
+    .addClick((button) => {
 		DialogueChoice = !DialogueChoice;
 		
         if(DialogueChoice) {
-            document.getElementById("ToggleDialogue").src = "Assets/Miscellaneous/DialogueOn.png"
+            button.enable();
         } else {
-            document.getElementById("ToggleDialogue").src = "Assets/Miscellaneous/DialogueOff.png"
+            button.disable();
 			document.getElementById("DialogueBox").style.visibility = "hidden";
 		}
     });
 
     this.createButton("OPTION_IDLE")
     .setTooltip("TOOLTIP_OPTION_IDLE_ANIMATIONS")
-    .addClick(() => {
+    .setSources("Assets/Miscellaneous/IdleAnimOn.png", "Assets/Miscellaneous/IdleAnimOff.png")
+    .addClick((button) => {
         IdleAnimChoice = !IdleAnimChoice;
 		
         if(IdleAnimChoice) {
-            document.getElementById("ToggleIdleAnimations").src = "Assets/Miscellaneous/IdleAnimOn.png"
+            button.enable();
         } else {
-            document.getElementById("ToggleIdleAnimations").src = "Assets/Miscellaneous/IdleAnimOff.png"
+            button.disable();
         }
     });
 
     this.createButton("OPTION_MYSTERY")
     .setTooltip("TOOLTIP_OPTION_MYSTERY")
-    .addClick(() => {
+    .setSources("Assets/Miscellaneous/MysteriousSettingOn.png", "Assets/Miscellaneous/MysteriousSettingOff.png")
+    .disable()
+    .addClick((button) => {
 		MystSettChoice = !MystSettChoice;
 
         if(MystSettChoice) {
@@ -102,7 +109,7 @@ OptionsMenu.prototype.init = function(battalion) {
                 Units[o].Speed = ZAPPY;
             }
 
-            document.getElementById("ToggleMysteriousSetting").src = "Assets/Miscellaneous/MysteriousSettingOn.png";
+            button.enable();
             document.getElementById("Diff1Text").style.top = "30px";
             document.getElementById("Diff2Text").style.top = "67px";
             document.getElementById("Diff3Text").style.top = "104px";
@@ -110,7 +117,7 @@ OptionsMenu.prototype.init = function(battalion) {
             document.getElementById("Diff2Text").innerHTML = "Keanu Reeves";
             document.getElementById("Diff3Text").innerHTML = "Chuck Norris";
         } else {
-            document.getElementById("ToggleMysteriousSetting").src = "Assets/Miscellaneous/MysteriousSettingOff.png";
+            button.disable();
             document.getElementById("Diff1Text").style.top = "41px";
             document.getElementById("Diff2Text").style.top = "78px";
             document.getElementById("Diff3Text").style.top = "115px";
@@ -118,5 +125,9 @@ OptionsMenu.prototype.init = function(battalion) {
             document.getElementById("Diff2Text").innerHTML = Language.SystemTerms[142];
             document.getElementById("Diff3Text").innerHTML = Language.SystemTerms[143];
         }
+    });
+
+   this.closeButton.addClick(() => {
+        this.hide();
     });
 }

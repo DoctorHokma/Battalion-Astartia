@@ -3,9 +3,9 @@ const TutorialButton = function(id, config) {
 
     this.setText(config.info);
     this.setImage("Assets/Miscellaneous/LongPlaque.png");
-    this.addImageClass("block_button_image");
-    this.addTextClass("block_button_text");
-    this.addMainClass("block_button");
+    this.addImageClass("tutorial_button_image");
+    this.addTextClass("tutorial_button_text");
+    this.addMainClass("tutorial_button");
 }
 
 TutorialButton.prototype = Object.create(GenericButton.prototype);

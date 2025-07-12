@@ -6,6 +6,7 @@ const SpecialLevelsMenu = function() {
     this.currentCategory = [];
     this.defaultLevelName = "";
     this.defaultLevelDescription = "";
+    this.closeButton = UIHelpers.createGenericButton("CLOSE_SPECIAL_LEVELS");
 }
 
 SpecialLevelsMenu.MAX_LEVELS_PER_PAGE = 9;
@@ -22,6 +23,7 @@ SpecialLevelsMenu.prototype.onLanguageSwitch = function(handler) {
     }
 
     this.updateDefaultText(handler);
+    this.closeButton.setText(handler.get("SYSTEM_BUTTON_CLOSE"));
 }
 
 SpecialLevelsMenu.prototype.setText = function(name, desc) {
@@ -129,7 +131,7 @@ SpecialLevelsMenu.prototype.init = function(battalion) {
 
     this.createLevelSelectButtons();
 
-    UIHelpers.createCloseButton("CLOSE_SPECIAL_LEVELS", () => {
+    this.closeButton.addClick(() => {
         mainMenu.show();
         this.close();
     })

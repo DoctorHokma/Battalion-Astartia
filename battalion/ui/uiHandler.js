@@ -27,4 +27,5 @@ UIHandler.prototype.onLanguageSwitch = function(battalion) {
     this.codex.onLanguageSwitch(language);
     this.specialLevels.onLanguageSwitch(language);
     this.tutorial.onLanguageSwitch(language);
+    this.options.onLanguageSwitch(language);
 }

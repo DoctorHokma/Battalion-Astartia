@@ -87,7 +87,7 @@ Codex.prototype.resetInfo = function(handler) {
 	loreLength.innerHTML = handler.get("CODEX_INFO_LENGTH");
 	lorePanel.innerHTML = "";
 
-	this.closeButton.setText(handler.get("CODEX_INFO_CLOSE"))
+	this.closeButton.setText(handler.get("SYSTEM_BUTTON_CLOSE"));
 }
 
 Codex.prototype.createLengthIcon = function(iconID) {

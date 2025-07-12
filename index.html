@@ -914,58 +914,35 @@
 
 		<div id="Options" style="position:relative; visibility:hidden; left:448px;top:140px;z-index:7">
 			<img style="position:absolute" src="Assets/Miscellaneous/OptionsPanel.png"/>
-			<img id="CloseOptionsButton" style="position:absolute; left:158px; top:7px"/>
-			
-			<div id="OPTION_LANGUAGE" style="position:absolute; z-index:8; left:10px; top:10px; width:105px; height:58px; text-align:center">
-				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.png"/>
-				<img style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/LanguageButton.png"/>
-			</div>
+			<div id="OPTION_LANGUAGE" style="left:10px; top:10px;"></div>
+			<div id="OPTION_SOUND" style="left:10px; top:70px;"></div>
+			<div id="OPTION_MUSIC" style="left:115px; top:70px;"></div>
+			<div id="OPTION_DIALOGUE" style="left:224px; top:70px;"></div>
+			<div id="OPTION_IDLE" style="left:329px; top:70px;"></div>
+			<div id="OPTION_MYSTERY" style="left:329px; top:10px;"></div>
 
-			<div id="OPTION_SOUND" style="position:absolute; z-index:8; left:10px; top:70px; width:105px; height:58px; text-align:center">
-				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.png"/>
-				<img id="ToggleSound" style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/SoundOn.png"/>
-			</div>
-
-			<div id="OPTION_MUSIC" style="position:absolute; z-index:8; left:115px; top:70px; width:105px; height:58px; text-align:center">
-				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.png"/>
-				<img id="ToggleMusic" style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/MusicOn.png"/>
-			</div>
-
-			<div id="OPTION_DIALOGUE" style="position:absolute; z-index:8; left:224px; top:70px; width:105px; height:58px; text-align:center">
-				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.png"/>
-				<img id="ToggleDialogue" style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/DialogueOn.png"/>
-			</div>
-
-			<div id="OPTION_IDLE" style="position:absolute; z-index:8; left:329px; top:70px; width:105px; height:58px; text-align:center">
-				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.png"/>
-				<img id="ToggleIdleAnimations" style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/IdleAnimOn.png"/>
-			</div>
-
-			<div id="OPTION_MYSTERY" style="position:absolute; z-index:8; left:329px; top:10px; width:105px; height:58px; text-align:center">
-				<img style="position:absolute; top:0px; left:1px" src="Assets/Miscellaneous/SmallButton.png"/>
-				<img id="ToggleMysteriousSetting" style="position:absolute; top: 7px;left: 28px" src="Assets/Miscellaneous/MysteriousSettingOff.png"/>
-			</div>
-
-			<div style="position:absolute; visibility: hidden; z-index:7 ;left:7px; top: 154px; width:210px; height:58px">
+			<div style="position:absolute; visibility: hidden; left:7px; top: 154px; width:210px; height:58px">
 				<img style="position:absolute; z-index:8" src="Assets/Miscellaneous/Button.png"/>	
 				<p style="position:relative; z-index:9; text-align: center; font-size:20px">Help</p>
 			</div>
 			
-			<div style="position:absolute; visibility: hidden; z-index:7 ;left:7px; top: 215px; width:210px; height:58px">
+			<div style="position:absolute; visibility: hidden; left:7px; top: 215px; width:210px; height:58px">
 				<img style="position:absolute; z-index:8" src="Assets/Miscellaneous/Button.png"/>
 				<p style="position:relative; z-index:9; text-align: center; font-size:20px">Safe Mode</p>
 			</div>
 			
-			<div style="position:absolute; visibility: hidden; z-index:7 ;left:231px; top: 154px; width:210px; height:58px">
+			<div style="position:absolute; visibility: hidden; left:231px; top: 154px; width:210px; height:58px">
 				<img style="position:absolute; z-index:8" src="Assets/Miscellaneous/Button.png"/>	
 				<p style="position:relative; z-index:9; text-align: center; font-size:20px">Save Progress</p>	
 			</div>
 			
-			<div style="position:absolute; visibility: hidden; z-index:7 ;left:231px; top: 215px; width:210px; height:58px">
+			<div style="position:absolute; visibility: hidden; left:231px; top: 215px; width:210px; height:58px">
 				<img style="position:absolute; z-index:8" src="Assets/Miscellaneous/Button.png"/>
 				<p style="position:relative; z-index:9; text-align: center; font-size:20px">Quit</p>
 			</div>
 
+			<div id="CloseOptionsButton" style="position:absolute; left:158px; top:7px"></div>
+		
 			<div id="LanguageSelectionPanel" style="position:absolute; visibility:hidden; z-index:10;left:-95px; width:630px;height: 280px;">
 				<p style="position: absolute; z-index:11; width:630px; top:-10px;left:auto;text-align:center" id="LanguageCommentary">None except English work for now</p>
 				<img style="position: absolute; z-index:10" src="Assets/Miscellaneous/LanguageSelectPanel.png"/>
@@ -1050,7 +1027,7 @@
 				<img id="Special Level Aux Panel" src="Assets/Miscellaneous/Special Aux Panel.png"/>
 				<img id="PlaySpecialLevel" style="position: absolute; top:50px; left:100px;"/>
 				<p id="PlayBonusP" style="pointer-events: none; position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;"></p>
-				<img id="CLOSE_SPECIAL_LEVELS" style="position: absolute; top:140px; left:100px;"/>
+				<div id="CLOSE_SPECIAL_LEVELS" style="position: absolute; top:140px; left:100px;"></div>
 				
 				<div style="position:absolute; top:350px; left:0px">
 					<p id="NatOpP" style="position: absolute; visibility: hidden; top:-35px; width:350px; left:0px; text-align:center;">Nation</p>
@@ -1139,7 +1116,7 @@
 				<img src="Assets/Miscellaneous/Special Aux Panel.png"/>
 				<img id="PlayTutorialLevel" style="position: absolute; top:50px; left:100px;"/>
 				<p id="PlayTutorialP" style="pointer-events: none; position:absolute; top:56px; left:122px; height:35px; width: 82px; text-align: center;"></p>
-				<img id="CLOSE_TUTORIAL" style="position: absolute; top:140px; left:100px;"/>
+				<div id="CLOSE_TUTORIAL" style="position: absolute; top:140px; left:100px;"></div>
 			</div>
 		</div>
 

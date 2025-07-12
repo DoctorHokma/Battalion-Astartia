@@ -4,6 +4,7 @@ const TutorialMenu = function() {
     this.defaultLevelName = "";
     this.defaultLevelDescription = "";
     this.selectedLevel = null;
+    this.closeButton = UIHelpers.createGenericButton("CLOSE_TUTORIAL");
 }
 
 TutorialMenu.prototype = Object.create(GenericMenu.prototype);
@@ -18,6 +19,7 @@ TutorialMenu.prototype.onLanguageSwitch = function(handler) {
     }
 
     this.updateDefaultText(handler);
+    this.closeButton.setText(handler.get("SYSTEM_BUTTON_CLOSE"));
 }
 
 TutorialMenu.prototype.setText = function(name, desc) {
@@ -95,7 +97,7 @@ TutorialMenu.prototype.init = function(battalion) {
         button.addClick(() => this.clickButton(battalion, button));
     }
 
-    UIHelpers.createCloseButton("CLOSE_TUTORIAL", () => {
+    this.closeButton.addClick(() => {
         mainMenu.show();
         this.close();
     });
