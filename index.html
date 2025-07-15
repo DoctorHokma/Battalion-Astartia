@@ -262,404 +262,454 @@
 			<div id="RegionMap" style="position:absolute; visibility: hidden; top:0px; left:0px; height:560px; width:560px; z-index:7; overflow: hidden; overflow-y: hidden; scroll-behavior: smooth;"></div>
 
 			<div id="UnitRecruitmentPanel" style="position: absolute; visibility:hidden; top:0px; left:-150px; z-index:7">
-				<img id="RecruitmentPanelBackground" style="position: absolute; top:0px; left:0px" src="Assets/Miscellaneous/RecruitmentPanel.png"/>
+<img id="RecruitmentPanelBackground" style="position: absolute; top:0px; left:0px" src="Assets/Miscellaneous/RecruitmentPanel.PNG"/>
 
-				<div style="position: absolute; z-index:8; left:860px; text-align:center">
-					<img src="Assets/Miscellaneous/MoneyIndicator.png"/>
-					<p id="MoneyIndicator" style="position:relative; top:-33px; font-size:12px">Fried penis</p>
-				</div>
+	
+	
+		<div style="position: absolute; z-index:8; left:860px; text-align:center">
+		<img src="Assets/Miscellaneous/MoneyIndicator.PNG"/>
+		<p id="MoneyIndicator" style="position:relative; top:-33px; font-size:12px">Fried penis</p>
+		</div>
 
-				<img id="CloseUnitMakingButton" style="position: absolute; top: 70px; left: 850px; z-index:8" onmouseover="document.getElementById('CloseUnitMakingButton').src='Assets/Miscellaneous/CloseButtonHovered.png'" onclick="document.getElementById('CloseUnitMakingButton').src='Assets/Miscellaneous/CloseButtonPressed.png'; document.getElementById('UnitRecruitmentPanel').style.visibility='hidden'; for(let x=1;x<=40;x++){document.getElementById('Obturator'+x).style.visibility='hidden';document.getElementById('UnitUnderlayer'+x).style.visibility='hidden';document.getElementById('PriceTag'+x).style.visibility='hidden';document.getElementById('UnitMontre'+x).style.visibility='hidden';document.getElementById('UnitFrame'+x).style.visibility='hidden'}" onmouseout="document.getElementById('CloseUnitMakingButton').src='Assets/Miscellaneous/CloseButton.png'" src="Assets/Miscellaneous/CloseButton.png"/>
+		<img id="CloseUnitMakingButton" style="position: absolute; top: 70px; left: 850px; z-index:8" onmouseover="document.getElementById('CloseUnitMakingButton').src='Assets/Miscellaneous/CloseButtonHovered.PNG'" onclick="document.getElementById('CloseUnitMakingButton').src='Assets/Miscellaneous/CloseButtonPressed.PNG'; document.getElementById('UnitRecruitmentPanel').style.visibility='hidden'; for(let x=1;x<=40;x++){document.getElementById('Obturator'+x).style.visibility='hidden';document.getElementById('UnitUnderlayer'+x).style.visibility='hidden';document.getElementById('PriceTag'+x).style.visibility='hidden';document.getElementById('UnitMontre'+x).style.visibility='hidden';document.getElementById('UnitFrame'+x).style.visibility='hidden'}" onmouseout="document.getElementById('CloseUnitMakingButton').src='Assets/Miscellaneous/CloseButton.PNG'" src="Assets/Miscellaneous/CloseButton.PNG"/>
 
-				<div>
-					<img id="Speculator" style="position: absolute; z-index:8; top: 0px" src="Assets/Miscellaneous/UnitSpeculatorBar.png"/>
-					<img id="UnitMontreBkg" style="position: absolute; z-index:7; left:7px; top:10px"/>
-					<img id="UnitMontre" style="position: absolute; z-index:9; left:37px; top:42px" src="Assets/Units/Static/Barricade2.png"/>
-					<img id="UnitMontreMesh" style="position: absolute; z-index:9; left:37px; top:42px" src="Assets/Miscellaneous/Nothing.png"/>
-					<img id="MontreArmor" style="position:absolute; top:10px; left:140px; z-index:9" src="Assets/Traits/MediumArmor.png" onmouseover="classTraitDetail('ArmorType','Constructor')" onmouseout="hideTraitDetail()"/>
-					<p id="MontreArmorP" style="position: absolute; z-index:9; top:-0px; left:161px;font-size: 10px;">Health</p>
-					<p id="MontreArmorText" style="position: absolute; z-index:9; top:10px; left:161px;font-size: 10px;">420/420</p>
-					<img id="MontreAttack" style="position:absolute; top:10px; left:210px; z-index:9" src="Assets/Traits/NoneWeapon.png" onmouseover="classTraitDetail('DamageType','Constructor')" onmouseout="hideTraitDetail()"/>
-					<p id="MontreDamageP" style="position: absolute; z-index:9; top:-0px; left:231px;font-size: 10px;">Damage</p>
-					<p id="MontreAttackText" style="position: absolute; z-index:9; top:10px; left:231px;font-size: 10px;">69(1-1)</p>
-					<img id="MontreLocomotion" style="position:absolute; top:10px; left:280px; z-index:9" src="Assets/Traits/Stationary.png" onmouseover="classTraitDetail('MovementType','Constructor')" onmouseout="hideTraitDetail()"/>
-					<p id="MontreMovementP" style="position: absolute; z-index:9; top:-0px; left:301px;font-size: 10px;">Movement</p>
-					<p id="MontreLocomotionText" style="position: absolute; z-index:9; top:10px; left:301px;font-size: 10px;">666</p>
-					<img id="MontreTrait1" style="position: absolute;z-index: 9;top:10px;left:350px" src="Assets/Traits/Conqueror.png" onmouseover="traitDetail(1,'Constructor')" onmouseout="hideTraitDetail()"/>
-					<img id="MontreTrait2" style="position: absolute;z-index: 9;top:10px;left:370px" src="Assets/Traits/Conqueror.png" onmouseover="traitDetail(2,'Constructor')" onmouseout="hideTraitDetail()"/>
-					<img id="MontreTrait3" style="position: absolute;z-index: 9;top:10px;left:390px" src="Assets/Traits/Conqueror.png" onmouseover="traitDetail(3,'Constructor')" onmouseout="hideTraitDetail()"/>
-					<img id="MontreTrait4" style="position: absolute;z-index: 9;top:10px;left:410px" src="Assets/Traits/Conqueror.png" onmouseover="traitDetail(4,'Constructor')" onmouseout="hideTraitDetail()"/>
-					<p id="MontreName" style="position:absolute;z-index: 9; top:112px; left:10px; width:105px;text-align: center; font-size:12px">Placeholder unit</p>
-					<p id="MontreDescription" style="position:absolute;z-index: 9; top:20px;left:140px; width:350px;height: 105px;">Lorem ipsum dolor sit amet</p>
-				</div>
 
-				<div style="position: absolute; z-index:8; top: 2px; left:567px">
-					<img id="Particulator" style="position: absolute; top:0px; left:0px" src="Assets/Miscellaneous/UnitParticulatorBar.png"/>
-					<input id="ParticularNameBox" style="position: absolute; width:210px; height:20px; top:20px; text-align: center; left:30px; background-color:#3D4C48">
-					<img id="MoraleParticulator0" style="position: absolute; top: 50px; left:80px;"/>
-					<img id="MoraleParticulator1" style="position: absolute; top: 50px; left:105px;"/>
-					<img id="MoraleParticulator2" style="position: absolute; top: 50px; left:130px;"/>
-					<img id="MoraleParticulator3" style="position: absolute; top: 50px; left:155px;"/>
-					<img id="MoraleParticulator4" style="position: absolute; top: 50px; left:180px;"/>
-				</div>
-					
-				<img id="UnitTypeBar1" style="position:absolute; z-index:9; top: 140px" src="Assets/Miscellaneous/UnitTypeBar.png"/>
-				<img id="UnitTypeBar2" style="position:absolute; z-index:9; top: 270px" src="Assets/Miscellaneous/UnitTypeBar.png"/>
-				<img id="UnitTypeBar3" style="position:absolute; z-index:9; top: 400px" src="Assets/Miscellaneous/UnitTypeBar.png"/>
-				<img id="UnitTypeBar4" style="position:absolute; z-index:9; top: 530px" src="Assets/Miscellaneous/UnitTypeBar.png"/>
 
-				<div style="position:absolute; z-index:10; top: 143px;left:423px;width: 140px; height:31px">
-					<p id="UnitType1" style="text-align: center; margin-top:7px">Infantry Units</p>
-				</div>
-				<div style="position:absolute; z-index:10; top: 273px;left:423px;width: 140px; height:31px">
-					<p id="UnitType2" style="text-align: center; margin-top:7px">Motorized Units</p>
-				</div>
-				<div style="position:absolute; z-index:10; top: 403px;left:423px;width: 140px; height:31px">
-					<p id="UnitType3" style="text-align: center; margin-top:7px">Armored Units</p>
-				</div>
-				<div style="position:absolute; z-index:10; top: 533px;left:423px;width: 140px; height:31px">
-					<p id="UnitType4" style="text-align: center; margin-top:7px">Artillery Units</p>
+
+
+
+
+		<div>
+			<img id="Speculator" style="position: absolute; z-index:8; top: 0px" src="Assets/Miscellaneous/UnitSpeculatorBar.PNG"/>
+			<img id="UnitMontreBkg" style="position: absolute; z-index:7; left:7px; top:10px"/>
+			<img id="UnitMontre" style="position: absolute; z-index:9; left:37px; top:42px" src="Assets/Units/Static/Barricade2.PNG"/>
+			<img id="UnitMontreMesh" style="position: absolute; z-index:9; left:37px; top:42px" src="Assets/Miscellaneous/Nothing.PNG"/>
+
+			<img id="MontreArmor" style="position:absolute; top:10px; left:140px; z-index:9" src="Assets/Traits/MediumArmor.PNG" onmouseover="ClassTraitDetail('ArmorType','Constructor')" onmouseout="hideTraitDetail()"/>
+			<p id="MontreArmorP" style="position: absolute; z-index:9; top:-0px; left:161px;font-size: 10px;">Health</p>
+			<p id="MontreArmorText" style="position: absolute; z-index:9; top:10px; left:161px;font-size: 10px;">420/420</p>
+			<img id="MontreAttack" style="position:absolute; top:10px; left:210px; z-index:9" src="Assets/Traits/NoneWeapon.PNG" onmouseover="ClassTraitDetail('DamageType','Constructor')" onmouseout="hideTraitDetail()"/>
+			<p id="MontreDamageP" style="position: absolute; z-index:9; top:-0px; left:231px;font-size: 10px;">Damage</p>
+			<p id="MontreAttackText" style="position: absolute; z-index:9; top:10px; left:231px;font-size: 10px;">69(1-1)</p>
+			<img id="MontreLocomotion" style="position:absolute; top:10px; left:280px; z-index:9" src="Assets/Traits/Stationary.PNG" onmouseover="ClassTraitDetail('MovementType','Constructor')" onmouseout="hideTraitDetail()"/>
+			<p id="MontreMovementP" style="position: absolute; z-index:9; top:-0px; left:301px;font-size: 10px;">Movement</p>
+			<p id="MontreLocomotionText" style="position: absolute; z-index:9; top:10px; left:301px;font-size: 10px;">666</p>
+			<img id="MontreTrait1" style="position: absolute;z-index: 9;top:10px;left:350px" src="Assets/Traits/Conqueror.PNG" onmouseover="traitDetail(1,'Constructor')" onmouseout="hideTraitDetail()"/>
+			<img id="MontreTrait2" style="position: absolute;z-index: 9;top:10px;left:370px" src="Assets/Traits/Conqueror.PNG" onmouseover="traitDetail(2,'Constructor')" onmouseout="hideTraitDetail()"/>
+			<img id="MontreTrait3" style="position: absolute;z-index: 9;top:10px;left:390px" src="Assets/Traits/Conqueror.PNG" onmouseover="traitDetail(3,'Constructor')" onmouseout="hideTraitDetail()"/>
+			<img id="MontreTrait4" style="position: absolute;z-index: 9;top:10px;left:410px" src="Assets/Traits/Conqueror.PNG" onmouseover="traitDetail(4,'Constructor')" onmouseout="hideTraitDetail()"/>
+			<p id="MontreName" style="position:absolute;z-index: 9; top:112px; left:10px; width:105px;text-align: center; font-size:12px">Placeholder unit</p>
+			<p id="MontreDescription" style="position:absolute;z-index: 9; top:20px;left:140px; width:350px;height: 105px;">Lorem ipsum dolor sit amet</p>
+
 				</div>
 
-				<img id="UnitFrame1" style="position: absolute; top:175px; left: 5px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre1').src='Assets/Units/Move/'+Units[MontreIndexBasis+1].shortname+'Movement3.GIF'; MontreUnit(1+MontreIndexBasis) " onmouseout="document.getElementById('UnitMontre1').src='Assets/Units/Static/'+Units[MontreIndexBasis+1].shortname+'3.png' " src="Assets/Units/Static/LightInf3.png" onclick="RecruitUnit(1+MontreIndexBasis)"/>
-				<img id="UnitFrame2" style="position: absolute; top:175px; left: 105px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre2').src='Assets/Units/Move/'+Units[MontreIndexBasis+2].shortname+'Movement3.GIF'; MontreUnit(2+MontreIndexBasis) " onmouseout="document.getElementById('UnitMontre2').src='Assets/Units/Static/'+Units[MontreIndexBasis+2].shortname+'3.png' " src="Assets/Units/Static/LightInf3.png" onclick="RecruitUnit(2+MontreIndexBasis)"/>
-				<img id="UnitFrame3" style="position: absolute; top:175px; left: 205px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre3').src='Assets/Units/Move/'+Units[MontreIndexBasis+3].shortname+'Movement3.GIF'; MontreUnit(3+MontreIndexBasis) " onmouseout="document.getElementById('UnitMontre3').src='Assets/Units/Static/'+Units[MontreIndexBasis+3].shortname+'3.png' " src="Assets/Units/Static/LightInf3.png" onclick="RecruitUnit(3+MontreIndexBasis)"/>
-				<img id="UnitFrame4" style="position: absolute; top:175px; left: 305px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre4').src='Assets/Units/Move/'+Units[MontreIndexBasis+4].shortname+'Movement3.GIF'; MontreUnit(4+MontreIndexBasis) " onmouseout="document.getElementById('UnitMontre4').src='Assets/Units/Static/'+Units[MontreIndexBasis+4].shortname+'3.png' " src="Assets/Units/Static/LightInf3.png" onclick="RecruitUnit(4+MontreIndexBasis)"/>
-				<img id="UnitFrame5" style="position: absolute; top:175px; left: 405px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre5').src='Assets/Units/Move/'+Units[MontreIndexBasis+5].shortname+'Movement3.GIF'; MontreUnit(5+MontreIndexBasis) " onmouseout="document.getElementById('UnitMontre5').src='Assets/Units/Static/'+Units[MontreIndexBasis+5].shortname+'3.png' " src="Assets/Units/Static/LightInf3.png" onclick="RecruitUnit(5+MontreIndexBasis)"/>
-				<img id="UnitFrame6" style="position: absolute; top:175px; left: 505px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre6').src='Assets/Units/Move/'+Units[MontreIndexBasis+6].shortname+'Movement3.GIF'; MontreUnit(6+MontreIndexBasis) " onmouseout="document.getElementById('UnitMontre6').src='Assets/Units/Static/'+Units[MontreIndexBasis+6].shortname+'3.png' " src="Assets/Units/Static/LightInf3.png" onclick="RecruitUnit(6+MontreIndexBasis)"/>
-				<img id="UnitFrame7" style="position: absolute; top:175px; left: 605px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre7').src='Assets/Units/Move/'+Units[MontreIndexBasis+7].shortname+'Movement3.GIF'; MontreUnit(7+MontreIndexBasis) " onmouseout="document.getElementById('UnitMontre7').src='Assets/Units/Static/'+Units[MontreIndexBasis+7].shortname+'3.png' " src="Assets/Units/Static/LightInf3.png" onclick="RecruitUnit(7+MontreIndexBasis)"/>
-				<img id="UnitFrame8" style="position: absolute; top:175px; left: 705px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre8').src='Assets/Units/Move/'+Units[MontreIndexBasis+8].shortname+'Movement3.GIF'; MontreUnit(8+MontreIndexBasis) " onmouseout="document.getElementById('UnitMontre8').src='Assets/Units/Static/'+Units[MontreIndexBasis+8].shortname+'3.png' " src="Assets/Units/Static/LightInf3.png" onclick="RecruitUnit(8+MontreIndexBasis)"/>
-				<img id="UnitFrame9" style="position: absolute; top:175px; left: 805px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre9').src='Assets/Units/Move/'+Units[MontreIndexBasis+9].shortname+'Movement3.GIF'; MontreUnit(9+MontreIndexBasis) " onmouseout="document.getElementById('UnitMontre9').src='Assets/Units/Static/'+Units[MontreIndexBasis+9].shortname+'3.png' " src="Assets/Units/Static/LightInf3.png" onclick="RecruitUnit(9+MontreIndexBasis)"/>
-				<img id="UnitFrame10" style="position: absolute; top:175px; left: 905px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre10').src='Assets/Units/Move/'+Units[MontreIndexBasis+10].shortname+'Movement3.GIF'; MontreUnit(10+MontreIndexBasis) " onmouseout="document.getElementById('UnitMontre10').src='Assets/Units/Static/'+Units[MontreIndexBasis+10].shortname+'3.png' " src="Assets/Units/Static/LightInf3.png" onclick="RecruitUnit(10+MontreIndexBasis)"/>
-				<div style="position: absolute; top:249px; left:11px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag1" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:249px; left:111px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag2" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:249px; left:211px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag3" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:249px; left:311px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag4" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:249px; left:411px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag5" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:249px; left:511px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag6" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:249px; left:611px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag7" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:249px; left:711px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag8" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:249px; left:811px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag9" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:249px; left:911px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag10" style="margin-top:auto">₱75</p>
-				</div>
-
-				<img id="UnitUnderlayer1" style="position: absolute; top:175px; left: 5px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer2" style="position: absolute; top:175px; left: 105px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer3" style="position: absolute; top:175px; left: 205px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer4" style="position: absolute; top:175px; left: 305px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer5" style="position: absolute; top:175px; left: 405px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer6" style="position: absolute; top:175px; left: 505px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer7" style="position: absolute; top:175px; left: 605px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer8" style="position: absolute; top:175px; left: 705px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer9" style="position: absolute; top:175px; left: 805px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer10" style="position: absolute; top:175px; left: 905px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-
-				<img id="UnitMontre1" style="position: absolute; top:195px; left: 23px; z-index:7;"/>
-				<img id="UnitMontre1Mesh" style="position: absolute; top:195px; left: 23px; z-index:7;" src="Assets/Units/StaticMeshes/LightInfMesh3.png"/>
-				<img id="UnitMontre2" style="position: absolute; top:195px; left: 123px; z-index:7;"/>
-				<img id="UnitMontre2Mesh" style="position: absolute; top:195px; left: 123px; z-index:7;" src="Assets/Units/StaticMeshes/InfantryMesh3.png"/>
-				<img id="UnitMontre3" style="position: absolute; top:195px; left: 223px; z-index:7;"/>
-				<img id="UnitMontre3Mesh" style="position: absolute; top:195px; left: 223px; z-index:7;" src="Assets/Units/StaticMeshes/AssaultInfMesh3.png"/>
-				<img id="UnitMontre4" style="position: absolute; top:195px; left: 323px; z-index:7;"/>
-				<img id="UnitMontre4Mesh" style="position: absolute; top:195px; left: 323px; z-index:7;" src="Assets/Units/StaticMeshes/SnipersMesh3.png"/>
-				<img id="UnitMontre5" style="position: absolute; top:195px; left: 423px; z-index:7;"/>
-				<img id="UnitMontre5Mesh" style="position: absolute; top:195px; left: 423px; z-index:7;" src="Assets/Units/StaticMeshes/MarinesMesh3.png"/>
-				<img id="UnitMontre6" style="position: absolute; top:195px; left: 523px; z-index:7;"/>
-				<img id="UnitMontre6Mesh" style="position: absolute; top:195px; left: 523px; z-index:7;" src="Assets/Units/StaticMeshes/StormtroopersMesh3.png"/>
-				<img id="UnitMontre7" style="position: absolute; top:195px; left: 623px; z-index:7;"/>
-				<img id="UnitMontre7Mesh" style="position: absolute; top:195px; left: 623px; z-index:7;" src="Assets/Units/StaticMeshes/SpecOpsMesh3.png"/>
-				<img id="UnitMontre8" style="position: absolute; top:195px; left: 723px; z-index:7;"/>
-				<img id="UnitMontre8Mesh" style="position: absolute; top:195px; left: 723px; z-index:7;" src="Assets/Units/StaticMeshes/GuardsMesh3.png"/>
-				<img id="UnitMontre9" style="position: absolute; top:195px; left: 823px; z-index:7;"/>
-				<img id="UnitMontre9Mesh" style="position: absolute; top:195px; left: 823px; z-index:7;" src="Assets/Units/StaticMeshes/SuicideMesh3.png"/>
-				<img id="UnitMontre10" style="position: absolute; top:195px; left: 923px; z-index:7;"/>
-				<img id="UnitMontre10Mesh" style="position: absolute; top:195px; left: 923px; z-index:7;" src="Assets/Units/StaticMeshes/PaladinMesh3.png"/>
-
-				<img id="Obturator1" style="position: absolute; visibility: hidden; top:175px; left: 5px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator2" style="position: absolute; visibility: hidden; top:175px; left: 105px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator3" style="position: absolute; visibility: hidden; top:175px; left: 205px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator4" style="position: absolute; visibility: hidden; top:175px; left: 305px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator5" style="position: absolute; visibility: hidden; top:175px; left: 405px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator6" style="position: absolute; visibility: hidden; top:175px; left: 505px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator7" style="position: absolute; visibility: hidden; top:175px; left: 605px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator8" style="position: absolute; visibility: hidden; top:175px; left: 705px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator9" style="position: absolute; visibility: hidden; top:175px; left: 805px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator10" style="position: absolute; visibility: hidden; top:175px; left: 905px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-
-				<img id="UnitFrame11" style="position: absolute; top:305px; left: 5px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre11').src='Assets/Units/Move/'+Units[11].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+11].shortname+'Movement2.GIF'; MontreUnit(11) " onmouseout="document.getElementById('UnitMontre11').src='Assets/Units/Static/'+Units[11].shortname+'3.png' " src="Assets/Units/Static/MotorInf3.png" onclick="RecruitUnit(11)"/>
-				<img id="UnitFrame12" style="position: absolute; top:305px; left: 105px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre12').src='Assets/Units/Move/'+Units[12].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+12].shortname+'Movement2.GIF'; MontreUnit(12) " onmouseout="document.getElementById('UnitMontre12').src='Assets/Units/Static/'+Units[12].shortname+'3.png' " src="Assets/Units/Static/MotorInf3.png" onclick="RecruitUnit(12)"/>
-				<img id="UnitFrame13" style="position: absolute; top:305px; left: 205px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre13').src='Assets/Units/Move/'+Units[13].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+13].shortname+'Movement2.GIF'; MontreUnit(13) " onmouseout="document.getElementById('UnitMontre13').src='Assets/Units/Static/'+Units[13].shortname+'3.png' " src="Assets/Units/Static/MotorInf3.png" onclick="RecruitUnit(13)"/>
-				<img id="UnitFrame14" style="position: absolute; top:305px; left: 305px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre14').src='Assets/Units/Move/'+Units[14].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+14].shortname+'Movement2.GIF'; MontreUnit(14) " onmouseout="document.getElementById('UnitMontre14').src='Assets/Units/Static/'+Units[14].shortname+'3.png' " src="Assets/Units/Static/MotorInf3.png" onclick="RecruitUnit(14)"/>
-				<img id="UnitFrame15" style="position: absolute; top:305px; left: 405px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre15').src='Assets/Units/Move/'+Units[15].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+15].shortname+'Movement2.GIF'; MontreUnit(15) " onmouseout="document.getElementById('UnitMontre15').src='Assets/Units/Static/'+Units[15].shortname+'3.png' " src="Assets/Units/Static/MotorInf3.png" onclick="RecruitUnit(15)"/>
-				<img id="UnitFrame16" style="position: absolute; top:305px; left: 505px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre16').src='Assets/Units/Move/'+Units[16].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+16].shortname+'Movement2.GIF'; MontreUnit(16) " onmouseout="document.getElementById('UnitMontre16').src='Assets/Units/Static/'+Units[16].shortname+'3.png' " src="Assets/Units/Static/MotorInf3.png" onclick="RecruitUnit(16)"/>
-				<img id="UnitFrame17" style="position: absolute; top:305px; left: 605px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre17').src='Assets/Units/Move/'+Units[17].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+17].shortname+'Movement2.GIF'; MontreUnit(17) " onmouseout="document.getElementById('UnitMontre17').src='Assets/Units/Static/'+Units[17].shortname+'3.png' " src="Assets/Units/Static/MotorInf3.png" onclick="RecruitUnit(17)"/>
-				<img id="UnitFrame18" style="position: absolute; top:305px; left: 705px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre18').src='Assets/Units/Move/'+Units[18].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+18].shortname+'Movement2.GIF'; MontreUnit(18) " onmouseout="document.getElementById('UnitMontre18').src='Assets/Units/Static/'+Units[18].shortname+'3.png' " src="Assets/Units/Static/MotorInf3.png" onclick="RecruitUnit(18)"/>
-				<img id="UnitFrame19" style="position: absolute; top:305px; left: 805px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre19').src='Assets/Units/Move/'+Units[19].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+19].shortname+'Movement2.GIF'; MontreUnit(19) " onmouseout="document.getElementById('UnitMontre19').src='Assets/Units/Static/'+Units[19].shortname+'3.png' " src="Assets/Units/Static/MotorInf3.png" onclick="RecruitUnit(19)"/>
-				<img id="UnitFrame20" style="position: absolute; top:305px; left: 905px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre20').src='Assets/Units/Move/'+Units[20].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+20].shortname+'Movement2.GIF'; MontreUnit(20) " onmouseout="document.getElementById('UnitMontre20').src='Assets/Units/Static/'+Units[20].shortname+'3.png' " src="Assets/Units/Static/MotorInf3.png" onclick="RecruitUnit(20)"/>	
-
-				<div style="position: absolute; top:379px; left:11px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag11" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:379px; left:111px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag12" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:379px; left:211px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag13" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:379px; left:311px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag14" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:379px; left:411px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag15" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:379px; left:511px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag16" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:379px; left:611px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag17" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:379px; left:711px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag18" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:379px; left:811px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag19" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:379px; left:911px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag20" style="margin-top:auto">₱75</p>
-				</div>
-
-				<img id="UnitUnderlayer11" style="position: absolute; top:305px; left: 5px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer12" style="position: absolute; top:305px; left: 105px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer13" style="position: absolute; top:305px; left: 205px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer14" style="position: absolute; top:305px; left: 305px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer15" style="position: absolute; top:305px; left: 405px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer16" style="position: absolute; top:305px; left: 505px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer17" style="position: absolute; top:305px; left: 605px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer18" style="position: absolute; top:305px; left: 705px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer19" style="position: absolute; top:305px; left: 805px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer20" style="position: absolute; top:305px; left: 905px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>	
-
-				<img id="UnitMontre11" style="position: absolute; top:325px; left: 23px; z-index:7;"/>
-				<img id="UnitMontre11Mesh" style="position: absolute; top:325px; left: 23px; z-index:7;" src="Assets/Units/StaticMeshes/CavalryMesh3.png"/>
-				<img id="UnitMontre12" style="position: absolute; top:325px; left: 123px; z-index:7;"/>
-				<img id="UnitMontre12Mesh" style="position: absolute; top:325px; left: 123px; z-index:7;" src="Assets/Units/StaticMeshes/MotorInfMesh3.png"/>
-				<img id="UnitMontre13" style="position: absolute; top:325px; left: 223px; z-index:7;"/>
-				<img id="UnitMontre13Mesh" style="position: absolute; top:325px; left: 223px; z-index:7;" src="Assets/Units/StaticMeshes/SupplyMesh3.png"/>
-				<img id="UnitMontre14" style="position: absolute; top:325px; left: 323px; z-index:7;"/>
-				<img id="UnitMontre14Mesh" style="position: absolute; top:325px; left: 323px; z-index:7;" src="Assets/Units/StaticMeshes/FlakMesh3.png"/>
-				<img id="UnitMontre15" style="position: absolute; top:325px; left: 423px; z-index:7;"/>
-				<img id="UnitMontre15Mesh" style="position: absolute; top:325px; left: 423px; z-index:7;" src="Assets/Units/StaticMeshes/CrabMesh3.png"/>
-				<img id="UnitMontre16" style="position: absolute; top:325px; left: 523px; z-index:7;"/>
-				<img id="UnitMontre16Mesh" style="position: absolute; top:325px; left: 523px; z-index:7;" src="Assets/Units/StaticMeshes/SCADPMesh3.png"/>
-				<img id="UnitMontre17" style="position: absolute; top:325px; left: 623px; z-index:7;"/>
-				<img id="UnitMontre17Mesh" style="position: absolute; top:325px; left: 623px; z-index:7;" src="Assets/Units/StaticMeshes/WarmachineMesh3.png"/>
-				<img id="UnitMontre18" style="position: absolute; top:325px; left: 723px; z-index:7;"/>
-				<img id="UnitMontre18Mesh" style="position: absolute; top:325px; left: 723px; z-index:7;" src="Assets/Units/StaticMeshes/SisuMesh3.png"/>
-				<img id="UnitMontre19" style="position: absolute; top:325px; left: 823px; z-index:7;"/>
-				<img id="UnitMontre19Mesh" style="position: absolute; top:325px; left: 823px; z-index:7;" src="Assets/Units/StaticMeshes/MegacockterMesh3.png"/>
-				<img id="UnitMontre20" style="position: absolute; top:325px; left: 923px; z-index:7;"/>
-				<img id="UnitMontre20Mesh" style="position: absolute; top:325px; left: 923px; z-index:7;" src="Assets/Units/StaticMeshes/AYINMesh3.png"/>
-
-				<img id="Obturator11" style="position: absolute; visibility: hidden; top:305px; left: 5px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator12" style="position: absolute; visibility: hidden; top:305px; left: 105px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator13" style="position: absolute; visibility: hidden; top:305px; left: 205px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator14" style="position: absolute; visibility: hidden; top:305px; left: 305px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator15" style="position: absolute; visibility: hidden; top:305px; left: 405px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator16" style="position: absolute; visibility: hidden; top:305px; left: 505px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator17" style="position: absolute; visibility: hidden; top:305px; left: 605px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator18" style="position: absolute; visibility: hidden; top:305px; left: 705px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator19" style="position: absolute; visibility: hidden; top:305px; left: 805px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator20" style="position: absolute; visibility: hidden; top:305px; left: 905px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-
-				<img id="UnitFrame21" style="position: absolute; top:435px; left: 5px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre21').src='Assets/Units/Move/'+Units[21].shortname+'Movement3.GIF' ; MontreUnit(21)" src="Assets/Units/Static/Cockroach3.png" onmouseout="UnmontreUnit(21)" src="Assets/Units/Static/Cockroach3.png" onclick="RecruitUnit(21)"/>
-				<img id="UnitFrame22" style="position: absolute; top:435px; left: 105px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre22').src='Assets/Units/Move/'+Units[22].shortname+'Movement3.GIF' ; MontreUnit(22)" src="Assets/Units/Static/Bolt3.png" onmouseout="UnmontreUnit(22)" src="Assets/Units/Static/Bolt3.png" onclick="RecruitUnit(22)"/>
-				<img id="UnitFrame23" style="position: absolute; top:435px; left: 205px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre23').src='Assets/Units/Move/'+Units[23].shortname+'Movement3.GIF' ; MontreUnit(23)" src="Assets/Units/Static/Asekara3.png" onmouseout="UnmontreUnit(23)" onclick="RecruitUnit(23)"/>
-				<img id="UnitFrame24" style="position: absolute; top:435px; left: 305px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre24').src='Assets/Units/Move/'+Units[24].shortname+'Movement3.GIF' ; MontreUnit(24)" src="Assets/Units/Static/Gorlitz3.png" onmouseout="UnmontreUnit(24)" src="Assets/Units/Static/Gorlitz3.png" onclick="RecruitUnit(24)"/>
-				<img id="UnitFrame25" style="position: absolute; top:435px; left: 405px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre25').src='Assets/Units/Move/'+Units[25].shortname+'Movement3.GIF' ; MontreUnit(25)" src="Assets/Units/Static/Hunter3.png" onmouseout="UnmontreUnit(25)" src="Assets/Units/Static/Hunter3.png" onclick="RecruitUnit(25)"/>
-				<img id="UnitFrame26" style="position: absolute; top:435px; left: 505px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre26').src='Assets/Units/Move/'+Units[26].shortname+'Movement3.GIF' ; MontreUnit(26)" src="Assets/Units/Static/AMPAC3.png" onmouseout="UnmontreUnit(26)" src="Assets/Units/Static/AMPAC3.png" onclick="RecruitUnit(26)"/>
-				<img id="UnitFrame27" style="position: absolute; top:435px; left: 605px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre27').src='Assets/Units/Move/'+Units[27].shortname+'Movement3.GIF' ; MontreUnit(27)" src="Assets/Units/Static/Koschei3.png" onmouseout="UnmontreUnit(27)" src="Assets/Units/Static/Koschei3.png" onclick="RecruitUnit(27)"/>
-				<img id="UnitFrame28" style="position: absolute; top:435px; left: 705px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre28').src='Assets/Units/Move/'+Units[28].shortname+'Movement3.GIF' ; MontreUnit(28) " src="Assets/Units/Static/Imperterritus3.png" onmouseout="UnmontreUnit(28)" src="Assets/Units/Static/Imperterritus3.png" onclick="RecruitUnit(28)"/>
-				<img id="UnitFrame29" style="position: absolute; top:435px; left: 805px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre29').src='Assets/Units/Move/'+Units[29].shortname+'Movement3.GIF' ; MontreUnit(29)" src="Assets/Units/Static/Entwicklung3.png" onmouseout="UnmontreUnit(29)" src="Assets/Units/Static/Cockroach3.png" onclick="RecruitUnit(29)"/>
-				<img id="UnitFrame30" style="position: absolute; top:435px; left: 905px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre30').src='Assets/Units/Move/'+Units[30].shortname+'Movement3.GIF' ; MontreUnit(30)" src="Assets/Units/Static/Roland3.png" onmouseout="UnmontreUnit(30)" src="Assets/Units/Static/Cockroach3.png" onclick="RecruitUnit(30)"/>
-
-				<div style="position: absolute; top:509px; left:11px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag21" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:509px; left:111px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag22" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:509px; left:211px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag23" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:509px; left:311px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag24" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:509px; left:411px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag25" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:509px; left:511px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag26" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:509px; left:611px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag27" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:509px; left:711px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag28" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:509px; left:811px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag29" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:509px; left:911px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag30" style="margin-top:auto">₱75</p>
-				</div>
-
-				<img id="UnitUnderlayer21" style="position: absolute; top:435px; left: 5px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer22" style="position: absolute; top:435px; left: 105px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer23" style="position: absolute; top:435px; left: 205px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer24" style="position: absolute; top:435px; left: 305px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer25" style="position: absolute; top:435px; left: 405px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer26" style="position: absolute; top:435px; left: 505px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer27" style="position: absolute; top:435px; left: 605px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer28" style="position: absolute; top:435px; left: 705px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer29" style="position: absolute; top:435px; left: 805px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer30" style="position: absolute; top:435px; left: 905px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-
-				<img id="UnitMontre21" style="position: absolute; top:455px; left: 23px; z-index:7;"/>
-				<img id="UnitMontre21Mesh" style="position: absolute; top:455px; left: 23px; z-index:7;" src="Assets/Units/StaticMeshes/CockroachMesh3.png"/>
-				<img id="UnitMontre22" style="position: absolute; top:455px; left: 123px; z-index:7;"/>
-				<img id="UnitMontre22Mesh" style="position: absolute; top:455px; left: 123px; z-index:7;" src="Assets/Units/StaticMeshes/BoltMesh3.png"/>
-				<img id="UnitMontre23" style="position: absolute; top:455px; left: 223px; z-index:7;"/>
-				<img id="UnitMontre23Mesh" style="position: absolute; top:455px; left: 223px; z-index:7;" src="Assets/Units/StaticMeshes/AsekaraMesh3.png"/>
-				<img id="UnitMontre24" style="position: absolute; top:455px; left: 323px; z-index:7;"/>
-				<img id="UnitMontre24Mesh" style="position: absolute; top:455px; left: 323px; z-index:7;" src="Assets/Units/StaticMeshes/GorlitzMesh3.png"/>
-				<img id="UnitMontre25" style="position: absolute; top:455px; left: 423px; z-index:7;"/>
-				<img id="UnitMontre25Mesh" style="position: absolute; top:455px; left: 423px; z-index:7;" src="Assets/Units/StaticMeshes/HunterMesh3.png"/>
-				<img id="UnitMontre26" style="position: absolute; top:455px; left: 520px; z-index:7;"/>
-				<img id="UnitMontre26Mesh" style="position: absolute; top:455px; left: 520px; z-index:7;" src="Assets/Units/StaticMeshes/AMPACMesh3.png"/>
-				<img id="UnitMontre27" style="position: absolute; top:455px; left: 623px; z-index:7;"/>
-				<img id="UnitMontre27Mesh" style="position: absolute; top:455px; left: 623px; z-index:7;" src="Assets/Units/StaticMeshes/KoscheiMesh3.png"/>
-				<img id="UnitMontre28" style="position: absolute; top:450px; left: 701px; z-index:7;"/>
-				<img id="UnitMontre28Mesh" style="position: absolute; top:455px; left: 701px; z-index:7;" src="Assets/Units/StaticMeshes/ImperterritusMesh3.png"/>
-				<img id="UnitMontre29" style="position: absolute; top:455px; left: 823px; z-index:7;"/>
-				<img id="UnitMontre29Mesh" style="position: absolute; top:455px; left: 823px; z-index:7;" src="Assets/Units/StaticMeshes/EntwiklungMesh3.png"/>
-				<img id="UnitMontre30" style="position: absolute; top:455px; left: 923px; z-index:7;"/>
-				<img id="UnitMontre30Mesh" style="position: absolute; top:455px; left: 923px; z-index:7;" src="Assets/Units/StaticMeshes/RolandMesh3.png"/>
-
-				<img id="Obturator21" style="position: absolute; visibility: hidden; top:435px; left: 5px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator22" style="position: absolute; visibility: hidden; top:435px; left: 105px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator23" style="position: absolute; visibility: hidden; top:435px; left: 205px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator24" style="position: absolute; visibility: hidden; top:435px; left: 305px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator25" style="position: absolute; visibility: hidden; top:435px; left: 405px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator26" style="position: absolute; visibility: hidden; top:435px; left: 505px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator27" style="position: absolute; visibility: hidden; top:435px; left: 605px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator28" style="position: absolute; visibility: hidden; top:435px; left: 705px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator29" style="position: absolute; visibility: hidden; top:435px; left: 805px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator30" style="position: absolute; visibility: hidden; top:435px; left: 905px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-
-				<img id="UnitFrame31" style="position: absolute; top:565px; left: 5px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre31').src='Assets/Units/Move/'+Units[31].shortname+'Movement3.GIF'; MontreUnit(31)" onmouseout="document.getElementById('UnitMontre31').src='Assets/Units/Static/'+Units[31].shortname+'3.png' " src="Assets/Units/Static/Howitzer3.png" onclick="RecruitUnit(31)"/>
-				<img id="UnitFrame32" style="position: absolute; top:565px; left: 105px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre32').src='Assets/Units/Move/'+Units[32].shortname+'Movement3.GIF'; MontreUnit(32)" onmouseout="document.getElementById('UnitMontre32').src='Assets/Units/Static/'+Units[32].shortname+'3.png' " src="Assets/Units/Static/Trablek3.png" onclick="RecruitUnit(32)"/>
-				<img id="UnitFrame33" style="position: absolute; top:565px; left: 205px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre33').src='Assets/Units/Move/'+Units[33].shortname+'Movement3.GIF'; MontreUnit(33)" onmouseout="document.getElementById('UnitMontre33').src='Assets/Units/Static/'+Units[33].shortname+'3.png' " src="Assets/Units/Static/Hellstorm3.png" onclick="RecruitUnit(33)"/>
-				<img id="UnitFrame34" style="position: absolute; top:565px; left: 305px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre34').src='Assets/Units/Move/'+Units[34].shortname+'Movement3.GIF'; MontreUnit(34)" onmouseout="document.getElementById('UnitMontre34').src='Assets/Units/Static/'+Units[34].shortname+'3.png' " src="Assets/Units/Static/SPAB3.png" onclick="RecruitUnit(34)"/>
-				<img id="UnitFrame35" style="position: absolute; top:565px; left: 405px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre35').src='Assets/Units/Move/'+Units[35].shortname+'Movement3.GIF'; MontreUnit(35)" onmouseout="document.getElementById('UnitMontre35').src='Assets/Units/Static/'+Units[35].shortname+'3.png' " src="Assets/Units/Static/Bertha3.png" onclick="RecruitUnit(35)"/>
-				<img id="UnitFrame36" style="position: absolute; top:565px; left: 505px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre36').src='Assets/Units/Move/'+Units[36].shortname+'Movement3.GIF'; MontreUnit(36)" onmouseout="document.getElementById('UnitMontre36').src='Assets/Units/Static/'+Units[36].shortname+'3.png' " src="Assets/Units/Static/Pula3.png" onclick="RecruitUnit(36)"/>
-				<img id="UnitFrame37" style="position: absolute; top:565px; left: 605px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre37').src='Assets/Units/Move/'+Units[37].shortname+'Movement3.GIF'; MontreUnit(37)" onmouseout="document.getElementById('UnitMontre37').src='Assets/Units/Static/'+Units[37].shortname+'3.png' " src="Assets/Units/Static/AYIN3.png" onclick="RecruitUnit(37)"/>
-				<img id="UnitFrame38" style="position: absolute; top:565px; left: 705px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre38').src='Assets/Units/Move/'+Units[38].shortname+'Movement3.GIF'; MontreUnit(38)" onmouseout="document.getElementById('UnitMontre38').src='Assets/Units/Static/'+Units[38].shortname+'3.png' " src="Assets/Units/Static/Howitzer3.png" onclick="RecruitUnit(38)"/>
-				<img id="UnitFrame39" style="position: absolute; top:565px; left: 805px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre39').src='Assets/Units/Move/'+Units[39].shortname+'Movement3.GIF'; MontreUnit(39)" onmouseout="document.getElementById('UnitMontre39').src='Assets/Units/Static/'+Units[39].shortname+'3.png' " src="Assets/Units/Static/Howitzer3.png" onclick="RecruitUnit(39)"/>
-				<img id="UnitFrame40" style="position: absolute; top:565px; left: 905px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.png" onmouseover="document.getElementById('UnitMontre40').src='Assets/Units/Move/'+Units[40].shortname+'Movement3.GIF'; MontreUnit(40)" onmouseout="document.getElementById('UnitMontre40').src='Assets/Units/Static/'+Units[40].shortname+'3.png' " src="Assets/Units/Static/Howitzer3.png" onclick="RecruitUnit(40)"/>
-
-				<div style="position: absolute; top:639px; left:11px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag31" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:639px; left:111px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag32" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:639px; left:211px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag33" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:639px; left:311px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag34" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:639px; left:411px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag35" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:639px; left:511px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag36" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:639px; left:611px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag37" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:639px; left:711px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag38" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:639px; left:811px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag39" style="margin-top:auto">₱75</p>
-				</div>
-				<div style="position: absolute; top:639px; left:911px; z-index:8; width:80px; height:20px; text-align:center">
-					<p id="PriceTag40" style="margin-top:auto">₱75</p>
-				</div>
-
-				<img id="UnitUnderlayer31" style="position: absolute; top:565px; left: 5px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer32" style="position: absolute; top:565px; left: 105px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer33" style="position: absolute; top:565px; left: 205px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer34" style="position: absolute; top:565px; left: 305px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer35" style="position: absolute; top:565px; left: 405px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer36" style="position: absolute; top:565px; left: 505px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer37" style="position: absolute; top:565px; left: 605px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer38" style="position: absolute; top:565px; left: 705px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer39" style="position: absolute; top:565px; left: 805px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-				<img id="UnitUnderlayer40" style="position: absolute; top:565px; left: 905px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.png"/>
-
-				<img id="UnitMontre31" style="position: absolute; top:585px; left: 23px; z-index:7;"/>
-				<img id="UnitMontre31Mesh" style="position: absolute; top:585px; left: 23px; z-index:7;" src="Assets/Units/StaticMeshes/HowitzerMesh3.png"/>
-				<img id="UnitMontre32" style="position: absolute; top:585px; left: 123px; z-index:7;"/>
-				<img id="UnitMontre32Mesh" style="position: absolute; top:585px; left: 123px; z-index:7;" src="Assets/Units/StaticMeshes/AAMesh3.png"/>
-				<img id="UnitMontre33" style="position: absolute; top:585px; left: 223px; z-index:7;"/>
-				<img id="UnitMontre33Mesh" style="position: absolute; top:585px; left: 223px; z-index:7;" src="Assets/Units/StaticMeshes/ATMesh3.png"/>
-				<img id="UnitMontre34" style="position: absolute; top:585px; left: 323px; z-index:7;"/>
-				<img id="UnitMontre34Mesh" style="position: absolute; top:585px; left: 323px; z-index:7;" src="Assets/Units/StaticMeshes/MoldanMesh3.png"/>
-				<img id="UnitMontre35" style="position: absolute; top:585px; left: 423px; z-index:7;"/>
-				<img id="UnitMontre35Mesh" style="position: absolute; top:585px; left: 423px; z-index:7;" src="Assets/Units/StaticMeshes/SPABMesh3.png"/>
-				<img id="UnitMontre36" style="position: absolute; top:585px; left: 523px; z-index:7;"/>
-				<img id="UnitMontre36Mesh" style="position: absolute; top:585px; left: 523px; z-index:7;" src="Assets/Units/StaticMeshes/RocketankMesh3.png"/>
-				<img id="UnitMontre37" style="position: absolute; top:585px; left: 623px; z-index:7;"/>
-				<img id="UnitMontre37Mesh" style="position: absolute; top:585px; left: 623px; z-index:7;" src="Assets/Units/StaticMeshes/BerthaMesh3.png"/>
-				<img id="UnitMontre38" style="position: absolute; top:585px; left: 723px; z-index:7;"/>
-				<img id="UnitMontre38Mesh" style="position: absolute; top:585px; left: 723px; z-index:7;" src="Assets/Units/StaticMeshes/PulaMesh3.png"/>
-				<img id="UnitMontre39" style="position: absolute; top:585px; left: 823px; z-index:7;"/>
-				<img id="UnitMontre39Mesh" style="position: absolute; top:585px; left: 823px; z-index:7;" src="Assets/Units/StaticMeshes/TugarinMesh3.png"/>
-				<img id="UnitMontre40" style="position: absolute; top:585px; left: 923px; z-index:7;"/>
-				<img id="UnitMontre40Mesh" style="position: absolute; top:585px; left: 923px; z-index:7;" src="Assets/Units/StaticMeshes/BrimstoneMesh3.png"/>
-
-				<img id="Obturator31" style="position: absolute; visibility: hidden; top:565px; left: 5px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator32" style="position: absolute; visibility: hidden; top:565px; left: 105px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator33" style="position: absolute; visibility: hidden; top:565px; left: 205px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator34" style="position: absolute; visibility: hidden; top:565px; left: 305px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator35" style="position: absolute; visibility: hidden; top:565px; left: 405px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator36" style="position: absolute; visibility: hidden; top:565px; left: 505px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator37" style="position: absolute; visibility: hidden; top:565px; left: 605px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator38" style="position: absolute; visibility: hidden; top:565px; left: 705px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator39" style="position: absolute; visibility: hidden; top:565px; left: 805px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
-				<img id="Obturator40" style="position: absolute; visibility: hidden; top:565px; left: 905px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.png"/>
+		<div style="position: absolute; z-index:8; top: 2px; left:567px">
+			<img id="Particulator" style="position: absolute; top:0px; left:0px" src="Assets/Miscellaneous/UnitParticulatorBar.PNG"/>
+			<input id="ParticularNameBox" style="position: absolute; width:210px; height:20px; top:20px; text-align: center; left:30px; background-color:#3D4C48">
+			<img id="MoraleParticulator-2" style="position: absolute; top: 50px; left:80px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Traits/Morale0.PNG" onmouseover="this.src='Assets/Traits/Morale-2.PNG'" onmouseout="if(Speciation!=-2){this.src='Assets/Traits/Morale0.PNG'}" onclick="ExecuteSpeciation(-2)"/>
+			<img id="MoraleParticulator-1" style="position: absolute; top: 50px; left:105px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Traits/Morale0.PNG" onmouseover="this.src='Assets/Traits/Morale-1.PNG'" onmouseout="if(Speciation!=-1){this.src='Assets/Traits/Morale0.PNG'}" onclick="ExecuteSpeciation(-1)"/>
+			<img id="MoraleParticulator0" style="position: absolute; top: 50px; left:130px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Traits/Morale0.PNG" onmouseover="" onmouseout="" onclick="ExecuteSpeciation(0)"/>
+			<img id="MoraleParticulator1" style="position: absolute; top: 50px; left:155px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Traits/Morale0.PNG" onmouseover="this.src='Assets/Traits/Morale1.PNG'" onmouseout="if(Speciation!=1){this.src='Assets/Traits/Morale0.PNG'}" onclick="ExecuteSpeciation(1)"/>
+			<img id="MoraleParticulator2" style="position: absolute; top: 50px; left:180px; cursor: url('Assets/Miscellaneous/Cursor.png') 0 0, auto" src="Assets/Traits/Morale0.PNG" onmouseover="this.src='Assets/Traits/Morale2.PNG'" onmouseout="if(Speciation!=2){this.src='Assets/Traits/Morale0.PNG'}" onclick="ExecuteSpeciation(2)"/>
 			</div>
+			
+
+			<img id="UnitTypeBar1" style="position:absolute; z-index:9; top: 140px" src="Assets/Miscellaneous/UnitTypeBar.PNG"/>
+			<img id="UnitTypeBar2" style="position:absolute; z-index:9; top: 270px" src="Assets/Miscellaneous/UnitTypeBar.PNG"/>
+			<img id="UnitTypeBar3" style="position:absolute; z-index:9; top: 400px" src="Assets/Miscellaneous/UnitTypeBar.PNG"/>
+			<img id="UnitTypeBar4" style="position:absolute; z-index:9; top: 530px" src="Assets/Miscellaneous/UnitTypeBar.PNG"/>
+
+			<div style="position:absolute; z-index:10; top: 143px;left:423px;width: 140px; height:31px">
+			<p id="UnitType1" style="text-align: center; margin-top:7px">Infantry Units</p></div>
+			<div style="position:absolute; z-index:10; top: 273px;left:423px;width: 140px; height:31px">
+			<p id="UnitType2" style="text-align: center; margin-top:7px">Motorized Units</p></div>
+			<div style="position:absolute; z-index:10; top: 403px;left:423px;width: 140px; height:31px">
+			<p id="UnitType3" style="text-align: center; margin-top:7px">Armored Units</p></div>
+			<div style="position:absolute; z-index:10; top: 533px;left:423px;width: 140px; height:31px">
+			<p id="UnitType4" style="text-align: center; margin-top:7px">Artillery Units</p></div>
+
+
+
+
+
+
+			<img id="UnitFrame1" style="position: absolute; top:175px; left: 5px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre1').src='Assets/Units/Move/'+Units[MontreIndexBasis+1].shortname+'Movement3.GIF'; MontreUnit(1+MontreIndexBasis) " onmouseout="UnmontreUnit(1)" src="Assets/Units/Static/LightInf3.PNG" onclick="RecruitUnit(1+MontreIndexBasis)"/>
+			<img id="UnitFrame2" style="position: absolute; top:175px; left: 105px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre2').src='Assets/Units/Move/'+Units[MontreIndexBasis+2].shortname+'Movement3.GIF'; MontreUnit(2+MontreIndexBasis) " onmouseout="UnmontreUnit(2)" src="Assets/Units/Static/LightInf3.PNG" onclick="RecruitUnit(2+MontreIndexBasis)"/>
+			<img id="UnitFrame3" style="position: absolute; top:175px; left: 205px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre3').src='Assets/Units/Move/'+Units[MontreIndexBasis+3].shortname+'Movement3.GIF'; MontreUnit(3+MontreIndexBasis) " onmouseout="UnmontreUnit(3)" src="Assets/Units/Static/LightInf3.PNG" onclick="RecruitUnit(3+MontreIndexBasis)"/>
+			<img id="UnitFrame4" style="position: absolute; top:175px; left: 305px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre4').src='Assets/Units/Move/'+Units[MontreIndexBasis+4].shortname+'Movement3.GIF'; MontreUnit(4+MontreIndexBasis) " onmouseout="UnmontreUnit(4)" src="Assets/Units/Static/LightInf3.PNG" onclick="RecruitUnit(4+MontreIndexBasis)"/>
+			<img id="UnitFrame5" style="position: absolute; top:175px; left: 405px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre5').src='Assets/Units/Move/'+Units[MontreIndexBasis+5].shortname+'Movement3.GIF'; MontreUnit(5+MontreIndexBasis) " onmouseout="UnmontreUnit(5)" src="Assets/Units/Static/LightInf3.PNG" onclick="RecruitUnit(5+MontreIndexBasis)"/>
+			<img id="UnitFrame6" style="position: absolute; top:175px; left: 505px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre6').src='Assets/Units/Move/'+Units[MontreIndexBasis+6].shortname+'Movement3.GIF'; MontreUnit(6+MontreIndexBasis) " onmouseout="UnmontreUnit(6)" src="Assets/Units/Static/LightInf3.PNG" onclick="RecruitUnit(6+MontreIndexBasis)"/>
+			<img id="UnitFrame7" style="position: absolute; top:175px; left: 605px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre7').src='Assets/Units/Move/'+Units[MontreIndexBasis+7].shortname+'Movement3.GIF'; MontreUnit(7+MontreIndexBasis) " onmouseout="UnmontreUnit(7)" src="Assets/Units/Static/LightInf3.PNG" onclick="RecruitUnit(7+MontreIndexBasis)"/>
+			<img id="UnitFrame8" style="position: absolute; top:175px; left: 705px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre8').src='Assets/Units/Move/'+Units[MontreIndexBasis+8].shortname+'Movement3.GIF'; MontreUnit(8+MontreIndexBasis) " onmouseout="UnmontreUnit(8)" src="Assets/Units/Static/LightInf3.PNG" onclick="RecruitUnit(8+MontreIndexBasis)"/>
+			<img id="UnitFrame9" style="position: absolute; top:175px; left: 805px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre9').src='Assets/Units/Move/'+Units[MontreIndexBasis+9].shortname+'Movement3.GIF'; MontreUnit(9+MontreIndexBasis) " onmouseout="UnmontreUnit(9)" src="Assets/Units/Static/LightInf3.PNG" onclick="RecruitUnit(9+MontreIndexBasis)"/>
+			<img id="UnitFrame10" style="position: absolute; top:175px; left: 905px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre10').src='Assets/Units/Move/'+Units[MontreIndexBasis+10].shortname+'Movement3.GIF'; MontreUnit(10+MontreIndexBasis) " onmouseout="UnmontreUnit(10)" src="Assets/Units/Static/LightInf3.PNG" onclick="RecruitUnit(10+MontreIndexBasis)"/>
+			<div style="position: absolute; top:249px; left:11px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag1" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:249px; left:111px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag2" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:249px; left:211px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag3" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:249px; left:311px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag4" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:249px; left:411px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag5" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:249px; left:511px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag6" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:249px; left:611px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag7" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:249px; left:711px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag8" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:249px; left:811px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag9" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:249px; left:911px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag10" style="margin-top:auto">₱75</p>
+			</div>
+
+			<img id="UnitUnderlayer1" style="position: absolute; top:175px; left: 5px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer2" style="position: absolute; top:175px; left: 105px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer3" style="position: absolute; top:175px; left: 205px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer4" style="position: absolute; top:175px; left: 305px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer5" style="position: absolute; top:175px; left: 405px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer6" style="position: absolute; top:175px; left: 505px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer7" style="position: absolute; top:175px; left: 605px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer8" style="position: absolute; top:175px; left: 705px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer9" style="position: absolute; top:175px; left: 805px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer10" style="position: absolute; top:175px; left: 905px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+
+			<img id="UnitMontre1" style="position: absolute; top:195px; left: 23px; z-index:7;"/>
+			<img id="UnitMontre1Mesh" style="position: absolute; top:195px; left: 23px; z-index:7;" src="Assets/Units/StaticMeshes/LightInfMesh3.PNG"/>
+			<img id="UnitMontre2" style="position: absolute; top:195px; left: 123px; z-index:7;"/>
+			<img id="UnitMontre2Mesh" style="position: absolute; top:195px; left: 123px; z-index:7;" src="Assets/Units/StaticMeshes/InfantryMesh3.PNG"/>
+			<img id="UnitMontre3" style="position: absolute; top:195px; left: 223px; z-index:7;"/>
+			<img id="UnitMontre3Mesh" style="position: absolute; top:195px; left: 223px; z-index:7;" src="Assets/Units/StaticMeshes/AssaultInfMesh3.PNG"/>
+			<img id="UnitMontre4" style="position: absolute; top:195px; left: 323px; z-index:7;"/>
+			<img id="UnitMontre4Mesh" style="position: absolute; top:195px; left: 323px; z-index:7;" src="Assets/Units/StaticMeshes/SnipersMesh3.PNG"/>
+			<img id="UnitMontre5" style="position: absolute; top:195px; left: 423px; z-index:7;"/>
+			<img id="UnitMontre5Mesh" style="position: absolute; top:195px; left: 423px; z-index:7;" src="Assets/Units/StaticMeshes/MarinesMesh3.PNG"/>
+			<img id="UnitMontre6" style="position: absolute; top:195px; left: 523px; z-index:7;"/>
+			<img id="UnitMontre6Mesh" style="position: absolute; top:195px; left: 523px; z-index:7;" src="Assets/Units/StaticMeshes/StormtroopersMesh3.PNG"/>
+			<img id="UnitMontre7" style="position: absolute; top:195px; left: 623px; z-index:7;"/>
+			<img id="UnitMontre7Mesh" style="position: absolute; top:195px; left: 623px; z-index:7;" src="Assets/Units/StaticMeshes/SpecOpsMesh3.PNG"/>
+			<img id="UnitMontre8" style="position: absolute; top:195px; left: 723px; z-index:7;"/>
+			<img id="UnitMontre8Mesh" style="position: absolute; top:195px; left: 723px; z-index:7;" src="Assets/Units/StaticMeshes/GuardsMesh3.PNG"/>
+			<img id="UnitMontre9" style="position: absolute; top:195px; left: 823px; z-index:7;"/>
+			<img id="UnitMontre9Mesh" style="position: absolute; top:195px; left: 823px; z-index:7;" src="Assets/Units/StaticMeshes/SuicideMesh3.PNG"/>
+			<img id="UnitMontre10" style="position: absolute; top:195px; left: 923px; z-index:7;"/>
+			<img id="UnitMontre10Mesh" style="position: absolute; top:195px; left: 923px; z-index:7;" src="Assets/Units/StaticMeshes/PaladinMesh3.PNG"/>
+
+			<img id="Obturator1" style="position: absolute; visibility: hidden; top:175px; left: 5px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator2" style="position: absolute; visibility: hidden; top:175px; left: 105px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator3" style="position: absolute; visibility: hidden; top:175px; left: 205px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator4" style="position: absolute; visibility: hidden; top:175px; left: 305px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator5" style="position: absolute; visibility: hidden; top:175px; left: 405px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator6" style="position: absolute; visibility: hidden; top:175px; left: 505px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator7" style="position: absolute; visibility: hidden; top:175px; left: 605px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator8" style="position: absolute; visibility: hidden; top:175px; left: 705px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator9" style="position: absolute; visibility: hidden; top:175px; left: 805px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator10" style="position: absolute; visibility: hidden; top:175px; left: 905px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+
+
+
+
+
+
+
+
+			<img id="UnitFrame11" style="position: absolute; top:305px; left: 5px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre11').src='Assets/Units/Move/'+Units[11].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+11].shortname+'Movement2.GIF'; MontreUnit(11) " onmouseout="UnmontreUnit(11)" src="Assets/Units/Static/MotorInf3.PNG" onclick="RecruitUnit(11)"/>
+			<img id="UnitFrame12" style="position: absolute; top:305px; left: 105px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre12').src='Assets/Units/Move/'+Units[12].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+12].shortname+'Movement2.GIF'; MontreUnit(12) " onmouseout="UnmontreUnit(12)" src="Assets/Units/Static/MotorInf3.PNG" onclick="RecruitUnit(12)"/>
+			<img id="UnitFrame13" style="position: absolute; top:305px; left: 205px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre13').src='Assets/Units/Move/'+Units[13].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+13].shortname+'Movement2.GIF'; MontreUnit(13) " onmouseout="UnmontreUnit(13)" src="Assets/Units/Static/MotorInf3.PNG" onclick="RecruitUnit(13)"/>
+			<img id="UnitFrame14" style="position: absolute; top:305px; left: 305px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre14').src='Assets/Units/Move/'+Units[14].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+14].shortname+'Movement2.GIF'; MontreUnit(14) " onmouseout="UnmontreUnit(14)" src="Assets/Units/Static/MotorInf3.PNG" onclick="RecruitUnit(14)"/>
+			<img id="UnitFrame15" style="position: absolute; top:305px; left: 405px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre15').src='Assets/Units/Move/'+Units[15].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+15].shortname+'Movement2.GIF'; MontreUnit(15) " onmouseout="UnmontreUnit(15)" src="Assets/Units/Static/MotorInf3.PNG" onclick="RecruitUnit(15)"/>
+			<img id="UnitFrame16" style="position: absolute; top:305px; left: 505px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre16').src='Assets/Units/Move/'+Units[16].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+16].shortname+'Movement2.GIF'; MontreUnit(16) " onmouseout="UnmontreUnit(16)" src="Assets/Units/Static/MotorInf3.PNG" onclick="RecruitUnit(16)"/>
+			<img id="UnitFrame17" style="position: absolute; top:305px; left: 605px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre17').src='Assets/Units/Move/'+Units[17].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+17].shortname+'Movement2.GIF'; MontreUnit(17) " onmouseout="UnmontreUnit(17)" src="Assets/Units/Static/MotorInf3.PNG" onclick="RecruitUnit(17)"/>
+			<img id="UnitFrame18" style="position: absolute; top:305px; left: 705px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre18').src='Assets/Units/Move/'+Units[18].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+18].shortname+'Movement2.GIF'; MontreUnit(18) " onmouseout="UnmontreUnit(18)" src="Assets/Units/Static/MotorInf3.PNG" onclick="RecruitUnit(18)"/>
+			<img id="UnitFrame19" style="position: absolute; top:305px; left: 805px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre19').src='Assets/Units/Move/'+Units[19].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+19].shortname+'Movement2.GIF'; MontreUnit(19) " onmouseout="UnmontreUnit(19)" src="Assets/Units/Static/MotorInf3.PNG" onclick="RecruitUnit(19)"/>
+			<img id="UnitFrame20" style="position: absolute; top:305px; left: 905px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre20').src='Assets/Units/Move/'+Units[20].shortname+'Movement3.GIF'; document.getElementById('UnitMontre').src='Assets/Units/Move/'+Units[MontreIndexBasis+20].shortname+'Movement2.GIF'; MontreUnit(20) " onmouseout="UnmontreUnit(20)" src="Assets/Units/Static/MotorInf3.PNG" onclick="RecruitUnit(20)"/>	
+
+
+			<div style="position: absolute; top:379px; left:11px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag11" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:379px; left:111px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag12" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:379px; left:211px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag13" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:379px; left:311px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag14" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:379px; left:411px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag15" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:379px; left:511px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag16" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:379px; left:611px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag17" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:379px; left:711px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag18" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:379px; left:811px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag19" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:379px; left:911px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag20" style="margin-top:auto">₱75</p>
+			</div>
+
+			<img id="UnitUnderlayer11" style="position: absolute; top:305px; left: 5px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer12" style="position: absolute; top:305px; left: 105px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer13" style="position: absolute; top:305px; left: 205px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer14" style="position: absolute; top:305px; left: 305px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer15" style="position: absolute; top:305px; left: 405px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer16" style="position: absolute; top:305px; left: 505px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer17" style="position: absolute; top:305px; left: 605px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer18" style="position: absolute; top:305px; left: 705px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer19" style="position: absolute; top:305px; left: 805px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer20" style="position: absolute; top:305px; left: 905px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>	
+
+			<img id="UnitMontre11" style="position: absolute; top:325px; left: 23px; z-index:7;"/>
+			<img id="UnitMontre11Mesh" style="position: absolute; top:325px; left: 23px; z-index:7;" src="Assets/Units/StaticMeshes/CavalryMesh3.PNG"/>
+			<img id="UnitMontre12" style="position: absolute; top:325px; left: 123px; z-index:7;"/>
+			<img id="UnitMontre12Mesh" style="position: absolute; top:325px; left: 123px; z-index:7;" src="Assets/Units/StaticMeshes/MotorInfMesh3.PNG"/>
+			<img id="UnitMontre13" style="position: absolute; top:325px; left: 223px; z-index:7;"/>
+			<img id="UnitMontre13Mesh" style="position: absolute; top:325px; left: 223px; z-index:7;" src="Assets/Units/StaticMeshes/SupplyMesh3.PNG"/>
+			<img id="UnitMontre14" style="position: absolute; top:325px; left: 323px; z-index:7;"/>
+			<img id="UnitMontre14Mesh" style="position: absolute; top:325px; left: 323px; z-index:7;" src="Assets/Units/StaticMeshes/FlakMesh3.PNG"/>
+			<img id="UnitMontre15" style="position: absolute; top:325px; left: 423px; z-index:7;"/>
+			<img id="UnitMontre15Mesh" style="position: absolute; top:325px; left: 423px; z-index:7;" src="Assets/Units/StaticMeshes/CrabMesh3.PNG"/>
+			<img id="UnitMontre16" style="position: absolute; top:325px; left: 523px; z-index:7;"/>
+			<img id="UnitMontre16Mesh" style="position: absolute; top:325px; left: 523px; z-index:7;" src="Assets/Units/StaticMeshes/SCADPMesh3.PNG"/>
+			<img id="UnitMontre17" style="position: absolute; top:325px; left: 623px; z-index:7;"/>
+			<img id="UnitMontre17Mesh" style="position: absolute; top:325px; left: 623px; z-index:7;" src="Assets/Units/StaticMeshes/WarmachineMesh3.PNG"/>
+			<img id="UnitMontre18" style="position: absolute; top:325px; left: 723px; z-index:7;"/>
+			<img id="UnitMontre18Mesh" style="position: absolute; top:325px; left: 723px; z-index:7;" src="Assets/Units/StaticMeshes/SisuMesh3.PNG"/>
+			<img id="UnitMontre19" style="position: absolute; top:325px; left: 823px; z-index:7;"/>
+			<img id="UnitMontre19Mesh" style="position: absolute; top:325px; left: 823px; z-index:7;" src="Assets/Units/StaticMeshes/MegacockterMesh3.PNG"/>
+			<img id="UnitMontre20" style="position: absolute; top:325px; left: 923px; z-index:7;"/>
+			<img id="UnitMontre20Mesh" style="position: absolute; top:325px; left: 923px; z-index:7;" src="Assets/Units/StaticMeshes/AYINMesh3.PNG"/>
+
+			<img id="Obturator11" style="position: absolute; visibility: hidden; top:305px; left: 5px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator12" style="position: absolute; visibility: hidden; top:305px; left: 105px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator13" style="position: absolute; visibility: hidden; top:305px; left: 205px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator14" style="position: absolute; visibility: hidden; top:305px; left: 305px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator15" style="position: absolute; visibility: hidden; top:305px; left: 405px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator16" style="position: absolute; visibility: hidden; top:305px; left: 505px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator17" style="position: absolute; visibility: hidden; top:305px; left: 605px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator18" style="position: absolute; visibility: hidden; top:305px; left: 705px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator19" style="position: absolute; visibility: hidden; top:305px; left: 805px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator20" style="position: absolute; visibility: hidden; top:305px; left: 905px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<img id="UnitFrame21" style="position: absolute; top:435px; left: 5px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre21').src='Assets/Units/Move/'+Units[21].shortname+'Movement3.GIF' ; MontreUnit(21)" src="Assets/Units/Static/Cockroach3.PNG" onmouseout="UnmontreUnit(21)" src="Assets/Units/Static/Cockroach3.PNG" onclick="RecruitUnit(21)"/>
+			<img id="UnitFrame22" style="position: absolute; top:435px; left: 105px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre22').src='Assets/Units/Move/'+Units[22].shortname+'Movement3.GIF' ; MontreUnit(22)" src="Assets/Units/Static/Bolt3.PNG" onmouseout="UnmontreUnit(22)" src="Assets/Units/Static/Bolt3.PNG" onclick="RecruitUnit(22)"/>
+			<img id="UnitFrame23" style="position: absolute; top:435px; left: 205px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre23').src='Assets/Units/Move/'+Units[23].shortname+'Movement3.GIF' ; MontreUnit(23)" src="Assets/Units/Static/Asekara3.PNG" onmouseout="UnmontreUnit(23)" onclick="RecruitUnit(23)"/>
+			<img id="UnitFrame24" style="position: absolute; top:435px; left: 305px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre24').src='Assets/Units/Move/'+Units[24].shortname+'Movement3.GIF' ; MontreUnit(24)" src="Assets/Units/Static/Gorlitz3.PNG" onmouseout="UnmontreUnit(24)" src="Assets/Units/Static/Gorlitz3.PNG" onclick="RecruitUnit(24)"/>
+			<img id="UnitFrame25" style="position: absolute; top:435px; left: 405px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre25').src='Assets/Units/Move/'+Units[25].shortname+'Movement3.GIF' ; MontreUnit(25)" src="Assets/Units/Static/Hunter3.PNG" onmouseout="UnmontreUnit(25)" src="Assets/Units/Static/Hunter3.PNG" onclick="RecruitUnit(25)"/>
+			<img id="UnitFrame26" style="position: absolute; top:435px; left: 505px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre26').src='Assets/Units/Move/'+Units[26].shortname+'Movement3.GIF' ; MontreUnit(26)" src="Assets/Units/Static/AMPAC3.PNG" onmouseout="UnmontreUnit(26)" src="Assets/Units/Static/AMPAC3.PNG" onclick="RecruitUnit(26)"/>
+			<img id="UnitFrame27" style="position: absolute; top:435px; left: 605px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre27').src='Assets/Units/Move/'+Units[27].shortname+'Movement3.GIF' ; MontreUnit(27)" src="Assets/Units/Static/Koschei3.PNG" onmouseout="UnmontreUnit(27)" src="Assets/Units/Static/Koschei3.PNG" onclick="RecruitUnit(27)"/>
+			<img id="UnitFrame28" style="position: absolute; top:435px; left: 705px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre28').src='Assets/Units/Move/'+Units[28].shortname+'Movement3.GIF' ; MontreUnit(28) " src="Assets/Units/Static/Imperterritus3.PNG" onmouseout="UnmontreUnit(28)" src="Assets/Units/Static/Imperterritus3.PNG" onclick="RecruitUnit(28)"/>
+			<img id="UnitFrame29" style="position: absolute; top:435px; left: 805px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre29').src='Assets/Units/Move/'+Units[29].shortname+'Movement3.GIF' ; MontreUnit(29)" src="Assets/Units/Static/Entwicklung3.PNG" onmouseout="UnmontreUnit(29)" src="Assets/Units/Static/Cockroach3.PNG" onclick="RecruitUnit(29)"/>
+			<img id="UnitFrame30" style="position: absolute; top:435px; left: 905px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre30').src='Assets/Units/Move/'+Units[30].shortname+'Movement3.GIF' ; MontreUnit(30)" src="Assets/Units/Static/Roland3.PNG" onmouseout="UnmontreUnit(30)" src="Assets/Units/Static/Cockroach3.PNG" onclick="RecruitUnit(30)"/>
+
+
+			<div style="position: absolute; top:509px; left:11px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag21" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:509px; left:111px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag22" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:509px; left:211px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag23" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:509px; left:311px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag24" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:509px; left:411px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag25" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:509px; left:511px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag26" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:509px; left:611px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag27" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:509px; left:711px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag28" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:509px; left:811px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag29" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:509px; left:911px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag30" style="margin-top:auto">₱75</p>
+			</div>
+
+			<img id="UnitUnderlayer21" style="position: absolute; top:435px; left: 5px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer22" style="position: absolute; top:435px; left: 105px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer23" style="position: absolute; top:435px; left: 205px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer24" style="position: absolute; top:435px; left: 305px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer25" style="position: absolute; top:435px; left: 405px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer26" style="position: absolute; top:435px; left: 505px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer27" style="position: absolute; top:435px; left: 605px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer28" style="position: absolute; top:435px; left: 705px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer29" style="position: absolute; top:435px; left: 805px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer30" style="position: absolute; top:435px; left: 905px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+
+			<img id="UnitMontre21" style="position: absolute; top:455px; left: 23px; z-index:7;"/>
+			<img id="UnitMontre21Mesh" style="position: absolute; top:455px; left: 23px; z-index:7;" src="Assets/Units/StaticMeshes/CockroachMesh3.PNG"/>
+			<img id="UnitMontre22" style="position: absolute; top:455px; left: 123px; z-index:7;"/>
+			<img id="UnitMontre22Mesh" style="position: absolute; top:455px; left: 123px; z-index:7;" src="Assets/Units/StaticMeshes/BoltMesh3.PNG"/>
+			<img id="UnitMontre23" style="position: absolute; top:455px; left: 223px; z-index:7;"/>
+			<img id="UnitMontre23Mesh" style="position: absolute; top:455px; left: 223px; z-index:7;" src="Assets/Units/StaticMeshes/AsekaraMesh3.PNG"/>
+			<img id="UnitMontre24" style="position: absolute; top:455px; left: 323px; z-index:7;"/>
+			<img id="UnitMontre24Mesh" style="position: absolute; top:455px; left: 323px; z-index:7;" src="Assets/Units/StaticMeshes/GorlitzMesh3.PNG"/>
+			<img id="UnitMontre25" style="position: absolute; top:455px; left: 423px; z-index:7;"/>
+			<img id="UnitMontre25Mesh" style="position: absolute; top:455px; left: 423px; z-index:7;" src="Assets/Units/StaticMeshes/HunterMesh3.PNG"/>
+			<img id="UnitMontre26" style="position: absolute; top:455px; left: 520px; z-index:7;"/>
+			<img id="UnitMontre26Mesh" style="position: absolute; top:455px; left: 520px; z-index:7;" src="Assets/Units/StaticMeshes/AMPACMesh3.PNG"/>
+			<img id="UnitMontre27" style="position: absolute; top:455px; left: 623px; z-index:7;"/>
+			<img id="UnitMontre27Mesh" style="position: absolute; top:455px; left: 623px; z-index:7;" src="Assets/Units/StaticMeshes/KoscheiMesh3.PNG"/>
+			<img id="UnitMontre28" style="position: absolute; top:450px; left: 701px; z-index:7;"/>
+			<img id="UnitMontre28Mesh" style="position: absolute; top:455px; left: 701px; z-index:7;" src="Assets/Units/StaticMeshes/ImperterritusMesh3.PNG"/>
+			<img id="UnitMontre29" style="position: absolute; top:455px; left: 823px; z-index:7;"/>
+			<img id="UnitMontre29Mesh" style="position: absolute; top:455px; left: 823px; z-index:7;" src="Assets/Units/StaticMeshes/EntwiklungMesh3.PNG"/>
+			<img id="UnitMontre30" style="position: absolute; top:455px; left: 923px; z-index:7;"/>
+			<img id="UnitMontre30Mesh" style="position: absolute; top:455px; left: 923px; z-index:7;" src="Assets/Units/StaticMeshes/RolandMesh3.PNG"/>
+
+			<img id="Obturator21" style="position: absolute; visibility: hidden; top:435px; left: 5px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator22" style="position: absolute; visibility: hidden; top:435px; left: 105px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator23" style="position: absolute; visibility: hidden; top:435px; left: 205px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator24" style="position: absolute; visibility: hidden; top:435px; left: 305px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator25" style="position: absolute; visibility: hidden; top:435px; left: 405px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator26" style="position: absolute; visibility: hidden; top:435px; left: 505px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator27" style="position: absolute; visibility: hidden; top:435px; left: 605px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator28" style="position: absolute; visibility: hidden; top:435px; left: 705px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator29" style="position: absolute; visibility: hidden; top:435px; left: 805px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator30" style="position: absolute; visibility: hidden; top:435px; left: 905px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+
+
+
+
+
+
+
+
+
+
+
+
+			<img id="UnitFrame31" style="position: absolute; top:565px; left: 5px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre31').src='Assets/Units/Move/'+Units[31].shortname+'Movement3.GIF'; MontreUnit(31)" onmouseout="UnmontreUnit(31)" src="Assets/Units/Static/Howitzer3.PNG" onclick="RecruitUnit(31)"/>
+			<img id="UnitFrame32" style="position: absolute; top:565px; left: 105px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre32').src='Assets/Units/Move/'+Units[32].shortname+'Movement3.GIF'; MontreUnit(32)" onmouseout="UnmontreUnit(32)" src="Assets/Units/Static/Trablek3.PNG" onclick="RecruitUnit(32)"/>
+			<img id="UnitFrame33" style="position: absolute; top:565px; left: 205px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre33').src='Assets/Units/Move/'+Units[33].shortname+'Movement3.GIF'; MontreUnit(33)" onmouseout="UnmontreUnit(33)" src="Assets/Units/Static/Hellstorm3.PNG" onclick="RecruitUnit(33)"/>
+			<img id="UnitFrame34" style="position: absolute; top:565px; left: 305px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre34').src='Assets/Units/Move/'+Units[34].shortname+'Movement3.GIF'; MontreUnit(34)" onmouseout="UnmontreUnit(34)" src="Assets/Units/Static/SPAB3.PNG" onclick="RecruitUnit(34)"/>
+			<img id="UnitFrame35" style="position: absolute; top:565px; left: 405px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre35').src='Assets/Units/Move/'+Units[35].shortname+'Movement3.GIF'; MontreUnit(35)" onmouseout="UnmontreUnit(35)" src="Assets/Units/Static/Bertha3.PNG" onclick="RecruitUnit(35)"/>
+			<img id="UnitFrame36" style="position: absolute; top:565px; left: 505px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre36').src='Assets/Units/Move/'+Units[36].shortname+'Movement3.GIF'; MontreUnit(36)" onmouseout="UnmontreUnit(36)" src="Assets/Units/Static/Pula3.PNG" onclick="RecruitUnit(36)"/>
+			<img id="UnitFrame37" style="position: absolute; top:565px; left: 605px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre37').src='Assets/Units/Move/'+Units[37].shortname+'Movement3.GIF'; MontreUnit(37)" onmouseout="UnmontreUnit(37)" src="Assets/Units/Static/AYIN3.PNG" onclick="RecruitUnit(37)"/>
+			<img id="UnitFrame38" style="position: absolute; top:565px; left: 705px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre38').src='Assets/Units/Move/'+Units[38].shortname+'Movement3.GIF'; MontreUnit(38)" onmouseout="UnmontreUnit(38)" src="Assets/Units/Static/Howitzer3.PNG" onclick="RecruitUnit(38)"/>
+			<img id="UnitFrame39" style="position: absolute; top:565px; left: 805px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre39').src='Assets/Units/Move/'+Units[39].shortname+'Movement3.GIF'; MontreUnit(39)" onmouseout="UnmontreUnit(39)" src="Assets/Units/Static/Howitzer3.PNG" onclick="RecruitUnit(39)"/>
+			<img id="UnitFrame40" style="position: absolute; top:565px; left: 905px; z-index:8" src="Assets/Miscellaneous/UnitAvailableFrame.PNG" onmouseover="document.getElementById('UnitMontre40').src='Assets/Units/Move/'+Units[40].shortname+'Movement3.GIF'; MontreUnit(40)" onmouseout="UnmontreUnit(40)" src="Assets/Units/Static/Howitzer3.PNG" onclick="RecruitUnit(40)"/>
+
+
+			<div style="position: absolute; top:639px; left:11px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag31" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:639px; left:111px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag32" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:639px; left:211px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag33" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:639px; left:311px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag34" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:639px; left:411px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag35" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:639px; left:511px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag36" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:639px; left:611px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag37" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:639px; left:711px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag38" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:639px; left:811px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag39" style="margin-top:auto">₱75</p>
+			</div>
+			<div style="position: absolute; top:639px; left:911px; z-index:8; width:80px; height:20px; text-align:center">
+				<p id="PriceTag40" style="margin-top:auto">₱75</p>
+			</div>
+
+			<img id="UnitUnderlayer31" style="position: absolute; top:565px; left: 5px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer32" style="position: absolute; top:565px; left: 105px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer33" style="position: absolute; top:565px; left: 205px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer34" style="position: absolute; top:565px; left: 305px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer35" style="position: absolute; top:565px; left: 405px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer36" style="position: absolute; top:565px; left: 505px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer37" style="position: absolute; top:565px; left: 605px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer38" style="position: absolute; top:565px; left: 705px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer39" style="position: absolute; top:565px; left: 805px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+			<img id="UnitUnderlayer40" style="position: absolute; top:565px; left: 905px; z-index:7,5" src="Assets/Miscellaneous/UnitUnderlayerFrame.PNG"/>
+
+			<img id="UnitMontre31" style="position: absolute; top:585px; left: 23px; z-index:7;"/>
+			<img id="UnitMontre31Mesh" style="position: absolute; top:585px; left: 23px; z-index:7;" src="Assets/Units/StaticMeshes/HowitzerMesh3.PNG"/>
+			<img id="UnitMontre32" style="position: absolute; top:585px; left: 123px; z-index:7;"/>
+			<img id="UnitMontre32Mesh" style="position: absolute; top:585px; left: 123px; z-index:7;" src="Assets/Units/StaticMeshes/AAMesh3.PNG"/>
+			<img id="UnitMontre33" style="position: absolute; top:585px; left: 223px; z-index:7;"/>
+			<img id="UnitMontre33Mesh" style="position: absolute; top:585px; left: 223px; z-index:7;" src="Assets/Units/StaticMeshes/ATMesh3.PNG"/>
+			<img id="UnitMontre34" style="position: absolute; top:585px; left: 323px; z-index:7;"/>
+			<img id="UnitMontre34Mesh" style="position: absolute; top:585px; left: 323px; z-index:7;" src="Assets/Units/StaticMeshes/MoldanMesh3.PNG"/>
+			<img id="UnitMontre35" style="position: absolute; top:585px; left: 423px; z-index:7;"/>
+			<img id="UnitMontre35Mesh" style="position: absolute; top:585px; left: 423px; z-index:7;" src="Assets/Units/StaticMeshes/SPABMesh3.PNG"/>
+			<img id="UnitMontre36" style="position: absolute; top:585px; left: 523px; z-index:7;"/>
+			<img id="UnitMontre36Mesh" style="position: absolute; top:585px; left: 523px; z-index:7;" src="Assets/Units/StaticMeshes/RocketankMesh3.PNG"/>
+			<img id="UnitMontre37" style="position: absolute; top:585px; left: 623px; z-index:7;"/>
+			<img id="UnitMontre37Mesh" style="position: absolute; top:585px; left: 623px; z-index:7;" src="Assets/Units/StaticMeshes/BerthaMesh3.PNG"/>
+			<img id="UnitMontre38" style="position: absolute; top:585px; left: 723px; z-index:7;"/>
+			<img id="UnitMontre38Mesh" style="position: absolute; top:585px; left: 723px; z-index:7;" src="Assets/Units/StaticMeshes/PulaMesh3.PNG"/>
+			<img id="UnitMontre39" style="position: absolute; top:585px; left: 823px; z-index:7;"/>
+			<img id="UnitMontre39Mesh" style="position: absolute; top:585px; left: 823px; z-index:7;" src="Assets/Units/StaticMeshes/TugarinMesh3.PNG"/>
+			<img id="UnitMontre40" style="position: absolute; top:585px; left: 923px; z-index:7;"/>
+			<img id="UnitMontre40Mesh" style="position: absolute; top:585px; left: 923px; z-index:7;" src="Assets/Units/StaticMeshes/BrimstoneMesh3.PNG"/>
+
+			<img id="Obturator31" style="position: absolute; visibility: hidden; top:565px; left: 5px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator32" style="position: absolute; visibility: hidden; top:565px; left: 105px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator33" style="position: absolute; visibility: hidden; top:565px; left: 205px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator34" style="position: absolute; visibility: hidden; top:565px; left: 305px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator35" style="position: absolute; visibility: hidden; top:565px; left: 405px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator36" style="position: absolute; visibility: hidden; top:565px; left: 505px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator37" style="position: absolute; visibility: hidden; top:565px; left: 605px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator38" style="position: absolute; visibility: hidden; top:565px; left: 705px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator39" style="position: absolute; visibility: hidden; top:565px; left: 805px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+			<img id="Obturator40" style="position: absolute; visibility: hidden; top:565px; left: 905px; z-index:9" src="Assets/Miscellaneous/UnitLockedFrame.PNG"/>
+
+	
+
+
+		</div>
+
 			
 			<img id="RightScrollBar" style="position: absolute; width: 25px; height: 558px; top:1px; left:535px; z-index: 5" onmouseover="if(Map[0].length>10){this.src='Assets/Miscellaneous/ScrollBarRight.png'}else{this.src='Assets/Miscellaneous/Nothing.png'}" onmouseout="document.getElementById('RightScrollBar').src='Assets/Miscellaneous/Nothing.png'" src="Assets/Miscellaneous/Nothing.png" onclick="RollMap(2); document.getElementById('LeftScrollBar').style.visibility='inherit'; if(document.getElementById('UnitMap').scrollLeft>=Map.length*56-560){this.style.visibility='hidden'}">
 			<img id="LeftScrollBar" style="position: absolute; width: 25px; height: 558px; top:1px; left:0px; z-index: 5" onmouseover="if(Map[0].length>10){document.getElementById('LeftScrollBar').src='Assets/Miscellaneous/ScrollBarLeft.png'}" onmouseout="document.getElementById('LeftScrollBar').src='Assets/Miscellaneous/Nothing.png'" src="Assets/Miscellaneous/Nothing.png" onclick="RollMap(4); document.getElementById('RightScrollBar').style.visibility='inherit'; if(document.getElementById('UnitMap').scrollLeft==0){this.style.visibility='hidden'}"/>
