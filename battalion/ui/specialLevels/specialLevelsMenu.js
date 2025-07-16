@@ -6,7 +6,8 @@ const SpecialLevelsMenu = function() {
     this.currentCategory = [];
     this.defaultLevelName = "";
     this.defaultLevelDescription = "";
-    this.closeButton = UIHelpers.createGenericButton("CLOSE_SPECIAL_LEVELS");
+    this.closeButton = UIHelper.createGenericButton("CLOSE_SPECIAL_LEVELS");
+    this.playButton = UIHelper.createGenericButton("PLAY_SPECIAL_LEVELS");
 }
 
 SpecialLevelsMenu.MAX_LEVELS_PER_PAGE = 9;
@@ -22,8 +23,12 @@ SpecialLevelsMenu.prototype.onLanguageSwitch = function(handler) {
         button.setText(text);
     }
 
-    this.updateDefaultText(handler);
+    this.defaultLevelName = handler.get("SYSTEM_SPECIAL_LEVELS_NAME");
+    this.defaultLevelDescription = handler.get("SYSTEM_SPECIAL_LEVELS_DESC");
     this.closeButton.setText(handler.get("SYSTEM_BUTTON_CLOSE"));
+    this.playButton.setText(handler.get("SYSTEM_BUTTON_PLAY"));
+
+    this.setText(this.defaultLevelName, this.defaultLevelDescription);
 }
 
 SpecialLevelsMenu.prototype.setText = function(name, desc) {
@@ -31,18 +36,18 @@ SpecialLevelsMenu.prototype.setText = function(name, desc) {
     document.getElementById("Special Level Description").innerText = desc;
 }
 
-SpecialLevelsMenu.prototype.updateDefaultText = function(handler) {
-    this.defaultLevelName = handler.get("SYSTEM_SPECIAL_LEVELS_NAME");
-    this.defaultLevelDescription = handler.get("SYSTEM_SPECIAL_LEVELS_DESC");
-    this.setText(this.defaultLevelName, this.defaultLevelDescription);
+SpecialLevelsMenu.prototype.getLevelSelectButton = function(index) {
+    const buttonID = `Special Level ${index + 1}`;
+    const button = document.getElementById(buttonID);
+
+    return button;
 }
 
 SpecialLevelsMenu.prototype.hideLevels = function() {
     for(let i = 0; i < SpecialLevelsMenu.MAX_LEVELS_PER_PAGE; i++) {
-        const elementID = `Special Level ${i + 1}`;
-        const element = document.getElementById(elementID);
+        const button = this.getLevelSelectButton(i);
 
-        element.style.visibility = "hidden";
+        button.style.visibility = "hidden";
     }
 }
 
@@ -50,23 +55,26 @@ SpecialLevelsMenu.prototype.clickButton = function(battalion, button) {
     const { language } = battalion;
     const { config } = button;
     const { levels, name, desc } = config;
-    const size = levels.length > SpecialLevelsMenu.MAX_LEVELS_PER_PAGE ? SpecialLevelsMenu.MAX_LEVELS_PER_PAGE : levels.length;
+    const shownLevels = levels.length > SpecialLevelsMenu.MAX_LEVELS_PER_PAGE ? SpecialLevelsMenu.MAX_LEVELS_PER_PAGE : levels.length;
+    const hiddenLevels = SpecialLevelsMenu.MAX_LEVELS_PER_PAGE - shownLevels;
 
-    this.hideLevels();
+    for(let i = 0; i < shownLevels; i++) {
+        const button = this.getLevelSelectButton(i);
 
-    for(let i = 0; i < size; i++) {
-        const elementID = `Special Level ${i + 1}`;
-        const element = document.getElementById(elementID);
+        button.style.visibility = "visible";
+        button.src = "Assets/SpecialLevels/" + levels[i].Name + ".png";
+    }
 
-        element.style.visibility = "visible";
-        element.src = "Assets/SpecialLevels/" + levels[i].Name + ".png";
+    for(let i = 0; i < hiddenLevels; i++) {
+        const button = this.getLevelSelectButton(SpecialLevelsMenu.MAX_LEVELS_PER_PAGE - i - 1);
+
+        button.style.visibility = "hidden";
     }
 
     this.setText(language.get(name), language.get(desc));
     this.currentCategory = levels;
 
-    //??? Secret Level :)
-    NivelVizat = Samara;
+    NivelVizat = null;
 }
 
 SpecialLevelsMenu.prototype.open = function() {
@@ -81,6 +89,8 @@ SpecialLevelsMenu.prototype.close = function() {
     this.hideLevels();
     this.hide();
     this.currentCategory = [];
+
+    NivelVizat = null;
 }
 
 SpecialLevelsMenu.prototype.selectLevelByIndex = function(index) {
@@ -101,8 +111,7 @@ SpecialLevelsMenu.prototype.createButton = function(buttonID, config) {
 
 SpecialLevelsMenu.prototype.createLevelSelectButtons = function() {
     for(let i = 0; i < SpecialLevelsMenu.MAX_LEVELS_PER_PAGE; i++) {
-        const buttonID = `Special Level ${i + 1}`;
-        const button = document.getElementById(buttonID);
+        const button = this.getLevelSelectButton(i);
 
         button.style.visibility = "hidden";
         button.onclick = () => this.selectLevelByIndex(i);
@@ -134,11 +143,13 @@ SpecialLevelsMenu.prototype.init = function(battalion) {
     this.closeButton.addClick(() => {
         mainMenu.show();
         this.close();
-    })
+    });
 
-    UIHelpers.makeGenericButton("PlaySpecialLevel", () => {
-        this.close();
+    this.playButton.addClick(() => {
+        if(NivelVizat !== null) {
+            initializeSpecialBattle(NivelVizat);
 
-        initializeSpecialBattle(NivelVizat);
+            this.close();
+        }
     });
 }

@@ -1,7 +1,7 @@
 const Codex = function() {
 	GenericMenu.call(this, "Codex");
 
-	this.closeButton = UIHelpers.createGenericButton("CLOSE_CODEX_BUTTON");
+	this.closeButton = UIHelper.createGenericButton("CLOSE_CODEX_BUTTON");
 }
 
 Codex.DOCUMENT_SIZES = [

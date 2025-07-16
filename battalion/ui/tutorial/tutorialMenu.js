@@ -4,7 +4,8 @@ const TutorialMenu = function() {
     this.defaultLevelName = "";
     this.defaultLevelDescription = "";
     this.selectedLevel = null;
-    this.closeButton = UIHelpers.createGenericButton("CLOSE_TUTORIAL");
+    this.closeButton = UIHelper.createGenericButton("CLOSE_TUTORIAL");
+    this.playButton = UIHelper.createGenericButton("PLAY_TUTORIAL");
 }
 
 TutorialMenu.prototype = Object.create(GenericMenu.prototype);
@@ -18,19 +19,17 @@ TutorialMenu.prototype.onLanguageSwitch = function(handler) {
         button.setText(text);
     }
 
-    this.updateDefaultText(handler);
+    this.defaultLevelName = handler.get("SYSTEM_TUTORIAL_NAME");
+    this.defaultLevelDescription = handler.get("SYSTEM_TUTORIAL_DESC");
     this.closeButton.setText(handler.get("SYSTEM_BUTTON_CLOSE"));
+    this.playButton.setText(handler.get("SYSTEM_BUTTON_PLAY"));
+
+    this.setText(this.defaultLevelName, this.defaultLevelDescription);
 }
 
 TutorialMenu.prototype.setText = function(name, desc) {
     document.getElementById("Tutorial Level Name").innerText = name;
     document.getElementById("Tutorial Level Description").innerText = desc;
-}
-
-TutorialMenu.prototype.updateDefaultText = function(handler) {
-    this.defaultLevelName = handler.get("SYSTEM_TUTORIAL_NAME");
-    this.defaultLevelDescription = handler.get("SYSTEM_TUTORIAL_DESC");
-    this.setText(this.defaultLevelName, this.defaultLevelDescription);
 }
 
 TutorialMenu.prototype.open = function() {
@@ -102,7 +101,7 @@ TutorialMenu.prototype.init = function(battalion) {
         this.close();
     });
 
-    UIHelpers.makeGenericButton("PlayTutorialLevel", () => {
+    this.playButton.addClick(() => {
         if(this.selectedLevel) {
             initializeSpecialBattle(this.selectedLevel);
 

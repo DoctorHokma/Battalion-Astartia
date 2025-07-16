@@ -2,6 +2,7 @@ const LANGUAGE_ENGLISH = {
 	"LANGUAGE_CREATOR_COMMENT": "Suck it, bri'ish people; USA is now the symbol of english language",
     "LANGUAGE_DEFAULT_COMMENT": "Suck it, bri'ish people; USA is now the symbol of english language",
 
+	"SYSTEM_BUTTON_PLAY": "Play",
 	"SYSTEM_BUTTON_CLOSE": "Close",
 	"SYSTEM_BUTTON_CAMPAIGN": "Campaign",
 	"SYSTEM_BUTTON_BOOT_CAMP": "Tutorial",

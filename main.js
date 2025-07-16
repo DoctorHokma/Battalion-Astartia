@@ -3178,8 +3178,6 @@ function FocalTileRefresh(X,Y){
 
 	};
 function GeneralInitializer(){
-
-
 	//This does the scaling
 	let ScreenRatio=Math.round(window.innerHeight/7);
 	//alert(ScreenRatio);
@@ -3191,9 +3189,9 @@ function GeneralInitializer(){
 	writeFlair(battalion, Flair);
 
 	//for(let g=1; g<=10; g++){document.getElementById('Tutorial'+g+"P").innerHTML=Language.SystemTerms[53+g]};
-	document.getElementById("PlayTutorialP").innerHTML=Language.SystemTerms[17];
+	//document.getElementById("PlayTutorialP").innerHTML=Language.SystemTerms[17];
 	//for(let h=1;h<=7;h++){document.getElementById("BonusP"+h).innerHTML=Language.SystemTerms[93+h]};
-	document.getElementById("PlayBonusP").innerHTML=Language.SystemTerms[17];	
+	//document.getElementById("PlayBonusP").innerHTML=Language.SystemTerms[17];	
 	//document.getElementById("Special Level Name").innerHTML=Language.SystemTerms[75];
 	//document.getElementById("Special Level Description").innerHTML=Language.SystemTerms[76];
 

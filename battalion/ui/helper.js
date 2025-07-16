@@ -1,6 +1,6 @@
-const UIHelpers = {};
+const UIHelper = {};
 
-UIHelpers.makeCloseButton = function(buttonID, onClick) {
+UIHelper.makeCloseButton = function(buttonID, onClick) {
     const element = document.getElementById(buttonID);
 
     element.src = "Assets/Miscellaneous/CloseButton.png";
@@ -10,7 +10,7 @@ UIHelpers.makeCloseButton = function(buttonID, onClick) {
     element.onclick = () => onClick();
 }
 
-UIHelpers.makeGenericButton = function(buttonID, onClick) {
+UIHelper.makeGenericButton = function(buttonID, onClick) {
     const element = document.getElementById(buttonID);
 
     element.src = "Assets/Miscellaneous/GenericButton.png";
@@ -20,7 +20,7 @@ UIHelpers.makeGenericButton = function(buttonID, onClick) {
     element.onclick = () => onClick();
 }
 
-UIHelpers.createGenericButton = function(elementID) {
+UIHelper.createGenericButton = function(elementID) {
     const button = new GenericButton(elementID, null);
 
     button.image.src = "Assets/Miscellaneous/GenericButton.png";

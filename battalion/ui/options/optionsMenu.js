@@ -5,7 +5,7 @@ var MystSettChoice = false;
 const OptionsMenu = function() {
     GenericMenu.call(this, "Options");
 
-    this.closeButton = UIHelpers.createGenericButton("CloseOptionsButton");
+    this.closeButton = UIHelper.createGenericButton("CloseOptionsButton");
 }
 
 OptionsMenu.prototype = Object.create(GenericMenu.prototype);
