@@ -87,7 +87,7 @@ var Difficulty = 2;
 var InterlogueBST = [[],[],[],[],[],[],[],[],[],[],[]];
 
 var Roster = [];
-var MapRoster = [0];
+var MapRoster = [];
 var rostermap = [];
 
 var Units = UNITS;
@@ -1732,10 +1732,12 @@ function CastEntityMap(Map, Roster) {
 
 	//NEYN TODO: WHY DOES IT START AT JUAN?!?
 	for(var k = 1; k < Roster.length; k++) {
+		//k - 1 because MapRoster starts at 0 and Roster at 1.
+		const id = k - 1;
 		const config = Roster[k];
-		const unit = createUnit(config, Entity.TYPE.UNIT, k);
+		const unit = createUnit(config, Entity.TYPE.UNIT, id);
 
-		MapRoster[k] = unit;
+		MapRoster[id] = unit;
 		rostermap[config.x][config.y] = unit;	
 
 		const X = config.x + 1;
@@ -2475,50 +2477,59 @@ function EndBattle(){
 		document.getElementById("AnalysisBlock"+FactionsInvolved[f].Preffix).appendChild(StrucQ);		
 		};
 
-		let TotalStructures=0;
-		for(let h=0; h<Map.length; h++){for(let i=0; i<Map[0].length; i++){if(Terrain[Map[h][i]].Urbanistics>1){TotalStructures++}}};
-		for(let j=0; j<FactionsInvolved.length; j++){
-			let OwnStructures=0;
+	let TotalStructures=0;
+	for(let h=0; h<Map.length; h++){for(let i=0; i<Map[0].length; i++){if(Terrain[Map[h][i]].Urbanistics>1){TotalStructures++}}};
+	for(let j=0; j<FactionsInvolved.length; j++){
+		let OwnStructures=0;
 
 
-			for(let k=0; k<Map.length; k++){
-				for(let l=0; l<Map[0].length; l++){
-					if(Terrain[Map[k][l]].Urbanistics>1 && ControlMap[k][l]==Constants.Commanders[j+1].Allegiance){OwnStructures++};
-				};
+		for(let k=0; k<Map.length; k++){
+			for(let l=0; l<Map[0].length; l++){
+				if(Terrain[Map[k][l]].Urbanistics>1 && ControlMap[k][l]==Constants.Commanders[j+1].Allegiance){OwnStructures++};
 			};
+		};
 
-			let Rapport=Math.round(OwnStructures/TotalStructures*10000)/100;
-			document.getElementById("StructureCounter"+FactionsInvolved[j].Preffix).innerHTML=(OwnStructures+"/"+TotalStructures+"("+Rapport+"%)");
+		let Rapport=Math.round(OwnStructures/TotalStructures*10000)/100;
+		document.getElementById("StructureCounter"+FactionsInvolved[j].Preffix).innerHTML=(OwnStructures+"/"+TotalStructures+"("+Rapport+"%)");
 
-			let TotalUnits=0;
-			let AliveUnits=0;
-			//let mapRoster=MapRoster;
-			//alert(mapRoster.length);
-			for(let m=1; m<MapRoster.length; m++){if(MapRoster[m].faction==Constants.Commanders[j+1].Allegiance){TotalUnits++; if(MapRoster[m].life>0){AliveUnits++} }};
-			let UnitRapport=Math.round(AliveUnits/TotalUnits*10000)/100;
-			document.getElementById("UnitCounter"+FactionsInvolved[j].Preffix).innerHTML=(AliveUnits+"/"+TotalUnits+"("+UnitRapport+"%)");
+		let TotalUnits=0;
+		let AliveUnits=0;
 
-			document.getElementById("FactionTitle"+FactionsInvolved[j].Preffix).innerHTML=Factions[Constants.Commanders[j+1].Allegiance].name;
-			if(Factions[Constants.Commanders[j+1].Allegiance].color=="Black"){document.getElementById("FactionTitle"+FactionsInvolved[j].Preffix).style.color='indigo'};
-			document.getElementById("StructureCounter"+FactionsInvolved[j].Preffix).style.color=FactionsInvolved[j].color;
-			document.getElementById("UnitCounter"+FactionsInvolved[j].Preffix).style.color=FactionsInvolved[j].color;
-			document.getElementById("StructureCounterP"+FactionsInvolved[j].Preffix).style.color=FactionsInvolved[j].color;
-			document.getElementById("UnitCounterP"+FactionsInvolved[j].Preffix).style.color=FactionsInvolved[j].color;
-			};
-
-			//if an entire campaign is done...
-			if(ChosenMission == 5) {
-				if(ChosenChapter==5 && ChosenNation==1){alert("We have forgiven the traitorous Vladov, for he too has suffered greatly. Despite all, he eventually repented and earned his redemption through fire and steel. If you want to, you can put yourself in his shoes and play his campaign")};
-				if(ChosenChapter==5 && ChosenNation==2){alert("For so long, the subhuman slaves have refused to bow down and accept their fate. Every second they squirm around in mud trying to subvert our glorious empire in any way they can. If you wish, you can play their campaign now")};
-				if(ChosenChapter==3 && ChosenNation==3){alert("And so, Shmelev cast down his mask. He will fight to preserve matriarchy, and his own personal interests while at that. If you wish to observe his antics you may now play Shmelev's campaign")};
-				if(ChosenChapter==5 && ChosenNation==4){alert("If you so wish, you can go fight for the Syndicalist cause. It will not change their fate, but might allow you to observe their workings and conflicts")};
-				if(ChosenChapter==5 && ChosenNation==5){alert("The curtain has fallen over Elam. The collaborators have established a sock puppet regime and Elam shall never again rise. There are, however, a few who refuse to give up the fight. If you want to witness their final struggle, you may now play their campaign.")};
+		for(let m = 0; m < MapRoster.length; m++) {
+			if(MapRoster[m].faction==Constants.Commanders[j+1].Allegiance) {
+				TotalUnits++; 
+				
+				if(MapRoster[m].life>0){
+					AliveUnits++;
+				}
 			}
+		}
 
-	for(let eth=0; eth<MapRoster.length; eth++){MapRoster[eth].life=-1}
+		let UnitRapport=Math.round(AliveUnits/TotalUnits*10000)/100;
+		document.getElementById("UnitCounter"+FactionsInvolved[j].Preffix).innerHTML=(AliveUnits+"/"+TotalUnits+"("+UnitRapport+"%)");
 
-	MapRoster = [0];
+		document.getElementById("FactionTitle"+FactionsInvolved[j].Preffix).innerHTML=Factions[Constants.Commanders[j+1].Allegiance].name;
+		if(Factions[Constants.Commanders[j+1].Allegiance].color=="Black") {
+			document.getElementById("FactionTitle"+FactionsInvolved[j].Preffix).style.color='indigo';
+		}
+		document.getElementById("StructureCounter"+FactionsInvolved[j].Preffix).style.color=FactionsInvolved[j].color;
+		document.getElementById("UnitCounter"+FactionsInvolved[j].Preffix).style.color=FactionsInvolved[j].color;
+		document.getElementById("StructureCounterP"+FactionsInvolved[j].Preffix).style.color=FactionsInvolved[j].color;
+		document.getElementById("UnitCounterP"+FactionsInvolved[j].Preffix).style.color=FactionsInvolved[j].color;
+	}
+
+	//if an entire campaign is done...
+	if(ChosenMission == 5) {
+		if(ChosenChapter==5 && ChosenNation==1){alert("We have forgiven the traitorous Vladov, for he too has suffered greatly. Despite all, he eventually repented and earned his redemption through fire and steel. If you want to, you can put yourself in his shoes and play his campaign")};
+		if(ChosenChapter==5 && ChosenNation==2){alert("For so long, the subhuman slaves have refused to bow down and accept their fate. Every second they squirm around in mud trying to subvert our glorious empire in any way they can. If you wish, you can play their campaign now")};
+		if(ChosenChapter==3 && ChosenNation==3){alert("And so, Shmelev cast down his mask. He will fight to preserve matriarchy, and his own personal interests while at that. If you wish to observe his antics you may now play Shmelev's campaign")};
+		if(ChosenChapter==5 && ChosenNation==4){alert("If you so wish, you can go fight for the Syndicalist cause. It will not change their fate, but might allow you to observe their workings and conflicts")};
+		if(ChosenChapter==5 && ChosenNation==5){alert("The curtain has fallen over Elam. The collaborators have established a sock puppet regime and Elam shall never again rise. There are, however, a few who refuse to give up the fight. If you want to witness their final struggle, you may now play their campaign.")};
+	}
+
+	MapRoster = [];
 	Roster = [];
+    rostermap = [];
 }
 
 function EndTurn(SubRosters,Map,Constants,Roster){
@@ -3471,9 +3482,10 @@ function initializeBattle(){
 	//alert(AttackOrder[3]);
 
 	//This function builds up a list of subrosters
+	//Why does it not use scope variables?
 	for(x=0;x<AttackOrder.length;x++){
 		SubRoster=[];
-	for(y=1;y<MapRoster.length;y++){
+	for(y=0;y<MapRoster.length;y++){
 		if(MapRoster[y].faction==AttackOrder[x]){SubRoster[SubRoster.length]=MapRoster[y]};};
 
 	SubRosters[SubRosters.length]=SubRoster;};
@@ -3634,7 +3646,7 @@ function initializeSpecialBattle(Level){
 
 	for(x=0;x<AttackOrder.length;x++){
 		SubRoster=[];
-	for(y=1;y<MapRoster.length;y++){
+	for(y=0;y<MapRoster.length;y++){
 		if(MapRoster[y].faction==AttackOrder[x]){SubRoster[SubRoster.length]=MapRoster[y]};};
 
 	SubRosters[SubRosters.length]=SubRoster;};
@@ -5109,7 +5121,7 @@ function PI_Scouter(Unit, Map){
 function PITurn(Roster,Map,Constants){
 	RemoveKebabIMeanBlep();
 
-	for(let i=0; i < MapRoster.length; i++) {
+	for(let i = 0; i < MapRoster.length; i++) {
 		if(MapRoster[i].unitType == 0 && MapRoster[i].faction == PlayerChoiceFaction) {
 			advanceBuilding(i);
 		}
@@ -6660,8 +6672,8 @@ function RunEvent(Event){
 							//RefreshMap(Map);
 					};
 					if(Event.Inspire!=null){
-						for(let h=0;h<MapRoster.length;h++) {
-							if(MapRoster[h].faction==Event.Inspire.fct) {
+						for(let h = 0; h < MapRoster.length; h++) {
+							if(MapRoster[h].faction == Event.Inspire.fct) {
 								MapRoster[h].updateMorale(Event.Inspire.value);
 							}
 						}
