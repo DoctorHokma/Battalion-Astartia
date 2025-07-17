@@ -1,4 +1,5 @@
 var NivelVizat = null;
+var NivelElectiv = 0;
 
 const SpecialLevelsMenu = function() {
     GenericMenu.call(this, "Special Levels");
@@ -91,6 +92,7 @@ SpecialLevelsMenu.prototype.close = function() {
     this.currentCategory = [];
 
     NivelVizat = null;
+    NivelElectiv = 0;
 }
 
 SpecialLevelsMenu.prototype.selectLevelByIndex = function(index) {
@@ -98,7 +100,32 @@ SpecialLevelsMenu.prototype.selectLevelByIndex = function(index) {
         return;
     }
 
-    SelectSpecialLevel(this.currentCategory[index]);
+    const level = this.currentCategory[index];
+
+	NivelVizat = level;
+	NivelElectiv = 0;
+
+	for(let x = 1; x <= 14; x++) {
+        document.getElementById("NatOp"+x).style.visibility = "hidden";
+    }
+
+	document.getElementById("Special Level Name").innerHTML = level.Name;
+	document.getElementById("Special Level Description").innerHTML = level.Desc ?? "Idk what to say about this one";
+	document.getElementById("NatOpP").style.visibility = "hidden";
+
+	if(level.Constants.ElectiveNation) {
+		document.getElementById("NatOpP").style.visibility = "inherit";
+		document.getElementById("NatOpP").innerHTML = Language.SystemTerms[30];
+
+		const maxFactions = level.Constants.Commanders.length;
+
+		for(let i = 1; i < maxFactions; i++) {
+            const natOp = document.getElementById("NatOp" + i);
+
+			natOp.style.visibility = "inherit";
+			natOp.style.filter = level.Factions[level.Constants.Commanders[i].Allegiance].ChromaCode;
+		}
+	}
 }
 
 SpecialLevelsMenu.prototype.createButton = function(buttonID, config) {

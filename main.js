@@ -76,7 +76,6 @@ var EditorStandardX = 0;
 var EditorStandardY = 0;
 var EditorNationBatch = 0;
 var RegionalToggle = false;
-var NivelElectiv = 0;
 var MemoryX = 1;
 var MemoryY = 1;
 
@@ -87,6 +86,7 @@ var Panel = 0;
 var Difficulty = 2;
 var InterlogueBST = [[],[],[],[],[],[],[],[],[],[],[]];
 
+var Roster = [];
 var MapRoster = [0];
 var rostermap = [];
 
@@ -2317,12 +2317,18 @@ function EndBattle(){
 		}
 
 		if(Victory){document.getElementById("EndBattleImage").src="Assets/Paralogues/Victory"+Preffix+".png";
-			Quote=Language.VictoryQuotes}else{
+			Quote=Language.VictoryQuotes
+		} else {
 			document.getElementById("EndBattleImage").src="Assets/Paralogues/Defeat"+Preffix+".png";
 			Quote=Language.DefeatQuotes;
-		};
+		}
 
-		if(Factions!=CampaignFactions){Quote=Quote[0]}else{Quote=Quote[Constants.Commanders[1].Allegiance]};
+		if(Factions!=CampaignFactions) {
+			Quote=Quote[0]
+		} else {
+			Quote=Quote[Constants.Commanders[1].Allegiance];
+		}
+
 		Quote=Quote[Math.floor(Math.random()*Quote.length)];
 		document.getElementById("EndBattleQuote").innerHTML=Quote;
 		document.getElementById("EndBattleQuote").style.color=Factions[Constants.Commanders[1].Allegiance].color;
@@ -2510,6 +2516,9 @@ function EndBattle(){
 			}
 
 	for(let eth=0; eth<MapRoster.length; eth++){MapRoster[eth].life=-1}
+
+	MapRoster = [0];
+	Roster = [];
 }
 
 function EndTurn(SubRosters,Map,Constants,Roster){
@@ -3607,7 +3616,7 @@ function initializeSpecialBattle(Level){
 	for(let y=0;y<Map.length;y++){LocalizationMap[LocalizationMap.length]=JSON.parse(JSON.stringify(LocLine))};
 	for(let z=0;z<Localization.length;z++){LocalizationMap[Localization[z].X][Localization[z].Y]=Localization[z]};
 
-	if(NivelElectiv??false){PlayerChoiceFaction=Level.Constants.Commanders[NivelElectiv].Allegiance}else{PlayerChoiceFaction=Constants.YourFaction};
+	if(NivelElectiv !== 0){PlayerChoiceFaction=Level.Constants.Commanders[NivelElectiv].Allegiance}else{PlayerChoiceFaction=Constants.YourFaction};
 
 	Prelogue=Level.Prelogue??"";
 	Postlogue=Level.Postlogue??"";
@@ -6876,25 +6885,6 @@ function ScoutVicinity(X, Y) {
 	}
 
 	//document.getElementById("Entity "+(X+1)+"X"+(Y+1)).filter="opacity(100%)";
-}
-
-function SelectSpecialLevel(Level){
-	//if(Level.typeOf!=undefined){Level={Name:"???????",Description:"This level doesn't exist, you know? Maybe you can give us an idea of what to add here tho"}};
-	NivelVizat=Level;
-	NivelElectiv=0;
-	for(let x=1;x<=14;x++){document.getElementById("NatOp"+x).style.visibility='hidden'};
-	document.getElementById("Special Level Name").innerHTML=Level.Name;
-	document.getElementById("Special Level Description").innerHTML=Level.Desc??"Idk what to say about this one";
-	document.getElementById("NatOpP").style.visibility="hidden";
-	if(NivelVizat.Constants.ElectiveNation){
-		document.getElementById("NatOpP").style.visibility="inherit";
-		document.getElementById("NatOpP").innerHTML=Language.SystemTerms[30];
-		let MaxFactions=NivelVizat.Constants.Commanders.length-1;
-		for(let x=1; x<=MaxFactions; x++) {
-			document.getElementById("NatOp"+x).style.visibility='inherit';
-			document.getElementById("NatOp"+x).style.filter=NivelVizat.Factions[NivelVizat.Constants.Commanders[x].Allegiance].ChromaCode
-		}
-	}
 }
 
 function ShowcaseUnitCategory(Category){
