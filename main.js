@@ -2216,16 +2216,7 @@ function DeployUnit(X, Y, Type, Faction, Direction, LifeIndex, Morale, CustomNam
 		if(Faction == SubRosters[i][0].faction) fAcTiOn = i;
 	}
 
-	//TODO: SFX per type, not in code!
-	let RecruitmentSFX=0;
-	if(Math.ceil(Type/10)==1){RecruitmentSFX = "InfantryReady"};
-	if(Math.ceil(Type/10)==2){RecruitmentSFX = "VehicleReady"};
-	if(Math.ceil(Type/10)==3){RecruitmentSFX = "TankReady"};
-	if(Math.ceil(Type/10)==4){RecruitmentSFX = "ArtilleryReady"};
-	if(Math.ceil(Type/10)==5){RecruitmentSFX = "AircraftReady"};
-	if(Math.ceil(Type/10)==6){RecruitmentSFX = "ShipReady"};
-
-	battalion.soundPlayer.playSound(RecruitmentSFX);
+	battalion.soundPlayer.playSound(Units[Type].RecruitmentSFX);
 
 	SubRosters[fAcTiOn][SubRosters[fAcTiOn].length] = unit;
 

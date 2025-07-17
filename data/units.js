@@ -101,7 +101,8 @@ const UNITS = [
         "AttackOffsetX": [0,0,0,0,0],
         "AttackOffsetY": [0,0,0,0,0],
         "IdleOffsetX": [0,0,0,0,0],
-        "IdleOffsetY": [0,0,0,0,0]
+        "IdleOffsetY": [0,0,0,0,0],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 1,
@@ -125,7 +126,8 @@ const UNITS = [
         "tag2": "Streamlined",
         "tag3": "",
         "tag4": "",
-        "AttackOffsetX": [0,-1,8,-1,-12]
+        "AttackOffsetX": [0,-1,8,-1,-12],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 2,
@@ -149,7 +151,8 @@ const UNITS = [
         "tag2": "",
         "tag3": "",
         "tag4": "",
-        "AttackOffsetX": [0,0,9,0,-9]
+        "AttackOffsetX": [0,0,9,0,-9],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 3,
@@ -173,7 +176,8 @@ const UNITS = [
         "tag2": "Schwerpunkt",
         "tag3": "",
         "tag4": "",
-        "AttackOffsetX": [0,0,12,0,-12]
+        "AttackOffsetX": [0,0,12,0,-12],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 4,
@@ -198,7 +202,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "FactionSpecificity": 3,
-        "AttackOffsetX": [0,-2,8,-2,-12]
+        "AttackOffsetX": [0,-2,8,-2,-12],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 5,
@@ -223,7 +228,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "FactionSpecificity": 4,
-        "AttackOffsetX": [0,0,13,0,-13]
+        "AttackOffsetX": [0,0,13,0,-13],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 6,
@@ -248,7 +254,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "FactionSpecificity": 5,
-        "AttackOffsetX": [0,0,10,0,-10]
+        "AttackOffsetX": [0,0,10,0,-10],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 7,
@@ -273,7 +280,8 @@ const UNITS = [
         "tag3": "Stealth",
         "tag4": "Airborne",
         "FactionSpecificity": 2,
-        "AttackOffsetX": [0,0,13,0,-13]
+        "AttackOffsetX": [0,0,13,0,-13],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 8,
@@ -298,7 +306,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "FactionSpecificity": 1,
-        "AttackOffsetX": [0,0,8,0,-8]
+        "AttackOffsetX": [0,0,8,0,-8],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 9,
@@ -323,7 +332,8 @@ const UNITS = [
         "tag3": "Cavitation Explosion",
         "tag4": "Tank-Hunter",
         "FactionSpecificity": 5,
-        "AttackOffsetX": [0,0,0,0,0]
+        "AttackOffsetX": [0,0,0,0,0],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 10,
@@ -347,7 +357,8 @@ const UNITS = [
         "tag2": "Indomitable",
         "tag3": "Heroic",
         "tag4": "",
-        "FactionSpecificity": 1
+        "FactionSpecificity": 1,
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 11,
@@ -376,7 +387,8 @@ const UNITS = [
         "MovementOffsetX": [0,14,0,14,0],
         "MovementOffsetY": [0,0,8,0,8],
         "AttackOffsetX": [0,10,0,10,0],
-        "AttackOffsetY": [0,0,5,0,5]
+        "AttackOffsetY": [0,0,5,0,5],
+        "RecruitmentSFX": "VehicleReady"
     },
     {
         "id": 12,
@@ -400,7 +412,8 @@ const UNITS = [
         "tag2": "",
         "tag3": "",
         "tag4": "",
-        "AttackOffsetX": [0,0,0,0,-14]
+        "AttackOffsetX": [0,0,0,0,-14],
+        "RecruitmentSFX": "VehicleReady"
     },
     {
         "id": 13,
@@ -423,7 +436,8 @@ const UNITS = [
         "tag1": "Supply Distribution",
         "tag2": "",
         "tag3": "",
-        "tag4": ""
+        "tag4": "",
+        "RecruitmentSFX": "VehicleReady"
     },
     {
         "id": 14,
@@ -448,7 +462,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "AttackOffsetX": [0,0,-10,-21,-40],
-        "AttackOffsetY": [0,-33,-44,-21,-44]
+        "AttackOffsetY": [0,-33,-44,-21,-44],
+        "RecruitmentSFX": "VehicleReady"
     },
     {
         "id": 15,
@@ -474,7 +489,8 @@ const UNITS = [
         "tag4": "",
         "FactionSpecificity": 4,
         "AttackOffsetX": [0,-16,-15,-15,-15],
-        "AttackOffsetY": [0,-19,-13,-17,-13]
+        "AttackOffsetY": [0,-19,-13,-17,-13],
+        "RecruitmentSFX": "VehicleReady"
     },
     {
         "id": 16,
@@ -499,7 +515,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "AttackOffsetX": [0,0,0,0,-14],
-        "AttackOffsetY": [0,-18,0,-2,0]
+        "AttackOffsetY": [0,-18,0,-2,0],
+        "RecruitmentSFX": "VehicleReady"
     },
     {
         "id": 17,
@@ -526,7 +543,8 @@ const UNITS = [
         "StaticOffsetY": [0,-23,-23,-23,-23],
         "MovementOffsetX": [0,-23,-23,-23,-23],
         "MovementBoxY": 79,
-        "MovementOffsetY": [0,0,0,0,0]
+        "MovementOffsetY": [0,0,0,0,0],
+        "RecruitmentSFX": "VehicleReady"
     },
     {
         "id": 18,
@@ -550,7 +568,8 @@ const UNITS = [
         "tag2": "Commando",
         "tag3": "",
         "tag4": "",
-        "FactionSpecificity": 3
+        "FactionSpecificity": 3,
+        "RecruitmentSFX": "VehicleReady"
     },
     {
         "id": 19,
@@ -576,7 +595,8 @@ const UNITS = [
         "tag4": "",
         "FactionSpecificity": 4,
         "AttackOffsetX": [0,0,0,0,-7],
-        "AttackOffsetY": [0,-14,0,0,0]
+        "AttackOffsetY": [0,-14,0,0,0],
+        "RecruitmentSFX": "VehicleReady"
     },
     {
         "id": 20,
@@ -599,7 +619,8 @@ const UNITS = [
         "tag1": "Streamblast",
         "tag2": "",
         "tag3": "",
-        "tag4": ""
+        "tag4": "",
+        "RecruitmentSFX": "VehicleReady"
     },
     {
         "id": 21,
@@ -622,7 +643,8 @@ const UNITS = [
         "tag1": "Streamlined",
         "tag2": "",
         "tag3": "",
-        "tag4": ""
+        "tag4": "",
+        "RecruitmentSFX": "TankReady"
     },
     {
         "id": 22,
@@ -647,7 +669,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "AttackOffsetX": [0,-12,0,-12,-20],
-        "AttackOffsetY": [0,-9,0,9,0]
+        "AttackOffsetY": [0,-9,0,9,0],
+        "RecruitmentSFX": "TankReady"
     },
     {
         "id": 23,
@@ -673,7 +696,8 @@ const UNITS = [
         "tag4": "",
         "MovementOffsetY": [0,0,0,0,0],
         "AttackOffsetX": [0,-16,-15,-15,-15],
-        "AttackOffsetY": [0,-19,-13,-17,-13]
+        "AttackOffsetY": [0,-19,-13,-17,-13],
+        "RecruitmentSFX": "TankReady"
     },
     {
         "id": 24,
@@ -698,7 +722,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "StaticOffsetX": [0,0,-7,0,-7],
-        "AttackOffsetX": [0,0,-14,0,-14]
+        "AttackOffsetX": [0,0,-14,0,-14],
+        "RecruitmentSFX": "TankReady"
     },
     {
         "id": 25,
@@ -723,7 +748,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "AttackOffsetX": [0,8,-10,7,-49],
-        "AttackOffsetY": [0,-40,-44,0,-2]
+        "AttackOffsetY": [0,-40,-44,0,-2],
+        "RecruitmentSFX": "TankReady"
     },
     {
         "id": 26,
@@ -750,7 +776,8 @@ const UNITS = [
         "FactionSpecificity": 5,
         "StaticOffsetX": [0,-3,0,-3,-10],
         "AttackOffsetX": [0,-11,-1,-11,-23],
-        "AttackOffsetY": [0,-10,-5,5,-5]
+        "AttackOffsetY": [0,-10,-5,5,-5],
+        "RecruitmentSFX": "TankReady"
     },
     {
         "id": 27,
@@ -776,7 +803,8 @@ const UNITS = [
         "tag4": "",
         "FactionSpecificity": 2,
         "AttackOffsetX": [0,-19,-10,-19,-25],
-        "AttackOffsetY": [0,-28,-15,0,-15]
+        "AttackOffsetY": [0,-28,-15,0,-15],
+        "RecruitmentSFX": "TankReady"
     },
     {
         "id": 28,
@@ -806,7 +834,8 @@ const UNITS = [
         "AttackOffsetX": [0,-31,-3,-33,-59],
         "AttackOffsetY": [0,-25,-5,-5,-5],
         "MovementOffsetX": [0,-20,0,0,0],
-        "MovementOffsetY": [0,-20,0,-20,-44]
+        "MovementOffsetY": [0,-20,0,-20,-44],
+        "RecruitmentSFX": "TankReady"
     },
     {
         "id": 29,
@@ -831,7 +860,8 @@ const UNITS = [
         "tag3": "Mobile Battery",
         "tag4": "Terrifying",
         "AttackOffsetX": [0,-19,-10,-19,-25],
-        "AttackOffsetY": [0,-28,-15,0,-15]
+        "AttackOffsetY": [0,-28,-15,0,-15],
+        "RecruitmentSFX": "TankReady"
     },
     {
         "id": 30,
@@ -860,7 +890,8 @@ const UNITS = [
         "AttackOffsetX": [0,-31,-3,-33,-59],
         "AttackOffsetY": [0,-25,-5,-5,-5],
         "MovementOffsetX": [0,-20,0,0,0],
-        "MovementOffsetY": [0,-20,0,-20,-44]
+        "MovementOffsetY": [0,-20,0,-20,-44],
+        "RecruitmentSFX": "TankReady"
     },
     {
         "id": 31,
@@ -885,7 +916,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "AttackOffsetX": [0,-9,0,-9,-7],
-        "AttackOffsetY": [0,-14,-7,-14,-14]
+        "AttackOffsetY": [0,-14,-7,-14,-14],
+        "RecruitmentSFX": "ArtilleryReady"
     },
     {
         "id": 32,
@@ -910,7 +942,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "AttackOffsetX": [0,0,7,0,-7],
-        "AttackOffsetY": [0,-14,-7,-14,-7]
+        "AttackOffsetY": [0,-14,-7,-14,-7],
+        "RecruitmentSFX": "ArtilleryReady"
     },
     {
         "id": 33,
@@ -935,7 +968,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "AttackOffsetX": [0,0,0,0,-21],
-        "AttackOffsetY": [0,-21,0,-7,0]
+        "AttackOffsetY": [0,-21,0,-7,0],
+        "RecruitmentSFX": "ArtilleryReady"
     },
     {
         "id": 34,
@@ -962,7 +996,8 @@ const UNITS = [
         "StaticOffsetX": [0,0,-7,0,-7],
         "StaticOffsetY": [0,0,-12,0,-12],
         "AttackOffsetX": [0,0,-7,0,-20],
-        "AttackOffsetY": [0,-35,-22,-3,-22]
+        "AttackOffsetY": [0,-35,-22,-3,-22],
+        "RecruitmentSFX": "ArtilleryReady"
     },
     {
         "id": 35,
@@ -987,7 +1022,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "AttackOffsetX": [0,0,0,0,-14],
-        "AttackOffsetY": [0,-14,0,0,0]
+        "AttackOffsetY": [0,-14,0,0,0],
+        "RecruitmentSFX": "ArtilleryReady"
     },
     {
         "id": 36,
@@ -1012,7 +1048,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "AttackOffsetX": [0,0,-2,0,-12],
-        "AttackOffsetY": [0,-7,-16,0,-16]
+        "AttackOffsetY": [0,-7,-16,0,-16],
+        "RecruitmentSFX": "ArtilleryReady"
     },
     {
         "id": 37,
@@ -1040,7 +1077,8 @@ const UNITS = [
         "StaticOffsetX": [0,0,-5,0,-6],
         "StaticOffsetY": [0,-10,0,-10,0],
         "AttackOffsetX": [0,0,0,0,-11],
-        "AttackOffsetY": [0,-39,-26,-10,-26]
+        "AttackOffsetY": [0,-39,-26,-10,-26],
+        "RecruitmentSFX": "ArtilleryReady"
     },
     {
         "id": 38,
@@ -1065,7 +1103,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "AttackOffsetX": [0,0,-6,0,3],
-        "AttackOffsetY": [0,6,-38,-7,-38]
+        "AttackOffsetY": [0,6,-38,-7,-38],
+        "RecruitmentSFX": "ArtilleryReady"
     },
     {
         "id": 39,
@@ -1090,7 +1129,8 @@ const UNITS = [
         "tag3": "Mobile Battery",
         "tag4": "Bewegungskrieg",
         "AttackOffsetX": [0,0,0,0,-14],
-        "AttackOffsetY": [0,-18,0,-2,0]
+        "AttackOffsetY": [0,-18,0,-2,0],
+        "RecruitmentSFX": "ArtilleryReady"
     },
     {
         "id": 40,
@@ -1117,7 +1157,8 @@ const UNITS = [
         "StaticOffsetX": [0,0,-5,0,-6],
         "StaticOffsetY": [0,-10,0,-10,0],
         "AttackOffsetX": [0,0,0,0,-11],
-        "AttackOffsetY": [0,-39,-26,-10,-26]
+        "AttackOffsetY": [0,-39,-26,-10,-26],
+        "RecruitmentSFX": "ArtilleryReady"
     },
     {
         "id": 41,
@@ -1140,7 +1181,8 @@ const UNITS = [
         "tag1": "Air Transport",
         "tag2": "",
         "tag3": "",
-        "tag4": ""
+        "tag4": "",
+        "RecruitmentSFX": "AircraftReady"
     },
     {
         "id": 42,
@@ -1163,7 +1205,8 @@ const UNITS = [
         "tag1": "Supply Distribution",
         "tag2": "",
         "tag3": "",
-        "tag4": ""
+        "tag4": "",
+        "RecruitmentSFX": "AircraftReady"
     },
     {
         "id": 43,
@@ -1186,7 +1229,8 @@ const UNITS = [
         "tag1": "Skysweeper",
         "tag2": "",
         "tag3": "",
-        "tag4": ""
+        "tag4": "",
+        "RecruitmentSFX": "AircraftReady"
     },
     {
         "id": 44,
@@ -1210,7 +1254,8 @@ const UNITS = [
         "tag2": "",
         "tag3": "",
         "tag4": "",
-        "AttackOffsetX": [0,-2,0,-2,-4]
+        "AttackOffsetX": [0,-2,0,-2,-4],
+        "RecruitmentSFX": "AircraftReady"
     },
     {
         "id": 45,
@@ -1235,7 +1280,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "AttackOffsetX": [0,0,0,0,-56],
-        "AttackOffsetY": [0,-56,0,0,0]
+        "AttackOffsetY": [0,-56,0,0,0],
+        "RecruitmentSFX": "AircraftReady"
     },
     {
         "id": 46,
@@ -1258,7 +1304,8 @@ const UNITS = [
         "tag1": "Seabound",
         "tag2": "Cavitation Explosion",
         "tag3": "",
-        "tag4": ""
+        "tag4": "",
+        "RecruitmentSFX": "AircraftReady"
     },
     {
         "id": 47,
@@ -1282,7 +1329,8 @@ const UNITS = [
         "tag2": "",
         "tag3": "",
         "tag4": "",
-        "AttackOffsetX": [0,-2,0,-2,0]
+        "AttackOffsetX": [0,-2,0,-2,0],
+        "RecruitmentSFX": "AircraftReady"
     },
     {
         "id": 48,
@@ -1308,7 +1356,8 @@ const UNITS = [
         "tag4": "",
         "FactionSpecificity": 2,
         "AttackOffsetX": [0,0,0,0,-56],
-        "AttackOffsetY": [0,-56,0,0,0]
+        "AttackOffsetY": [0,-56,0,0,0],
+        "RecruitmentSFX": "AircraftReady"
     },
     {
         "id": 49,
@@ -1331,7 +1380,8 @@ const UNITS = [
         "tag1": "Skysweeper",
         "tag2": "Stealth",
         "tag3": "",
-        "tag4": ""
+        "tag4": "",
+        "RecruitmentSFX": "AircraftReady"
     },
     {
         "id": 50,
@@ -1356,7 +1406,8 @@ const UNITS = [
         "tag3": "Self-Destruct",
         "tag4": "Inertial",
         "AttackOffsetX": [0,0,0,0,-56],
-        "AttackOffsetY": [0,-56,0,0,0]
+        "AttackOffsetY": [0,-56,0,0,0],
+        "RecruitmentSFX": "AircraftReady"
     },
     {
         "id": 51,
@@ -1381,7 +1432,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "StaticOffsetY": [0,-25,-22,-22,-22],
-        "MovementOffsetX": [0,-25,-22,-22,-22]
+        "MovementOffsetX": [0,-25,-22,-22,-22],
+        "RecruitmentSFX": "ShipReady"
     },
     {
         "id": 52,
@@ -1407,7 +1459,8 @@ const UNITS = [
         "tag4": "",
         "SpriteOffset": [0,0,0,0,0],
         "AttackOffsetX": [0,0,0,0,-9],
-        "AttackOffsetY": [0,-5,2,-5,2]
+        "AttackOffsetY": [0,-5,2,-5,2],
+        "RecruitmentSFX": "ShipReady"
     },
     {
         "id": 53,
@@ -1432,7 +1485,8 @@ const UNITS = [
         "tag3": "Stealth",
         "tag4": "",
         "SpriteOffset": [0,0,0,0,0],
-        "AttackSpriteOffset": [0,0,0,0,0]
+        "AttackSpriteOffset": [0,0,0,0,0],
+        "RecruitmentSFX": "ShipReady"
     },
     {
         "id": 54,
@@ -1457,7 +1511,8 @@ const UNITS = [
         "tag3": "Sonar",
         "tag4": "Steer",
         "AttackOffsetX": [0,0,0,0,-28],
-        "AttackOffsetY": [0,-4,-14,0,-14]
+        "AttackOffsetY": [0,-4,-14,0,-14],
+        "RecruitmentSFX": "ShipReady"
     },
     {
         "id": 55,
@@ -1482,7 +1537,8 @@ const UNITS = [
         "tag3": "Sonar",
         "tag4": "Anti-Air",
         "AttackOffsetX": [0,-44,-44,-44,-44],
-        "AttackOffsetY": [0,-37,-37,-35,-37]
+        "AttackOffsetY": [0,-37,-37,-35,-37],
+        "RecruitmentSFX": "ShipReady"
     },
     {
         "id": 56,
@@ -1508,7 +1564,8 @@ const UNITS = [
         "tag4": "",
         "SpriteOffset": [0,0,0,0,0],
         "AttackOffsetX": [0,10,-6,9.75,-40],
-        "AttackOffsetY": [0,-25,-42,-3,-42]
+        "AttackOffsetY": [0,-25,-42,-3,-42],
+        "RecruitmentSFX": "ShipReady"
     },
     {
         "id": 57,
@@ -1533,7 +1590,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "AttackOffsetX": [0,-44,-49,-44,-39],
-        "AttackOffsetY": [0,-32,-33,-35,-33]
+        "AttackOffsetY": [0,-32,-33,-35,-33],
+        "RecruitmentSFX": "ShipReady"
     },
     {
         "id": 58,
@@ -1562,7 +1620,8 @@ const UNITS = [
         "MovementOffsetX": [0,-20,-20,-10,-20],
         "MovementOffsetY": [0,-10,0,-10,-15],
         "AttackOffsetX": [0,-10,-20,-10,-31],
-        "AttackOffsetY": [0,-20,-20,-20,-20]
+        "AttackOffsetY": [0,-20,-20,-20,-20],
+        "RecruitmentSFX": "ShipReady"
     },
     {
         "id": 59,
@@ -1587,7 +1646,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "AttackOffsetX": [0,-44,-49,-44,-39],
-        "AttackOffsetY": [0,-32,-33,-35,-33]
+        "AttackOffsetY": [0,-32,-33,-35,-33],
+        "RecruitmentSFX": "ShipReady"
     },
     {
         "id": 60,
@@ -1616,7 +1676,8 @@ const UNITS = [
         "MovementOffsetX": [0,-20,-20,-10,-20],
         "MovementOffsetY": [0,-10,0,-10,-15],
         "AttackOffsetX": [0,-10,-20,-10,-31],
-        "AttackOffsetY": [0,-20,-20,-20,-20]
+        "AttackOffsetY": [0,-20,-20,-20,-20],
+        "RecruitmentSFX": "ShipReady"
     },
     {
         "id": 61,
@@ -1642,7 +1703,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "SpriteOffset": [0,0,0,0,0],
-        "AttackSpriteOffset": [0,0,0,0,0]
+        "AttackSpriteOffset": [0,0,0,0,0],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 62,
@@ -1669,7 +1731,8 @@ const UNITS = [
         "tag4": "",
         "SpriteOffsetY": [0,0,0,0,0],
         "AttackOffsetX": [0,-44,-44,-44,-44],
-        "AttackOffsetY": [0,-44,-44,-44,-44]
+        "AttackOffsetY": [0,-44,-44,-44,-44],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 63,
@@ -1695,7 +1758,8 @@ const UNITS = [
         "tag3": "",
         "tag4": "",
         "AttackOffsetX": [0,-45,-44,-44,-44],
-        "AttackOffsetY": [0,-34,-34.5,-34.5,-34.5]
+        "AttackOffsetY": [0,-34,-34.5,-34.5,-34.5],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 64,
@@ -1723,7 +1787,8 @@ const UNITS = [
         "StaticOffsetX": [0,0,0,0,-7],
         "StaticOffsetY": [0,-14,0,0,0],
         "AttackOffsetX": [0,0,0,0,-14],
-        "AttackOffsetY": [0,-21,0,0,0]
+        "AttackOffsetY": [0,-21,0,0,0],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 65,
@@ -1751,7 +1816,8 @@ const UNITS = [
         "StaticOffsetX": [0,-7,5,0,-20],
         "StaticOffsetY": [0,-25,0,0,0],
         "AttackOffsetX": [0,-55,-58,-56,-53],
-        "AttackOffsetY": [0,-49,-46,-48,-45]
+        "AttackOffsetY": [0,-49,-46,-48,-45],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 66,
@@ -1777,7 +1843,8 @@ const UNITS = [
         "tag3": "Inertial",
         "tag4": "",
         "AttackOffsetX": [0,0,0,0,0],
-        "AttackOffsetY": [0,0,0,0,0]
+        "AttackOffsetY": [0,0,0,0,0],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 67,
@@ -1805,7 +1872,8 @@ const UNITS = [
         "StaticOffsetX": [0,0,0,0,0],
         "StaticOffsetY": [0,-21,-14,-21,-14],
         "AttackOffsetX": [0,0,0,0,-14],
-        "AttackOffsetY": [0,-51,-14,-14,-14]
+        "AttackOffsetY": [0,-51,-14,-14,-14],
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 68,
@@ -1829,7 +1897,8 @@ const UNITS = [
         "tag1": "Inertial",
         "tag2": "",
         "tag3": "",
-        "tag4": ""
+        "tag4": "",
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 69,
@@ -1853,7 +1922,8 @@ const UNITS = [
         "tag1": "Supply Distribution",
         "tag2": "",
         "tag3": "",
-        "tag4": ""
+        "tag4": "",
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 70,
@@ -1877,7 +1947,8 @@ const UNITS = [
         "tag1": "Skysweeper",
         "tag2": "",
         "tag3": "",
-        "tag4": ""
+        "tag4": "",
+        "RecruitmentSFX": "InfantryReady"
     },
     {
         "id": 71,
@@ -1898,6 +1969,7 @@ const UNITS = [
         "tag2": "",
         "tag3": "",
         "tag4": "",
-        "AttackOffsetX": [0,0,8,0,-8]
+        "AttackOffsetX": [0,0,8,0,-8],
+        "RecruitmentSFX": "InfantryReady"
     }
 ];

@@ -63,7 +63,6 @@ const exportUnits = function(fName) {
 		const config = UNITS[i];
 		
 		file.openListUnnamed(PrettyList.TYPE.OBJECT);
-		file.writeLine("id", i);
 
 		for(const key in config) {
 			file.writeLine(key, config[key]);
