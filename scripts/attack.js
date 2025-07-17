@@ -600,7 +600,7 @@ function Attack(Attacker, Defender, Map) {
 		}
 
 		if(ShouldProbablyCheck) {
-			Inspection(Turn, Constants, Roster);
+			Inspection(Turn, Constants);
 			Atk.isVized = false;
 		}
 	}

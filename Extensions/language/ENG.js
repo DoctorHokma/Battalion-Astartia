@@ -856,6 +856,7 @@ const LANGUAGE_ENGLISH = {
 	"UNIT_NAME_SUPPLY_DEPOT": "Supply Depot",
 	"UNIT_NAME_FORTRESS": "Fortress",
 	"UNIT_NAME_MEME_SPARTANS": "Spartans",
+	"UNIT_NAME_MEME_BUREAUCRAT": "Bureaucrat",
 
 	"UNIT_DESC_CONSTRUCTION": "Ad-hoc fortifications are being erected here",
 	"UNIT_DESC_LIGHT_INFANTRY": "Lightly equipped and almost untrained, these men aren't the best for combat, but they're easy to pump out.",
@@ -929,6 +930,7 @@ const LANGUAGE_ENGLISH = {
 	"UNIT_DESC_SUPPLY_DEPOT": "Storehouse of food, ammunitions and all supplies your troops need to function",
 	"UNIT_DESC_FORTRESS": "A formidable citadel capable of holding back an army all by itself",
 	"UNIT_DESC_MEME_SPARTANS": "Spartans like to kick ass",
+	"UNIT_DESC_MEME_BUREAUCRAT": "This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats.",
 
 	"TUTORIAL_LEVEL_BUTTON_1": "Mission 1",
 	"TUTORIAL_LEVEL_BUTTON_2": "Mission 2",

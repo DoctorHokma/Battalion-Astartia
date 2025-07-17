@@ -174,7 +174,7 @@
 
 	endTurnButton.onclick = () => {
 		if(!isAITurn) {
-			EndTurn(SubRosters, Map, Constants, Roster);
+			EndTurn(SubRosters, Map, Constants, MapRoster);
 		}
 	}
 })();

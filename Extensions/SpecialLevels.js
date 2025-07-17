@@ -3123,174 +3123,176 @@ ShreksSwamp={
 
 	};
 
-NineEleven={
-Name:"NineEleven",
-Desc:"Kanye West does 9/11. Enough said",
-Constants:{YourFaction:10,defaultX:0,defaultY:0,Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody, Kanye, Cop]},
-Map:[[1,1,1,1,6,1,1,1,6,1],
-[1,1,1,1,6,6,1,1,6,1],
-[1,1,1,1,1,6,1,1,6,6],
-[1,1,1,1,1,6,1,1,6,1],
-[1,1,1,1,1,6,6,6,6,1],
-[1,1,1,1,1,1,1,1,6,1],
-[1,1,1,1,1,1,1,1,6,1],
-[1,1,1,1,1,1,1,1,6,1],
-[1,1,1,1,1,1,1,1,6,6],
-[1,1,1,1,1,1,1,1,1,1]],
-Roster:[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0}
-,{id:43 , faction:10 , direction:2, x:2, y:2, morale:0, hpModifier:0, CustomDescription:"Wingdings Q33 NY"}
-,{id:44 , faction:10 , direction:2, x:3, y:3, morale:0, hpModifier:0, CustomDescription:"Made with the express purpose of trolling the WTC"}
-,{id:44 , faction:10 , direction:2, x:4, y:3, morale:0, hpModifier:0, CustomDescription:"Made with the express purpose of trolling the WTC"}
-,{id:63 , faction:11 , direction:4, x:4, y:8, morale:0, hpModifier:0,CustomName:"World Trade Center", CustomDescription:"What do you mean planes can't be parked in skyscrapers?"}
-,{id:44 , faction:10 , direction:2, x:5, y:3, morale:0, hpModifier:0, CustomDescription:"Made with the express purpose of trolling the WTC"}
-,{id:63 , faction:11 , direction:4, x:5, y:8, morale:0, hpModifier:0,CustomName:"World Trade Center", CustomDescription:"Jet beams cannot melt steel fuel"}
-,{id:43 , faction:10 , direction:2, x:6, y:2, morale:0, hpModifier:0, CustomDescription:"Wingdings Q33 NY"}
-],
-ControlMap:[[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0]],
-
-Prelogue:["Kanye","I'm giving this lasagna a massage while preparing to announce I'm doing 9/11! Thank you for your attention"],
-
-Factions:MemeFactions,
-
+NineEleven = {
+	Name: "NineEleven",
+	Desc: "Kanye West does 9/11. Enough said",
+	Constants: {YourFaction:10,defaultX:0,defaultY:0,Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody, Kanye, Cop]},
+	Map: [
+		[1,1,1,1,6,1,1,1,6,1],
+		[1,1,1,1,6,6,1,1,6,1],
+		[1,1,1,1,1,6,1,1,6,6],
+		[1,1,1,1,1,6,1,1,6,1],
+		[1,1,1,1,1,6,6,6,6,1],
+		[1,1,1,1,1,1,1,1,6,1],
+		[1,1,1,1,1,1,1,1,6,1],
+		[1,1,1,1,1,1,1,1,6,1],
+		[1,1,1,1,1,1,1,1,6,6],
+		[1,1,1,1,1,1,1,1,1,1]
+	],
+	Roster: [
+		{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0},
+		{id:43 , faction:10 , direction:2, x:2, y:2, CustomDescription:"Wingdings Q33 NY"},
+		{id:44 , faction:10 , direction:2, x:3, y:3, CustomDescription:"Made with the express purpose of trolling the WTC"},
+		{id:44 , faction:10 , direction:2, x:4, y:3, CustomDescription:"Made with the express purpose of trolling the WTC"},
+		{id:63 , faction:11 , direction:4, x:4, y:8, CustomName:"World Trade Center", CustomDescription:"What do you mean planes can't be parked in skyscrapers?"},
+		{id:44 , faction:10 , direction:2, x:5, y:3, CustomDescription:"Made with the express purpose of trolling the WTC"},
+		{id:63 , faction:11 , direction:4, x:5, y:8, CustomName:"World Trade Center", CustomDescription:"Jet beams cannot melt steel fuel"},
+		{id:43 , faction:10 , direction:2, x:6, y:2, CustomDescription:"Wingdings Q33 NY"},
+	],
+	ControlMap: [
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0]
+	],
+	Prelogue: [
+		"Kanye", "I'm giving this lasagna a massage while preparing to announce I'm doing 9/11!",
+		"Kanye", "Thank you for your attention."
+	],
+	Factions: MemeFactions
 };
 
-FuckingBureaucrats={
-Name:"FUCKING BUREAUCRATS!",
-Desc:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and fuck all bureaucrats in the ass with a barbed dildo.",
-Constants:{YourFaction:6,defaultX:0,defaultY:0,Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,1000,0],Commanders:[Nobody, GrayGeneral, GreenGeneral]},
-Map:[[2,2,2,1,1,1,1,2,2,2],
-[2,2,1,1,1,1,1,1,2,2],
-[2,2,1,1,1,1,1,1,2,2],
-[3,22,22,22,1,1,22,22,22,3],
-[22,22,1,1,1,1,1,1,22,22],
-[1,1,1,1,1,1,1,1,1,1],
-[1,1,1,1,1,1,1,1,1,1],
-[1,1,1,1,1,1,1,1,1,1],
-[1,1,1,1,1,1,1,1,1,1],
-[1,1,1,1,1,1,1,1,1,1]],
-Roster:[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0}
-,{id:16 , faction:6 , direction:3, x:1, y:1, morale:0, hpModifier:0,CustomName:"Bureaucratkillerinator 3000",CustomDescription:"If I see a bureaucrat, I'm turning his intestines into a condom and his kidneys into a punching bag"}
-,{id:16 , faction:6 , direction:3, x:1, y:4, morale:0, hpModifier:0,CustomName:"Bureaucratkillerinator 3000",CustomDescription:"Saving the world from a kafkian dystopia"}
-,{id:16 , faction:6 , direction:3, x:1, y:5, morale:0, hpModifier:0,CustomName:"Bureaucratkillerinator 3000",CustomDescription:"FUCK ALL BUREAUCRATS! KILL THEM ALL WITH AN ELECTRIC PROD UP THE ASS!"}
-,{id:16 , faction:6 , direction:3, x:1, y:8, morale:0, hpModifier:0,CustomName:"Bureaucratkillerinator 3000",CustomDescription:"The gamedev really, REALLY hates bureaucracy and has quite a few horror stories with it"}
-,{id:61 , faction:6 , direction:1, x:3, y:4, morale:0, hpModifier:99}
-,{id:61 , faction:6 , direction:2, x:3, y:5, morale:0, hpModifier:99}
-,{id:21 , faction:5 , direction:2, x:4, y:2, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:4, y:3, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:4, y:4, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:4, y:5, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:4, y:6, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:4, x:4, y:7, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:5, y:0, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:5, y:1, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:5, y:2, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:5, y:3, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:5, y:4, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:5, y:5, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:5, y:6, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:5, y:7, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:5, y:8, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:5, y:9, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:6, y:0, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:6, y:1, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:6, y:2, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:6, y:3, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:6, y:4, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:6, y:5, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:6, y:6, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:6, y:7, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:6, y:8, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:6, y:9, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:7, y:0, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:7, y:1, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:7, y:2, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:7, y:3, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:7, y:4, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:7, y:5, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:7, y:6, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:7, y:7, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:4, x:7, y:8, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:7, y:9, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:8, y:0, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:8, y:1, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:8, y:2, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:8, y:3, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:8, y:4, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:8, y:5, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:8, y:6, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:8, y:7, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:8, y:8, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:8, y:9, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:9, y:0, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:4, x:9, y:1, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:9, y:2, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:9, y:3, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:9, y:4, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:9, y:5, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:9, y:6, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:2, x:9, y:7, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:9, y:8, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-,{id:21 , faction:5 , direction:1, x:9, y:9, morale:0, hpModifier:0, CustomName:'Bureaucrat', CustomDescription:"This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and genocide all bureaucrats."}
-],
-ControlMap:[[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0]],
-
-Factions:GenericFactions,
-
+FuckingBureaucrats = {
+	Name: "FUCKING BUREAUCRATS!",
+	Desc: "This specimen of fucking idiot shithead subhuman animal bitch goes to work at 10:00AM, scratches his ass until 12:00AM then leaves at 14:00AM. He will send you on an endless chase for approvals, signatures and requests, all the while acting so superior. Wtf is wrong with you, you dumb bitch? Don't you realize you can easily be replaced by a monkey with a typewritter? I yearn for the day when you are replaced by robots, and if that day does not come then all of humanity must join together and fuck all bureaucrats in the ass with a barbed dildo.",
+	Constants: {YourFaction:6,defaultX:0,defaultY:0,Survival:77777,TimeLimit:77777,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,1000,0],Commanders:[Nobody, GrayGeneral, GreenGeneral]},
+	Map: [
+		[2,2,2,1,1,1,1,2,2,2],
+		[2,2,1,1,1,1,1,1,2,2],
+		[2,2,1,1,1,1,1,1,2,2],
+		[3,22,22,22,1,1,22,22,22,3],
+		[22,22,1,1,1,1,1,1,22,22],
+		[1,1,1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1,1,1]
+	],
+	Roster: [
+		{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0},
+		{id:16, faction:6, direction:3, x:1, y:1, CustomName:"Bureaucratkillerinator 3000",CustomDescription:"If I see a bureaucrat, I'm turning his intestines into a condom and his kidneys into a punching bag"},
+		{id:16, faction:6, direction:3, x:1, y:4, CustomName:"Bureaucratkillerinator 3001",CustomDescription:"Saving the world from a kafkian dystopia"},
+		{id:16, faction:6, direction:3, x:1, y:5, CustomName:"Bureaucratkillerinator 3002",CustomDescription:"FUCK ALL BUREAUCRATS! KILL THEM ALL WITH AN ELECTRIC PROD UP THE ASS!"},
+		{id:16, faction:6, direction:3, x:1, y:8, CustomName:"Bureaucratkillerinator 3003",CustomDescription:"The gamedev really, REALLY hates bureaucracy and has quite a few horror stories with it"},
+		{id:61, faction:6, direction:1, x:3, y:4, hpModifier:99},
+		{id:61, faction:6, direction:2, x:3, y:5, hpModifier:99},
+		{id:72, faction:5, direction:2, x:4, y:2},
+		{id:72, faction:5, direction:1, x:4, y:3},
+		{id:72, faction:5, direction:1, x:4, y:4},
+		{id:72, faction:5, direction:1, x:4, y:5},
+		{id:72, faction:5, direction:1, x:4, y:6},
+		{id:72, faction:5, direction:4, x:4, y:7},
+		{id:72, faction:5, direction:1, x:5, y:0},
+		{id:72, faction:5, direction:1, x:5, y:1},
+		{id:72, faction:5, direction:1, x:5, y:2},
+		{id:72, faction:5, direction:1, x:5, y:3},
+		{id:72, faction:5, direction:1, x:5, y:4},
+		{id:72, faction:5, direction:1, x:5, y:5},
+		{id:72, faction:5, direction:1, x:5, y:6},
+		{id:72, faction:5, direction:1, x:5, y:7},
+		{id:72, faction:5, direction:1, x:5, y:8},
+		{id:72, faction:5, direction:1, x:5, y:9},
+		{id:72, faction:5, direction:1, x:6, y:0},
+		{id:72, faction:5, direction:1, x:6, y:1},
+		{id:72, faction:5, direction:1, x:6, y:2},
+		{id:72, faction:5, direction:1, x:6, y:3},
+		{id:72, faction:5, direction:1, x:6, y:4},
+		{id:72, faction:5, direction:1, x:6, y:5},
+		{id:72, faction:5, direction:1, x:6, y:6},
+		{id:72, faction:5, direction:1, x:6, y:7},
+		{id:72, faction:5, direction:1, x:6, y:8},
+		{id:72, faction:5, direction:1, x:6, y:9},
+		{id:72, faction:5, direction:1, x:7, y:0},
+		{id:72, faction:5, direction:1, x:7, y:1},
+		{id:72, faction:5, direction:1, x:7, y:2},
+		{id:72, faction:5, direction:1, x:7, y:3},
+		{id:72, faction:5, direction:1, x:7, y:4},
+		{id:72, faction:5, direction:1, x:7, y:5},
+		{id:72, faction:5, direction:1, x:7, y:6},
+		{id:72, faction:5, direction:1, x:7, y:7},
+		{id:72, faction:5, direction:4, x:7, y:8},
+		{id:72, faction:5, direction:1, x:7, y:9},
+		{id:72, faction:5, direction:1, x:8, y:0},
+		{id:72, faction:5, direction:1, x:8, y:1},
+		{id:72, faction:5, direction:1, x:8, y:2},
+		{id:72, faction:5, direction:1, x:8, y:3},
+		{id:72, faction:5, direction:1, x:8, y:4},
+		{id:72, faction:5, direction:1, x:8, y:5},
+		{id:72, faction:5, direction:1, x:8, y:6},
+		{id:72, faction:5, direction:1, x:8, y:7},
+		{id:72, faction:5, direction:1, x:8, y:8},
+		{id:72, faction:5, direction:1, x:8, y:9},
+		{id:72, faction:5, direction:1, x:9, y:0},
+		{id:72, faction:5, direction:4, x:9, y:1},
+		{id:72, faction:5, direction:1, x:9, y:2},
+		{id:72, faction:5, direction:1, x:9, y:3},
+		{id:72, faction:5, direction:1, x:9, y:4},
+		{id:72, faction:5, direction:1, x:9, y:5},
+		{id:72, faction:5, direction:1, x:9, y:6},
+		{id:72, faction:5, direction:2, x:9, y:7},
+		{id:72, faction:5, direction:1, x:9, y:8},
+		{id:72, faction:5, direction:1, x:9, y:9},
+	],
+	ControlMap: [
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0]
+	],
+	Factions: GenericFactions
 }
 
-Backrooms={
-
-	Name:"The Backrooms",
-	Desc:"RIP to another cool creepypasta that got ruined by kids. Anyways, in this level you're in the Backrooms and must survive. Find the exit to win.",
-	Constants:{YourFaction:10,defaultX:0,defaultY:0,Survival:77777,TimeLimit:77777,Capture:[{x:9,y:9}],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody, BlueGeneral, BlackGeneral]},
-
-	Map:[[6,6,6,6,6,6,6,6,6,6],
-	[6,4,4,6,4,4,6,4,4,6],
-	[6,4,4,6,4,4,6,4,4,6],
-	[6,6,6,6,6,6,6,6,6,6],
-	[6,4,4,6,4,4,6,4,4,6],
-	[6,4,4,6,4,4,6,4,4,6],
-	[6,6,6,6,6,6,6,6,6,6],
-	[6,4,4,6,4,4,6,4,4,6],
-	[6,4,4,6,4,4,6,4,4,6],
-	[6,6,6,6,6,6,6,6,6,3]],
-
-	Roster:[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0},
-	{id:22 , faction:10 , direction:2, x:0, y:0, morale:0, hpModifier:0,CustomName:"You",CustomDescription:"Pls send help"},
-	{id:28 , faction:2 , direction:4, x:0, y:9, morale:0, hpModifier:0,CustomName:"?̵̡͝?̷͚̚?̸̛̩?̷̝͒?̵͚͊?̸̞͛?̶̳͂",CustomDescription:"F̵̟͗r̷̺͐ḛ̴̈́s̶͚̉h̵͖̀ ̴͎̅m̷̲͝e̴̘̐a̵̺͒t̷̨̛"},
-	{id:28 , faction:2 , direction:1, x:3, y:3, morale:0, hpModifier:0,CustomName:"?̵̡͝?̷͚̚?̸̛̩?̷̝͒?̵͚͊?̸̞͛?̶̳͂",CustomDescription:"F̵̟͗r̷̺͐ḛ̴̈́s̶͚̉h̵͖̀ ̴͎̅m̷̲͝e̴̘̐a̵̺͒t̷̨̛"},
-	{id:28 , faction:2 , direction:4, x:3, y:9, morale:0, hpModifier:0,CustomName:"?̵̡͝?̷͚̚?̸̛̩?̷̝͒?̵͚͊?̸̞͛?̶̳͂",CustomDescription:"F̵̟͗r̷̺͐ḛ̴̈́s̶͚̉h̵͖̀ ̴͎̅m̷̲͝e̴̘̐a̵̺͒t̷̨̛"},
-	{id:28 , faction:2 , direction:4, x:6, y:9, morale:0, hpModifier:0,CustomName:"?̵̡͝?̷͚̚?̸̛̩?̷̝͒?̵͚͊?̸̞͛?̶̳͂",CustomDescription:"F̵̟͗r̷̺͐ḛ̴̈́s̶͚̉h̵͖̀ ̴͎̅m̷̲͝e̴̘̐a̵̺͒t̷̨̛"},
-	{id:28 , faction:2 , direction:1, x:9, y:0, morale:0, hpModifier:0,CustomName:"?̵̡͝?̷͚̚?̸̛̩?̷̝͒?̵͚͊?̸̞͛?̶̳͂",CustomDescription:"F̵̟͗r̷̺͐ḛ̴̈́s̶͚̉h̵͖̀ ̴͎̅m̷̲͝e̴̘̐a̵̺͒t̷̨̛"},
-	{id:28 , faction:2 , direction:1, x:9, y:3, morale:0, hpModifier:0,CustomName:"?̵̡͝?̷͚̚?̸̛̩?̷̝͒?̵͚͊?̸̞͛?̶̳͂",CustomDescription:"F̵̟͗r̷̺͐ḛ̴̈́s̶͚̉h̵͖̀ ̴͎̅m̷̲͝e̴̘̐a̵̺͒t̷̨̛"},
-	{id:28 , faction:2 , direction:1, x:9, y:6, morale:0, hpModifier:0,CustomName:"?̵̡͝?̷͚̚?̸̛̩?̷̝͒?̵͚͊?̸̞͛?̶̳͂",CustomDescription:"F̵̟͗r̷̺͐ḛ̴̈́s̶͚̉h̵͖̀ ̴͎̅m̷̲͝e̴̘̐a̵̺͒t̷̨̛"}],
-
-
-	Factions:GenericFactions,
-
-	
-
-	
-
-	};
+Backrooms = {
+	Name: "The Backrooms",
+	Desc: "RIP to another cool creepypasta that got ruined by kids. Anyways, in this level you're in the Backrooms and must survive. Find the exit to win.",
+	Constants: {YourFaction:10,defaultX:0,defaultY:0,Survival:77777,TimeLimit:77777,Capture:[{x:9,y:9}],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0],Commanders:[Nobody, BlueGeneral, BlackGeneral]},
+	Map: [
+		[6,6,6,6,6,6,6,6,6,6],
+		[6,4,4,6,4,4,6,4,4,6],
+		[6,4,4,6,4,4,6,4,4,6],
+		[6,6,6,6,6,6,6,6,6,6],
+		[6,4,4,6,4,4,6,4,4,6],
+		[6,4,4,6,4,4,6,4,4,6],
+		[6,6,6,6,6,6,6,6,6,6],
+		[6,4,4,6,4,4,6,4,4,6],
+		[6,4,4,6,4,4,6,4,4,6],
+		[6,6,6,6,6,6,6,6,6,3]
+	],
+	Roster: [
+		{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0},
+		{id:22 , faction:10 , direction:2, x:0, y:0, morale:0, hpModifier:0,CustomName:"You",CustomDescription:"Pls send help"},
+		{id:28 , faction:2 , direction:4, x:0, y:9, morale:0, hpModifier:0,CustomName:"?̵̡͝?̷͚̚?̸̛̩?̷̝͒?̵͚͊?̸̞͛?̶̳͂",CustomDescription:"F̵̟͗r̷̺͐ḛ̴̈́s̶͚̉h̵͖̀ ̴͎̅m̷̲͝e̴̘̐a̵̺͒t̷̨̛"},
+		{id:28 , faction:2 , direction:1, x:3, y:3, morale:0, hpModifier:0,CustomName:"?̵̡͝?̷͚̚?̸̛̩?̷̝͒?̵͚͊?̸̞͛?̶̳͂",CustomDescription:"F̵̟͗r̷̺͐ḛ̴̈́s̶͚̉h̵͖̀ ̴͎̅m̷̲͝e̴̘̐a̵̺͒t̷̨̛"},
+		{id:28 , faction:2 , direction:4, x:3, y:9, morale:0, hpModifier:0,CustomName:"?̵̡͝?̷͚̚?̸̛̩?̷̝͒?̵͚͊?̸̞͛?̶̳͂",CustomDescription:"F̵̟͗r̷̺͐ḛ̴̈́s̶͚̉h̵͖̀ ̴͎̅m̷̲͝e̴̘̐a̵̺͒t̷̨̛"},
+		{id:28 , faction:2 , direction:4, x:6, y:9, morale:0, hpModifier:0,CustomName:"?̵̡͝?̷͚̚?̸̛̩?̷̝͒?̵͚͊?̸̞͛?̶̳͂",CustomDescription:"F̵̟͗r̷̺͐ḛ̴̈́s̶͚̉h̵͖̀ ̴͎̅m̷̲͝e̴̘̐a̵̺͒t̷̨̛"},
+		{id:28 , faction:2 , direction:1, x:9, y:0, morale:0, hpModifier:0,CustomName:"?̵̡͝?̷͚̚?̸̛̩?̷̝͒?̵͚͊?̸̞͛?̶̳͂",CustomDescription:"F̵̟͗r̷̺͐ḛ̴̈́s̶͚̉h̵͖̀ ̴͎̅m̷̲͝e̴̘̐a̵̺͒t̷̨̛"},
+		{id:28 , faction:2 , direction:1, x:9, y:3, morale:0, hpModifier:0,CustomName:"?̵̡͝?̷͚̚?̸̛̩?̷̝͒?̵͚͊?̸̞͛?̶̳͂",CustomDescription:"F̵̟͗r̷̺͐ḛ̴̈́s̶͚̉h̵͖̀ ̴͎̅m̷̲͝e̴̘̐a̵̺͒t̷̨̛"},
+		{id:28 , faction:2 , direction:1, x:9, y:6, morale:0, hpModifier:0,CustomName:"?̵̡͝?̷͚̚?̸̛̩?̷̝͒?̵͚͊?̸̞͛?̶̳͂",CustomDescription:"F̵̟͗r̷̺͐ḛ̴̈́s̶͚̉h̵͖̀ ̴͎̅m̷̲͝e̴̘̐a̵̺͒t̷̨̛"}
+	],
+	Factions: GenericFactions
+};
 
 Choleric={
 Name:"Choleric",

@@ -86,18 +86,30 @@ var Panel = 0;
 var Difficulty = 2;
 var InterlogueBST = [[],[],[],[],[],[],[],[],[],[],[]];
 
-var Roster = [];
-var MapRoster = [];
-var rostermap = [];
-
 var Units = UNITS;
 var Factions = CampaignFactions;
 var Terrain = TERRAIN;
 var AdjacentCloakers = [];
 
 //Post-Battle
-var Victory = false;
 var Resolution = false;
+var Victory = false;
+
+//Board Arrays
+var SubRosters = [];
+var AttackOrder = [];
+var MapRoster = [];
+var rostermap = [];
+
+const resetBoard = function() {
+	SubRosters = [];
+	AttackOrder = [];
+	MapRoster = [];
+	rostermap = [];
+
+	Resolution = false;
+	Victory = false;
+}
 
 const selectLanguage = function(battalion, languageID) {
 	const { language, uiHandler } = battalion;
@@ -239,14 +251,15 @@ function AI_Act(i){
 	} else if(i==MAXI){
 		//console.log(i+"|"+MAXI);
 		//console.log(Turn+"|"+SubRosters.length);
-		setTimeout(EndTurn, GlobalDelayerConstant, SubRosters, Map, Constants, Roster);
+		setTimeout(() => {
+			EndTurn(SubRosters, Map, Constants, MapRoster);
+		}, GlobalDelayerConstant);
 
-		if((Turn)%SubRosters.length==1){
+		if((Turn % SubRosters.length) == 1){
 			setTimeout(() => {
 				document.getElementById('AITurnIndicator').style.visibility='hidden';
 				isAITurn=false;
 			}, GlobalDelayerConstant);
-			//setTimeout(EndTurn,GlobalDelayerConstant,SubRosters,Map,Constants,Roster);
 			//DeactvateAIMarker();
 		}
 	}
@@ -2328,18 +2341,14 @@ function EndBattle(){
 
 		document.getElementById("Battlemap").style.visibility = "hidden";
 
-		if(!Victory && Resolution) {
-			//alert("It's ok bro, we're not all Chuck Norris");
-			Resolution=false;
-			battalion.uiHandler.mainMenu.show();
-			rostermap.length = 0;
-		}
-
-		if(Victory && Resolution){
-			//alert("GG bro! You won the level!");
-			Victory = false;
-			Resolution = false;
-			battalion.story.onMissionWon();
+		if(Resolution) {
+			if(!Victory) {
+				//alert("It's ok bro, we're not all Chuck Norris");
+				battalion.uiHandler.mainMenu.show();
+			} else {
+				//alert("GG bro! You won the level!");
+				battalion.story.onMissionWon();
+			}
 		}
 
 	//This bloc calls the endbattle screen
@@ -2518,23 +2527,13 @@ function EndBattle(){
 		if(ChosenChapter==5 && ChosenNation==5){alert("The curtain has fallen over Elam. The collaborators have established a sock puppet regime and Elam shall never again rise. There are, however, a few who refuse to give up the fight. If you want to witness their final struggle, you may now play their campaign.")};
 	}
 
-	MapRoster = [];
-	Roster = [];
-    rostermap = [];
+	resetBoard();
 }
 
 function EndTurn(SubRosters,Map,Constants,Roster){
-	//alert(Roster);
-	//alert(Constants);
-
 	Turn++;
-	//alert(Turn);
+	CurrentTurn = (Turn - 1) % AttackOrder.length;
 
-
-	
-	CurrentTurn=(Turn-1)%AttackOrder.length;
-
-	//console.log(Roster);
 	Inspection(Turn, Constants);
 
 	for(let a=1; a<=GlassPanels; a++){
@@ -3365,7 +3364,7 @@ function initializeBattle(){
 	Chuchu=0;
 
 	Map = data.Map;
-	Roster = data.Roster;
+	let Roster = data.Roster;
 	Constants = data.Constants;
 	ControlMap = data.ControlMap ?? [0];
 	RegionMap = data.RegionMap ?? [0];
@@ -3474,12 +3473,17 @@ function initializeBattle(){
 
 	//This function builds up a list of subrosters
 	//Why does it not use scope variables?
-	for(x=0;x<AttackOrder.length;x++){
-		SubRoster=[];
-	for(y=0;y<MapRoster.length;y++){
-		if(MapRoster[y].faction==AttackOrder[x]){SubRoster[SubRoster.length]=MapRoster[y]};};
+	for(x = 0; x < AttackOrder.length; x++) {
+		let SubRoster = [];
 
-	SubRosters[SubRosters.length]=SubRoster;};
+		for(y = 0; y < MapRoster.length; y++) {
+			if(MapRoster[y].faction == AttackOrder[x]) {
+				SubRoster[SubRoster.length] = MapRoster[y];
+			}
+		}
+
+		SubRosters[SubRosters.length] = SubRoster;
+	}
 
 	//alert(SubRosters[0]);
 
@@ -3521,7 +3525,7 @@ function initializeBattle(){
 function initializeSpecialBattle(Level){
 	wipeMap();
 	Map=Level.Map;
-	Roster=Level.Roster;
+	let Roster=Level.Roster;
 	Constants=Level.Constants;
 	ControlMap=Level.ControlMap ?? [0];
 	RegionMap=Level.RegionMap;
@@ -3635,12 +3639,17 @@ function initializeSpecialBattle(Level){
 
 	AliveFactionList=JSON.parse(JSON.stringify(AttackOrder));
 
-	for(x=0;x<AttackOrder.length;x++){
-		SubRoster=[];
-	for(y=0;y<MapRoster.length;y++){
-		if(MapRoster[y].faction==AttackOrder[x]){SubRoster[SubRoster.length]=MapRoster[y]};};
+	for(x = 0; x < AttackOrder.length; x++) {
+		let SubRoster = [];
 
-	SubRosters[SubRosters.length]=SubRoster;};
+		for(y = 0; y < MapRoster.length; y++) {
+			if(MapRoster[y].faction == AttackOrder[x]) {
+				SubRoster[SubRoster.length] = MapRoster[y];
+			}
+		}
+
+		SubRosters[SubRosters.length] = SubRoster;
+	}
 
 	//alert(SubRosters[0][0].life);
 
@@ -3685,65 +3694,123 @@ function initializeSpecialBattle(Level){
  * @param {object} Constants 
  */
 function Inspection(Turn, Constants){
-	let Resolution=false;
-	let Survive=Constants.Survival;
-	let TimeLimit=Constants.TimeLimit;
-	let Factiones=[];
-	let AliveFactions=[];
-	let Assassinated=Constants.Defeat.length;
-	let YourFaction=Factions[Constants.YourFaction].faction;
-	//let chuchu=Roster[1].faction;
-	//alert(Factions[1].faction);
-	//alert(Roster);
-	Roster=MapRoster;
-	Factiones[0]=Factions[Roster[1].faction].faction;
-	//alert(Factiones[0]);
-	if(Turn>=TimeLimit){Resolution=true; Victory=false;};
-	if(Turn>=Survive){Resolution=true; Victory=true;};
+	let Resolution = false;
+	let Survive = Constants.Survival;
+	let TimeLimit = Constants.TimeLimit;
+	let Factiones = [];
+	let AliveFactions = [];
+	let Assassinated = Constants.Defeat.length;
+	let YourFaction = Factions[Constants.YourFaction].faction;
 
-	for(let i=2;i<Roster.length;i++){
-		let FactionNotIncluded=true;
-	for(let j=0;j<=Factiones.length;j++){
-	if(Factiones[j]==(Factions[Roster[i].faction].faction)){FactionNotIncluded=false;};
-	};
-	if(FactionNotIncluded){
-		Factiones[Factiones.length]=Factions[Roster[i].faction].faction};
-	};
+	if(Turn >= TimeLimit) {
+		Resolution = true;
+		Victory = false;
+	}
 
-	//console.log(MapRoster);
-	for(let i=1;i<=Factiones.length;i++){
-		let FactionIsStillAlive=false;
-		for(let j=1;j<Roster.length;j++){
-			//alert(Roster.length);
-			//alert(MapRoster[j-1].life);
-		if(Factions[Roster[j].faction].faction == Factiones[i-1] && MapRoster[j].life>0 && !hasCertainTrait(MapRoster[j].unitType,"Inertial")){
-			FactionIsStillAlive=true};
-		};
-		if(FactionIsStillAlive){AliveFactions[AliveFactions.length]=Factiones[i-1]};};
+	if(Turn >= Survive) {
+		Resolution = true;
+		Victory = true;
+	}
 
-		//alert(AliveFactions[1]);
-		if(AliveFactions.length==1){Resolution=true;
-		if(AliveFactions[0]==YourFaction){Victory=true}else{Victory=false;}};
+	for(let i = 0; i < MapRoster.length; i++) {
+		const entityFaction = Factions[MapRoster[i].faction].faction;
+		let FactionNotIncluded = true;
+	
+		for(let j = 0; j < Factiones.length; j++) {
+			if(Factiones[j] == entityFaction) {
+				FactionNotIncluded = false;
+				break;
+			}
+		}
 
+		if(FactionNotIncluded) {
+			Factiones[Factiones.length] = entityFaction;
+		}
+	}
 
-	for(let i=0;i<Constants.Capture.length;i++){
-		if(rostermap[Constants.Capture[i].x][Constants.Capture[i].y]!=0 && Factions[rostermap[Constants.Capture[i].x][Constants.Capture[i].y].faction].faction==Factions[Constants.YourFaction].faction){Resolution=true; Victory=true};
-		};
+	for(let i = 0; i < Factiones.length; i++) {
+		let FactionIsStillAlive = false;
 
-	for(let i=0;i<Constants.Defend.length;i++){
-		if(rostermap[Constants.Defend[i].x][Constants.Defend[i].y]!=0 && Factions[rostermap[Constants.Defend[i].x][Constants.Defend[i].y].faction].faction!=Factions[Constants.YourFaction].faction){Resolution=true; Victory=false};
-		};
+		for(let j = 0; j < MapRoster.length; j++) {
+			if(
+				Factions[MapRoster[j].faction].faction == Factiones[i] &&
+				MapRoster[j].life > 0 &&
+				!hasCertainTrait(MapRoster[j].unitType, "Inertial")
+			) {
+				FactionIsStillAlive = true;
+				break;
+			}
+		}
 
+		if(FactionIsStillAlive) {
+			AliveFactions[AliveFactions.length] = Factiones[i];
+		}
+	}
 
-	for(let i=0;i<Constants.Defeat.length;i++){
-	if(MapRoster[Constants.Defeat[i]].life<=0){Assassinated-=1;};};
-	if(Assassinated==0 && Constants.Defeat.length!=0){Resolution=true;Victory=true;};
+	if(AliveFactions.length === 0) {
+		//TODO: Implement - NO_FACTION_ALIVE - ending.
+	} else if(AliveFactions.length === 1) {
+		Resolution = true;
 
-	for(let i=0;i<Constants.Protect.length;i++){
-	if(MapRoster[Constants.Protect[i]].life<=0){Resolution=true;Victory=false;};};
+		if(AliveFactions[0] == YourFaction) {
+			Victory = true;
+		} else {
+			Victory = false;
+		}
+	}
 
-	//alert(Resolution);
-	if(Resolution && BattleEnd){if(Victory){Battle_Won()}else{Battle_Lost()}};};
+	for(let i = 0; i < Constants.Capture.length; i++) {
+		if(
+			rostermap[Constants.Capture[i].x][Constants.Capture[i].y] != 0 &&
+			Factions[rostermap[Constants.Capture[i].x][Constants.Capture[i].y].faction].faction == Factions[Constants.YourFaction].faction
+		) {
+			Resolution = true; 
+			Victory = true;
+			//BUG: If only one of many is captured it still counts as a win:
+			//TOFIX: Reverse conditions => If one is NOT captured break out.
+			break;
+		}
+	}
+
+	for(let i = 0; i < Constants.Defend.length; i++) {
+		if(
+			rostermap[Constants.Defend[i].x][Constants.Defend[i].y] != 0 &&
+			Factions[rostermap[Constants.Defend[i].x][Constants.Defend[i].y].faction].faction != Factions[Constants.YourFaction].faction
+		) {
+			Resolution = true;
+			Victory = false;
+			break;
+		}
+	}
+
+	for(let i = 0; i < Constants.Defeat.length; i++) {
+		if(MapRoster[Constants.Defeat[i]].life <= 0) {
+			Assassinated--;
+		}
+	}
+
+	if(Assassinated == 0 && Constants.Defeat.length != 0) {
+		Resolution = true;
+		Victory = true;
+	}
+
+	for(let i = 0; i < Constants.Protect.length; i++) {
+		if(MapRoster[Constants.Protect[i]].life <= 0) {
+			Resolution = true;
+			Victory = false;
+			break;
+		}
+	}
+
+	if(Resolution && BattleEnd) {
+		if(Victory) {
+			Battle_Won();
+		} else {
+			Battle_Lost();
+		}
+	}
+}
+
 function InterphaseBanner(Faction,Turn){
 
 	let banner=setInterval(flashcard,50);

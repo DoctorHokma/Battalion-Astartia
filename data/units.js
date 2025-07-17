@@ -71,6 +71,7 @@ const UNIT = {
 	SUPPLY_DEPOT: 69,
 	FORTRESS: 70,
 	MEME_SPARTANS: 71,
+    MEME_BUREAUCRAT: 72
 };
 
 const UNITS = [
@@ -1971,5 +1972,29 @@ const UNITS = [
         "tag4": "",
         "AttackOffsetX": [0,0,8,0,-8],
         "RecruitmentSFX": "InfantryReady"
+    },
+    {
+        "id": 72,
+        "name": "UNIT_NAME_MEME_BUREAUCRAT",
+        "desc": "UNIT_DESC_MEME_BUREAUCRAT",
+        "shortname": "Cockroach",
+        "MLPR": true,
+        "HP": 30,
+        "Armor": "Light",
+        "Attack": 15,
+        "Weapon": "Light",
+        "Speed": 8,
+        "Movement": "Tracked",
+        "MinRange": 1,
+        "MaxRange": 1,
+        "Cost": 190,
+        "TechLevel": 1,
+        "Power": 15,
+        "Role": "",
+        "tag1": "",
+        "tag2": "",
+        "tag3": "",
+        "tag4": "",
+        "RecruitmentSFX": "TankReady"
     }
 ];
