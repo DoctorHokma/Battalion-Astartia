@@ -111,6 +111,20 @@ const resetBoard = function() {
 	Victory = false;
 }
 
+const create2DBuffer = function(mapWidth, mapHeight, fill = 0) {
+	const buffer = [];
+
+	for(let i = 0; i < mapHeight; ++i) {
+		buffer[i] = [];
+
+		for(let j = 0; j < mapWidth; ++j) {
+			buffer[i][j] = fill;
+		}
+	}
+
+	return buffer;
+}
+
 const selectLanguage = function(battalion, languageID) {
 	const { language, uiHandler } = battalion;
 	const languageComment = document.getElementById("LanguageCommentary");
@@ -370,18 +384,7 @@ function AI_Scouter(Unit,Map){
 		}
 	}
 
-	AddressMap=[];
-
-	for(let i = 0; i < mapHeight; i++) {
-		const mapLine = [];
-
-		for(let j = 0; j < mapWidth; j++) {
-			mapLine[j] = 0;
-		}
-
-		AddressMap[i] = mapLine;
-	}
-
+	AddressMap = create2DBuffer(mapWidth, mapHeight, 0);
 	Thing=JSON.parse(JSON.stringify(AddressMap));
 	//AddressMap=[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]];
 	
@@ -1733,15 +1736,7 @@ function CastEntityMap(Map, Roster) {
 	const mapHeight = Map.length;
 	const mapWidth = Map[0].length;
 
-	rostermap.length = 0;
-
-	for(let i = 0; i < mapHeight; i++) {
-		rostermap[i] = [];
-
-		for(let j = 0; j < mapWidth; j++) {
-			rostermap[i][j] = 0;
-		}
-	}
+	rostermap = create2DBuffer(mapWidth, mapHeight, 0);
 
 	//NEYN TODO: WHY DOES IT START AT JUAN?!?
 	for(var k = 1; k < Roster.length; k++) {
@@ -3369,14 +3364,7 @@ function initializeBattle(){
 	ControlMap = data.ControlMap ?? [0];
 	RegionMap = data.RegionMap ?? [0];
 	NodeMap = data.NodeMap ?? [0];
-	BiomeMap = data.BiomeMap;
-
-	//if(Map.length*Map[0].length>500){document.getElementById("Disclaimer2").style.visibility="visible"};
-
-	if((BiomeMap??0)==0){BiomeMap=[]; let BiomeLine=[];for(let b=0; b<Map[0].length;b++){BiomeLine[BiomeLine.length]=1}; for(let a=0; a<Map.length;a++){BiomeMap[BiomeMap.length]=BiomeLine}};
-	//alert(BiomeMap);
-	sstandardX=Constants.defaultX;
-	sstandardY=Constants.defaultY;
+	BiomeMap = data.BiomeMap ?? create2DBuffer(Map[0].length, Map.length, 1);
 	DynamicEvents=[];
 	ChosenMap=Map;
 	Factions=CampaignFactions;
@@ -3391,7 +3379,7 @@ function initializeBattle(){
 	KillingUnit=false;
 	GlassPanels=2;
 	document.getElementById('UnitMap').scrollBy(-Map.length*56,-Map[0].length*56);
-	document.getElementById('UnitMap').scrollBy((sstandardX??0)*56,(sstandardY??0)*56);
+	document.getElementById('UnitMap').scrollBy((Constants.defaultX ?? 0) * 56, (Constants.defaultY ?? 0) * 56);
 	document.getElementById('Glassplate3').style.visibility='hidden';
 	document.getElementById('Glassplate4').style.visibility='hidden';
 	if(Constants.Commanders.length>3){GlassPanels++;document.getElementById('Glassplate3').style.visibility='inherit'};
@@ -3531,9 +3519,8 @@ function initializeSpecialBattle(Level){
 	RegionMap=Level.RegionMap;
 	NodeMap=Level.NodeMap;
 	Factions=Level.Factions;
-	DynamicEvents=Level.DynamicEvents??[];
-	sstandardX=Constants.defaultX;
-	sstandardY=Constants.defaultY;
+	DynamicEvents=Level.DynamicEvents ?? [];
+	BiomeMap = Level.BiomeMap ?? create2DBuffer(Map[0].length, Map.length, 1);
 	ChosenMission=0;
 	ChosenChapter=0;
 	ChosenNation=0;
@@ -3547,22 +3534,13 @@ function initializeSpecialBattle(Level){
 	battalion.musicPlayer.playPlaylist("GENERIC_BATTLE");
 	battalion.setState(Battalion.STATE.BATTLE);
 
-	BiomeMap=Level.BiomeMap;
-	if((BiomeMap??0)==0){BiomeMap=[]; let BiomeLine=[];for(let b=0; b<Map[0].length;b++){BiomeLine[BiomeLine.length]=1}; for(let a=0; a<Map.length;a++){BiomeMap[BiomeMap.length]=BiomeLine}};
-
-
 	castMap(ChosenMap);
 
 	KillingUnit=false;
 	GlassPanels=2;
-	//alert(StandardX);
-	//document.getElementById("UnitMap").scrollTop=(sstandardX??0)*56;
-	//let Varza=0;
-	//document.getElementById("UnitMap").scrollLeft=(sstandardY??0)*56;
-	//alert(document.getElementById("UnitMap").scrollTop+" "+document.getElementById("UnitMap").scrollLeft+" "+sstandardX+" "+sstandardY);
 
 	document.getElementById('UnitMap').scrollBy(-Map.length*56,-Map[0].length*56);
-	document.getElementById('UnitMap').scrollBy((sstandardX??0)*56,(sstandardY??0)*56);
+	document.getElementById('UnitMap').scrollBy((Constants.defaultX ?? 0) * 56, (Constants.defaultX ?? 0) * 56);
 	document.getElementById('Glassplate3').style.visibility='hidden';
 	document.getElementById('Glassplate4').style.visibility='hidden';
 	if(Constants.Commanders.length>3){GlassPanels++;document.getElementById('Glassplate3').style.visibility='inherit'};
@@ -3901,7 +3879,9 @@ function InterphaseBanner(Faction,Turn){
 		//document.getElementById("CommanderNickCommentary").innerHTML=Constants.Commanders[Turnindex].NicknameCommentary;
 
 
-	function flashcard(){phase++;
+	function flashcard() {
+		phase++;
+
 		if(phase<5){
 			document.getElementById("InterphaseField").style.height=phase*35+"px";
 			document.getElementById("InterphaseField").style.marginTop=0-phase*17.5+"px";
@@ -3920,36 +3900,32 @@ function InterphaseBanner(Faction,Turn){
 			document.getElementById("InterphaseTurn").style.top=80-35*(phase-12)+"px";
 		};
 
-		if(phase==16){clearInterval(banner);document.getElementById("InterphaseBanner").style.visibility="hidden";};};
-		//Turn=TurnIndex;
+		if(phase==16) {
+			clearInterval(banner);
+			document.getElementById("InterphaseBanner").style.visibility="hidden";
+		}
+	}
+	//Turn=TurnIndex;
 
-		//This bloc runs the static events
-		if((Constants.Events??0)==0){
-			//this is for campaign maps, from a centralized database of events
-			let a=(Constants.StaticEvents??[]).length;
+	//This bloc runs the static events
+	if((Constants.Events ?? 0) == 0){
+		//this is for campaign maps, from a centralized database of events
+		let a = (Constants.StaticEvents ?? []).length;
 
-			for(let b=0; b<a;b++){
-				let Event=Constants.StaticEvents[b];
-				let TriggerEvent=false;
-				if((Event.TurnTreshold??0) == Turn){TriggerEvent=true};
+		for(let b = 0; b < a; b++){
+			let Event = Constants.StaticEvents[b];
 
-				if(TriggerEvent){RunEvent(Event)};
-
-			};
-
-
-
-
-
-		}else{
+			if((Event.TurnTreshold ?? 0) == Turn) {
+				RunEvent(Event);
+			}
+		}
+	} else {
 			//this is for autonomous maps, from a local database of events
+	}
+}
 
-
-
-		}};
 //AFUERA
 function LanguageCorrecter(Language){
-
 	if(!Language.SystemTerms) Language.SystemTerms=ENG.SystemTerms;
 
 	if((Language.SystemTerms??[]).length==0){Language.SystemTerms=ENG.SystemTerms};
@@ -4792,18 +4768,7 @@ function PI_Scouter(Unit, Map){
 	//Yeah... the cost will be having to listen to our brainfarts.
 	//Silix, Wisp, Luna! Cut it out and get back to work.
 
-	AddressMap=[];
-
-	for(let i = 0; i < mapHeight; i++) {
-		const mapLine = [];
-
-		for(let j = 0; j < mapWidth; j++) {
-			mapLine[j] = 0;
-		}
-
-		AddressMap[i] = mapLine;
-	}
-
+	AddressMap = create2DBuffer(mapWidth, mapHeight, 0);
 	Thing=JSON.parse(JSON.stringify(AddressMap));
 
 	//Standard-Issue Pathing Loop
@@ -7528,8 +7493,6 @@ CallPreloader();
 //GeneralInitializer();
 
 //document.getElementById('EditorP1').oncontextmenu=function(){EditorMap=Kaula;RefreshMapEditor()};
-//initializeSpecialBattle(Samara); 
-
 //This protocol shall disable MapEditor paraphernalia and allow the pilfering of a giant(14000*5600) map, later to be shrunk to 1400*560.
 
 /*
