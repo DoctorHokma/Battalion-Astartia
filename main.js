@@ -6205,95 +6205,83 @@ const StorkPickup = function(tileX, tileY){
 	document.getElementById("Entity "+(Unit.x-StandardX+1)+"X"+(Unit.y-StandardY+1)).src="Assets/Units/Static/Stork"+rostermap[Unit.x][Unit.y].direction+".png";
 }
 
-function TestMap(){
-	//alert(EditorMap[0]);
-	//let MapKey="[";
-	//for(let i=0;i<x;i++){MapKey+="["+EditorMap[i]+"]";
-	//if(i<x-1){MapKey+=",\n";};};
-	//MapKey+="]";
+function TestMap() {
+	let RosterKey = [{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0}];
 
-	/*
-	let RosterKey='[{"index":0, "id":null, "faction":null, "direction":null, "x":null, "y":null, "morale":0, "hpModifier":0, "defaultX":0,"defaultY":0},\n';
+	for(let i = 0; i < MapHeight; i++) {
+		for(let j = 0; j < MapWidth; j++) {
+			const entry = EditorEntityMap[i][j];
 
-	for(let i=0; i<x;i++){for(let j=0; j<y;j++){
-		if(EditorEntityMap[i][j]!=0){
-			UnitEntry='{"id":'+EditorEntityMap[i][j].id+' , "faction":'+EditorEntityMap[i][j].faction+' , "direction":'+EditorEntityMap[i][j].direction+', "x":'+(EditorEntityMap[i][j].x-1)+', "y":'+(EditorEntityMap[i][j].y-1)+', "morale":0, "hpModifier":0},\n';
-			RosterKey+=UnitEntry;
-		};
-	}};
-	RosterKey=RosterKey.slice(0,-2);
-	RosterKey+="]";
-	*/
-	battalion.setState(Battalion.STATE.BATTLE);
-	let RosterKey=[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0}];
-	for(let x=0;x<EditorEntityMap.length;x++){for (let y=0;y<EditorEntityMapWidth;y++){if(EditorEntityMap[x][y]!=0){RosterKey[RosterKey.length]=EditorEntityMap[x][y]}}};
-
-	//alert(RosterKey);
-	let ControlKey="[";
-	for(let i=0;i<x;i++){ControlKey+="["+EditorControlMap[i]+"]";
-	if(i<x-1){ControlKey+=",\n";};};
-	ControlKey+="]";
-	MapKey=EditorMap;
-	BiomeKey=EditorBiomeMap;
-	//alert(RosterKey.length);
-	//alert(EditationColor);
-	ControlKey=JSON.parse(ControlKey);
-	let GeneralsList=[Nobody,WhiteGeneral,BlackGeneral,GreyGeneral,IndigoGeneral,GreenGeneral,GrayGeneral,YellowGeneral,BrownGeneral,RedGeneral,BlueGeneral];
-	let CommanderList=[Nobody];
-	CommanderList[1]=GeneralsList[EditationColor];
-
-	for(let a=1;a<RosterKey.length;a++){
-		let canAdd=true; 
-
-		for(b=1;b<CommanderList.length;b++){
-			if(RosterKey[a].faction==CommanderList[b].Allegiance){canAdd=false}}; 
-			if(canAdd){CommanderList[CommanderList.length]=GeneralsList[RosterKey[a].faction]}
-				//alert(CommanderList.length+" "+b);
-		};
-	let SurviveTimer=parseInt(document.getElementById("SurviveInput").value??77777)??77777;
-	let TimeLimit=parseInt(document.getElementById("TimeLimitInput").value??77777)??77777;
-	let ConstantsKey={YourFaction:EditationColor,defaultX:0,defaultY:0,Survival:SurviveTimer,TimeLimit:TimeLimit,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0,0,0,0,0,0,0,0,0],Commanders:CommanderList};
-	let RegionKey=EditorRegionMap;
-	let NodeKeyT=CapitolNodeRegistry;
-	let NodeKey=[];
-	for(let N=0;N<NodeKeyT.length;N++){for(let R=0;R<NodeKeyT[0].length;R++){if(NodeKeyT[N][R]!=1){NodeKey[NodeKey.length]=NodeKeyT[N][R]}}};
-	//alert(typeof(NodeKeyT[0][0]));
-
-	const EditorLevel={
-		Map:MapKey,
-		Roster:RosterKey,
-		Constants:ConstantsKey,
-		ControlMap:ControlKey,
-		BiomeMap:BiomeKey,
-		RegionMap:RegionKey,
-		NodeMap:NodeKey,
-		Factions:GenericFactions
-	};
-	
-	let canBattle=true;
-
-
-
-
-	if(canBattle){
-	document.getElementById('EditorMap').style.visibility='hidden';
-	document.getElementById('FactionChosenIndicator').style.visibility='hidden';
-
-		/*
-		for(let i=1;i<10;i++){
-		for(let j=1;j<10;j++){
-			key=document.getElementById("Slot "+i+" X "+j)??0;
-			document.getElementById(key).style.visibility="hidden";
-			//alert("Slot "+i+" X "+j);
-			//if(key!=0){key.remove()};
-		}};*/
-		
-
-
-
-	for(let x=1;x<=10;x++){for(let y=1;y<=10;y++){document.getElementById("Entity "+x+" X "+y).style.visibility='hidden'; document.getElementById("Tile "+x+" X "+y).style.visibility='hidden';document.getElementById("Structure "+x+" X "+y).style.visibility='hidden';document.getElementById("a "+x+" X "+y).style.visibility='hidden';document.getElementById("b "+x+" X "+y).style.visibility='hidden';document.getElementById("c "+x+" X "+y).style.visibility='hidden';document.getElementById("d "+x+" X "+y).style.visibility='hidden';}};
-	initializeSpecialBattle(EditorLevel);
+			if(entry != 0) {
+				RosterKey.push(entry);
+			}
+		}
 	}
+
+	let ControlKey = "[";
+
+	for(let i = 0; i < MapHeight; i++) {
+		ControlKey += "[" + EditorControlMap[i] + "]";
+
+		if(i < MapHeight - 1) {
+			ControlKey += ",\n";
+		}
+	}
+
+	ControlKey += "]";
+	MapKey = EditorMap;
+	BiomeKey = EditorBiomeMap;
+	ControlKey = JSON.parse(ControlKey);
+
+	let GeneralsList = [Nobody,WhiteGeneral,BlackGeneral,GreyGeneral,IndigoGeneral,GreenGeneral,GrayGeneral,YellowGeneral,BrownGeneral,RedGeneral,BlueGeneral];
+	let CommanderList = [Nobody, GeneralsList[EditationColor]];
+
+	for(let i = 1; i < RosterKey.length; i++) {
+		let canAdd = true;
+
+		for(let j = 1; j < CommanderList.length; j++) {
+			if(RosterKey[i].faction == CommanderList[j].Allegiance) {
+				canAdd = false;
+				break;
+			}
+		}
+
+		if(canAdd) {
+			CommanderList.push(GeneralsList[RosterKey[i].faction]);
+		}
+	}
+
+	let SurviveTimer = parseInt(document.getElementById("SurviveInput").value ?? 77777) ?? 77777;
+	let TimeLimit = parseInt(document.getElementById("TimeLimitInput").value ?? 77777) ?? 77777;
+	let ConstantsKey = {YourFaction:EditationColor,defaultX:0,defaultY:0,Survival:SurviveTimer,TimeLimit:TimeLimit,Capture:[],Defend:[],Defeat:[],Protect:[],Funds:[0,0,0,0,0,0,0,0,0,0,0],Commanders:CommanderList};
+	let RegionKey = EditorRegionMap;
+	let NodeKey = [];
+
+	for(let i = 0; i < MapHeight; i++) {
+		for(let j = 0; j < MapWidth; j++) {
+			const entry = CapitolNodeRegistry[i][j];
+
+			if(entry != 1) {
+				NodeKey.push(entry);
+			}
+		}
+	}
+
+	const EditorLevel = {
+		Map: MapKey,
+		Roster: RosterKey,
+		Constants: ConstantsKey,
+		ControlMap: ControlKey,
+		BiomeMap: BiomeKey,
+		RegionMap: RegionKey,
+		NodeMap: NodeKey,
+		Factions: GenericFactions
+	};
+
+	document.getElementById('EditorMap').style.visibility = 'hidden';
+	document.getElementById('FactionChosenIndicator').style.visibility = 'hidden';
+
+	initializeSpecialBattle(EditorLevel);
 }
 
 function ToggleBattleflags(){
