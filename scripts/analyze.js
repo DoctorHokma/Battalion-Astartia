@@ -40,18 +40,18 @@ const getTerrainType = function(index) {
 	return TERRAIN[index];
 }
 
-const analyzeTile = function(index, X, Y) {
+const analyzeTile = function(index, tileX, tileY) {
 	const { language } = battalion;
 	const terrainType = getTerrainType(index);
 
-	LocalBiome = BiomeMap[X][Y]; 
+	LocalBiome = BiomeMap[tileY][tileX]; 
 
-	if(LocalizationMap[X][Y] == 0) {
+	if(LocalizationMap[tileY][tileX] == 0) {
 		document.getElementById("DetBarName").innerHTML = language.get(terrainType.$name);
 		document.getElementById("DetBarDescription").innerHTML = language.get(terrainType.desc);
 	} else {
-		document.getElementById("DetBarName").innerHTML = LocalizationMap[X][Y].name;
-		document.getElementById("DetBarDescription").innerHTML = LocalizationMap[X][Y].description;
+		document.getElementById("DetBarName").innerHTML = LocalizationMap[tileY][tileX].name;
+		document.getElementById("DetBarDescription").innerHTML = LocalizationMap[tileY][tileX].description;
 	}
 
 	document.getElementById("DetBar").src="Assets/Miscellaneous/TerrainDetailBar.png";
@@ -62,7 +62,7 @@ const analyzeTile = function(index, X, Y) {
 	document.getElementById("Icon").style.filter="hue-rotate(0deg) saturate(100%) brightness(100%)";
 
 	if(Terrain[index].Urbanistics >= 2) {
-		document.getElementById("Icon").style.filter=Factions[ControlMap[X][Y]].ChromaCode;
+		document.getElementById("Icon").style.filter=Factions[ControlMap[tileY][tileX]].ChromaCode;
 	}
 
 	document.getElementById("Health").style.visibility="hidden";
@@ -127,22 +127,20 @@ const analyzeUnit = function(unit) {
 	showTraits(unit.config);
 }
 
-const analyzeStructure = function(X, Y) {
+const analyzeStructure = function(tileX, tileY) {}
 
-}
-
-function AnalyzeSquare(analysisType, X, Y){
+function AnalyzeSquare(analysisType, tileY, tileX){
 	switch(analysisType) {
 		case ANALYSIS_TYPE.TILE: {
-			const tileID = Map[X][Y];
+			const tileID = Map[tileY][tileX];
 
 			HighlightedEntity = Terrain[tileID];
 
-			analyzeTile(tileID, X, Y);
+			analyzeTile(tileID, tileX, tileY);
 			break;
 		}
 		case ANALYSIS_TYPE.UNIT: {
-			const unit = rostermap[X][Y];
+			const unit = rostermap[tileY][tileX];
 
 			HighlightedEntity = Units[unit.unitType];
 
@@ -150,7 +148,7 @@ function AnalyzeSquare(analysisType, X, Y){
 			break;
 		}
 		case ANALYSIS_TYPE.STRUCTURE: {
-			analyzeStructure(X, Y);
+			analyzeStructure(tileX, tileY);
 			break;
 		}
 		default: {

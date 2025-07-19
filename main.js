@@ -1,6 +1,8 @@
 const PROFILE_ID = "TEST_PROFILE";
 const OPENING_TRACK = "NavalEpic6";
 const TILE_SIZE = 56;
+const VISIBLE_TILES_X = 10;
+const VISIBLE_TILES_Y = 10;
 
 const createContext = function() {
 	const context = new Battalion();
@@ -691,7 +693,6 @@ function AI_Scouter(Unit,Map){
 			break;
 		}
 		case "Ranged": {
-			//alert("Chuchu!");
 			RangedTargetList=[];
 			let OX=Math.max(X-10,0);
 			let OY=Math.max(Y-10,0);
@@ -3331,7 +3332,154 @@ function HoverBuilding(Phase,Building){
 	}
 }
 
-function initializeBattle(){
+const initGlassPanels = function(commanderCount) {
+	GlassPanels = 2;
+
+	if(commanderCount > 3) {
+		GlassPanels++;
+		document.getElementById("Glassplate3").style.visibility = "inherit";
+	} else {
+		document.getElementById("Glassplate3").style.visibility = "hidden";
+	}
+
+	if(commanderCount > 4) {
+		GlassPanels++;
+		document.getElementById("Glassplate4").style.visibility = "inherit";
+	} else {
+		document.getElementById("Glassplate4").style.visibility = "hidden";
+	}
+}
+
+const initBattlemap = function(defaultX = 0, defaultY = 0) {
+	document.getElementById("UnitMap").scrollBy(-MapWidth * TILE_SIZE, -MapHeight * TILE_SIZE);
+	document.getElementById("UnitMap").scrollBy(defaultX * TILE_SIZE, defaultY * TILE_SIZE);
+
+	if(MapHeight > VISIBLE_TILES_Y){
+		document.getElementById('TopScrollBar').style.zIndex = "5";
+		document.getElementById('BottomScrollBar').style.zIndex = "5";
+	} else {
+		document.getElementById('TopScrollBar').src = "Assets/Miscellaneous/Nothing.png";
+		document.getElementById('TopScrollBar').style.zIndex = "0";
+		document.getElementById('BottomScrollBar').src = "Assets/Miscellaneous/Nothing.png";
+		document.getElementById('BottomScrollBar').style.zIndex = "0";
+	}
+
+	if(MapWidth > VISIBLE_TILES_X){
+		document.getElementById('LeftScrollBar').style.zIndex = "5";
+		document.getElementById('RightScrollBar').style.zIndex = "5";
+	} else {
+		document.getElementById('LeftScrollBar').src = "Assets/Miscellaneous/Nothing.png";
+		document.getElementById('LeftScrollBar').style.zIndex = "0";
+		document.getElementById('RightScrollBar').src = "Assets/Miscellaneous/Nothing.png";
+		document.getElementById('RightScrollBar').style.zIndex = "0";
+	}
+
+	document.getElementById("Battlemap").style.visibility = "visible";
+}
+
+const initTileFlags = function(Capture = [], Defend = [], Defeat = [], Protect = []) {
+	//This code block generates battleflags
+	TileFlagMap = create2DBuffer(MapWidth, MapHeight, 0);
+
+	for(let i = 0; i < Capture.length; i++) {
+		const { x, y } = Capture[i];
+		//X and Y are inverted...
+		TileFlagMap[x][y] = 1;
+	}
+
+	for(let i = 0; i < Defend.length; i++) {
+		const { x, y } = Defend[i];
+		//X and Y are inverted...
+		TileFlagMap[x][y] = 2;
+	}
+
+	for(let i = 0; i < Defeat.length; i++) {
+		//UnitFlagMap[MapRoster[Defeat[a]].x][MapRoster[Defeat[a]].y]=3;
+		MapRoster[Defeat[i]].Defeat = true;
+	}
+
+	for(let i = 0; i < Protect.length; i++) {
+		//UnitFlagMap[MapRoster[Protect[a]].x][MapRoster[Protect[a]].y]=4;
+		MapRoster[Protect[i]].Protect = true;
+	}
+
+	for(let i = 0; i < MapHeight; i++) {
+		for(let j = 0; j < MapWidth; j++) {
+			const flag = TileFlagMap[i][j];
+
+			switch(flag) {
+				case 1: {
+					document.getElementById("Flag " + (i + 1) + "X" + (j + 1)).style.visibility = "inherit";
+					document.getElementById("Flag " + (i + 1) + "X" + (j + 1)).src = "Assets/Miscellaneous/CaptureFlag.png"
+					break;
+				}
+				case 2: {
+					document.getElementById("Flag " + (i + 1) + "X" + (j + 1)).style.visibility = "inherit";
+					document.getElementById("Flag " + (i + 1) + "X" + (j + 1)).src = "Assets/Miscellaneous/DefendFlag.png"
+					break;
+				}
+			}
+		}
+	}
+}
+
+var Localization = [];
+var LocalizationMap = [];
+
+const initLocalization = function(localization = []) {
+	Localization = localization;
+	LocalizationMap = create2DBuffer(MapWidth, MapHeight, 0);
+
+	for(let i = 0; i < Localization.length; i++) {
+		const localization = Localization[i];
+		const { X, Y } = localization;
+
+		LocalizationMap[X][Y] = localization;
+	}
+}
+
+const initAttackOrder = function(YourFaction = 0) {
+	PlayerChoiceFaction = YourFaction;
+	AttackOrder = [PlayerChoiceFaction];
+	AliveFactionList = [];
+
+	for(let i = 0; i < MapRoster.length; i++) {
+		let isValid = true;
+
+		for(let j = 0; j < AttackOrder.length; j++) {
+			if(MapRoster[i].faction == AttackOrder[j]) {
+				isValid = false;
+				break;
+			}
+		}
+
+		if(isValid) {
+			AttackOrder.push(MapRoster[i].faction);
+		}
+	}
+
+	for(let i = 0; i < AttackOrder.length; i++) {
+		AliveFactionList[i] = AttackOrder[i];
+	}
+}
+
+const initSubrosters = function() {
+	SubRosters = [];
+
+	for(let i = 0; i < AttackOrder.length; i++) {
+		const subRoster = [];
+
+		for(let j = 0; j < MapRoster.length; j++) {
+			if(MapRoster[j].faction == AttackOrder[i]) {
+				subRoster.push(MapRoster[j]);
+			}
+		}
+
+		SubRosters.push(subRoster);
+	}
+}
+
+function initializeStoryBattle() {
 	const { story } = battalion;
 	const mission = story.getCurrentNode(StoryHandler.TYPE.MISSION);
 
@@ -3349,311 +3497,131 @@ function initializeBattle(){
 		battalion.musicPlayer.playPlaylist(config.playlist);
 	}
 
-	console.log(mission);
-	//This block runs pre-functions characteristic to the specific level
-
-	isAITurn=false;
-	BattleEnd=true;
-	Resolution=false;
-	Chuchu=0;
-
+	isAITurn = false;
+	BattleEnd = true;
+	Resolution = false;
+	Chuchu = 0;
 	MapWidth = data.Map[0].length;
 	MapHeight = data.Map.length;
 	Map = data.Map;
-	let Roster = data.Roster;
 	Constants = data.Constants;
-	ControlMap = data.ControlMap ?? [0];
-	RegionMap = data.RegionMap ?? [0];
-	NodeMap = data.NodeMap ?? [0];
+	ControlMap = data.ControlMap ?? create2DBuffer(MapWidth, MapHeight, 0);
+	RegionMap = data.RegionMap ?? create2DBuffer(MapWidth, MapHeight, 0);
+	NodeMap = data.NodeMap ?? create2DBuffer(MapWidth, MapHeight, 0);
 	BiomeMap = data.BiomeMap ?? create2DBuffer(MapWidth, MapHeight, 1);
-	DynamicEvents=[];
-	ChosenMap=Map;
-	Factions=CampaignFactions;
-	YourMoney=(data.Constants.Funds ?? [0,0])[1];
-
-	Prelogue=Language.Prelogues[ChosenNation][ChosenChapter-1][ChosenMission-1];
-	Postlogue=Language.Postlogues[ChosenNation][ChosenChapter-1][ChosenMission-1];
-	Interjection=Language.DefeatInterjections[ChosenNation][ChosenChapter-1][ChosenMission-1];
+	DynamicEvents = [];
+	ChosenMap = Map;
+	Factions = CampaignFactions;
+	YourMoney = (data.Constants.Funds ?? [0,0])[1];
+	Prelogue = Language.Prelogues[ChosenNation][ChosenChapter-1][ChosenMission-1];
+	Postlogue = Language.Postlogues[ChosenNation][ChosenChapter-1][ChosenMission-1];
+	Interjection = Language.DefeatInterjections[ChosenNation][ChosenChapter-1][ChosenMission-1];
+	KillingUnit = false;
+	Turn = 0;
+	TurnIndex = 0;
 
 	castMap(ChosenMap);
-
-	KillingUnit=false;
-	GlassPanels=2;
-	document.getElementById('UnitMap').scrollBy(-MapHeight*TILE_SIZE,-MapWidth*TILE_SIZE);
-	document.getElementById('UnitMap').scrollBy((Constants.defaultX ?? 0) * TILE_SIZE, (Constants.defaultY ?? 0) * TILE_SIZE);
-	document.getElementById('Glassplate3').style.visibility='hidden';
-	document.getElementById('Glassplate4').style.visibility='hidden';
-	if(Constants.Commanders.length>3){GlassPanels++;document.getElementById('Glassplate3').style.visibility='inherit'};
-	if(Constants.Commanders.length>4){GlassPanels++;document.getElementById('Glassplate4').style.visibility='inherit'};
-
-	if(MapHeight>10){
-		document.getElementById('TopScrollBar').style.zIndex="5";
-		document.getElementById('BottomScrollBar').style.zIndex="5";
-		}else{
-		document.getElementById('TopScrollBar').src="Assets/Miscellaneous/Nothing.png";
-		document.getElementById('TopScrollBar').style.zIndex="0";
-		document.getElementById('BottomScrollBar').src="Assets/Miscellaneous/Nothing.png";
-		document.getElementById('BottomScrollBar').style.zIndex="0";
-		};
-	if(MapWidth>10){
-		document.getElementById('LeftScrollBar').style.zIndex="5";
-		document.getElementById('RightScrollBar').style.zIndex="5";
-		}else{
-		document.getElementById('LeftScrollBar').src="Assets/Miscellaneous/Nothing.png";
-		document.getElementById('LeftScrollBar').style.zIndex="0";
-		document.getElementById('RightScrollBar').src="Assets/Miscellaneous/Nothing.png";
-		document.getElementById('RightScrollBar').style.zIndex="0";
-	};
-
-	for(let i=1;i<=10;i++){
-		for(let j=1;j<=10;j++){
-			document.getElementById("Entity "+i+"X"+j).style.visibility="hidden";
-			document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
-			document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
-			document.getElementById("Structure "+i+"X"+j).style.visibility="hidden";
-		}
-	}
-
-	document.getElementById("Battlemap").style.visibility = "visible";
 	FillMap(Map);
-	CastEntityMap(Map,Roster);
+	CastEntityMap(Map, data.Roster);
+	initGlassPanels(Constants.Commanders.length);
+	initBattlemap(Constants.defaultX, Constants.defaultY);
+	initLocalization(data.Localization);
+	initTileFlags(Constants.Capture, Constants.Defend, Constants.Defeat, Constants.Protect);
+	initAttackOrder(Constants.YourFaction);
+	initSubrosters();
+
 	/*
-	for(let a=0;a<Constants.Capture.length;a++){FlagMap[Constants.Capture[a].x][Constants.Capture[a].y]=1};
-	for(let a=0;a<Constants.Defend.length;a++){FlagMap[Constants.Defend[a].x][Constants.Defend[a].y]=2};
-	for(let a=0;a<Constants.Defeat.length;a++){FlagMap[MapRoster[Constants.Defeat[a]].x][MapRoster[Constants.Defeat[a]].y]=3};
-	for(let a=0;a<Constants.Protect.length;a++){FlagMap[MapRoster[Constants.Protect[a]].x][MapRoster[Constants.Protect[a]].y]=4};
-		*/
+		for(let a=0;a<Constants.Capture.length;a++){FlagMap[Constants.Capture[a].x][Constants.Capture[a].y]=1};
+		for(let a=0;a<Constants.Defend.length;a++){FlagMap[Constants.Defend[a].x][Constants.Defend[a].y]=2};
+		for(let a=0;a<Constants.Defeat.length;a++){FlagMap[MapRoster[Constants.Defeat[a]].x][MapRoster[Constants.Defeat[a]].y]=3};
+		for(let a=0;a<Constants.Protect.length;a++){FlagMap[MapRoster[Constants.Protect[a]].x][MapRoster[Constants.Protect[a]].y]=4};
+	*/
 	
-	if(DialogueChoice){launchDialogueBloc(Language.Prelogues[ChosenNation][ChosenChapter-1][ChosenMission-1],0)};
-
-	//This deals with the localization
-
-	LocalizationMap=[];
-	let LocLine=[];
-	Localization = data.Localization ?? {};
-	for(let x=0;x<MapWidth;x++){LocLine[LocLine.length]=0};
-	for(let y=0;y<MapHeight;y++){LocalizationMap[LocalizationMap.length]=JSON.parse(JSON.stringify(LocLine))};
-	for(let z=0;z<Localization.length;z++){LocalizationMap[Localization[z].X][Localization[z].Y]=Localization[z]};
-
-
-	//This block initializes the faction list
-	PlayerChoiceFaction=Constants.YourFaction;
-	//alert(PlayerChoiceFaction);
-	AttackOrder=[PlayerChoiceFaction];
-	SubRosters=[];
-	for(let p=1;p<Roster.length;p++){
-	let checker=1;
-	for(let r=0;r<AttackOrder.length;r++){if(Roster[p].faction==AttackOrder[r]){checker=0;}};
-	if(checker){AttackOrder[AttackOrder.length]=Roster[p].faction};};
-
-	AliveFactionList=JSON.parse(JSON.stringify(AttackOrder));
-
-	//alert(AttackOrder[3]);
-
-	//This function builds up a list of subrosters
-	//Why does it not use scope variables?
-	for(x = 0; x < AttackOrder.length; x++) {
-		let SubRoster = [];
-
-		for(y = 0; y < MapRoster.length; y++) {
-			if(MapRoster[y].faction == AttackOrder[x]) {
-				SubRoster[SubRoster.length] = MapRoster[y];
-			}
-		}
-
-		SubRosters[SubRosters.length] = SubRoster;
+	if(DialogueChoice) {
+		launchDialogueBloc(Language.Prelogues[ChosenNation][ChosenChapter-1][ChosenMission-1], 0);
 	}
 
-	//alert(SubRosters[0]);
-
-	//This code block generates battleflags
-
-	let FlagMap=[];
-	let FlagCell=[];
-	for(let x=0;x<MapWidth;x++){FlagCell[FlagCell.length]=0};
-	for(let y=0;y<MapHeight;y++){FlagMap[FlagMap.length]=FlagCell};
-	TileFlagMap=JSON.parse(JSON.stringify(FlagMap));
-	//let UnitFlagMap=JSON.parse(JSON.stringify(FlagMap));
-
-	for(let a=0;a<Constants.Capture.length;a++){TileFlagMap[Constants.Capture[a].x][Constants.Capture[a].y]=1};
-	for(let a=0;a<Constants.Defend.length;a++){TileFlagMap[Constants.Defend[a].x][Constants.Defend[a].y]=2};
-	for(let a=0;a<Constants.Defeat.length;a++){//UnitFlagMap[MapRoster[Constants.Defeat[a]].x][MapRoster[Constants.Defeat[a]].y]=3;
-		MapRoster[Constants.Defeat[a]].Defeat=true;rostermap[MapRoster[Constants.Defeat[a]].x][MapRoster[Constants.Defeat[a]].y].Defeat=true};
-	for(let a=0;a<Constants.Protect.length;a++){//UnitFlagMap[MapRoster[Constants.Protect[a]].x][MapRoster[Constants.Protect[a]].y]=4;
-		MapRoster[Constants.Protect[a]].Protect=true;rostermap[MapRoster[Constants.Protect[a]].x][MapRoster[Constants.Protect[a]].y].Protect=true};
-
-		
-
-	for (let dick=0; dick<MapHeight; dick++){for(let cunt=0; cunt<MapWidth; cunt++){
-		if(TileFlagMap[dick][cunt]!=0){//alert("Chuchu");
-		document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).style.visibility='inherit';
-		if(TileFlagMap[dick][cunt]==1){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/CaptureFlag.png"};
-		if(TileFlagMap[dick][cunt]==2){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/DefendFlag.png"};
-		//if(UnitFlagMap[dick][cunt]==3){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/DestroyFlag.png"};
-		//if(UnitFlagMap[dick][cunt]==4){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/ProtectFlag.png"};
-	}
-
-		}};
-
-	Turn=0;
-	TurnIndex=0;
-
-	EndTurn(SubRosters,Map,Constants,Roster);
+	EndTurn(SubRosters, Map, Constants, MapRoster);
 }
 
 function initializeSpecialBattle(Level){
 	MapWidth = Level.Map[0].length;
 	MapHeight = Level.Map.length;
-	Map=Level.Map;
-	let Roster=Level.Roster;
-	Constants=Level.Constants;
-	ControlMap=Level.ControlMap ?? [0];
-	RegionMap=Level.RegionMap;
-	NodeMap=Level.NodeMap;
-	Factions=Level.Factions;
-	DynamicEvents=Level.DynamicEvents ?? [];
+	Map = Level.Map;
+	Constants = Level.Constants;
+	ControlMap = Level.ControlMap ?? create2DBuffer(MapWidth, MapHeight, 0);
+	NodeMap = Level.NodeMap ?? create2DBuffer(MapWidth, MapHeight, 0);
+	RegionMap = Level.RegionMap ?? create2DBuffer(MapWidth, MapHeight, 0);
 	BiomeMap = Level.BiomeMap ?? create2DBuffer(MapWidth, MapHeight, 1);
-	ChosenMission=0;
-	ChosenChapter=0;
-	ChosenNation=0;
-	ChosenMap=Map;
-	isAITurn=false;
-	BattleEnd=true;
-	YourMoney=Constants.Funds[1];
-	Resolution=false;
-	Victory=false;
+	Factions = Level.Factions;
+	DynamicEvents = Level.DynamicEvents ?? [];
+	ChosenMission = 0;
+	ChosenChapter = 0;
+	ChosenNation = 0;
+	ChosenMap = Map;
+	isAITurn = false;
+	BattleEnd = true;
+	YourMoney = Constants.Funds[1];
+	Resolution = false;
+	Victory = false;
+	KillingUnit = false;
+	Factions = Level.Factions;
+	Turn = 0;
+	TurnIndex = 0;
+	Prelogue = Level.Prelogue ?? "";
+	Postlogue = Level.Postlogue ?? "";
+	Interjection = Level.Interjection ?? "";
 
 	battalion.musicPlayer.playPlaylist("GENERIC_BATTLE");
 	battalion.setState(Battalion.STATE.BATTLE);
 
 	castMap(ChosenMap);
-
-	KillingUnit=false;
-	GlassPanels=2;
-
-	document.getElementById('UnitMap').scrollBy(-MapHeight*TILE_SIZE,-MapWidth*TILE_SIZE);
-	document.getElementById('UnitMap').scrollBy((Constants.defaultX ?? 0) * TILE_SIZE, (Constants.defaultX ?? 0) * TILE_SIZE);
-	document.getElementById('Glassplate3').style.visibility='hidden';
-	document.getElementById('Glassplate4').style.visibility='hidden';
-	if(Constants.Commanders.length>3){GlassPanels++;document.getElementById('Glassplate3').style.visibility='inherit'};
-	if(Constants.Commanders.length>4){GlassPanels++;document.getElementById('Glassplate4').style.visibility='inherit'};
-
-	for(let i=1;i<=MapHeight;i++){for(let j=1;j<=MapWidth;j++){
-	document.getElementById("Entity "+i+"X"+j).style.visibility="hidden";
-	document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
-	document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
-	document.getElementById("Structure "+i+"X"+j).style.visibility="hidden";
-	}};
-
-	if(MapHeight>10){
-		document.getElementById('TopScrollBar').style.zIndex="5";
-		document.getElementById('BottomScrollBar').style.zIndex="5";
-		}else{
-		document.getElementById('TopScrollBar').src="Assets/Miscellaneous/Nothing.png";
-		document.getElementById('TopScrollBar').style.zIndex="0";
-		document.getElementById('BottomScrollBar').src="Assets/Miscellaneous/Nothing.png";
-		document.getElementById('BottomScrollBar').style.zIndex="0";
-		};
-	if(MapWidth>10){
-		document.getElementById('LeftScrollBar').style.zIndex="5";
-		document.getElementById('RightScrollBar').style.zIndex="5";
-		}else{
-		document.getElementById('LeftScrollBar').src="Assets/Miscellaneous/Nothing.png";
-		document.getElementById('LeftScrollBar').style.zIndex="0";
-		document.getElementById('RightScrollBar').src="Assets/Miscellaneous/Nothing.png";
-		document.getElementById('RightScrollBar').style.zIndex="0";
-	};
-
-	//alert(Constants.YourFaction);
-
-	Factions=Level.Factions;
-
-	if((Constants.AttackerFaction??[]).length>0){
-	DaoLedger=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-	for(let a=0;a<Constants.Commanders.length;a++){Stance="Defender";
-		for(let b=0;b<Constants.AttackerFaction.length;b++){if(Factions[Constants.Commanders[a].Allegiance].faction==Constants.AttackerFaction[b]){Stance="Attacker"}};
-		Stance=="Defender"?DaoLedger[Constants.Commanders[a].Allegiance]=Constants.DefensiveDao[a]:DaoLedger[Constants.Commanders[a].Allegiance]=Constants.OffensiveDao[a]};
-		//NEYN TODO the fuck is goin on? MORALE
-	for(let c=1;c<Roster.length;c++){Roster[c].morale=Math.min(Math.max(Roster[c].morale+Math.round(DaoLedger[Roster[c].faction]/2),-4),5)};};
-
-	document.getElementById("Battlemap").style.visibility="visible";
 	FillMap(Map);
-	CastEntityMap(Map,Roster);
+	CastEntityMap(Map, Level.Roster);
+	initGlassPanels(Constants.Commanders.length);
+	initBattlemap(Constants.defaultX, Constants.defaultY);
+	initLocalization(Level.Localization);
+	initTileFlags(Constants.Capture, Constants.Defend, Constants.Defeat, Constants.Protect);
 
+	if(NivelElectiv !== 0) {
+		initAttackOrder(Level.Constants.Commanders[NivelElectiv].Allegiance);
+	} else {
+		initAttackOrder(Constants.YourFaction);
+	}
 
+	initSubrosters();
 
-	//This deals with the localization
+	if((Constants.AttackerFaction ?? []).length > 0) {
+		DaoLedger = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		
+		for(let a = 0; a < Constants.Commanders.length; a++) {
+			let Stance = "Defender";
 
-	LocalizationMap=[];
-	let LocLine=[];
-	Localization=Level.Localization??{};
-	for(let x=0;x<MapWidth;x++){LocLine[LocLine.length]=0};
-	for(let y=0;y<MapHeight;y++){LocalizationMap[LocalizationMap.length]=JSON.parse(JSON.stringify(LocLine))};
-	for(let z=0;z<Localization.length;z++){LocalizationMap[Localization[z].X][Localization[z].Y]=Localization[z]};
-
-	if(NivelElectiv !== 0){PlayerChoiceFaction=Level.Constants.Commanders[NivelElectiv].Allegiance}else{PlayerChoiceFaction=Constants.YourFaction};
-
-	Prelogue=Level.Prelogue??"";
-	Postlogue=Level.Postlogue??"";
-	Interjection=Level.Interjection??"";
-	if(DialogueChoice){launchDialogueBloc(Prelogue,0);};
-
-	AttackOrder=[PlayerChoiceFaction];
-	SubRosters=[];
-	for(let p=1;p<Roster.length;p++){
-	let checker=1;
-	for(let r=0;r<AttackOrder.length;r++){if(Roster[p].faction==AttackOrder[r]){checker=0;}};
-	if(checker){AttackOrder[AttackOrder.length]=Roster[p].faction};};
-
-	AliveFactionList=JSON.parse(JSON.stringify(AttackOrder));
-
-	for(x = 0; x < AttackOrder.length; x++) {
-		let SubRoster = [];
-
-		for(y = 0; y < MapRoster.length; y++) {
-			if(MapRoster[y].faction == AttackOrder[x]) {
-				SubRoster[SubRoster.length] = MapRoster[y];
+			for(let b = 0; b < Constants.AttackerFaction.length; b++) {
+				if(Factions[Constants.Commanders[a].Allegiance].faction == Constants.AttackerFaction[b]) {
+					Stance="Attacker";
+				}
+			}
+		
+			if(Stance == "Defender") {
+				DaoLedger[Constants.Commanders[a].Allegiance]=Constants.DefensiveDao[a];
+			} else {
+				DaoLedger[Constants.Commanders[a].Allegiance]=Constants.OffensiveDao[a];
 			}
 		}
 
-		SubRosters[SubRosters.length] = SubRoster;
+		for(let i = 0; i < MapRoster.length; i++) {
+			const entity = MapRoster[i];
+
+			entity.morale = Math.min(Math.max(entity.morale + Math.round(DaoLedger[entity.faction] / 2), -4), 5);
+		}
 	}
 
-	//alert(SubRosters[0][0].life);
-
-	//This code block generates battleflags
-
-	let FlagMap=[];
-	let FlagCell=[];
-	for(let x=0;x<MapWidth;x++){FlagCell[FlagCell.length]=0};
-	for(let y=0;y<MapHeight;y++){FlagMap[FlagMap.length]=FlagCell};
-	TileFlagMap=JSON.parse(JSON.stringify(FlagMap));
-	//let UnitFlagMap=JSON.parse(JSON.stringify(FlagMap));
-
-	for(let a=0;a<Constants.Capture.length;a++){TileFlagMap[Constants.Capture[a].x][Constants.Capture[a].y]=1};
-	for(let a=0;a<Constants.Defend.length;a++){TileFlagMap[Constants.Defend[a].x][Constants.Defend[a].y]=2};
-	for(let a=0;a<Constants.Defeat.length;a++){//UnitFlagMap[MapRoster[Constants.Defeat[a]].x][MapRoster[Constants.Defeat[a]].y]=3;
-		MapRoster[Constants.Defeat[a]].Defeat=true;rostermap[MapRoster[Constants.Defeat[a]].x][MapRoster[Constants.Defeat[a]].y].Defeat=true};
-	for(let a=0;a<Constants.Protect.length;a++){//UnitFlagMap[MapRoster[Constants.Protect[a]].x][MapRoster[Constants.Protect[a]].y]=4;
-		MapRoster[Constants.Protect[a]].Protect=true;rostermap[MapRoster[Constants.Protect[a]].x][MapRoster[Constants.Protect[a]].y].Protect=true};
-
-		
-
-	for (let dick=0; dick<MapHeight; dick++){for(let cunt=0; cunt<MapWidth; cunt++){
-		if(TileFlagMap[dick][cunt]!=0){//alert("Chuchu");
-		document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).style.visibility='inherit';
-		if(TileFlagMap[dick][cunt]==1){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/CaptureFlag.png"};
-		if(TileFlagMap[dick][cunt]==2){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/DefendFlag.png"};
-		//if(UnitFlagMap[dick][cunt]==3){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/DestroyFlag.png"};
-		//if(UnitFlagMap[dick][cunt]==4){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/ProtectFlag.png"};
+	if(DialogueChoice) {
+		launchDialogueBloc(Prelogue, 0);
 	}
 
-		}};
-
-	Turn=0;
-	TurnIndex=0;
-
-	EndTurn(SubRosters,Map,Constants,Roster);
+	EndTurn(SubRosters, Map, Constants, MapRoster);
 }
 
 /**
