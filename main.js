@@ -1,3 +1,5 @@
+//TODO: Fix Healthbar-Toggles.
+
 const PROFILE_ID = "TEST_PROFILE";
 const OPENING_TRACK = "NavalEpic6";
 const TILE_SIZE = 56;
@@ -99,10 +101,18 @@ var Resolution = false;
 var Victory = false;
 var MapWidth = 0;
 var MapHeight = 0;
+
+var PlayerChoiceFaction = 0;
+var GlassPanels = 0;
+
 var SubRosters = [];
 var AttackOrder = [];
 var MapRoster = [];
 var rostermap = [];
+var Localization = [];
+var LocalizationMap = [];
+var AliveFactionList = [];
+var TileFlagMap = [];
 
 const resetBoard = function() {
 	for(let i = 1; i <= MapHeight; i++) {
@@ -115,15 +125,22 @@ const resetBoard = function() {
 		}
 	}
 
-	SubRosters = [];
-	AttackOrder = [];
-	MapRoster = [];
-	rostermap = [];
-
 	Resolution = false;
 	Victory = false;
 	MapWidth = 0;
 	MapHeight = 0;
+
+	PlayerChoiceFaction = 0;
+	GlassPanels = 0;
+
+	SubRosters = [];
+	AttackOrder = [];
+	MapRoster = [];
+	rostermap = [];
+    Localization = [];
+    LocalizationMap = [];
+    AliveFactionList = [];
+	TileFlagMap = [];
 }
 
 const create2DBuffer = function(mapWidth, mapHeight, fill = 0) {
@@ -3378,7 +3395,6 @@ const initBattlemap = function(defaultX = 0, defaultY = 0) {
 }
 
 const initTileFlags = function(Capture = [], Defend = [], Defeat = [], Protect = []) {
-	//This code block generates battleflags
 	TileFlagMap = create2DBuffer(MapWidth, MapHeight, 0);
 
 	for(let i = 0; i < Capture.length; i++) {
@@ -3422,9 +3438,6 @@ const initTileFlags = function(Capture = [], Defend = [], Defeat = [], Protect =
 		}
 	}
 }
-
-var Localization = [];
-var LocalizationMap = [];
 
 const initLocalization = function(localization = []) {
 	Localization = localization;
