@@ -1764,39 +1764,41 @@ const createUnit = function(config, type, index) {
 	return unit;
 }
 
-function CastEntityMap(Map, Roster) {
-	rostermap = create2DBuffer(MapWidth, MapHeight, 0);
-
+function CastEntityMap(Roster) {
 	//NEYN TODO: WHY DOES IT START AT JUAN?!?
 	for(var k = 1; k < Roster.length; k++) {
-		//k - 1 because MapRoster starts at 0 and Roster at 1.
-		const id = k - 1;
+		const id = MapRoster.length;
 		const config = Roster[k];
+
+		if(isOutOfBounds(config.y, config.x)) {
+			console.warn(`Entity ${k} was spawned outside the map!`);
+			continue;
+		}
+
 		const unit = createUnit(config, Entity.TYPE.UNIT, id);
+		const tileY = config.x + 1;
+		const tileX = config.y + 1;
 
 		MapRoster[id] = unit;
 		rostermap[config.x][config.y] = unit;	
 
-		const X = config.x + 1;
-		const Y = config.y + 1;
-
-		document.getElementById("EntityCore "+(X)+"X"+(Y)).style.visibility="inherit";
-		document.getElementById("Entity "+(X)+"X"+(Y)).style.top=(unit.config.StaticOffsetY ?? [0,0,0,0,0])[unit.direction] + "px";
-		document.getElementById("Entity "+(X)+"X"+(Y)).style.left=(unit.config.StaticOffsetX ?? [0,0,0,0,0])[unit.direction] + "px";
-		document.getElementById("EntityCore "+(X)+"X"+(Y)).src="Assets/Units/Static/"+unit.config.shortname+unit.direction+".png";
+		document.getElementById("EntityCore "+(tileY)+"X"+(tileX)).style.visibility="inherit";
+		document.getElementById("Entity "+(tileY)+"X"+(tileX)).style.top=(unit.config.StaticOffsetY ?? [0,0,0,0,0])[unit.direction] + "px";
+		document.getElementById("Entity "+(tileY)+"X"+(tileX)).style.left=(unit.config.StaticOffsetX ?? [0,0,0,0,0])[unit.direction] + "px";
+		document.getElementById("EntityCore "+(tileY)+"X"+(tileX)).src="Assets/Units/Static/"+unit.config.shortname+unit.direction+".png";
 
 		if(!unit.config.MLPR) {
-			document.getElementById("EntityMesh "+(X)+"X"+(Y)).style.visibility="inherit";
-			document.getElementById("EntityMesh "+(X)+"X"+(Y)).src="Assets/Units/StaticMeshes/"+unit.config.shortname+"Mesh"+unit.direction+".png";
+			document.getElementById("EntityMesh "+(tileY)+"X"+(tileX)).style.visibility="inherit";
+			document.getElementById("EntityMesh "+(tileY)+"X"+(tileX)).src="Assets/Units/StaticMeshes/"+unit.config.shortname+"Mesh"+unit.direction+".png";
 		}
 
 		let Filter = Factions[unit.faction].ChromaCode;
 
 		if(unit.isCloaked) {
-			document.getElementById("Entity "+(X)+"X"+(Y)).style.filter="opacity(0%)";
+			document.getElementById("Entity "+(tileY)+"X"+(tileX)).style.filter="opacity(0%)";
 		}
 
-		document.getElementById("EntityCore "+(X)+"X"+(Y)).style.filter=Filter;
+		document.getElementById("EntityCore "+(tileY)+"X"+(tileX)).style.filter=Filter;
 		/*
 		//if(ics>=StandardX && ics<StandardX+10 && igrec>=StandardY && igrec <StandardY+10){
 		if(true){
@@ -3518,6 +3520,7 @@ function initializeStoryBattle() {
 	MapHeight = data.Map.length;
 	Map = data.Map;
 	Constants = data.Constants;
+	rostermap = create2DBuffer(MapWidth, MapHeight, 0);
 	ControlMap = data.ControlMap ?? create2DBuffer(MapWidth, MapHeight, 0);
 	RegionMap = data.RegionMap ?? create2DBuffer(MapWidth, MapHeight, 0);
 	NodeMap = data.NodeMap ?? create2DBuffer(MapWidth, MapHeight, 0);
@@ -3535,7 +3538,7 @@ function initializeStoryBattle() {
 
 	castMap(ChosenMap);
 	FillMap(Map);
-	CastEntityMap(Map, data.Roster);
+	CastEntityMap(data.Roster);
 	initGlassPanels(Constants.Commanders.length);
 	initBattlemap(Constants.defaultX, Constants.defaultY);
 	initLocalization(data.Localization);
@@ -3562,6 +3565,7 @@ function initializeSpecialBattle(Level){
 	MapHeight = Level.Map.length;
 	Map = Level.Map;
 	Constants = Level.Constants;
+	rostermap = create2DBuffer(MapWidth, MapHeight, 0);
 	ControlMap = Level.ControlMap ?? create2DBuffer(MapWidth, MapHeight, 0);
 	NodeMap = Level.NodeMap ?? create2DBuffer(MapWidth, MapHeight, 0);
 	RegionMap = Level.RegionMap ?? create2DBuffer(MapWidth, MapHeight, 0);
@@ -3590,7 +3594,7 @@ function initializeSpecialBattle(Level){
 
 	castMap(ChosenMap);
 	FillMap(Map);
-	CastEntityMap(Map, Level.Roster);
+	CastEntityMap(Level.Roster);
 	initGlassPanels(Constants.Commanders.length);
 	initBattlemap(Constants.defaultX, Constants.defaultY);
 	initLocalization(Level.Localization);
@@ -6683,7 +6687,7 @@ const randomizeMainScreen = function() {
 		"Assets/MainMenuScreens/Battle of Burluk.jpg",
 		"Assets/MainMenuScreens/Stulpikan Pandur.png",
 		"Assets/MainMenuScreens/Coloured Tanks.jpg"
-	]
+	];
 
 	const id = Math.floor(Math.random() * images.length);
 
