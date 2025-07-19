@@ -21,46 +21,44 @@ document.getElementById('Elam Flag').src='Assets/Flags/FlagELM'+ElamFlagVariant+
 	}
 });*/
 
-const addStoryEvents = function(battalion) {
-    const { db, story, language } = battalion;
+const addStoryDBEvents = function(battalion) {
+    const { db, story } = battalion;
 
     story.events.on(StoryHandler.EVENT.SCENARIO_WON, (scenario, isFirst) =>  {
-        console.log(scenario, isFirst, "HAS BEEN WON");
-
         if(isFirst) {
             db.saveProfile(PROFILE_ID, story.save());
         }
     }, { permanent: true });
     
     story.events.on(StoryHandler.EVENT.CAMPAIGN_WON, (campaign, isFirst) =>  {
-        console.log(campaign, isFirst, "HAS BEEN WON");
-
         if(isFirst) {
             db.saveProfile(PROFILE_ID, story.save());
         }
     }, { permanent: true });
     
     story.events.on(StoryHandler.EVENT.CHAPTER_WON, (chapter, isFirst) =>  {
-        console.log(chapter, isFirst, "HAS BEEN WON");
-    
         if(isFirst) {
-            const { config } = chapter;
-            const { interlogueImage, interlogue } = config;
-    
-            document.getElementById("InterlogueScreen").style.visibility = "visible";
-            document.getElementById("InterlogueImage").src = interlogueImage;
-            document.getElementById("InterlogueText").innerHTML = language.get(interlogue);
-            
             db.saveProfile(PROFILE_ID, story.save());
         }
     }, { permanent: true });
     
     story.events.on(StoryHandler.EVENT.MISSION_WON, (mission, isFirst) =>  {
-        console.log(mission, isFirst, "HAS BEEN WON");
-
         if(isFirst) {
             db.saveProfile(PROFILE_ID, story.save());
         }
+    }, { permanent: true });
+}
+
+const addInterlogueEvent = function(battalion) {
+    const { story, language } = battalion;
+    
+    story.events.on(StoryHandler.EVENT.CHAPTER_WON, (chapter, isFirst) =>  {
+        const { config } = chapter;
+        const { interlogueImage, interlogue } = config;
+
+        document.getElementById("InterlogueScreen").style.visibility = "visible";
+        document.getElementById("InterlogueImage").src = interlogueImage;
+        document.getElementById("InterlogueText").innerHTML = language.get(interlogue);
     }, { permanent: true });
 }
 

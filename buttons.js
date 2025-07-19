@@ -2,18 +2,7 @@
 	const button = document.getElementById("GenerateEditorMap");
 
 	button.onclick = () => {
-		battalion.setState(Battalion.STATE.MAP_EDITOR);
-
-		for(let i = 1; i <= 10; i++) {
-			for(let j = 1; j <= 10; j++) {
-				key = document.getElementById("Slot " + i + " X " + j);
-				
-				if(key) {
-					key.remove();
-				}
-			}
-		}
-		
+		battalion.setState(Battalion.STATE.MAP_EDITOR);		
 		castMapMaker();
 	}
 })();

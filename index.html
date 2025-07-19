@@ -669,7 +669,7 @@
 
 		<div id="EditorMap" style='position:absolute; visibility:hidden; top:10px; left:350px'>
 			<div id="TileContainer" style="position:absolute; top:0px; left:0px; overflow:hidden; scroll-behavior: smooth;"></div>
-			<img style="position: absolute; top: 595px; left: 588px; z-index:2;" src="Assets/Miscellaneous/CloseButton.png" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.png'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.png'" onmousedown="this.src='Assets/Miscellaneous/CloseButtonPressed.png'" onclick="document.getElementById('EditorMap').style.visibility='hidden'; document.getElementById('MAIN_MENU').style.visibility='visible'; battalion.setState(Battalion.STATE.MAIN_MENU);" />
+			<img style="position: absolute; top: 595px; left: 588px; z-index:2;" src="Assets/Miscellaneous/CloseButton.png" onmouseover="this.src='Assets/Miscellaneous/CloseButtonHovered.png'" onmouseout="this.src='Assets/Miscellaneous/CloseButton.png'" onmousedown="this.src='Assets/Miscellaneous/CloseButtonPressed.png'" onclick="document.getElementById('EditorMap').style.visibility='hidden'; document.getElementById('MAIN_MENU').style.visibility='visible'; battalion.setState(Battalion.STATE.MAIN_MENU); resetBoard();" />
 
 			<div id="Tilelist" style="position: absolute; left: -91px; top: -10px;" oncontextmenu="Tooltip('TOOLTIP_CHOOSE_TILE')" onmouseout="document.getElementById('GeneralTooltip').style.visibility='hidden';">
 				<img src="Assets/Miscellaneous/EditorPanel.png"/>

@@ -41,7 +41,8 @@ const battalion = createContext();
 battalion.story.unlockAll();
 
 //TODO: This adds a "bug" because scenario selection is not added yet.
-//addStoryEvents(battalion);
+addInterlogueEvent(battalion);
+//addStoryDBEvents(battalion);
 selectScenario("GREAT_WAR");
 
 var ActionRegister = {}; //used by ai
@@ -1489,26 +1490,22 @@ function castMapMaker() {
 
 	battalion.uiHandler.mainMenu.hide();
 
-	x=parseInt(document.getElementById("heigthinput").value);
-	if(x>100){x=100};
-	y=parseInt(document.getElementById("widthinput").value);
-	if(y>100){y=100};
-	x=Math.max(x,10);
-	y=Math.max(y,10);
+	MapHeight = clampValue(parseInt(document.getElementById("heigthinput").value), 10, 100);
+	MapWidth = clampValue(parseInt(document.getElementById("widthinput").value), 10, 100);
 
-	document.getElementById("EditorWiPointer").innerHTML=y;
-	document.getElementById("EditorHePointer").innerHTML=x;
-	document.getElementById("TileContainer").style.height="560px";
-	document.getElementById("TileContainer").style.width="560px";
+	document.getElementById("EditorWiPointer").innerHTML = MapWidth;
+	document.getElementById("EditorHePointer").innerHTML = MapHeight;
+	document.getElementById("TileContainer").style.height = "560px";
+	document.getElementById("TileContainer").style.width = "560px";
 
-	TerrainLedger=0;
-	TerrainLedger_Biomes=[];
-	TerrainLedger_LandFeatures=[];
-	TerrainLedger_UrbanFeatures=[];
-	TerrainLedger_WaterFeatures=[];
-	TerrainLedger_Structures=[];
-	TerrainLedger_Connectors=[];
-	TerrainLedger_Other=[];
+	TerrainLedger = 0;
+	TerrainLedger_Biomes = [];
+	TerrainLedger_LandFeatures = [];
+	TerrainLedger_UrbanFeatures = [];
+	TerrainLedger_WaterFeatures = [];
+	TerrainLedger_Structures = [];
+	TerrainLedger_Connectors = [];
+	TerrainLedger_Other = [];
 
 	for(let t=1; t<Terrain.length; t++){
 		if(Terrain[t].BiomeIndex??false){TerrainLedger_Biomes[TerrainLedger_Biomes.length]=t};
@@ -1517,48 +1514,25 @@ function castMapMaker() {
 		if(Terrain[t].Class=="WF" || Terrain[t].Class=="WE"){TerrainLedger_WaterFeatures[TerrainLedger_WaterFeatures.length]=t};
 		if(Terrain[t].Class=="S" || Terrain[t].Class=="WS"){TerrainLedger_Structures[TerrainLedger_Structures.length]=t};
 		if(Terrain[t].Class=="LA" || Terrain[t].Class=="B" || Terrain[t].Class=="WA" || Terrain[t].Class=="MC"){TerrainLedger_Connectors[TerrainLedger_Connectors.length]=t}
-		};
+	}
 
 	ToggleTileBlock(1);
-		//alert(TerrainLedger)
 
-	//EditorMapHandler
-	EditorMap=[];
-	EditorEntityMap=[];
-	EditorBiomeMap=[];
-	EditorControlMap=[];
-	EditorRegionMap=[];
-	Localization=[];
-
-	TrackFillSwitch=false;
+	EditorMap = create2DBuffer(MapWidth, MapHeight, 1);
+	EditorEntityMap = create2DBuffer(MapWidth, MapHeight, 0);
+	EditorBiomeMap = create2DBuffer(MapWidth, MapHeight, 1);
+	EditorControlMap = create2DBuffer(MapWidth, MapHeight, 0);
+	EditorRegionMap = create2DBuffer(MapWidth, MapHeight, 1);
+	CapitolNodeRegistry = create2DBuffer(MapWidth, MapHeight, 1);
+	Localization = [];
+	TrackFillSwitch = false;
 
 	for(let h = 1; h <= 10; h++) {
-		document.getElementById("EditorColorPicker"+h).style.filter = Factions[h].ChromaCode;
+		document.getElementById("EditorColorPicker" + h).style.filter = Factions[h].ChromaCode;
 	}
 
-	for(let k=0; k < x; k++) {
-		for(let j=0; j < y; j++) {
-			if(j==0) {
-				EditorMap[k] = [];
-				EditorEntityMap[k] = [];
-				EditorControlMap[k] = [];
-				EditorRegionMap[k] = []
-			}
-
-			EditorMap[k][j] = 1;
-			EditorEntityMap[k][j] = 0;
-			EditorControlMap[k][j] = 0;
-			EditorRegionMap[k][j] = 1;
-		}
-	}
-
-	EditorRegionMap=JSON.parse(JSON.stringify(EditorRegionMap));
-	CapitolNodeRegistry=JSON.parse(JSON.stringify(EditorRegionMap));
-	EditorBiomeMap=JSON.parse(JSON.stringify(EditorMap));
-
-	for(let i=0;i<x;i++){
-		for(let j=0;j<y;j++){
-			//MapMold[i][j]=ChosenTerrain;
+	for(let i = 0; i < MapHeight; i++) {
+		for(let j = 0; j < MapWidth; j++) {
 			let Slot=document.createElement("div");
 			let Tile=document.createElement("img");
 			let Entity=document.createElement("div");
@@ -1722,6 +1696,7 @@ function castMapMaker() {
 			document.getElementById(regionTile.id).appendChild(borderW);
 		}
 	}
+
 	RefreshMapEditor();
 }
 
@@ -2314,20 +2289,10 @@ function drawUnit(Map, UnitType, direction, x, y, index, rostermap){
 }
 
 function EndBattle(){
-	//alert(Victory);
 	battalion.musicPlayer.stop();
 	
 	document.getElementById("AITurnIndicator").style.visibility="hidden";
 	RemoveKebabIMeanBlep();
-
-	for(let i=1;i<=10;i++){
-		for(let j=1;j<=10;j++){
-			document.getElementById("Entity "+i+"X"+j).style.visibility="hidden";
-			document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
-			document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
-			document.getElementById("Structure "+i+"X"+j).style.visibility="hidden";
-		}
-	}
 
 	for(let z = 1; z <= 4; z++) {
 		document.getElementById("Trait"+z).src=""};
@@ -5260,11 +5225,9 @@ function RecruitUnit(Class) {
 	}
 }
 
-function refreshMap(){
-	//if((RT??0)==0){RT=false};
-	
-	for(let x=1; x<=MapHeight; x++){
-		for(let y=1; y<=MapWidth; y++){
+function refreshMap(){	
+	for(let x = 1; x <= MapHeight; x++){
+		for(let y = 1; y <= MapWidth; y++){
 			let unit=rostermap[x-1][y-1];
 			if((rostermap[x-1][y-1]??0) !=0){
 			
@@ -5553,245 +5516,245 @@ function RefreshTile(X,Y){
 	}else{};
 }
 
-function RefreshMapEditor(){
+function RefreshMapEditor() {
+	for(let ics = 1; ics <= MapHeight; ics++) {
+		for(let igrec = 1; igrec <= MapWidth; igrec++) {
+			let X=ics;
+			let Y=igrec;
+			let TileAdress="Tile "+X+" X "+Y;
+			let Altdress="Entity "+ics+" X "+igrec;
+			let Strucdress="Structure "+X+" X "+Y;
+			let unit=EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1];
 
-	for(let ics=1;ics<=x;ics++){for(let igrec=1;igrec<=y;igrec++){
+			document.getElementById(Strucdress).style.visibility="hidden";
+			//alert("a "+(X-EditorStandardX)+" X "+(Y-EditorStandardY));
+			document.getElementById("a "+(X)+" X "+(Y)).style.visibility="hidden";
+			document.getElementById("b "+(X)+" X "+(Y)).style.visibility="hidden";
+			document.getElementById("c "+(X)+" X "+(Y)).style.visibility="hidden";
+			document.getElementById("d "+(X)+" X "+(Y)).style.visibility="hidden";
 
-		let X=ics;
-		let Y=igrec;
-		let TileAdress="Tile "+X+" X "+Y;
-		let Altdress="Entity "+ics+" X "+igrec;
-		let Strucdress="Structure "+X+" X "+Y;
-		let unit=EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1];
+			if(EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1]!=0){
+				document.getElementById(Altdress).style.visibility="inherit";
+				document.getElementById(Altdress).style.filter=Factions[EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1].faction].ChromaCode;
+				document.getElementById(Altdress).style.top=(Units[unit.id].StaticOffsetY ?? [0,0,0,0,0])[unit.direction]+"px";
+				document.getElementById(Altdress).style.left=(Units[unit.id].StaticOffsetX ?? [0,0,0,0,0])[unit.direction]+"px";
 
-		document.getElementById(Strucdress).style.visibility="hidden";
-		//alert("a "+(X-EditorStandardX)+" X "+(Y-EditorStandardY));
-		document.getElementById("a "+(X)+" X "+(Y)).style.visibility="hidden";
-		document.getElementById("b "+(X)+" X "+(Y)).style.visibility="hidden";
-		document.getElementById("c "+(X)+" X "+(Y)).style.visibility="hidden";
-		document.getElementById("d "+(X)+" X "+(Y)).style.visibility="hidden";
-
-		if(EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1]!=0){
-			document.getElementById(Altdress).style.visibility="inherit";
-			document.getElementById(Altdress).style.filter=Factions[EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1].faction].ChromaCode;
-			document.getElementById(Altdress).style.top=(Units[unit.id].StaticOffsetY ?? [0,0,0,0,0])[unit.direction]+"px";
-			document.getElementById(Altdress).style.left=(Units[unit.id].StaticOffsetX ?? [0,0,0,0,0])[unit.direction]+"px";
-
-			document.getElementById(Altdress).src="Assets/Units/Static/"+Units[EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1].id].shortname+EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1].direction+".png";
-		}else{document.getElementById(Altdress).style.visibility="hidden";};
-
+				document.getElementById(Altdress).src="Assets/Units/Static/"+Units[EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1].id].shortname+EditorEntityMap[ics+EditorStandardX-1][igrec+EditorStandardY-1].direction+".png";
+			}else{document.getElementById(Altdress).style.visibility="hidden";};
 
 
-		let Class=Terrain[EditorMap[ics-1][igrec-1]].Class;
-		//alert(ics+" "+igrec);
-		//let TileAdress="Tile "+(ics+1)+" X "+(igrec+1);
-		//let Strucdress="Structure "+(ics+1)+" X "+(igrec+1);
-		let a=ics-1;
-		let b=igrec-1;
-		let D1=0;
-		let D2=0;
-		let D3=0;
-		let D4=0;
 
-		let BiomeIndicator=Terrain[EditorMap[ics-1][igrec-1]].BiomeIndex??1;
-		if(BiomeIndicator!=1){EditorBiomeMap[ics-1][igrec-1]=BiomeIndicator};
-		let Biome=EditorBiomeMap[ics-1][igrec-1]??1;
+			let Class=Terrain[EditorMap[ics-1][igrec-1]].Class;
+			//alert(ics+" "+igrec);
+			//let TileAdress="Tile "+(ics+1)+" X "+(igrec+1);
+			//let Strucdress="Structure "+(ics+1)+" X "+(igrec+1);
+			let a=ics-1;
+			let b=igrec-1;
+			let D1=0;
+			let D2=0;
+			let D3=0;
+			let D4=0;
 
-		//console.log(Biome);
-		//if(Biome!=undefined){EditorBiomeMap[X-1][Y-1]=Biome;};
-		if(Biome==1){Biome=""};
-		if(Biome==2){Biome="Arid"};
-		if(Biome==3){Biome="Boreal"};
-		if(Biome==4){Biome="Barren"};
-		if(Biome==5){Biome="Arctic"};
-		if(Biome==6){Biome="Lunar"};
-		if(Biome==7){Biome="Martian"};
-
-		if((Terrain[EditorMap[ics-1][igrec-1]].BiomeIndex??0)!=0){Biome=""};
-
-
-		if(a>0){D1=EditorMap[a-1][b]};
-		if(b<EditorMap[0].length-1){D2=EditorMap[a][b+1]};
-		if(a<EditorMap.length-1){D3=EditorMap[a+1][b]};
-		if(b>0){D4=EditorMap[a][b-1]};
-		let Map=EditorMap;
-	document.getElementById(Strucdress).style.visibility="hidden";
-
-	switch(Class){
-
-		case "LF":
-			var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
-			var offset=Terrain[Map[a][b]].Offsets[type-1];
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
-			document.getElementById(TileAdress).style.top=offset+"px";
-			document.getElementById(TileAdress).src=variant;
-			break;
-
-		case "LA":
-			var type=0;
-
-			if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="S"){type+=1};
-			if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="S"){type+=2};
-			if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S"){type+=4};
-			if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){type+=8};
+			let BiomeIndicator=Terrain[EditorMap[ics-1][igrec-1]].BiomeIndex??1;
+			if(BiomeIndicator!=1){EditorBiomeMap[ics-1][igrec-1]=BiomeIndicator};
+			let Biome=EditorBiomeMap[ics-1][igrec-1]??1;
 
 			//console.log(Biome);
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
-			document.getElementById(TileAdress).style.top="0px";
-			document.getElementById(TileAdress).src=Var;
-			break;
+			//if(Biome!=undefined){EditorBiomeMap[X-1][Y-1]=Biome;};
+			if(Biome==1){Biome=""};
+			if(Biome==2){Biome="Arid"};
+			if(Biome==3){Biome="Boreal"};
+			if(Biome==4){Biome="Barren"};
+			if(Biome==5){Biome="Arctic"};
+			if(Biome==6){Biome="Lunar"};
+			if(Biome==7){Biome="Martian"};
 
-		case "WE":
-			var type=0;
-
-			if(Terrain[D1].Class=="WF" || Terrain[D1].Class=="WA" || Terrain[D1].Class=="WE" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="B" || a==0){type+=1};
-			if(Terrain[D2].Class=="WF" || Terrain[D2].Class=="WA" || Terrain[D2].Class=="WE" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="B" || b==MapWidth-1){type+=2};
-			if(Terrain[D3].Class=="WF" || Terrain[D3].Class=="WA" || Terrain[D3].Class=="WE" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="B" || a==MapHeight-1){type+=4};
-			if(Terrain[D4].Class=="WF" || Terrain[D4].Class=="WA" || Terrain[D4].Class=="WE" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="B" || b==0){type+=8};
-
-			if(a>1 && b>1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("a "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
-			if(a>1 && b<MapWidth-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
-			if(a<MapHeight-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
-			if(a<MapHeight-1 && b<MapWidth-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
-
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".png";
-			document.getElementById(TileAdress).style.top="0px";
-			document.getElementById(TileAdress).src=Var;
+			if((Terrain[EditorMap[ics-1][igrec-1]].BiomeIndex??0)!=0){Biome=""};
 
 
+			if(a>0){D1=EditorMap[a-1][b]};
+			if(b<EditorMap[0].length-1){D2=EditorMap[a][b+1]};
+			if(a<EditorMap.length-1){D3=EditorMap[a+1][b]};
+			if(b>0){D4=EditorMap[a][b-1]};
+			let Map=EditorMap;
+		document.getElementById(Strucdress).style.visibility="hidden";
 
-			break;
+		switch(Class){
 
-		case "WA":
-			var type=0;
+			case "LF":
+				var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
+				var offset=Terrain[Map[a][b]].Offsets[type-1];
+				var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
+				document.getElementById(TileAdress).style.top=offset+"px";
+				document.getElementById(TileAdress).src=variant;
+				break;
 
-			if(Terrain[D1].Class=="WA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="WF" || Terrain[D1].Class=="WE"){type+=1};
-			if(Terrain[D2].Class=="WA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="WF" || Terrain[D2].Class=="WE"){type+=2};
-			if(Terrain[D3].Class=="WA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="WF" || Terrain[D3].Class=="WE"){type+=4};
-			if(Terrain[D4].Class=="WA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="WF" || Terrain[D4].Class=="WE"){type+=8};
+			case "LA":
+				var type=0;
 
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".png";
-			document.getElementById(TileAdress).style.top="0px";
-			document.getElementById(TileAdress).src=Var;
+				if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="S"){type+=1};
+				if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="S"){type+=2};
+				if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S"){type+=4};
+				if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){type+=8};
 
-			break;
+				//console.log(Biome);
+				var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
+				document.getElementById(TileAdress).style.top="0px";
+				document.getElementById(TileAdress).src=Var;
+				break;
 
-		case "WF":
-			var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
-			var offset=Terrain[Map[a][b]].Offsets[type-1];
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".png";
-			document.getElementById(TileAdress).style.top=offset+"px";
-			document.getElementById(TileAdress).src=variant;
+			case "WE":
+				var type=0;
 
-			break;
+				if(Terrain[D1].Class=="WF" || Terrain[D1].Class=="WA" || Terrain[D1].Class=="WE" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="B" || a==0){type+=1};
+				if(Terrain[D2].Class=="WF" || Terrain[D2].Class=="WA" || Terrain[D2].Class=="WE" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="B" || b==MapWidth-1){type+=2};
+				if(Terrain[D3].Class=="WF" || Terrain[D3].Class=="WA" || Terrain[D3].Class=="WE" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="B" || a==MapHeight-1){type+=4};
+				if(Terrain[D4].Class=="WF" || Terrain[D4].Class=="WA" || Terrain[D4].Class=="WE" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="B" || b==0){type+=8};
 
-		case "WS":
+				if(a>1 && b>1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("a "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
+				if(a>1 && b<MapWidth-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
+				if(a<MapHeight-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
+				if(a<MapHeight-1 && b<MapWidth-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
 
-			var offset=Terrain[Map[a][b]].Offset;
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".png";
-			var undervar="Assets/Tiles/Sea15"+undertype+Biome+".png";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[a][b]].ChromaCode;
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src=variant;
-			document.getElementById(TileAdress).src=undervar;
-
-			break;
-
-		case "MC":
-			var type=0;
-			var axis="H";
-			var alttype=0;
-
-			if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="LF" || Terrain[D1].Class=="S"){axis="V"};
-			if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="LF" || Terrain[D2].Class=="S"){axis="H"};
-			if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="LF" || Terrain[D3].Class=="S"){axis="V"};
-			if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="LF" || Terrain[D4].Class=="S"){axis="H"};
-
-			if((Terrain[D2].Class=="LA" || Terrain[D2].Class=="LF" || Terrain[D2].Class=="S")&&(Terrain[D4].Class=="LA" || Terrain[D4].Class=="LF" || Terrain[D4].Class=="S")){axis="H"};
-			if((Terrain[D1].Class=="LA" || Terrain[D1].Class=="LF" || Terrain[D1].Class=="S")&&(Terrain[D3].Class=="LA" || Terrain[D3].Class=="LF" || Terrain[D3].Class=="S")){axis="V"};
-
-			if(Terrain[D1].Class=="MC"){alttype+=1};
-			if(Terrain[D2].Class=="MC"){alttype+=2};
-			if(Terrain[D3].Class=="MC"){alttype+=4};
-			if(Terrain[D4].Class=="MC"){alttype+=8};
-	
-			for(let c=0; c<4; c++){if(alttype==15-Math.pow(2,c)){axis="T"}};
-			if(alttype==15){axis="O"};
-
-			if(axis=="H"){
-
-			if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="LF" || Terrain[D4].Class=="S"){type+=1};
-			if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="LF" || Terrain[D2].Class=="S"){type+=2};
-			type+=Biome;
-
-
-			}else if(axis=="V"){
-
-			if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="LF" || Terrain[D1].Class=="S"){type+=1};
-			if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="LF" || Terrain[D3].Class=="S"){type+=2};
-			type+=Biome
-
-			}else if(axis=="T"){
-				type="";
-				if(alttype==14){type="A"};
-				if(alttype==13){type="B"};
-				if(alttype==11){type="C"};
-				if(alttype==7){type="D"};
-
-
-			}else if(axis=="O"){
-				type="";
-
-			};
-
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+axis+type+".png";
-			document.getElementById(TileAdress).style.top=Terrain[Map[a][b]].Offset+"px";
-			document.getElementById(TileAdress).src=Var;
-
-			break;
-
-		case "B":
-			var type=0;
-
-			if(Terrain[D1].Class=="LF" || Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="S" || a==0){type+=1};
-			if(Terrain[D2].Class=="LF" || Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="S" || b==MapWidth-1){type+=2};
-			if(Terrain[D3].Class=="LF" || Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S" || a==MapHeight-1){type+=4};
-			if(Terrain[D4].Class=="LF" || Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S" || b==0){type+=8};
-
-			if(a>1 && b>1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("a "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
-			if(a>1 && b<MapWidth-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
-			if(a<MapHeight-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
-			if(a<MapHeight-1 && b<MapWidth-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
-
-			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
-			document.getElementById(TileAdress).style.top="0px";
-			document.getElementById(TileAdress).src=Var;
-
-			break;
-
-		case "S":
-			//To do: Manipulate underlying terrain to be a proper road, not a grass tile
-			let undertype=0;
-			if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="S"){undertype+=1};
-			if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="S"){undertype+=2};
-			if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S"){undertype+=4};
-			if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){undertype+=8};
+				var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".png";
+				document.getElementById(TileAdress).style.top="0px";
+				document.getElementById(TileAdress).src=Var;
 
 
 
-			var offset=Terrain[Map[a][b]].Offset;
-			var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".png";
-			var undervar="Assets/Tiles/Road"+undertype+Biome+".png";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[a][b]].ChromaCode;
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src=variant;
-			document.getElementById(TileAdress).src=undervar;
+				break;
 
-			break;
+			case "WA":
+				var type=0;
+
+				if(Terrain[D1].Class=="WA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="WF" || Terrain[D1].Class=="WE"){type+=1};
+				if(Terrain[D2].Class=="WA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="WF" || Terrain[D2].Class=="WE"){type+=2};
+				if(Terrain[D3].Class=="WA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="WF" || Terrain[D3].Class=="WE"){type+=4};
+				if(Terrain[D4].Class=="WA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="WF" || Terrain[D4].Class=="WE"){type+=8};
+
+				var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".png";
+				document.getElementById(TileAdress).style.top="0px";
+				document.getElementById(TileAdress).src=Var;
+
+				break;
+
+			case "WF":
+				var type= Math.ceil(Math.random()*Terrain[Map[a][b]].Variants);
+				var offset=Terrain[Map[a][b]].Offsets[type-1];
+				var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".png";
+				document.getElementById(TileAdress).style.top=offset+"px";
+				document.getElementById(TileAdress).src=variant;
+
+				break;
+
+			case "WS":
+
+				var offset=Terrain[Map[a][b]].Offset;
+				var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".png";
+				var undervar="Assets/Tiles/Sea15"+undertype+Biome+".png";
+				document.getElementById(Strucdress).style.visibility="visible";
+				document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[a][b]].ChromaCode;
+				document.getElementById(Strucdress).style.top=offset+"px";
+				document.getElementById(Strucdress).src=variant;
+				document.getElementById(TileAdress).src=undervar;
+
+				break;
+
+			case "MC":
+				var type=0;
+				var axis="H";
+				var alttype=0;
+
+				if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="LF" || Terrain[D1].Class=="S"){axis="V"};
+				if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="LF" || Terrain[D2].Class=="S"){axis="H"};
+				if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="LF" || Terrain[D3].Class=="S"){axis="V"};
+				if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="LF" || Terrain[D4].Class=="S"){axis="H"};
+
+				if((Terrain[D2].Class=="LA" || Terrain[D2].Class=="LF" || Terrain[D2].Class=="S")&&(Terrain[D4].Class=="LA" || Terrain[D4].Class=="LF" || Terrain[D4].Class=="S")){axis="H"};
+				if((Terrain[D1].Class=="LA" || Terrain[D1].Class=="LF" || Terrain[D1].Class=="S")&&(Terrain[D3].Class=="LA" || Terrain[D3].Class=="LF" || Terrain[D3].Class=="S")){axis="V"};
+
+				if(Terrain[D1].Class=="MC"){alttype+=1};
+				if(Terrain[D2].Class=="MC"){alttype+=2};
+				if(Terrain[D3].Class=="MC"){alttype+=4};
+				if(Terrain[D4].Class=="MC"){alttype+=8};
+		
+				for(let c=0; c<4; c++){if(alttype==15-Math.pow(2,c)){axis="T"}};
+				if(alttype==15){axis="O"};
+
+				if(axis=="H"){
+
+				if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="LF" || Terrain[D4].Class=="S"){type+=1};
+				if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="LF" || Terrain[D2].Class=="S"){type+=2};
+				type+=Biome;
+
+
+				}else if(axis=="V"){
+
+				if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="LF" || Terrain[D1].Class=="S"){type+=1};
+				if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="LF" || Terrain[D3].Class=="S"){type+=2};
+				type+=Biome
+
+				}else if(axis=="T"){
+					type="";
+					if(alttype==14){type="A"};
+					if(alttype==13){type="B"};
+					if(alttype==11){type="C"};
+					if(alttype==7){type="D"};
+
+
+				}else if(axis=="O"){
+					type="";
+
+				};
+
+				var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+axis+type+".png";
+				document.getElementById(TileAdress).style.top=Terrain[Map[a][b]].Offset+"px";
+				document.getElementById(TileAdress).src=Var;
+
+				break;
+
+			case "B":
+				var type=0;
+
+				if(Terrain[D1].Class=="LF" || Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="S" || a==0){type+=1};
+				if(Terrain[D2].Class=="LF" || Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="S" || b==MapWidth-1){type+=2};
+				if(Terrain[D3].Class=="LF" || Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S" || a==MapHeight-1){type+=4};
+				if(Terrain[D4].Class=="LF" || Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S" || b==0){type+=8};
+
+				if(a>1 && b>1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("a "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
+				if(a>1 && b<MapWidth-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
+				if(a<MapHeight-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
+				if(a<MapHeight-1 && b<MapWidth-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
+
+				var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
+				document.getElementById(TileAdress).style.top="0px";
+				document.getElementById(TileAdress).src=Var;
+
+				break;
+
+			case "S":
+				//To do: Manipulate underlying terrain to be a proper road, not a grass tile
+				let undertype=0;
+				if(Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="S"){undertype+=1};
+				if(Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="S"){undertype+=2};
+				if(Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S"){undertype+=4};
+				if(Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){undertype+=8};
+
+
+
+				var offset=Terrain[Map[a][b]].Offset;
+				var variant="Assets/Tiles/"+Terrain[Map[a][b]].name+".png";
+				var undervar="Assets/Tiles/Road"+undertype+Biome+".png";
+				document.getElementById(Strucdress).style.visibility="visible";
+				document.getElementById(Strucdress).style.filter=Factions[EditorControlMap[a][b]].ChromaCode;
+				document.getElementById(Strucdress).style.top=offset+"px";
+				document.getElementById(Strucdress).src=variant;
+				document.getElementById(TileAdress).src=undervar;
+
+				break;
+			}
 		}
-	}}
+	}
 }
 
 function RegionalizeTile(X,Y){
