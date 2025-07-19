@@ -41,8 +41,8 @@ SpecialOptions.prototype.open = function(x, y) {
 	let Y = y;
 
     this.show();
-	this.element.style.left=Math.max(Math.min(-28+y*56,MapWidth*56-115),0)+"px";
-	this.element.style.top=Math.max(Math.min(-15+x*56,MapHeight*56-77),0)+"px";
+	this.element.style.left=Math.max(Math.min(-28+y*TILE_SIZE,MapWidth*TILE_SIZE-115),0)+"px";
+	this.element.style.top=Math.max(Math.min(-15+x*TILE_SIZE,MapHeight*TILE_SIZE-77),0)+"px";
 	document.getElementById("AirTransportPickupMask").src="Assets/Miscellaneous/StorkPickupMask.png";
 	document.getElementById("NavalTransportPickupMask").src="Assets/Miscellaneous/ConvoyPickupMask.png";
 

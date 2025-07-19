@@ -319,8 +319,8 @@ function AI_Scouter(Unit,Map){
 	Pizdamatii=[];
 
 	//Here it pans the camera
-	const PanY = Math.min(Math.max(X - 5, 0), MapHeight) * 56;
-	const PanX = Math.min(Math.max(Y - 5, 0), MapWidth) * 56;
+	const PanY = Math.min(Math.max(X - 5, 0), MapHeight) * TILE_SIZE;
+	const PanX = Math.min(Math.max(Y - 5, 0), MapWidth) * TILE_SIZE;
 
 	document.getElementById("UnitMap").scroll(PanX, PanY);
 
@@ -1179,8 +1179,8 @@ function castMap(Map){
 			EdgeD.id="D "+i+"X"+j;
 			BLARG.id="BLARG "+i+"X"+j;
 			Slot.style.position="absolute";
-			Slot.style.top=(i-1)*56+"px";
-			Slot.style.left=(j-1)*56+"px";
+			Slot.style.top=(i-1)*TILE_SIZE+"px";
+			Slot.style.left=(j-1)*TILE_SIZE+"px";
 			Slot.style.width="56px";
 			Slot.style.height="56px";
 			Slot.style.cursor="url('Assets/Miscellaneous/Cursor.png') 0 0, auto";
@@ -1392,8 +1392,8 @@ function castMap(Map){
 			RegionTile.id="Regional Tile "+j+" "+i;
 			RegionTile.style.position="absolute";
 			RegionTile.style.zIndex=7;
-			RegionTile.style.left=j*56-56+"px";
-			RegionTile.style.top=i*56-56+"px";
+			RegionTile.style.left=j*TILE_SIZE-TILE_SIZE+"px";
+			RegionTile.style.top=i*TILE_SIZE-TILE_SIZE+"px";
 			RegionTile.style.height="56px";
 			RegionTile.style.width="56px";
 			RegionTile.style.textAlign="center";
@@ -1562,8 +1562,8 @@ function castMapMaker() {
 			C.id="c "+(i+1)+" X "+(j+1);
 			D.id="d "+(i+1)+" X "+(j+1);
 			Slot.style.position="absolute";
-			Slot.style.top=i*56+"px";
-			Slot.style.left=j*56+"px";
+			Slot.style.top=i*TILE_SIZE+"px";
+			Slot.style.left=j*TILE_SIZE+"px";
 			//Slot.style.zIndex=1;
 			Tile.src="Assets/Tiles/Plains.png";
 			Tile.style.position="absolute";
@@ -1628,8 +1628,8 @@ function castMapMaker() {
 			regionTile.id="regional Tile "+i+" "+j;
 			regionTile.style.position="absolute";
 			regionTile.style.zIndex=5;
-			regionTile.style.left=i*56+"px";
-			regionTile.style.top=j*56+"px";
+			regionTile.style.left=i*TILE_SIZE+"px";
+			regionTile.style.top=j*TILE_SIZE+"px";
 			regionTile.style.height="56px";
 			regionTile.style.width="56px";
 			regionTile.addEventListener("click",function(){RegionalizeTile(i,j)});
@@ -2277,8 +2277,8 @@ function drawUnit(Map, UnitType, direction, x, y, index, rostermap){
 	newPic.src=adjective;
 	newPic.id=rostermap[x][y].ID;
 	newPic.style.position="absolute";
-	newPic.style.top=x*56+"px";
-	newPic.style.left=y*56+(Units[UnitType].SpriteOffset ?? [0,0,0,0,0])[direction]+"px";
+	newPic.style.top=x*TILE_SIZE+"px";
+	newPic.style.left=y*TILE_SIZE+(Units[UnitType].SpriteOffset ?? [0,0,0,0,0])[direction]+"px";
 	newPic.style.zIndex=3;
 	let Filter=Factions[MapRoster[index].faction].ChromaCode+" opacity(50%)";
 	alert(Filter);
@@ -2880,9 +2880,9 @@ function FillMap(Map){
 }
 
 function FillMapEditor(Tile){
-	let a=Math.floor(document.getElementById("TileContainer").scrollTop/56);
+	let a=Math.floor(document.getElementById("TileContainer").scrollTop/TILE_SIZE);
 	//alert(document.getElementById("TileContainer").scrollLeft-1);
-	let b=Math.floor(document.getElementById("TileContainer").scrollLeft/56);
+	let b=Math.floor(document.getElementById("TileContainer").scrollLeft/TILE_SIZE);
 	for(let c=a; c<a+10; c++){for(let d=b; d<b+10; d++){
 		EditorMap[c][d]=Tile;
 		EditorEntityMap[c][d]=0;
@@ -3246,8 +3246,8 @@ function GenerateRevenue(Value,X,Y){
 	let floater=document.createElement("p");
 	floater.style.position="absolute";
 	floater.id="Floater"+X+"X"+Y;
-	floater.style.top=56*X+"px";
-	floater.style.left=56*Y+"px";
+	floater.style.top=TILE_SIZE*X+"px";
+	floater.style.left=TILE_SIZE*Y+"px";
 	floater.style.width="56px";
 	floater.style.textAlign="center";
 	floater.style.color="gold";
@@ -3261,7 +3261,7 @@ function GenerateRevenue(Value,X,Y){
 		document.getElementById("UnitMap").appendChild(floater);
 
 	};
-	floater.style.top=56*X-2*phase+"px";
+	floater.style.top=TILE_SIZE*X-2*phase+"px";
 
 
 	if(phase==20){
@@ -3291,13 +3291,13 @@ function HitAnimation(Target,Variant){
 	HitAnim.style.zIndex=5;
 	HitAnim.style.width="56px";
 	HitAnim.style.height="56px";
-	HitAnim.style.top=ics*56+"px";
-	HitAnim.style.left=igrec*56+"px";
+	HitAnim.style.top=ics*TILE_SIZE+"px";
+	HitAnim.style.left=igrec*TILE_SIZE+"px";
 	if(Variant=="Gaswave"){
 	HitAnim.style.width="168px";
 	HitAnim.style.height="168px";
-	HitAnim.style.top=ics*56-56+"px";
-	HitAnim.style.left=igrec*56-56+"px";
+	HitAnim.style.top=ics*TILE_SIZE-TILE_SIZE+"px";
+	HitAnim.style.left=igrec*TILE_SIZE-TILE_SIZE+"px";
 	};
 
 	let castTimee=setInterval(HitAnima,500);
@@ -3379,8 +3379,8 @@ function initializeBattle(){
 
 	KillingUnit=false;
 	GlassPanels=2;
-	document.getElementById('UnitMap').scrollBy(-MapHeight*56,-MapWidth*56);
-	document.getElementById('UnitMap').scrollBy((Constants.defaultX ?? 0) * 56, (Constants.defaultY ?? 0) * 56);
+	document.getElementById('UnitMap').scrollBy(-MapHeight*TILE_SIZE,-MapWidth*TILE_SIZE);
+	document.getElementById('UnitMap').scrollBy((Constants.defaultX ?? 0) * TILE_SIZE, (Constants.defaultY ?? 0) * TILE_SIZE);
 	document.getElementById('Glassplate3').style.visibility='hidden';
 	document.getElementById('Glassplate4').style.visibility='hidden';
 	if(Constants.Commanders.length>3){GlassPanels++;document.getElementById('Glassplate3').style.visibility='inherit'};
@@ -3531,8 +3531,8 @@ function initializeSpecialBattle(Level){
 	KillingUnit=false;
 	GlassPanels=2;
 
-	document.getElementById('UnitMap').scrollBy(-MapHeight*56,-MapWidth*56);
-	document.getElementById('UnitMap').scrollBy((Constants.defaultX ?? 0) * 56, (Constants.defaultX ?? 0) * 56);
+	document.getElementById('UnitMap').scrollBy(-MapHeight*TILE_SIZE,-MapWidth*TILE_SIZE);
+	document.getElementById('UnitMap').scrollBy((Constants.defaultX ?? 0) * TILE_SIZE, (Constants.defaultX ?? 0) * TILE_SIZE);
 	document.getElementById('Glassplate3').style.visibility='hidden';
 	document.getElementById('Glassplate4').style.visibility='hidden';
 	if(Constants.Commanders.length>3){GlassPanels++;document.getElementById('Glassplate3').style.visibility='inherit'};
@@ -4000,8 +4000,8 @@ function launchDialogueBloc(Bloc, Frame){
 	if(Proceed){setTimeout(EndBattle,1000)}};};
 function LaunchConstructorPanel(X,Y){
 	document.getElementById('BuildingConstructionPanel').style.visibility="visible";
-	document.getElementById('BuildingConstructionPanel').style.left=Math.max(Math.min(document.getElementById("UnitMap").scrollLeft+280, Y*56-112),document.getElementById("UnitMap").scrollLeft)+"px";
-	document.getElementById('BuildingConstructionPanel').style.top=Math.max(Math.min(document.getElementById("UnitMap").scrollTop+280, X*56-112),document.getElementById("UnitMap").scrollTop)+"px";
+	document.getElementById('BuildingConstructionPanel').style.left=Math.max(Math.min(document.getElementById("UnitMap").scrollLeft+280, Y*TILE_SIZE-112),document.getElementById("UnitMap").scrollLeft)+"px";
+	document.getElementById('BuildingConstructionPanel').style.top=Math.max(Math.min(document.getElementById("UnitMap").scrollTop+280, X*TILE_SIZE-112),document.getElementById("UnitMap").scrollTop)+"px";
 
 	for(let c=1;c<=8;c++){
 		document.getElementById("BuildingMontre"+c).src="Assets/Units/Static/"+Units[60+c].shortname+"3.png";
@@ -4154,8 +4154,8 @@ function moveOneTile(unit, direction){
 	
 	let x=(direction-2)*(direction%2);
 	let y=(3-direction)*((direction-1)%2);
-	let cellX=Units[MapRoster[unit].unitType].boxX ?? 56;
-	let cellY=Units[MapRoster[unit].unitType].boxY ?? 56;
+	let cellX=Units[MapRoster[unit].unitType].boxX ?? TILE_SIZE;
+	let cellY=Units[MapRoster[unit].unitType].boxY ?? TILE_SIZE;
 	//alert(cellX+" "+cellY)
 	let castTime=setInterval(Act,100);
 	let frame=0;
@@ -4169,8 +4169,8 @@ function moveOneTile(unit, direction){
 		//document.getElementById(idem).style.visibility="hidden";
 		document.getElementById(idem).style.clip=coord;
 		document.getElementById(idem).src="Assets/Units/Move/"+Units[MapRoster[unit].unitType].shortname+"Movement.png";	
-		document.getElementById(idem).style.top= -frame*56 + x*frame*14 + "px";
-		document.getElementById(idem).style.left= 56-direction*56+y*frame*14 +"px";
+		document.getElementById(idem).style.top= -frame*TILE_SIZE + x*frame*14 + "px";
+		document.getElementById(idem).style.left= TILE_SIZE-direction*TILE_SIZE+y*frame*14 +"px";
 		//document.getElementById(idem).style.visibility="visible";
 
 
@@ -4850,10 +4850,10 @@ function PI_Scouter(Unit, Map){
 			newPic.id="Blep-"+r+"-"+t;
 			newPic.style.position="absolute";
 			newPic.style.visibility="visible";
-			//newPic.style.top=Math.min(r,10)*56+"px";
-			//newPic.style.left=Math.min(t,10)*56+"px";
-			newPic.style.top=r*56+"px";
-			newPic.style.left=t*56+"px";
+			//newPic.style.top=Math.min(r,10)*TILE_SIZE+"px";
+			//newPic.style.left=Math.min(t,10)*TILE_SIZE+"px";
+			newPic.style.top=r*TILE_SIZE+"px";
+			newPic.style.left=t*TILE_SIZE+"px";
 			newPic.style.zIndex=4;
 
 			let pip=AddressMap[r][t]??[0,0];
@@ -4896,8 +4896,8 @@ function PI_Scouter(Unit, Map){
 		newPic.id="Blep-"+(r-StandardX)+"-"+(t-StandardY);
 		newPic.style.position="absolute";
 		newPic.style.visibility="visible";
-		newPic.style.top=r*56+"px";
-		newPic.style.left=t*56+"px";
+		newPic.style.top=r*TILE_SIZE+"px";
+		newPic.style.left=t*TILE_SIZE+"px";
 		newPic.style.zIndex=4;
 		newPic.addEventListener("mouseover",function(){ SBLARG(r,t); return 0});
 		//document.getElementById("UnitMap").appendChild(newPic);
@@ -4947,8 +4947,8 @@ function PI_Scouter(Unit, Map){
 				if(hasCertainTrait(Unit.unitType,"Supply Distribution")){spep.src="Assets/Miscellaneous/Hlep.png";}else{spep.src="Assets/Miscellaneous/Spep.png";}		
 				spep.id="Spep-"+r+"-"+t;
 				spep.style.position="absolute";
-				spep.style.top=r*56+"px";
-				spep.style.left=t*56+"px";
+				spep.style.top=r*TILE_SIZE+"px";
+				spep.style.left=t*TILE_SIZE+"px";
 				spep.style.zIndex=5;
 				spep.style.cursor="url(Assets/Traits/RangedCursor.png) 25 25,auto";
 				if(hasCertainTrait(Unit.unitType,"Dispersion")){spep.style.cursor="url(Assets/Traits/ChemicalCursor.png) 25 25,auto"};
@@ -5036,8 +5036,8 @@ function PI_Scouter(Unit, Map){
 				newPic.id="Ctep-"+r+"-"+t;
 				newPic.style.position="absolute";
 				newPic.style.visibility="visible";
-				newPic.style.top=r*56+"px";
-				newPic.style.left=t*56+"px";
+				newPic.style.top=r*TILE_SIZE+"px";
+				newPic.style.left=t*TILE_SIZE+"px";
 				newPic.style.zIndex=5;
 				if(rostermap[r][t]==0){newPic.style.filter="saturate(350%)"};
 				if(rostermap[r][t]!=0){newPic.style.cursor="url(Assets/Traits/ContactCursor.png) 25 25, auto"};
@@ -5289,8 +5289,8 @@ function RecruitUnit(Class) {
 				Crep.src="Assets/Miscellaneous/Crep.png";
 				Crep.id="Crep-"+i+"-"+j;
 				Crep.style.position="absolute";
-				//Crep.style.top=i*56+"px";
-				//Crep.style.left=j*56+"px";
+				//Crep.style.top=i*TILE_SIZE+"px";
+				//Crep.style.left=j*TILE_SIZE+"px";
 				Crep.style.zIndex=4;
 				Crep.addEventListener("click",function(){
 					if(YourMoney >= factoredCost){
@@ -6269,10 +6269,10 @@ function RemoveMarker(index){
 }
 
 function RollMap(Direction){
-	if(Direction==1){document.getElementById('UnitMap').scrollBy(0,-56);document.getElementById('RegionMap').scrollBy(0,-56)};
-	if(Direction==2){document.getElementById('UnitMap').scrollBy(56,0);document.getElementById('RegionMap').scrollBy(56,0)};
-	if(Direction==3){document.getElementById('UnitMap').scrollBy(0,56);document.getElementById('RegionMap').scrollBy(0,56)};
-	if(Direction==4){document.getElementById('UnitMap').scrollBy(-56,0);document.getElementById('RegionMap').scrollBy(-56,0)};};
+	if(Direction==1){document.getElementById('UnitMap').scrollBy(0,-TILE_SIZE);document.getElementById('RegionMap').scrollBy(0,-TILE_SIZE)};
+	if(Direction==2){document.getElementById('UnitMap').scrollBy(TILE_SIZE,0);document.getElementById('RegionMap').scrollBy(TILE_SIZE,0)};
+	if(Direction==3){document.getElementById('UnitMap').scrollBy(0,TILE_SIZE);document.getElementById('RegionMap').scrollBy(0,TILE_SIZE)};
+	if(Direction==4){document.getElementById('UnitMap').scrollBy(-TILE_SIZE,0);document.getElementById('RegionMap').scrollBy(-TILE_SIZE,0)};};
 function RollMapEditor(Direction){
 	if(Direction==1){document.getElementById('TileContainer').scrollBy(0,-280)};
 	if(Direction==2){document.getElementById('TileContainer').scrollBy(280,0)};
@@ -7034,11 +7034,11 @@ function UnitLost(index){
 	function Act(){
 
 	//var top="0px";
-	//var right=frame*56+"px";
+	//var right=frame*TILE_SIZE+"px";
 	//var bottom="96px";
-	//var left=(frame-1)*56+"px";
-	//var offsetlat=MapRoster[index].x*56-40+"px";
-	//var offsetlong=(MapRoster[index].y-frame+1)*56+"px";
+	//var left=(frame-1)*TILE_SIZE+"px";
+	//var offsetlat=MapRoster[index].x*TILE_SIZE-40+"px";
+	//var offsetlong=(MapRoster[index].y-frame+1)*TILE_SIZE+"px";
 	//coord="rect("+top+","+right+","+bottom+","+left+")";
 	
 	
@@ -7058,8 +7058,8 @@ function UnitLost(index){
 	if(frame==13 && animation){clearInterval(castTime);
 	document.getElementById(UnitID).src="";
 	KillingUnit=false;
-	//document.getElementById(UnitID).style.top=MapRoster[index].x*56+"px";	
-	//document.getElementById(UnitID).style.left=MapRoster[index].y*56+"px";
+	//document.getElementById(UnitID).style.top=MapRoster[index].x*TILE_SIZE+"px";	
+	//document.getElementById(UnitID).style.left=MapRoster[index].y*TILE_SIZE+"px";
 	//document.getElementById(UnitID).style.clip="auto";
 	document.getElementById(UnitID).style.visibility="hidden";
 	document.getElementById(MarkerID).style.visibility="hidden";
