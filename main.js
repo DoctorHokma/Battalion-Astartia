@@ -421,12 +421,10 @@ function AI_Scouter(Unit,Map){
 	}
 
 	AddressMap = create2DBuffer(MapWidth, MapHeight, 0);
-	Thing=JSON.parse(JSON.stringify(AddressMap));
-	//AddressMap=[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]];
-	
+	Thing = create2DBuffer(MapWidth, MapHeight, 0);
 	TargetList=[];
 
-
+	//AddressMap=[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]];
 	//This does the ctep pathing
 
 	//alert(Pizdamatii[Pizdamatii.length-1].x);
@@ -482,10 +480,8 @@ function AI_Scouter(Unit,Map){
 	
 	
 			for(let mu=0;mu<TargetList.length;mu++){
-			let OX=X;
-			let OY=Y;
-			let ics=JSON.parse(JSON.stringify(X));
-			let igrec=JSON.parse(JSON.stringify(Y));
+			let ics = X;
+			let igrec = Y;
 			//alert(ics+" "+igrec);
 				for(let nu=0;nu<TargetList[mu].length;nu++){
 			if(TargetList[mu][nu]==1){ics-=1};
@@ -1888,22 +1884,22 @@ function CBLARG(r, t) {
 		switch(NeoPath[BL]) {
 			case 1: {
 				BX--;
-				ParaPath[ParaPath.length] = { X: JSON.parse(JSON.stringify(BX)), Y: JSON.parse(JSON.stringify(BY)) }
+				ParaPath[ParaPath.length] = { X: BX, Y: BY }
 				break;
 			}
 			case 2: {
 				BY++;
-				ParaPath[ParaPath.length] = { X: JSON.parse(JSON.stringify(BX)), Y: JSON.parse(JSON.stringify(BY)) }
+				ParaPath[ParaPath.length] = { X: BX, Y: BY }
 				break;
 			}
 			case 3: {
 				BX++;
-				ParaPath[ParaPath.length] = { X: JSON.parse(JSON.stringify(BX)), Y: JSON.parse(JSON.stringify(BY)) }
+				ParaPath[ParaPath.length] = { X: BX, Y: BY }
 				break;
 			}
 			case 4: {
 				BY--;
-				ParaPath[ParaPath.length] = { X: JSON.parse(JSON.stringify(BX)), Y: JSON.parse(JSON.stringify(BY)) }
+				ParaPath[ParaPath.length] = { X: BX, Y: BY }
 				break;
 			}
 		}
@@ -2073,19 +2069,8 @@ function DisplayRegions() {
 	
 	if(battalion.state === Battalion.STATE.MAP_EDITOR) {
 		Map = EditorMap;
-		RegionMap = [];
-		let RegionCell = [];
+		RegionMap = create2DBuffer(MapWidth, MapHeight, 0);
 		NodeMap = [];
-
-		for(let x = 0; x < MapWidth; x++) {
-			RegionCell[RegionCell.length] = 0;
-		}
-
-		for(let y = 0; y < MapHeight; y++) {
-			RegionMap[RegionMap.length] = RegionCell;
-		}
-
-		RegionMap=JSON.parse(JSON.stringify(RegionMap));	
 	}
 	
 	if(!RegionsToggled){
@@ -4646,7 +4631,7 @@ function PI_Scouter(Unit, Map){
 	//Silix, Wisp, Luna! Cut it out and get back to work.
 
 	AddressMap = create2DBuffer(MapWidth, MapHeight, 0);
-	Thing=JSON.parse(JSON.stringify(AddressMap));
+	Thing = create2DBuffer(MapWidth, MapHeight, 0);
 
 	//Standard-Issue Pathing Loop
 	while(Path.length > 0) {
@@ -5030,13 +5015,7 @@ function PITurn(Roster,Map,Constants){
 
 
 	LastMove={ID:0};
-
-	MarkerMap=[];
-	let line=[];
-	for(let i=0;i<MapWidth;i++){line[line.length]=false};
-	for(let j=0;j<MapHeight;j++){MarkerMap[MarkerMap.length]=line};
-	MarkerMap=JSON.parse(JSON.stringify(MarkerMap));
-	//alert(Roster);
+	MarkerMap = create2DBuffer(MapWidth, MapHeight, false);
 
 	if(Constants.Commanders??false){Commander=Constants.Commanders[1]};
 	for(let x=0;x<MapHeight;x++){for(y=0;y<MapWidth;y++){
@@ -6285,12 +6264,7 @@ function TestMap() {
 }
 
 function ToggleBattleflags(){
-
-	FlagMap=[];
-	let FlagCell=[];
-	for(let x=0;x<MapWidth;x++){FlagCell[FlagCell.length]=0};
-	for(let y=0;y<MapHeight;y++){FlagMap[FlagMap.length]=FlagCell};
-	FlagMap=JSON.parse(JSON.stringify(FlagMap));
+	FlagMap = create2DBuffer(MapWidth, MapHeight, 0);
 
 	for(let a=0;a<Constants.Capture.length;a++){FlagMap[Constants.Capture[a].x][Constants.Capture[a].y]=1};
 	for(let a=0;a<Constants.Defend.length;a++){FlagMap[Constants.Defend[a].x][Constants.Defend[a].y]=2};
@@ -6320,42 +6294,32 @@ function ToggleBattleflags(){
 }
 
 function ToggleHealthBars(){
-
-	BarMap=[];
-	let BarCell=[];
-	for(let x=0;x<MapWidth;x++){BarCell[BarCell.length]=0};
-	for(let y=0;y<MapHeight;y++){BarMap[BarMap.length]=BarCell};
-	BarMap=JSON.parse(JSON.stringify(BarMap));
+	BarMap = create2DBuffer(MapWidth, MapHeight, 0);
 
 	for(let a=StandardX;a<StandardX+10;a++){for(let b=StandardY;b<StandardY+10;b++){BarMap[a-StandardX][b-StandardY]=rostermap[a][b]}};
 
-	if(!BarsToggled){
-		for(let i=0;i<10;i++){for(let j=0;j<10;j++){
-			if(BarMap[i][j]!=0){
-				document.getElementById("HPContainer "+(i+1)+"X"+(j+1)).style.visibility="visible";
-				document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.visibility="visible";
-				document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.height="8px";
-				document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.width=39*(rostermap[i+StandardX][j+StandardY].life/Units[rostermap[i+StandardX][j+StandardY].unitType].HP)+"px";
-				document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.filter="brightness("+rostermap[i+StandardX][j+StandardY].life/Units[rostermap[i+StandardX][j+StandardY].unitType].HP+")";
-			};
-		};
-	};
-	};
+	if(!BarsToggled) {
+		for(let i = 0; i < MapHeight; i++) {
+			for(let j = 0; j < MapWidth; j++) {
+				if(BarMap[i][j] != 0){
+					document.getElementById("HPContainer "+(i+1)+"X"+(j+1)).style.visibility="visible";
+					document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.visibility="visible";
+					document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.height="8px";
+					document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.width=39*(rostermap[i+StandardX][j+StandardY].life/Units[rostermap[i+StandardX][j+StandardY].unitType].HP)+"px";
+					document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.filter="brightness("+rostermap[i+StandardX][j+StandardY].life/Units[rostermap[i+StandardX][j+StandardY].unitType].HP+")";
+				}
+			}
+		}
+	} else {
+		for(let i = 0; i < MapHeight; i++) {
+			for(let j = 0; j < MapWidth; j++) {
+				document.getElementById("HPContainer "+(i+1)+"X"+(j+1)).style.visibility="hidden";
+				document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.visibility="hidden";
+			}
+		}
+	}
 
-
-
-
-
-	if(BarsToggled){for(let i=0;i<10;i++){for(let j=0;j<10;j++){
-			document.getElementById("HPContainer "+(i+1)+"X"+(j+1)).style.visibility="hidden";
-			document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.visibility="hidden";
-
-		};};
-
-
-	};
-
-	if(BarsToggled){BarsToggled=false}else{BarsToggled=true}
+	BarsToggled = !BarsToggled;
 }
 
 function ToggleHealthBar(X,Y){
