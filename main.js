@@ -1,5 +1,5 @@
 const PROFILE_ID = "TEST_PROFILE";
-const OPENING_TRACK = "NavalEpic2";
+const OPENING_TRACK = "NavalEpic6";
 const TILE_SIZE = 56;
 
 const createContext = function() {
@@ -2255,7 +2255,9 @@ function drawTile(host,image,x,y,terrain){
 	newPic.style.zIndex=2;
 	newPic.addEventListener("click", function(){AnalyzeSquare("Tile", terrain)});
 	//if(image=="Blep.png"){newPic.style.zIndex=2;};
-	document.getElementById(host).appendChild(newPic);};
+	document.getElementById(host).appendChild(newPic)
+}
+
 function drawEditorTile(){
 
 	//Superfluous
@@ -2268,7 +2270,8 @@ function drawEditorTile(){
 	newPic.style.zIndex=2;
 	newPic.addEventListener("click", function(){});
 	//if(image=="Blep.png"){newPic.style.zIndex=2;};
-	document.getElementById(host).appendChild(newPic);};
+	document.getElementById(host).appendChild(newPic);
+}
 
 function drawUnit(Map, UnitType, direction, x, y, index, rostermap){
 	//drawUnit seems to be a residual function
@@ -2661,7 +2664,7 @@ function FactionInformations(Ordinal){
 		};
 
 	document.getElementById("FactionDetails").style.visibility="inherit"
-};
+}
 
 function FillMap(Map){
 	//At last, I've been waiting for this moment for so long. No more provisional map generators and stopgap measures. This time it's for real.
@@ -2927,13 +2930,9 @@ function FocalEditorRefresh(X,Y){
 		document.getElementById("Entity "+X+" X "+Y).style.left=(Units[Chosenunit].StaticOffsetX ?? [0,0,0,0,0])[EditationDirection]+"px";
 		document.getElementById("Entity "+X+" X "+Y).style.top=(Units[Chosenunit].StaticOffsetY ?? [0,0,0,0,0])[EditationDirection]+"px";
 		EditorEntityMap[X+EditorStandardX-1][Y+EditorStandardY-1]={id:Chosenunit, faction:EditationColor, direction:EditationDirection, x:X+EditorStandardX-1, y:Y+EditorStandardY-1,hpModifier:0,morale:0};	
-	}}};
-function FocalMapRefresh(X,Y){
+	}}
+}
 
-
-
-
-	};
 function FocalTileRefresh(X,Y){
 		let ics=X+1;
 		let igrec=Y+1;
@@ -3181,7 +3180,8 @@ function FocalTileRefresh(X,Y){
 		}
 
 
-	};
+}
+
 function GeneralInitializer(){
 	//This does the scaling
 	let ScreenRatio=Math.round(window.innerHeight/7);
@@ -3270,7 +3270,7 @@ function GenerateRevenue(Value,X,Y){
 	};
 
 	return Value
-};
+}
 
 function HitAnimation(Target,Variant){
 	let ics=0;
@@ -3941,7 +3941,9 @@ function LanguageCorrecter(Language){
 		if(Language.Prelogues[a][b][c].length==0){Language.Prelogues[a][b][c]=ENG.Prelogues[a][b][c]}
 		if(Language.Postlogues[a][b][c].length==0){Language.Postlogues[a][b][c]=ENG.Postlogues[a][b][c]}
 		if(Language.DefeatInterjections[a][b][c].length==0){Language.DefeatInterjections[a][b][c]=ENG.DefeatInterjections[a][b][c]}
-	}}}*/};
+	}}}*/
+}
+
 function launchDialogueBloc(Bloc, Frame){
 	var limit=Bloc.length;
 	let Proceed=Resolution;
@@ -3997,7 +3999,9 @@ function launchDialogueBloc(Bloc, Frame){
 	};
 	if(Frame+2<=limit){document.getElementById("DialogueBox").onclick=function(){clearInterval(FlowWriter);if(LetterIndex==TerminusLetter){launchDialogueBloc(Bloc, Frame+2);}else{document.getElementById("DialogueInstance").innerHTML=Bloc[Frame+1]; clearInterval(FlowWriter); LetterIndex=TerminusLetter}};
 	}else{document.getElementById("DialogueBox").onclick="";document.getElementById("DialogueBox").style.visibility="hidden"; document.getElementById("DialogueSkip").style.visibility="hidden";
-	if(Proceed){setTimeout(EndBattle,1000)}};};
+	if(Proceed){setTimeout(EndBattle,1000)}};
+}
+
 function LaunchConstructorPanel(X,Y){
 	document.getElementById('BuildingConstructionPanel').style.visibility="visible";
 	document.getElementById('BuildingConstructionPanel').style.left=Math.max(Math.min(document.getElementById("UnitMap").scrollLeft+280, Y*TILE_SIZE-112),document.getElementById("UnitMap").scrollLeft)+"px";
@@ -4022,7 +4026,9 @@ function LaunchConstructorPanel(X,Y){
 		if((YourMoney??0)>=Units[60+c].Cost && CoastalCheck){document.getElementById("BuildingFrame"+c).src="Assets/Miscellaneous/ConstructionAvailableFrame.png"};
 
 	//alert("Not yet bro, we don't have enough assets")
-	};};
+	}
+}
+
 function LaunchRecruitmentPanel(IndustrialBranch){
 	const { uiHandler } = battalion;
 	const { morale } = uiHandler;
@@ -4043,7 +4049,6 @@ function LaunchRecruitmentPanel(IndustrialBranch){
 
 	let InfantrySelection=Factions[PlayerChoiceFaction].SpecialInfantry;
 	let VehicleSelection=Factions[PlayerChoiceFaction].SpecialVehicles;
-
 
 	for(let p=1;p<=40;p++){
 		
@@ -4147,16 +4152,12 @@ function LaunchRecruitmentPanel(IndustrialBranch){
 }
 
 function moveOneTile(unit, direction){
-	//alert(unit);
 	let idem="Entity "+(MapRoster[unit].x-StandardX+1)+"X"+(MapRoster[unit].y-StandardY+1);
-	//alert(idem);
-
-	
 	let x=(direction-2)*(direction%2);
 	let y=(3-direction)*((direction-1)%2);
 	let cellX=Units[MapRoster[unit].unitType].boxX ?? TILE_SIZE;
 	let cellY=Units[MapRoster[unit].unitType].boxY ?? TILE_SIZE;
-	//alert(cellX+" "+cellY)
+
 	let castTime=setInterval(Act,100);
 	let frame=0;
 	function Act(){
@@ -4175,12 +4176,9 @@ function moveOneTile(unit, direction){
 
 
 	if(frame==4){
-		//alert(idem);
 		//document.getElementById(idem).style.visibility="hidden";
 		let newX=MapRoster[unit].x+x;
 		let newY=MapRoster[unit].y+y;
-		//alert(newX+1-DefaultX);
-		//alert(newY+1-DefaultY);
 
 		//rostermap[MapRoster[unit].x+x][MapRoster[unit].y+y]=rostermap[MapRoster[unit].x][MapRoster[unit].y];
 		//rostermap[MapRoster[unit].x][MapRoster[unit].y]=0;
@@ -4199,53 +4197,13 @@ function moveOneTile(unit, direction){
 		document.getElementById(idem).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+direction+".png";
 		//document.getElementById(idem).style.visibility="visible";
 
-		//alert("hi!");
 		clearInterval(castTime);};
 	
-	};};
-function moveUnit(unit, path){
-	let considerX=MapRoster[unit].x;
-	let considerY=MapRoster[unit].y;
+	}
+}
 
-	if(path.length>0) battalion.soundPlayer.playSound(Units[MapRoster[unit].unitType].shortname + "Move");
-
-	for (let wup=0;wup<path.length;wup++){
-		let permission=true;
-		let ics=MapRoster[unit].x;
-		let igrec=MapRoster[unit].y;
-		considerX+=(path[wup]-2)*(path[wup]%2);
-		considerY+=(3-path[wup])*((path[wup]-1)%2);
-		
-		//moveOneTile(unit, path[wup])
-		if(wup==0){moveOneTile(unit, path[wup])};
-		if(wup>0){setTimeout(moveOneTile, 500, unit, path[wup]);};
-		document.getElementById("Entity "+(ics+1-StandardX)+"X"+(igrec+1-StandardY)).style.visibility="hidden";
-		};
-		//if(rostermap[considerX][considerY]!=0){permission=false};
-
-
-		let chuchu=rostermap[MapRoster[unit].x][MapRoster[unit].y];
-		rostermap[MapRoster[unit].x][MapRoster[unit].y]=0;
-		rostermap[considerX][considerY]=chuchu;
-		
-
-		document.getElementById("Entity "+(MapRoster[unit].x-StandardX+1)+"X"+(MapRoster[unit].y-StandardY+1)).style.visibility="hidden";
-		MapRoster[unit].x=considerX;
-		MapRoster[unit].y=considerY;
-
-		let actualX=considerX-StandardX+1;
-		let actualY=considerY-StandardY+1;
-
-		//document.getElementById("Entity "+actualX+"X"+actualY).style.visibility="visible";
-		//document.getElementById("Entity "+actualX+"X"+actualY).style.filter=Factions[MapRoster[unit].faction].ChromaCode;
-		document.getElementById("Entity "+actualX+"X"+actualY).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+MapRoster[unit].direction+".png";};
 function MoveUnit(unit, path){
-	//alert(unit+" "+path);
-	//if(MapRoster[unit].faction!=PlayerChoiceFaction){BLARG=0;};
-	//Constants:
-
 	let CanMove=true;
-
 
 	if(path.length==0){CanMove=false};
 
@@ -4418,27 +4376,12 @@ function MoveUnit(unit, path){
 
 		//Warping extern(Deprecated)
 		if(ExtranOrigin || ExtranDestination){
-		MapRoster[unit].x=destX;
-		MapRoster[unit].y=destY;
-		rostermap[destX][destY]=rostermap[origX][origY];
-		rostermap[origX][origY]=0;};
+			MapRoster[unit].x=destX;
+			MapRoster[unit].y=destY;
+			rostermap[destX][destY]=rostermap[origX][origY];
+			rostermap[origX][origY]=0;
+		}
 
-		//Warping extran(Deprecated)
-
-		if(!ExtranOrigin && ExtranDestination){
-			//document.getElementById("Entity "+(origX+1)+"X"+(origY+1)).style.visibility="hidden";
-
-			};
-
-		//Warping intran(Deprecated)
-
-		if(!ExtranDestination && ExtranOrigin){
-		//document.getElementById("Entity "+(destX+1)+"X"+(destY+1)).style.visibility="visible";
-		//document.getElementById("Entity "+(destX+1)+"X"+(destY+1)).src="Assets/Units/Static/"+Units[MapRoster[unit].unitType].shortname+MapRoster[unit].direction+".png";
-		//document.getElementById("Entity "+(destX+1)+"X"+(destY+1)).style.filter=Factions[MapRoster[unit].faction].ChromaCode;
-		};
-
-		//alert(rostermap[destX][destY-1]);
 		ScoutVicinity(destX,destY);
 		LastMove.Uncloaked=AdjacentCloakers;
 		let FadeFrame=0;
@@ -4516,7 +4459,8 @@ function MoveUnit(unit, path){
 		};
 
 		//alert(MapRoster[unit].isVized);
-	};
+}
+
 function MontreUnit(Class){
 	const { language } = battalion;
 	const unitType = Units[Class];
@@ -4548,10 +4492,9 @@ function MontreUnit(Class){
 	//if(IndustrialBranchBrowsed==2){UMTI-=40};
 	//if(IndustrialBranchBrowsed==3){UMTI-=50};
 	//document.getElementById("UnitMontre"+UMTI).style.left=(Units[Class].MovementOffsetX??[0,0,0,0,0])[3]+"px";
-};
+}
 
 function NudgeMap(Direction){
-	//alert(MarkerMap[0]);
 	Map=ChosenMap;
 	let ics=(Direction-2)*(Direction%2);
 	let igrec=(3-Direction)*((Direction-1)%2);
@@ -4628,7 +4571,9 @@ function NudgeMap(Direction){
 			};};
 		*/
 		RefreshMap();
-	};};
+	}
+}
+
 function NudgeMapEditor(X,Y){
 	let checker=false;
 	let x=X+EditorStandardX;
@@ -5123,6 +5068,7 @@ function PI_Scouter(Unit, Map){
 		}
 	}
 }
+
 function PITurn(Roster,Map,Constants){
 	RemoveKebabIMeanBlep();
 
@@ -5245,7 +5191,6 @@ function PITurn(Roster,Map,Constants){
 }
 
 function PostDialogueFrame(Portrait, Name, Text){
-
 	document.getElementById("Portrait").id=Portrait;
 	document.getElementById("CharacterName").innerHTML=Name;
 
@@ -5255,15 +5200,14 @@ function PostDialogueFrame(Portrait, Name, Text){
 	alert(TextTerminus);
 	document.getElementById("DialogueInstance").innerHTML=Text;
 	//function WriteText(){TextPhase++;if(TextPhase==TextTerminus){clearInterval(TextBlock)}};
-	document.getElementById("DialogueBox").style.visibility="visible";};
-function RazeFaction(Faction){};
+	document.getElementById("DialogueBox").style.visibility="visible";
+}
 
 function RecruitUnit(Class) {
 	const { uiHandler } = battalion;
 	const { morale } = uiHandler;
 	const factoredCost = morale.applyCostFactor(Units[Class].Cost);
 
-	//alert(ActiveIndustrialNode.X+"X"+ActiveIndustrialNode.Y);
 	for(let x=1;x<MapHeight;x++){for(let y=1;y<MapWidth;y++){let crep=document.getElementById("Crep-"+x+"-"+y) ?? 0; if(crep!=0){crep.remove()};}};
 	let RecC=document.getElementById("CloseRecruiterX")??0;if(RecC!=0){RecC.remove()};
 
@@ -5328,9 +5272,10 @@ function RecruitUnit(Class) {
 
 				document.getElementById("Slot "+(ActiveIndustrialNode.X+1)+"X"+(ActiveIndustrialNode.Y+1)).appendChild(Close);
 
-	};};
-function refreshMap(){
+	}
+}
 
+function refreshMap(){
 	//if((RT??0)==0){RT=false};
 	
 	for(let x=1; x<=MapHeight; x++){
@@ -5362,359 +5307,13 @@ function refreshMap(){
 			if(TileFlagMap[x-1][y-1]==0){document.getElementById('Flag '+x+'X'+y).style.visibility='hidden'}else{document.getElementById('Flag '+x+'X'+y).style.visibility='inherit'};
 			if(TileFlagMap[x-1][y-1]==1){document.getElementById('Flag '+x+'X'+y).src="Assets/Miscellaneous/CaptureFlag.png"};
 			if(TileFlagMap[x-1][y-1]==2){document.getElementById('Flag '+x+'X'+y).src="Assets/Miscellaneous/DefendFlag.png"};
-
-
-			};
-
-	};};};
-function RefreshMap(){};
-//refreshTile() is DEPRECATED
-function refreshTile(X,Y){
-
-	//alert(EditorMap[X][Y]);
-	if(EditationToggle=='Tile'){document.getElementById("Entity "+X+" X "+Y).src="";
-	EditorMap[X+EditorStandardX-1][Y+EditorStandardY-1]=ChosenTerrain;
-	EditorEntityMap[X+EditorStandardX-1][Y+EditorStandardY-1]=0;
-
-	//for(let ics=1;ics<=10;ics++){for(let igrec=1;igrec<=10;igrec++){}};
-
-	let Address="Tile "+X+" X "+Y;
-	let Strucdress="Structure "+X+" X "+Y;
-	document.getElementById(Strucdress).style.visibility="hidden";
-
-	switch(ChosenTerrain){
-		case 1:
-			var type= Math.ceil(Math.random()*8);
-			var offset=0;
-			variant= "Assets/Tiles/Plains"+type+".png";
-			document.getElementById(Address).style.top=offset+"px";
-			//document.getElementById(Address).style.filter="hue-rotate(0deg) saturate(100%) brightness(100%)";
-			document.getElementById(Address).src=variant;
-			break;
-
-		case 2:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			if(type==2){offset=-4};
-			if(type==3){offset=-3};
-			if(type==4){offset=-12}
-			variant= "Assets/Tiles/Forest"+type+".png";
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src=variant;
-			break;
-
-			case 3:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			if(type==3){offset=-4};
-			if(type==4){offset=-5};
-			variant= "Assets/Tiles/Hills"+type+".png";
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src=variant;
-			break;
-
-		case 4:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			if(type==2){offset=-4};
-			if(type==3){offset=-9};
-			if(type==4){offset=-10};
-			variant= "Assets/Tiles/Mountains"+type+".png";
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src=variant;
-			break;
-
-		case 5:
-			var offset=-8;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Volcano.png";
-			break;
-
-		case 6:
-			var offset=0;
-			var variant=0;
-			//alert(X+" "+Y);
-			if(X>1){if(Terrain[EditorMap[X-2][Y-1]].Urbanistics > 0){variant+=1}};
-			if(Y<10){if(Terrain[EditorMap[X-1][Y]].Urbanistics>0){variant+=2}};
-			if(X<10){if(Terrain[EditorMap[X][Y-1]].Urbanistics>0){variant+=4}};
-			if(Y>1){if(Terrain[EditorMap[X-1][Y-2]].Urbanistics > 0){variant+=8}};
-			//if(X>0){if((Map[X-1][Y]>5 && Map[X-1][Y]<15) || (Map[X-1][Y]>20 && (Map[X-1][Y]<23))){variant+=1}};
-			//if(Y<MapWidth){if((Map[X][Y+1]>5 && Map[X][Y+1]<15) || (Map[X][Y+1]>20 && (Map[X][Y+1]<23))){variant+=2}};
-			//if(X<MapHeight){if((Map[X+1][Y]>5 && Map[X+1][Y]<15) || (Map[X+1][Y]>20 && (Map[X+1][Y]<23))){variant+=4}};
-			//if(Y>0){if((Map[X][Y-1]>5 && Map[X][Y-1]<15) || (Map[X][Y-1]>20 && (Map[X][Y-1]<23))){variant+=2}};
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src="Assets/Tiles/Road"+variant+".png";
-			break;
-
-		case 7:
-			var offset=-0;
-			var type= Math.ceil(Math.random()*2);
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Ruins"+type+".png";
-			break;
-
-		case 8:
-			var offset=-0;
-			var type= Math.ceil(Math.random()*3);
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Urban District"+type+".png";
-			break;
-
-		case 9:
-			var offset=-10;
-			EditorControlMap[X+EditorStandardX-1][Y+EditorStandardY-1]=EditationColor;
-			document.getElementById(Address).src="Assets/Tiles/Plains.png";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Industrial District.png";
-			document.getElementById(Strucdress).style.filter=Factions[EditationColor].ChromaCode;
-			break;
-
-		case 10:
-			var offset=-8;
-			EditorControlMap[X+EditorStandardX-1][Y+EditorStandardY-1]=EditationColor;
-			document.getElementById(Address).src="Assets/Tiles/Plains.png";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Military-Industrial Complex.png";
-			document.getElementById(Strucdress).style.filter=Factions[EditationColor].ChromaCode;
-			break;
-
-		case 11:
-			var offset=-14;
-			EditorControlMap[X+EditorStandardX-1][Y+EditorStandardY-1]=EditationColor;
-			document.getElementById(Address).src="Assets/Tiles/Plains.png";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Aviation Industrial Facility.png";
-			document.getElementById(Strucdress).style.filter=Factions[EditationColor].ChromaCode;
-			break;
-
-		case 12:
-			var offset=-14;
-			EditorControlMap[X+EditorStandardX-1][Y+EditorStandardY-1]=EditationColor;
-			document.getElementById(Address).src="Assets/Tiles/Plains.png";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Shipbuilding Facility.png";
-			document.getElementById(Strucdress).style.filter=Factions[EditationColor].ChromaCode;
-			break;
-
-		case 13:
-			var offset=0;
-			EditorControlMap[X+EditorStandardX-1][Y+EditorStandardY-1]=EditationColor;
-			document.getElementById(Address).src="Assets/Tiles/Plains.png";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Headquarters.png";
-			document.getElementById(Strucdress).style.filter=Factions[EditationColor].ChromaCode;
-			break;
-
-		case 14:
-			var offset=-18;
-			EditorControlMap[X+EditorStandardX-1][Y+EditorStandardY-1]=EditationColor;
-			document.getElementById(Address).src="Assets/Tiles/Plains.png";
-			document.getElementById(Strucdress).style.visibility="visible";
-			document.getElementById(Strucdress).style.top=offset+"px";
-			document.getElementById(Strucdress).src= "Assets/Tiles/Command Center.png";
-			document.getElementById(Strucdress).style.filter=Factions[EditationColor].ChromaCode;
-			break;
-
-		case 15:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			if(type==2){offset=-4};
-			if(type==3){offset=-3};
-			if(type==4){offset=-12}
-			variant= "Assets/Tiles/Taiga"+type+".png";
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src=variant;
-			break;
-
-		case 16:
-			var type= Math.ceil(Math.random()*3);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Desert"+type+".png";
-			break;
-
-		case 17:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			variant= "Assets/Tiles/Tundra"+type+".png";
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src=variant;
-			break;
-
-		case 18:
-			var type= Math.ceil(Math.random()*3);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Extreme Desert"+type+".png";
-			break;
-
-		case 19:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Arctic Hellhole"+type+".png";
-			break;
-
-		case 20:
-			var offset=0;
-			var axis="V";
-			var variant=0;
-			if(X>1){if(Terrain[EditorMap[X-2][Y-1]].SailThrough<100){axis="H"}};
-			if(Y<10){if(Terrain[EditorMap[X-1][Y]].SailThrough<100){axis="V"}};
-			if(X<10){if(Terrain[EditorMap[X][Y-1]].SailThrough<100){axis="H"}};
-			if(Y>1){if(Terrain[EditorMap[X-1][Y-2]].SailThrough<100){axis="V"}};
-			if(X>1){if(EditorMap[X-2][Y-1]==20 || EditorMap[X-2][Y-1]==21){axis="V"}};
-			if(Y<10){if(EditorMap[X-1][Y]==20 || EditorMap[X-1][Y]==21){axis="V"}};
-			if(X<10){if(EditorMap[X][Y-1]==20 || EditorMap[X][Y-1]==21){axis="V"}};
-			if(Y>1){if(EditorMap[X-1][Y-2]==20 || EditorMap[X-1][Y-2]==21){axis="V"}};
-
-			if(axis=="V"){
-			if(X>1){if(Terrain[EditorMap[X-2][Y-1]].WalkThrough<100){variant+=1;}};
-			if(X<10){if(Terrain[EditorMap[X][Y-1]].WalkThrough<100){variant+=2;}};};
-			if(axis=="H"){if(Y>1){if(Terrain[EditorMap[X-1][Y-2]].WalkThrough<100){variant+=1;}};
-			if(Y<10){if(Terrain[EditorMap[X-1][Y]].WalkThrough<100){variant+=2;}};};
-
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Bridge"+axis+variant+".png";
-			break;
-
-		case 21:
-			var offset=0;
-			var axis="V";
-			var variant=0;
-			if(X>1){if(Terrain[EditorMap[X-2][Y-1]].SailThrough<100){axis="H"}};
-			if(Y<10){if(Terrain[EditorMap[X-1][Y]].SailThrough<100){axis="V"}};
-			if(X<10){if(Terrain[EditorMap[X][Y-1]].SailThrough<100){axis="H"}};
-			if(Y>1){if(Terrain[EditorMap[X-1][Y-2]].SailThrough<100){axis="V"}};
-			if(X>1){if(EditorMap[X-2][Y-1]==20 || EditorMap[X-2][Y-1]==21){axis="V"}};
-			if(Y<10){if(EditorMap[X-1][Y]==20 || EditorMap[X-1][Y]==21){axis="V"}};
-			if(X<10){if(EditorMap[X][Y-1]==20 || EditorMap[X][Y-1]==21){axis="V"}};
-			if(Y>1){if(EditorMap[X-1][Y-2]==20 || EditorMap[X-1][Y-2]==21){axis="V"}};
-
-			if(axis=="V"){
-			if(X>1){if(Terrain[EditorMap[X-2][Y-1]].WalkThrough<100){variant+=1;}};
-			if(X<10){if(Terrain[EditorMap[X][Y-1]].WalkThrough<100){variant+=2;}};};
-			if(axis=="H"){if(Y>1){if(Terrain[EditorMap[X-1][Y-2]].WalkThrough<100){variant+=1;}};
-			if(Y<10){if(Terrain[EditorMap[X-1][Y]].WalkThrough<100){variant+=2;}};};
-
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/HighBridge"+axis+variant+".png";
-			break;
-
-		case 22:
-			var offset=0;
-			var variant=0;
-
-			if(X>1){if(Terrain[EditorMap[X-2][Y-1]].SailThrough<100){variant+=1;}};
-			if(Y<10){if(Terrain[EditorMap[X-1][Y]].SailThrough<100){variant+=2;}};
-			if(X<10){if(Terrain[EditorMap[X][Y-1]].SailThrough<100){variant+=4;}};
-			if(Y>1){if(Terrain[EditorMap[X-1][Y-2]].SailThrough<100){variant+=8;}};
-
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/River"+variant+".png";
-			break;
-
-		case 23:
-			var offset=0;
-			var variant=0;
-			//alert(Y);
-			if(X>1){if(Terrain[EditorMap[X-2][Y-1]].SailThrough<100){variant+=1;}};
-			if(Y<10){if(Terrain[EditorMap[X-1][Y]].SailThrough<100){variant+=2;}};
-			if(X<10){if(Terrain[EditorMap[X][Y-1]].SailThrough<100){variant+=4;}};
-			if(Y>1){if(Terrain[EditorMap[X-1][Y-2]].SailThrough<100){variant+=8;}};
-			if(X==1){variant+=1};
-			if(Y==10){variant+=2};
-			if(X==10){variant+=4};
-			if(Y==1){variant+=8};
-
-			if(X>1 && Y>1){if(Terrain[EditorMap[X-2][Y-2]].SailThrough==100 && variant==15){document.getElementById("A "+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.visibility="visible"}};
-			if(X>1 && Y<10){if(Terrain[EditorMap[X-2][Y]].SailThrough==100 && variant==15){document.getElementById("B "+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.visibility="visible"}};
-			if(X<10 && Y>1){if(Terrain[EditorMap[X][Y-2]].SailThrough==100 && variant==15){document.getElementById("C "+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.visibility="visible"}};
-			if(X<10 && Y<10){if(Terrain[EditorMap[X][Y]].SailThrough==100 && variant==15){document.getElementById("D "+(X+1-StandardX)+"X"+(Y+1-StandardY)).style.visibility="visible"}};
-
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Sea"+variant+".png";
-			break;
-
-		case 24:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Reef"+type+".png";
-			break;
-
-		case 25:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Floes"+type+".png";
-			break;	
-
-		case 26:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Archipelago"+type+".png";
-			break;	
-
-		case 27:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Rocks"+type+".png";
-			break;	
-
-		case 28:
-			var type= Math.ceil(Math.random()*4);
-			var offset=0;
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Icebergs"+type+".png";
-			break;	
-
-		case 29:
-			var offset=0;
-			var variant=0;
-
-			if(X>1){if(Terrain[EditorMap[X-2][Y-1]].SailThrough==100){variant+=1;}};
-			if(Y<10){if(Terrain[EditorMap[X-1][Y]].SailThrough==100){variant+=2;}};
-			if(X<10){if(Terrain[EditorMap[X][Y-1]].SailThrough==100){variant+=4;}};
-			if(Y>1){if(Terrain[EditorMap[X-1][Y-2]].SailThrough==100){variant+=8;}};
-
-			document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Shore"+variant+".png";
-			break;
-
-		case 30:
-			//var offset=-9;
-			EditorControlMap[X+EditorStandardX-1][Y+EditorStandardY-1]=EditationColor;
-			//document.getElementById(Address).style.top=offset+"px";
-			document.getElementById(Address).src= "Assets/Tiles/Oil Rig"+".png";
-			break;
-
-		default:break;
+			}
 		}
-	}else{
-	let Chosenunit=ChosenUnit-10+10*EditorUnitClass;
-	let choka=Units[Chosenunit].Movement;
-	let boka=Terrain[EditorMap[X+EditorStandardX-1][Y+EditorStandardY-1]];
-	if(choka=="Foot"){boka=boka.WalkThrough}else if(choka=="Wheeled"){boka=boka.DriveThrough}else if(choka=="Tracked"){boka=boka.RollThrough}else if(choka=="Amphibious"){boka=boka.WadeThrough}else if(choka=="Flight"){boka=boka.FlyThrough}else if(choka=="Rudder"){boka=boka.SailThrough}else if(choka=="Heavy Rudder"){boka=boka.DeepSailThrough}else if(choka=="Stationary"){boka=boka.SailThrough-1}
+	}
+}
 
-	if(100>boka){
-		if(MemoryX==X && MemoryY==Y){EditationDirection++}else{EditationDirection=1};
-		if(EditationDirection>4){EditationDirection-=4};
-		MemoryX=X;
-		MemoryY=Y;
-		document.getElementById("Entity "+X+" X "+Y).src="Assets/Units/Static/"+Units[Chosenunit].shortname+EditationDirection+".png";
-		//document.getElementById("Entity "+X+" X "+Y).style.filter=Factions[EditationColor].ChromaCode;
-		document.getElementById("Entity "+X+" X "+Y).style.left=(Units[Chosenunit].StaticOffsetX ?? [0,0,0,0,0])[EditationDirection]+"px";
-		document.getElementById("Entity "+X+" X "+Y).style.top=(Units[Chosenunit].StaticOffsetY ?? [0,0,0,0,0])[EditationDirection]+"px";
-		EditorEntityMap[X+EditorStandardX-1][Y+EditorStandardY-1]={id:Chosenunit, faction:EditationColor, direction:EditationDirection, x:X+EditorStandardX-1, y:Y+EditorStandardY-1,hpModifier:0,morale:0};	
-	}};};
+function RefreshMap(){};
+
 function RefreshTile(X,Y){
 
 	if(EditationToggle=="Tile"){
@@ -6211,7 +5810,6 @@ function RefreshMapEditor(){
 }
 
 function RegionalizeTile(X,Y){
-	//alert(X);
 	let adr=EditorMap[Y+EditorStandardX][X+EditorStandardY];
 	if(adr==13 || adr==14 || adr==30){SelectedNode=CapitolNodeRegistry[Y+EditorStandardX][X+EditorStandardY]??{Name:"null"};EditorRegionMap[Y+EditorStandardX][X+EditorStandardY]=SelectedNode.Name;}
 
@@ -6242,19 +5840,19 @@ function RemoveKebabIMeanBlep(){
 		"Crep-", "-"
 	];
 
-	for(let Me_Go = 0; Me_Go <= MapHeight; Me_Go++) {
-		for(let It_Be = 0; It_Be <= MapWidth; It_Be++) {
+	for(let i = 0; i <= MapHeight; i++) {
+		for(let j = 0; j <= MapWidth; j++) {
 			for(let k = 0; k < ELEMENTS_REMOVEABLE.length; k += 2) {
 				const elementID = ELEMENTS_REMOVEABLE[k];
 				const splitter = ELEMENTS_REMOVEABLE[k + 1];
-				const element = document.getElementById(elementID + Me_Go + splitter + It_Be);
+				const element = document.getElementById(elementID + i + splitter + j);
 
 				if(element) {
 					element.remove();
 				}
 			}
 
-			const blargElement = document.getElementById("BLARG " + Me_Go + "X" + It_Be);
+			const blargElement = document.getElementById("BLARG " + i + "X" + j);
 
 			if(blargElement) {
 				blargElement.src = "Assets/Miscellaneous/Nothing.png";
@@ -6263,21 +5861,20 @@ function RemoveKebabIMeanBlep(){
 	}
 }
 
-function RemoveMarker(index){
-	marker=document.getElementById("Marker"+index);
-	marker.remove();
-}
-
 function RollMap(Direction){
 	if(Direction==1){document.getElementById('UnitMap').scrollBy(0,-TILE_SIZE);document.getElementById('RegionMap').scrollBy(0,-TILE_SIZE)};
 	if(Direction==2){document.getElementById('UnitMap').scrollBy(TILE_SIZE,0);document.getElementById('RegionMap').scrollBy(TILE_SIZE,0)};
 	if(Direction==3){document.getElementById('UnitMap').scrollBy(0,TILE_SIZE);document.getElementById('RegionMap').scrollBy(0,TILE_SIZE)};
-	if(Direction==4){document.getElementById('UnitMap').scrollBy(-TILE_SIZE,0);document.getElementById('RegionMap').scrollBy(-TILE_SIZE,0)};};
+	if(Direction==4){document.getElementById('UnitMap').scrollBy(-TILE_SIZE,0);document.getElementById('RegionMap').scrollBy(-TILE_SIZE,0)};
+}
+
 function RollMapEditor(Direction){
 	if(Direction==1){document.getElementById('TileContainer').scrollBy(0,-280)};
 	if(Direction==2){document.getElementById('TileContainer').scrollBy(280,0)};
 	if(Direction==3){document.getElementById('TileContainer').scrollBy(0,280)};
-	if(Direction==4){document.getElementById('TileContainer').scrollBy(-280,0)};};
+	if(Direction==4){document.getElementById('TileContainer').scrollBy(-280,0)};
+}
+
 function RunEvent(Event){
 	console.log(Event);
 	if(Event.Intralogue!=0){if(DialogueChoice && Event.FactionTarget==PlayerChoiceFaction){launchDialogueBloc(Language.IntraeventTranscripts[Event.Intralogue],0)}};
@@ -6365,11 +5962,6 @@ function RunEvent(Event){
 }
 
 function SBLARG(X,Y,pip){
-	//alert(X+" "+Y);
-
-	//alert(BLARG.length);
-	//console.log(pip);
-	
 	let Pip=pip??[0,0];
 	let ics=X;
 	let igrec=Y;
@@ -6377,10 +5969,6 @@ function SBLARG(X,Y,pip){
 	let hor=Math.abs(ics-BLARG[BLARG.length-1].X);
 	let ver=Math.abs(igrec-BLARG[BLARG.length-1].Y);
 	let DeviationFactor=hor+ver;
-	//Pip.pop();
-	//console.log(Pip);
-	//console.log(hor+""+ ver + DeviationFactor);
-	//console.log(DeviationFactor);
 	
 	document.getElementById("BLARG "+(X+1)+"X"+(Y+1)).src="Assets/BLARG/Singularity.png";
 
@@ -6431,10 +6019,8 @@ function SBLARG(X,Y,pip){
 
 
 
-			};
-		//else{document.getElementById("BLARG "+(X+1-StandardX)+"X"+(Y+1-StandardY)).src="Assets/Miscellaneous/Nothing.png"};
-		//alert(BLARG.length);
-	//alert(BLARG.length);
+		}
+
 	for(let B=0; B<BLARG.length; B++){
 		if(B==0 && BLARG.length>1){
 			let Blavar=0;
@@ -6491,19 +6077,6 @@ function SBLARG(X,Y,pip){
 			document.getElementById("BLARG "+(BLARG[B].X+1)+"X"+(BLARG[B].Y+1)).src="Assets/BLARG/"+Blavar+".png";
 
 		};
-
-	};};
-function scrapMap(){
-	//This will probably, actually most likely, not be necessary, Silver
-	//Keep it around until I order you to scrap it
-	//Scrapping a scrapping function XD
-	//The irony is not lost on me XD
-
-	//EDIT: no longer useless HAHAHA
-	for(let i=X;i<X+10;i++){
-		for(let j=Y;j<Y+10;j++){
-			document.getElementById("Slot "+(i+1)+" X "+(j+1)).remove();
-		}
 	}
 }
 
@@ -6624,9 +6197,7 @@ const ConvoyPickup = function(tileX, tileY) {
 
 	//picking up,
 	YourMoney -= SpecialOptions.COST.NAVAL;
-	//alert(Unit.index);
-	//alert(rostermap[Unit.x][Unit.y].HP);
-	//alert(HPIndex);
+
 	let HPIndex=rostermap[Unit.x][Unit.y].life/Units[rostermap[Unit.x][Unit.y].unitType].HP;
 	
 	MapRoster[Unit.index].id=51;
@@ -6774,9 +6345,9 @@ function TestMap(){
 
 	for(let x=1;x<=10;x++){for(let y=1;y<=10;y++){document.getElementById("Entity "+x+" X "+y).style.visibility='hidden'; document.getElementById("Tile "+x+" X "+y).style.visibility='hidden';document.getElementById("Structure "+x+" X "+y).style.visibility='hidden';document.getElementById("a "+x+" X "+y).style.visibility='hidden';document.getElementById("b "+x+" X "+y).style.visibility='hidden';document.getElementById("c "+x+" X "+y).style.visibility='hidden';document.getElementById("d "+x+" X "+y).style.visibility='hidden';}};
 	initializeSpecialBattle(EditorLevel);
+	}
+}
 
-
-	};};
 function ToggleBattleflags(){
 
 	FlagMap=[];
@@ -6810,7 +6381,7 @@ function ToggleBattleflags(){
 	if(FlagsToggled){for(let i=StandardX;i<StandardX+10;i++){for(let j=StandardY;j<StandardY+10;j++){document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).style.visibility='hidden';}};};
 
 	if(FlagsToggled){FlagsToggled=false}else{FlagsToggled=true};
-};
+}
 
 function ToggleHealthBars(){
 
@@ -6848,17 +6419,21 @@ function ToggleHealthBars(){
 
 	};
 
-	if(BarsToggled){BarsToggled=false}else{BarsToggled=true};};
+	if(BarsToggled){BarsToggled=false}else{BarsToggled=true}
+}
+
 function ToggleHealthBar(X,Y){
-		let i=X-1;
-		let j=Y-1;
-			if(rostermap[i][j]!=0){
-				document.getElementById("HPContainer "+(i+1)+"X"+(j+1)).style.visibility="visible";
-				document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.visibility="visible";
-				document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.height="8px";
-				document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.width=39*(rostermap[i][j].life/Units[rostermap[i][j].unitType].HP)+"px";
-				document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.filter="brightness("+rostermap[i][j].life/Units[rostermap[i][j].unitType].HP+")";
-			};};
+	let i=X-1;
+	let j=Y-1;
+	if(rostermap[i][j]!=0){
+		document.getElementById("HPContainer "+(i+1)+"X"+(j+1)).style.visibility="visible";
+		document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.visibility="visible";
+		document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.height="8px";
+		document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.width=39*(rostermap[i][j].life/Units[rostermap[i][j].unitType].HP)+"px";
+		document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.filter="brightness("+rostermap[i][j].life/Units[rostermap[i][j].unitType].HP+")";
+	}
+}
+
 function ToggleMoraleBadge(X,Y){
 	let i=X-1;
 	let j=Y-1;
@@ -6906,8 +6481,8 @@ function ToggleMoraleBadge(X,Y){
 		}
 	}
 }
-function ToggleTileBlock(Block){
 
+function ToggleTileBlock(Block){
 	if(Block==1){TerrainLedger=TerrainLedger_Biomes};
 	if(Block==2){TerrainLedger=TerrainLedger_LandFeatures};
 	if(Block==3){TerrainLedger=TerrainLedger_UrbanFeatures};
@@ -6918,16 +6493,12 @@ function ToggleTileBlock(Block){
 
 	for(let t=1; t<=10; t++){document.getElementById("EditorTile"+t).src="Assets/Miscellaneous/Nothing.png"};
 	for(let e=0; e<TerrainLedger.length; e++){document.getElementById("EditorTile"+(e+1)).src="Assets/Tiles/"+Terrain[TerrainLedger[e]].name+".png"; document.getElementById("EditorTile"+(e+1)).style.top=14+e*61+(Terrain[TerrainLedger[e]].StD??0)+"px"};
-
-
 }
 
 function UndoMove(){
 	if((LastMove.ID ?? 0!=0) && !(KillingUnit??false)){
-		//alert(LastMove.DIR);
 		let exX=MapRoster[LastMove.ID].x;
 		let exY=MapRoster[LastMove.ID].y;
-		//alert(exX+" "+exY);
 		
 		MapRoster[LastMove.ID].x=LastMove.X;
 		MapRoster[LastMove.ID].y=LastMove.Y;
@@ -6935,14 +6506,13 @@ function UndoMove(){
 		let temp="Entity "+(LastMove.X+1)+"X"+(LastMove.Y+1);
 		let tempcore="EntityCore "+(LastMove.X+1)+"X"+(LastMove.Y+1);
 		let tempmesh="EntityMesh "+(LastMove.X+1)+"X"+(LastMove.Y+1);;
-		//console.log(document.getElementById(temp).style.visibility);
+
 		document.getElementById("Marker "+(LastMove.X+1)+"X"+(LastMove.Y+1)).style.visibility="visible";
 		document.getElementById(temp).style.visibility="visible";
 		document.getElementById(tempcore).style.filter=Factions[MapRoster[LastMove.ID].faction].ChromaCode;
 		if(LastMove.cloak??false){document.getElementById(temp).style.filter="opacity(50%)";MapRoster[LastMove.ID].isCloaked=true};
 		if(LastMove.encore??false){MapRoster[LastMove.ID].canEncore=true};
-		//alert(rostermap[exX][exY]);
-		//alert(AdjacentCloakers);
+
 		//if(Units[MapRoster[LastMove.ID].unitType].MaxRange==1 && (LastMove.encore??false)){document.getElementById("Marker "+(exX+1)+"X"+(exY+1)).style.visibility="hidden"};
 		for(let a=0;a<AdjacentCloakers.length;a++){
 			//the last part of the 1-directional might have something to do with uncloaking allies, but that never happens. Maybe it was once an issue but not anymore?
@@ -6964,14 +6534,10 @@ function UndoMove(){
 		rostermap[LastMove.X][LastMove.Y].y=LastMove.Y;
 		rostermap[LastMove.X][LastMove.Y].direction=LastMove.DIR;
 
-		//rostermap[LastMove.X][LastMove.Y]=rostermap[exX][exY];
-		//console.log(rostermap[LastMove.X][LastMove.Y]);
-		//console.log(MapRoster[LastMove.ID]);
 		if(LastMove.X!=exX || LastMove.Y!=exY){rostermap[exX][exY]=0;
 		document.getElementById("Entity "+(exX+1)+"X"+(exY+1)).style.visibility="hidden";
 		};
 		
-		//alert(MapRoster[LastMove.ID].x+" "+MapRoster[LastMove.ID].y);
 		//MapRoster[LastMove.EID].x=LastMove.EX;
 		//MapRoster[LastMove.EID].y=LastMove.EY;
 		if(LastMove.EID ?? 0!=0){
@@ -7012,7 +6578,9 @@ function UndoMove(){
 		alert(KillMessage);
 
 
-	};};
+	}
+}
+
 function UnitLost(index){
 	battalion.soundPlayer.playSound("Unit_Lost");
 
@@ -7073,8 +6641,9 @@ function UnitLost(index){
 	
 	//MapRoster.splice(index,1);
 	};
-	};};
-function UnitTarget(UnitType,X,Y){};
+	}
+}
+
 function UnmontreUnit(Index){
 	document.getElementById('UnitMontre'+Index).src='Assets/Units/Static/'+Units[Index].shortname+'3.png'; 
 
@@ -7084,9 +6653,8 @@ function UnmontreUnit(Index){
 		document.getElementById('UnitMontre'+Index+'Mesh').src='Assets/Miscellaneous/Nothing.png';
 	}
 }
+
 function WBLARG(X,Y){
-	//alert(X+" "+Y);
-	//alert(ChosenUnit.ics+" "+ChosenUnit.igrec);
 	if(BLARG.length>1) {
 		if(BLARG[BLARG.length-2].X==X+StandardX-1 && BLARG[BLARG.length-2].Y==Y+StandardY-1){
 			document.getElementById("BLARG "+(BLARG[BLARG.length-1].X-StandardX+1)+"X"+(BLARG[BLARG.length-1].Y-StandardY+1)).src="Assets/Miscellaneous/Nothing.png";
@@ -7117,25 +6685,26 @@ function WBLARG(X,Y){
 	}
 }
 
-function ClearEndScreen(){};
-function InterfaceFuck(){};
-function InterfaceUnfuck(){};
-
 CallPreloader();
 //GeneralInitializer();
 
 //document.getElementById('EditorP1').oncontextmenu=function(){EditorMap=Kaula;RefreshMapEditor()};
 //This protocol shall disable MapEditor paraphernalia and allow the pilfering of a giant(14000*5600) map, later to be shrunk to 1400*560.
 
-/*
-Mainscreen=Math.ceil(Math.random()*9);
-if(Mainscreen==1){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Relampago.jpg"};
-if(Mainscreen==2){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Backdrop ETHA.jpg"};
-if(Mainscreen==3){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Vladov's Last Charge.png"};
-if(Mainscreen==4){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/BackdropProvisory.png"};
-if(Mainscreen==5){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Continental Security League.png"};
-if(Mainscreen==6){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Battle of Vardar.jpg"};
-if(Mainscreen==7){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Battle of Burluk.jpg"};
-if(Mainscreen==8){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Stulpikan Pandur.png"};
-if(Mainscreen==9){document.getElementById("MAIN_MENU_IMAGE").src="Assets/MainMenuScreens/Coloured Tanks.jpg"};*/
-//Inspection(0,MohConstants,MohRoster);
+const randomizeMainScreen = function() {
+	const images = [
+		"Assets/MainMenuScreens/Relampago.jpg",
+		"Assets/MainMenuScreens/Backdrop ETHA.jpg",
+		"Assets/MainMenuScreens/Vladov's Last Charge.png",
+		"Assets/MainMenuScreens/BackdropProvisory.png",
+		"Assets/MainMenuScreens/Continental Security League.png",
+		"Assets/MainMenuScreens/Battle of Vardar.jpg",
+		"Assets/MainMenuScreens/Battle of Burluk.jpg",
+		"Assets/MainMenuScreens/Stulpikan Pandur.png",
+		"Assets/MainMenuScreens/Coloured Tanks.jpg"
+	]
+
+	const id = Math.floor(Math.random() * images.length);
+
+	battalion.uiHandler.mainMenu.image.src = images[id];
+}
