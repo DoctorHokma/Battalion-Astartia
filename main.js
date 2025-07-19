@@ -1,5 +1,6 @@
 const PROFILE_ID = "TEST_PROFILE";
 const OPENING_TRACK = "NavalEpic2";
+const TILE_SIZE = 56;
 
 const createContext = function() {
 	const context = new Battalion();
@@ -95,7 +96,9 @@ var AdjacentCloakers = [];
 var Resolution = false;
 var Victory = false;
 
-//Board Arrays
+//Board Values
+var MapWidth = 0;
+var MapHeight = 0;
 var SubRosters = [];
 var AttackOrder = [];
 var MapRoster = [];
@@ -109,6 +112,8 @@ const resetBoard = function() {
 
 	Resolution = false;
 	Victory = false;
+	MapWidth = 0;
+	MapHeight = 0;
 }
 
 const create2DBuffer = function(mapWidth, mapHeight, fill = 0) {
@@ -123,6 +128,28 @@ const create2DBuffer = function(mapWidth, mapHeight, fill = 0) {
 	}
 
 	return buffer;
+}
+
+const isOutOfBounds = function(tileX, tileY) {
+	return tileX < 0 || tileY < 0 || tileX >= MapWidth || tileY >= MapHeight;
+}
+
+const getEntity = function(tileX, tileY) {
+	if(isOutOfBounds(tileX, tileY)) {
+		return 0; //should be null as rostermap is a field of references.
+	}
+
+	return rostermap[tileY][tileX];
+}
+
+const getEntityById = function(id) {
+	for(let i = 0; i < MapRoster.length; i++) {
+		if(MapRoster[i].id === id) {
+			return MapRoster[i];
+		}
+	}
+
+	return null;
 }
 
 const selectLanguage = function(battalion, languageID) {
@@ -202,17 +229,10 @@ function AddRegionalNode() {
 }
 
 function AI_Act(i){
-	let InternalDelayerFactor=0;
-	ActionRegister={Movement:0,Attack:0,Counter:0,Liquidate:0};
-	//console.log(i);
+	let InternalDelayerFactor = 0;
 
-	//let Funds=Constants.Funds[];
-	//alert(Funds);
-	
+	ActionRegister = {Movement:0,Attack:0,Counter:0,Liquidate:0};
 
-	//console.log(GlobalDelayerConstant);
-	
-	//console.log(i+"|"+MAXI);
 	if(i<MAXI){
 		if(Funds>Units[ActiveRoster[i].unitType].Cost/2 && ActiveRoster[i].life/Units[ActiveRoster[i].unitType].HP<0.2*Difficulty){
 			let randomizer=Math.ceil(Math.random()*10);
@@ -223,9 +243,9 @@ function AI_Act(i){
 				Constants.Funds[AttackOrder[(Turn-1)%SubRosters.length]]=Funds;
 			}
 		}
-		//setTimeout(AI_Scouter, 100*i, ActiveRoster[i], Map);
+
 		AI_Scouter(ActiveRoster[i], Map);
-		//function RemainingAct(){
+
 		InternalDelayerFactor+=200;
 
 		if(ActionRegister.Movement!=0){
@@ -256,15 +276,10 @@ function AI_Act(i){
 			InternalDelayerFactor+=1000;
 		}
 		
-		//setTimeout(RemainingAct,0);
-
-		//console.log(InternalDelayerFactor);
 		GlobalDelayerConstant=InternalDelayerFactor;
 
 		setTimeout(AI_Act,InternalDelayerFactor+100,i+1)
 	} else if(i==MAXI){
-		//console.log(i+"|"+MAXI);
-		//console.log(Turn+"|"+SubRosters.length);
 		setTimeout(() => {
 			EndTurn(SubRosters, Map, Constants, MapRoster);
 		}, GlobalDelayerConstant);
@@ -286,9 +301,7 @@ function AI_Scouter(Unit,Map){
 	const Lat=Unit.x;
 	const Long=Unit.y;
 	const unitIndex=Unit.index;
-	const mapWidth = Map[0].length;
-	const mapHeight = Map.length;
-	const Stepmap = createStepMap(Map, mapHeight, mapWidth, Type);
+	const Stepmap = createStepMap(Map, Type);
 
 	let SPD=Unit.speed;
 	let X=Lat;
@@ -296,17 +309,12 @@ function AI_Scouter(Unit,Map){
 
 	Path=[1];
 	Pizdamatii=[];
+
 	//Here it pans the camera
-	PanX=Math.min(Math.max(X-5,0),Map.length)*56;
-	PanY=Math.min(Math.max(Y-5,0),Map[0].length)*56;
-	//console.log(PanX+" "+PanY);
-	//console.log(document.getElementById("UnitMap").style.overflowX+" "+document.getElementById("UnitMap").style.overflowY);
-	//let cmx=document.getElementById("UnitMap").scrollX;
-	//let cmy=document.getElementById("UnitMap").style.offsetY;
-	//alert(cmx);
-	//document.getElementById("UnitMap").scrollBy(-Map.length*56,-Map[0].length*56+PanX);
-	//document.getElementById("UnitMap").scrollBy(PanY,PanX);
-	document.getElementById("UnitMap").scroll(PanY,PanX);
+	const PanY = Math.min(Math.max(X - 5, 0), MapHeight) * 56;
+	const PanX = Math.min(Math.max(Y - 5, 0), MapWidth) * 56;
+
+	document.getElementById("UnitMap").scroll(PanX, PanY);
 
 	//Standard-Issue Pathing Loop
 	while(Path.length>0){
@@ -317,14 +325,14 @@ function AI_Scouter(Unit,Map){
 
 		if(X+x<0 || Y+y<0) Path[Path.length-1]+=1;
 
-		if(X+x>=Map.length || Y+y>=Map[0].length) Path[Path.length-1]++;
+		if(X+x>=Map.length || Y + y >= MapWidth) Path[Path.length-1]++;
 
-		if(X+x<Map.length && X+x>=0 && Y+y<Map[0].length && Y+y>=0){
+		if(X+x<Map.length && X+x>=0 && Y+y < MapWidth && Y+y>=0){
 			if(rostermap[X+x][Y+y].coallition != Coallition && rostermap[X+x][Y+y]!=0) CollisionCheck=true;
 		}
 
 		//The block that checks whether advancing is possible and advances
-		if(SPD>0 && Path[Path.length-1]<5 && X+x<Map.length && Y+y<Map[0].length){
+		if(SPD>0 && Path[Path.length-1]<5 && X+x<Map.length && Y+y < MapWidth){
 			let x=(Path[Path.length-1]-2)*(Path[Path.length-1])%2;
 			let y=(3-Path[Path.length-1])*(Path[Path.length-1]-1)%2;
 
@@ -384,7 +392,7 @@ function AI_Scouter(Unit,Map){
 		}
 	}
 
-	AddressMap = create2DBuffer(mapWidth, mapHeight, 0);
+	AddressMap = create2DBuffer(MapWidth, MapHeight, 0);
 	Thing=JSON.parse(JSON.stringify(AddressMap));
 	//AddressMap=[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]];
 	
@@ -473,7 +481,7 @@ function AI_Scouter(Unit,Map){
 			if(ics>0){if(rostermap[ics-1][igrec].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:TargetList[mu],X:ics,Y:igrec,TX:-1,TY:0,F:0};}};
 			if(ics<Map.length-1){if(rostermap[ics+1][igrec].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:TargetList[mu],X:ics,Y:igrec,TX:1,TY:0,F:0};}};
 			if(igrec>0){if(rostermap[ics][igrec-1].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:TargetList[mu],X:ics,Y:igrec,TX:0,TY:-1,F:0};}};
-			if(igrec<Map[0].length-1){if(rostermap[ics][igrec+1].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:TargetList[mu],X:ics,Y:igrec,TX:0,TY:1,F:0};}};
+			if(igrec<MapWidth-1){if(rostermap[ics][igrec+1].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:TargetList[mu],X:ics,Y:igrec,TX:0,TY:1,F:0};}};
 			//while((ContactTargetList[ContactTargetList.length-1].X+ContactTargetList[ContactTargetList.length-1].TX == OX) && (ContactTargetList[ContactTargetList.length-1].Y+ContactTargetList[ContactTargetList.length-1].TY == OY)){ContactTargetList.pop()};
 	
 			};
@@ -481,13 +489,13 @@ function AI_Scouter(Unit,Map){
 			if(X>0){if(rostermap[X-1][Y]!=0){if(rostermap[X-1][Y].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:[],X:X,Y:Y,TX:-1,TY:0,F:0}}}};
 			if(X<Map.length-1){if(rostermap[X+1][Y]!=0){if(rostermap[X+1][Y].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:[],X:X,Y:Y,TX:1,TY:0,F:0}}}};
 			if(Y>0){if(rostermap[X][Y-1]!=0){if(rostermap[X][Y-1].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:[],X:X,Y:Y,TX:0,TY:-1,F:0}}}};
-			if(Y<Map[0].length-1){if(rostermap[X][Y+1]!=0){if(rostermap[X][Y+1].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:[],X:X,Y:Y,TX:0,TY:1,F:0}}}};
+			if(Y<MapWidth-1){if(rostermap[X][Y+1]!=0){if(rostermap[X][Y+1].coallition!=Coallition){ContactTargetList[ContactTargetList.length]={path:[],X:X,Y:Y,TX:0,TY:1,F:0}}}};
 	
 			BackupTargetList=[];
 			//if(X>0){if(rostermap[X-1][Y]!=0 && rostermap[X-1][Y].coallition!=Coallition){BackupTargetList[BackupTargetList.length]={path:[],X:X,Y:Y,TX:-1,TY:0}}};
 			//if(X<Map.length-1){if(rostermap[X+1][Y]!=0 && rostermap[X+1][Y].coallition!=Coallition){BackupTargetList[BackupTargetList.length]={path:[],X:X,Y:Y,TX:1,TY:0}}};
 			//if(Y>0){if(rostermap[X][Y-1]!=0 && rostermap[X][Y-1].coallition!=Coallition){BackupTargetList[BackupTargetList.length]={path:[],X:X,Y:Y,TX:0,TY:-1}}};
-			//if(Y<Map[0].length-1){if(rostermap[X][Y+1]!=0 && rostermap[X][Y+1].coallition!=Coallition){BackupTargetList[BackupTargetList.length]={path:[],X:X,Y:Y,TX:0,TY:1}}};
+			//if(Y<MapWidth-1){if(rostermap[X][Y+1]!=0 && rostermap[X][Y+1].coallition!=Coallition){BackupTargetList[BackupTargetList.length]={path:[],X:X,Y:Y,TX:0,TY:1}}};
 	
 	
 	
@@ -742,7 +750,7 @@ function AI_Scouter(Unit,Map){
 					DMG *= MoraleHandler.getDamageModifier(Atk.morale);
 					if(hasCertainTrait(Atk.unitType,"Dispersion")){
 						let targets=0;
-						for(let x=Math.max(0,ics-2); x<Math.min(Map.length,ics+2);x++){for(let y=Math.max(0,igrec-2); y<Math.min(Map[0].length,igrec+2);y++){
+						for(let x=Math.max(0,ics-2); x<Math.min(Map.length,ics+2);x++){for(let y=Math.max(0,igrec-2); y<Math.min(MapWidth,igrec+2);y++){
 							if((ics-x)*(ics-x)<=4 && (igrec-y)*(igrec-y)<=4 && rostermap[x][y]!=0){targets++};
 
 							}};
@@ -874,7 +882,7 @@ function AITurn(Roster,Map,Constants){
 	//console.log(MedianUnit.X+" "+MedianUnit.Y);
 
 
-	for(let x=0;x<Map.length;x++){for(y=0;y<Map[0].length;y++){
+	for(let x=0;x<Map.length;x++){for(y=0;y<MapWidth;y++){
 		if( (ControlMap??0) !=0 && ControlMap[x][y]==AIFaction){Constants.Funds[(Turn-1)%SubRosters.length+1]+=GenerateRevenue(Terrain[Map[x][y]].revenue??0,x,y)};
 		if(hasCertainTrait(rostermap[x][y].unitType??0,"Financial Center")&&rostermap[x][y].faction==AIFaction){Constants.Funds[(Turn-1)%SubRosters.length+1]+=GenerateRevenue(100,x,y)};
 
@@ -930,7 +938,7 @@ function AITurn(Roster,Map,Constants){
 			if(Factions[rostermap[Roster[i].x][Roster[i].y-1].faction??0].faction!=Roster[i].coallition && Factions[rostermap[Roster[i].x][Roster[i].y-1].faction??0].faction!=Factions[0].faction)
 				{Stealth=false};
 		};
-		if(Roster[i].y<Map[0].length-1){
+		if(Roster[i].y<MapWidth-1){
 			if(Factions[rostermap[Roster[i].x][Roster[i].y+1].faction??0].faction!=Roster[i].coallition && Factions[rostermap[Roster[i].x][Roster[i].y+1].faction??0].faction!=Factions[0].faction)
 				{Stealth=false};
 		};
@@ -949,7 +957,7 @@ function AITurn(Roster,Map,Constants){
 
 	if((ControlMap??0)!=0){
 		//alert("plm");
-		for(let a=0; a<Map.length; a++){for(b=0; b<Map[0].length; b++){
+		for(let a=0; a<Map.length; a++){for(b=0; b<MapWidth; b++){
 			if(ControlMap[a][b]==AIFaction && Map[a][b]==10 && rostermap[a][b]==0){Industry[Industry.length]={X:a,Y:b,T:1}};
 			if(ControlMap[a][b]==AIFaction && Map[a][b]==11 && rostermap[a][b]==0){Industry[Industry.length]={X:a,Y:b,T:2}};
 			if(ControlMap[a][b]==AIFaction && Map[a][b]==12 && rostermap[a][b]==0){Industry[Industry.length]={X:a,Y:b,T:3}};
@@ -1126,7 +1134,7 @@ function Buttsecks() {
 
 function castMap(Map){
 	for(let i=1;i<=Map.length;i++){
-		for(let j=1;j<=Map[0].length;j++){
+		for(let j=1;j<=MapWidth;j++){
 			var Slot=document.createElement("div");
 			var Tile=document.createElement("img");
 			var Entity=document.createElement("div");
@@ -1733,10 +1741,7 @@ const createUnit = function(config, type, index) {
 }
 
 function CastEntityMap(Map, Roster) {
-	const mapHeight = Map.length;
-	const mapWidth = Map[0].length;
-
-	rostermap = create2DBuffer(mapWidth, mapHeight, 0);
+	rostermap = create2DBuffer(MapWidth, MapHeight, 0);
 
 	//NEYN TODO: WHY DOES IT START AT JUAN?!?
 	for(var k = 1; k < Roster.length; k++) {
@@ -2040,7 +2045,7 @@ function isCloaked(X, Y, type, faction){
 		}
 	}
 
-	if(Y < Map[0].length - 1) {
+	if(Y < MapWidth - 1) {
 		if(Factions[rostermap[Math.max(X, 0)][Y + 1].faction ?? 0].faction != faction && Factions[rostermap[Math.max(X, 0)][Y + 1].faction ?? 0].faction != Factions[0].faction) {
 			return false;
 		}
@@ -2071,7 +2076,7 @@ function DisplayRegions() {
 		let RegionCell = [];
 		NodeMap = [];
 
-		for(let x = 0; x < Map[0].length; x++) {
+		for(let x = 0; x < MapWidth; x++) {
 			RegionCell[RegionCell.length] = 0;
 		}
 
@@ -2090,12 +2095,12 @@ function DisplayRegions() {
 		}
 
 		if(battalion.state !== Battalion.STATE.MAP_EDITOR && RegionMap != [0] && NodeMap != [0]) {
-			for(let i = 1; i < Map[0].length; i++) {
-				for(let j = 1; j < Map.length; j++) {
-					document.getElementById("NBorder " + i + "X" + j).style.visibility = "hidden";
-					document.getElementById("EBorder " + i + "X" + j).style.visibility = "hidden";
-					document.getElementById("SBorder " + i + "X" + j).style.visibility = "hidden";	
-					document.getElementById("WBorder " + i + "X" + j).style.visibility = "hidden";
+			for(let i = 0; i <= MapHeight; i++) {
+				for(let j = 0; j <= MapWidth; j++) {
+					document.getElementById("NBorder " + j + "X" + i).style.visibility = "hidden";
+					document.getElementById("EBorder " + j + "X" + i).style.visibility = "hidden";
+					document.getElementById("SBorder " + j + "X" + i).style.visibility = "hidden";	
+					document.getElementById("WBorder " + j + "X" + i).style.visibility = "hidden";
 				}
 			}
 
@@ -2107,8 +2112,8 @@ function DisplayRegions() {
 				document.getElementById("Regional Capital " + (NodeMap[a].CapitolX + 1) + " " + (NodeMap[a].CapitolY + 1)).innerHTML = NodeMap[a].Capitol;
 			}
 			
-			for(let i = 1; i <= Map.length; i++) {
-				for(let j = 1; j <=Map[0].length; j++) {
+			for(let i = 1; i <= MapHeight; i++) {
+				for(let j = 1; j <= MapWidth; j++) {
 					let factionID = 0;
 
 					for(let k = 0; k < NodeMap.length; k++) {
@@ -2131,7 +2136,7 @@ function DisplayRegions() {
 						document.getElementById("EBorder " + j + "X" + i).style.visibility = "hidden";
 					}
 
-					if(RegionMap[Math.min(Map[0].length - 2, i)][j - 1] != RegionMap[i - 1][j - 1]) {
+					if(RegionMap[Math.min(MapWidth - 2, i)][j - 1] != RegionMap[i - 1][j - 1]) {
 						document.getElementById("SBorder " + j + "X" + i).style.visibility = "inherit";
 					} else {
 						document.getElementById("SBorder " + j + "X" + i).style.visibility = "hidden";
@@ -2473,13 +2478,13 @@ function EndBattle(){
 		};
 
 	let TotalStructures=0;
-	for(let h=0; h<Map.length; h++){for(let i=0; i<Map[0].length; i++){if(Terrain[Map[h][i]].Urbanistics>1){TotalStructures++}}};
+	for(let h=0; h<Map.length; h++){for(let i=0; i<MapWidth; i++){if(Terrain[Map[h][i]].Urbanistics>1){TotalStructures++}}};
 	for(let j=0; j<FactionsInvolved.length; j++){
 		let OwnStructures=0;
 
 
 		for(let k=0; k<Map.length; k++){
-			for(let l=0; l<Map[0].length; l++){
+			for(let l=0; l<MapWidth; l++){
 				if(Terrain[Map[k][l]].Urbanistics>1 && ControlMap[k][l]==Constants.Commanders[j+1].Allegiance){OwnStructures++};
 			};
 		};
@@ -2658,7 +2663,7 @@ function FillMap(Map){
 	//You don't think this is personal for me too!? I'll start at 80% of my power!
 
 	for(let a = 0; a < Map.length; a++) {
-		for(let b = 0; b < Map[0].length; b++) {
+		for(let b = 0; b < MapWidth; b++) {
 			let D1=0;
 			let D2=0;
 			let D3=0;
@@ -2675,7 +2680,7 @@ function FillMap(Map){
 			if(Biome==7){Biome="Martian"};
 
 			if(a>0){D1=Map[a-1][b]};
-			if(b<Map[0].length-1){D2=Map[a][b+1]};
+			if(b<MapWidth-1){D2=Map[a][b+1]};
 			if(a<Map.length-1){D3=Map[a+1][b]};
 			if(b>0){D4=Map[a][b-1]};
 
@@ -2710,14 +2715,14 @@ function FillMap(Map){
 					var type=0;
 
 					if(Terrain[D1].Class=="WF" || Terrain[D1].Class=="WA" || Terrain[D1].Class=="WE" || Terrain[D1].Class=="WS" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="B" || a==0){type+=1};
-					if(Terrain[D2].Class=="WF" || Terrain[D2].Class=="WA" || Terrain[D2].Class=="WE" || Terrain[D2].Class=="WS" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="B" || b==Map[0].length-1){type+=2};
+					if(Terrain[D2].Class=="WF" || Terrain[D2].Class=="WA" || Terrain[D2].Class=="WE" || Terrain[D2].Class=="WS" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="B" || b==MapWidth-1){type+=2};
 					if(Terrain[D3].Class=="WF" || Terrain[D3].Class=="WA" || Terrain[D3].Class=="WE" || Terrain[D3].Class=="WS" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="B" || a==Map.length-1){type+=4};
 					if(Terrain[D4].Class=="WF" || Terrain[D4].Class=="WA" || Terrain[D4].Class=="WE" || Terrain[D4].Class=="WS" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="B" || b==0){type+=8};
 
 					if(a>=1 && b>=1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("A "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("A "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a-1][b-1]].edgeA}};
-					if(a>=1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("B "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("B "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a-1][b+1]].edgeB}};
+					if(a>=1 && b<MapWidth-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("B "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("B "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a-1][b+1]].edgeB}};
 					if(a<Map.length-1 && b>=1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("C "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("C "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a+1][b-1]].edgeC}};
-					if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("D "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("D "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a+1][b+1]].edgeD}};
+					if(a<Map.length-1 && b<MapWidth-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("D "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("D "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a+1][b+1]].edgeD}};
 
 					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 					document.getElementById(TileAdress).style.top="0px";
@@ -2753,9 +2758,9 @@ function FillMap(Map){
 					if(Terrain[D4].SailThrough<100){underType+=8};
 
 					if(a>=1 && b>=1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("A "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("A "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a-1][b-1]].edgeA}};
-					if(a>=1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("B "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("B "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a-1][b+1]].edgeB}};
+					if(a>=1 && b<MapWidth-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("B "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("B "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a-1][b+1]].edgeB}};
 					if(a<Map.length-1 && b>=1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("C "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("C "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a+1][b-1]].edgeC}};
-					if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("D "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("D "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a+1][b+1]].edgeD}};
+					if(a<Map.length-1 && b<MapWidth-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("D "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("D "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a+1][b+1]].edgeD}};
 
 
 					//EditorControlMap[a][b]=EditationColor;
@@ -2830,7 +2835,7 @@ function FillMap(Map){
 					var type=0;
 
 					/*if(Terrain[D1].Class=="LF" || Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || a==0){type+=1};
-					if(Terrain[D2].Class=="LF" || Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || b==Map[0].length-1){type+=2};
+					if(Terrain[D2].Class=="LF" || Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || b==MapWidth-1){type+=2};
 					if(Terrain[D3].Class=="LF" || Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || a==Map.length-1){type+=4};
 					if(Terrain[D4].Class=="LF" || Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || b==0){type+=8};*/
 
@@ -2840,9 +2845,9 @@ function FillMap(Map){
 					if(Terrain[D4].Class=="LF" || Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){type+=8};
 
 					if(a>1 && b>1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("A "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("A "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a-1][b-1]].edgeA}};
-					if(a>1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("B "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("B "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a-1][b+1]].edgeB}};
+					if(a>1 && b<MapWidth-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("B "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("B "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a-1][b+1]].edgeB}};
 					if(a<Map.length-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("C "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("C "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a+1][b-1]].edgeC}};
-					if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("D "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("D "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a+1][b+1]].edgeD}};
+					if(a<Map.length-1 && b<MapWidth-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("D "+(a+1)+"X"+(b+1)).style.visibility="visible";document.getElementById("D "+(a+1)+"X"+(b+1)).src=BIOMES[BiomeMap[a+1][b+1]].edgeD}};
 
 					var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 					document.getElementById(TileAdress).style.top="0px";
@@ -2929,7 +2934,6 @@ function FocalMapRefresh(X,Y){
 
 	};
 function FocalTileRefresh(X,Y){
-		//let Map=Map;
 		let ics=X+1;
 		let igrec=Y+1;
 		let TileAdress="Tile "+ics+"X"+igrec;
@@ -2974,7 +2978,7 @@ function FocalTileRefresh(X,Y){
 		let D4=0;
 
 		if(a>0){D1=Map[a-1][b]};
-		if(b<Map[0].length-1){D2=Map[a][b+1]};
+		if(b<MapWidth-1){D2=Map[a][b+1]};
 		if(a<Map.length-1){D3=Map[a+1][b]};
 		if(b>0){D4=Map[a][b-1]};
 		
@@ -3009,14 +3013,14 @@ function FocalTileRefresh(X,Y){
 			var type=0;
 
 			if(Terrain[D1].Class=="WF" || Terrain[D1].Class=="WA" || Terrain[D1].Class=="WE" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="B" || Terrain[D1].Class=="WS" || a==0){type+=1};
-			if(Terrain[D2].Class=="WF" || Terrain[D2].Class=="WA" || Terrain[D2].Class=="WE" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="B" || Terrain[D2].Class=="WS"|| b==Map[0].length-1){type+=2};
+			if(Terrain[D2].Class=="WF" || Terrain[D2].Class=="WA" || Terrain[D2].Class=="WE" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="B" || Terrain[D2].Class=="WS"|| b==MapWidth-1){type+=2};
 			if(Terrain[D3].Class=="WF" || Terrain[D3].Class=="WA" || Terrain[D3].Class=="WE" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="B" || Terrain[D3].Class=="WS"|| a==Map.length-1){type+=4};
 			if(Terrain[D4].Class=="WF" || Terrain[D4].Class=="WA" || Terrain[D4].Class=="WE" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="B" || Terrain[D4].Class=="WS"|| b==0){type+=8};
 
 			if(a>=1 && b>=1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("a "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("a "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b-1]].edgeA}};
-			if(a>=1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("b "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b+1]].edgeB}};
+			if(a>=1 && b<MapWidth-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("b "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b+1]].edgeB}};
 			if(a<Map.length-1 && b>=1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("c "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b-1]].edgeC}};
-			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
+			if(a<Map.length-1 && b<MapWidth-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
 
 			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top="0px";
@@ -3057,9 +3061,9 @@ function FocalTileRefresh(X,Y){
 			if(Terrain[D4].SailThrough<100){underType+=8};
 
 			if(a>=1 && b>=1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("a "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("a "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b-1]].edgeA}};
-			if(a>=1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("b "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b+1]].edgeB}};
+			if(a>=1 && b<MapWidth-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("b "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b+1]].edgeB}};
 			if(a<Map.length-1 && b>=1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("c "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b-1]].edgeC}};
-			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
+			if(a<Map.length-1 && b<MapWidth-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
 
 
 			//EditorControlMap[a][b]=EditationColor;
@@ -3137,7 +3141,7 @@ function FocalTileRefresh(X,Y){
 			var type=0;
 			
 			/*if(Terrain[D1].Class=="LF" || Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || a==0){type+=1};
-			if(Terrain[D2].Class=="LF" || Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || b==Map[0].length-1){type+=2};
+			if(Terrain[D2].Class=="LF" || Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || b==MapWidth-1){type+=2};
 			if(Terrain[D3].Class=="LF" || Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || a==Map.length-1){type+=4};
 			if(Terrain[D4].Class=="LF" || Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || b==0){type+=8};*/
 
@@ -3147,9 +3151,9 @@ function FocalTileRefresh(X,Y){
 			if(Terrain[D4].Class=="LF" || Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){type+=8};
 
 			if(a>1 && b>1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("a "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("a "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b-1]].edgeA}};
-			if(a>1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("b "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b+1]].edgeB}};
+			if(a>1 && b<MapWidth-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("b "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b+1]].edgeB}};
 			if(a<Map.length-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("c "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b-1]].edgeC}};
-			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
+			if(a<Map.length-1 && b<MapWidth-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
 
 			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top="0px";
@@ -3358,13 +3362,15 @@ function initializeBattle(){
 	Resolution=false;
 	Chuchu=0;
 
+	MapWidth = data.Map[0].length;
+	MapHeight = data.Map.length;
 	Map = data.Map;
 	let Roster = data.Roster;
 	Constants = data.Constants;
 	ControlMap = data.ControlMap ?? [0];
 	RegionMap = data.RegionMap ?? [0];
 	NodeMap = data.NodeMap ?? [0];
-	BiomeMap = data.BiomeMap ?? create2DBuffer(Map[0].length, Map.length, 1);
+	BiomeMap = data.BiomeMap ?? create2DBuffer(MapWidth, Map.length, 1);
 	DynamicEvents=[];
 	ChosenMap=Map;
 	Factions=CampaignFactions;
@@ -3378,7 +3384,7 @@ function initializeBattle(){
 
 	KillingUnit=false;
 	GlassPanels=2;
-	document.getElementById('UnitMap').scrollBy(-Map.length*56,-Map[0].length*56);
+	document.getElementById('UnitMap').scrollBy(-Map.length*56,-MapWidth*56);
 	document.getElementById('UnitMap').scrollBy((Constants.defaultX ?? 0) * 56, (Constants.defaultY ?? 0) * 56);
 	document.getElementById('Glassplate3').style.visibility='hidden';
 	document.getElementById('Glassplate4').style.visibility='hidden';
@@ -3394,7 +3400,7 @@ function initializeBattle(){
 		document.getElementById('BottomScrollBar').src="Assets/Miscellaneous/Nothing.png";
 		document.getElementById('BottomScrollBar').style.zIndex="0";
 		};
-	if(Map[0].length>10){
+	if(MapWidth>10){
 		document.getElementById('LeftScrollBar').style.zIndex="5";
 		document.getElementById('RightScrollBar').style.zIndex="5";
 		}else{
@@ -3407,7 +3413,7 @@ function initializeBattle(){
 
 	FlagMap=[];
 	let FlagCell=[];
-	for(let x=0;x<Map[0].length;x++){FlagCell[FlagCell.length]=0};
+	for(let x=0;x<MapWidth;x++){FlagCell[FlagCell.length]=0};
 	for(let y=0;y<Map.length;y++){FlagMap[FlagMap.length]=FlagCell};
 	FlagMap=JSON.parse(JSON.stringify(FlagMap));
 
@@ -3440,7 +3446,7 @@ function initializeBattle(){
 	LocalizationMap=[];
 	let LocLine=[];
 	Localization = data.Localization ?? {};
-	for(let x=0;x<Map[0].length;x++){LocLine[LocLine.length]=0};
+	for(let x=0;x<MapWidth;x++){LocLine[LocLine.length]=0};
 	for(let y=0;y<Map.length;y++){LocalizationMap[LocalizationMap.length]=JSON.parse(JSON.stringify(LocLine))};
 	for(let z=0;z<Localization.length;z++){LocalizationMap[Localization[z].X][Localization[z].Y]=Localization[z]};
 
@@ -3479,7 +3485,7 @@ function initializeBattle(){
 
 	let FlagMap=[];
 	let FlagCell=[];
-	for(let x=0;x<Map[0].length;x++){FlagCell[FlagCell.length]=0};
+	for(let x=0;x<MapWidth;x++){FlagCell[FlagCell.length]=0};
 	for(let y=0;y<Map.length;y++){FlagMap[FlagMap.length]=FlagCell};
 	TileFlagMap=JSON.parse(JSON.stringify(FlagMap));
 	//let UnitFlagMap=JSON.parse(JSON.stringify(FlagMap));
@@ -3493,7 +3499,7 @@ function initializeBattle(){
 
 		
 
-	for (let dick=0; dick<Map.length; dick++){for(let cunt=0; cunt<Map[0].length; cunt++){
+	for (let dick=0; dick<Map.length; dick++){for(let cunt=0; cunt<MapWidth; cunt++){
 		if(TileFlagMap[dick][cunt]!=0){//alert("Chuchu");
 		document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).style.visibility='inherit';
 		if(TileFlagMap[dick][cunt]==1){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/CaptureFlag.png"};
@@ -3512,6 +3518,8 @@ function initializeBattle(){
 
 function initializeSpecialBattle(Level){
 	wipeMap();
+	MapWidth = Level.Map[0].length;
+	MapHeight = Level.Map.length;
 	Map=Level.Map;
 	let Roster=Level.Roster;
 	Constants=Level.Constants;
@@ -3520,7 +3528,7 @@ function initializeSpecialBattle(Level){
 	NodeMap=Level.NodeMap;
 	Factions=Level.Factions;
 	DynamicEvents=Level.DynamicEvents ?? [];
-	BiomeMap = Level.BiomeMap ?? create2DBuffer(Map[0].length, Map.length, 1);
+	BiomeMap = Level.BiomeMap ?? create2DBuffer(MapWidth, Map.length, 1);
 	ChosenMission=0;
 	ChosenChapter=0;
 	ChosenNation=0;
@@ -3539,16 +3547,14 @@ function initializeSpecialBattle(Level){
 	KillingUnit=false;
 	GlassPanels=2;
 
-	document.getElementById('UnitMap').scrollBy(-Map.length*56,-Map[0].length*56);
+	document.getElementById('UnitMap').scrollBy(-Map.length*56,-MapWidth*56);
 	document.getElementById('UnitMap').scrollBy((Constants.defaultX ?? 0) * 56, (Constants.defaultX ?? 0) * 56);
 	document.getElementById('Glassplate3').style.visibility='hidden';
 	document.getElementById('Glassplate4').style.visibility='hidden';
 	if(Constants.Commanders.length>3){GlassPanels++;document.getElementById('Glassplate3').style.visibility='inherit'};
 	if(Constants.Commanders.length>4){GlassPanels++;document.getElementById('Glassplate4').style.visibility='inherit'};
-	//alert(Map.length+" "+Map[0].length);
 
-
-	for(let i=1;i<=Map.length;i++){for(let j=1;j<=Map[0].length;j++){
+	for(let i=1;i<=Map.length;i++){for(let j=1;j<=MapWidth;j++){
 	document.getElementById("Entity "+i+"X"+j).style.visibility="hidden";
 	document.getElementById("Marker "+i+"X"+j).style.visibility="hidden";
 	document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
@@ -3564,7 +3570,7 @@ function initializeSpecialBattle(Level){
 		document.getElementById('BottomScrollBar').src="Assets/Miscellaneous/Nothing.png";
 		document.getElementById('BottomScrollBar').style.zIndex="0";
 		};
-	if(Map[0].length>10){
+	if(MapWidth>10){
 		document.getElementById('LeftScrollBar').style.zIndex="5";
 		document.getElementById('RightScrollBar').style.zIndex="5";
 		}else{
@@ -3597,7 +3603,7 @@ function initializeSpecialBattle(Level){
 	LocalizationMap=[];
 	let LocLine=[];
 	Localization=Level.Localization??{};
-	for(let x=0;x<Map[0].length;x++){LocLine[LocLine.length]=0};
+	for(let x=0;x<MapWidth;x++){LocLine[LocLine.length]=0};
 	for(let y=0;y<Map.length;y++){LocalizationMap[LocalizationMap.length]=JSON.parse(JSON.stringify(LocLine))};
 	for(let z=0;z<Localization.length;z++){LocalizationMap[Localization[z].X][Localization[z].Y]=Localization[z]};
 
@@ -3635,7 +3641,7 @@ function initializeSpecialBattle(Level){
 
 	let FlagMap=[];
 	let FlagCell=[];
-	for(let x=0;x<Map[0].length;x++){FlagCell[FlagCell.length]=0};
+	for(let x=0;x<MapWidth;x++){FlagCell[FlagCell.length]=0};
 	for(let y=0;y<Map.length;y++){FlagMap[FlagMap.length]=FlagCell};
 	TileFlagMap=JSON.parse(JSON.stringify(FlagMap));
 	//let UnitFlagMap=JSON.parse(JSON.stringify(FlagMap));
@@ -3649,7 +3655,7 @@ function initializeSpecialBattle(Level){
 
 		
 
-	for (let dick=0; dick<Map.length; dick++){for(let cunt=0; cunt<Map[0].length; cunt++){
+	for (let dick=0; dick<Map.length; dick++){for(let cunt=0; cunt<MapWidth; cunt++){
 		if(TileFlagMap[dick][cunt]!=0){//alert("Chuchu");
 		document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).style.visibility='inherit';
 		if(TileFlagMap[dick][cunt]==1){document.getElementById("Flag "+(dick+1)+"X"+(cunt+1)).src="Assets/Miscellaneous/CaptureFlag.png"};
@@ -4025,7 +4031,7 @@ function LaunchConstructorPanel(X,Y){
 			if(X>0){if(Terrain[Map[X-1][Y]].DeepSailThrough!=100){CoastalCheck=true;CanBuildCoastal=true}};
 			if(X<Map.length-1){if(Terrain[Map[X+1][Y]].DeepSailThrough!=100){CoastalCheck=true;CanBuildCoastal=true}};
 			if(Y>0){if(Terrain[Map[X][Y-1]].DeepSailThrough!=100){CoastalCheck=true;CanBuildCoastal=true}};
-			if(X<Map[0].length-1){if(Terrain[Map[X][Y+1]].DeepSailThrough!=100){CoastalCheck=true;CanBuildCoastal=true}};
+			if(X<MapWidth-1){if(Terrain[Map[X][Y+1]].DeepSailThrough!=100){CoastalCheck=true;CanBuildCoastal=true}};
 
 		};
 		document.getElementById("BuildingFrame"+c).src="Assets/Miscellaneous/ConstructionUnavailableFrame.png";
@@ -4568,7 +4574,7 @@ function NudgeMap(Direction){
 	
 	checky=false;
 	ChosenUnit.definite=false;
-	if(StandardX+ics>=0 && StandardX+ics+9<Map.length && StandardY+igrec>=0 && StandardY+igrec+9<Map[0].length){checky=true;};
+	if(StandardX+ics>=0 && StandardX+ics+9<Map.length && StandardY+igrec>=0 && StandardY+igrec+9<MapWidth){checky=true;};
 	//alert(checky);
 	if(checky){StandardX+=ics;
 		StandardY+=igrec;
@@ -4667,15 +4673,13 @@ function NudgeMapEditor(X,Y){
 /**
  * neyn 08.04.2025
  * 
- * Updated: 16.06.2025
+ * Updated: 19.07.2025
  * 
  * @param {int[][]} gameMap 
- * @param {int} mapHeight 
- * @param {int} mapWidth 
  * @param {string} stepType 
  * @returns {number[][]}
  */
-const createStepMap = function(gameMap, mapHeight, mapWidth, stepType) {
+const createStepMap = function(gameMap, stepType) {
 	const STEP_TYPES = {
 		"Foot": "WalkThrough",
 		"Wheeled": "DriveThrough",
@@ -4690,22 +4694,22 @@ const createStepMap = function(gameMap, mapHeight, mapWidth, stepType) {
 	const selectedType = STEP_TYPES[stepType];
 
 	if(selectedType) {
-		for(let i = 0; i < mapHeight; ++i) {
+		for(let i = 0; i < MapHeight; ++i) {
 			const row = gameMap[i];
 			const stepRow = [];
 
-			for(let j = 0; j < mapWidth; ++j) {
+			for(let j = 0; j < MapWidth; ++j) {
 				stepRow[j] = Terrain[row[j]][selectedType];
 			}
 
 			stepMap[i] = stepRow;
 		}
 	} else {
-		for(let i = 0; i < mapHeight; ++i) {
+		for(let i = 0; i < MapHeight; ++i) {
 			const row = gameMap[i];
 			const stepRow = [];
 
-			for(let j = 0; j < mapWidth; ++j) {
+			for(let j = 0; j < MapWidth; ++j) {
 				stepRow[j] = row[j];
 			}
 
@@ -4714,10 +4718,6 @@ const createStepMap = function(gameMap, mapHeight, mapWidth, stepType) {
 	}
 
 	return stepMap;
-}
-
-const isOutOfBounds = function(tileX, tileY, mapWidth, mapHeight) {
-	return tileX < 0 || tileY < 0 || tileX >= mapWidth || tileY >= mapHeight;
 }
 
 function PI_Scouter(Unit, Map){
@@ -4734,9 +4734,7 @@ function PI_Scouter(Unit, Map){
 	let unitIndex=Unit.index;
 	let Path=[1];
 
-	const mapWidth = Map[0].length;
-	const mapHeight = Map.length;
-	const Stepmap = createStepMap(Map, mapHeight, mapWidth, Type);
+	const Stepmap = createStepMap(Map, Type);
 
 	BLARG=[{X:Lat,Y:Long}];
 	//SBLARG(X,Y);
@@ -4768,7 +4766,7 @@ function PI_Scouter(Unit, Map){
 	//Yeah... the cost will be having to listen to our brainfarts.
 	//Silix, Wisp, Luna! Cut it out and get back to work.
 
-	AddressMap = create2DBuffer(mapWidth, mapHeight, 0);
+	AddressMap = create2DBuffer(MapWidth, MapHeight, 0);
 	Thing=JSON.parse(JSON.stringify(AddressMap));
 
 	//Standard-Issue Pathing Loop
@@ -4779,9 +4777,9 @@ function PI_Scouter(Unit, Map){
 		
 		if(X+x<0 || Y+y<0) Path[Path.length - 1]+=1;
 
-		if(X+x>=Map.length || Y+y>=Map[0].length)Path[Path.length - 1]++;
+		if(X+x>=Map.length || Y+y>=MapWidth)Path[Path.length - 1]++;
 
-		if(X+x<Map.length && X+x>=0 && Y+y<Map[0].length && Y+y>=0){
+		if(X+x<Map.length && X+x>=0 && Y+y<MapWidth && Y+y>=0){
 			if(rostermap[X+x][Y+y]!=0){
 				if((rostermap[X+x][Y+y].coallition!=Coallition && !hasCertainTrait(Unit.unitType,"Supply Distribution")) || (rostermap[X+x][Y+y].coallition==Coallition && hasCertainTrait(Unit.unitType,"Supply Distribution"))){
 					isCollided=true;
@@ -4790,7 +4788,7 @@ function PI_Scouter(Unit, Map){
 			}
 		}
 
-		if(SPD>0 && Path[Path.length - 1]<5 && X+x<Map.length && Y+y<Map[0].length) {
+		if(SPD>0 && Path[Path.length - 1]<5 && X+x<Map.length && Y+y<MapWidth) {
 			//The block that checks whether advancing is possible and advances
 			let x=(Path[Path.length - 1]-2)*(Path[Path.length - 1])%2;
 			let y=(3-Path[Path.length - 1])*(Path[Path.length - 1]-1)%2;
@@ -4938,7 +4936,7 @@ function PI_Scouter(Unit, Map){
 		maxDist=Units[Unit.unitType].MaxRange;
 		let TerrainCheck=Terrain[Map[Unit.x][Unit.y]];
 		if(TerrainCheck.tag1=="Vantage" || TerrainCheck.tag2=="Vantage" || TerrainCheck.tag3=="Vantage" || TerrainCheck.tag4=="Vantage"){maxDist+=1};
-		for(let r=Math.max(0,Unit.x-10);r<Math.min(Map.length,Unit.x+10);r++){for(let t=Math.max(0,Unit.y-10);t<Math.min(Map[0].length,Unit.y+10);t++){
+		for(let r=Math.max(0,Unit.x-10);r<Math.min(Map.length,Unit.x+10);r++){for(let t=Math.max(0,Unit.y-10);t<Math.min(MapWidth,Unit.y+10);t++){
 			let checker=false;
 			//alert(Unit.x);
 			//alert(Unit.y);
@@ -5155,13 +5153,13 @@ function PITurn(Roster,Map,Constants){
 
 	MarkerMap=[];
 	let line=[];
-	for(let i=0;i<Map[0].length;i++){line[line.length]=false};
+	for(let i=0;i<MapWidth;i++){line[line.length]=false};
 	for(let j=0;j<Map.length;j++){MarkerMap[MarkerMap.length]=line};
 	MarkerMap=JSON.parse(JSON.stringify(MarkerMap));
 	//alert(Roster);
 
 	if(Constants.Commanders??false){Commander=Constants.Commanders[1]};
-	for(let x=0;x<Map.length;x++){for(y=0;y<Map[0].length;y++){
+	for(let x=0;x<Map.length;x++){for(y=0;y<MapWidth;y++){
 		//if((ControlMap??0) !=0 && ControlMap[x][y]==PlayerChoiceFaction){YourMoney+=(Terrain[Map[x][y]].revenue??0)};
 		if((ControlMap??0) !=0 && ControlMap[x][y]==PlayerChoiceFaction){YourMoney+=GenerateRevenue(Terrain[Map[x][y]].revenue??0,x,y)};
 		if(hasCertainTrait(rostermap[x][y].unitType??0,"Financial Center") && rostermap[x][y].faction==PlayerChoiceFaction){GenerateRevenue(100,x,y)}
@@ -5172,7 +5170,7 @@ function PITurn(Roster,Map,Constants){
 		setTimeout(function(){
 
 		for(let i=0;i<Map.length;i++){
-			for(let j=0;j<Map[0].length;j++){
+			for(let j=0;j<MapWidth;j++){
 			//alert(rostermap[i][j].index);
 
 			if(MarkerMap[i][j] && rostermap[i][j].life>0){document.getElementById("Marker "+(i+1)+"X"+(j+1)).style.visibility="visible";};};};
@@ -5226,7 +5224,7 @@ function PITurn(Roster,Map,Constants){
 			if(Factions[rostermap[Roster[i].x][Roster[i].y-1].faction??0].faction!=Roster[i].coallition && Factions[rostermap[Roster[i].x][Roster[i].y-1].faction??0].faction!=Factions[0].faction)
 				{Stealth=false};
 		};
-		if(Roster[i].y<Map[0].length-1){
+		if(Roster[i].y<MapWidth-1){
 			if(Factions[rostermap[Roster[i].x][Roster[i].y+1].faction??0].faction!=Roster[i].coallition && Factions[rostermap[Roster[i].x][Roster[i].y+1].faction??0].faction!=Factions[0].faction)
 				{Stealth=false};
 		};
@@ -5282,7 +5280,7 @@ function RecruitUnit(Class) {
 	const factoredCost = morale.applyCostFactor(Units[Class].Cost);
 
 	//alert(ActiveIndustrialNode.X+"X"+ActiveIndustrialNode.Y);
-	for(let x=1;x<Map.length;x++){for(let y=1;y<Map[0].length;y++){let crep=document.getElementById("Crep-"+x+"-"+y) ?? 0; if(crep!=0){crep.remove()};}};
+	for(let x=1;x<Map.length;x++){for(let y=1;y<MapWidth;y++){let crep=document.getElementById("Crep-"+x+"-"+y) ?? 0; if(crep!=0){crep.remove()};}};
 	let RecC=document.getElementById("CloseRecruiterX")??0;if(RecC!=0){RecC.remove()};
 
 
@@ -5352,7 +5350,7 @@ function refreshMap(){
 	//if((RT??0)==0){RT=false};
 	
 	for(let x=1; x<=Map.length; x++){
-		for(let y=1; y<=Map[0].length; y++){
+		for(let y=1; y<=MapWidth; y++){
 			let unit=rostermap[x-1][y-1];
 			if((rostermap[x-1][y-1]??0) !=0){
 			
@@ -5457,7 +5455,7 @@ function refreshTile(X,Y){
 			if(X<10){if(Terrain[EditorMap[X][Y-1]].Urbanistics>0){variant+=4}};
 			if(Y>1){if(Terrain[EditorMap[X-1][Y-2]].Urbanistics > 0){variant+=8}};
 			//if(X>0){if((Map[X-1][Y]>5 && Map[X-1][Y]<15) || (Map[X-1][Y]>20 && (Map[X-1][Y]<23))){variant+=1}};
-			//if(Y<Map[0].length){if((Map[X][Y+1]>5 && Map[X][Y+1]<15) || (Map[X][Y+1]>20 && (Map[X][Y+1]<23))){variant+=2}};
+			//if(Y<MapWidth){if((Map[X][Y+1]>5 && Map[X][Y+1]<15) || (Map[X][Y+1]>20 && (Map[X][Y+1]<23))){variant+=2}};
 			//if(X<Map.length){if((Map[X+1][Y]>5 && Map[X+1][Y]<15) || (Map[X+1][Y]>20 && (Map[X+1][Y]<23))){variant+=4}};
 			//if(Y>0){if((Map[X][Y-1]>5 && Map[X][Y-1]<15) || (Map[X][Y-1]>20 && (Map[X][Y-1]<23))){variant+=2}};
 			document.getElementById(Address).style.top=offset+"px";
@@ -5819,14 +5817,14 @@ function RefreshTile(X,Y){
 			var type=0;
 
 			if(Terrain[D1].Class=="WF" || Terrain[D1].Class=="WA" || Terrain[D1].Class=="WE" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="B" || Terrain[D1].Class=="WS" || a==0){type+=1};
-			if(Terrain[D2].Class=="WF" || Terrain[D2].Class=="WA" || Terrain[D2].Class=="WE" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="B" || Terrain[D2].Class=="WS"|| b==Map[0].length-1){type+=2};
+			if(Terrain[D2].Class=="WF" || Terrain[D2].Class=="WA" || Terrain[D2].Class=="WE" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="B" || Terrain[D2].Class=="WS"|| b==MapWidth-1){type+=2};
 			if(Terrain[D3].Class=="WF" || Terrain[D3].Class=="WA" || Terrain[D3].Class=="WE" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="B" || Terrain[D3].Class=="WS"|| a==Map.length-1){type+=4};
 			if(Terrain[D4].Class=="WF" || Terrain[D4].Class=="WA" || Terrain[D4].Class=="WE" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="B" || Terrain[D4].Class=="WS"|| b==0){type+=8};
 
 			if(a>=1 && b>=1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("a "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("a "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b-1]].edgeA}};
-			if(a>=1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("b "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b+1]].edgeB}};
+			if(a>=1 && b<MapWidth-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("b "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b+1]].edgeB}};
 			if(a<Map.length-1 && b>=1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("c "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b-1]].edgeC}};
-			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
+			if(a<Map.length-1 && b<MapWidth-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
 
 			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top="0px";
@@ -5867,9 +5865,9 @@ function RefreshTile(X,Y){
 			if(Terrain[D4].SailThrough<100){underType+=8};
 
 			if(a>=1 && b>=1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("a "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("a "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b-1]].edgeA}};
-			if(a>=1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("b "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b+1]].edgeB}};
+			if(a>=1 && b<MapWidth-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("b "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b+1]].edgeB}};
 			if(a<Map.length-1 && b>=1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("c "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b-1]].edgeC}};
-			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
+			if(a<Map.length-1 && b<MapWidth-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
 
 
 			//EditorControlMap[a][b]=EditationColor;
@@ -5947,7 +5945,7 @@ function RefreshTile(X,Y){
 			var type=0;
 			
 			/*if(Terrain[D1].Class=="LF" || Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || a==0){type+=1};
-			if(Terrain[D2].Class=="LF" || Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || b==Map[0].length-1){type+=2};
+			if(Terrain[D2].Class=="LF" || Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || b==MapWidth-1){type+=2};
 			if(Terrain[D3].Class=="LF" || Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || a==Map.length-1){type+=4};
 			if(Terrain[D4].Class=="LF" || Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || b==0){type+=8};*/
 
@@ -5957,9 +5955,9 @@ function RefreshTile(X,Y){
 			if(Terrain[D4].Class=="LF" || Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S"){type+=8};
 
 			if(a>1 && b>1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("a "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("a "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b-1]].edgeA}};
-			if(a>1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("b "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b+1]].edgeB}};
+			if(a>1 && b<MapWidth-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("b "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a-1][b+1]].edgeB}};
 			if(a<Map.length-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("c "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b-1]].edgeC}};
-			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
+			if(a<Map.length-1 && b<MapWidth-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="inherit";document.getElementById("d "+(a+1)+" X "+(b+1)).src=BIOMES[EditorBiomeMap[a+1][b+1]].edgeD}};
 
 			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top="0px";
@@ -6084,14 +6082,14 @@ function RefreshMapEditor(){
 			var type=0;
 
 			if(Terrain[D1].Class=="WF" || Terrain[D1].Class=="WA" || Terrain[D1].Class=="WE" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="B" || a==0){type+=1};
-			if(Terrain[D2].Class=="WF" || Terrain[D2].Class=="WA" || Terrain[D2].Class=="WE" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="B" || b==Map[0].length-1){type+=2};
+			if(Terrain[D2].Class=="WF" || Terrain[D2].Class=="WA" || Terrain[D2].Class=="WE" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="B" || b==MapWidth-1){type+=2};
 			if(Terrain[D3].Class=="WF" || Terrain[D3].Class=="WA" || Terrain[D3].Class=="WE" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="B" || a==Map.length-1){type+=4};
 			if(Terrain[D4].Class=="WF" || Terrain[D4].Class=="WA" || Terrain[D4].Class=="WE" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="B" || b==0){type+=8};
 
 			if(a>1 && b>1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("a "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
-			if(a>1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
+			if(a>1 && b<MapWidth-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
 			if(a<Map.length-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
-			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
+			if(a<Map.length-1 && b<MapWidth-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
 
 			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+".png";
 			document.getElementById(TileAdress).style.top="0px";
@@ -6194,14 +6192,14 @@ function RefreshMapEditor(){
 			var type=0;
 
 			if(Terrain[D1].Class=="LF" || Terrain[D1].Class=="LA" || Terrain[D1].Class=="MC" || Terrain[D1].Class=="S" || a==0){type+=1};
-			if(Terrain[D2].Class=="LF" || Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="S" || b==Map[0].length-1){type+=2};
+			if(Terrain[D2].Class=="LF" || Terrain[D2].Class=="LA" || Terrain[D2].Class=="MC" || Terrain[D2].Class=="S" || b==MapWidth-1){type+=2};
 			if(Terrain[D3].Class=="LF" || Terrain[D3].Class=="LA" || Terrain[D3].Class=="MC" || Terrain[D3].Class=="S" || a==Map.length-1){type+=4};
 			if(Terrain[D4].Class=="LF" || Terrain[D4].Class=="LA" || Terrain[D4].Class=="MC" || Terrain[D4].Class=="S" || b==0){type+=8};
 
 			if(a>1 && b>1){if(Terrain[Map[a-1][b-1]].SailThrough>=100 && Terrain[D4].SailThrough<100 && Terrain[D1].SailThrough<100){document.getElementById("a "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
-			if(a>1 && b<Map[0].length-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
+			if(a>1 && b<MapWidth-1){if(Terrain[Map[a-1][b+1]].SailThrough>=100 && Terrain[D1].SailThrough<100 && Terrain[D2].SailThrough<100){document.getElementById("b "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
 			if(a<Map.length-1 && b>1){if(Terrain[Map[a+1][b-1]].SailThrough>=100 && Terrain[D2].SailThrough<100 && Terrain[D3].SailThrough<100){document.getElementById("c "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
-			if(a<Map.length-1 && b<Map[0].length-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
+			if(a<Map.length-1 && b<MapWidth-1){if(Terrain[Map[a+1][b+1]].SailThrough>=100 && Terrain[D3].SailThrough<100 && Terrain[D4].SailThrough<100){document.getElementById("d "+(a+1)+" X "+(b+1)).style.visibility="visible"}};
 
 			var Var="Assets/Tiles/"+Terrain[Map[a][b]].name+type+Biome+".png";
 			document.getElementById(TileAdress).style.top="0px";
@@ -6290,7 +6288,7 @@ function RefreshMapEditor(){
 			if(X<10){if(Terrain[EditorMap[X+EditorStandardX][Y-1+EditorStandardY]].Urbanistics>0){variant+=4}};
 			if(Y>1){if(Terrain[EditorMap[X-1+EditorStandardX][Y-2+EditorStandardY]].Urbanistics > 0){variant+=8}};
 			//if(X>0){if((Map[X-1][Y]>5 && Map[X-1][Y]<15) || (Map[X-1][Y]>20 && (Map[X-1][Y]<23))){variant+=1}};
-			//if(Y<Map[0].length){if((Map[X][Y+1]>5 && Map[X][Y+1]<15) || (Map[X][Y+1]>20 && (Map[X][Y+1]<23))){variant+=2}};
+			//if(Y<MapWidth){if((Map[X][Y+1]>5 && Map[X][Y+1]<15) || (Map[X][Y+1]>20 && (Map[X][Y+1]<23))){variant+=2}};
 			//if(X<Map.length){if((Map[X+1][Y]>5 && Map[X+1][Y]<15) || (Map[X+1][Y]>20 && (Map[X+1][Y]<23))){variant+=4}};
 			//if(Y>0){if((Map[X][Y-1]>5 && Map[X][Y-1]<15) || (Map[X][Y-1]>20 && (Map[X][Y-1]<23))){variant+=2}};
 			document.getElementById(Address).style.top=offset+"px";
@@ -6596,7 +6594,7 @@ function RemoveKebabIMeanBlep(){
 	];
 
 	for(let Me_Go = 0; Me_Go <= Map.length; Me_Go++) {
-		for(let It_Be = 0; It_Be <= Map[0].length; It_Be++) {
+		for(let It_Be = 0; It_Be <= MapWidth; It_Be++) {
 			for(let k = 0; k < ELEMENTS_REMOVEABLE.length; k += 2) {
 				const elementID = ELEMENTS_REMOVEABLE[k];
 				const splitter = ELEMENTS_REMOVEABLE[k + 1];
@@ -6640,7 +6638,7 @@ function RunEvent(Event){
 						if(rostermap[newunit.x-1][newunit.y-1]!=0){let SpilloverFraction=[];
 						if(newunit.x>1 && rostermap[newunit.x-2][newunit.y-1]==0){SpilloverFraction[SpilloverFraction.length]=1};
 						if(newunit.x<Map.length && rostermap[newunit.x][newunit.y-1]==0){SpilloverFraction[SpilloverFraction.length]=3};
-						if(newunit.y<Map[0].length && rostermap[newunit.x-1][newunit.y]==0){SpilloverFraction[SpilloverFraction.length]=2};
+						if(newunit.y<MapWidth && rostermap[newunit.x-1][newunit.y]==0){SpilloverFraction[SpilloverFraction.length]=2};
 						if(newunit.y>1 && rostermap[newunit.x-1][newunit.y-2]==0){SpilloverFraction[SpilloverFraction.length]=4};
 						//alert(SpilloverFraction);
 						let RelocationFraction=SpilloverFraction[Math.floor(Math.random()*SpilloverFraction.length)];
@@ -6902,7 +6900,7 @@ function ScoutVicinity(X, Y) {
 		}
 	}
 
-	if(Y < Map[0].length - 1) {
+	if(Y < MapWidth - 1) {
 		if(rostermap[X][Y + 1] !=0 && rostermap[X][Y + 1].coallition != Factions[rostermap[X][Y].faction].faction) {
 			rostermap[X][Y].isCloaked=false;
 			rostermap[X][Y].willAmbush=true;
@@ -7060,7 +7058,7 @@ function TestMap(){
 	*/
 	battalion.setState(Battalion.STATE.BATTLE);
 	let RosterKey=[{index:0, id:"null", faction:"null", direction:"null", x:"null", y:"null", morale:0, hpModifier:0, defaultX:0,defaultY:0}];
-	for(let x=0;x<EditorEntityMap.length;x++){for (let y=0;y<EditorEntityMap[0].length;y++){if(EditorEntityMap[x][y]!=0){RosterKey[RosterKey.length]=EditorEntityMap[x][y]}}};
+	for(let x=0;x<EditorEntityMap.length;x++){for (let y=0;y<EditorEntityMapWidth;y++){if(EditorEntityMap[x][y]!=0){RosterKey[RosterKey.length]=EditorEntityMap[x][y]}}};
 
 	//alert(RosterKey);
 	let ControlKey="[";
@@ -7134,7 +7132,7 @@ function ToggleBattleflags(){
 
 	FlagMap=[];
 	let FlagCell=[];
-	for(let x=0;x<Map[0].length;x++){FlagCell[FlagCell.length]=0};
+	for(let x=0;x<MapWidth;x++){FlagCell[FlagCell.length]=0};
 	for(let y=0;y<Map.length;y++){FlagMap[FlagMap.length]=FlagCell};
 	FlagMap=JSON.parse(JSON.stringify(FlagMap));
 
@@ -7169,7 +7167,7 @@ function ToggleHealthBars(){
 
 	BarMap=[];
 	let BarCell=[];
-	for(let x=0;x<Map[0].length;x++){BarCell[BarCell.length]=0};
+	for(let x=0;x<MapWidth;x++){BarCell[BarCell.length]=0};
 	for(let y=0;y<Map.length;y++){BarMap[BarMap.length]=BarCell};
 	BarMap=JSON.parse(JSON.stringify(BarMap));
 
@@ -7472,7 +7470,7 @@ function WBLARG(X,Y){
 
 function wipeMap(){
 	for(let i=1;i<=Map.length;i++){
-		for(let j=1;j<=Map[0].length;j++){
+		for(let j=1;j<=MapWidth;j++){
 		//document.getElementById("A "+i+ " X " +j).remove();
 		//document.getElementById("B "+i+ " X " +j).remove();
 		//document.getElementById("C "+i+ " X " +j).remove();

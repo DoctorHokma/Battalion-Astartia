@@ -41,8 +41,8 @@ SpecialOptions.prototype.open = function(x, y) {
 	let Y = y;
 
     this.show();
-	this.element.style.left=Math.max(Math.min(-28+y*56,Map[0].length*56-115),0)+"px";
-	this.element.style.top=Math.max(Math.min(-15+x*56,Map.length*56-77),0)+"px";
+	this.element.style.left=Math.max(Math.min(-28+y*56,MapWidth*56-115),0)+"px";
+	this.element.style.top=Math.max(Math.min(-15+x*56,MapHeight*56-77),0)+"px";
 	document.getElementById("AirTransportPickupMask").src="Assets/Miscellaneous/StorkPickupMask.png";
 	document.getElementById("NavalTransportPickupMask").src="Assets/Miscellaneous/ConvoyPickupMask.png";
 
@@ -111,7 +111,7 @@ SpecialOptions.prototype.open = function(x, y) {
             }
         }
 
-		if(X < Map.length - 1) {
+		if(X < MapHeight - 1) {
             if(rostermap[X + 1][Y].faction == PlayerChoiceFaction && rostermap[X + 1][Y].speed > 0) {
                 isInFriendlyTerritory = true;
             }
@@ -123,20 +123,20 @@ SpecialOptions.prototype.open = function(x, y) {
             }
         }
 
-		if(Y < Map[0].length - 1) {
+		if(Y < MapWidth - 1) {
             if(rostermap[X][Y + 1].faction == PlayerChoiceFaction && rostermap[X][Y + 1].speed > 0) {
                 isInFriendlyTerritory = true;
             }
         }
 
 		if(!isInFriendlyTerritory && (ControlMap ?? 0) != 0) {
-            const startX = Math.max(0, X - 3);
-            const endX = Math.min(Map.length - 1, X + 3);
-            const startY = Math.max(0, Y - 3);
-            const endY = Math.min(Map[0].length - 1, Y + 3);
+            const startY = Math.max(0, X - 3);
+            const endY = Math.min(MapHeight - 1, X + 3);
+            const startX = Math.max(0, Y - 3);
+            const endX = Math.min(MapWidth - 1, Y + 3);
 
-			for(let i = startX; i <= endX; i++) {
-                for(let j = startY; j <= endY; j++) {
+			for(let i = startY; i <= endY; i++) {
+                for(let j = startX; j <= endX; j++) {
                     if(Terrain[Map[i][j]].Urbanistics > 1 && ControlMap[i][j] == PlayerChoiceFaction) {
                         isInFriendlyTerritory = true;
                     }

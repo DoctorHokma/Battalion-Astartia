@@ -27,23 +27,25 @@ const ATTACK_TYPE = {
  * @param {string} traitID 
  * @returns {object | null}
  */
-const getInterceptorByTrait = function(attacker, map, roster, traitID) {
+const getInterceptorByTrait = function(attacker, roster, traitID) {
 	const INTERCEPTOR_RANGE = 3;
-    const startX =  Math.max(attacker.x - INTERCEPTOR_RANGE, 0);
-    const endX = Math.min(attacker.x + INTERCEPTOR_RANGE, map.length);
-    const startY = Math.max(attacker.y - INTERCEPTOR_RANGE, 0);
-    const endY = Math.min(attacker.y + INTERCEPTOR_RANGE, map[0].length);
+	const INTERCEPTOR_RANGE_SQUARED = INTERCEPTOR_RANGE * INTERCEPTOR_RANGE;
+
+    const startY =  Math.max(attacker.x - INTERCEPTOR_RANGE, 0);
+    const endY = Math.min(attacker.x + INTERCEPTOR_RANGE, MapHeight);
+    const startX = Math.max(attacker.y - INTERCEPTOR_RANGE, 0);
+    const endX = Math.min(attacker.y + INTERCEPTOR_RANGE, MapWidth);
     const interceptorList = [];
 
-    for(let i = startX; i < endX; i++) {
-        for(let j = startY; j < endY; j++) {
+    for(let i = startY; i < endY; i++) {
+        for(let j = startX; j < endX; j++) {
             const entity = roster[i][j];
             const canIntercept = entity && entity.hasTrait(traitID);
 
             if(canIntercept) {
                 const range = (i - attacker.x) * (i - attacker.x) + (j - attacker.y) * (j - attacker.y);
 
-                if(range <= 9) {
+                if(range <= INTERCEPTOR_RANGE_SQUARED) {
                     interceptorList.push(entity);
                 }
             }
@@ -243,7 +245,7 @@ function Attack(Attacker, Defender, Map) {
     }
 
 	if(Atk.movementType === "Flight") {
-        const interceptor = getInterceptorByTrait(Atk, Map, rostermap, Entity.TRAIT.ANTI_AIR);
+        const interceptor = getInterceptorByTrait(Atk, rostermap, Entity.TRAIT.ANTI_AIR);
 
         if(interceptor) {
             isIntercepted = true;
@@ -252,7 +254,7 @@ function Attack(Attacker, Defender, Map) {
 	}
 
 	if(!isIntercepted && Atk.hasTrait(Entity.TRAIT.SUBMERGED)) {
-        const interceptor = getInterceptorByTrait(Atk, Map, rostermap, Entity.TRAIT.SONAR);
+        const interceptor = getInterceptorByTrait(Atk, rostermap, Entity.TRAIT.SONAR);
 
         if(interceptor) {
             isIntercepted = true;
@@ -324,7 +326,7 @@ function Attack(Attacker, Defender, Map) {
 
 		const HitAnimStyle = getHitAnimStyle(Atk);
 
-		if(Atk.x >= StandardX && Atk.x < StandardX + Map.length && Atk.y >= StandardY && Atk.y < StandardY + Map[0].length) {
+		if(Atk.x >= StandardX && Atk.x < StandardX + MapHeight && Atk.y >= StandardY && Atk.y < StandardY + MapWidth) {
 			if(!isIntercepted) {
 				AttackingAnimation(Attacker);
 			} else {
@@ -334,7 +336,7 @@ function Attack(Attacker, Defender, Map) {
 			}
 		}
 
-		if(Def.x >= StandardX && Def.x < StandardX + Map.length && Def.y >= StandardY && Def.y < StandardY + Map[0].length) {
+		if(Def.x >= StandardX && Def.x < StandardX + MapHeight && Def.y >= StandardY && Def.y < StandardY + MapWidth) {
 			if(!isIntercepted) {
 				HitAnimation(Defender, HitAnimStyle);
 			} else {
@@ -421,8 +423,8 @@ function Attack(Attacker, Defender, Map) {
 				break;
 			}
 			case HIT_ANIM_STYLE.GASWAVE: {
-				for(let x=Math.max(0,Def.x-1); x<=Math.min(Map.length-1,Def.x+1);x++) {
-					for(let y=Math.max(0,Def.y-1); y<=Math.min(Map[0].length-1,Def.y+1); y++) {
+				for(let x=Math.max(0,Def.x-1); x<=Math.min(MapHeight-1,Def.x+1);x++) {
+					for(let y=Math.max(0,Def.y-1); y<=Math.min(MapWidth-1,Def.y+1); y++) {
 						SplashAttack(Atk, Map, x, y);
 					}
 				}
@@ -460,8 +462,8 @@ function Attack(Attacker, Defender, Map) {
 				//for(let l=1; l<=Units[Atk.unitType].MaxRange; l++){
 				//SplashAttack(Atk,Atk.x+l*(1+1),Atk.y+l*(1+1))};
 
-				//if(LaserVar%2!=0){LaserCap=Map.length; LaserMin=Math.max(Def.x-7,0); LaserMax=Math.min(Def.x,LaserCap-7)};
-				//if(LaserVar%2==0){LaserCap=Map[0].length; LaserMin=Math.max(Def.y-7,0); LaserMax=Math.min(Def.y,LaserCap-7)};
+				//if(LaserVar%2!=0){LaserCap=MapHeight; LaserMin=Math.max(Def.x-7,0); LaserMax=Math.min(Def.x,LaserCap-7)};
+				//if(LaserVar%2==0){LaserCap=MapWidth; LaserMin=Math.max(Def.y-7,0); LaserMax=Math.min(Def.y,LaserCap-7)};
 
 				//let r=Units[Atk.unitType].MaxRange;
 				for(let l = 1; l <= 7; l++) {
@@ -469,7 +471,7 @@ function Attack(Attacker, Defender, Map) {
 					const laserY = Atk.y + l * LaserConstY;
 
 					//SplashAttack(Atk,Atk.x+l*LaserConstX,Atk.y+l*LaserConstY);
-					if(laserX >= 0 && laserY >= 0 && laserX < Map.length && laserY < Map[0].length) {
+					if(laserX >= 0 && laserY >= 0 && laserX < MapHeight && laserY < MapWidth) {
 						SplashAttack(Atk, Map, laserX, laserY);
 					}
 				}
@@ -594,7 +596,7 @@ function Attack(Attacker, Defender, Map) {
 		}
 
 		if(!ShouldProbablyCheck) {
-			if(Map.length * Map[0].length <= 1000) {
+			if(MapHeight * MapWidth <= 1000) {
 				ShouldProbablyCheck = true;
 			}
 		}
