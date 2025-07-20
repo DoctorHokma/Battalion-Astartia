@@ -53,12 +53,14 @@ const addInterlogueEvent = function(battalion) {
     const { story, language } = battalion;
     
     story.events.on(StoryHandler.EVENT.CHAPTER_WON, (chapter, isFirst) =>  {
-        const { config } = chapter;
-        const { interlogueImage, interlogue } = config;
+        if(isFirst) {
+            const { config } = chapter;
+            const { interlogueImage, interlogue } = config;
 
-        document.getElementById("InterlogueScreen").style.visibility = "visible";
-        document.getElementById("InterlogueImage").src = interlogueImage;
-        document.getElementById("InterlogueText").innerHTML = language.get(interlogue);
+            document.getElementById("InterlogueScreen").style.visibility = "visible";
+            document.getElementById("InterlogueImage").src = interlogueImage;
+            document.getElementById("InterlogueText").innerHTML = language.get(interlogue);
+        }
     }, { permanent: true });
 }
 
