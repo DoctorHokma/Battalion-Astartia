@@ -180,6 +180,14 @@ const getEntityById = function(id) {
 	return null;
 }
 
+const getEntityByIndex = function(index) {
+	if(index < 0 || index >= MapRoster.length) {
+		return null;
+	}
+
+	return MapRoster[index];
+}
+
 const selectLanguage = function(battalion, languageID) {
 	const { language, uiHandler } = battalion;
 	const languageComment = document.getElementById("LanguageCommentary");
@@ -1318,8 +1326,17 @@ function castMap(Map){
 				AnalyzeSquare('Tile', i-1, j-1);
 			});
 
-			Entity.addEventListener("mouseover", function(){ToggleHealthBar(i,j); ToggleMoraleBadge(i,j)});
-			Entity.addEventListener("mouseout", function(){document.getElementById("HPContainer "+i+"X"+j).style.visibility="hidden";document.getElementById("HPBar "+i+"X"+j).style.visibility="hidden";document.getElementById("Badge "+i+"X"+j).style.visibility='hidden'; document.getElementById("Cargo "+i+"X"+j).style.visibility='hidden';});			
+			Entity.addEventListener("mouseover", () => {
+				enableHealthBar(j - 1, i - 1);
+				ToggleMoraleBadge(i, j);
+			});
+
+			Entity.addEventListener("mouseout", () => {
+				disableHealthBar(j - 1, i - 1);
+				document.getElementById("Badge "+i+"X"+j).style.visibility='hidden';
+				document.getElementById("Cargo "+i+"X"+j).style.visibility='hidden';
+			});
+
 			Entity.addEventListener("click", function(){AnalyzeSquare('Unit',i-1,j-1)});
 			Structure.addEventListener("click", function(){AnalyzeSquare('Tile',i-1,j-1)});
 			Marker.addEventListener("click", function(){if(!isAITurn){
@@ -1337,8 +1354,18 @@ function castMap(Map){
 				if(rostermap[i-1+StandardX][j-1+StandardY].isCloaked??false){ChosenUnit.isCloaked=true}else{ChosenUnit.isCloaked=false};
 				PI_Scouter(rostermap[i+StandardX-1][j+StandardY-1],Map);
 			}});
-			Marker.addEventListener("mouseover", function(){ToggleHealthBar(i,j); ToggleMoraleBadge(i,j)});
-			Marker.addEventListener("mouseout", function(){document.getElementById("HPContainer "+i+"X"+j).style.visibility="hidden";document.getElementById("HPBar "+i+"X"+j).style.visibility="hidden";document.getElementById("Badge "+i+"X"+j).style.visibility='hidden'; document.getElementById("Cargo "+i+"X"+j).style.visibility='hidden'});
+
+			Marker.addEventListener("mouseover", () => {
+				enableHealthBar(j - 1, i - 1);
+				ToggleMoraleBadge(i,j);
+			});
+
+			Marker.addEventListener("mouseout", () => {
+				disableHealthBar(j - 1, i - 1);
+				document.getElementById("Badge "+i+"X"+j).style.visibility='hidden';
+				document.getElementById("Cargo "+i+"X"+j).style.visibility='hidden';
+			});
+
 			Canceler.addEventListener("click", function(){
 			document.getElementById("Marker "+i+"X"+j).style.visibility="visible";
 			document.getElementById("Canceler "+i+"X"+j).style.visibility="hidden";
@@ -3495,13 +3522,7 @@ function initializeStoryBattle() {
 	initTileFlags(Constants.Capture, Constants.Defend, Constants.Defeat, Constants.Protect);
 	initAttackOrder(Constants.YourFaction);
 	initSubrosters();
-
-	/*
-		for(let a=0;a<Constants.Capture.length;a++){FlagMap[Constants.Capture[a].x][Constants.Capture[a].y]=1};
-		for(let a=0;a<Constants.Defend.length;a++){FlagMap[Constants.Defend[a].x][Constants.Defend[a].y]=2};
-		for(let a=0;a<Constants.Defeat.length;a++){FlagMap[MapRoster[Constants.Defeat[a]].x][MapRoster[Constants.Defeat[a]].y]=3};
-		for(let a=0;a<Constants.Protect.length;a++){FlagMap[MapRoster[Constants.Protect[a]].x][MapRoster[Constants.Protect[a]].y]=4};
-	*/
+	//initFlagMap();
 	
 	if(DialogueChoice) {
 		launchDialogueBloc(Language.Prelogues[ChosenNation][ChosenChapter-1][ChosenMission-1], 0);
@@ -6263,75 +6284,150 @@ function TestMap() {
 	initializeSpecialBattle(EditorLevel);
 }
 
-function ToggleBattleflags(){
-	FlagMap = create2DBuffer(MapWidth, MapHeight, 0);
-
-	for(let a=0;a<Constants.Capture.length;a++){FlagMap[Constants.Capture[a].x][Constants.Capture[a].y]=1};
-	for(let a=0;a<Constants.Defend.length;a++){FlagMap[Constants.Defend[a].x][Constants.Defend[a].y]=2};
-	for(let a=0;a<Constants.Defeat.length;a++){FlagMap[MapRoster[Constants.Defeat[a]].x][MapRoster[Constants.Defeat[a]].y]=3};
-	for(let a=0;a<Constants.Protect.length;a++){FlagMap[MapRoster[Constants.Protect[a]].x][MapRoster[Constants.Protect[a]].y]=4};
-
-
-
-
-	if(!FlagsToggled){
-	for(let i=StandardX;i<StandardX+10;i++){for(let j=StandardY;j<StandardY+10;j++){
-	if(FlagMap[i+StandardX][j+StandardY]!=0){//alert("Chuchu");
-	document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).style.visibility='visible';
-	if(FlagMap[i][j]==1){document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).src="Assets/Miscellaneous/CaptureFlag.png"};
-	if(FlagMap[i][j]==2){document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).src="Assets/Miscellaneous/DefendFlag.png"};
-	if(FlagMap[i][j]==3){document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).src="Assets/Miscellaneous/DestroyFlag.png"};
-	if(FlagMap[i][j]==4){document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).src="Assets/Miscellaneous/ProtectFlag.png"};
+const setValueIn2DBuffer = function(buffer, tileX, tileY, value) {
+	if(isOutOfBounds(tileX, tileY)) {
+		return;
 	}
 
-	}};
+	buffer[tileY][tileX] = value;
+}
 
-	};
+const createFlagMap = function() {
+	const FlagMap = create2DBuffer(MapWidth, MapHeight, 0);
 
-	if(FlagsToggled){for(let i=StandardX;i<StandardX+10;i++){for(let j=StandardY;j<StandardY+10;j++){document.getElementById("Flag "+(i-StandardX+1)+"X"+(j-StandardY+1)).style.visibility='hidden';}};};
+	//TODO: Should be objectives, not a 2D map!
+	for(let i = 0; i < Constants.Capture.length; i++) {
+		const capture = Constants.Capture[i];
 
-	if(FlagsToggled){FlagsToggled=false}else{FlagsToggled=true};
+		setValueIn2DBuffer(FlagMap, capture.y, capture.x, 1);
+	}
+
+	for(let i = 0; i < Constants.Defend.length; i++) {
+		const defend = Constants.Defend[i];
+
+		setValueIn2DBuffer(FlagMap, defend.y, defend.x, 2);
+	}
+
+	for(let i = 0; i < Constants.Defeat.length; i++) {
+		const defeat = Constants.Defeat[i];
+		const entity = MapRoster[defeat];
+
+		setValueIn2DBuffer(FlagMap, entity.y, entity.x, 3);
+	}
+
+	for(let i = 0; i < Constants.Protect.length; i++) {
+		const protect = Constants.Protect[i];
+		const entity = MapRoster[protect];
+
+		setValueIn2DBuffer(FlagMap, entity.y, entity.x, 4);
+	}
+
+	return FlagMap;
+}
+
+const enableFlag = function(flagMap, tileX, tileY) {
+	const flag = flagMap[tileY][tileX];
+	const element = document.getElementById("Flag " + (tileY + 1) + "X" + (tileX + 1));
+
+	switch(flag) {
+		case 1: {
+			element.style.visibility = "visible";
+			element.src = "Assets/Miscellaneous/CaptureFlag.png";
+			break;
+		}
+		case 2: {
+			element.style.visibility = "visible";
+			element.src = "Assets/Miscellaneous/DefendFlag.png";
+			break;
+		}
+		case 3: {
+			element.style.visibility = "visible";
+			element.src = "Assets/Miscellaneous/DestroyFlag.png";
+			break;
+		}
+		case 4: {
+			element.style.visibility = "visible";
+			element.src = "Assets/Miscellaneous/ProtectFlag.png";
+			break;
+		}
+	}
+}
+
+const disableFlag = function(tileX, tileY) {
+	const element = document.getElementById("Flag " + (tileY + 1) + "X" + (tileX + 1));
+
+	element.style.visibility = "hidden";
+}
+
+const enableAllFlags = function(flagMap) {
+	for(let i = 0; i < MapHeight; i++) {
+		for(let j = 0; j < MapWidth; j++) {
+			enableFlag(flagMap, j, i);
+		}
+	}
+}
+
+const disableAllFlags = function() {
+	for(let i = 0; i < MapHeight; i++) {
+		for(let j = 0; j < MapWidth; j++) {
+			disableFlag(j, i);
+		}	
+	}
+}
+
+function ToggleBattleflags(){
+	const flagMap = createFlagMap();
+
+	if(!FlagsToggled) {
+		enableAllFlags(flagMap);
+	} else {
+		disableAllFlags();
+	}
+
+	FlagsToggled = !FlagsToggled;
+}
+
+const enableHealthBar = function(tileX, tileY) {
+	const entity = rostermap[tileY][tileX];
+
+	if(entity != 0) {
+		document.getElementById("HPContainer " + (tileY + 1) + "X" + (tileX + 1)).style.visibility = "visible";
+		document.getElementById("HPBar " + (tileY + 1) + "X" + (tileX + 1)).style.visibility = "visible";
+		document.getElementById("HPBar " + (tileY + 1) + "X" + (tileX + 1)).style.height = "8px";
+		document.getElementById("HPBar " + (tileY + 1) + "X" + (tileX + 1)).style.width = 39 * (entity.life / entity.config.HP) + "px";
+		document.getElementById("HPBar " + (tileY + 1) + "X" + (tileX + 1)).style.filter = "brightness(" + entity.life / entity.config.HP + ")";
+	}
+}
+
+const disableHealthBar = function(tileX, tileY) {
+	document.getElementById("HPContainer " + (tileY + 1) + "X" + (tileX + 1)).style.visibility = "hidden";
+	document.getElementById("HPBar " + (tileY + 1) + "X" + (tileX + 1)).style.visibility = "hidden";
+}
+
+const enableAllHealthBars = function() {
+	for(let i = 0; i < MapHeight; i++) {
+		for(let j = 0; j < MapWidth; j++) {
+			enableHealthBar(j, i);
+		}
+	}
+}
+
+const disableAllHealthBars = function() {
+	for(let i = 0; i < MapHeight; i++) {
+		for(let j = 0; j < MapWidth; j++) {
+			disableHealthBar(j, i);
+		}	
+	}
 }
 
 function ToggleHealthBars(){
-	BarMap = create2DBuffer(MapWidth, MapHeight, 0);
-
-	for(let a=StandardX;a<StandardX+10;a++){for(let b=StandardY;b<StandardY+10;b++){BarMap[a-StandardX][b-StandardY]=rostermap[a][b]}};
-
 	if(!BarsToggled) {
-		for(let i = 0; i < MapHeight; i++) {
-			for(let j = 0; j < MapWidth; j++) {
-				if(BarMap[i][j] != 0){
-					document.getElementById("HPContainer "+(i+1)+"X"+(j+1)).style.visibility="visible";
-					document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.visibility="visible";
-					document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.height="8px";
-					document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.width=39*(rostermap[i+StandardX][j+StandardY].life/Units[rostermap[i+StandardX][j+StandardY].unitType].HP)+"px";
-					document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.filter="brightness("+rostermap[i+StandardX][j+StandardY].life/Units[rostermap[i+StandardX][j+StandardY].unitType].HP+")";
-				}
-			}
-		}
+		enableAllHealthBars();
 	} else {
-		for(let i = 0; i < MapHeight; i++) {
-			for(let j = 0; j < MapWidth; j++) {
-				document.getElementById("HPContainer "+(i+1)+"X"+(j+1)).style.visibility="hidden";
-				document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.visibility="hidden";
-			}
-		}
+		disableAllHealthBars();
 	}
 
 	BarsToggled = !BarsToggled;
-}
-
-function ToggleHealthBar(X,Y){
-	let i=X-1;
-	let j=Y-1;
-	if(rostermap[i][j]!=0){
-		document.getElementById("HPContainer "+(i+1)+"X"+(j+1)).style.visibility="visible";
-		document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.visibility="visible";
-		document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.height="8px";
-		document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.width=39*(rostermap[i][j].life/Units[rostermap[i][j].unitType].HP)+"px";
-		document.getElementById("HPBar "+(i+1)+"X"+(j+1)).style.filter="brightness("+rostermap[i][j].life/Units[rostermap[i][j].unitType].HP+")";
-	}
 }
 
 function ToggleMoraleBadge(X,Y){
