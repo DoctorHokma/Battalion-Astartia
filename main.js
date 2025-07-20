@@ -98,7 +98,7 @@ var Terrain = TERRAIN;
 var AdjacentCloakers = [];
 
 //Board Values
-var Resolution = false;
+var Resolution = false; //Global resolution value, used for dialogue!
 var Victory = false;
 var MapWidth = 0;
 var MapHeight = 0;
@@ -125,6 +125,8 @@ const resetBoard = function() {
 			}
 		}
 	}
+
+	battalion.objectives.clear();
 
 	Resolution = false;
 	Victory = false;
@@ -3522,6 +3524,8 @@ function initializeStoryBattle() {
 	initTileFlags(Constants.Capture, Constants.Defend, Constants.Defeat, Constants.Protect);
 	initAttackOrder(Constants.YourFaction);
 	initSubrosters();
+
+	battalion.objectives.load(Constants);
 	//initFlagMap();
 	
 	if(DialogueChoice) {
@@ -3579,6 +3583,8 @@ function initializeSpecialBattle(Level){
 
 	initSubrosters();
 
+	battalion.objectives.load(Constants);
+
 	if((Constants.AttackerFaction ?? []).length > 0) {
 		DaoLedger = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 		
@@ -3618,119 +3624,24 @@ function initializeSpecialBattle(Level){
  * @param {object} Constants 
  */
 function Inspection(Turn, Constants){
-	let Resolution = false;
-	let Survive = Constants.Survival;
-	let TimeLimit = Constants.TimeLimit;
-	let Factiones = [];
-	let AliveFactions = [];
-	let Assassinated = Constants.Defeat.length;
-	let YourFaction = Factions[Constants.YourFaction].faction;
-
-	if(Turn >= TimeLimit) {
-		Resolution = true;
-		Victory = false;
+	if(!BattleEnd) {
+		return;
 	}
 
-	if(Turn >= Survive) {
-		Resolution = true;
-		Victory = true;
-	}
+	const victoryType = battalion.objectives.getVictoryType();
 
-	for(let i = 0; i < MapRoster.length; i++) {
-		const entityFaction = Factions[MapRoster[i].faction].faction;
-		let FactionNotIncluded = true;
-	
-		for(let j = 0; j < Factiones.length; j++) {
-			if(Factiones[j] == entityFaction) {
-				FactionNotIncluded = false;
-				break;
-			}
-		}
-
-		if(FactionNotIncluded) {
-			Factiones[Factiones.length] = entityFaction;
-		}
-	}
-
-	for(let i = 0; i < Factiones.length; i++) {
-		let FactionIsStillAlive = false;
-
-		for(let j = 0; j < MapRoster.length; j++) {
-			if(
-				Factions[MapRoster[j].faction].faction == Factiones[i] &&
-				MapRoster[j].life > 0 &&
-				!hasCertainTrait(MapRoster[j].unitType, "Inertial")
-			) {
-				FactionIsStillAlive = true;
-				break;
-			}
-		}
-
-		if(FactionIsStillAlive) {
-			AliveFactions[AliveFactions.length] = Factiones[i];
-		}
-	}
-
-	if(AliveFactions.length === 0) {
-		//TODO: Implement - NO_FACTION_ALIVE - ending.
-	} else if(AliveFactions.length === 1) {
-		Resolution = true;
-
-		if(AliveFactions[0] == YourFaction) {
-			Victory = true;
-		} else {
-			Victory = false;
-		}
-	}
-
-	for(let i = 0; i < Constants.Capture.length; i++) {
-		if(
-			rostermap[Constants.Capture[i].x][Constants.Capture[i].y] != 0 &&
-			Factions[rostermap[Constants.Capture[i].x][Constants.Capture[i].y].faction].faction == Factions[Constants.YourFaction].faction
-		) {
-			Resolution = true; 
-			Victory = true;
-			//BUG: If only one of many is captured it still counts as a win:
-			//TOFIX: Reverse conditions => If one is NOT captured break out.
+	switch(victoryType) {
+		case ObjectiveGroup.VICTORY_TYPE.NONE: {
+			//No resolution found...
 			break;
 		}
-	}
-
-	for(let i = 0; i < Constants.Defend.length; i++) {
-		if(
-			rostermap[Constants.Defend[i].x][Constants.Defend[i].y] != 0 &&
-			Factions[rostermap[Constants.Defend[i].x][Constants.Defend[i].y].faction].faction != Factions[Constants.YourFaction].faction
-		) {
-			Resolution = true;
-			Victory = false;
-			break;
-		}
-	}
-
-	for(let i = 0; i < Constants.Defeat.length; i++) {
-		if(MapRoster[Constants.Defeat[i]].life <= 0) {
-			Assassinated--;
-		}
-	}
-
-	if(Assassinated == 0 && Constants.Defeat.length != 0) {
-		Resolution = true;
-		Victory = true;
-	}
-
-	for(let i = 0; i < Constants.Protect.length; i++) {
-		if(MapRoster[Constants.Protect[i]].life <= 0) {
-			Resolution = true;
-			Victory = false;
-			break;
-		}
-	}
-
-	if(Resolution && BattleEnd) {
-		if(Victory) {
-			Battle_Won();
-		} else {
+		case ObjectiveGroup.VICTORY_TYPE.FAILURE: {
 			Battle_Lost();
+			break;
+		}
+		case ObjectiveGroup.VICTORY_TYPE.VICTORY: {
+			Battle_Won();
+			break;
 		}
 	}
 }
@@ -4402,19 +4313,16 @@ function MoveUnit(unit, path){
 
 		
 		//LastUnit=rostermap[MapRoster[unit].x][MapRoster[unit].y];
-		if(DynamicEvents.length>0){EvaluateDynamicEvent('Locomotion',[destX,destY]);};
+		if(DynamicEvents.length > 0) {
+			EvaluateDynamicEvent('Locomotion',[destX,destY]);
+		}
 
-		let mustCheck=false;
-		for(let l=0; l<Constants.Capture.length; l++){if(destX==Constants.Capture[l].x&&destY==Constants.Capture[l].y){mustCheck=true}};
-		for(let l=0; l<Constants.Defend.length; l++){if(destX==Constants.Defend[l].x&&destY==Constants.Defend[l].y){mustCheck=true}};
-		if(mustCheck){Inspection(Turn, Constants)};
-
-			}else{
-		if(MapRoster[unit].faction==PlayerChoiceFaction){document.getElementById("Marker "+(MapRoster[unit].x+1)+"X"+(MapRoster[unit].y+1)).style.visibility="visible"};
-
-		};
-
-		//alert(MapRoster[unit].isVized);
+		Inspection(Turn, Constants);
+	} else {
+		if(MapRoster[unit].faction == PlayerChoiceFaction) {
+			document.getElementById("Marker "+(MapRoster[unit].x+1)+"X"+(MapRoster[unit].y+1)).style.visibility="visible";
+		}
+	}
 }
 
 function MontreUnit(Class){

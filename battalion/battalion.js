@@ -8,6 +8,7 @@ const Battalion = function() {
     this.language = new LanguageHandler();
     this.story = new StoryHandler();
     this.uiHandler = new UIHandler();
+    this.objectives = new ObjectiveHandler();
     this.db = new BattalionDB();
 
     this.timer = new Timer();
