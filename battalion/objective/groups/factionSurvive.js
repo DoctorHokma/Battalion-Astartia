@@ -5,10 +5,9 @@ const FactionSurviveGroup = function() {
 FactionSurviveGroup.prototype = Object.create(ObjectiveGroup.prototype);
 FactionSurviveGroup.prototype.constructor = FactionSurviveGroup;
 
-FactionSurviveGroup.prototype.getVictoryType = function() {
+FactionSurviveGroup.getAliveFactions = function() {
 	let Factiones = [];
 	let AliveFactions = [];
-	let YourFaction = Factions[Constants.YourFaction].faction;
 
     for(let i = 0; i < MapRoster.length; i++) {
 		const entityFaction = Factions[MapRoster[i].faction].faction;
@@ -45,14 +44,33 @@ FactionSurviveGroup.prototype.getVictoryType = function() {
 		}
 	}
 
-	if(AliveFactions.length === 0) {
-		//TODO: Implement - NO_FACTION_ALIVE - ending.
+	return AliveFactions;
+}
+
+FactionSurviveGroup.prototype.getVictoryType = function() {
+	const aliveFactions = FactionSurviveGroup.getAliveFactions();
+
+	if(aliveFactions.length < this.objectives.length) {
 		return ObjectiveGroup.VICTORY_TYPE.FAILURE;
-	} else if(AliveFactions.length === 1) {
-		if(AliveFactions[0] == YourFaction) {
-			return ObjectiveGroup.VICTORY_TYPE.VICTORY;
-		} else {
+	}
+
+	for(let i = 0; i < this.objectives.length; i++) {
+		const objective = this.objectives[i];
+		let isAlive = false;
+
+		for(let j = 0; j < aliveFactions.length; j++) {
+			const faction = aliveFactions[i];
+
+			if(faction === objective) {
+				isAlive = true;
+				break;
+			}
+		}
+
+		if(!isAlive) {
 			return ObjectiveGroup.VICTORY_TYPE.FAILURE;
 		}
 	}
+
+	return ObjectiveGroup.VICTORY_TYPE.NONE;
 }
