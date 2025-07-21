@@ -164,8 +164,8 @@ const showCampaignData = function(battalion, campaign) {
 
 const showProgressData = function(battalion) {
     const { story } = battalion;
-    const campaign = story.getCurrentNode(StoryHandler.TYPE.CAMPAIGN);
-    const chapter = story.getCurrentNode(StoryHandler.TYPE.CHAPTER);
+    const campaign = story.getCurrentNode(StoryNode.TYPE.CAMPAIGN);
+    const chapter = story.getCurrentNode(StoryNode.TYPE.CHAPTER);
 
     if(!campaign || !chapter) {
         return;
@@ -173,7 +173,7 @@ const showProgressData = function(battalion) {
 
     const PLAQUE_IMAGES = ["Chp1plaque", "Chp2plaque", "Chp3plaque", "Chp4plaque", "Chp5plaque", "Chp6plaque", "Chp7plaque"];
     const PLAQUES = ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6", "Chapter 7"];
-    const nextChapters = campaign.getAllAvailableChildren((chapterID) => story.isNodeFinished(StoryHandler.TYPE.CHAPTER, chapterID));
+    const nextChapters = story.getAllOpenNodes(campaign);
 
     for(let i = 0; i < PLAQUES.length; i++) {
         const plaque = document.getElementById(PLAQUES[i]);
@@ -206,7 +206,7 @@ const showProgressData = function(battalion) {
 
     const { emblem, nonEmblem } = nationType;
     const EMBLEMS = ["Emblem1", "Emblem2", "Emblem3", "Emblem4", "Emblem5"];
-    const nextMissions = chapter.getAllAvailableChildren((missionID) => story.isNodeFinished(StoryHandler.TYPE.MISSION, missionID));
+    const nextMissions = story.getAllOpenNodes(chapter);
     
     for(let i = 0; i < EMBLEMS.length; i++) {
         const emblemElement = document.getElementById(EMBLEMS[i]);

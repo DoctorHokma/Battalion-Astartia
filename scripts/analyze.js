@@ -160,7 +160,7 @@ function AnalyzeSquare(analysisType, tileY, tileX){
 
 function AnalyzeSpecification(Index) {
 	const { story } = battalion;
-	const mission = story.getCurrentNode(StoryHandler.TYPE.MISSION);
+	const mission = story.getCurrentNode(StoryNode.TYPE.MISSION);
 
 	if(!mission) {
 		return;

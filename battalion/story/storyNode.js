@@ -2,8 +2,17 @@ const StoryNode = function(id) {
     this.id = id;
     this.config = null;
     this.state = StoryNode.STATE.UNFINISHED;
+    this.childType = StoryNode.TYPE.NONE;
     this.order = [];
 }
+
+StoryNode.TYPE = {
+    NONE: 0,
+    SCENARIO: 1,
+	CAMPAIGN: 2,
+	CHAPTER: 3,
+	MISSION: 4
+};
 
 StoryNode.STATE = {
 	UNFINISHED: 0,
@@ -62,76 +71,6 @@ StoryNode.prototype.getChildByIndex = function(childIndex) {
     }
 
     return this.order[childIndex];
-}
-
-StoryNode.prototype.getNextAvailableIndex = function(onCheck) {
-	if(this.order.length === 0 || typeof onCheck !== "function") {
-        console.warn(`No order for ${this.id}`);
-		return -1;
-	}
-
-    for(let i = 0; i < this.order.length; i++) {
-        const childID = this.order[i];
-        const isCurrentFinished = onCheck(childID);
-
-        if(!isCurrentFinished) {
-            return i;
-        }
-    }
-
-    return this.order.length - 1;
-}
-
-StoryNode.prototype.isComplete = function(onCheck) {
-    if(typeof onCheck !== "function") {
-        return false;
-    }
-
-    for(let i = 0; i < this.order.length; i++) {
-        const isComplete = onCheck(this.order[i]);
-
-        if(!isComplete) {
-            return false;
-        }
-    }
-
-    return true;
-}
-
-StoryNode.prototype.getAllAvailableChildren = function(onCheck) {
-    const available = new Set();
-
-    for(let i = 0; i < this.order.length; i++) {
-        const childID = this.order[i];
-        const isCurrentFinished = onCheck(childID);
-
-        if(!isCurrentFinished) {
-            available.add(childID);
-            
-            return available;
-        }
-
-        available.add(childID);
-    }
-
-    return available;
-}
-
-StoryNode.prototype.isChildAvailableAsNext = function(orderIndex, onCheck) {
-	if(orderIndex < 0 || orderIndex >= this.order.length || typeof onCheck !== "function") {
-		return false;
-	}
-
-    for(let i = 0; i < orderIndex; i++) {
-        const childID = this.order[i];
-        const isPreviousFinished = onCheck(childID);
-
-        if(!isPreviousFinished) {
-            return false;
-        }
-    }
-
-    return true;
 }
 
 StoryNode.prototype.init = function(configID, config) {

@@ -1,5 +1,7 @@
 const Scenario = function(id) {
     StoryNode.call(this, id);
+
+	this.childType = StoryNode.TYPE.CAMPAIGN;
 }
 
 Scenario.prototype = Object.create(StoryNode.prototype);

@@ -856,7 +856,7 @@ const LANGUAGE_ENGLISH = {
 	"UNIT_NAME_SUPPLY_DEPOT": "Supply Depot",
 	"UNIT_NAME_FORTRESS": "Fortress",
 	"UNIT_NAME_MEME_SPARTANS": "Spartans",
-	"UNIT_NAME_MEME_BUREAUCRAT": "Bureaucrat",
+	"UNIT_NAME_MEME_BUREAUCRAT": "BureaucRAT",
 
 	"UNIT_DESC_CONSTRUCTION": "Ad-hoc fortifications are being erected here",
 	"UNIT_DESC_LIGHT_INFANTRY": "Lightly equipped and almost untrained, these men aren't the best for combat, but they're easy to pump out.",

@@ -1,5 +1,3 @@
-//TODO: Fix Healthbar-Toggles.
-
 const PROFILE_ID = "TEST_PROFILE";
 const OPENING_TRACK = "NavalEpic6";
 const TILE_SIZE = 56;
@@ -18,7 +16,7 @@ const createContext = function() {
 	context.language.selectLanguage(Battalion.LANGUAGE.ENGLISH);
 	context.client.cursor.events.on(Cursor.EVENT.BUTTON_DOWN, () => context.musicPlayer.playTrack(OPENING_TRACK), { once: true });
 
-	context.story.init();
+	context.story.init(MISSIONS, CHAPTERS, CAMPAIGNS, SCENARIOS);
     context.uiHandler.init(context);
     context.setState(Battalion.STATE.MAIN_MENU);
     context.timer.start();
@@ -3475,7 +3473,7 @@ const initSubrosters = function() {
 
 function initializeStoryBattle() {
 	const { story } = battalion;
-	const mission = story.getCurrentNode(StoryHandler.TYPE.MISSION);
+	const mission = story.getCurrentNode(StoryNode.TYPE.MISSION);
 
 	if(!mission) {
 		return;

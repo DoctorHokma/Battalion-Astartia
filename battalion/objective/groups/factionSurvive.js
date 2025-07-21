@@ -59,7 +59,7 @@ FactionSurviveGroup.prototype.getVictoryType = function() {
 		let isAlive = false;
 
 		for(let j = 0; j < aliveFactions.length; j++) {
-			const faction = aliveFactions[i];
+			const faction = aliveFactions[j];
 
 			if(faction === objective) {
 				isAlive = true;

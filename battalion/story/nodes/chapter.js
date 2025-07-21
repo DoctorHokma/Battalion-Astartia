@@ -1,5 +1,7 @@
 const Chapter = function(id) {
 	StoryNode.call(this, id);
+
+	this.childType = StoryNode.TYPE.MISSION;
 }
 
 Chapter.prototype = Object.create(StoryNode.prototype);

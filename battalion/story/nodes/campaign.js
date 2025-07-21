@@ -1,5 +1,7 @@
 const Campaign = function(id) {
 	StoryNode.call(this, id);
+
+	this.childType = StoryNode.TYPE.CHAPTER;
 }
 
 Campaign.prototype = Object.create(StoryNode.prototype);
