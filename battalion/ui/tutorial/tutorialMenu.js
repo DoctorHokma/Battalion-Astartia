@@ -44,14 +44,6 @@ TutorialMenu.prototype.close = function() {
     this.selectedLevel = null;
 }
 
-TutorialMenu.prototype.createButton = function(buttonID, config) {
-    const button = new TutorialButton(buttonID, config);
-
-    this.buttons.push(button);
-
-    return button;
-}
-
 TutorialMenu.prototype.showImage = function() {
     document.getElementById("Tutorial").style.visibility = "visible";
 }
@@ -75,26 +67,33 @@ TutorialMenu.prototype.clickButton = function(battalion, button) {
     this.selectedLevel = level;
 }
 
+TutorialMenu.prototype.createButtons = function(battalion) {
+    const scrollContainer = document.getElementById("TUTORIAL_SCROLL_CONTAINER");
+
+    for(let i = 0; i < UI_SETTINGS.TUTORIAL_ORDER.length; i++) {
+        const levelConfig = TUTORIAL_LEVELS[UI_SETTINGS.TUTORIAL_ORDER[i]];
+
+        if(levelConfig) {
+            const button = UIHelper.createTutorialButton(levelConfig);
+
+            button.setText(levelConfig.info);
+            button.addClick(() => this.clickButton(battalion, button));
+            scrollContainer.appendChild(button.element);
+
+            this.buttons.push(button);
+        }
+    }
+
+	if(this.buttons.length > 0) {
+		this.buttons[0].element.style.marginTop = "10px";
+	}
+}
+
 TutorialMenu.prototype.init = function(battalion) {
 	const { uiHandler } = battalion;
     const { mainMenu } = uiHandler;
 
-    this.createButton("Tutorial1", TUTORIAL_LEVELS.TUTORIAL_1);
-    this.createButton("Tutorial2", TUTORIAL_LEVELS.TUTORIAL_2);
-    this.createButton("Tutorial3", TUTORIAL_LEVELS.TUTORIAL_3);
-    this.createButton("Tutorial4", TUTORIAL_LEVELS.TUTORIAL_4);
-    this.createButton("Tutorial5", TUTORIAL_LEVELS.TUTORIAL_5);
-    this.createButton("Tutorial6", TUTORIAL_LEVELS.TUTORIAL_6);
-    this.createButton("Tutorial7", TUTORIAL_LEVELS.TUTORIAL_7);
-    this.createButton("Tutorial8", TUTORIAL_LEVELS.TUTORIAL_8);
-    this.createButton("Tutorial9", TUTORIAL_LEVELS.TUTORIAL_9);
-    this.createButton("Tutorial10", TUTORIAL_LEVELS.TUTORIAL_10);
-
-    for(let i = 0; i < this.buttons.length; i++) {
-        const button = this.buttons[i];
-
-        button.addClick(() => this.clickButton(battalion, button));
-    }
+    this.createButtons(battalion);
 
     this.closeButton.addClick(() => {
         mainMenu.show();

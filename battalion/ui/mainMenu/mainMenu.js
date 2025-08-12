@@ -22,11 +22,15 @@ MainMenu.prototype.onLanguageSwitch = function(handler) {
 MainMenu.prototype.createButton = function(buttonID, textID) {
     const button = new MainMenuButton(buttonID, textID);
 
-    button.init();
-
     this.buttons.push(button);
 
     return button;
+}
+
+MainMenu.prototype.randomizeImage = function() {
+	const id = Math.floor(Math.random() * UI_SETTINGS.MAIN_MENU_IMAGES.length);
+
+	this.image.src = UI_SETTINGS.MAIN_MENU_IMAGES[id];
 }
 
 MainMenu.prototype.init = function(battalion) {

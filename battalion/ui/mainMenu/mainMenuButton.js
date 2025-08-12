@@ -13,6 +13,8 @@ const MainMenuButton = function(id, textID) {
     this.addMainClass("main_menu_button");
     this.addImageClass("main_menu_button_image");
     this.addTextClass("main_menu_button_text");
+
+    this.init();
 }
 
 MainMenuButton.STATE = {

@@ -1,7 +1,13 @@
 const GenericButton = function(id, config) {
     this.id = id;
     this.config = config;
-    this.element = document.getElementById(id);
+
+    if(id === null) {
+        this.element = document.createElement("div");
+    } else {
+        this.element = document.getElementById(id);
+    }
+
     this.element.onclick = () => this.click();
     this.image = document.createElement("img");
     this.text = document.createElement("p");

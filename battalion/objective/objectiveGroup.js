@@ -15,3 +15,7 @@ ObjectiveGroup.prototype.getVictoryType = function() {
 ObjectiveGroup.prototype.clear = function() {
     this.objectives = [];
 }
+
+ObjectiveGroup.prototype.hasObjectives = function() {
+    return this.objectives.length !== 0;
+}

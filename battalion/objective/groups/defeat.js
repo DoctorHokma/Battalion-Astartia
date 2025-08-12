@@ -19,4 +19,6 @@ DefeatGroup.prototype.getVictoryType = function() {
             }
         }
     }
+
+    return ObjectiveGroup.VICTORY_TYPE.NONE;
 }

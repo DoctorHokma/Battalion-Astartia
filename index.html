@@ -995,19 +995,8 @@
 		<div id="Boot Camp"></div>
 
 		<div id="Special Levels" style="position:absolute; visibility:hidden; left:210px">
-			<div style="position: absolute;">
-				<img id="Special Bloc Panel" style="position: absolute;" src="Assets/Miscellaneous/Special Bloc Panel.png"/>
-				<div id="BonusL1" style="margin-top: 10px;"></div>
-				<div id="BonusL2"></div>
-				<div id="BonusL3"></div>
-				<div id="BonusL4"></div>
-				<div id="BonusL5"></div>
-				<div id="BonusL6"></div>
-				<div id="BonusL7"></div>
-				<div id="BonusL8"></div>
-				<div id="BonusL9"></div>
-			</div>
-
+			<img id="Special Bloc Panel" style="position: absolute;" src="Assets/Miscellaneous/Special Bloc Panel.png"/>
+			<div id="SECIAL_LEVELS_SCROLL_CONTAINER" style="position: absolute;"></div>
 			<div style="position: absolute; left:140px">
 				<img id="Special Level Panel" src="Assets/Miscellaneous/Special Level Panel.png"/>
 				<p id="Special Level Name" style="position: absolute; top:546px; width:560px; height:10px; text-align: center;"></p>
@@ -1090,19 +1079,8 @@
 		</div>
 
 		<div id="Tutorial Levels" style="position:absolute; visibility:hidden; left:210px">
-			<div style="position: absolute;">
-				<img id="Tutorial Bloc Panel" style="position: absolute;" src="Assets/Miscellaneous/Special Bloc Panel.png"/>
-				<div id="Tutorial1" style="margin-top: 10px;"></div>
-				<div id="Tutorial2"></div>
-				<div id="Tutorial3"></div>
-				<div id="Tutorial4"></div>
-				<div id="Tutorial5"></div>
-				<div id="Tutorial6"></div>
-				<div id="Tutorial7"></div>
-				<div id="Tutorial8"></div>
-				<div id="Tutorial9"></div>
-				<div id="Tutorial10"></div>
-			</div>
+			<img id="Tutorial Bloc Panel" style="position: absolute;" src="Assets/Miscellaneous/Special Bloc Panel.png"/>
+			<div id="TUTORIAL_SCROLL_CONTAINER" style="position: absolute;"></div>
 
 			<div style="position: absolute; left:140px">
 				<img src="Assets/Miscellaneous/Special Level Panel.png"/>
@@ -1120,36 +1098,7 @@
 
 		<div id="Codex" class="codex">
 			<img style="position:absolute;" src="Assets/Miscellaneous/LoreSelectionPanel.png"/>
-
-			<div class="codex_scroll_container">
-				<div id="CODEX_JOKES" style="margin-top: 0px;"></div>
-				<div id="CODEX_SPECIAL_UNITS"></div>
-				<div id="CODEX_SPECIAL_ARMOR"></div>
-				<div id="CODEX_SPECIAL_AIRCRAFT"></div>
-				<div id="CODEX_SPECIAL_SHIPS"></div>
-				<div id="CODEX_THIS_WORLD"></div>
-				<div id="CODEX_IT_HAPPENED"></div>
-				<div id="CODEX_1"></div>
-				<div id="CODEX_2"></div>
-				<div id="CODEX_3"></div>
-				<div id="CODEX_4"></div>
-				<div id="CODEX_5"></div>
-				<div id="CODEX_6"></div>
-				<div id="CODEX_7"></div>
-				<div id="CODEX_8"></div>
-				<div id="CODEX_9"></div>
-				<div id="CODEX_10"></div>
-				<div id="CODEX_11"></div>
-				<div id="CODEX_12"></div>
-				<div id="CODEX_13"></div>
-				<div id="CODEX_OPERATION_TZIMTZUM"></div>
-				<div id="CODEX_OPERATION_GOLCHAB"></div>
-				<div id="CODEX_OPERATION_GHAAG_SHEBLAH"></div>
-				<div id="CODEX_OPERATION_OHR_EIN_ZOF"></div>
-				<div id="CODEX_OPERATION_SAMSON"></div>
-				<div id="CODEX_OPERATION_THAUMIEL"></div>
-				<div id="CODEX_WAR_PLAN_ARMAGEDDON"></div>
-			</div>
+			<div id="CODEX_SCROLL_CONTAINER" class="codex_scroll_container"></div>
 
 			<div style="position: absolute; left:210px; width:560px; height: 700px">
 				<img style="position: absolute" src="Assets/Miscellaneous/LorePanel.png">
@@ -1401,6 +1350,7 @@
 		<script src="data/story.js"></script>
 		<script src="data/traits.js"></script>
 		<script src="data/tutorialLevels.js"></script>
+		<script src="data/uiSettings.js"></script>
 		<script src="data/units.js"></script>
 
 		<script src="battalion/helper.js"></script>
@@ -1454,18 +1404,15 @@
 		<script src="battalion/ui/genericButton.js"></script>
 		<script src="battalion/ui/genericMenu.js"></script>
 		<script src="battalion/ui/tooltip.js"></script>
-		<script src="battalion/ui/tutorial/tutorialButton.js"></script>
 		<script src="battalion/ui/tutorial/tutorialMenu.js"></script>
 		<script src="battalion/ui/options/optionsButton.js"></script>
 		<script src="battalion/ui/options/optionsMenu.js"></script>
-		<script src="battalion/ui/codex/codexButton.js"></script>
 		<script src="battalion/ui/codex/codex.js"></script>
 		<script src="battalion/ui/mainMenu/mainMenuButton.js"></script>
 		<script src="battalion/ui/mainMenu/mainMenu.js"></script>
 		<script src="battalion/ui/morale/moraleButton.js"></script>
 		<script src="battalion/ui/morale/moraleHandler.js"></script>
 		<script src="battalion/ui/specialOptions/specialOptions.js"></script>
-		<script src="battalion/ui/specialLevels/specialLevelsButton.js"></script>
 		<script src="battalion/ui/specialLevels/specialLevelsMenu.js"></script>
 		<script src="battalion/ui/uiHandler.js"></script>
 

@@ -13,4 +13,6 @@ TimeLimitGroup.prototype.getVictoryType = function() {
             return ObjectiveGroup.VICTORY_TYPE.FAILURE;
         }
     }
+
+    return ObjectiveGroup.VICTORY_TYPE.NONE;
 }

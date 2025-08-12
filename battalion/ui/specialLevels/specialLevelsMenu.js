@@ -128,14 +128,6 @@ SpecialLevelsMenu.prototype.selectLevelByIndex = function(index) {
 	}
 }
 
-SpecialLevelsMenu.prototype.createButton = function(buttonID, config) {
-    const button = new SpecialLevelsButton(buttonID, config);
-
-    this.buttons.push(button);
-
-    return button;
-}
-
 SpecialLevelsMenu.prototype.createLevelSelectButtons = function() {
     for(let i = 0; i < SpecialLevelsMenu.MAX_LEVELS_PER_PAGE; i++) {
         const button = this.getLevelSelectButton(i);
@@ -145,26 +137,33 @@ SpecialLevelsMenu.prototype.createLevelSelectButtons = function() {
     }
 }
 
+SpecialLevelsMenu.prototype.createButtons = function(battalion) {
+    const scrollContainer = document.getElementById("SECIAL_LEVELS_SCROLL_CONTAINER");
+
+    for(let i = 0; i < UI_SETTINGS.SPECIAL_ORDER.length; i++) {
+        const levelConfig = SPECIAL_LEVELS[UI_SETTINGS.SPECIAL_ORDER[i]];
+
+        if(levelConfig) {
+            const button = UIHelper.createSpecialButton(levelConfig);
+
+            button.setText(levelConfig.info);
+            button.addClick(() => this.clickButton(battalion, button));
+            scrollContainer.appendChild(button.element);
+
+            this.buttons.push(button);
+        }
+    }
+
+	if(this.buttons.length > 0) {
+		this.buttons[0].element.style.marginTop = "10px";
+	}
+}
+
 SpecialLevelsMenu.prototype.init = function(battalion) {
 	const { uiHandler } = battalion;
     const { mainMenu } = uiHandler;
 
-    this.createButton("BonusL1", SPECIAL_LEVELS.PLOT_EXPANSION);
-    this.createButton("BonusL2", SPECIAL_LEVELS.SKIRMISHES);
-    this.createButton("BonusL3", SPECIAL_LEVELS.CUTE);
-    this.createButton("BonusL4", SPECIAL_LEVELS.HISTORICAL);
-    this.createButton("BonusL5", SPECIAL_LEVELS.HONOUR);
-    this.createButton("BonusL6", SPECIAL_LEVELS.CHALLENGES);
-    this.createButton("BonusL7", SPECIAL_LEVELS.MEME);
-    this.createButton("BonusL8", SPECIAL_LEVELS.ANIME);
-    this.createButton("BonusL9", SPECIAL_LEVELS.GRAND);
-
-    for(let i = 0; i < this.buttons.length; i++) {
-        const button = this.buttons[i];
-
-        button.addClick(() => this.clickButton(battalion, button));
-    }
-
+    this.createButtons(battalion);
     this.createLevelSelectButtons();
 
     this.closeButton.addClick(() => {

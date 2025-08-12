@@ -18,4 +18,6 @@ CaptureGroup.prototype.getVictoryType = function() {
             return ObjectiveGroup.VICTORY_TYPE.VICTORY;
         }
     }
+
+    return ObjectiveGroup.VICTORY_TYPE.NONE;
 }

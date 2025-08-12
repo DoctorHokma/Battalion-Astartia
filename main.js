@@ -2307,58 +2307,59 @@ function EndBattle(){
 	RemoveKebabIMeanBlep();
 
 	for(let z = 1; z <= 4; z++) {
-		document.getElementById("Trait"+z).src=""};
-		document.getElementById("DetBar").src="Assets/Miscellaneous/PlainDetailBar.png";
-		document.getElementById("Icon").style.visibility="hidden";
-		document.getElementById("DetBarName").innerHTML="";
-		document.getElementById("DetBarDescription").innerHTML="";
-		document.getElementById("Health").style.visibility="hidden";
-		document.getElementById("Damage").style.visibility="hidden";
-		document.getElementById("Movement").style.visibility="hidden";
-		document.getElementById("Biome").style.visibility="hidden";
+		document.getElementById("Trait"+z).src="";
+	}
 
+	document.getElementById("DetBar").src="Assets/Miscellaneous/PlainDetailBar.png";
+	document.getElementById("Icon").style.visibility="hidden";
+	document.getElementById("DetBarName").innerHTML="";
+	document.getElementById("DetBarDescription").innerHTML="";
+	document.getElementById("Health").style.visibility="hidden";
+	document.getElementById("Damage").style.visibility="hidden";
+	document.getElementById("Movement").style.visibility="hidden";
+	document.getElementById("Biome").style.visibility="hidden";
 
-		let Preffix=Factions[Constants.Commanders[1].Allegiance].Preffix;
-		let Quote=0;
-		if(Factions!=CampaignFactions){Preffix="GEN"};
+	let Preffix=Factions[Constants.Commanders[1].Allegiance].Preffix;
+	let Quote=0;
+	if(Factions!=CampaignFactions){Preffix="GEN"};
 
-		if(Victory) {
-			battalion.soundPlayer.playSound("Victory");
+	if(Victory) {
+		battalion.soundPlayer.playSound("Victory");
+	} else {
+		battalion.soundPlayer.playSound("Defeat");
+	}
+
+	if(Victory){
+		document.getElementById("EndBattleImage").src="Assets/Paralogues/Victory"+Preffix+".png";
+		Quote=Language.VictoryQuotes;
+	} else {
+		document.getElementById("EndBattleImage").src="Assets/Paralogues/Defeat"+Preffix+".png";
+		Quote=Language.DefeatQuotes;
+	}
+
+	if(Factions != CampaignFactions) {
+		Quote=Quote[0];
+	} else {
+		Quote=Quote[Constants.Commanders[1].Allegiance];
+	}
+
+	Quote=Quote[Math.floor(Math.random()*Quote.length)];
+	document.getElementById("EndBattleQuote").innerHTML=Quote;
+	document.getElementById("EndBattleQuote").style.color=Factions[Constants.Commanders[1].Allegiance].color;
+
+	document.getElementById("Battlemap").style.visibility = "hidden";
+
+	if(Resolution) {
+		if(!Victory) {
+			//alert("It's ok bro, we're not all Chuck Norris");
+			battalion.uiHandler.mainMenu.show();
 		} else {
-			battalion.soundPlayer.playSound("Defeat");
+			//alert("GG bro! You won the level!");
+			battalion.story.onMissionWon();
 		}
-
-		if(Victory){document.getElementById("EndBattleImage").src="Assets/Paralogues/Victory"+Preffix+".png";
-			Quote=Language.VictoryQuotes
-		} else {
-			document.getElementById("EndBattleImage").src="Assets/Paralogues/Defeat"+Preffix+".png";
-			Quote=Language.DefeatQuotes;
-		}
-
-		if(Factions!=CampaignFactions) {
-			Quote=Quote[0]
-		} else {
-			Quote=Quote[Constants.Commanders[1].Allegiance];
-		}
-
-		Quote=Quote[Math.floor(Math.random()*Quote.length)];
-		document.getElementById("EndBattleQuote").innerHTML=Quote;
-		document.getElementById("EndBattleQuote").style.color=Factions[Constants.Commanders[1].Allegiance].color;
-
-		document.getElementById("Battlemap").style.visibility = "hidden";
-
-		if(Resolution) {
-			if(!Victory) {
-				//alert("It's ok bro, we're not all Chuck Norris");
-				battalion.uiHandler.mainMenu.show();
-			} else {
-				//alert("GG bro! You won the level!");
-				battalion.story.onMissionWon();
-			}
-		}
+	}
 
 	//This bloc calls the endbattle screen
-
 	document.getElementById('EndBattleScreen').style.visibility='visible';
 	//setTimeout(endbattlescreen,1000);
 
@@ -6593,20 +6594,4 @@ CallPreloader();
 //document.getElementById('EditorP1').oncontextmenu=function(){EditorMap=Kaula;RefreshMapEditor()};
 //This protocol shall disable MapEditor paraphernalia and allow the pilfering of a giant(14000*5600) map, later to be shrunk to 1400*560.
 
-const randomizeMainScreen = function() {
-	const images = [
-		"Assets/MainMenuScreens/Relampago.jpg",
-		"Assets/MainMenuScreens/Backdrop ETHA.jpg",
-		"Assets/MainMenuScreens/Vladov's Last Charge.png",
-		"Assets/MainMenuScreens/BackdropProvisory.png",
-		"Assets/MainMenuScreens/Continental Security League.png",
-		"Assets/MainMenuScreens/Battle of Vardar.jpg",
-		"Assets/MainMenuScreens/Battle of Burluk.jpg",
-		"Assets/MainMenuScreens/Stulpikan Pandur.png",
-		"Assets/MainMenuScreens/Coloured Tanks.jpg"
-	];
-
-	const id = Math.floor(Math.random() * images.length);
-
-	battalion.uiHandler.mainMenu.image.src = images[id];
-}
+battalion.uiHandler.mainMenu.randomizeImage();
