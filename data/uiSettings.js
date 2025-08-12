@@ -10,6 +10,9 @@ const UI_SETTINGS = {
         //"Assets/MainMenuScreens/Stulpikan Pandur.png",
         "Assets/MainMenuScreens/Coloured Tanks.jpg"
     ],
+	"FIRST_MARGIN_TUTORIAL": "0px",
+	"FIRST_MARGIN_SPECIAL": "0px",
+	"FIRST_MARGIN_CODEX": "0px",
 	"TUTORIAL_ORDER": [
     	"TUTORIAL_1",
     	"TUTORIAL_2",

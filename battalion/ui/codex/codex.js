@@ -122,7 +122,7 @@ Codex.prototype.createButtons = function(battalion) {
 	}
 
 	if(this.buttons.length > 0) {
-		this.buttons[0].element.style.marginTop = "0px";
+		this.buttons[0].element.style.marginTop = UI_SETTINGS.FIRST_MARGIN_CODEX;
 	}
 }
 

@@ -11,7 +11,6 @@ const MainMenuButton = function(id, textID) {
     this.addTextClass("generic_button_text");
 
     this.addMainClass("main_menu_button");
-    this.addImageClass("main_menu_button_image");
     this.addTextClass("main_menu_button_text");
 
     this.init();

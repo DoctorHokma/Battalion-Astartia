@@ -52,10 +52,9 @@ SpecialLevelsMenu.prototype.hideLevels = function() {
     }
 }
 
-SpecialLevelsMenu.prototype.clickButton = function(battalion, button) {
+SpecialLevelsMenu.prototype.selectCategory = function(battalion, categoryConfig) {
     const { language } = battalion;
-    const { config } = button;
-    const { levels, name, desc } = config;
+    const { levels, name, desc } = categoryConfig;
     const shownLevels = levels.length > SpecialLevelsMenu.MAX_LEVELS_PER_PAGE ? SpecialLevelsMenu.MAX_LEVELS_PER_PAGE : levels.length;
     const hiddenLevels = SpecialLevelsMenu.MAX_LEVELS_PER_PAGE - shownLevels;
 
@@ -96,7 +95,7 @@ SpecialLevelsMenu.prototype.close = function() {
 }
 
 SpecialLevelsMenu.prototype.selectLevelByIndex = function(index) {
-    if(index < 0 || this.index >= this.currentCategory.length) {
+    if(index < 0 || index >= this.currentCategory.length) {
         return;
     }
 
@@ -141,13 +140,13 @@ SpecialLevelsMenu.prototype.createButtons = function(battalion) {
     const scrollContainer = document.getElementById("SECIAL_LEVELS_SCROLL_CONTAINER");
 
     for(let i = 0; i < UI_SETTINGS.SPECIAL_ORDER.length; i++) {
-        const levelConfig = SPECIAL_LEVELS[UI_SETTINGS.SPECIAL_ORDER[i]];
+        const categoryConfig = SPECIAL_LEVELS[UI_SETTINGS.SPECIAL_ORDER[i]];
 
-        if(levelConfig) {
-            const button = UIHelper.createSpecialButton(levelConfig);
+        if(categoryConfig) {
+            const button = UIHelper.createSpecialButton(categoryConfig);
 
-            button.setText(levelConfig.info);
-            button.addClick(() => this.clickButton(battalion, button));
+            button.setText(categoryConfig.info);
+            button.addClick(() => this.selectCategory(battalion, categoryConfig));
             scrollContainer.appendChild(button.element);
 
             this.buttons.push(button);
@@ -155,7 +154,7 @@ SpecialLevelsMenu.prototype.createButtons = function(battalion) {
     }
 
 	if(this.buttons.length > 0) {
-		this.buttons[0].element.style.marginTop = "10px";
+		this.buttons[0].element.style.marginTop = UI_SETTINGS.FIRST_MARGIN_SPECIAL;
 	}
 }
 

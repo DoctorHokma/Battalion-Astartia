@@ -33,7 +33,6 @@ const UIHelper = {
         button.addTextClass("block_button_text");
 
         button.addMainClass("codex_button");
-        button.addImageClass("codex_button_image");
         button.addTextClass("codex_button_text");
 
         return button;
@@ -47,8 +46,6 @@ const UIHelper = {
         button.addTextClass("block_button_text");
 
         button.addMainClass("bonus_button");
-        button.addImageClass("bonus_button_image");
-        button.addTextClass("bonus_button_text");
 
         return button;
     },
@@ -59,10 +56,8 @@ const UIHelper = {
         button.addMainClass("block_button");
         button.addImageClass("block_button_image");
         button.addTextClass("block_button_text");
-
+        
         button.addMainClass("tutorial_button");
-        button.addImageClass("tutorial_button_image");
-        button.addTextClass("tutorial_button_text");
 
         return button;
     }

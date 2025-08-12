@@ -1,9 +1,9 @@
 const TutorialMenu = function() {
     GenericMenu.call(this, "Tutorial Levels");
 
+    this.selectedLevel = null;
     this.defaultLevelName = "";
     this.defaultLevelDescription = "";
-    this.selectedLevel = null;
     this.closeButton = UIHelper.createGenericButton("CLOSE_TUTORIAL");
     this.playButton = UIHelper.createGenericButton("PLAY_TUTORIAL");
 }
@@ -23,7 +23,6 @@ TutorialMenu.prototype.onLanguageSwitch = function(handler) {
     this.defaultLevelDescription = handler.get("SYSTEM_TUTORIAL_DESC");
     this.closeButton.setText(handler.get("SYSTEM_BUTTON_CLOSE"));
     this.playButton.setText(handler.get("SYSTEM_BUTTON_PLAY"));
-
     this.setText(this.defaultLevelName, this.defaultLevelDescription);
 }
 
@@ -39,31 +38,30 @@ TutorialMenu.prototype.open = function() {
 
 TutorialMenu.prototype.close = function() {
     this.setText(this.defaultLevelName, this.defaultLevelDescription);
-    this.hideImage();
+    this.hidePreview();
     this.hide();
     this.selectedLevel = null;
 }
 
-TutorialMenu.prototype.showImage = function() {
+TutorialMenu.prototype.showPreview = function() {
     document.getElementById("Tutorial").style.visibility = "visible";
 }
 
-TutorialMenu.prototype.hideImage = function() {
+TutorialMenu.prototype.hidePreview = function() {
     document.getElementById("Tutorial").style.visibility = "hidden";
 }
 
-TutorialMenu.prototype.setImage = function(source) {
+TutorialMenu.prototype.setPreview = function(source) {
     document.getElementById("Tutorial").src = source;
 }
 
-TutorialMenu.prototype.clickButton = function(battalion, button) {
+TutorialMenu.prototype.selectLevel = function(battalion, levelConfig) {
     const { language } = battalion;
-    const { config } = button;
-    const { name, desc, level, image } = config;
+    const { name, desc, level, image } = levelConfig;
 
     this.setText(language.get(name), language.get(desc));
-    this.setImage(image);
-    this.showImage();
+    this.setPreview(image);
+    this.showPreview();
     this.selectedLevel = level;
 }
 
@@ -77,7 +75,7 @@ TutorialMenu.prototype.createButtons = function(battalion) {
             const button = UIHelper.createTutorialButton(levelConfig);
 
             button.setText(levelConfig.info);
-            button.addClick(() => this.clickButton(battalion, button));
+            button.addClick(() => this.selectLevel(battalion, levelConfig));
             scrollContainer.appendChild(button.element);
 
             this.buttons.push(button);
@@ -85,7 +83,7 @@ TutorialMenu.prototype.createButtons = function(battalion) {
     }
 
 	if(this.buttons.length > 0) {
-		this.buttons[0].element.style.marginTop = "10px";
+		this.buttons[0].element.style.marginTop = UI_SETTINGS.FIRST_MARGIN_TUTORIAL;
 	}
 }
 
@@ -103,7 +101,6 @@ TutorialMenu.prototype.init = function(battalion) {
     this.playButton.addClick(() => {
         if(this.selectedLevel) {
             initializeSpecialBattle(this.selectedLevel);
-
             this.close();
         }
     });

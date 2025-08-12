@@ -33,8 +33,6 @@ body {
     z-index: 1;
 }
 
-.generic_button_image.main_menu_button_image {}
-
 .generic_button_text.main_menu_button_text {
     color: #222;
 }
@@ -61,6 +59,24 @@ body {
     left: 280px;
 }
 
+.bonus_scroll_container {
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 140px;
+    height: 682px;
+    top: 10px;
+}
+
+.tutorial_scroll_container {
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 140px;
+    height: 682px;
+    top: 10px;
+}
+
 .codex_scroll_container {
     position: absolute;
     overflow-y: auto;
@@ -74,8 +90,6 @@ body {
     margin-top: 10px;
 }
 
-.block_button_image.codex_button_image {}
-
 .block_button_text.codex_button_text {
     font-size: 12px;
     top: 8px;
@@ -86,12 +100,6 @@ body {
     margin-top: 2px;
     left: 7px;
 }
-
-.block_button_image.tutorial_button_image,
-.block_button_image.bonus_button_image {}
-
-.block_button_text.tutorial_button_text,
-.block_button_text.bonus_button_text {}
 
 .block_button {
     position: relative;
