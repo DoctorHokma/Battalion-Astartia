@@ -1,9 +1,7 @@
-const MainMenuButton = function(id, textID) {
-    GenericButton.call(this, id, null);
+const MainMenuButton = function(id, config) {
+    GenericButton.call(this, id, config);
 
-    this.textID = textID;
     this.state = MainMenuButton.STATE.ENABLED;
-    this.setText(textID);
     this.setImage("Assets/Miscellaneous/GenericButton.png");
 
     this.addMainClass("generic_button");
@@ -12,8 +10,6 @@ const MainMenuButton = function(id, textID) {
 
     this.addMainClass("main_menu_button");
     this.addTextClass("main_menu_button_text");
-
-    this.init();
 }
 
 MainMenuButton.STATE = {

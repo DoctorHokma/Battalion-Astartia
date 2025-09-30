@@ -21,14 +21,6 @@ const createContext = function() {
     context.setState(Battalion.STATE.MAIN_MENU);
     context.timer.start();
 
-	/*
-    context.createCamera();
-
-    context.client.cursor.events.on(Cursor.EVENT.BUTTON_CLICK, () => {
-        console.log(context.getContextAtMouse());
-    });
-    */
-
 	return context;
 }
 
@@ -3909,7 +3901,8 @@ function LaunchRecruitmentPanel(IndustrialBranch){
 
 	document.getElementById("UnitMontreBkg").src="Assets/Miscellaneous/UnitMontreBkg"+IndustrialBranch+".png";
 	document.getElementById("UnitMontre").src="Assets/Units/Static/Barricade1.png";
-	document.getElementById("UnitMontre").style.filter=Factions[PlayerChoiceFaction].ChromaCode;;
+	document.getElementById("UnitMontre").style.filter=Factions[PlayerChoiceFaction].ChromaCode;
+
 	MontreIndexBasis=IndustrialBranch*10+20;
 	if(IndustrialBranch==1){MontreIndexBasis-=30};
 

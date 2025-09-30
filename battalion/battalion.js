@@ -4,17 +4,13 @@ const Battalion = function() {
     this.soundPlayer = new SoundPlayer(SOUND);
     this.musicPlayer = new MusicPlayer(MUSIC, PLAYLIST);
     this.client = new Client();
-    this.renderer = new Renderer();
     this.language = new LanguageHandler();
     this.story = new StoryHandler();
     this.uiHandler = new UIHandler();
     this.objectives = new ObjectiveHandler();
     this.db = new BattalionDB();
-
     this.timer = new Timer();
     this.timer.input = () => this.client.update();
-    this.timer.update = () => {}
-    this.timer.render = () => this.renderer.update(this);
 }
 
 Battalion.LANGUAGE = {
@@ -32,25 +28,6 @@ Battalion.STATE = {
     MAP_EDITOR: 2,
     BATTLE: 3
 };
-
-Battalion.prototype.createCamera = function() {
-    const camera = new BattalionCamera();
-    const context = this.renderer.createContext("BATTALION", camera);
-
-    camera.setTileSize(56, 56);
-    context.createBuffer(560, 560);
-    context.setDisplayMode(CameraContext.DISPLAY_MODE.RESOLUTION_FIXED);
-
-    return camera;
-}
-
-Battalion.prototype.getContextAtMouse = function() {
-    const lookX = this.client.cursor.positionX;
-    const lookY = this.client.cursor.positionY; 
-    const context = this.renderer.getCollidedContext(lookX, lookY, this.client.cursor.radius);
-
-    return context;
-}
 
 /**
  * neyn 11.04.2025

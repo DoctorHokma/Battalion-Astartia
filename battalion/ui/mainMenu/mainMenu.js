@@ -13,18 +13,31 @@ MainMenu.prototype.constructor = MainMenu;
 MainMenu.prototype.onLanguageSwitch = function(handler) {
     for(let i = 0; i < this.buttons.length; i++) {
         const button = this.buttons[i];
-        const text = handler.get(button.textID);
+        const text = handler.get(button.config.name);
 
         button.setText(text);
     }
 }
 
-MainMenu.prototype.createButton = function(buttonID, textID) {
-    const button = new MainMenuButton(buttonID, textID);
+MainMenu.prototype.createButton = function(buttonID, name) {
+    const button = new MainMenuButton(buttonID, {
+        "name": name
+    });
+
+    button.setText(name);
+    button.init();
 
     this.buttons.push(button);
 
     return button;
+}
+
+MainMenu.prototype.showBackground = function() {
+    this.image.style.visibility = "visible";
+}
+
+MainMenu.prototype.hideBackground = function() {
+    this.image.style.visibility = "hidden";
 }
 
 MainMenu.prototype.randomizeImage = function() {
@@ -57,13 +70,13 @@ MainMenu.prototype.init = function(battalion) {
     .addClick(() => {
         //this.hide();
         alert("Work in progress!");
-    })
+    });
 
     this.createButton("BUTTON_OPTIONS", "SYSTEM_BUTTON_OPTIONS")
     .setTooltip("TOOLTIP_OPTIONS")
     .addClick(() => {
         options.show();
-    })
+    });
 
     this.createButton("BUTTON_CREDITS", "SYSTEM_BUTTON_CREDITS")
     .setTooltip("TOOLTIP_CREDITS")
